@@ -1,0 +1,312 @@
+[
+  {
+    "id": "reduction-vf-01", "ch": "reduction", "type": "vf",
+    "enonce": "Deux matrices de $M_n(\\mathbb C)$ qui ont le même polynôme caractéristique sont semblables.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ et la matrice nulle ont toutes deux $X^2$ pour polynôme caractéristique, mais seule la matrice nulle est semblable à la matrice nulle."
+  },
+  {
+    "id": "reduction-vf-02", "ch": "reduction", "type": "vf",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ telle que $A^2 = -I_n$. Alors $A$ est diagonalisable dans $M_n(\\mathbb C)$.",
+    "reponse": true,
+    "explication": "Le polynôme $X^2 + 1 = (X - i)(X + i)$ annule $A$ et il est scindé à racines simples sur $\\mathbb C$. En revanche $A$ n'est pas diagonalisable sur $\\mathbb R$ : elle n'a aucune valeur propre réelle."
+  },
+  {
+    "id": "reduction-vf-03", "ch": "reduction", "type": "vf",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ telle que $A^3 = A$. Alors $A$ est diagonalisable dans $M_n(\\mathbb R)$.",
+    "reponse": true,
+    "explication": "Le polynôme $X^3 - X = X(X-1)(X+1)$ annule $A$ et il est scindé à racines simples sur $\\mathbb R$."
+  },
+  {
+    "id": "reduction-vf-04", "ch": "reduction", "type": "vf",
+    "enonce": "La somme de deux matrices diagonalisables de $M_n(\\mathbb R)$ est diagonalisable.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$ (deux valeurs propres distinctes) et $\\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ sont diagonalisables, mais leur somme $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ est nilpotente non nulle. Le résultat devient vrai si les deux matrices commutent."
+  },
+  {
+    "id": "reduction-vf-05", "ch": "reduction", "type": "vf",
+    "enonce": "Soit $u$ un endomorphisme diagonalisable de $E$ et $F$ un sous-espace stable par $u$. Alors l'endomorphisme induit par $u$ sur $F$ est diagonalisable.",
+    "reponse": true,
+    "explication": "Un polynôme scindé à racines simples qui annule $u$ annule aussi l'endomorphisme induit sur $F$."
+  },
+  {
+    "id": "reduction-vf-06", "ch": "reduction", "type": "vf",
+    "enonce": "Une matrice à la fois nilpotente et diagonalisable est nulle.",
+    "reponse": true,
+    "explication": "La seule valeur propre d'une matrice nilpotente est $0$. Si elle est diagonalisable, elle est donc semblable à la matrice nulle, donc nulle."
+  },
+  {
+    "id": "reduction-vf-07", "ch": "reduction", "type": "vf",
+    "enonce": "Toute matrice de $M_n(\\mathbb R)$ est trigonalisable dans $M_n(\\mathbb R)$.",
+    "reponse": false,
+    "explication": "Il faut que le polynôme caractéristique soit scindé sur $\\mathbb R$. Contre-exemple : $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$, de polynôme caractéristique $X^2 + 1$. C'est vrai en revanche dans $M_n(\\mathbb C)$."
+  },
+  {
+    "id": "reduction-vf-08", "ch": "reduction", "type": "vf",
+    "enonce": "Si $\\lambda$ est racine d'ordre $m$ du polynôme caractéristique de $u$, alors le sous-espace propre $E_\\lambda(u)$ est de dimension $m$.",
+    "reponse": false,
+    "explication": "On a seulement $1 \\le \\dim E_\\lambda(u) \\le m$. L'égalité pour toutes les valeurs propres, jointe au caractère scindé du polynôme caractéristique, équivaut à la diagonalisabilité."
+  },
+  {
+    "id": "reduction-vf-09", "ch": "reduction", "type": "vf",
+    "enonce": "Deux endomorphismes diagonalisables qui commutent sont diagonalisables dans une même base.",
+    "reponse": true,
+    "explication": "Chaque sous-espace propre de $u$ est stable par $v$, et l'endomorphisme induit par $v$ y est diagonalisable. On recolle des bases de vecteurs propres de ces induits."
+  },
+  {
+    "id": "reduction-vf-10", "ch": "reduction", "type": "vf",
+    "enonce": "Une matrice carrée $A$ et sa transposée $A^{\\mathsf T}$ ont les mêmes valeurs propres et les mêmes sous-espaces propres.",
+    "reponse": false,
+    "explication": "Mêmes valeurs propres, oui (même polynôme caractéristique). Mêmes sous-espaces propres, non : pour $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$, le noyau de $A$ est engendré par $e_1$ et celui de $A^{\\mathsf T}$ par $e_2$."
+  },
+  {
+    "id": "reduction-qcm-01", "ch": "reduction", "type": "qcm",
+    "enonce": "Un endomorphisme $u$ d'un $K$-espace vectoriel de dimension $n$ est diagonalisable si et seulement s'il admet un polynôme annulateur **[ ? ]**.",
+    "choix": [
+      "scindé sur $K$ à racines simples",
+      "scindé sur $K$",
+      "irréductible sur $K$",
+      "unitaire de degré $n$"
+    ],
+    "bonne": 0,
+    "explication": "Scindé seul caractérise la trigonalisabilité. Et tout endomorphisme admet un annulateur unitaire de degré $n$ : son polynôme caractéristique (Cayley-Hamilton)."
+  },
+  {
+    "id": "reduction-qcm-02", "ch": "reduction", "type": "qcm",
+    "enonce": "Décomposition des noyaux.\nSoient $P, Q \\in K[X]$ **[ ? ]**. Alors $\\ker (PQ)(u) = \\ker P(u) \\oplus \\ker Q(u)$.",
+    "choix": [
+      "premiers entre eux",
+      "sans racine commune dans $K$",
+      "scindés sur $K$",
+      "irréductibles sur $K$"
+    ],
+    "bonne": 0,
+    "explication": "La preuve repose sur une relation de Bézout $AP + BQ = 1$. « Sans racine commune dans $K$ » ne suffit pas : sur $\\mathbb R$, $P = Q = X^2 + 1$ n'ont aucune racine, et pourtant ils ne sont pas premiers entre eux."
+  },
+  {
+    "id": "reduction-qcm-03", "ch": "reduction", "type": "qcm",
+    "enonce": "Un endomorphisme $u$ d'un $K$-espace vectoriel de dimension finie est trigonalisable si et seulement si son polynôme caractéristique **[ ? ]**.",
+    "choix": [
+      "est scindé sur $K$",
+      "est scindé sur $K$ à racines simples",
+      "admet au moins une racine dans $K$",
+      "annule $u$"
+    ],
+    "bonne": 0,
+    "explication": "Scindé à racines simples est une condition suffisante de diagonalisabilité, donc trop forte ici. Avoir une racine ne suffit pas dès la dimension 3. Enfin, le polynôme caractéristique annule toujours $u$ (Cayley-Hamilton)."
+  },
+  {
+    "id": "reduction-qcm-04", "ch": "reduction", "type": "qcm",
+    "enonce": "Décomposition de Dunford.\nSi le polynôme caractéristique de $u$ est scindé, il existe un unique couple $(d, n)$ avec $d$ diagonalisable, $n$ nilpotent, $u = d + n$ et **[ ? ]**.",
+    "choix": [
+      "$d \\circ n = n \\circ d$",
+      "$d$ inversible",
+      "$n^2 = 0$",
+      "$\\ker d \\cap \\ker n = \\{0\\}$"
+    ],
+    "bonne": 0,
+    "explication": "Sans la commutation, plus d'unicité. Piège : $\\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix} + \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ n'est **pas** la décomposition de Dunford : les deux termes ne commutent pas. La matrice de gauche est diagonalisable, donc $d = u$ et $n = 0$."
+  },
+  {
+    "id": "reduction-qcm-05", "ch": "reduction", "type": "qcm",
+    "enonce": "Soit $u$ de polynôme caractéristique scindé et $\\lambda$ une valeur propre de multiplicité $m$ dans ce polynôme. La dimension du sous-espace caractéristique $\\ker (u - \\lambda\\,\\mathrm{id})^m$ est :",
+    "choix": [
+      "exactement $m$",
+      "la dimension du sous-espace propre $E_\\lambda(u)$",
+      "la multiplicité de $\\lambda$ dans le polynôme minimal",
+      "au plus $m$, sans égalité en général"
+    ],
+    "bonne": 0,
+    "explication": "C'est ce qui distingue sous-espace caractéristique et sous-espace propre : le premier est toujours de dimension $m$, le second de dimension comprise entre $1$ et $m$. L'espace est somme directe des sous-espaces caractéristiques."
+  },
+  {
+    "id": "reduction-err-01", "ch": "reduction", "type": "erreur",
+    "enonce": "Soit $A \\in M_3(\\mathbb R)$ telle que $A^2 = A$. On veut décrire $A$ à similitude près. Voici une copie.",
+    "lignes": [
+      "Le polynôme $X^2 - X = X(X-1)$ annule $A$.",
+      "Il est scindé à racines simples, donc $A$ est diagonalisable.",
+      "Les valeurs propres de $A$ sont les racines de ce polynôme annulateur : $\\mathrm{Sp}(A) = \\{0, 1\\}$.",
+      "Donc $A$ est semblable à une matrice diagonale dont les coefficients diagonaux valent $0$ ou $1$."
+    ],
+    "fausse": 2,
+    "explication": "Les valeurs propres sont **parmi** les racines d'un polynôme annulateur : $\\mathrm{Sp}(A) \\subset \\{0, 1\\}$, sans égalité en général (penser à $A = I_3$ ou $A = 0$). L'égalité vaut pour le polynôme minimal, pas pour un annulateur quelconque. La dernière ligne, elle, reste correcte."
+  },
+  {
+    "id": "reduction-err-02", "ch": "reduction", "type": "erreur",
+    "enonce": "Soient $u$ et $v$ deux endomorphismes de $E$ qui commutent. Une copie affirme : « tout vecteur propre de $u$ est vecteur propre de $v$ ».",
+    "lignes": [
+      "Soit $x$ un vecteur propre de $u$ : $x \\ne 0$ et $u(x) = \\lambda x$.",
+      "Alors $u(v(x)) = v(u(x)) = \\lambda\\, v(x)$.",
+      "Donc $v(x)$ appartient au sous-espace propre $E_\\lambda(u)$.",
+      "Donc $v(x)$ est colinéaire à $x$, et $x$ est un vecteur propre de $v$."
+    ],
+    "fausse": 3,
+    "explication": "On a seulement montré que $E_\\lambda(u)$ est stable par $v$. La conclusion ne vaut que si $E_\\lambda(u)$ est une droite. Contre-exemple : $u = \\mathrm{id}$ commute avec tout $v$, et tout vecteur non nul est propre pour $u$."
+  },
+  {
+    "id": "reduction-err-03", "ch": "reduction", "type": "erreur",
+    "enonce": "Une copie propose cette « preuve » du théorème de Cayley-Hamilton pour $A \\in M_n(K)$.",
+    "lignes": [
+      "Par définition, $\\chi_A(X) = \\det(X I_n - A)$.",
+      "On substitue $A$ à $X$ : $\\chi_A(A) = \\det(A I_n - A)$.",
+      "Or $A I_n - A = 0$, donc $\\chi_A(A) = \\det(0) = 0$."
+    ],
+    "fausse": 1,
+    "explication": "La substitution est illégitime : $\\chi_A(A)$ est une **matrice**, alors que $\\det(A I_n - A)$ est un **scalaire**. Dans $X I_n - A$, l'indéterminée $X$ multiplie chaque coefficient diagonal ; on ne peut pas la remplacer par une matrice à l'intérieur du déterminant."
+  },
+  {
+    "id": "reduction-piste-01", "ch": "reduction", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb C)$ et $p \\ge 1$ un entier tels que $A^p = I_n$. Montrer que $A$ est diagonalisable.",
+    "choix": [
+      {
+        "titre": "Polynôme annulateur scindé à racines simples",
+        "info": "$u$ est diagonalisable si et seulement s'il existe un polynôme scindé à racines simples qui l'annule.",
+        "verdict": "bon",
+        "retour": "L'hypothèse $A^p = I_n$ fournit directement un polynôme annulateur."
+      },
+      {
+        "titre": "Calculer le polynôme caractéristique",
+        "info": "$\\chi_A(X) = \\det(X I_n - A)$. $A$ est diagonalisable si et seulement si $\\chi_A$ est scindé et si chaque sous-espace propre a pour dimension la multiplicité de sa valeur propre.",
+        "verdict": "impasse",
+        "retour": "On ne connaît pas les coefficients de $A$ : impossible de calculer $\\chi_A$ ou les dimensions des sous-espaces propres."
+      },
+      {
+        "titre": "Théorème de Cayley-Hamilton",
+        "info": "Le polynôme caractéristique de $A$ annule $A$ : $\\chi_A(A) = 0$.",
+        "verdict": "impasse",
+        "retour": "Il fournit un annulateur, mais on en a déjà un meilleur, et $\\chi_A$ n'a aucune raison d'être à racines simples."
+      },
+      {
+        "titre": "Trigonaliser $A$",
+        "info": "Toute matrice de $M_n(\\mathbb C)$ est semblable à une matrice triangulaire supérieure, dont la diagonale porte les valeurs propres.",
+        "verdict": "impasse",
+        "retour": "On obtient que les valeurs propres sont des racines $p$-ièmes de l'unité, mais rien sur les coefficients au-dessus de la diagonale."
+      }
+    ],
+    "direction": "$X^p - 1$ annule $A$. Il est scindé sur $\\mathbb C$ et ses racines, les $p$ racines $p$-ièmes de l'unité, sont simples (il est premier avec sa dérivée $pX^{p-1}$). Donc $A$ est diagonalisable."
+  },
+  {
+    "id": "reduction-piste-02", "ch": "reduction", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ telle que $A^3 + A = 0$. Montrer que le rang de $A$ est pair.",
+    "choix": [
+      {
+        "titre": "Décomposition des noyaux avec $X(X^2+1)$",
+        "info": "Si $P$ et $Q$ sont premiers entre eux, $\\ker (PQ)(u) = \\ker P(u) \\oplus \\ker Q(u)$, et chacun des deux noyaux est stable par $u$.",
+        "verdict": "bon",
+        "retour": "On obtient $\\mathbb R^n = \\ker A \\oplus \\ker(A^2 + I_n)$, et tout se joue sur le second sous-espace."
+      },
+      {
+        "titre": "Diagonaliser sur $\\mathbb C$ et apparier les valeurs propres conjuguées",
+        "info": "Pour une matrice réelle, $\\chi_A$ est à coefficients réels : si $\\lambda$ est valeur propre complexe de multiplicité $m$, alors $\\bar\\lambda$ aussi, avec la même multiplicité.",
+        "verdict": "bon",
+        "retour": "$X^3 + X = X(X - i)(X + i)$ est scindé à racines simples sur $\\mathbb C$ : $A$ y est diagonalisable, et son rang est le nombre de valeurs propres non nulles comptées avec multiplicité."
+      },
+      {
+        "titre": "Diagonaliser $A$ dans $M_n(\\mathbb R)$",
+        "info": "$A$ est diagonalisable sur $\\mathbb R$ si et seulement si elle admet un annulateur scindé à racines simples **sur $\\mathbb R$**.",
+        "verdict": "impasse",
+        "retour": "$X^3 + X = X(X^2 + 1)$ n'est pas scindé sur $\\mathbb R$. D'ailleurs $A$ n'est diagonalisable sur $\\mathbb R$ que si $A = 0$."
+      },
+      {
+        "titre": "Théorème du rang",
+        "info": "Pour $A \\in M_n(K)$ : $\\mathrm{rg}\\,A + \\dim \\ker A = n$.",
+        "verdict": "impasse",
+        "retour": "Il relie le rang au noyau, mais ne dit rien sur la parité. Il faut une information de structure sur $A$."
+      }
+    ],
+    "direction": "Sur $F = \\ker(A^2 + I_n)$, l'endomorphisme induit $B$ vérifie $B^2 = -\\mathrm{id}_F$, donc $(\\det B)^2 = (-1)^{\\dim F}$ : $\\dim F$ est paire. Comme $\\mathbb R^n = \\ker A \\oplus F$, le rang de $A$ vaut $\\dim F$."
+  },
+  {
+    "id": "reduction-piste-03", "ch": "reduction", "type": "piste",
+    "enonce": "Soit $A \\in M_3(\\mathbb R)$, non diagonalisable, de polynôme caractéristique $(X-1)^2(X-2)$. Comment calculer $A^n$ pour tout $n \\in \\mathbb N$ ?",
+    "choix": [
+      {
+        "titre": "Division euclidienne de $X^n$ par un polynôme annulateur",
+        "info": "Si $P(A) = 0$ et $X^n = PQ_n + R_n$ avec $\\deg R_n < \\deg P$, alors $A^n = R_n(A)$. On trouve $R_n$ en évaluant aux racines de $P$ (et en dérivant pour une racine multiple).",
+        "verdict": "bon",
+        "retour": "Avec $P = \\chi_A$, le reste est de degré au plus 2 : trois coefficients à déterminer."
+      },
+      {
+        "titre": "Décomposition de Dunford et formule du binôme",
+        "info": "Si $A = D + N$ avec $D$ diagonalisable, $N$ nilpotente et $DN = ND$, alors $A^n = \\sum_k \\binom nk D^{n-k} N^k$, somme qui s'arrête dès que $N^k = 0$.",
+        "verdict": "bon",
+        "retour": "Ici $N^2 = 0$, donc $A^n = D^n + n D^{n-1} N$. Il faut toutefois déterminer $D$ et $N$."
+      },
+      {
+        "titre": "Diagonaliser : $A^n = P D^n P^{-1}$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, alors $A^n = P D^n P^{-1}$.",
+        "verdict": "impasse",
+        "retour": "L'énoncé précise que $A$ n'est pas diagonalisable."
+      },
+      {
+        "titre": "Calculer $A^2$, $A^3$, conjecturer puis démontrer par récurrence",
+        "info": "Méthode élémentaire : calculer les premières puissances, deviner une formule pour $A^n$, la prouver par récurrence.",
+        "verdict": "possible",
+        "retour": "Faisable sur une matrice explicite, mais long et risqué : la formule contient à la fois $2^n$ et $n$, difficile à deviner."
+      }
+    ],
+    "direction": "On écrit $X^n = (X-1)^2(X-2)Q_n + a_nX^2 + b_nX + c_n$. On évalue en $2$, en $1$, puis on dérive et on évalue en $1$ : trois équations pour $a_n, b_n, c_n$. Par Cayley-Hamilton, $A^n = a_nA^2 + b_nA + c_nI_3$."
+  },
+  {
+    "id": "reduction-piste-04", "ch": "reduction", "type": "piste",
+    "enonce": "Soient $u$ et $v$ deux endomorphismes d'un $\\mathbb C$-espace vectoriel de dimension finie non nulle, tels que $u \\circ v = v \\circ u$. Montrer que $u$ et $v$ ont un vecteur propre commun.",
+    "choix": [
+      {
+        "titre": "Stabilité d'un sous-espace propre de $u$ par $v$",
+        "info": "Si $u$ et $v$ commutent, tout sous-espace propre de $u$ est stable par $v$. Et sur $\\mathbb C$, tout endomorphisme d'un espace de dimension finie non nulle possède une valeur propre.",
+        "verdict": "bon",
+        "retour": "On applique deux fois l'existence d'une valeur propre : à $u$, puis à l'induit de $v$."
+      },
+      {
+        "titre": "Diagonalisation simultanée",
+        "info": "Des endomorphismes **diagonalisables** qui commutent deux à deux sont diagonalisables dans une même base.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $u$ et $v$ sont diagonalisables."
+      },
+      {
+        "titre": "Comparer les polynômes caractéristiques de $u \\circ v$ et $v \\circ u$",
+        "info": "Pour tous endomorphismes $u, v$ en dimension finie, $u \\circ v$ et $v \\circ u$ ont le même polynôme caractéristique.",
+        "verdict": "impasse",
+        "retour": "Ici $u \\circ v = v \\circ u$ : l'égalité des polynômes caractéristiques n'apporte aucune information."
+      },
+      {
+        "titre": "Étudier les valeurs propres de $u + v$",
+        "info": "Sur $\\mathbb C$, $u + v$ possède une valeur propre. Mais en général, un vecteur propre de $u + v$ n'est propre ni pour $u$ ni pour $v$.",
+        "verdict": "impasse",
+        "retour": "Un vecteur propre de la somme n'a aucune raison d'être propre pour chacun."
+      }
+    ],
+    "direction": "$u$ a une valeur propre $\\lambda$ (corps $\\mathbb C$). $F = E_\\lambda(u)$ est non nul et stable par $v$. L'induit de $v$ sur $F$ a lui-même un vecteur propre $x \\in F$ : $x$ est propre pour $v$ et pour $u$."
+  },
+  {
+    "id": "reduction-piste-05", "ch": "reduction", "type": "piste",
+    "enonce": "Soit $(u_n)$ une suite réelle vérifiant $u_{n+3} = 2u_{n+2} + u_{n+1} - 2u_n$ pour tout $n$. Exprimer $u_n$ en fonction de $n$ et de $u_0, u_1, u_2$.",
+    "choix": [
+      {
+        "titre": "Écrire $X_{n+1} = A X_n$ et réduire $A$",
+        "info": "Avec $X_n = (u_n, u_{n+1}, u_{n+2})^{\\mathsf T}$, la récurrence s'écrit $X_{n+1} = AX_n$ où $A$ est une matrice compagnon. Son polynôme caractéristique est le polynôme associé à la récurrence, et $X_n = A^n X_0$.",
+        "verdict": "bon",
+        "retour": "Ici $\\chi_A = X^3 - 2X^2 - X + 2$ a trois racines distinctes : $A$ est diagonalisable."
+      },
+      {
+        "titre": "Chercher les suites géométriques solutions",
+        "info": "L'ensemble des suites vérifiant une récurrence linéaire d'ordre 3 est un espace vectoriel de dimension 3. $(r^n)$ est solution si et seulement si $r$ est racine de l'équation caractéristique.",
+        "verdict": "bon",
+        "retour": "Trois racines distinctes donnent trois suites géométriques indépendantes, donc une base de l'espace des solutions. C'est la même idée que la réduction, sans les matrices."
+      },
+      {
+        "titre": "Série génératrice",
+        "info": "On pose $S(x) = \\sum u_n x^n$. La récurrence se traduit par une équation sur $S$, qui est alors une fraction rationnelle ; on la décompose en éléments simples puis on développe.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais c'est plus long, et il faut justifier un rayon de convergence non nul."
+      },
+      {
+        "titre": "Récurrence forte sur $n$",
+        "info": "Pour prouver $P(n)$ pour tout $n$ : on suppose $P(k)$ vraie pour tout $k \\le n$ et on en déduit $P(n+1)$.",
+        "verdict": "impasse",
+        "retour": "Une récurrence démontre une formule déjà connue : elle ne permet pas de la trouver."
+      }
+    ],
+    "direction": "$X^3 - 2X^2 - X + 2 = (X-1)(X+1)(X-2)$. Donc $u_n = a + b(-1)^n + c\\,2^n$, où $a, b, c$ se calculent en résolvant le système donné par $u_0, u_1, u_2$."
+  }
+]

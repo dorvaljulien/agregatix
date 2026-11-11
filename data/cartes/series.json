@@ -1,0 +1,288 @@
+[
+  {
+    "id": "series-vf-01", "ch": "series", "type": "vf",
+    "enonce": "Si $u_n \\to 0$, alors la série $\\sum u_n$ converge.",
+    "reponse": false,
+    "explication": "La condition $u_n \\to 0$ est nécessaire, pas suffisante. Contre-exemple : la série harmonique $\\sum \\frac1n$ diverge."
+  },
+  {
+    "id": "series-vf-02", "ch": "series", "type": "vf",
+    "enonce": "Soient $(u_n)$ et $(v_n)$ deux suites réelles telles que $u_n \\sim v_n$. Alors $\\sum u_n$ et $\\sum v_n$ sont de même nature.",
+    "reponse": false,
+    "explication": "C'est vrai si l'une des deux suites est de signe constant à partir d'un certain rang, faux sinon. Contre-exemple : $u_n = \\frac{(-1)^n}{\\sqrt n}$ et $v_n = \\frac{(-1)^n}{\\sqrt n} + \\frac1n$. On a $u_n \\sim v_n$, $\\sum u_n$ converge (série alternée) et $\\sum v_n$ diverge."
+  },
+  {
+    "id": "series-vf-03", "ch": "series", "type": "vf",
+    "enonce": "Si $u_n \\geq 0$ pour tout $n$ et si $\\sum u_n$ converge, alors $\\sum u_n^2$ converge.",
+    "reponse": true,
+    "explication": "Comme $u_n \\to 0$, on a $0 \\le u_n \\le 1$ à partir d'un certain rang, donc $0 \\le u_n^2 \\le u_n$. On conclut par comparaison de séries à termes positifs."
+  },
+  {
+    "id": "series-vf-04", "ch": "series", "type": "vf",
+    "enonce": "Si $(u_n)$ est une suite réelle telle que $\\sum u_n$ converge, alors $\\sum u_n^2$ converge.",
+    "reponse": false,
+    "explication": "Sans hypothèse de signe, c'est faux : $u_n = \\frac{(-1)^n}{\\sqrt n}$ donne une série convergente (série alternée), alors que $u_n^2 = \\frac1n$ est le terme général d'une série divergente."
+  },
+  {
+    "id": "series-vf-05", "ch": "series", "type": "vf",
+    "enonce": "Soit $(u_n)$ une suite positive et décroissante telle que $\\sum u_n$ converge. Alors $n u_n \\to 0$.",
+    "reponse": true,
+    "explication": "Par décroissance, $n\\,u_{2n} \\le \\sum_{k=n+1}^{2n} u_k$, qui tend vers $0$ (différence de deux sommes partielles d'une série convergente). Donc $2n\\,u_{2n} \\to 0$, puis $(2n+1)u_{2n+1} \\le (2n+1)u_{2n} \\to 0$."
+  },
+  {
+    "id": "series-vf-06", "ch": "series", "type": "vf",
+    "enonce": "Si $u_n \\geq 0$ pour tout $n$ et si $\\sum u_n$ converge, alors $u_n = o\\!\\left(\\frac1n\\right)$.",
+    "reponse": false,
+    "explication": "Sans la décroissance, c'est faux. Contre-exemple : $u_n = \\frac1n$ si $n$ est un carré parfait, $u_n = \\frac1{n^2}$ sinon. La série converge (elle est majorée par $\\sum_k \\frac1{k^2} + \\sum_n \\frac1{n^2}$), mais $n u_n = 1$ pour tout carré $n$."
+  },
+  {
+    "id": "series-vf-07", "ch": "series", "type": "vf",
+    "enonce": "La série $\\displaystyle\\sum_{n \\ge 2} \\frac{(-1)^n}{n + (-1)^n}$ converge.",
+    "reponse": true,
+    "explication": "Attention, le critère spécial ne s'applique pas directement : $|u_n|$ n'est pas décroissante ($|u_2| = \\frac13 < |u_3| = \\frac12$). On développe : $u_n = \\frac{(-1)^n}{n} - \\frac{1}{n^2} + O\\!\\left(\\frac1{n^3}\\right)$, somme d'une série alternée convergente et de deux séries absolument convergentes."
+  },
+  {
+    "id": "series-vf-08", "ch": "series", "type": "vf",
+    "enonce": "Le produit de Cauchy de deux séries convergentes est une série convergente.",
+    "reponse": false,
+    "explication": "Le théorème du programme demande que les deux séries soient **absolument** convergentes. Contre-exemple : $u_n = v_n = \\frac{(-1)^n}{\\sqrt{n+1}}$. Le terme général du produit de Cauchy vérifie $|w_n| = \\sum_{k=0}^n \\frac{1}{\\sqrt{(k+1)(n-k+1)}} \\ge \\frac{2(n+1)}{n+2}$, donc il ne tend pas vers $0$."
+  },
+  {
+    "id": "series-qcm-01", "ch": "series", "type": "qcm",
+    "enonce": "Critère spécial des séries alternées.\nSoit $(a_n)$ une suite réelle **[ ? ]**. Alors la série $\\sum (-1)^n a_n$ converge.",
+    "choix": [
+      "décroissante et de limite nulle",
+      "positive et de limite nulle",
+      "positive et décroissante",
+      "de limite nulle, telle que $\\sum a_n$ diverge"
+    ],
+    "bonne": 0,
+    "explication": "Il faut la décroissance **et** la limite nulle (la positivité en découle). La limite nulle seule ne suffit pas : avec $a_n = \\frac1n$ pour $n$ pair et $a_n = \\frac1{n^2}$ pour $n$ impair, la série $\\sum (-1)^n a_n$ diverge."
+  },
+  {
+    "id": "series-qcm-02", "ch": "series", "type": "qcm",
+    "enonce": "Soit $(a_n)$ décroissante de limite nulle et $R_n = \\displaystyle\\sum_{k=n+1}^{+\\infty} (-1)^k a_k$ le reste d'ordre $n$. Que donne le critère spécial ?",
+    "choix": [
+      "$|R_n| \\le a_{n+1}$ et $R_n$ est du signe de $(-1)^{n+1}$",
+      "$|R_n| \\le a_{n+1}$ et $R_n$ est du signe de $(-1)^{n}$",
+      "$|R_n| \\le a_{n+2}$ et $R_n$ est du signe de $(-1)^{n+1}$",
+      "$|R_n| \\sim a_{n+1}$"
+    ],
+    "bonne": 0,
+    "explication": "Le reste est du signe de son premier terme, $(-1)^{n+1}a_{n+1}$, et il est majoré en valeur absolue par ce premier terme. Aucun équivalent n'est garanti."
+  },
+  {
+    "id": "series-qcm-03", "ch": "series", "type": "qcm",
+    "enonce": "Comparaison série-intégrale.\nSoit $f$ une fonction **[ ? ]** sur $[1, +\\infty[$. Alors la série $\\sum f(n)$ et l'intégrale $\\int_1^{+\\infty} f$ sont de même nature.",
+    "choix": [
+      "continue par morceaux, positive et décroissante",
+      "continue et positive",
+      "continue, positive et de limite nulle en $+\\infty$",
+      "de classe $\\mathcal C^1$ et positive"
+    ],
+    "bonne": 0,
+    "explication": "C'est la décroissance qui fournit l'encadrement $f(n+1) \\le \\int_n^{n+1} f \\le f(n)$. Sans elle, une fonction positive formée de pics de hauteur $\\frac1n$ et de largeur $\\frac1{n^2}$ centrés aux entiers est intégrable, tend vers $0$, et pourtant $\\sum f(n) = \\sum \\frac1n$ diverge."
+  },
+  {
+    "id": "series-qcm-04", "ch": "series", "type": "qcm",
+    "enonce": "Sommation des relations d'équivalence.\nSoient $u_n \\sim v_n$ avec $v_n > 0$. Si la série $\\sum v_n$ **[ ? ]**, alors $\\displaystyle\\sum_{k=0}^n u_k \\sim \\sum_{k=0}^n v_k$.",
+    "choix": [
+      "diverge",
+      "converge",
+      "converge absolument",
+      "est quelconque : aucune hypothèse n'est nécessaire"
+    ],
+    "bonne": 0,
+    "explication": "Cas divergent : les **sommes partielles** sont équivalentes. Cas convergent : ce sont les **restes** qui sont équivalents, et les sommes partielles tendent vers deux limites en général différentes."
+  },
+  {
+    "id": "series-err-01", "ch": "series", "type": "erreur",
+    "enonce": "On étudie la nature de $\\sum u_n$ où $u_n = \\dfrac{(-1)^n}{\\sqrt n + (-1)^n}$ pour $n \\ge 2$. Voici une copie.",
+    "lignes": [
+      "Quand $n \\to +\\infty$, $\\sqrt n + (-1)^n \\sim \\sqrt n$.",
+      "Donc $u_n \\sim \\dfrac{(-1)^n}{\\sqrt n}$.",
+      "La série $\\sum \\dfrac{(-1)^n}{\\sqrt n}$ converge d'après le critère spécial des séries alternées.",
+      "Deux séries de termes généraux équivalents sont de même nature, donc $\\sum u_n$ converge."
+    ],
+    "fausse": 3,
+    "explication": "La comparaison par équivalents exige un signe constant. Ici la conclusion est même fausse : $u_n = \\frac{(-1)^n}{\\sqrt n} - \\frac1n + O\\!\\left(n^{-3/2}\\right)$, et la série diverge à cause du terme $-\\frac1n$."
+  },
+  {
+    "id": "series-err-02", "ch": "series", "type": "erreur",
+    "enonce": "On veut calculer $S = \\displaystyle\\sum_{n=1}^{+\\infty} \\frac{1}{n(n+1)}$. Voici une copie.",
+    "lignes": [
+      "Pour tout $n \\ge 1$, $\\dfrac{1}{n(n+1)} = \\dfrac1n - \\dfrac1{n+1}$.",
+      "Donc $S = \\displaystyle\\sum_{n=1}^{+\\infty} \\frac1n - \\sum_{n=1}^{+\\infty} \\frac1{n+1}$.",
+      "Par changement d'indice, $\\displaystyle\\sum_{n=1}^{+\\infty} \\frac1{n+1} = \\sum_{n=2}^{+\\infty} \\frac1n$.",
+      "Les termes se simplifient et il reste $S = 1$."
+    ],
+    "fausse": 1,
+    "explication": "On ne peut pas séparer en deux séries divergentes : l'écriture n'a pas de sens. Il faut télescoper sur les **sommes partielles**, $\\sum_{n=1}^N \\left(\\frac1n - \\frac1{n+1}\\right) = 1 - \\frac1{N+1}$, puis faire tendre $N$ vers $+\\infty$. Le résultat $S = 1$ est juste, la rédaction ne l'est pas."
+  },
+  {
+    "id": "series-err-03", "ch": "series", "type": "erreur",
+    "enonce": "On étudie la nature de $\\sum u_n$ où $u_n = \\dfrac{n!}{n^n}$ pour $n \\ge 1$. Voici une copie.",
+    "lignes": [
+      "Pour tout $n \\ge 1$, $u_n > 0$ et $\\dfrac{u_{n+1}}{u_n} = \\left(\\dfrac{n}{n+1}\\right)^{n}$.",
+      "Pour tout $n \\ge 1$, ce quotient est strictement inférieur à $1$.",
+      "Donc, d'après la règle de d'Alembert, la série $\\sum u_n$ converge."
+    ],
+    "fausse": 2,
+    "explication": "La règle de d'Alembert demande que le quotient ait une **limite** $\\ell < 1$. Avoir un quotient $< 1$ ne suffit pas : pour $u_n = \\frac1n$, le quotient vaut $\\frac{n}{n+1} < 1$ et la série diverge. Ici il fallait écrire que $\\left(\\frac{n}{n+1}\\right)^n \\to \\frac1e < 1$."
+  },
+  {
+    "id": "series-piste-01", "ch": "series", "type": "piste",
+    "enonce": "Déterminer la nature de la série $\\displaystyle\\sum_{n \\ge 1} \\left(\\cos\\frac1n\\right)^{n^3}$.",
+    "choix": [
+      {
+        "titre": "Forme exponentielle et développement limité",
+        "info": "Pour une puissance à exposant variable, on écrit $a_n^{b_n} = \\exp(b_n \\ln a_n)$, puis on développe $\\ln a_n$ à un ordre suffisant pour que le reste, multiplié par $b_n$, tende vers $0$.",
+        "verdict": "bon",
+        "retour": "C'est le réflexe face à une puissance dont la base et l'exposant dépendent de $n$."
+      },
+      {
+        "titre": "Règle de d'Alembert",
+        "info": "Si $u_n > 0$ et $\\frac{u_{n+1}}{u_n} \\to \\ell$ : la série converge si $\\ell < 1$, diverge si $\\ell > 1$, et on ne peut rien dire si $\\ell = 1$.",
+        "verdict": "impasse",
+        "retour": "Le quotient $\\frac{u_{n+1}}{u_n}$ est pénible à étudier ici : pour trouver sa limite il faudrait de toute façon faire le développement limité."
+      },
+      {
+        "titre": "Critère spécial des séries alternées",
+        "info": "Si $(a_n)$ est décroissante de limite nulle, alors $\\sum (-1)^n a_n$ converge.",
+        "verdict": "impasse",
+        "retour": "La série est à termes positifs : rien d'alterné ici."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est continue par morceaux, positive et décroissante sur $[1, +\\infty[$, alors $\\sum f(n)$ et $\\int_1^{+\\infty} f$ sont de même nature.",
+        "verdict": "impasse",
+        "retour": "Il faudrait étudier l'intégrabilité de $t \\mapsto (\\cos\\frac1t)^{t^3}$, ce qui n'est pas plus simple que la question posée."
+      }
+    ],
+    "direction": "$u_n = \\exp\\!\\left(n^3 \\ln\\cos\\frac1n\\right)$ et $\\ln\\cos\\frac1n = -\\frac{1}{2n^2} + O\\!\\left(\\frac1{n^4}\\right)$. Donc $u_n \\sim e^{-n/2}$, terme général d'une série géométrique convergente : la série converge."
+  },
+  {
+    "id": "series-piste-02", "ch": "series", "type": "piste",
+    "enonce": "Soit $\\alpha > 0$. Déterminer, selon $\\alpha$, la nature de la série $\\displaystyle\\sum_{n \\ge 2} \\frac{(-1)^n}{n^\\alpha + (-1)^n}$.",
+    "choix": [
+      {
+        "titre": "Isoler la partie alternée et étudier la différence",
+        "info": "Développement asymptotique du terme général : on écrit $u_n = v_n + w_n$ où $\\sum v_n$ est de nature connue, et on cherche un équivalent de $w_n$, de signe constant si possible.",
+        "verdict": "bon",
+        "retour": "C'est la méthode robuste pour une série « presque alternée »."
+      },
+      {
+        "titre": "Critère spécial des séries alternées, directement",
+        "info": "Si $(a_n)$ est décroissante de limite nulle, alors $\\sum (-1)^n a_n$ converge.",
+        "verdict": "impasse",
+        "retour": "$|u_n| = \\frac{1}{n^\\alpha + (-1)^n}$ n'est pas décroissante : le critère ne s'applique pas."
+      },
+      {
+        "titre": "Équivalent $u_n \\sim \\dfrac{(-1)^n}{n^\\alpha}$ puis comparaison",
+        "info": "Si $u_n \\sim v_n$ et si $v_n$ est de signe constant à partir d'un certain rang, alors $\\sum u_n$ et $\\sum v_n$ sont de même nature.",
+        "verdict": "impasse",
+        "retour": "L'équivalent est juste mais il change de signe : on ne peut rien en conclure. C'est le piège classique de ce type de série."
+      },
+      {
+        "titre": "Convergence absolue",
+        "info": "Si $\\sum |u_n|$ converge, alors $\\sum u_n$ converge. La réciproque est fausse.",
+        "verdict": "possible",
+        "retour": "Elle règle le cas $\\alpha > 1$, mais ne dit rien pour $\\alpha \\le 1$."
+      }
+    ],
+    "direction": "$u_n = \\frac{(-1)^n}{n^\\alpha} + w_n$ avec $w_n = \\frac{-1}{n^\\alpha\\left(n^\\alpha + (-1)^n\\right)} \\sim -\\frac{1}{n^{2\\alpha}}$, de signe constant. La première série converge (critère spécial), donc $\\sum u_n$ converge si et seulement si $2\\alpha > 1$."
+  },
+  {
+    "id": "series-piste-03", "ch": "series", "type": "piste",
+    "enonce": "On pose $H_n = \\displaystyle\\sum_{k=1}^n \\frac1k$. Montrer que la suite $(H_n - \\ln n)$ converge.",
+    "choix": [
+      {
+        "titre": "Lien suite-série",
+        "info": "La suite $(a_n)$ converge si et seulement si la série télescopique $\\sum (a_{n+1} - a_n)$ converge.",
+        "verdict": "bon",
+        "retour": "Avec $a_n = H_n - \\ln n$, on a $a_{n+1} - a_n = \\frac{1}{n+1} - \\ln\\!\\left(1 + \\frac1n\\right) = O\\!\\left(\\frac1{n^2}\\right)$."
+      },
+      {
+        "titre": "Comparaison série-intégrale avec $t \\mapsto \\frac1t$",
+        "info": "Si $f$ est décroissante et positive sur $[1, +\\infty[$, la série de terme général $f(n) - \\int_n^{n+1} f(t)\\,\\mathrm dt$ converge (résultat explicitement au programme).",
+        "verdict": "bon",
+        "retour": "C'est exactement le résultat du programme, appliqué à $f(t) = \\frac1t$."
+      },
+      {
+        "titre": "Suites adjacentes",
+        "info": "Si $(a_n)$ est décroissante, $(b_n)$ croissante et $a_n - b_n \\to 0$, alors les deux suites convergent vers la même limite.",
+        "verdict": "bon",
+        "retour": "Ça marche avec $a_n = H_n - \\ln n$ et $b_n = a_n - \\frac1n$, au prix de deux études de monotonie utilisant $\\ln(1+x) \\le x$."
+      },
+      {
+        "titre": "Utiliser l'équivalent $H_n \\sim \\ln n$",
+        "info": "$u_n \\sim v_n$ signifie $u_n - v_n = o(v_n)$. Cela ne dit rien sur la convergence de $u_n - v_n$.",
+        "verdict": "impasse",
+        "retour": "Un équivalent donne seulement $H_n - \\ln n = o(\\ln n)$ : la différence pourrait très bien diverger."
+      }
+    ],
+    "direction": "Trois routes fonctionnent. La plus courte : $a_{n+1} - a_n = \\frac1{n+1} - \\ln\\!\\left(1+\\frac1n\\right) \\sim -\\frac{1}{2n^2}$, terme général d'une série convergente, donc $(a_n)$ converge. Sa limite est la constante d'Euler $\\gamma$."
+  },
+  {
+    "id": "series-piste-04", "ch": "series", "type": "piste",
+    "enonce": "Trouver un équivalent simple, quand $n \\to +\\infty$, du reste $R_n = \\displaystyle\\sum_{k=n+1}^{+\\infty} \\frac1{k^2}$.",
+    "choix": [
+      {
+        "titre": "Comparaison série-intégrale (encadrement)",
+        "info": "Si $f$ est positive et décroissante, $\\int_k^{k+1} f \\le f(k) \\le \\int_{k-1}^{k} f$. En sommant, on encadre un reste ou une somme partielle par deux intégrales.",
+        "verdict": "bon",
+        "retour": "L'encadrement $\\int_{n+1}^{+\\infty} \\frac{\\mathrm dt}{t^2} \\le R_n \\le \\int_n^{+\\infty} \\frac{\\mathrm dt}{t^2}$ donne tout de suite l'équivalent."
+      },
+      {
+        "titre": "Sommation des équivalents sur les restes",
+        "info": "Si $u_k \\sim v_k$, avec $v_k > 0$ et $\\sum v_k$ convergente, alors les restes sont équivalents : $\\sum_{k > n} u_k \\sim \\sum_{k > n} v_k$.",
+        "verdict": "bon",
+        "retour": "Avec $\\frac1{k^2} \\sim \\frac{1}{k(k-1)} = \\frac1{k-1} - \\frac1k$, le reste se télescope."
+      },
+      {
+        "titre": "Majoration du reste d'une série alternée",
+        "info": "Pour $(a_n)$ décroissante de limite nulle, le reste de $\\sum (-1)^n a_n$ est majoré en valeur absolue par son premier terme.",
+        "verdict": "impasse",
+        "retour": "La série n'est pas alternée, et une majoration ne donnerait de toute façon pas un équivalent."
+      },
+      {
+        "titre": "Règle de d'Alembert",
+        "info": "Si $u_n > 0$ et $\\frac{u_{n+1}}{u_n} \\to \\ell$ : convergence si $\\ell < 1$, divergence si $\\ell > 1$, rien si $\\ell = 1$.",
+        "verdict": "impasse",
+        "retour": "Elle renseigne sur la nature d'une série, pas sur la taille de son reste. Et ici le quotient tend vers $1$."
+      }
+    ],
+    "direction": "Par l'une ou l'autre des deux bonnes pistes : $\\frac{1}{n+1} \\le R_n \\le \\frac1n$, donc $R_n \\sim \\frac1n$."
+  },
+  {
+    "id": "series-piste-05", "ch": "series", "type": "piste",
+    "enonce": "Montrer que la série $\\displaystyle\\sum_{n \\ge 1} \\frac{\\sin n}{n}$ converge.",
+    "choix": [
+      {
+        "titre": "Transformation d'Abel",
+        "info": "Sommation par parties : si $B_n = \\sum_{k=0}^n b_k$, alors $\\sum_{k=1}^n a_k b_k = a_n B_n - a_1 B_0 - \\sum_{k=1}^{n-1} (a_{k+1} - a_k) B_k$. Utile quand $(B_n)$ est bornée et $(a_n)$ décroît vers $0$.",
+        "verdict": "bon",
+        "retour": "Les sommes $\\sum_{k=0}^n \\sin k$ sont bornées et $\\frac1n$ décroît vers $0$ : c'est la situation type."
+      },
+      {
+        "titre": "Convergence absolue",
+        "info": "Si $\\sum |u_n|$ converge, alors $\\sum u_n$ converge. La réciproque est fausse.",
+        "verdict": "impasse",
+        "retour": "La série $\\sum \\frac{|\\sin n|}{n}$ diverge, car $|\\sin n| \\ge \\sin^2 n = \\frac{1 - \\cos 2n}{2}$."
+      },
+      {
+        "titre": "Critère spécial des séries alternées",
+        "info": "Si $(a_n)$ est décroissante de limite nulle, alors $\\sum (-1)^n a_n$ converge.",
+        "verdict": "impasse",
+        "retour": "Le signe de $\\sin n$ ne change pas à chaque rang : la série n'est pas alternée."
+      },
+      {
+        "titre": "Comparaison à une série de Riemann",
+        "info": "$\\sum \\frac{1}{n^\\alpha}$ converge si et seulement si $\\alpha > 1$. La comparaison ne vaut que pour des séries à termes positifs.",
+        "verdict": "impasse",
+        "retour": "La majoration $\\left|\\frac{\\sin n}{n}\\right| \\le \\frac1n$ mène à une série divergente : elle ne donne rien."
+      }
+    ],
+    "direction": "On borne $B_n = \\sum_{k=0}^n \\sin k = \\mathrm{Im}\\,\\frac{1 - e^{i(n+1)}}{1 - e^{i}}$ par $\\frac{1}{\\sin(1/2)}$. Après transformation d'Abel, il reste $\\frac{B_n}{n} \\to 0$ et une série de terme général $O\\!\\left(\\frac1{k} - \\frac1{k+1}\\right)$, absolument convergente."
+  }
+]

@@ -1,0 +1,316 @@
+'use strict';
+/* Agrégatix — moteur. Aucune dépendance hormis KaTeX (vendor/). */
+
+const CLE = 'agregatix.v1';
+const TAILLE_SESSION = 10;
+const INTERVALLES = [0, 1, 3, 7, 16, 35];          // jours avant de revoir, par boîte
+const BOITE_MAX = INTERVALLES.length - 1;
+const MODES = { vf: 'Vrai ou faux ?', qcm: 'Le bon énoncé', erreur: "Traque à l'erreur", piste: 'Par où partir ?' };
+const TITRES = ['Bizuth', 'Candidat', 'Préparationnaire', 'Admissible', 'Admis', 'Agrégé', 'Major'];
+
+const $app = document.getElementById('app');
+const $voile = document.getElementById('voile');
+const $feuille = document.getElementById('feuille');
+
+let programme = null;          // data/index.json
+let cartes = [];               // toutes les cartes
+let parChapitre = {};          // id chapitre -> cartes
+let etat = charger();
+let session = null;
+
+/* ---------- Utilitaires ---------- */
+const aujourdhui = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); };
+const echapper = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const melanger = t => { const a = t.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const vibrer = motif => { try { navigator.vibrate && navigator.vibrate(motif); } catch (e) { /* sans vibreur */ } };
+
+/* Texte de carte -> HTML : $...$ et $$...$$ rendus par KaTeX, **gras**, retours à la ligne. */
+function fmt(texte) {
+  return String(texte).split(/(\$\$[\s\S]+?\$\$|\$[^$]+?\$)/g).map(bout => {
+    const bloc = bout.startsWith('$$');
+    if (bout.startsWith('$') && bout.length > 2) {
+      const tex = bloc ? bout.slice(2, -2) : bout.slice(1, -1);
+      try { return katex.renderToString(tex, { displayMode: bloc, throwOnError: false }); }
+      catch (e) { return echapper(bout); }
+    }
+    return echapper(bout).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+  }).join('');
+}
+
+/* ---------- Sauvegarde ---------- */
+function charger() {
+  const vide = { xp: 0, serie: 0, dernierJour: null, cartes: {}, signalements: [] };
+  try { return Object.assign(vide, JSON.parse(localStorage.getItem(CLE)) || {}); }
+  catch (e) { return vide; }
+}
+function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { /* stockage indisponible */ } }
+
+/* ---------- Progression ---------- */
+const suivi = id => etat.cartes[id];
+const estDue = c => { const s = suivi(c.id); return s && s.d <= aujourdhui(); };
+const estNeuve = c => !suivi(c.id);
+function maitrise(liste) {
+  if (!liste.length) return 0;
+  return liste.reduce((t, c) => t + (suivi(c.id) ? suivi(c.id).b : 0), 0) / (BOITE_MAX * liste.length);
+}
+function niveau(xp) {
+  const n = Math.floor(Math.sqrt(xp / 60));
+  return { n: n + 1, titre: TITRES[Math.min(n, TITRES.length - 1)], bas: 60 * n * n, haut: 60 * (n + 1) * (n + 1) };
+}
+function noter(carte, verdict) {
+  const j = aujourdhui();
+  const s = suivi(carte.id) || { b: 0, d: j, n: 0 };
+  if (verdict === 'bon') s.b = Math.min(BOITE_MAX, s.b + 1);
+  else if (verdict === 'faux') s.b = Math.max(0, Math.min(s.b - 2, 1));
+  s.d = j + (verdict === 'bon' ? INTERVALLES[s.b] : 1);
+  s.n++;
+  etat.cartes[carte.id] = s;
+}
+function marquerJour() {
+  const j = aujourdhui();
+  if (etat.dernierJour === j) return;
+  etat.serie = etat.dernierJour === j - 1 ? etat.serie + 1 : 1;
+  etat.dernierJour = j;
+}
+
+/* ---------- Construction d'une session ---------- */
+function composer(liste) {
+  const dues = melanger(liste.filter(estDue)).sort((a, b) => suivi(a.id).d - suivi(b.id).d);
+  const neuves = melanger(liste.filter(estNeuve));
+  let choix = dues.slice(0, TAILLE_SESSION);
+  choix = choix.concat(neuves.slice(0, TAILLE_SESSION - choix.length));
+  let libre = false;
+  if (!choix.length) { libre = true; choix = melanger(liste).slice(0, TAILLE_SESSION); }
+  return { file: melanger(choix), libre };
+}
+function lancer(idChapitre) {
+  const liste = idChapitre ? (parChapitre[idChapitre] || []) : cartes;
+  if (!liste.length) return;
+  const { file, libre } = composer(liste);
+  session = { file, i: 0, total: file.length, faits: 0, bons: 0, xp: 0, combo: 0, libre, revues: new Set(), vue: null };
+  afficherCarte();
+}
+
+/* ---------- Écran d'accueil ---------- */
+function accueil() {
+  session = null;
+  const nv = niveau(etat.xp);
+  const dues = cartes.filter(estDue).length;
+  const neuves = cartes.filter(estNeuve).length;
+  const serieVivante = etat.dernierJour !== null && etat.dernierJour >= aujourdhui() - 1 ? etat.serie : 0;
+  let h = `
+    <div class="entete"><h1>Agré<span>gatix</span></h1><button class="roue" data-a="reglages" aria-label="Réglages">⚙</button></div>
+    <div class="stats">
+      <div class="stat"><b>🔥 ${serieVivante}</b><small>jour${serieVivante > 1 ? 's' : ''} de suite</small></div>
+      <div class="stat"><b>${etat.xp}</b><small>XP</small></div>
+      <div class="stat"><b>${Math.round(100 * maitrise(cartes))} %</b><small>maîtrise</small></div>
+    </div>
+    <div class="niveau">
+      <div class="ligne"><span>Niveau ${nv.n} · <b>${nv.titre}</b></span><span>${etat.xp - nv.bas} / ${nv.haut - nv.bas}</span></div>
+      <div class="barre"><i style="width:${100 * (etat.xp - nv.bas) / (nv.haut - nv.bas)}%"></i></div>
+    </div>
+    <button class="gros" data-a="lancer" data-ch="">Session du jour</button>
+    <p class="sous-gros">${dues} à revoir · ${neuves} nouvelles · ${cartes.length} cartes en tout</p>`;
+  for (const d of programme.domaines) {
+    h += `<section class="domaine"><h2 style="color:${d.couleur}">${d.nom}</h2>`;
+    for (const ch of d.chapitres) {
+      const liste = parChapitre[ch.id] || [];
+      if (!liste.length) {
+        h += `<div class="tuile vide"><div class="txt"><b>${ch.nom}</b><small>§ ${ch.ref} · bientôt</small></div></div>`;
+        continue;
+      }
+      const m = Math.round(100 * maitrise(liste));
+      const aRevoir = liste.filter(estDue).length;
+      h += `<button class="tuile" style="--c:${d.couleur}" data-a="lancer" data-ch="${ch.id}">
+        <div class="txt"><b>${ch.nom}${aRevoir ? `<span class="pastille">${aRevoir}</span>` : ''}</b>
+        <small>§ ${ch.ref} · ${liste.length} cartes</small><div class="barre"><i style="width:${m}%"></i></div></div>
+        <span class="pc">${m} %</span></button>`;
+    }
+    h += '</section>';
+  }
+  $app.innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+/* ---------- Écran de carte ---------- */
+function afficherCarte() {
+  const s = session;
+  if (s.i >= s.file.length) return fin();
+  const c = s.file[s.i];
+  const v = s.vue = { carte: c, repondu: false, choisi: null, ordre: null, revue: s.revues.has(c.id) };
+  if (c.type === 'qcm' || c.type === 'piste') v.ordre = melanger(c.choix.map((_, k) => k));
+  if (c.type === 'erreur') v.ordre = c.lignes.map((_, k) => k);
+  dessiner();
+  window.scrollTo(0, 0);
+}
+
+function dessiner() {
+  const s = session, v = s.vue, c = v.carte;
+  const revue = v.revue;
+  let verdict = '';
+  if (v.repondu) {
+    const titres = { bon: ['Exact !', 'Bien vu !', 'Oui !'], possible: ['Ça se défend'], faux: ['Raté', 'Pas tout à fait', 'Aïe'] }[v.verdict];
+    const reponse = c.type === 'vf' ? `<b>${c.reponse ? 'Vrai' : 'Faux'}.</b> ` : '';
+    verdict = `<div class="verdict ${v.verdict}"><h3>${titres[s.faits % titres.length]}</h3>${c.explication ? `<p>${reponse}${fmt(c.explication)}</p>` : ''}</div>`;
+  }
+  let h = `
+    <div class="haut"><button class="fermer" data-a="quitter" aria-label="Quitter">✕</button>
+      <div class="barre"><i style="width:${100 * s.faits / s.total}%"></i></div>
+      <span class="combo">${s.combo >= 2 ? '×' + s.combo : ''}</span></div>
+    <span class="mode">${MODES[c.type]}</span>${revue ? '<span class="mode revoir">À revoir</span>' : ''}
+    <div class="enonce">${fmt(c.enonce)}</div>${verdict}`;
+
+  if (c.type === 'vf') {
+    if (!v.repondu) h += `<div class="vf"><button class="v" data-a="vf" data-r="1">Vrai</button><button class="f" data-a="vf" data-r="0">Faux</button></div>`;
+  } else {
+    const consignes = { qcm: 'Choisis la bonne proposition.', erreur: 'Touche la ligne qui contient l\'erreur.', piste: 'Quelle piste suivrais-tu ? Le bouton i rappelle l\'outil, sans dire s\'il convient.' };
+    if (!v.repondu) h += `<p class="consigne">${consignes[c.type]}</p>`;
+    v.ordre.forEach((k, pos) => {
+      let classe = 'choix', etiquette = '', retour = '';
+      if (!v.repondu) { if (v.choisi === k) classe += ' choisi'; }
+      else if (c.type === 'piste') {
+        const ver = c.choix[k].verdict;
+        classe += ' ' + (ver === 'impasse' ? 'faux' : ver) + (v.choisi === k ? '' : ' eteint');
+        etiquette = `<span class="etiquette">${{ bon: 'Bonne piste', possible: 'Jouable', impasse: 'Impasse' }[ver]}${v.choisi === k ? ' · ton choix' : ''}</span><br>`;
+        retour = `<span class="retour">${fmt(c.choix[k].retour)}</span>`;
+      } else {
+        const bonne = c.type === 'qcm' ? c.bonne : c.fausse;
+        if (k === bonne) classe += ' bon'; else if (k === v.choisi) classe += ' faux'; else classe += ' eteint';
+      }
+      const texte = c.type === 'piste' ? c.choix[k].titre : c.type === 'qcm' ? c.choix[k] : c.lignes[k];
+      const num = c.type === 'erreur' ? `<span class="num">${pos + 1}.</span>` : '';
+      const info = c.type === 'piste' ? `<button class="i" data-a="info" data-k="${k}" aria-label="Rappel">i</button>` : '';
+      h += `<div class="${classe}"><button class="corps" data-a="choisir" data-k="${k}">${etiquette}${num}${fmt(texte)}${retour}</button>${info}</div>`;
+    });
+    if (!v.repondu) h += `<div class="pied"><button class="gros${v.choisi === null ? ' calme' : ''}" data-a="valider">Valider</button></div>`;
+  }
+
+  if (v.repondu) {
+    if (c.direction) h += `<div class="direction"><b>La direction</b>${fmt(c.direction)}</div>`;
+    const signale = etat.signalements.some(x => x.id === c.id);
+    h += `<div class="pied"><button class="signaler${signale ? ' fait' : ''}" data-a="signaler" aria-label="Signaler cette carte">⚑</button>
+      <button class="gros" data-a="suivante">Continuer</button></div>`;
+  }
+  $app.innerHTML = h;
+}
+
+function repondre(verdict) {
+  const s = session, v = s.vue, c = v.carte;
+  v.repondu = true; v.verdict = verdict;
+  const revue = v.revue;
+  if (!revue) {
+    s.faits++;
+    if (!s.libre) noter(c, verdict);
+    if (verdict === 'bon') s.bons++;
+  }
+  if (verdict === 'faux') {
+    s.combo = 0; vibrer([40, 60, 40]);
+    if (!revue) { s.revues.add(c.id); s.file.push(c); }   // reviendra une fois en fin de session
+  } else {
+    s.combo = verdict === 'bon' ? s.combo + 1 : s.combo;
+    const gain = revue ? 3 : (verdict === 'bon' ? 10 + Math.min(10, 2 * (s.combo - 1)) : 5);
+    s.xp += gain; etat.xp += gain; vibrer(20);
+  }
+  marquerJour(); sauver(); dessiner();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function fin() {
+  const s = session;
+  const pc = Math.round(100 * s.bons / s.total);
+  const emoji = pc === 100 ? '🏆' : pc >= 70 ? '🎯' : pc >= 40 ? '💪' : '🌱';
+  const mot = pc === 100 ? 'Sans faute !' : pc >= 70 ? 'Belle session' : pc >= 40 ? 'Ça rentre' : 'On reprend demain';
+  $app.innerHTML = `<div class="fin"><div class="grand">${emoji}</div><h2>${mot}</h2>
+    <p>${s.libre ? 'Entraînement libre : tout était déjà à jour.' : 'Les cartes ratées reviendront demain.'}</p>
+    <div class="stats"><div class="stat"><b>${s.bons}/${s.total}</b><small>du premier coup</small></div>
+    <div class="stat"><b>+${s.xp}</b><small>XP</small></div><div class="stat"><b>🔥 ${etat.serie}</b><small>série</small></div></div>
+    <button class="gros" data-a="accueil">Retour à la carte</button></div>`;
+}
+
+/* ---------- Feuille du bas ---------- */
+function ouvrir(html) { $feuille.innerHTML = html; $feuille.hidden = false; $voile.hidden = false; }
+function fermer() { $feuille.hidden = true; $voile.hidden = true; }
+$voile.addEventListener('click', fermer);
+
+function feuilleInfo(k) {
+  const ch = session.vue.carte.choix[k];
+  ouvrir(`<h3>${fmt(ch.titre)}</h3><p>${fmt(ch.info)}</p><button class="gros calme" data-a="fermer">Fermer</button>`);
+}
+function feuilleSignaler() {
+  const c = session.vue.carte;
+  const deja = etat.signalements.find(x => x.id === c.id);
+  ouvrir(`<h3>Signaler la carte ${c.id}</h3><small>Erreur de maths, énoncé ambigu, faute de frappe… Le signalement est gardé sur le téléphone et s'exporte depuis les réglages.</small>
+    <textarea id="note" placeholder="Qu'est-ce qui cloche ? (facultatif)">${deja ? echapper(deja.note) : ''}</textarea>
+    <button class="gros" data-a="signaler-ok">Enregistrer</button>${deja ? '<button class="gros calme" data-a="signaler-non">Retirer le signalement</button>' : ''}`);
+}
+function feuilleReglages() {
+  ouvrir(`<h3>Réglages</h3>
+    <small>${etat.signalements.length} carte(s) signalée(s) · ${Object.keys(etat.cartes).length} carte(s) déjà vues</small>
+    <button class="gros calme" data-a="copier-signalements">Copier les signalements</button>
+    <button class="gros calme" data-a="copier-sauvegarde">Copier la sauvegarde</button>
+    <button class="gros calme" data-a="restaurer">Restaurer une sauvegarde</button>
+    <button class="gros calme danger" data-a="effacer">Tout remettre à zéro</button>
+    <button class="gros" data-a="fermer">Fermer</button>`);
+}
+async function copier(texte, quoi) {
+  try { await navigator.clipboard.writeText(texte); alert(quoi + ' : copié dans le presse-papiers.'); }
+  catch (e) { prompt('Copie ce texte :', texte); }
+}
+
+/* ---------- Gestion des touches ---------- */
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-a]');
+  if (!b) return;
+  const a = b.dataset.a, v = session && session.vue;
+  switch (a) {
+    case 'lancer': lancer(b.dataset.ch || null); break;
+    case 'accueil': accueil(); break;
+    case 'quitter': if (!session.faits || confirm('Quitter la session ? Les réponses déjà données sont gardées.')) accueil(); break;
+    case 'vf': repondre((b.dataset.r === '1') === v.carte.reponse ? 'bon' : 'faux'); break;
+    case 'choisir': if (!v.repondu) { v.choisi = Number(b.dataset.k); dessiner(); } break;
+    case 'valider': {
+      if (v.choisi === null) break;
+      const c = v.carte;
+      if (c.type === 'piste') { const ver = c.choix[v.choisi].verdict; repondre(ver === 'impasse' ? 'faux' : ver); }
+      else repondre(v.choisi === (c.type === 'qcm' ? c.bonne : c.fausse) ? 'bon' : 'faux');
+      break;
+    }
+    case 'suivante': session.i++; afficherCarte(); break;
+    case 'info': feuilleInfo(Number(b.dataset.k)); break;
+    case 'fermer': fermer(); break;
+    case 'signaler': feuilleSignaler(); break;
+    case 'signaler-ok': {
+      const id = v.carte.id, note = document.getElementById('note').value.trim();
+      etat.signalements = etat.signalements.filter(x => x.id !== id).concat({ id, note, jour: new Date().toISOString().slice(0, 10) });
+      sauver(); fermer(); dessiner(); break;
+    }
+    case 'signaler-non': etat.signalements = etat.signalements.filter(x => x.id !== v.carte.id); sauver(); fermer(); dessiner(); break;
+    case 'reglages': feuilleReglages(); break;
+    case 'copier-signalements': copier(JSON.stringify(etat.signalements, null, 1), 'Signalements'); break;
+    case 'copier-sauvegarde': copier(JSON.stringify(etat), 'Sauvegarde'); break;
+    case 'restaurer': {
+      const t = prompt('Colle ici une sauvegarde :');
+      if (!t) break;
+      try { const o = JSON.parse(t); if (typeof o.xp !== 'number' || !o.cartes) throw 0; etat = Object.assign(charger(), o); sauver(); fermer(); accueil(); }
+      catch (e) { alert('Sauvegarde illisible.'); }
+      break;
+    }
+    case 'effacer': if (confirm('Effacer toute la progression ? Action définitive.')) { localStorage.removeItem(CLE); etat = charger(); fermer(); accueil(); } break;
+  }
+});
+
+/* ---------- Démarrage ---------- */
+async function demarrer() {
+  try {
+    programme = await (await fetch('data/index.json')).json();
+    const ids = programme.domaines.flatMap(d => d.chapitres).filter(ch => ch.cartes).map(ch => ch.id);
+    const lots = await Promise.all(ids.map(id => fetch(`data/cartes/${id}.json`).then(r => r.json())));
+    cartes = lots.flat();
+    for (const c of cartes) (parChapitre[c.ch] = parChapitre[c.ch] || []).push(c);
+    accueil();
+  } catch (e) {
+    $app.innerHTML = '<p class="chargement">Impossible de charger les cartes. Vérifie la connexion puis recharge la page.</p>';
+  }
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+demarrer();

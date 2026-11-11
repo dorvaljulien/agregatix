@@ -1,0 +1,55 @@
+{
+  "domaines": [
+    {
+      "id": "algebre", "nom": "Algèbre", "couleur": "#7c9cff",
+      "chapitres": [
+        { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1" },
+        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4" },
+        { "id": "groupes", "nom": "Groupes", "ref": "4" },
+        { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4" },
+        { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6" },
+        { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "cartes": true },
+        { "id": "quadratique-euclidien", "nom": "Formes quadratiques, espaces euclidiens", "ref": "5.9, 6" }
+      ]
+    },
+    {
+      "id": "analyse", "nom": "Analyse", "couleur": "#ffb454",
+      "chapitres": [
+        { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1" },
+        { "id": "series", "nom": "Séries numériques", "ref": "9.2", "cartes": true },
+        { "id": "fonctions", "nom": "Continuité, dérivabilité, fonctions usuelles", "ref": "9.3 – 9.5" },
+        { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10" },
+        { "id": "analyse-numerique", "nom": "Analyse numérique", "ref": "9.11" },
+        { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12" },
+        { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8" },
+        { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7" },
+        { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9" },
+        { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1" },
+        { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2" }
+      ]
+    },
+    {
+      "id": "geometrie", "nom": "Géométrie", "couleur": "#5fd3a6",
+      "chapitres": [
+        { "id": "geometrie-affine-euclidienne", "nom": "Géométrie affine et euclidienne", "ref": "7, 8.1 – 8.3" },
+        { "id": "coniques", "nom": "Coniques", "ref": "8.4" },
+        { "id": "courbes", "nom": "Courbes et géométrie différentielle", "ref": "11" }
+      ]
+    },
+    {
+      "id": "probabilites", "nom": "Probabilités et calcul intégral", "couleur": "#e88bd0",
+      "chapitres": [
+        { "id": "integrales-multiples", "nom": "Intégrales multiples", "ref": "13.1" },
+        { "id": "probabilites", "nom": "Probabilités et variables aléatoires", "ref": "13.2 – 13.5" },
+        { "id": "theoremes-limites", "nom": "Théorèmes limites et estimation", "ref": "13.6 – 13.7" }
+      ]
+    },
+    {
+      "id": "transversal", "nom": "Transversal", "couleur": "#b0b6c8",
+      "chapitres": [
+        { "id": "logique-ensembles", "nom": "Ensembles et logique", "ref": "1" },
+        { "id": "algorithmique", "nom": "Algorithmique", "ref": "2" }
+      ]
+    }
+  ]
+}
