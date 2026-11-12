@@ -1,0 +1,683 @@
+[
+  {
+    "id": "integration-vf-01", "ch": "integration", "type": "vf",
+    "enonce": "Si $f$ est continue sur $[0, +\\infty[$ et si $\\int_0^{+\\infty} f(t)\\,\\mathrm dt$ converge, alors $f(t) \\to 0$ quand $t \\to +\\infty$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f$ nulle sauf, autour de chaque entier $n \\ge 2$, un triangle de hauteur $1$ et de base $\\frac{2}{n^2}$. $f$ est continue et positive, $\\int_0^X f \\le \\sum \\frac1{n^2}$ est majorée donc l'intégrale converge, mais $f(n) = 1$. Ce qui est vrai : si $f$ admet une limite en $+\\infty$, cette limite est nulle."
+  },
+  {
+    "id": "integration-vf-02", "ch": "integration", "type": "vf",
+    "enonce": "Soit $f$ continue et positive sur $[a, b]$, avec $a < b$, telle que $\\int_a^b f(t)\\,\\mathrm dt = 0$. Alors $f$ est nulle sur $[a, b]$.",
+    "reponse": true,
+    "explication": "Si $f(t_0) > 0$, par continuité $f \\ge \\frac{f(t_0)}2$ sur un segment non trivial $J \\subset [a, b]$ contenant $t_0$. Par positivité, $\\int_a^b f \\ge \\frac{f(t_0)}2 \\times \\text{longueur}(J) > 0$."
+  },
+  {
+    "id": "integration-vf-03", "ch": "integration", "type": "vf",
+    "enonce": "Soit $f$ continue par morceaux et positive sur $[a, b]$, avec $a < b$, telle que $\\int_a^b f(t)\\,\\mathrm dt = 0$. Alors $f$ est nulle sur $[a, b]$.",
+    "reponse": false,
+    "explication": "La continuité est indispensable. Contre-exemple : $f(a) = 1$ et $f(t) = 0$ pour $t \\in \\,]a, b]$. Elle est continue par morceaux, positive, d'intégrale nulle. Ce qui reste vrai : $f$ est nulle sauf en un nombre fini de points."
+  },
+  {
+    "id": "integration-vf-04", "ch": "integration", "type": "vf",
+    "enonce": "Si une suite $(f_n)$ de fonctions continues par morceaux sur le segment $[a, b]$ converge uniformément vers $f$ continue par morceaux, alors elle converge vers $f$ en moyenne quadratique.",
+    "reponse": true,
+    "explication": "$\\int_a^b |f_n - f|^2 \\le (b - a)\\,\\|f_n - f\\|_\\infty^2 \\to 0$. Sur un segment, uniforme $\\Rightarrow$ moyenne quadratique $\\Rightarrow$ moyenne. Sur un intervalle non borné, la première implication tombe."
+  },
+  {
+    "id": "integration-vf-05", "ch": "integration", "type": "vf",
+    "enonce": "Une suite de fonctions continues sur $[0, 1]$ qui converge vers la fonction nulle en moyenne quadratique converge uniformément vers la fonction nulle.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f_n(t) = t^n$. On a $\\int_0^1 t^{2n}\\,\\mathrm dt = \\frac{1}{2n+1} \\to 0$, mais $\\sup_{[0,1]} |f_n| = f_n(1) = 1$ pour tout $n$. La réciproque vraie est l'autre sens : uniforme entraîne moyenne quadratique sur un segment."
+  },
+  {
+    "id": "integration-vf-06", "ch": "integration", "type": "vf",
+    "enonce": "Si $f$ est intégrable sur $]0, 1]$, alors $f^2$ est intégrable sur $]0, 1]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(t) = \\frac{1}{\\sqrt t}$ est intégrable sur $]0, 1]$ ($\\int_0^1 t^{-1/2}\\,\\mathrm dt = 2$), mais $f^2(t) = \\frac1t$ ne l'est pas. C'est vrai si $f$ est bornée, car alors $|f|^2 \\le \\|f\\|_\\infty |f|$."
+  },
+  {
+    "id": "integration-vf-07", "ch": "integration", "type": "vf",
+    "enonce": "Soient $f$ et $g$ continues par morceaux sur un intervalle $I$, à valeurs réelles, telles que $f^2$ et $g^2$ soient intégrables sur $I$. Alors $fg$ est intégrable sur $I$.",
+    "reponse": true,
+    "explication": "On a $|fg| \\le \\frac12\\left(f^2 + g^2\\right)$, et on conclut par comparaison de fonctions positives. De plus $\\left(\\int_I |fg|\\right)^2 \\le \\int_I f^2 \\int_I g^2$ (Cauchy-Schwarz)."
+  },
+  {
+    "id": "integration-vf-08", "ch": "integration", "type": "vf",
+    "enonce": "Soit $f$ continue sur $\\mathbb R$. Si $\\int_{-A}^{A} f(t)\\,\\mathrm dt$ admet une limite finie quand $A \\to +\\infty$, alors $\\int_{-\\infty}^{+\\infty} f(t)\\,\\mathrm dt$ converge.",
+    "reponse": false,
+    "explication": "La convergence sur $\\mathbb R$ demande la convergence de $\\int_0^{+\\infty} f$ et de $\\int_{-\\infty}^0 f$ séparément. Contre-exemple : $f(t) = t$, pour laquelle $\\int_{-A}^{A} t\\,\\mathrm dt = 0$ alors que $\\int_0^{+\\infty} t\\,\\mathrm dt$ diverge. L'énoncé devient vrai si $f$ est positive."
+  },
+  {
+    "id": "integration-vf-09", "ch": "integration", "type": "vf",
+    "enonce": "Soit $f$ continue par morceaux et intégrable sur $\\mathbb R$. Alors $\\widehat f : \\xi \\mapsto \\int_{-\\infty}^{+\\infty} f(t)\\,e^{-i\\xi t}\\,\\mathrm dt$ est définie, continue et bornée sur $\\mathbb R$.",
+    "reponse": true,
+    "explication": "$\\xi \\mapsto f(t)e^{-i\\xi t}$ est continue, $t \\mapsto f(t)e^{-i\\xi t}$ est continue par morceaux, et $|f(t)e^{-i\\xi t}| = |f(t)|$ fournit une domination indépendante de $\\xi$ : le théorème de continuité s'applique. Enfin $|\\widehat f(\\xi)| \\le \\int_{\\mathbb R} |f|$."
+  },
+  {
+    "id": "integration-vf-10", "ch": "integration", "type": "vf",
+    "enonce": "La fonction $\\Gamma : x \\mapsto \\int_0^{+\\infty} t^{x-1}e^{-t}\\,\\mathrm dt$ est convexe sur $]0, +\\infty[$.",
+    "reponse": true,
+    "explication": "En dérivant deux fois sous le signe intégral, avec sur chaque $]a, b[$ ($0 < a < b$) la domination $(\\ln t)^2\\left(t^{a-1} + t^{b-1}\\right)e^{-t}$, on obtient $\\Gamma''(x) = \\int_0^{+\\infty} (\\ln t)^2\\,t^{x-1}e^{-t}\\,\\mathrm dt > 0$."
+  },
+  {
+    "id": "integration-vf-11", "ch": "integration", "type": "vf",
+    "enonce": "$\\displaystyle\\lim_{n \\to +\\infty} \\int_0^{+\\infty} \\frac{\\mathrm dt}{1 + t^n} = 1$.",
+    "reponse": true,
+    "explication": "La suite converge simplement vers la fonction valant $1$ sur $[0, 1[$, $\\frac12$ en $1$ et $0$ sur $]1, +\\infty[$, continue par morceaux. Pour $n \\ge 2$, $0 \\le \\frac{1}{1+t^n} \\le g(t)$ avec $g = 1$ sur $[0, 1]$ et $g(t) = \\frac1{t^2}$ sur $]1, +\\infty[$, intégrable. Par convergence dominée, la limite vaut $\\int_0^1 1\\,\\mathrm dt = 1$."
+  },
+  {
+    "id": "integration-vf-12", "ch": "integration", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions positives et intégrables sur $[0, +\\infty[$, qui converge simplement vers une fonction $f$ continue par morceaux et intégrable. Alors $\\int_0^{+\\infty} f_n \\to \\int_0^{+\\infty} f$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f_n = \\mathbf 1_{[n, n+1]}$. Chaque $\\int f_n$ vaut $1$, alors que $f_n$ tend simplement vers $0$ (la masse fuit à l'infini). Il manque une hypothèse : suite croissante (convergence monotone) ou domination par une fonction intégrable indépendante de $n$."
+  },
+  {
+    "id": "integration-vf-13", "ch": "integration", "type": "vf",
+    "enonce": "Soit $f$ continue et bornée sur $[0, +\\infty[$. Alors $x \\mapsto \\int_0^{+\\infty} f(t)\\,e^{-xt}\\,\\mathrm dt$ est continue sur $]0, +\\infty[$.",
+    "reponse": true,
+    "explication": "Pour $a > 0$ et $x \\in \\,]a, +\\infty[$, $|f(t)e^{-xt}| \\le \\|f\\|_\\infty e^{-at}$, intégrable : continuité sur chaque $]a, +\\infty[$, donc sur $]0, +\\infty[$. Une domination sur $]0, +\\infty[$ tout entier est impossible en général : pour $f = 1$, $\\sup_{x > 0} e^{-xt} = 1$."
+  },
+  {
+    "id": "integration-vf-14", "ch": "integration", "type": "vf",
+    "enonce": "Si $f$ est continue par morceaux sur $[a, b]$, alors $F : x \\mapsto \\int_a^x f(t)\\,\\mathrm dt$ est dérivable sur $[a, b]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f = \\mathbf 1_{[1, 2]}$ sur $[0, 2]$ donne $F(x) = \\max(0, x - 1)$, non dérivable en $1$. $F$ est toujours continue (et même lipschitzienne), et dérivable de dérivée $f(x)$ en tout point $x$ où $f$ est continue."
+  },
+  {
+    "id": "integration-vf-15", "ch": "integration", "type": "vf",
+    "enonce": "Si $f$ est continue, positive et décroissante sur $[1, +\\infty[$, alors $\\displaystyle\\sum_{k=1}^n f(k) \\sim \\int_1^n f(t)\\,\\mathrm dt$ quand $n \\to +\\infty$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(t) = e^{-t}$. La somme tend vers $\\frac{1}{e - 1}$ et l'intégrale vers $\\frac1e$ : limites non nulles distinctes. En fait $0 \\le \\sum_{k=1}^n f(k) - \\int_1^n f \\le f(1)$ : l'équivalence est vraie lorsque $\\int_1^{+\\infty} f$ diverge."
+  },
+  {
+    "id": "integration-qcm-01", "ch": "integration", "type": "qcm",
+    "enonce": "Convergence dominée.\nSoit $(f_n)$ une suite de fonctions continues par morceaux sur $I$, à valeurs complexes, convergeant simplement sur $I$ vers $f$ continue par morceaux. Si **[ ? ]**, alors $f$ est intégrable sur $I$ et $\\int_I f_n \\to \\int_I f$.",
+    "choix": [
+      "il existe $g$ intégrable sur $I$ telle que $|f_n| \\le g$ sur $I$ pour tout $n$",
+      "chaque $f_n$ est intégrable sur $I$ et $|f_n| \\le |f|$ sur $I$ pour tout $n$",
+      "chaque $f_n$ est intégrable sur $I$ et la suite $\\left(\\int_I |f_n|\\right)$ est bornée",
+      "chaque $f_n$ est intégrable sur $I$ et $(f_n)$ converge uniformément vers $f$ sur $I$"
+    ],
+    "bonne": 0,
+    "explication": "La dominante $g$ doit être intégrable et indépendante de $n$. Sur $I = [0, +\\infty[$ : $f_n = \\mathbf 1_{[0, n]}$ vérifie $|f_n| \\le |f| = 1$ mais $f$ n'est pas intégrable ; $f_n = \\mathbf 1_{[n, n+1]}$ a des intégrales bornées mais $\\int f_n = 1 \\not\\to 0$ ; $f_n = \\frac1n \\mathbf 1_{[0, n]}$ converge uniformément vers $0$ avec $\\int f_n = 1$."
+  },
+  {
+    "id": "integration-qcm-02", "ch": "integration", "type": "qcm",
+    "enonce": "Dérivation sous le signe intégral.\nSoient $X$, $I$ deux intervalles ouverts de $\\mathbb R$ et $f : X \\times I \\to \\mathbb C$. On suppose que $t \\mapsto f(x, t)$ est intégrable sur $I$ pour tout $x$, et que $\\frac{\\partial f}{\\partial x}$ existe partout, est continue par morceaux en $t$ et continue en $x$. Si **[ ? ]**, alors $F : x \\mapsto \\int_I f(x, t)\\,\\mathrm dt$ est dérivable et $F'(x) = \\int_I \\frac{\\partial f}{\\partial x}(x, t)\\,\\mathrm dt$.",
+    "choix": [
+      "il existe $h$ intégrable sur $I$ telle que $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le h(t)$ pour tous $x, t$",
+      "il existe $h$ intégrable sur $I$ telle que $|f(x, t)| \\le h(t)$ pour tous $x, t$",
+      "pour tout $x \\in X$, $t \\mapsto \\frac{\\partial f}{\\partial x}(x, t)$ est intégrable sur $I$",
+      "il existe $h$ continue sur $I$ telle que $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le h(t)$ pour tous $x, t$"
+    ],
+    "bonne": 0,
+    "explication": "C'est la dérivée partielle qu'il faut dominer, par une fonction intégrable indépendante de $x$. Avec $f(x, t) = \\frac{x^2}{x^2 + t^2}$, $X = \\,]-1, 1[$, $I = \\,]0, 1[$ : $F(0) = 0$ et $F(x) = |x| \\arctan \\frac{1}{|x|}$ sinon, donc $\\frac{F(x)}{x} \\to \\pm\\frac\\pi2$ en $0^\\pm$ : $F$ n'est pas dérivable en $0$. Pourtant $0 \\le f \\le 1$, chaque $\\frac{\\partial f}{\\partial x}(x, t) = \\frac{2xt^2}{(x^2 + t^2)^2}$ est intégrable en $t$ (continue sur $[0, 1]$ si $x \\ne 0$, nulle si $x = 0$), et $\\left|\\frac{\\partial f}{\\partial x}\\right| \\le \\frac1t$ car $2|x|t \\le x^2 + t^2$."
+  },
+  {
+    "id": "integration-qcm-03", "ch": "integration", "type": "qcm",
+    "enonce": "Intégration terme à terme.\nSoit $(u_n)$ une suite de fonctions intégrables sur $I$, à valeurs complexes, telle que $\\sum u_n$ converge simplement vers $S$ continue par morceaux sur $I$. Si **[ ? ]**, alors $S$ est intégrable sur $I$ et $\\int_I S = \\sum_{n=0}^{+\\infty} \\int_I u_n$.",
+    "choix": [
+      "la série $\\sum \\int_I |u_n|$ converge",
+      "la série $\\sum \\int_I u_n$ converge",
+      "la série $\\sum u_n$ converge uniformément sur $I$",
+      "la suite $\\left(\\int_I |u_n|\\right)$ tend vers $0$"
+    ],
+    "bonne": 0,
+    "explication": "Il faut la convergence de la série des intégrales des modules. Sur $[0, +\\infty[$ : $u_n = \\mathbf 1_{[n, n+1[} - \\mathbf 1_{[n+1, n+2[}$ donne $\\int u_n = 0$ mais $S = \\mathbf 1_{[0, 1[}$, d'intégrale $1$. Et $u_n = \\frac{1}{n+1}\\mathbf 1_{[n, n+1[}$ converge uniformément avec $\\int |u_n| \\to 0$, mais $S(t) = \\frac{1}{\\lfloor t \\rfloor + 1}$ n'est pas intégrable."
+  },
+  {
+    "id": "integration-qcm-04", "ch": "integration", "type": "qcm",
+    "enonce": "Soit $f$ continue par morceaux sur $[0, 1]$, à valeurs réelles. On note $\\|f\\|_1 = \\int_0^1 |f|$, $\\|f\\|_2 = \\left(\\int_0^1 f^2\\right)^{1/2}$ et $\\|f\\|_\\infty = \\sup_{[0,1]} |f|$. Quelle inégalité est vraie pour toute $f$ ?",
+    "choix": [
+      "$\\|f\\|_1 \\le \\|f\\|_2$",
+      "$\\|f\\|_2 \\le \\|f\\|_1$",
+      "$\\|f\\|_\\infty \\le \\|f\\|_2$",
+      "$\\|f\\|_2^2 \\le \\|f\\|_1$"
+    ],
+    "bonne": 0,
+    "explication": "Cauchy-Schwarz avec la fonction $1$ : $\\int_0^1 |f| \\cdot 1 \\le \\|f\\|_2 \\left(\\int_0^1 1\\right)^{1/2}$. Avec $f = \\mathbf 1_{[0, 1/4]}$ : $\\|f\\|_1 = \\frac14$, $\\|f\\|_2 = \\frac12$, $\\|f\\|_\\infty = 1$, ce qui exclut deux leurres ; $f = 2$ exclut le dernier ($4 > 2$)."
+  },
+  {
+    "id": "integration-qcm-05", "ch": "integration", "type": "qcm",
+    "enonce": "Pour quels réels $x$ l'intégrale $\\displaystyle\\int_0^{+\\infty} t^{x-1}e^{-t}\\,\\mathrm dt$ converge-t-elle ?",
+    "choix": [
+      "$x > 0$",
+      "$x > 1$",
+      "$x \\ge 0$",
+      "$x > -1$"
+    ],
+    "bonne": 0,
+    "explication": "L'intégrande est continu et positif sur $]0, +\\infty[$. En $+\\infty$, il est négligeable devant $\\frac1{t^2}$ pour tout $x$. En $0$, il est équivalent à $t^{x-1}$, intégrable si et seulement si $x - 1 > -1$. Le jury attend aussi la divergence pour $x \\le 0$, qui découle de cette équivalence entre fonctions positives."
+  },
+  {
+    "id": "integration-qcm-06", "ch": "integration", "type": "qcm",
+    "enonce": "Soient $f$ et $g$ continues sur $[a, +\\infty[$, à valeurs réelles, telles que $f(t) \\sim g(t)$ quand $t \\to +\\infty$. Si **[ ? ]**, alors $\\int_a^{+\\infty} f$ et $\\int_a^{+\\infty} g$ sont de même nature.",
+    "choix": [
+      "$g$ est de signe constant au voisinage de $+\\infty$",
+      "$g$ tend vers $0$ en $+\\infty$",
+      "$\\int_a^{+\\infty} g$ converge",
+      "$f$ et $g$ sont bornées"
+    ],
+    "bonne": 0,
+    "explication": "Comme pour les séries, la comparaison par équivalents exige un signe constant. Contre-exemple aux trois leurres, sur $[1, +\\infty[$ : $g(t) = \\frac{\\sin t}{\\sqrt t}$ et $f(t) = g(t)\\left(1 + \\frac{\\sin t}{\\sqrt t}\\right) = \\frac{\\sin t}{\\sqrt t} + \\frac{\\sin^2 t}{t}$. $\\int g$ converge (intégration par parties) mais $\\int f$ diverge, car $\\int_1^{+\\infty} \\frac{\\sin^2 t}{t}\\,\\mathrm dt = \\int_1^{+\\infty} \\frac{1 - \\cos 2t}{2t}\\,\\mathrm dt$ diverge."
+  },
+  {
+    "id": "integration-qcm-07", "ch": "integration", "type": "qcm",
+    "enonce": "Avec la convention $\\widehat f(\\xi) = \\int_{-\\infty}^{+\\infty} f(t)\\,e^{-i\\xi t}\\,\\mathrm dt$, la transformée de Fourier de $f(t) = e^{-|t|}$ est :",
+    "choix": [
+      "$\\widehat f(\\xi) = \\dfrac{2}{1 + \\xi^2}$",
+      "$\\widehat f(\\xi) = \\dfrac{1}{1 + \\xi^2}$",
+      "$\\widehat f(\\xi) = \\dfrac{1}{1 + i\\xi}$",
+      "$\\widehat f(\\xi) = \\pi e^{-|\\xi|}$"
+    ],
+    "bonne": 0,
+    "explication": "$\\int_0^{+\\infty} e^{-(1 + i\\xi)t}\\,\\mathrm dt = \\frac{1}{1 + i\\xi}$ et $\\int_{-\\infty}^0 e^{(1 - i\\xi)t}\\,\\mathrm dt = \\frac{1}{1 - i\\xi}$, de somme $\\frac{2}{1 + \\xi^2}$. $\\frac1{1+i\\xi}$ n'est que la contribution de $[0, +\\infty[$, et $\\pi e^{-|\\xi|}$ est la transformée de $t \\mapsto \\frac{1}{1+t^2}$."
+  },
+  {
+    "id": "integration-qcm-08", "ch": "integration", "type": "qcm",
+    "enonce": "Intégrale à paramètre sur un segment.\nSoient $J$ un intervalle de $\\mathbb R$ et $f : J \\times [a, b] \\to \\mathbb C$, avec $a < b$. Si **[ ? ]**, alors $F : x \\mapsto \\int_a^b f(x, t)\\,\\mathrm dt$ est de classe $\\mathcal C^1$ sur $J$ et $F'(x) = \\int_a^b \\frac{\\partial f}{\\partial x}(x, t)\\,\\mathrm dt$.",
+    "choix": [
+      "$f$ et $\\frac{\\partial f}{\\partial x}$ sont définies et continues sur $J \\times [a, b]$",
+      "$f$ est continue sur $J \\times [a, b]$",
+      "$f$ est continue et bornée sur $J \\times [a, b]$",
+      "$f$ est continue sur $J \\times [a, b]$ et, pour tout $x \\in J$, $t \\mapsto f(x, t)$ est de classe $\\mathcal C^1$"
+    ],
+    "bonne": 0,
+    "explication": "Sur un segment, la continuité de $f$ et de $\\frac{\\partial f}{\\partial x}$ suffit : pas besoin de domination. Contre-exemple aux trois leurres : $f(x, t) = |x|$ sur $]-1, 1[ \\times [a, b]$ est continue, bornée, de classe $\\mathcal C^1$ en $t$, et $F(x) = (b - a)|x|$ n'est pas dérivable en $0$. La régularité doit porter sur la variable $x$."
+  },
+  {
+    "id": "integration-qcm-09", "ch": "integration", "type": "qcm",
+    "enonce": "Convergence monotone.\nSoit $(f_n)$ une suite **[ ? ]** de fonctions intégrables sur $I$, convergeant simplement sur $I$ vers $f$ continue par morceaux. Alors $f$ est intégrable sur $I$ si et seulement si la suite $\\left(\\int_I f_n\\right)$ est majorée ; dans ce cas $\\int_I f = \\lim \\int_I f_n$.",
+    "choix": [
+      "croissante",
+      "décroissante",
+      "de fonctions positives",
+      "uniformément convergente"
+    ],
+    "bonne": 0,
+    "explication": "Le programme demande une suite croissante, sans hypothèse de signe. Sur $[0, +\\infty[$ : $f_n = -\\mathbf 1_{[0, n]}$ décroît, ses intégrales $-n$ sont majorées, mais $f = -1$ n'est pas intégrable. $f_n = \\mathbf 1_{[n, n+1]}$ (positives) et $f_n = \\frac1n\\mathbf 1_{[0, n]}$ (convergence uniforme) ont des intégrales égales à $1$ et une limite nulle."
+  },
+  {
+    "id": "integration-err-01", "ch": "integration", "type": "erreur",
+    "enonce": "Pour $x \\in \\mathbb R$, on pose $F(x) = \\displaystyle\\int_0^x e^{xt}\\,\\mathrm dt$. On veut calculer $F'(x)$. Voici une copie.",
+    "lignes": [
+      "Pour tout réel $x$, la fonction $t \\mapsto e^{xt}$ est continue, donc $F(x)$ est bien défini.",
+      "La fonction $(x, t) \\mapsto e^{xt}$ admet sur $\\mathbb R^2$ la dérivée partielle $\\frac{\\partial}{\\partial x} e^{xt} = t\\,e^{xt}$, continue sur $\\mathbb R^2$.",
+      "Le théorème de dérivation sous le signe intégral donne alors $F'(x) = \\displaystyle\\int_0^x t\\,e^{xt}\\,\\mathrm dt$."
+    ],
+    "fausse": 2,
+    "explication": "Le théorème suppose un domaine d'intégration fixe ; ici $x$ est aussi dans la borne. Avec $G(x, y) = \\int_0^y e^{xt}\\,\\mathrm dt$ et $F(x) = G(x, x)$, on obtient $F'(x) = \\int_0^x t\\,e^{xt}\\,\\mathrm dt + e^{x^2}$. Contrôle : $F'(0) = 1$, alors que la copie donne $0$. Ici le plus simple est de calculer $F(x) = \\frac{e^{x^2} - 1}{x}$ pour $x \\ne 0$."
+  },
+  {
+    "id": "integration-err-02", "ch": "integration", "type": "erreur",
+    "enonce": "On veut montrer que $F(x) = \\displaystyle\\int_0^{+\\infty} \\frac{e^{-xt}}{1 + t^2}\\,\\mathrm dt$ est de classe $\\mathcal C^1$ sur $]0, +\\infty[$. Voici une copie.",
+    "lignes": [
+      "La fonction $f : (x, t) \\mapsto \\frac{e^{-xt}}{1+t^2}$ admet la dérivée partielle $\\frac{\\partial f}{\\partial x}(x, t) = -\\frac{t\\,e^{-xt}}{1+t^2}$, continue en $x$ et en $t$.",
+      "Pour tout $x > 0$ et tout $t \\ge 0$, $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le t\\,e^{-xt}$.",
+      "La fonction $t \\mapsto t\\,e^{-xt}$ est intégrable sur $[0, +\\infty[$, donc l'hypothèse de domination du théorème de dérivation est satisfaite sur $]0, +\\infty[$.",
+      "$F$ est de classe $\\mathcal C^1$ sur $]0, +\\infty[$ et $F'(x) = -\\displaystyle\\int_0^{+\\infty} \\frac{t\\,e^{-xt}}{1+t^2}\\,\\mathrm dt$."
+    ],
+    "fausse": 2,
+    "explication": "La dominante doit être indépendante de $x$, et $t\\,e^{-xt}$ ne l'est pas. Aucune domination n'existe d'ailleurs sur $]0, +\\infty[$ entier : $\\sup_{x > 0} \\frac{t\\,e^{-xt}}{1+t^2} = \\frac{t}{1+t^2}$ n'est pas intégrable. On domine sur $]a, +\\infty[$ par $t\\,e^{-at}$, pour tout $a > 0$ : la conclusion est juste, la justification ne l'est pas."
+  },
+  {
+    "id": "integration-err-03", "ch": "integration", "type": "erreur",
+    "enonce": "On veut calculer $I = \\displaystyle\\int_0^{+\\infty} \\frac{e^{-t} - e^{-2t}}{t}\\,\\mathrm dt$. Voici une copie.",
+    "lignes": [
+      "L'intégrande est continu sur $]0, +\\infty[$, tend vers $1$ en $0$ et est négligeable devant $\\frac1{t^2}$ en $+\\infty$ : $I$ converge.",
+      "Pour $0 < \\varepsilon < A$, le changement de variable $u = 2t$ donne $\\displaystyle\\int_\\varepsilon^A \\frac{e^{-2t}}{t}\\,\\mathrm dt = \\int_{2\\varepsilon}^{2A} \\frac{e^{-u}}{u}\\,\\mathrm du$.",
+      "Donc $\\displaystyle\\int_\\varepsilon^A \\frac{e^{-t} - e^{-2t}}{t}\\,\\mathrm dt = \\int_\\varepsilon^{2\\varepsilon} \\frac{e^{-u}}{u}\\,\\mathrm du - \\int_A^{2A} \\frac{e^{-u}}{u}\\,\\mathrm du$.",
+      "Quand $\\varepsilon \\to 0$, l'intervalle $[\\varepsilon, 2\\varepsilon]$ se réduit à un point, donc la première intégrale tend vers $0$ ; la seconde tend vers $0$ quand $A \\to +\\infty$. Donc $I = 0$."
+    ],
+    "fausse": 3,
+    "explication": "Un intervalle qui rétrécit ne suffit pas quand l'intégrande explose. Ici $e^{-2\\varepsilon}\\ln 2 \\le \\int_\\varepsilon^{2\\varepsilon} \\frac{e^{-u}}{u}\\,\\mathrm du \\le e^{-\\varepsilon}\\ln 2$, qui tend vers $\\ln 2$. Donc $I = \\ln 2$. Le résultat $I = 0$ était d'ailleurs suspect : l'intégrande est strictement positif."
+  },
+  {
+    "id": "integration-err-04", "ch": "integration", "type": "erreur",
+    "enonce": "On pose $f_n(t) = n\\,t\\,e^{-nt^2}$ et on cherche $\\displaystyle\\lim_{n \\to +\\infty} \\int_0^1 f_n(t)\\,\\mathrm dt$. Voici une copie.",
+    "lignes": [
+      "On a $f_n(0) = 0$, et pour $t \\in \\,]0, 1]$, $f_n(t) \\to 0$ par croissances comparées.",
+      "Pour tout $n$ et tout $t \\in [0, 1]$, $0 \\le f_n(t) \\le n$.",
+      "Les fonctions constantes sont intégrables sur $[0, 1]$ : la suite $(f_n)$ est donc dominée, et par convergence dominée $\\displaystyle\\int_0^1 f_n \\to 0$."
+    ],
+    "fausse": 2,
+    "explication": "La dominante doit être **la même pour tout $n$**. Ici $\\sup_n f_n(t)$ est de l'ordre de $\\frac{1}{e\\,t}$ (atteint vers $n = \\frac1{t^2}$), non intégrable en $0$ : aucune domination n'existe. Le calcul direct donne $\\int_0^1 f_n = \\frac{1 - e^{-n}}{2} \\to \\frac12$."
+  },
+  {
+    "id": "integration-err-05", "ch": "integration", "type": "erreur",
+    "enonce": "On veut calculer $I = \\displaystyle\\int_0^{+\\infty} \\frac{t}{e^t - 1}\\,\\mathrm dt$. Voici une copie.",
+    "lignes": [
+      "Pour $t > 0$, $\\dfrac{t}{e^t - 1} = \\displaystyle\\sum_{n=1}^{+\\infty} t\\,e^{-nt}$.",
+      "Pour $n \\ge 1$, $\\displaystyle\\int_0^{+\\infty} t\\,e^{-nt}\\,\\mathrm dt = \\frac1{n^2}$.",
+      "La série de fonctions $\\sum t\\,e^{-nt}$ converge uniformément sur $]0, +\\infty[$, ce qui justifie l'intégration terme à terme.",
+      "Donc $I = \\displaystyle\\sum_{n=1}^{+\\infty} \\frac1{n^2} = \\frac{\\pi^2}{6}$."
+    ],
+    "fausse": 2,
+    "explication": "Le reste vaut $\\frac{t\\,e^{-(N+1)t}}{1 - e^{-t}}$, qui tend vers $1$ quand $t \\to 0^+$ : la convergence n'est pas uniforme. Et sur un intervalle non borné, la convergence uniforme ne suffirait de toute façon pas. La bonne justification : les $u_n$ sont positives, intégrables, et $\\sum \\int |u_n| = \\sum \\frac1{n^2}$ converge (théorème d'intégration terme à terme)."
+  },
+  {
+    "id": "integration-err-06", "ch": "integration", "type": "erreur",
+    "enonce": "On veut calculer $I = \\displaystyle\\int_{-1}^{1} \\frac{\\mathrm dt}{1 + t^2}$. Voici une copie.",
+    "lignes": [
+      "L'intégrande est continu et strictement positif sur $[-1, 1]$, donc $I$ est bien défini et $I > 0$.",
+      "Pour $u \\ne 0$, si $t = \\frac1u$, alors $\\dfrac{1}{1 + t^2} \\cdot \\dfrac{\\mathrm dt}{\\mathrm du} = -\\dfrac{1}{1 + u^2}$.",
+      "Le changement de variable $t = \\frac1u$, qui envoie $-1$ sur $-1$ et $1$ sur $1$, donne $I = -\\displaystyle\\int_{-1}^{1} \\frac{\\mathrm du}{1 + u^2} = -I$, d'où $I = 0$."
+    ],
+    "fausse": 2,
+    "explication": "La formule de changement de variable exige $\\varphi$ de classe $\\mathcal C^1$ sur le segment $[-1, 1]$ ; or $\\varphi(u) = \\frac1u$ n'est même pas définie en $0$. La copie se contredit d'ailleurs avec la première ligne. En fait $I = [\\arctan t]_{-1}^{1} = \\frac\\pi2$."
+  },
+  {
+    "id": "integration-err-07", "ch": "integration", "type": "erreur",
+    "enonce": "Pour $x \\ge 0$, on pose $F(x) = \\displaystyle\\int_0^{+\\infty} x\\,e^{-xt}\\,\\mathrm dt$. On étudie la continuité de $F$. Voici une copie.",
+    "lignes": [
+      "Pour tout $x \\ge 0$, $t \\mapsto x\\,e^{-xt}$ est continue et intégrable sur $[0, +\\infty[$.",
+      "La fonction $(x, t) \\mapsto x\\,e^{-xt}$ est continue sur $[0, +\\infty[^2$.",
+      "Une intégrale d'une fonction continue du paramètre est continue : $F$ est continue sur $[0, +\\infty[$."
+    ],
+    "fausse": 2,
+    "explication": "Sur un intervalle non borné, il faut une domination intégrable indépendante de $x$. Ici $F(0) = 0$ et $F(x) = 1$ pour $x > 0$ : $F$ est discontinue en $0$. Aucune domination n'existe près de $x = 0$ : $\\sup_{x > 0} x\\,e^{-xt} = \\frac{1}{e\\,t}$ n'est pas intégrable en $+\\infty$."
+  },
+  {
+    "id": "integration-piste-01", "ch": "integration", "type": "piste",
+    "enonce": "Montrer que l'intégrale $\\displaystyle\\int_0^{+\\infty} \\frac{\\sin t}{t}\\,\\mathrm dt$ converge.",
+    "choix": [
+      {
+        "titre": "Intégration par parties sur $[1, X]$",
+        "info": "Pour $u, v$ de classe $\\mathcal C^1$ sur $[a, X]$ : $\\int_a^X u'v = [uv]_a^X - \\int_a^X uv'$. On fait ensuite tendre $X$ vers la borne, en justifiant que le crochet a une limite.",
+        "verdict": "bon",
+        "retour": "Avec $u = -\\cos t$ et $v = \\frac1t$, le crochet a une limite et il reste $\\int_1^X \\frac{\\cos t}{t^2}\\,\\mathrm dt$, absolument convergente."
+      },
+      {
+        "titre": "Convergence absolue",
+        "info": "Si $\\int_a^{+\\infty} |f|$ converge, alors $\\int_a^{+\\infty} f$ converge.",
+        "verdict": "impasse",
+        "retour": "La fonction n'est pas intégrable sur $[1, +\\infty[$ : $\\frac{|\\sin t|}{t} \\ge \\frac{\\sin^2 t}{t} = \\frac{1 - \\cos 2t}{2t}$, dont l'intégrale diverge."
+      },
+      {
+        "titre": "Comparaison à une intégrale de Riemann",
+        "info": "Pour $0 \\le f \\le g$ au voisinage de $+\\infty$, la convergence de $\\int g$ entraîne celle de $\\int f$. Et $\\int_1^{+\\infty} \\frac{\\mathrm dt}{t^\\alpha}$ converge si et seulement si $\\alpha > 1$.",
+        "verdict": "impasse",
+        "retour": "La fonction change de signe, et la seule majoration naturelle, $\\left|\\frac{\\sin t}{t}\\right| \\le \\frac1t$, mène à une intégrale divergente."
+      },
+      {
+        "titre": "Découpage en série $\\sum \\int_{k\\pi}^{(k+1)\\pi}$",
+        "info": "On écrit $\\int_0^{n\\pi} f$ comme somme partielle de la série de terme général $a_k = \\int_{k\\pi}^{(k+1)\\pi} f$, puis on passe d'une borne $n\\pi$ à une borne réelle $X$ quelconque.",
+        "verdict": "possible",
+        "retour": "La série obtenue relève du critère spécial des séries alternées, mais il faut prouver la décroissance de $|a_k|$ puis traiter les bornes non multiples de $\\pi$ : c'est plus long."
+      }
+    ],
+    "direction": "En $0$, $\\frac{\\sin t}{t} \\to 1$ : la fonction se prolonge par continuité, rien à faire. Sur $[1, X]$ : $\\int_1^X \\frac{\\sin t}{t}\\,\\mathrm dt = \\cos 1 - \\frac{\\cos X}{X} - \\int_1^X \\frac{\\cos t}{t^2}\\,\\mathrm dt$. Quand $X \\to +\\infty$, $\\frac{\\cos X}{X} \\to 0$ et $\\left|\\frac{\\cos t}{t^2}\\right| \\le \\frac1{t^2}$ est intégrable : l'intégrale converge."
+  },
+  {
+    "id": "integration-piste-02", "ch": "integration", "type": "piste",
+    "enonce": "Pour $x > 0$, on pose $\\Gamma(x) = \\displaystyle\\int_0^{+\\infty} t^{x-1}e^{-t}\\,\\mathrm dt$. Montrer que $\\Gamma$ est de classe $\\mathcal C^1$ sur $]0, +\\infty[$.",
+    "choix": [
+      {
+        "titre": "Théorème de dérivation, domination sur $]a, b[$ avec $0 < a < b$",
+        "info": "Si $t \\mapsto f(x, t)$ est intégrable pour tout $x \\in X$, si $\\frac{\\partial f}{\\partial x}$ existe, est continue par morceaux en $t$ et continue en $x$, et si $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le h(t)$ avec $h$ intégrable indépendante de $x \\in X$, alors $F$ est dérivable sur $X$ et $F' = \\int_I \\frac{\\partial f}{\\partial x}$. La dérivabilité étant locale, on peut appliquer le théorème sur des intervalles ouverts $X$ plus petits que le domaine.",
+        "verdict": "bon",
+        "retour": "Pour $x \\in \\,]a, b[$, $t^{x-1} \\le t^{a-1} + t^{b-1}$ fournit une domination indépendante de $x$."
+      },
+      {
+        "titre": "Théorème de dérivation, domination sur $]0, +\\infty[$ entier",
+        "info": "Même théorème, appliqué directement avec $X = \\,]0, +\\infty[$ : il faut $h$ intégrable telle que $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le h(t)$ pour tout $x > 0$ et tout $t > 0$.",
+        "verdict": "impasse",
+        "retour": "Une telle $h$ n'existe pas : pour $t < 1$, quand $x \\to 0$, $|\\ln t|\\,t^{x-1}e^{-t}$ tend vers $\\frac{|\\ln t|\\,e^{-t}}{t}$, non intégrable en $0$."
+      },
+      {
+        "titre": "Relation fonctionnelle $\\Gamma(x+1) = x\\,\\Gamma(x)$",
+        "info": "Par intégration par parties, pour tout $x > 0$, $\\Gamma(x+1) = x\\,\\Gamma(x)$.",
+        "verdict": "impasse",
+        "retour": "Elle relie les valeurs de $\\Gamma$ entre elles, mais ne dit rien sur sa régularité."
+      },
+      {
+        "titre": "Dérivation d'une intégrale sur un segment",
+        "info": "Si $f$ et $\\frac{\\partial f}{\\partial x}$ sont continues sur $J \\times [a, b]$, alors $x \\mapsto \\int_a^b f(x, t)\\,\\mathrm dt$ est de classe $\\mathcal C^1$ et se dérive sous le signe intégral.",
+        "verdict": "impasse",
+        "retour": "L'intervalle d'intégration $]0, +\\infty[$ n'est pas un segment, et l'intégrande n'est pas continu jusqu'en $t = 0$ lorsque $x < 1$."
+      }
+    ],
+    "direction": "Soit $0 < a < b$. Pour $x \\in \\,]a, b[$ et $t > 0$, $\\left|\\frac{\\partial}{\\partial x}\\left(t^{x-1}e^{-t}\\right)\\right| = |\\ln t|\\,t^{x-1}e^{-t} \\le |\\ln t|\\left(t^{a-1} + t^{b-1}\\right)e^{-t}$, intégrable sur $]0, +\\infty[$. Donc $\\Gamma$ est dérivable sur $]a, b[$, avec $\\Gamma'(x) = \\int_0^{+\\infty} \\ln t\\;t^{x-1}e^{-t}\\,\\mathrm dt$, continue par le théorème de continuité (même domination). $a$ et $b$ étant arbitraires, $\\Gamma$ est $\\mathcal C^1$ sur $]0, +\\infty[$."
+  },
+  {
+    "id": "integration-piste-03", "ch": "integration", "type": "piste",
+    "enonce": "Déterminer $\\displaystyle\\lim_{n \\to +\\infty} \\int_0^n \\left(1 + \\frac tn\\right)^n e^{-2t}\\,\\mathrm dt$.",
+    "choix": [
+      {
+        "titre": "Convergence dominée, après introduction d'une indicatrice",
+        "info": "Si $(f_n)$ converge simplement sur $I$ vers $f$ continue par morceaux et si $|f_n| \\le g$ avec $g$ intégrable sur $I$ indépendante de $n$, alors $f$ est intégrable et $\\int_I f_n \\to \\int_I f$.",
+        "verdict": "bon",
+        "retour": "On pose $f_n = \\mathbf 1_{[0, n]}(t)\\left(1 + \\frac tn\\right)^n e^{-2t}$ sur $[0, +\\infty[$ ; l'inégalité $\\left(1 + \\frac tn\\right)^n \\le e^t$ donne la domination par $e^{-t}$."
+      },
+      {
+        "titre": "Convergence monotone",
+        "info": "Si $(f_n)$ est une suite croissante de fonctions intégrables convergeant simplement vers $f$ continue par morceaux, alors $f$ est intégrable si et seulement si $\\left(\\int_I f_n\\right)$ est majorée, et alors $\\int_I f = \\lim \\int_I f_n$.",
+        "verdict": "bon",
+        "retour": "Avec la même indicatrice, $(f_n)$ est croissante, car $\\left(1 + \\frac tn\\right)^n$ croît avec $n$, et les intégrales sont majorées par $\\int_0^{+\\infty} e^{-t}\\,\\mathrm dt$."
+      },
+      {
+        "titre": "Convergence uniforme sur un segment",
+        "info": "Si $(f_n)$ converge uniformément vers $f$ sur $[a, b]$, alors $\\int_a^b f_n \\to \\int_a^b f$.",
+        "verdict": "impasse",
+        "retour": "Le domaine d'intégration $[0, n]$ varie avec $n$ et n'est pas borné uniformément : le théorème ne s'applique pas tel quel."
+      },
+      {
+        "titre": "Calcul exact de l'intégrale",
+        "info": "Développer $\\left(1 + \\frac tn\\right)^n$ par la formule du binôme et calculer chaque $\\int_0^n t^k e^{-2t}\\,\\mathrm dt$ par parties.",
+        "verdict": "impasse",
+        "retour": "Les intégrales sur $[0, n]$ font apparaître des sommes inextricables ; seule la limite est demandée."
+      }
+    ],
+    "direction": "$f_n(t) \\to e^{-t}$ pour tout $t \\ge 0$, et $0 \\le f_n(t) \\le e^{t}e^{-2t} = e^{-t}$ car $\\ln(1 + u) \\le u$. Par convergence dominée (ou monotone), la limite vaut $\\int_0^{+\\infty} e^{-t}\\,\\mathrm dt = 1$."
+  },
+  {
+    "id": "integration-piste-04", "ch": "integration", "type": "piste",
+    "enonce": "Calculer, pour tout $x \\in \\mathbb R$, $F(x) = \\displaystyle\\int_0^{+\\infty} e^{-t^2}\\cos(xt)\\,\\mathrm dt$, sachant que $\\displaystyle\\int_0^{+\\infty} e^{-t^2}\\,\\mathrm dt = \\frac{\\sqrt\\pi}{2}$.",
+    "choix": [
+      {
+        "titre": "Dériver sous le signe intégral, puis intégrer par parties",
+        "info": "Théorème de dérivation : intégrabilité de $t \\mapsto f(x, t)$, dérivée partielle continue en $x$ et continue par morceaux en $t$, et domination $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le h(t)$ avec $h$ intégrable indépendante de $x$.",
+        "verdict": "bon",
+        "retour": "$\\left|t\\,e^{-t^2}\\sin(xt)\\right| \\le t\\,e^{-t^2}$, intégrable ; une intégration par parties fait ensuite réapparaître $F$, d'où une équation différentielle."
+      },
+      {
+        "titre": "Développer $\\cos(xt)$ en série entière et intégrer terme à terme",
+        "info": "Si $\\sum u_k$ converge simplement vers $S$ continue par morceaux, avec $u_k$ intégrables et $\\sum \\int |u_k| < +\\infty$, alors $\\int S = \\sum \\int u_k$.",
+        "verdict": "bon",
+        "retour": "Ça marche : $\\sum \\int |u_k| = \\int_0^{+\\infty} \\mathrm{ch}(xt)\\,e^{-t^2}\\,\\mathrm dt < +\\infty$. Il faut ensuite calculer les $\\int_0^{+\\infty} t^{2k}e^{-t^2}\\,\\mathrm dt$ et reconnaître une série exponentielle."
+      },
+      {
+        "titre": "Chercher une primitive",
+        "info": "Si $G$ est une primitive de $g$ sur $[0, +\\infty[$ ayant une limite finie en $+\\infty$, alors $\\int_0^{+\\infty} g = \\lim_{+\\infty} G - G(0)$.",
+        "verdict": "impasse",
+        "retour": "$t \\mapsto e^{-t^2}\\cos(xt)$ n'a pas de primitive exprimable avec les fonctions usuelles."
+      },
+      {
+        "titre": "Changement de variable $u = xt$",
+        "info": "Pour $\\varphi$ de classe $\\mathcal C^1$ strictement monotone, $\\int f(\\varphi(u))\\varphi'(u)\\,\\mathrm du = \\int f(t)\\,\\mathrm dt$ sur les intervalles correspondants.",
+        "verdict": "impasse",
+        "retour": "Le paramètre passe dans la gaussienne, $e^{-u^2/x^2}$, sans rien simplifier ; et ce changement n'a pas de sens pour $x = 0$."
+      }
+    ],
+    "direction": "$F'(x) = -\\int_0^{+\\infty} t\\,e^{-t^2}\\sin(xt)\\,\\mathrm dt$. Par parties, avec la primitive $-\\frac12 e^{-t^2}$ (crochet nul en $0$ et en $+\\infty$), $F'(x) = -\\frac x2 F(x)$. Donc $F(x) = F(0)\\,e^{-x^2/4} = \\frac{\\sqrt\\pi}{2}e^{-x^2/4}$."
+  },
+  {
+    "id": "integration-piste-05", "ch": "integration", "type": "piste",
+    "enonce": "Déterminer les réels $\\alpha$ pour lesquels $\\displaystyle\\int_0^{+\\infty} \\frac{1 - e^{-t}}{t^\\alpha}\\,\\mathrm dt$ converge.",
+    "choix": [
+      {
+        "titre": "Couper en $1$, puis équivalents de fonctions positives",
+        "info": "Pour $f, g$ positives et $f \\sim g$ au voisinage d'une borne, les intégrales y sont de même nature. $\\int_0^1 \\frac{\\mathrm dt}{t^\\beta}$ converge si et seulement si $\\beta < 1$, et $\\int_1^{+\\infty} \\frac{\\mathrm dt}{t^\\beta}$ si et seulement si $\\beta > 1$.",
+        "verdict": "bon",
+        "retour": "En $0$, l'intégrande est équivalent à $t^{1-\\alpha}$ ; en $+\\infty$, à $t^{-\\alpha}$. Les équivalences donnent convergence et divergence d'un coup."
+      },
+      {
+        "titre": "Majorer $1 - e^{-t} \\le 1$ sur $]0, +\\infty[$",
+        "info": "Pour $0 \\le f \\le g$, la convergence de $\\int g$ entraîne celle de $\\int f$.",
+        "verdict": "impasse",
+        "retour": "On se compare à $\\int_0^{+\\infty} \\frac{\\mathrm dt}{t^\\alpha}$, qui diverge pour tout $\\alpha$ : la majoration ne prouve rien."
+      },
+      {
+        "titre": "Majorer $1 - e^{-t} \\le t$",
+        "info": "Pour $0 \\le f \\le g$, la convergence de $\\int g$ entraîne celle de $\\int f$. Et $1 - e^{-u} \\le u$ pour tout $u \\ge 0$.",
+        "verdict": "possible",
+        "retour": "Elle règle la borne $0$ (convergence si $\\alpha < 2$), mais ni la borne $+\\infty$, ni la divergence dans les autres cas."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante sur $[1, +\\infty[$, $\\int_1^{+\\infty} f$ et $\\sum f(n)$ sont de même nature.",
+        "verdict": "impasse",
+        "retour": "Elle ignore la borne $0$, et remplacer l'intégrale par une série ne simplifie rien ici."
+      }
+    ],
+    "direction": "L'intégrande est continu et positif sur $]0, +\\infty[$. En $0$ : $\\frac{1 - e^{-t}}{t^\\alpha} \\sim t^{1-\\alpha}$, convergence si et seulement si $\\alpha < 2$. En $+\\infty$ : $\\frac{1 - e^{-t}}{t^\\alpha} \\sim \\frac{1}{t^\\alpha}$, convergence si et seulement si $\\alpha > 1$. Réponse : $1 < \\alpha < 2$."
+  },
+  {
+    "id": "integration-piste-06", "ch": "integration", "type": "piste",
+    "enonce": "Soit $f$ continue et bornée sur $[0, +\\infty[$, de limite $\\ell$ en $+\\infty$. Pour $x > 0$, on pose $Lf(x) = \\displaystyle\\int_0^{+\\infty} f(t)\\,e^{-xt}\\,\\mathrm dt$. Montrer que $x\\,Lf(x) \\to \\ell$ quand $x \\to 0^+$.",
+    "choix": [
+      {
+        "titre": "Changement de variable $u = xt$, puis convergence dominée",
+        "info": "Convergence dominée : si $g_n \\to g$ simplement, avec $g$ continue par morceaux et $|g_n| \\le \\varphi$ intégrable indépendante de $n$, alors $\\int g_n \\to \\int g$. Pour une limite quand $x \\to 0^+$, on l'applique le long de toute suite $x_n \\to 0^+$.",
+        "verdict": "bon",
+        "retour": "$x\\,Lf(x) = \\int_0^{+\\infty} f\\!\\left(\\frac ux\\right)e^{-u}\\,\\mathrm du$ : l'intégrande tend vers $\\ell\\,e^{-u}$ pour $u > 0$ et est dominé par $\\|f\\|_\\infty e^{-u}$."
+      },
+      {
+        "titre": "Convergence dominée directement sur $t \\mapsto x\\,f(t)\\,e^{-xt}$",
+        "info": "Même théorème, appliqué à $g_x(t) = x\\,f(t)\\,e^{-xt}$ quand $x \\to 0^+$.",
+        "verdict": "impasse",
+        "retour": "Cette fonction tend simplement vers $0$, alors que la limite cherchée est $\\ell$ : la masse fuit à l'infini et aucune domination intégrable n'existe."
+      },
+      {
+        "titre": "Continuité de $Lf$ en $0$",
+        "info": "Théorème de continuité : continuité en $x$, continuité par morceaux en $t$, domination $|f(t)e^{-xt}| \\le g(t)$ avec $g$ intégrable indépendante de $x$.",
+        "verdict": "impasse",
+        "retour": "$Lf$ n'est en général pas définie en $0$ (prendre $f = 1$), et c'est $x\\,Lf(x)$ qui est étudiée, pas $Lf(x)$."
+      },
+      {
+        "titre": "Découpage $\\int_0^A + \\int_A^{+\\infty}$ avec un $\\varepsilon$",
+        "info": "On choisit $A$ tel que $|f(t) - \\ell| \\le \\varepsilon$ pour $t \\ge A$, en remarquant que $\\int_0^{+\\infty} x\\,e^{-xt}\\,\\mathrm dt = 1$.",
+        "verdict": "bon",
+        "retour": "$x\\,Lf(x) - \\ell = \\int_0^{+\\infty} x(f(t) - \\ell)e^{-xt}\\,\\mathrm dt$ : le morceau sur $[0, A]$ est majoré par $2\\|f\\|_\\infty\\,xA$, celui sur $[A, +\\infty[$ par $\\varepsilon$."
+      }
+    ],
+    "direction": "Par $u = xt$, $x\\,Lf(x) = \\int_0^{+\\infty} f\\!\\left(\\frac ux\\right)e^{-u}\\,\\mathrm du$. Pour toute suite $x_n \\to 0^+$, l'intégrande tend vers $\\ell\\,e^{-u}$ pour tout $u > 0$, avec la domination $\\|f\\|_\\infty e^{-u}$. Par convergence dominée, $x_n Lf(x_n) \\to \\ell$ ; d'où la limite par caractérisation séquentielle."
+  },
+  {
+    "id": "integration-piste-07", "ch": "integration", "type": "piste",
+    "enonce": "Pour $x > -1$, on pose $F(x) = \\displaystyle\\int_0^1 \\frac{t^x - 1}{\\ln t}\\,\\mathrm dt$. Calculer $F(x)$.",
+    "choix": [
+      {
+        "titre": "Dérivation sous le signe intégral, sur $]a, +\\infty[$ avec $a > -1$",
+        "info": "Si $t \\mapsto f(x, t)$ est intégrable pour tout $x \\in X$, si $\\frac{\\partial f}{\\partial x}$ est continue en $x$, continue par morceaux en $t$, et dominée par $h(t)$ intégrable indépendante de $x$, alors $F' = \\int \\frac{\\partial f}{\\partial x}$.",
+        "verdict": "bon",
+        "retour": "$\\frac{\\partial}{\\partial x}\\left(\\frac{t^x - 1}{\\ln t}\\right) = t^x$ : le logarithme disparaît. Pour $x > a$ et $t \\in \\,]0, 1[$, $0 < t^x \\le t^a$, intégrable car $a > -1$."
+      },
+      {
+        "titre": "Chercher une primitive de $t \\mapsto \\frac{t^x - 1}{\\ln t}$",
+        "info": "Si $G' = g$ sur $]0, 1[$ et si $G$ a des limites en $0$ et $1$, alors $\\int_0^1 g = G(1^-) - G(0^+)$.",
+        "verdict": "impasse",
+        "retour": "Cette fonction n'a pas de primitive usuelle."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "$\\int u'v = [uv] - \\int uv'$, en justifiant l'existence des limites du crochet aux bornes impropres.",
+        "verdict": "impasse",
+        "retour": "Dériver $\\frac{1}{\\ln t}$ ou intégrer $\\frac{t^x}{\\ln t}$ ne simplifie rien."
+      },
+      {
+        "titre": "Théorème de continuité sous le signe intégral",
+        "info": "Continuité en $x$, continuité par morceaux en $t$ et domination intégrable indépendante de $x$ donnent la continuité de $F$.",
+        "verdict": "impasse",
+        "retour": "La continuité de $F$ ne donne pas sa valeur. Il faut une information sur $F'$."
+      }
+    ],
+    "direction": "L'intégrande est continu sur $]0, 1[$, tend vers $x$ en $1$ et est intégrable en $0$. Sa dérivée partielle $t^x$ est dominée par $t^a$ sur $]a, +\\infty[$. Donc $F'(x) = \\int_0^1 t^x\\,\\mathrm dt = \\frac{1}{x+1}$ et, comme $F(0) = 0$, $F(x) = \\ln(1 + x)$."
+  },
+  {
+    "id": "integration-piste-08", "ch": "integration", "type": "piste",
+    "enonce": "Montrer que $\\displaystyle\\int_0^1 \\frac{\\ln t}{t - 1}\\,\\mathrm dt = \\sum_{n=1}^{+\\infty} \\frac1{n^2}$.",
+    "choix": [
+      {
+        "titre": "Développer $\\frac1{1-t}$ en série et intégrer terme à terme",
+        "info": "Si les $u_n$ sont intégrables sur $I$, si $\\sum u_n$ converge simplement vers $S$ continue par morceaux et si $\\sum \\int_I |u_n|$ converge, alors $S$ est intégrable et $\\int_I S = \\sum \\int_I u_n$.",
+        "verdict": "bon",
+        "retour": "Les fonctions $u_n(t) = -t^n \\ln t$ sont positives sur $]0, 1[$ et $\\int_0^1 u_n = \\frac{1}{(n+1)^2}$ : la série des intégrales converge."
+      },
+      {
+        "titre": "Convergence dominée sur les sommes partielles",
+        "info": "Si $S_N \\to S$ simplement, $S$ continue par morceaux, et $|S_N| \\le g$ avec $g$ intégrable indépendante de $N$, alors $\\int S_N \\to \\int S$.",
+        "verdict": "bon",
+        "retour": "Les sommes partielles sont positives et majorées par la somme $\\frac{\\ln t}{t-1}$, intégrable sur $]0, 1[$ (elle tend vers $1$ en $1$ et est équivalente à $-\\ln t$ en $0$)."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "$\\int u'v = [uv] - \\int uv'$, en justifiant l'existence des limites du crochet aux bornes.",
+        "verdict": "impasse",
+        "retour": "Avec la primitive $\\ln(1-t)$, on aboutit à $-\\int_0^1 \\frac{\\ln(1-t)}{t}\\,\\mathrm dt$, de même nature : il faudra de toute façon développer en série."
+      },
+      {
+        "titre": "Changement de variable $t = 1 - u$",
+        "info": "Pour $\\varphi$ de classe $\\mathcal C^1$ strictement monotone, $\\int f(\\varphi(u))\\varphi'(u)\\,\\mathrm du = \\int f(t)\\,\\mathrm dt$.",
+        "verdict": "impasse",
+        "retour": "On obtient $\\int_0^1 \\frac{\\ln(1-u)}{-u}\\,\\mathrm du$ : le problème est déplacé, pas résolu."
+      }
+    ],
+    "direction": "Pour $t \\in \\,]0, 1[$, $\\frac{\\ln t}{t-1} = \\sum_{n \\ge 0} (-\\ln t)\\,t^n$, termes positifs et intégrables, avec $\\int_0^1 -t^n \\ln t\\,\\mathrm dt = \\frac{1}{(n+1)^2}$ (par parties). La série $\\sum \\frac{1}{(n+1)^2}$ converge et la somme est continue sur $]0, 1[$ : le théorème d'intégration terme à terme conclut."
+  },
+  {
+    "id": "integration-piste-09", "ch": "integration", "type": "piste",
+    "enonce": "Soit $f$ continue sur $[0, 1]$, à valeurs réelles, telle que $\\displaystyle\\int_0^1 f(t)\\,t^n\\,\\mathrm dt = 0$ pour tout $n \\in \\mathbb N$. Montrer que $f$ est nulle.",
+    "choix": [
+      {
+        "titre": "Théorème de Weierstrass",
+        "info": "Toute fonction continue sur un segment est limite uniforme sur ce segment d'une suite de polynômes.",
+        "verdict": "bon",
+        "retour": "Par linéarité, $\\int_0^1 fP = 0$ pour tout polynôme $P$ ; en passant à la limite on obtient $\\int_0^1 f^2 = 0$."
+      },
+      {
+        "titre": "Développer $f$ en série entière",
+        "info": "Une fonction développable en série entière s'écrit $\\sum a_n t^n$ sur son disque de convergence, et la série s'intègre terme à terme sur un segment inclus dans l'intervalle ouvert de convergence.",
+        "verdict": "impasse",
+        "retour": "Une fonction seulement continue n'a aucune raison d'être développable en série entière."
+      },
+      {
+        "titre": "Intégrations par parties successives",
+        "info": "$\\int_0^1 u'v = [uv]_0^1 - \\int_0^1 uv'$ pour $u, v$ de classe $\\mathcal C^1$.",
+        "verdict": "impasse",
+        "retour": "$f$ n'est que continue : on ne peut pas la dériver."
+      },
+      {
+        "titre": "Orthogonalité à une famille génératrice",
+        "info": "Dans un espace préhilbertien, un vecteur orthogonal à tous les vecteurs d'une famille génératrice est nul.",
+        "verdict": "impasse",
+        "retour": "Les monômes n'engendrent pas $\\mathcal C([0, 1])$ au sens algébrique : il faut un argument de densité, pas seulement d'algèbre linéaire."
+      }
+    ],
+    "direction": "Soit $(P_k)$ une suite de polynômes convergeant uniformément vers $f$ sur $[0, 1]$. Alors $\\int_0^1 fP_k = 0$ et $\\left|\\int_0^1 f^2 - \\int_0^1 fP_k\\right| \\le \\|f\\|_\\infty \\|f - P_k\\|_\\infty \\to 0$, donc $\\int_0^1 f^2 = 0$. Comme $f^2$ est continue et positive, $f = 0$."
+  },
+  {
+    "id": "integration-piste-10", "ch": "integration", "type": "piste",
+    "enonce": "Déterminer un équivalent de $R(x) = \\displaystyle\\int_x^{+\\infty} e^{-t^2}\\,\\mathrm dt$ quand $x \\to +\\infty$.",
+    "choix": [
+      {
+        "titre": "Intégration par parties",
+        "info": "$\\int_x^A u'v = [uv]_x^A - \\int_x^A uv'$, puis $A \\to +\\infty$ en justifiant la limite du crochet.",
+        "verdict": "bon",
+        "retour": "En écrivant $e^{-t^2} = \\left(-2t\\,e^{-t^2}\\right) \\cdot \\left(-\\frac{1}{2t}\\right)$, on obtient $\\frac{e^{-x^2}}{2x}$ moins une intégrale négligeable."
+      },
+      {
+        "titre": "Intégration des relations de comparaison",
+        "info": "Si $f$ et $g$ sont positives, intégrables au voisinage de $+\\infty$, et $f \\sim g$, alors $\\int_x^{+\\infty} f \\sim \\int_x^{+\\infty} g$ quand $x \\to +\\infty$.",
+        "verdict": "bon",
+        "retour": "Il faut deviner $g$ : la dérivée de $-\\frac{e^{-t^2}}{2t}$, qui vaut $e^{-t^2}\\left(1 + \\frac{1}{2t^2}\\right) \\sim e^{-t^2}$."
+      },
+      {
+        "titre": "Développer $e^{-t^2}$ en série entière et intégrer terme à terme",
+        "info": "$e^{-t^2} = \\sum_k \\frac{(-1)^k t^{2k}}{k!}$ pour tout réel $t$.",
+        "verdict": "impasse",
+        "retour": "Aucun terme $t^{2k}$ n'est intégrable sur $[x, +\\infty[$ : l'intégration terme à terme n'a pas de sens."
+      },
+      {
+        "titre": "Majorer $e^{-t^2} \\le e^{-t}$ pour $t \\ge 1$",
+        "info": "Si $0 \\le f \\le g$, alors $\\int_x^{+\\infty} f \\le \\int_x^{+\\infty} g$.",
+        "verdict": "impasse",
+        "retour": "On obtient $R(x) \\le e^{-x}$, majoration bien trop grossière, et aucun équivalent."
+      }
+    ],
+    "direction": "$\\int_x^A e^{-t^2}\\,\\mathrm dt = \\left[-\\frac{e^{-t^2}}{2t}\\right]_x^A - \\int_x^A \\frac{e^{-t^2}}{2t^2}\\,\\mathrm dt$. Quand $A \\to +\\infty$ : $R(x) = \\frac{e^{-x^2}}{2x} - \\int_x^{+\\infty} \\frac{e^{-t^2}}{2t^2}\\,\\mathrm dt$, et le dernier terme est majoré par $\\frac{R(x)}{2x^2} = o(R(x))$. Donc $R(x) \\sim \\frac{e^{-x^2}}{2x}$."
+  },
+  {
+    "id": "integration-piste-11", "ch": "integration", "type": "piste",
+    "enonce": "Déterminer $\\displaystyle\\lim_{n \\to +\\infty} \\sum_{k=1}^n \\frac{n}{n^2 + k^2}$.",
+    "choix": [
+      {
+        "titre": "Sommes de Riemann",
+        "info": "Si $f$ est continue sur $[a, b]$, $\\frac{b-a}{n}\\sum_{k=1}^n f\\!\\left(a + k\\frac{b-a}{n}\\right) \\to \\int_a^b f$.",
+        "verdict": "bon",
+        "retour": "$\\frac{n}{n^2 + k^2} = \\frac1n \\cdot \\frac{1}{1 + (k/n)^2}$ : c'est une somme de Riemann de $t \\mapsto \\frac{1}{1+t^2}$ sur $[0, 1]$."
+      },
+      {
+        "titre": "Comparaison somme-intégrale",
+        "info": "Si $g$ est positive et décroissante, $\\int_k^{k+1} g \\le g(k) \\le \\int_{k-1}^{k} g$.",
+        "verdict": "possible",
+        "retour": "Avec $g(t) = \\frac{n}{n^2 + t^2}$, on encadre la somme entre $\\arctan\\frac{n+1}{n} - \\arctan\\frac1n$ et $\\arctan 1$ : ça aboutit, en un peu plus long."
+      },
+      {
+        "titre": "Sommation des équivalents",
+        "info": "Si $u_k \\sim v_k$ avec $v_k > 0$ et $\\sum v_k$ divergente, alors $\\sum_{k \\le n} u_k \\sim \\sum_{k \\le n} v_k$.",
+        "verdict": "impasse",
+        "retour": "Le terme dépend à la fois de $n$ et de $k$ : il n'y a pas de série fixe à laquelle appliquer ce résultat."
+      },
+      {
+        "titre": "Encadrer par $n$ fois le plus petit et le plus grand terme",
+        "info": "Une somme de $n$ termes est comprise entre $n$ fois son plus petit terme et $n$ fois son plus grand.",
+        "verdict": "impasse",
+        "retour": "On obtient seulement $\\frac12 \\le S_n \\le 1$ : un encadrement, pas une limite."
+      }
+    ],
+    "direction": "$S_n = \\frac1n\\sum_{k=1}^n f\\!\\left(\\frac kn\\right)$ avec $f(t) = \\frac{1}{1+t^2}$, continue sur $[0, 1]$. Donc $S_n \\to \\int_0^1 \\frac{\\mathrm dt}{1+t^2} = \\frac\\pi4$."
+  },
+  {
+    "id": "integration-piste-12", "ch": "integration", "type": "piste",
+    "enonce": "Soit $f$ continue sur $[0, 1]$. Déterminer $\\displaystyle\\lim_{n \\to +\\infty} \\int_0^1 f(t^n)\\,\\mathrm dt$.",
+    "choix": [
+      {
+        "titre": "Convergence dominée",
+        "info": "Si $g_n \\to g$ simplement sur $I$, $g$ continue par morceaux, et $|g_n| \\le \\varphi$ avec $\\varphi$ intégrable indépendante de $n$, alors $\\int_I g_n \\to \\int_I g$.",
+        "verdict": "bon",
+        "retour": "$f(t^n) \\to f(0)$ pour $t \\in [0, 1[$, et $|f(t^n)| \\le \\|f\\|_\\infty$, constante intégrable sur le segment $[0, 1]$."
+      },
+      {
+        "titre": "Convergence uniforme sur le segment",
+        "info": "Si $g_n \\to g$ uniformément sur $[a, b]$, alors $\\int_a^b g_n \\to \\int_a^b g$.",
+        "verdict": "impasse",
+        "retour": "Si $f(1) \\ne f(0)$, la limite simple est discontinue en $1$ alors que chaque $t \\mapsto f(t^n)$ est continue : la convergence n'est pas uniforme."
+      },
+      {
+        "titre": "Couper en $[0, 1 - \\eta]$ et $[1 - \\eta, 1]$",
+        "info": "Sur $[0, 1-\\eta]$, $t^n \\le (1 - \\eta)^n$ tend uniformément vers $0$ ; le morceau restant est de longueur $\\eta$.",
+        "verdict": "possible",
+        "retour": "Avec la continuité uniforme de $f$, ça aboutit, mais c'est refaire à la main une convergence dominée."
+      },
+      {
+        "titre": "Changement de variable $u = t^n$",
+        "info": "Pour $\\varphi$ de classe $\\mathcal C^1$ strictement monotone, $\\int f(\\varphi(u))\\varphi'(u)\\,\\mathrm du = \\int f(t)\\,\\mathrm dt$ sur les intervalles correspondants.",
+        "verdict": "impasse",
+        "retour": "On obtient $\\frac1n\\int_0^1 f(u)\\,u^{\\frac1n - 1}\\,\\mathrm du$, intégrale impropre en $0$ qui n'est pas plus simple à étudier."
+      }
+    ],
+    "direction": "Pour $t \\in [0, 1[$, $t^n \\to 0$ donc $f(t^n) \\to f(0)$ par continuité ; en $t = 1$, la valeur reste $f(1)$. La limite est continue par morceaux et $|f(t^n)| \\le \\|f\\|_\\infty$. Par convergence dominée, $\\int_0^1 f(t^n)\\,\\mathrm dt \\to f(0)$."
+  },
+  {
+    "id": "integration-piste-13", "ch": "integration", "type": "piste",
+    "enonce": "Soit $f$ de classe $\\mathcal C^1$ sur $\\mathbb R$, telle que $f$ et $f'$ soient intégrables sur $\\mathbb R$. On note $\\widehat g(\\xi) = \\int_{-\\infty}^{+\\infty} g(t)\\,e^{-i\\xi t}\\,\\mathrm dt$. Montrer que $\\widehat{f'}(\\xi) = i\\xi\\,\\widehat f(\\xi)$ pour tout réel $\\xi$.",
+    "choix": [
+      {
+        "titre": "Intégration par parties sur $[-A, A]$, puis $A \\to +\\infty$",
+        "info": "$\\int_{-A}^{A} u'v = [uv]_{-A}^{A} - \\int_{-A}^{A} uv'$ pour $u, v$ de classe $\\mathcal C^1$ sur $[-A, A]$.",
+        "verdict": "bon",
+        "retour": "C'est la bonne route, à condition d'établir d'abord que $f$ tend vers $0$ en $\\pm\\infty$ pour faire disparaître le crochet."
+      },
+      {
+        "titre": "Intégration par parties directement sur $\\mathbb R$, crochet nul car $f$ est intégrable",
+        "info": "$\\int_{\\mathbb R} u'v = [uv]_{-\\infty}^{+\\infty} - \\int_{\\mathbb R} uv'$, lorsque le crochet a des limites finies aux deux bornes et que l'une des deux intégrales converge.",
+        "verdict": "impasse",
+        "retour": "Une fonction intégrable ne tend pas forcément vers $0$ : l'argument du crochet est faux tel quel. C'est l'intégrabilité de $f'$ qui donne l'existence des limites."
+      },
+      {
+        "titre": "Dériver $\\widehat f$ sous le signe intégral",
+        "info": "Théorème de dérivation : si $\\left|\\frac{\\partial}{\\partial \\xi}\\left(f(t)e^{-i\\xi t}\\right)\\right| = |t\\,f(t)| \\le h(t)$ intégrable, alors $\\widehat f$ est dérivable.",
+        "verdict": "impasse",
+        "retour": "On calcule alors la dérivée de $\\widehat f$, liée à la transformée de $t\\,f(t)$, pas la transformée de $f'$. Et $t\\,f(t)$ n'est pas supposée intégrable."
+      },
+      {
+        "titre": "Théorème de continuité sous le signe intégral",
+        "info": "Si $|f(t)e^{-i\\xi t}| \\le g(t)$ avec $g$ intégrable, et sous les hypothèses de continuité, $\\widehat f$ est continue.",
+        "verdict": "impasse",
+        "retour": "La continuité de $\\widehat f$ et de $\\widehat{f'}$ ne relie pas ces deux fonctions."
+      }
+    ],
+    "direction": "$f(x) = f(0) + \\int_0^x f'$ et $f'$ est intégrable : $f$ a des limites finies en $\\pm\\infty$, nécessairement nulles puisque $f$ est intégrable. Sur $[-A, A]$, $\\int_{-A}^{A} f'(t)e^{-i\\xi t}\\,\\mathrm dt = \\left[f(t)e^{-i\\xi t}\\right]_{-A}^{A} + i\\xi\\int_{-A}^{A} f(t)e^{-i\\xi t}\\,\\mathrm dt$, et on fait tendre $A$ vers $+\\infty$."
+  }
+]

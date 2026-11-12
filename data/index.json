@@ -22,7 +22,7 @@
         { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1", "cartes": true },
         { "id": "series", "nom": "Séries numériques", "ref": "9.2", "cartes": true },
         { "id": "fonctions", "nom": "Continuité, dérivabilité, fonctions usuelles", "ref": "9.3 – 9.5", "cartes": true },
-        { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10" },
+        { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10", "cartes": true },
         { "id": "analyse-numerique", "nom": "Analyse numérique", "ref": "9.11" },
         { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12", "cartes": true },
         { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "cartes": true },
