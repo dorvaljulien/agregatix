@@ -1,0 +1,622 @@
+[
+  {
+    "id": "groupes-vf-01", "ch": "groupes", "type": "vf",
+    "enonce": "Soit $g$ un élément d'un groupe et $k \\ge 1$ un entier tel que $g^k = e$. Alors $g$ est d'ordre $k$.",
+    "reponse": false,
+    "explication": "On a seulement : l'ordre de $g$ **divise** $k$. Contre-exemple : dans $(\\mathbb C^*, \\times)$, $(-1)^4 = 1$ mais $-1$ est d'ordre $2$. Pour conclure que l'ordre vaut $k$, il faut aussi vérifier la minimalité."
+  },
+  {
+    "id": "groupes-vf-02", "ch": "groupes", "type": "vf",
+    "enonce": "Soit $g$ un élément d'un groupe et $n \\ge 2$ un entier tels que $g^n = e$ et $g^{n/p} \\ne e$ pour tout nombre premier $p$ divisant $n$. Alors $g$ est d'ordre $n$.",
+    "reponse": true,
+    "explication": "L'ordre $d$ de $g$ divise $n$. Si $d < n$, un nombre premier $p$ divise $\\frac nd$, donc $d$ divise $\\frac np$ et $g^{n/p} = e$ : contradiction. C'est la façon économique de vérifier la minimalité."
+  },
+  {
+    "id": "groupes-vf-03", "ch": "groupes", "type": "vf",
+    "enonce": "Dans un groupe, si $g$ et $h$ sont d'ordres finis $a$ et $b$ premiers entre eux, alors $gh$ est d'ordre $ab$.",
+    "reponse": false,
+    "explication": "Il faut que $g$ et $h$ commutent. Contre-exemple dans $\\mathfrak S_3$ : $(1\\,2)$ est d'ordre $2$, $(1\\,2\\,3)$ d'ordre $3$, mais leur produit est une transposition, d'ordre $2$ (et $\\mathfrak S_3$ n'a d'ailleurs aucun élément d'ordre $6$). Si $gh = hg$, le résultat est vrai."
+  },
+  {
+    "id": "groupes-vf-04", "ch": "groupes", "type": "vf",
+    "enonce": "Toute similitude directe du plan affine euclidien qui n'est pas une translation admet un unique point fixe.",
+    "reponse": true,
+    "explication": "En écriture complexe, $f(z) = az + b$ avec $a \\in \\mathbb C^*$. Ce n'est pas une translation si et seulement si $a \\ne 1$, et alors $az + b = z$ a l'unique solution $\\omega = \\frac{b}{1-a}$, centre de la similitude."
+  },
+  {
+    "id": "groupes-vf-05", "ch": "groupes", "type": "vf",
+    "enonce": "Si $G$ est un groupe fini et $d$ un diviseur de $|G|$, alors $G$ possède un sous-groupe d'ordre $d$.",
+    "reponse": false,
+    "explication": "La réciproque du théorème de Lagrange est fausse. Contre-exemple : $\\mathfrak A_4$, d'ordre $12$, n'a pas de sous-groupe $H$ d'ordre $6$. Sinon $H$ serait d'indice $2$, donc contiendrait tous les carrés ; or chaque 3-cycle $c$ est un carré ($c = (c^2)^2$), et il y a $8 > 6$ 3-cycles. C'est vrai pour un groupe cyclique."
+  },
+  {
+    "id": "groupes-vf-06", "ch": "groupes", "type": "vf",
+    "enonce": "Pour tout groupe $G$, le groupe $\\mathrm{Int}(G)$ des automorphismes intérieurs de $G$ est isomorphe à $G / Z(G)$, où $Z(G)$ est le centre de $G$.",
+    "reponse": true,
+    "explication": "L'application $g \\mapsto i_g$, avec $i_g(x) = gxg^{-1}$, est un morphisme de $G$ dans $\\mathrm{Aut}(G)$, d'image $\\mathrm{Int}(G)$ et de noyau $Z(G)$. On conclut par le théorème d'isomorphisme."
+  },
+  {
+    "id": "groupes-vf-07", "ch": "groupes", "type": "vf",
+    "enonce": "Un groupe fini dont tous les sous-groupes distincts de lui-même sont cycliques est lui-même cyclique.",
+    "reponse": false,
+    "explication": "Contre-exemple : le groupe de Klein $(\\mathbb Z/2\\mathbb Z)^2$. Ses sous-groupes propres sont $\\{0\\}$ et trois sous-groupes d'ordre $2$, tous cycliques, mais tous ses éléments sont d'ordre au plus $2$ : il n'est pas cyclique."
+  },
+  {
+    "id": "groupes-vf-08", "ch": "groupes", "type": "vf",
+    "enonce": "Pour tout corps commutatif $K$ et tout $n \\ge 1$, le groupe quotient $GL_n(K)/SL_n(K)$ est isomorphe à $(K^*, \\times)$.",
+    "reponse": true,
+    "explication": "Le déterminant est un morphisme de $GL_n(K)$ dans $K^*$, de noyau $SL_n(K)$, et surjectif : $\\det \\mathrm{diag}(\\lambda, 1, \\dots, 1) = \\lambda$. Le théorème d'isomorphisme conclut."
+  },
+  {
+    "id": "groupes-vf-09", "ch": "groupes", "type": "vf",
+    "enonce": "Si $H$ est un sous-groupe distingué de $K$ et $K$ un sous-groupe distingué de $G$, alors $H$ est distingué dans $G$.",
+    "reponse": false,
+    "explication": "La relation « est distingué dans » n'est pas transitive. Dans $\\mathfrak A_4$, $K = \\{\\mathrm{id}, (1\\,2)(3\\,4), (1\\,3)(2\\,4), (1\\,4)(2\\,3)\\}$ est distingué, $H = \\{\\mathrm{id}, (1\\,2)(3\\,4)\\}$ est distingué dans $K$ (abélien), mais en composant de droite à gauche, $(1\\,2\\,3)(1\\,2)(3\\,4)(1\\,2\\,3)^{-1} = (2\\,3)(1\\,4) \\notin H$."
+  },
+  {
+    "id": "groupes-vf-10", "ch": "groupes", "type": "vf",
+    "enonce": "Tout sous-groupe d'indice $2$ d'un groupe $G$ est distingué dans $G$.",
+    "reponse": true,
+    "explication": "Il n'y a que deux classes à gauche, $H$ et $G \\setminus H$, et de même à droite. Pour $g \\notin H$, on a donc $gH = G \\setminus H = Hg$, et pour $g \\in H$, $gH = H = Hg$."
+  },
+  {
+    "id": "groupes-vf-11", "ch": "groupes", "type": "vf",
+    "enonce": "Pour $n \\ge 2$, le groupe $\\mathfrak S_n$ est engendré par les transpositions $(1\\,k)$, $2 \\le k \\le n$.",
+    "reponse": true,
+    "explication": "Les transpositions engendrent $\\mathfrak S_n$, et pour $i \\ne j$ distincts de $1$ on a $(i\\,j) = (1\\,i)(1\\,j)(1\\,i)$."
+  },
+  {
+    "id": "groupes-vf-12", "ch": "groupes", "type": "vf",
+    "enonce": "Dans un plan affine réel, la composée de deux homothéties de rapports non nuls est une homothétie.",
+    "reponse": false,
+    "explication": "Si le produit des rapports vaut $1$, la partie linéaire est l'identité : c'est une translation. Avec $A \\ne B$, $h_{A,2} \\circ h_{B,1/2}$ envoie tout point $M$ sur $M + \\overrightarrow{AB}$ : c'est une translation non triviale. Le bon énoncé : la composée est une homothétie ou une translation."
+  },
+  {
+    "id": "groupes-vf-13", "ch": "groupes", "type": "vf",
+    "enonce": "Deux permutations de $\\mathfrak S_n$ sont conjuguées dans $\\mathfrak S_n$ si et seulement si leurs décompositions en cycles à supports disjoints comportent, pour chaque longueur, le même nombre de cycles.",
+    "reponse": true,
+    "explication": "Clé : $\\sigma (a_1\\,\\dots\\,a_k) \\sigma^{-1} = (\\sigma(a_1)\\,\\dots\\,\\sigma(a_k))$, donc la conjugaison conserve le type. Réciproquement, si deux permutations ont même type, on construit $\\sigma$ en envoyant les éléments des cycles de l'une sur ceux de l'autre, dans l'ordre (points fixes compris)."
+  },
+  {
+    "id": "groupes-vf-14", "ch": "groupes", "type": "vf",
+    "enonce": "Si $E$ est un espace vectoriel euclidien de dimension $3$, le groupe $SO(E)$ est commutatif.",
+    "reponse": false,
+    "explication": "Dans une base orthonormée $(e_1, e_2, e_3)$, soit $r$ le quart de tour d'axe $e_3$ ($r(e_1) = e_2$) et $s$ le demi-tour d'axe $e_1$. Alors $r \\circ s(e_1) = e_2$ et $s \\circ r(e_1) = s(e_2) = -e_2$. C'est vrai en dimension $2$ : $SO(E)$ est alors isomorphe au groupe $\\mathbb U$."
+  },
+  {
+    "id": "groupes-qcm-01", "ch": "groupes", "type": "qcm",
+    "enonce": "Soit $G$ un groupe d'ordre $12$. Laquelle de ces propriétés est **toujours** vraie ?",
+    "choix": [
+      "tout élément $g$ de $G$ vérifie $g^{12} = e$",
+      "$G$ possède un élément d'ordre $12$",
+      "$G$ possède un sous-groupe d'ordre $6$",
+      "$G$ possède un élément d'ordre $4$"
+    ],
+    "bonne": 0,
+    "explication": "L'ordre de $g$ est le cardinal de $\\langle g \\rangle$, qui divise $12$ (Lagrange). Les trois autres échouent pour $\\mathfrak A_4$ : ses éléments sont d'ordres $1$, $2$ ou $3$, et il n'a pas de sous-groupe d'ordre $6$."
+  },
+  {
+    "id": "groupes-qcm-02", "ch": "groupes", "type": "qcm",
+    "enonce": "Soit $n \\ge 1$. Le déterminant induit, par passage au quotient, un isomorphisme de $U_n(\\mathbb C)/SU_n(\\mathbb C)$ sur **[ ? ]**.",
+    "choix": [
+      "le groupe $\\mathbb U$ des complexes de module $1$",
+      "$\\{-1, 1\\}$",
+      "$\\mathbb C^*$",
+      "$\\mathbb R_+^*$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $M$ unitaire, $|\\det M|^2 = \\det(M^* M) = 1$, donc $\\det$ envoie $U_n(\\mathbb C)$ dans $\\mathbb U$ ; il est surjectif ($\\det \\mathrm{diag}(z, 1, \\dots, 1) = z$) de noyau $SU_n(\\mathbb C)$. Le leurre $\\{-1,1\\}$ est la réponse pour $O_n(\\mathbb R)/SO_n(\\mathbb R)$."
+  },
+  {
+    "id": "groupes-qcm-03", "ch": "groupes", "type": "qcm",
+    "enonce": "Soit $\\sigma = (1\\,2)(3\\,4\\,5)(6\\,7) \\in \\mathfrak S_7$. Alors $\\sigma$ est **[ ? ]**.",
+    "choix": [
+      "d'ordre $6$ et de signature $1$",
+      "d'ordre $12$ et de signature $1$",
+      "d'ordre $6$ et de signature $-1$",
+      "d'ordre $7$ et de signature $-1$"
+    ],
+    "bonne": 0,
+    "explication": "Les cycles sont à supports disjoints, donc commutent : l'ordre est le PPCM des longueurs, $\\mathrm{ppcm}(2, 3, 2) = 6$, pas leur produit. Un $k$-cycle est de signature $(-1)^{k-1}$, d'où $\\varepsilon(\\sigma) = (-1)(+1)(-1) = 1$."
+  },
+  {
+    "id": "groupes-qcm-04", "ch": "groupes", "type": "qcm",
+    "enonce": "Formule des classes.\nUn groupe fini $G$ opère sur un ensemble fini $X$, et $x_1, \\dots, x_r$ sont des représentants des orbites. Alors $|X| = $ **[ ? ]**.",
+    "choix": [
+      "$\\displaystyle\\sum_{i=1}^r \\frac{|G|}{|\\mathrm{Stab}(x_i)|}$",
+      "$\\displaystyle\\sum_{i=1}^r |\\mathrm{Stab}(x_i)|$",
+      "$r\\,|G|$",
+      "$\\dfrac{|G|}{r}$"
+    ],
+    "bonne": 0,
+    "explication": "$X$ est réunion disjointe des orbites, et $|\\mathrm{Orb}(x)| = \\frac{|G|}{|\\mathrm{Stab}(x)|}$ car $g\\,\\mathrm{Stab}(x) \\mapsto g \\cdot x$ est une bijection des classes à gauche sur l'orbite. Les orbites n'ont pas toutes le cardinal de $G$ : penser à un point fixe."
+  },
+  {
+    "id": "groupes-qcm-05", "ch": "groupes", "type": "qcm",
+    "enonce": "Soit $n \\ge 3$ et $D_n$ le groupe des isométries du plan laissant stable un polygone régulier à $n$ côtés. Le produit de deux réflexions distinctes de $D_n$ est **[ ? ]**.",
+    "choix": [
+      "une rotation différente de l'identité",
+      "une réflexion",
+      "l'identité",
+      "la rotation d'angle $\\pi$"
+    ],
+    "bonne": 0,
+    "explication": "Les axes passent par le centre $O$ et font un angle $\\theta \\in \\,]0, \\pi[$ : le produit est la rotation de centre $O$ d'angle $\\pm 2\\theta$, non triviale. Son déterminant vaut $1$, ce n'est donc pas une réflexion. Pour $n = 3$, on obtient une rotation d'angle $\\pm\\frac{2\\pi}{3}$, pas $\\pi$."
+  },
+  {
+    "id": "groupes-qcm-06", "ch": "groupes", "type": "qcm",
+    "enonce": "Le groupe des déplacements de l'espace laissant stable un cube est isomorphe à **[ ? ]**.",
+    "choix": [
+      "$\\mathfrak S_4$",
+      "$\\mathfrak A_4$",
+      "$\\mathfrak S_4 \\times \\mathbb Z/2\\mathbb Z$",
+      "$\\mathbb Z/24\\mathbb Z$"
+    ],
+    "bonne": 0,
+    "explication": "Ce groupe, d'ordre $24$, agit fidèlement sur les $4$ grandes diagonales, d'où un morphisme injectif vers $\\mathfrak S_4$, donc bijectif. $\\mathfrak S_4 \\times \\mathbb Z/2\\mathbb Z$, d'ordre $48$, est le groupe de **toutes** les isométries du cube (on ajoute $-\\mathrm{id}$). $\\mathbb Z/24\\mathbb Z$ est commutatif, ce groupe ne l'est pas."
+  },
+  {
+    "id": "groupes-qcm-07", "ch": "groupes", "type": "qcm",
+    "enonce": "Le groupe des déplacements de l'espace laissant stable un tétraèdre régulier est isomorphe à **[ ? ]**.",
+    "choix": [
+      "$\\mathfrak A_4$",
+      "$\\mathfrak S_4$",
+      "$\\mathbb Z/12\\mathbb Z$",
+      "le groupe diédral d'ordre $12$"
+    ],
+    "bonne": 0,
+    "explication": "Les isométries du tétraèdre permutent ses $4$ sommets, qui forment un repère affine : une isométrie est déterminée par cette permutation, et toute permutation est réalisée. Le groupe des isométries est donc isomorphe à $\\mathfrak S_4$, les réflexions correspondant aux transpositions. Les déplacements, de déterminant $1$, correspondent aux permutations paires : $\\mathfrak A_4$. Ni $\\mathbb Z/12\\mathbb Z$ ni le diédral d'ordre $12$ ne conviennent : ils ont un élément d'ordre $6$, $\\mathfrak A_4$ non."
+  },
+  {
+    "id": "groupes-qcm-08", "ch": "groupes", "type": "qcm",
+    "enonce": "Soit $E$ un espace euclidien de dimension $3$ et $u \\in O(E)$ tel que $\\det u = -1$. Alors **[ ? ]**.",
+    "choix": [
+      "$-1$ est valeur propre de $u$",
+      "$u$ est une réflexion",
+      "$1$ est valeur propre de $u$",
+      "$u \\circ u = \\mathrm{id}_E$"
+    ],
+    "bonne": 0,
+    "explication": "$-u \\in SO(E)$ est une rotation, donc fixe un vecteur non nul $x$ : $u(x) = -x$. Contre-exemples aux leurres : $u = -\\mathrm{id}_E$ n'est pas une réflexion et n'a pas la valeur propre $1$ ; la composée d'un quart de tour et de la réflexion orthogonale à son axe vérifie $u \\circ u \\ne \\mathrm{id}_E$."
+  },
+  {
+    "id": "groupes-err-01", "ch": "groupes", "type": "erreur",
+    "enonce": "On veut déterminer l'ordre de $\\bar 8$ dans le groupe $(\\mathbb Z/12\\mathbb Z, +)$. Voici une copie.",
+    "lignes": [
+      "Le groupe $\\mathbb Z/12\\mathbb Z$ est d'ordre $12$, donc d'après le théorème de Lagrange l'ordre de $\\bar 8$ divise $12$.",
+      "On a $6 \\cdot \\bar 8 = \\overline{48} = \\bar 0$.",
+      "Donc $\\bar 8$ est d'ordre $6$."
+    ],
+    "fausse": 2,
+    "explication": "$6 \\cdot \\bar 8 = \\bar 0$ montre seulement que l'ordre divise $6$ : il manque la minimalité. Ici $3 \\cdot \\bar 8 = \\overline{24} = \\bar 0$ alors que $\\bar 8 \\ne \\bar 0$ et $2 \\cdot \\bar 8 = \\bar 4 \\ne \\bar 0$ : l'ordre est $3 = \\frac{12}{8 \\wedge 12}$."
+  },
+  {
+    "id": "groupes-err-02", "ch": "groupes", "type": "erreur",
+    "enonce": "On cherche le sous-groupe $H$ de $\\mathfrak S_3$ engendré par $a = (1\\,2)$ et $b = (1\\,3)$. Voici une copie.",
+    "lignes": [
+      "$H$ contient $\\mathrm{id}$, $a$, $b$ et $ab$, qui est un 3-cycle.",
+      "Ces quatre éléments sont deux à deux distincts.",
+      "Donc $H = \\{\\mathrm{id}, a, b, ab\\}$ est d'ordre $4$."
+    ],
+    "fausse": 2,
+    "explication": "Rien ne dit que cet ensemble est stable par produit : il contient aussi $ba$, l'autre 3-cycle. D'ailleurs $4$ ne divise pas $6$ (Lagrange). Correctement : $|H| \\ge 4$ et $|H|$ divise $6$, donc $H = \\mathfrak S_3$."
+  },
+  {
+    "id": "groupes-err-03", "ch": "groupes", "type": "erreur",
+    "enonce": "Pour $k \\in \\mathbb Z$, on note $\\bar k$ sa classe modulo $4$ et $\\dot k$ sa classe modulo $6$. On cherche un morphisme de groupes non nul de $\\mathbb Z/4\\mathbb Z$ dans $\\mathbb Z/6\\mathbb Z$. Voici une copie.",
+    "lignes": [
+      "L'application $\\psi : \\mathbb Z \\to \\mathbb Z/6\\mathbb Z$, $k \\mapsto \\dot k$, est un morphisme de groupes surjectif.",
+      "Son noyau est $6\\mathbb Z$.",
+      "Elle induit donc un morphisme $\\varphi : \\mathbb Z/4\\mathbb Z \\to \\mathbb Z/6\\mathbb Z$, $\\bar k \\mapsto \\dot k$."
+    ],
+    "fausse": 2,
+    "explication": "$\\psi$ passe au quotient par $4\\mathbb Z$ si et seulement si $4\\mathbb Z \\subset \\ker \\psi = 6\\mathbb Z$, ce qui est faux : $\\bar 0 = \\bar 4$ mais $\\dot 0 \\ne \\dot 4$, donc $\\varphi$ n'est pas bien définie. Il faut partir de $k \\mapsto \\dot{(3k)}$, de noyau $2\\mathbb Z \\supset 4\\mathbb Z$."
+  },
+  {
+    "id": "groupes-err-04", "ch": "groupes", "type": "erreur",
+    "enonce": "Soit $H$ un sous-groupe distingué d'un groupe $G$, $g \\in G$ et $h \\in H$. Une copie affirme que $g$ et $h$ commutent.",
+    "lignes": [
+      "Comme $H$ est distingué dans $G$, on a $gH = Hg$.",
+      "Comme $gh \\in gH$, on a $gh \\in Hg$.",
+      "Donc $gh = hg$."
+    ],
+    "fausse": 2,
+    "explication": "$gh \\in Hg$ donne seulement $gh = h'g$ pour un certain $h' \\in H$, en général différent de $h$. Contre-exemple : $\\mathfrak A_3$ est distingué dans $\\mathfrak S_3$, mais $(1\\,2)(1\\,2\\,3)$ et $(1\\,2\\,3)(1\\,2)$ sont deux transpositions distinctes."
+  },
+  {
+    "id": "groupes-err-05", "ch": "groupes", "type": "erreur",
+    "enonce": "On veut l'ordre et la signature de $\\sigma = (1\\,2\\,3\\,4)(5\\,6) \\in \\mathfrak S_6$. Voici une copie.",
+    "lignes": [
+      "Les deux cycles sont à supports disjoints, donc ils commutent.",
+      "Un $k$-cycle est de signature $(-1)^{k-1}$, donc $\\varepsilon(\\sigma) = (-1)^3 (-1)^1 = 1$.",
+      "Un $k$-cycle est d'ordre $k$.",
+      "Donc $\\sigma$ est d'ordre $4 \\times 2 = 8$."
+    ],
+    "fausse": 3,
+    "explication": "Pour des cycles disjoints, $\\sigma^m = \\mathrm{id}$ si et seulement si $m$ est multiple de chaque longueur : l'ordre est le PPCM, ici $4$. D'ailleurs $\\sigma^4 = (1\\,2\\,3\\,4)^4 (5\\,6)^4 = \\mathrm{id}$."
+  },
+  {
+    "id": "groupes-err-06", "ch": "groupes", "type": "erreur",
+    "enonce": "On veut calculer l'ordre du groupe $G$ des isométries de l'espace laissant stable un cube. Voici une copie.",
+    "lignes": [
+      "Tout élément de $G$ fixe le centre du cube et permute ses $8$ sommets.",
+      "$G$ agit transitivement sur les sommets : les réflexions par rapport aux trois plans médians permettent d'envoyer un sommet sur n'importe quel autre.",
+      "Un élément de $G$ qui fixe un sommet $A$ permute les trois sommets voisins de $A$, et il est déterminé par cette permutation.",
+      "Seules les rotations d'axe la grande diagonale issue de $A$ conviennent, donc $|\\mathrm{Stab}(A)| = 3$ et $|G| = 8 \\times 3 = 24$."
+    ],
+    "fausse": 3,
+    "explication": "Le stabilisateur contient aussi des réflexions : le plan contenant la grande diagonale issue de $A$ et un voisin $B$ fixe $A$ et $B$ et échange les deux autres voisins. Toutes les permutations des voisins sont réalisées : $|\\mathrm{Stab}(A)| = 6$ et $|G| = 48$. Le nombre $24$ est l'ordre du sous-groupe des déplacements."
+  },
+  {
+    "id": "groupes-piste-01", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $G$ un groupe fini d'ordre $n$. Montrer que $g^n = e$ pour tout $g \\in G$.",
+    "choix": [
+      {
+        "titre": "Théorème de Lagrange appliqué à $\\langle g \\rangle$",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$. L'ordre d'un élément $g$ est le cardinal du sous-groupe $\\langle g \\rangle$ qu'il engendre, et $g^m = e$ si et seulement si cet ordre divise $m$.",
+        "verdict": "bon",
+        "retour": "L'ordre $d$ de $g$ divise $n$, et $g^n = (g^d)^{n/d} = e$. Deux lignes."
+      },
+      {
+        "titre": "Produit de tous les éléments",
+        "info": "Pour $g$ fixé, $x \\mapsto gx$ est une bijection de $G$. Si $G$ est abélien, $\\prod_{x \\in G} (gx) = g^n \\prod_{x \\in G} x$.",
+        "verdict": "impasse",
+        "retour": "C'est la preuve dans le cas abélien. Ici $G$ est quelconque, et sans commutativité on ne peut pas sortir les $g$ du produit."
+      },
+      {
+        "titre": "Principe des tiroirs sur $g, g^2, \\dots, g^{n+1}$",
+        "info": "Parmi $n+1$ éléments d'un ensemble à $n$ éléments, deux sont égaux.",
+        "verdict": "impasse",
+        "retour": "On obtient $g^k = e$ pour un $k \\le n$, donc que l'ordre est au plus $n$, mais pas qu'il divise $n$."
+      },
+      {
+        "titre": "Formule des classes",
+        "info": "Pour l'action de $G$ sur lui-même par conjugaison, $|G| = |Z(G)| + \\sum_i \\frac{|G|}{|\\mathrm{Stab}(x_i)|}$, la somme portant sur des représentants des classes non réduites à un élément.",
+        "verdict": "impasse",
+        "retour": "Elle renseigne sur le centre et les classes de conjugaison, pas sur l'ordre d'un élément donné."
+      }
+    ],
+    "direction": "Soit $d$ l'ordre de $g$ : $d = |\\langle g \\rangle|$ divise $n$ par le théorème de Lagrange. Donc $g^n = (g^d)^{n/d} = e$."
+  },
+  {
+    "id": "groupes-piste-02", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $G$ un groupe tel que $g^2 = e$ pour tout $g \\in G$. Montrer que $G$ est abélien.",
+    "choix": [
+      {
+        "titre": "Développer $(ab)^2 = e$",
+        "info": "Dans un groupe, $(ab)^{-1} = b^{-1}a^{-1}$.",
+        "verdict": "bon",
+        "retour": "Tout élément est son propre inverse : $ab = (ab)^{-1} = b^{-1}a^{-1} = ba$."
+      },
+      {
+        "titre": "Structure de $\\mathbb Z/2\\mathbb Z$-espace vectoriel",
+        "info": "Un groupe abélien $(G, \\cdot)$ tel que $g^2 = e$ pour tout $g \\in G$ est un espace vectoriel sur $\\mathbb Z/2\\mathbb Z$, avec $\\bar k \\cdot g = g^k$.",
+        "verdict": "impasse",
+        "retour": "Cette structure suppose déjà $G$ abélien : c'est précisément ce qu'il faut montrer."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Dans un groupe fini, l'ordre de tout sous-groupe divise l'ordre du groupe.",
+        "verdict": "impasse",
+        "retour": "$G$ n'est pas supposé fini, et Lagrange ne dit rien sur la commutativité."
+      },
+      {
+        "titre": "Montrer que $G$ est cyclique",
+        "info": "Un groupe cyclique est abélien.",
+        "verdict": "impasse",
+        "retour": "C'est faux en général : $(\\mathbb Z/2\\mathbb Z)^2$ vérifie l'hypothèse sans être cyclique."
+      }
+    ],
+    "direction": "Pour $a, b \\in G$, chacun de $a$, $b$, $ab$ est son propre inverse. Donc $ab = (ab)^{-1} = b^{-1}a^{-1} = ba$."
+  },
+  {
+    "id": "groupes-piste-03", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $p$ un nombre premier, $n \\ge 1$ et $G$ un groupe d'ordre $p^n$. Montrer que le centre $Z(G)$ n'est pas réduit à $\\{e\\}$.",
+    "choix": [
+      {
+        "titre": "Formule des classes pour la conjugaison",
+        "info": "Pour l'action de $G$ sur lui-même par conjugaison, $|G| = |Z(G)| + \\sum_i \\frac{|G|}{|\\mathrm{Stab}(x_i)|}$, la somme portant sur des représentants $x_i$ des classes de conjugaison non réduites à un élément ; chaque terme de la somme est un diviseur de $|G|$ strictement supérieur à $1$.",
+        "verdict": "bon",
+        "retour": "Les éléments du centre sont exactement ceux dont la classe de conjugaison est un singleton : la formule isole $|Z(G)|$."
+      },
+      {
+        "titre": "Théorème de Lagrange appliqué à $Z(G)$",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "On obtient que $|Z(G)|$ est une puissance de $p$, mais $p^0 = 1$ n'est pas exclu."
+      },
+      {
+        "titre": "Montrer que $G$ est abélien",
+        "info": "Un groupe est abélien si et seulement s'il est égal à son centre.",
+        "verdict": "impasse",
+        "retour": "C'est faux dès $p^n = 8$ : le groupe diédral d'ordre $8$ n'est pas abélien."
+      },
+      {
+        "titre": "Théorème de Cauchy",
+        "info": "Si un nombre premier $p$ divise l'ordre d'un groupe fini $G$, alors $G$ possède un élément d'ordre $p$. Hors programme, à redémontrer.",
+        "verdict": "impasse",
+        "retour": "Il fournit un élément d'ordre $p$, mais rien ne dit qu'il soit central."
+      }
+    ],
+    "direction": "Dans la formule des classes, chaque terme $\\frac{|G|}{|\\mathrm{Stab}(x_i)|}$ est une puissance de $p$ différente de $1$, donc divisible par $p$, comme $|G|$. Donc $p$ divise $|Z(G)|$, qui est non nul car $e \\in Z(G)$ : $|Z(G)| \\ge p$."
+  },
+  {
+    "id": "groupes-piste-04", "ch": "groupes", "type": "piste",
+    "enonce": "Montrer que le groupe $G$ des déplacements de l'espace laissant stable un cube est d'ordre $24$.",
+    "choix": [
+      {
+        "titre": "Relation orbite-stabilisateur sur les sommets",
+        "info": "Si un groupe fini $G$ opère sur $X$, pour tout $x \\in X$ : $|G| = |\\mathrm{Orb}(x)| \\times |\\mathrm{Stab}(x)|$.",
+        "verdict": "bon",
+        "retour": "L'action sur les $8$ sommets est transitive et le stabilisateur d'un sommet est formé des rotations d'axe la grande diagonale qui en est issue."
+      },
+      {
+        "titre": "Action sur les $4$ grandes diagonales",
+        "info": "Toute action d'un groupe $G$ sur un ensemble à $n$ éléments définit un morphisme de $G$ dans $\\mathfrak S_n$ ; il est injectif si seul le neutre agit trivialement.",
+        "verdict": "possible",
+        "retour": "L'injectivité donne $|G| \\le 24$. Pour l'égalité, il faut encore montrer la surjectivité, par exemple en réalisant chaque transposition par un demi-tour d'axe joignant les milieux de deux arêtes opposées."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "Il ne fournit qu'une divisibilité, et on ne connaît pas l'ordre d'un groupe contenant $G$ qui servirait de borne."
+      },
+      {
+        "titre": "Formule des classes pour la conjugaison",
+        "info": "$|G| = |Z(G)| + \\sum_i \\frac{|G|}{|\\mathrm{Stab}(x_i)|}$, la somme portant sur des représentants des classes de conjugaison non réduites à un élément.",
+        "verdict": "impasse",
+        "retour": "Il faudrait connaître les classes de conjugaison, donc déjà le groupe."
+      }
+    ],
+    "direction": "En composant des quarts de tour d'axes passant par les centres de faces opposées, on envoie un sommet sur n'importe quel autre : l'orbite a $8$ éléments. Un déplacement fixant un sommet $A$ fixe aussi le centre $O$ : c'est une rotation d'axe $(OA)$, qui permute circulairement les trois voisins de $A$ : $3$ éléments. D'où $|G| = 8 \\times 3 = 24$."
+  },
+  {
+    "id": "groupes-piste-05", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $n \\ge 2$. Montrer que $\\mathfrak A_n$ est un sous-groupe distingué de $\\mathfrak S_n$, d'ordre $\\frac{n!}{2}$.",
+    "choix": [
+      {
+        "titre": "Noyau de la signature et théorème d'isomorphisme",
+        "info": "La signature $\\varepsilon : \\mathfrak S_n \\to \\{-1, 1\\}$ est un morphisme de groupes. Pour tout morphisme $f : G \\to G'$, $\\ker f$ est distingué dans $G$ et $G/\\ker f$ est isomorphe à $\\mathrm{Im}\\, f$.",
+        "verdict": "bon",
+        "retour": "$\\mathfrak A_n = \\ker \\varepsilon$ est distingué, et $\\varepsilon$ est surjective car une transposition est de signature $-1$."
+      },
+      {
+        "titre": "Multiplication par une transposition",
+        "info": "Pour une transposition $\\tau$ fixée, $\\sigma \\mapsto \\tau\\sigma$ est une bijection de $\\mathfrak S_n$ sur lui-même qui change la signature.",
+        "verdict": "possible",
+        "retour": "Elle échange $\\mathfrak A_n$ et son complémentaire, d'où l'ordre. Il reste à montrer que c'est un sous-groupe distingué, par exemple via l'indice $2$."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "Il donne seulement que $|\\mathfrak A_n|$ divise $n!$, ni la valeur exacte ni le caractère distingué."
+      },
+      {
+        "titre": "Formule des classes",
+        "info": "Pour l'action de $G$ sur un ensemble fini $X$, $|X|$ est la somme des cardinaux des orbites, chacun égal à $\\frac{|G|}{|\\mathrm{Stab}(x)|}$.",
+        "verdict": "impasse",
+        "retour": "Aucune action naturelle ici ne fait apparaître $\\mathfrak A_n$ comme orbite ou stabilisateur sans connaître déjà la signature."
+      }
+    ],
+    "direction": "$\\mathfrak A_n = \\ker \\varepsilon$ est un sous-groupe distingué. Comme $\\varepsilon((1\\,2)) = -1$, $\\varepsilon$ est surjective, donc $\\mathfrak S_n / \\mathfrak A_n \\simeq \\{-1, 1\\}$ et $|\\mathfrak A_n| = \\frac{n!}{2}$."
+  },
+  {
+    "id": "groupes-piste-06", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $n \\ge 2$ et $k \\in \\mathbb Z$. Montrer que $\\bar k$ engendre le groupe $(\\mathbb Z/n\\mathbb Z, +)$ si et seulement si $k \\wedge n = 1$.",
+    "choix": [
+      {
+        "titre": "Théorème de Bézout",
+        "info": "$k \\wedge n = 1$ si et seulement s'il existe $u, v \\in \\mathbb Z$ tels que $uk + vn = 1$.",
+        "verdict": "bon",
+        "retour": "$\\bar k$ engendre $\\mathbb Z/n\\mathbb Z$ si et seulement si $\\bar 1 \\in \\langle \\bar k \\rangle$, c'est-à-dire s'il existe $u$ tel que $uk \\equiv 1 \\pmod n$."
+      },
+      {
+        "titre": "Calculer l'ordre de $\\bar k$",
+        "info": "Dans $\\mathbb Z/n\\mathbb Z$, l'ordre de $\\bar k$ est $\\frac{n}{k \\wedge n}$. Un élément d'un groupe fini d'ordre $n$ l'engendre si et seulement s'il est d'ordre $n$.",
+        "verdict": "bon",
+        "retour": "Il faut d'abord établir la formule de l'ordre (via $n \\mid mk \\iff \\frac{n}{d} \\mid m\\frac kd$, avec $d = k \\wedge n$), puis tout est immédiat."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "Il dit que l'ordre de $\\bar k$ divise $n$, pas quand il vaut $n$."
+      },
+      {
+        "titre": "Petit théorème de Fermat",
+        "info": "Si $p$ est premier et $p \\nmid a$, alors $a^{p-1} \\equiv 1 \\pmod p$.",
+        "verdict": "impasse",
+        "retour": "$n$ n'est pas supposé premier, et c'est un énoncé multiplicatif alors que le groupe est additif."
+      }
+    ],
+    "direction": "Si $uk + vn = 1$, alors $u \\cdot \\bar k = \\bar 1$, qui engendre tout. Réciproquement, si $\\bar 1 = u \\cdot \\bar k$, alors $n$ divise $uk - 1$ : on obtient une relation de Bézout, donc $k \\wedge n = 1$."
+  },
+  {
+    "id": "groupes-piste-07", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $p$ un nombre premier. Déterminer le cardinal du groupe $GL_2(\\mathbb Z/p\\mathbb Z)$.",
+    "choix": [
+      {
+        "titre": "Compter les bases de $(\\mathbb Z/p\\mathbb Z)^2$",
+        "info": "Une matrice carrée est inversible si et seulement si ses colonnes forment une base. Une famille $(c_1, c_2)$ est une base de $K^2$ si et seulement si $c_1 \\ne 0$ et $c_2 \\notin K c_1$.",
+        "verdict": "bon",
+        "retour": "On choisit $c_1$ parmi $p^2 - 1$ vecteurs non nuls, puis $c_2$ hors de la droite $Kc_1$, qui a $p$ éléments."
+      },
+      {
+        "titre": "Compter les matrices non inversibles",
+        "info": "$\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$ est non inversible si et seulement si $ad = bc$. On retire leur nombre à $|M_2(\\mathbb Z/p\\mathbb Z)| = p^4$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais compter les solutions de $ad = bc$ demande une disjonction de cas pénible."
+      },
+      {
+        "titre": "Déterminant et $SL_2$",
+        "info": "$\\det : GL_2(K) \\to K^*$ est un morphisme surjectif de noyau $SL_2(K)$, donc $|GL_2(K)| = (|K| - 1)\\,|SL_2(K)|$ pour $K$ fini.",
+        "verdict": "impasse",
+        "retour": "On se ramène au cardinal de $SL_2(\\mathbb Z/p\\mathbb Z)$, qui n'est pas plus facile à obtenir directement."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "Une divisibilité ne donne pas un cardinal."
+      }
+    ],
+    "direction": "$|GL_2(\\mathbb Z/p\\mathbb Z)| = (p^2 - 1)(p^2 - p) = p(p-1)^2(p+1)$. Pour $p = 2$, on trouve $6$ : ce groupe est isomorphe à $\\mathfrak S_3$ (il permute les trois vecteurs non nuls)."
+  },
+  {
+    "id": "groupes-piste-08", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $K$ un corps commutatif et $n \\ge 2$. Montrer que le centre de $GL_n(K)$ est $\\{\\lambda I_n,\\ \\lambda \\in K^*\\}$.",
+    "choix": [
+      {
+        "titre": "Commuter avec les matrices $I_n + E_{ij}$, $i \\ne j$",
+        "info": "Pour $i \\ne j$, $I_n + E_{ij}$ est inversible (de déterminant $1$). $AE_{ij}$ a pour seule colonne non nulle la $j$-ième, égale à la $i$-ième colonne de $A$ ; $E_{ij}A$ a pour seule ligne non nulle la $i$-ième, égale à la $j$-ième ligne de $A$.",
+        "verdict": "bon",
+        "retour": "La condition $A E_{ij} = E_{ij} A$ donne directement $a_{ki} = 0$ pour $k \\ne i$ et $a_{ii} = a_{jj}$, sur n'importe quel corps."
+      },
+      {
+        "titre": "Commuter avec les matrices diagonales inversibles",
+        "info": "Une matrice qui commute avec une matrice diagonale à coefficients diagonaux deux à deux distincts est diagonale.",
+        "verdict": "possible",
+        "retour": "On obtient au mieux $A$ diagonale, et seulement si $K$ a assez d'éléments (sur $\\mathbb Z/2\\mathbb Z$, la seule matrice diagonale inversible est $I_n$). Il faut ensuite un autre argument pour l'égalité des coefficients."
+      },
+      {
+        "titre": "Trigonaliser $A$",
+        "info": "Si le polynôme caractéristique de $A$ est scindé sur $K$, $A$ est semblable à une matrice triangulaire supérieure.",
+        "verdict": "impasse",
+        "retour": "Le polynôme caractéristique n'est pas forcément scindé, et la forme triangulaire n'utilise pas l'hypothèse de commutation."
+      },
+      {
+        "titre": "Le centre est distingué",
+        "info": "Le centre d'un groupe est un sous-groupe distingué, noyau du morphisme $g \\mapsto i_g$ vers $\\mathrm{Aut}(G)$.",
+        "verdict": "impasse",
+        "retour": "C'est vrai mais ne dit rien sur ses éléments."
+      }
+    ],
+    "direction": "Les homothéties $\\lambda I_n$ commutent avec tout. Réciproquement, si $A$ est centrale, $A(I_n + E_{ij}) = (I_n + E_{ij})A$ donne $AE_{ij} = E_{ij}A$ pour tous $i \\ne j$, d'où $A$ diagonale à coefficients diagonaux égaux : $A = \\lambda I_n$ avec $\\lambda \\ne 0$."
+  },
+  {
+    "id": "groupes-piste-09", "ch": "groupes", "type": "piste",
+    "enonce": "Dans le plan identifié à $\\mathbb C$, déterminer la nature et les éléments caractéristiques de l'application $f : z \\mapsto (1+i)z + 1$.",
+    "choix": [
+      {
+        "titre": "Forme réduite d'une similitude directe",
+        "info": "Une similitude directe s'écrit $z \\mapsto az + b$ avec $a \\in \\mathbb C^*$. Si $a \\ne 1$, elle a un unique point fixe $\\omega$, et c'est la composée commutative de l'homothétie de centre $\\omega$ de rapport $|a|$ et de la rotation de centre $\\omega$ d'angle $\\arg a$.",
+        "verdict": "bon",
+        "retour": "On lit tout sur $a = 1+i$ et on calcule le point fixe."
+      },
+      {
+        "titre": "Images de deux points",
+        "info": "Une similitude directe est déterminée par les images de deux points distincts.",
+        "verdict": "possible",
+        "retour": "C'est utile pour construire une similitude, mais ici l'expression est donnée : on refait à la main le calcul du centre, du rapport et de l'angle."
+      },
+      {
+        "titre": "Reconnaître une isométrie",
+        "info": "Les isométries directes du plan sont les $z \\mapsto az + b$ avec $|a| = 1$.",
+        "verdict": "impasse",
+        "retour": "$|1 + i| = \\sqrt 2 \\ne 1$ : $f$ multiplie les distances par $\\sqrt 2$."
+      },
+      {
+        "titre": "Reconnaître une homothétie",
+        "info": "Les homothéties du plan sont les $z \\mapsto k(z - \\omega) + \\omega$ avec $k \\in \\mathbb R^* \\setminus \\{1\\}$.",
+        "verdict": "impasse",
+        "retour": "$1 + i$ n'est pas réel : il y a une composante de rotation."
+      }
+    ],
+    "direction": "$f$ est une similitude directe avec $a = 1 + i \\ne 1$. Point fixe : $\\omega = \\frac{1}{1 - (1+i)} = i$. C'est la similitude de centre $i$, de rapport $|1+i| = \\sqrt 2$ et d'angle $\\frac{\\pi}{4}$."
+  },
+  {
+    "id": "groupes-piste-10", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $E$ un espace affine réel et $GA(E)$ son groupe affine. Montrer que l'ensemble $HT(E)$ formé des translations et des homothéties de rapport non nul de $E$ est un sous-groupe de $GA(E)$.",
+    "choix": [
+      {
+        "titre": "Image réciproque par $f \\mapsto \\vec f$",
+        "info": "L'application qui à $f \\in GA(E)$ associe sa partie linéaire $\\vec f \\in GL(\\vec E)$ est un morphisme de groupes. L'image réciproque d'un sous-groupe par un morphisme est un sous-groupe.",
+        "verdict": "bon",
+        "retour": "Il suffit de vérifier que $HT(E)$ est exactement l'ensemble des $f$ dont la partie linéaire est une homothétie vectorielle $\\lambda\\,\\mathrm{id}$, $\\lambda \\ne 0$."
+      },
+      {
+        "titre": "Composer les cas un par un",
+        "info": "La composée de deux homothéties de rapports $k$ et $k'$ est une homothétie de rapport $kk'$ si $kk' \\ne 1$, une translation si $kk' = 1$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais il faut traiter toutes les combinaisons (homothétie et translation dans les deux ordres, etc.) avec des calculs de centres."
+      },
+      {
+        "titre": "Noyau de $f \\mapsto \\vec f$",
+        "info": "Le noyau d'un morphisme de groupes est un sous-groupe distingué.",
+        "verdict": "impasse",
+        "retour": "Ce noyau est le groupe des translations seulement : les homothéties de rapport différent de $1$ n'y sont pas."
+      },
+      {
+        "titre": "Chercher un point fixe commun",
+        "info": "L'ensemble des éléments d'un groupe d'applications qui fixent un point donné est un sous-groupe (stabilisateur).",
+        "verdict": "impasse",
+        "retour": "Une translation non triviale n'a aucun point fixe, et deux homothéties de centres distincts n'en ont pas en commun."
+      }
+    ],
+    "direction": "Si $\\vec f = \\lambda\\,\\mathrm{id}$ : pour $\\lambda = 1$, $f$ est une translation ; pour $\\lambda \\ne 1$, $f$ a un unique point fixe $\\Omega$ et $f$ est l'homothétie de centre $\\Omega$ de rapport $\\lambda$. Donc $HT(E)$ est l'image réciproque du sous-groupe $\\{\\lambda\\,\\mathrm{id},\\ \\lambda \\ne 0\\}$ de $GL(\\vec E)$."
+  },
+  {
+    "id": "groupes-piste-11", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $n \\ge 3$ et $D_n$ le groupe des isométries du plan laissant stable un polygone régulier à $n$ côtés. Déterminer le centre de $D_n$.",
+    "choix": [
+      {
+        "titre": "Écriture avec une rotation $r$ et une réflexion $s$",
+        "info": "$D_n = \\{r^k, s r^k,\\ 0 \\le k \\le n-1\\}$ où $r$ est la rotation d'angle $\\frac{2\\pi}{n}$ autour du centre et $s$ une réflexion de $D_n$ ; ces $2n$ éléments sont distincts et $s r s^{-1} = r^{-1}$.",
+        "verdict": "bon",
+        "retour": "Il suffit de tester la commutation de chaque élément avec $r$ et avec $s$, qui engendrent $D_n$."
+      },
+      {
+        "titre": "Conjuguer une réflexion",
+        "info": "Si $g$ est une isométrie et $s$ la réflexion d'axe $\\Delta$, alors $g s g^{-1}$ est la réflexion d'axe $g(\\Delta)$.",
+        "verdict": "bon",
+        "retour": "Un élément central $z$ vérifie $zsz^{-1} = s$, donc laisse stable chacun des $n \\ge 3$ axes. Une isométrie fixant le centre et laissant stables trois droites distinctes est l'identité ou le demi-tour, qui est dans $D_n$ si et seulement si $n$ est pair."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Si $H$ est un sous-groupe d'un groupe fini $G$, alors $|H|$ divise $|G|$.",
+        "verdict": "impasse",
+        "retour": "On apprend seulement que l'ordre du centre divise $2n$."
+      },
+      {
+        "titre": "Formule des classes",
+        "info": "$|G| = |Z(G)| + \\sum_i \\frac{|G|}{|\\mathrm{Stab}(x_i)|}$, la somme portant sur des représentants des classes de conjugaison non réduites à un élément.",
+        "verdict": "impasse",
+        "retour": "Sans connaître les classes de conjugaison, elle ne détermine pas $Z(G)$ ; et $D_n$ n'est pas un $p$-groupe en général."
+      }
+    ],
+    "direction": "$r^k$ commute avec $s$ si et seulement si $r^{-k} = r^k$, soit $n \\mid 2k$. Et $s r^k$ ne commute jamais avec $r$ : ce serait $r^2 = \\mathrm{id}$, exclu pour $n \\ge 3$. Donc $Z(D_n) = \\{\\mathrm{id}\\}$ si $n$ est impair, et $\\{\\mathrm{id}, r^{n/2}\\}$ (le demi-tour) si $n$ est pair."
+  },
+  {
+    "id": "groupes-piste-12", "ch": "groupes", "type": "piste",
+    "enonce": "Soit $E$ un espace euclidien orienté de dimension $3$, $r$ la rotation d'axe dirigé et orienté par le vecteur unitaire $u$, d'angle $\\theta$, et $g \\in SO(E)$. Montrer que $g r g^{-1}$ est la rotation d'axe dirigé et orienté par $g(u)$, d'angle $\\theta$.",
+    "choix": [
+      {
+        "titre": "Matrice dans une base orthonormée directe adaptée",
+        "info": "Si $(u, v, w)$ est une base orthonormée directe, la matrice de $r$ dans cette base est $\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & \\cos\\theta & -\\sin\\theta \\\\ 0 & \\sin\\theta & \\cos\\theta \\end{pmatrix}$. Un élément de $SO(E)$ envoie une base orthonormée directe sur une base orthonormée directe.",
+        "verdict": "bon",
+        "retour": "La matrice de $grg^{-1}$ dans la base $(g(u), g(v), g(w))$ est celle de $r$ dans $(u, v, w)$."
+      },
+      {
+        "titre": "Invariance de la trace",
+        "info": "Deux endomorphismes conjugués ont la même trace, et une rotation d'angle $\\theta$ a pour trace $1 + 2\\cos\\theta$.",
+        "verdict": "possible",
+        "retour": "Avec le fait que $g(u)$ est fixe, on obtient l'axe et $\\cos\\theta$, mais pas le signe de l'angle : il manque l'orientation."
+      },
+      {
+        "titre": "Diagonaliser $r$ dans une base orthonormée",
+        "info": "Un endomorphisme est diagonalisable dans une base orthonormée si et seulement s'il est symétrique.",
+        "verdict": "impasse",
+        "retour": "$r$ n'est symétrique que si $\\theta \\in \\pi\\mathbb Z$ ; en général elle n'est même pas diagonalisable sur $\\mathbb R$."
+      },
+      {
+        "titre": "Commutativité de $SO(E)$",
+        "info": "Dans un groupe commutatif, tout conjugué $g r g^{-1}$ est égal à $r$.",
+        "verdict": "impasse",
+        "retour": "$SO(E)$ n'est pas commutatif en dimension $3$, et le résultat attendu change d'ailleurs l'axe."
+      }
+    ],
+    "direction": "$grg^{-1}(g(u)) = g(r(u)) = g(u)$. Pour $(u, v, w)$ orthonormée directe, $(g(u), g(v), g(w))$ l'est aussi, et $grg^{-1}(g(x)) = g(r(x))$ montre que la matrice de $grg^{-1}$ dans cette base est celle de $r$ dans $(u, v, w)$."
+  }
+]

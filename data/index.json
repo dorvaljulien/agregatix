@@ -7,7 +7,7 @@
       "chapitres": [
         { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1", "cartes": true },
         { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4" },
-        { "id": "groupes", "nom": "Groupes", "ref": "4" },
+        { "id": "groupes", "nom": "Groupes", "ref": "4", "cartes": true },
         { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "cartes": true },
         { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6" },
         { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "cartes": true },
