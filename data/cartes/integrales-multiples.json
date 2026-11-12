@@ -1,0 +1,508 @@
+[
+  {
+    "id": "integrales-multiples-vf-01", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $f$ une fonction continue à valeurs réelles sur $[a, b] \\times [c, d]$, de signe quelconque. Alors $\\displaystyle\\int_a^b \\!\\left(\\int_c^d f(x, y)\\,\\mathrm dy\\right) \\mathrm dx = \\int_c^d \\!\\left(\\int_a^b f(x, y)\\,\\mathrm dx\\right) \\mathrm dy$.",
+    "reponse": true,
+    "explication": "C'est la formule de Fubini sur un rectangle **borné et fermé** : la continuité suffit, aucune hypothèse de signe n'est demandée. La valeur commune définit l'intégrale double de $f$ sur le rectangle."
+  },
+  {
+    "id": "integrales-multiples-vf-02", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $f$ continue à valeurs réelles sur $]0, 1] \\times ]0, 1]$, telle que les deux intégrales itérées $\\int_0^1 \\!\\left(\\int_0^1 f\\,\\mathrm dy\\right) \\mathrm dx$ et $\\int_0^1 \\!\\left(\\int_0^1 f\\,\\mathrm dx\\right) \\mathrm dy$ existent. Alors elles sont égales.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x, y) = \\frac{x^2 - y^2}{(x^2 + y^2)^2}$. Comme $\\frac{\\partial}{\\partial y} \\frac{y}{x^2 + y^2} = f(x, y)$, on trouve $\\int_0^1 f\\,\\mathrm dy = \\frac1{1+x^2}$, d'où $\\frac\\pi4$ dans un ordre, et $-\\frac\\pi4$ dans l'autre (par antisymétrie). Le rectangle n'est pas fermé, $f$ n'y est pas bornée : il faut $f$ positive, ou $|f|$ intégrable."
+  },
+  {
+    "id": "integrales-multiples-vf-03", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $f$ continue et positive sur $[0, +\\infty[^2$. Si $\\displaystyle\\int_0^{+\\infty} \\!\\left(\\int_0^{+\\infty} f(x, y)\\,\\mathrm dy\\right) \\mathrm dx$ est finie, alors l'intégrale itérée dans l'autre ordre est finie et lui est égale.",
+    "reponse": true,
+    "explication": "C'est le théorème de Fubini-Tonelli : pour $f$ continue positive sur un rectangle borné ou non, les deux intégrales itérées sont égales dans $[0, +\\infty]$. Si l'une est finie, l'autre aussi, et $f$ est intégrable."
+  },
+  {
+    "id": "integrales-multiples-vf-04", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $f$ continue à valeurs réelles sur $[1, +\\infty[^2$ telle que $\\int_1^{+\\infty} \\!\\left(\\int_1^{+\\infty} f(x, y)\\,\\mathrm dy\\right) \\mathrm dx$ converge. Alors l'intégrale itérée dans l'autre ordre converge et a la même valeur.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x, y) = \\frac{x^2 - y^2}{(x^2 + y^2)^2}$. On a $\\int_1^{+\\infty} f\\,\\mathrm dy = \\left[\\frac{y}{x^2+y^2}\\right]_1^{+\\infty} = -\\frac1{1+x^2}$, d'où la valeur $-\\frac\\pi4$, et $+\\frac\\pi4$ dans l'autre ordre. Il faut supposer $f$ positive (Fubini-Tonelli) ou $|f|$ intégrable."
+  },
+  {
+    "id": "integrales-multiples-vf-05", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $f$ continue et positive sur $\\mathbb R^2$. Alors, dans $[0, +\\infty]$, $\\displaystyle\\iint_{\\mathbb R^2} f = \\int_0^{2\\pi} \\!\\left(\\int_0^{+\\infty} f(r\\cos\\theta, r\\sin\\theta)\\, r\\,\\mathrm dr\\right) \\mathrm d\\theta$.",
+    "reponse": true,
+    "explication": "Passage en coordonnées polaires : la valeur absolue du jacobien de $(r, \\theta) \\mapsto (r\\cos\\theta, r\\sin\\theta)$ vaut $r$. Pour une fonction positive, l'égalité a lieu dans $[0, +\\infty]$, et les deux membres sont finis en même temps."
+  },
+  {
+    "id": "integrales-multiples-vf-06", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Avec les coordonnées sphériques $x = r\\sin\\varphi\\cos\\theta$, $y = r\\sin\\varphi\\sin\\theta$, $z = r\\cos\\varphi$, le volume de la boule unité de $\\mathbb R^3$ vaut $\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^{\\pi}\\!\\!\\int_0^1 r\\sin\\varphi\\,\\mathrm dr\\,\\mathrm d\\varphi\\,\\mathrm d\\theta$.",
+    "reponse": false,
+    "explication": "La valeur absolue du jacobien est $r^2 \\sin\\varphi$, pas $r\\sin\\varphi$. L'intégrale proposée vaut $2\\pi \\cdot 2 \\cdot \\frac12 = 2\\pi$, alors que $\\int_0^{2\\pi}\\!\\int_0^\\pi\\!\\int_0^1 r^2\\sin\\varphi = 2\\pi \\cdot 2 \\cdot \\frac13 = \\frac{4\\pi}3$."
+  },
+  {
+    "id": "integrales-multiples-vf-07", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "La longueur de l'arc paramétré $\\gamma(t) = (t, \\mathrm{ch}\\, t)$, $t \\in [0, 1]$, vaut $\\mathrm{sh}\\, 1$.",
+    "reponse": true,
+    "explication": "$\\|\\gamma'(t)\\| = \\sqrt{1 + \\mathrm{sh}^2 t} = \\mathrm{ch}\\, t$, donc $L = \\int_0^1 \\mathrm{ch}\\, t\\,\\mathrm dt = \\mathrm{sh}\\, 1$."
+  },
+  {
+    "id": "integrales-multiples-vf-08", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Le travail du champ $F(x, y) = (-y, x)$ le long du cercle unité parcouru une fois dans le sens direct est nul.",
+    "reponse": false,
+    "explication": "Avec $\\gamma(t) = (\\cos t, \\sin t)$, $t \\in [0, 2\\pi]$ : $\\int_0^{2\\pi} \\langle F(\\gamma(t)), \\gamma'(t)\\rangle\\,\\mathrm dt = \\int_0^{2\\pi} (\\sin^2 t + \\cos^2 t)\\,\\mathrm dt = 2\\pi$. Le travail le long d'un arc fermé est nul quand $F$ est le gradient d'une fonction de classe $\\mathcal C^1$, ce qui n'est pas le cas ici."
+  },
+  {
+    "id": "integrales-multiples-vf-09", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soit $U$ de classe $\\mathcal C^1$ sur un ouvert $\\Omega$ de $\\mathbb R^2$ et $\\gamma : [a, b] \\to \\Omega$ de classe $\\mathcal C^1$. Le travail du champ $\\nabla U$ le long de $\\gamma$ vaut $U(\\gamma(b)) - U(\\gamma(a))$.",
+    "reponse": true,
+    "explication": "Par dérivation composée, $\\frac{\\mathrm d}{\\mathrm dt} U(\\gamma(t)) = \\langle \\nabla U(\\gamma(t)), \\gamma'(t)\\rangle$. On intègre sur $[a, b]$. Le travail ne dépend que des extrémités de l'arc."
+  },
+  {
+    "id": "integrales-multiples-vf-10", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Pour toute fonction $f$ continue sur $[0, 1]^2$ : $\\displaystyle\\int_0^1 \\!\\left(\\int_0^x f(x, y)\\,\\mathrm dy\\right) \\mathrm dx = \\int_0^1 \\!\\left(\\int_0^y f(x, y)\\,\\mathrm dx\\right) \\mathrm dy$.",
+    "reponse": false,
+    "explication": "Le domaine $\\{0 \\le y \\le x \\le 1\\}$ se décrit aussi par $0 \\le y \\le 1$, $y \\le x \\le 1$ : la borne intérieure correcte est $\\int_y^1$. Contre-exemple : $f(x, y) = x$ donne $\\int_0^1 x^2\\,\\mathrm dx = \\frac13$ à gauche et $\\int_0^1 \\frac{y^2}2\\,\\mathrm dy = \\frac16$ à droite."
+  },
+  {
+    "id": "integrales-multiples-vf-11", "ch": "integrales-multiples", "type": "vf",
+    "enonce": "Soient $A$ et $B$ deux parties géométriquement simples du plan et $f$ continue positive sur $A \\cup B$. Alors $\\iint_{A \\cup B} f = \\iint_A f + \\iint_B f$.",
+    "reponse": false,
+    "explication": "Faux en général : avec $A = B = [0, 1]^2$ et $f = 1$, on obtient $1$ à gauche et $2$ à droite. L'additivité relativement aux ensembles demande que $A \\cap B$ soit d'aire nulle (par exemple une arête commune)."
+  },
+  {
+    "id": "integrales-multiples-qcm-01", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Théorème de Fubini-Tonelli.\nSoit $f$ une fonction de deux variables, continue sur un rectangle $I \\times J$ borné ou non, et **[ ? ]**. Alors on peut intervertir l'ordre des intégrations, l'égalité ayant lieu dans $[0, +\\infty]$.",
+    "choix": [
+      "positive",
+      "bornée",
+      "de limite nulle quand $x^2 + y^2 \\to +\\infty$",
+      "dont les deux intégrales itérées convergent"
+    ],
+    "bonne": 0,
+    "explication": "Seule la positivité convient. La fonction $f(x, y) = \\frac{x^2 - y^2}{(x^2+y^2)^2}$ sur $[1, +\\infty[^2$ est bornée par $\\frac12$, tend vers $0$ à l'infini, et ses deux intégrales itérées convergent, vers $-\\frac\\pi4$ et $\\frac\\pi4$."
+  },
+  {
+    "id": "integrales-multiples-qcm-02", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Soit $f$ une fonction complexe de deux variables, continue sur un rectangle $I \\times J$ borné ou non. On dit que $f$ est intégrable si **[ ? ]**. Dans ce cas, on peut intervertir l'ordre des intégrations.",
+    "choix": [
+      "$|f|$ est intégrable sur $I \\times J$",
+      "les deux intégrales itérées de $f$ existent",
+      "$f$ est bornée sur $I \\times J$",
+      "$f(x, y) \\to 0$ quand $x^2 + y^2 \\to +\\infty$"
+    ],
+    "bonne": 0,
+    "explication": "C'est la définition du programme : on contrôle $|f|$, fonction positive, par Fubini-Tonelli. L'existence des deux intégrales itérées ne suffit pas : $\\frac{x^2 - y^2}{(x^2+y^2)^2}$ sur $[1, +\\infty[^2$ a deux intégrales itérées différentes, et elle est aussi bornée et de limite nulle."
+  },
+  {
+    "id": "integrales-multiples-qcm-03", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Soient $a, b > 0$. Pour calculer l'aire de l'ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} \\le 1$, on pose $x = a r\\cos\\theta$, $y = b r\\sin\\theta$. La valeur absolue du jacobien de $(r, \\theta) \\mapsto (x, y)$ vaut :",
+    "choix": [
+      "$abr$",
+      "$r$",
+      "$ab$",
+      "$abr^2$"
+    ],
+    "bonne": 0,
+    "explication": "$\\det \\begin{pmatrix} a\\cos\\theta & -ar\\sin\\theta \\\\ b\\sin\\theta & br\\cos\\theta \\end{pmatrix} = abr$. L'aire vaut donc $\\int_0^{2\\pi}\\!\\int_0^1 abr\\,\\mathrm dr\\,\\mathrm d\\theta = \\pi ab$."
+  },
+  {
+    "id": "integrales-multiples-qcm-04", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Quel est le volume du solide $\\{(x, y, z) \\in \\mathbb R^3 : x^2 + y^2 \\le z \\le 1\\}$ ?",
+    "choix": [
+      "$\\frac\\pi2$",
+      "$\\frac{4\\pi}3$",
+      "$\\pi$",
+      "$\\frac\\pi3$"
+    ],
+    "bonne": 0,
+    "explication": "En coordonnées cylindriques, le solide est $\\{0 \\le r \\le 1,\\ r^2 \\le z \\le 1\\}$ et le jacobien vaut $r$ : $V = 2\\pi \\int_0^1 (1 - r^2)\\, r\\,\\mathrm dr = 2\\pi\\left(\\frac12 - \\frac14\\right) = \\frac\\pi2$. Oublier le facteur $r$ donne $\\frac{4\\pi}3$."
+  },
+  {
+    "id": "integrales-multiples-qcm-05", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Le domaine $D = \\{(x, y) : 0 \\le x \\le 1,\\ x^2 \\le y \\le x\\}$ s'écrit aussi :",
+    "choix": [
+      "$\\{(x, y) : 0 \\le y \\le 1,\\ y \\le x \\le \\sqrt y\\}$",
+      "$\\{(x, y) : 0 \\le y \\le 1,\\ y^2 \\le x \\le y\\}$",
+      "$\\{(x, y) : 0 \\le y \\le 1,\\ \\sqrt y \\le x \\le y\\}$",
+      "$\\{(x, y) : 0 \\le y \\le 1,\\ 0 \\le x \\le \\sqrt y\\}$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $x \\ge 0$, $x^2 \\le y$ équivaut à $x \\le \\sqrt y$, et $y \\le x$ donne la borne inférieure. Le deuxième choix est le symétrique de $D$ par rapport à la première bissectrice (il contient $(0{,}5\\,; 0{,}6)$, absent de $D$). Le troisième est réduit à deux points, le quatrième contient $(0, \\frac12)$, absent de $D$."
+  },
+  {
+    "id": "integrales-multiples-qcm-06", "ch": "integrales-multiples", "type": "qcm",
+    "enonce": "Changement de variables.\nSoient $U, V$ deux ouverts de $\\mathbb R^2$ et $\\varphi : U \\to V$ **[ ? ]**. Pour $f$ continue positive sur $V$ : $\\displaystyle\\iint_V f = \\iint_U f \\circ \\varphi\\, |J_\\varphi|$.",
+    "choix": [
+      "un $\\mathcal C^1$-difféomorphisme",
+      "de classe $\\mathcal C^1$ et surjective",
+      "de classe $\\mathcal C^1$, de jacobien non nul en tout point",
+      "continue et surjective"
+    ],
+    "bonne": 0,
+    "explication": "Il faut une bijection $\\mathcal C^1$ d'inverse $\\mathcal C^1$. Sans injectivité, des points sont comptés plusieurs fois : $\\varphi(r, \\theta) = (r\\cos\\theta, r\\sin\\theta)$ envoie $]0, 1[ \\times ]0, 4\\pi[$ sur le disque unité épointé, avec un jacobien $r$ jamais nul, et $\\iint_U r = 2\\pi \\ne \\pi$. Une application seulement continue n'a pas de jacobien."
+  },
+  {
+    "id": "integrales-multiples-err-01", "ch": "integrales-multiples", "type": "erreur",
+    "enonce": "Soit $f(x, y) = \\dfrac{x^2 - y^2}{(x^2 + y^2)^2}$ sur $]0, 1]^2$. On veut comparer les deux intégrales itérées. Voici une copie.",
+    "lignes": [
+      "Pour $x \\in ]0, 1]$ fixé, $y \\mapsto \\frac{y}{x^2 + y^2}$ a pour dérivée $y \\mapsto f(x, y)$, donc $\\int_0^1 f(x, y)\\,\\mathrm dy = \\frac{1}{1 + x^2}$.",
+      "Donc $\\int_0^1 \\!\\left(\\int_0^1 f(x, y)\\,\\mathrm dy\\right) \\mathrm dx = \\frac\\pi4$.",
+      "Comme $f$ est continue sur $]0, 1]^2$, le théorème de Fubini permet d'intervertir : $\\int_0^1 \\!\\left(\\int_0^1 f(x, y)\\,\\mathrm dx\\right) \\mathrm dy = \\frac\\pi4$."
+    ],
+    "fausse": 2,
+    "explication": "La formule de Fubini pour une fonction seulement continue vaut sur un rectangle **fermé borné**. Ici $f$ n'est pas bornée près de $(0, 0)$, n'est pas positive et $|f|$ n'est pas intégrable. Le calcul direct donne $-\\frac\\pi4$ dans l'autre ordre, car $f(y, x) = -f(x, y)$."
+  },
+  {
+    "id": "integrales-multiples-err-02", "ch": "integrales-multiples", "type": "erreur",
+    "enonce": "Soit $D = \\{(x, y) : 0 < x^2 + y^2 \\le 1\\}$ et $f(x, y) = \\dfrac{1}{\\sqrt{x^2 + y^2}}$. On veut calculer $\\iint_D f$. Voici une copie.",
+    "lignes": [
+      "La fonction $f$ est continue et positive sur $D$.",
+      "Comme $D$ est borné et $f$ continue sur $D$, $f$ est intégrable sur $D$.",
+      "En coordonnées polaires, $\\iint_D f = \\int_0^{2\\pi}\\!\\int_0^1 \\frac1r\\, r\\,\\mathrm dr\\,\\mathrm d\\theta$.",
+      "Donc $\\iint_D f = 2\\pi$."
+    ],
+    "fausse": 1,
+    "explication": "Continuité sur un borné non fermé ne donne pas l'intégrabilité : $\\frac{1}{x^2 + y^2}$ est continue sur $D$, mais $\\int_0^1 \\frac{1}{r^2}\\, r\\,\\mathrm dr$ diverge. Il fallait dire : $f$ est positive, donc le calcul en polaires est légitime dans $[0, +\\infty]$, et le résultat fini prouve l'intégrabilité. Les lignes suivantes restent justes."
+  },
+  {
+    "id": "integrales-multiples-err-03", "ch": "integrales-multiples", "type": "erreur",
+    "enonce": "On veut calculer $I = \\displaystyle\\int_0^1 \\!\\left(\\int_x^1 e^{y^2}\\,\\mathrm dy\\right) \\mathrm dx$. Voici une copie.",
+    "lignes": [
+      "On ne dispose pas d'une primitive explicite de $y \\mapsto e^{y^2}$ : on intervertit l'ordre des intégrations.",
+      "Le domaine d'intégration est $T = \\{(x, y) : 0 \\le x \\le 1,\\ x \\le y \\le 1\\}$, et $(x, y) \\mapsto e^{y^2}$ est continue sur $T$, fermé borné.",
+      "Donc $I = \\displaystyle\\int_0^1 \\!\\left(\\int_y^1 e^{y^2}\\,\\mathrm dx\\right) \\mathrm dy = \\int_0^1 (1 - y)\\, e^{y^2}\\,\\mathrm dy$."
+    ],
+    "fausse": 2,
+    "explication": "Erreur de description du domaine : $T = \\{0 \\le y \\le 1,\\ 0 \\le x \\le y\\}$. La bonne interversion donne $I = \\int_0^1 y\\, e^{y^2}\\,\\mathrm dy = \\frac{e - 1}2$. Un dessin du triangle évite ce piège."
+  },
+  {
+    "id": "integrales-multiples-err-04", "ch": "integrales-multiples", "type": "erreur",
+    "enonce": "On veut calculer $I = \\displaystyle\\int_0^{+\\infty} e^{-x^2}\\,\\mathrm dx$. Voici une copie.",
+    "lignes": [
+      "La fonction $x \\mapsto e^{-x^2}$ est continue sur $[0, +\\infty[$, donc intégrable sur $[0, +\\infty[$.",
+      "Par Fubini-Tonelli (fonction continue positive), $I^2 = \\iint_{[0, +\\infty[^2} e^{-(x^2 + y^2)}\\,\\mathrm dx\\,\\mathrm dy$.",
+      "En coordonnées polaires, $I^2 = \\int_0^{\\pi/2}\\!\\int_0^{+\\infty} e^{-r^2} r\\,\\mathrm dr\\,\\mathrm d\\theta = \\frac\\pi2 \\cdot \\frac12$.",
+      "Donc $I = \\frac{\\sqrt\\pi}2$."
+    ],
+    "fausse": 0,
+    "explication": "Erreur relevée chaque année par le jury : sur un intervalle non borné, la continuité n'entraîne pas l'intégrabilité ($x \\mapsto 1$ est continue sur $[0, +\\infty[$). Il faut une comparaison, par exemple $e^{-x^2} \\le e^{-x}$ pour $x \\ge 1$. Le reste de la copie est correct."
+  },
+  {
+    "id": "integrales-multiples-err-05", "ch": "integrales-multiples", "type": "erreur",
+    "enonce": "Soit $F(x, y) = \\left(\\dfrac{-y}{x^2 + y^2}, \\dfrac{x}{x^2 + y^2}\\right) = (P, Q)$ sur $\\mathbb R^2 \\setminus \\{(0, 0)\\}$. On veut calculer le travail de $F$ le long du cercle unité parcouru une fois dans le sens direct. Voici une copie.",
+    "lignes": [
+      "Le cercle est paramétré par $\\gamma(t) = (\\cos t, \\sin t)$, $t \\in [0, 2\\pi]$.",
+      "$F$ est de classe $\\mathcal C^1$ sur $\\mathbb R^2 \\setminus \\{(0, 0)\\}$ et $\\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x} = \\frac{y^2 - x^2}{(x^2 + y^2)^2}$.",
+      "Si $F = \\nabla U$ avec $U$ de classe $\\mathcal C^1$ sur un ouvert contenant un arc fermé, le travail de $F$ le long de cet arc est nul.",
+      "Donc le travail de $F$ le long du cercle unité est nul."
+    ],
+    "fausse": 3,
+    "explication": "L'égalité des dérivées croisées est nécessaire pour être un gradient, pas suffisante sur $\\mathbb R^2 \\setminus \\{(0, 0)\\}$. Le calcul direct tranche : $\\langle F(\\gamma(t)), \\gamma'(t)\\rangle = \\sin^2 t + \\cos^2 t = 1$, donc le travail vaut $2\\pi$, et $F$ n'est pas un gradient sur cet ouvert."
+  },
+  {
+    "id": "integrales-multiples-piste-01", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Montrer que $x \\mapsto e^{-x^2}$ est intégrable sur $\\mathbb R$ et calculer $I = \\displaystyle\\int_{-\\infty}^{+\\infty} e^{-x^2}\\,\\mathrm dx$.",
+    "choix": [
+      {
+        "titre": "Élever au carré, Fubini-Tonelli, puis coordonnées polaires",
+        "info": "Fubini-Tonelli : pour $f$ continue positive sur un rectangle borné ou non, on peut intervertir les intégrations dans $[0, +\\infty]$. En polaires, $\\mathrm dx\\,\\mathrm dy$ devient $r\\,\\mathrm dr\\,\\mathrm d\\theta$.",
+        "verdict": "bon",
+        "retour": "Le produit $e^{-x^2} e^{-y^2}$ devient $e^{-r^2}$, et le facteur $r$ fournit une primitive explicite."
+      },
+      {
+        "titre": "Intégrale à paramètre",
+        "info": "On étudie $g(x) = \\int_0^1 \\frac{e^{-x^2(1+t^2)}}{1+t^2}\\,\\mathrm dt$ : par dérivation sous le signe intégrale, $g(x) + \\left(\\int_0^x e^{-t^2}\\,\\mathrm dt\\right)^2$ est constante.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais il faut justifier la dérivation, trouver la constante $\\frac\\pi4$, puis faire tendre $x$ vers $+\\infty$ : plus long."
+      },
+      {
+        "titre": "Chercher une primitive de $e^{-x^2}$",
+        "info": "Si $F$ est une primitive de $f$ continue sur $\\mathbb R$ ayant des limites finies en $\\pm\\infty$, alors $\\int_{-\\infty}^{+\\infty} f = \\lim_{+\\infty} F - \\lim_{-\\infty} F$.",
+        "verdict": "impasse",
+        "retour": "Une primitive existe (continuité), mais elle ne s'exprime pas à l'aide des fonctions usuelles : on ne peut pas calculer ses limites."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "Pour $u, v$ de classe $\\mathcal C^1$ : $\\int_a^b u'v = [uv]_a^b - \\int_a^b uv'$, à justifier par passage à la limite sur un intervalle non borné.",
+        "verdict": "impasse",
+        "retour": "En écrivant $e^{-x^2} = 1 \\cdot e^{-x^2}$, on obtient $\\int 2x^2 e^{-x^2}$, qui n'est pas plus simple."
+      }
+    ],
+    "direction": "Intégrabilité : $e^{-x^2} \\le e^{-|x|}$ pour $|x| \\ge 1$. Par Fubini-Tonelli, $I^2 = \\iint_{\\mathbb R^2} e^{-(x^2+y^2)}$, puis en polaires $I^2 = 2\\pi \\int_0^{+\\infty} r e^{-r^2}\\,\\mathrm dr = \\pi$. Donc $I = \\sqrt\\pi$."
+  },
+  {
+    "id": "integrales-multiples-piste-02", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soit $R > 0$. Montrer que le volume de la boule $B = \\{(x, y, z) : x^2 + y^2 + z^2 \\le R^2\\}$ vaut $\\frac43 \\pi R^3$.",
+    "choix": [
+      {
+        "titre": "Coordonnées sphériques",
+        "info": "$x = r\\sin\\varphi\\cos\\theta$, $y = r\\sin\\varphi\\sin\\theta$, $z = r\\cos\\varphi$, avec $r \\ge 0$, $\\varphi \\in [0, \\pi]$, $\\theta \\in [0, 2\\pi]$. La valeur absolue du jacobien vaut $r^2\\sin\\varphi$.",
+        "verdict": "bon",
+        "retour": "La boule devient un pavé $[0, R] \\times [0, \\pi] \\times [0, 2\\pi]$ et l'intégrale se sépare en trois intégrales simples."
+      },
+      {
+        "titre": "Découpage en tranches $z = $ constante",
+        "info": "Fubini pour un domaine géométriquement simple : $\\iiint_B 1 = \\int_{-R}^{R} A(z)\\,\\mathrm dz$, où $A(z)$ est l'aire de la section de $B$ à la hauteur $z$.",
+        "verdict": "bon",
+        "retour": "La section est un disque de rayon $\\sqrt{R^2 - z^2}$, d'aire $\\pi(R^2 - z^2)$ : une intégrale polynomiale."
+      },
+      {
+        "titre": "Homothétie $(x, y, z) = R(u, v, w)$",
+        "info": "Changement de variables linéaire : la valeur absolue du jacobien de $(u, v, w) \\mapsto R(u, v, w)$ vaut $R^3$.",
+        "verdict": "possible",
+        "retour": "On obtient $V(R) = R^3\\, V(1)$, ce qui est juste, mais il reste à calculer le volume de la boule unité."
+      },
+      {
+        "titre": "Produit de trois intégrales simples",
+        "info": "Si $f(x, y, z) = g(x)h(y)k(z)$ avec $g, h, k$ continues, l'intégrale de $f$ sur le pavé $[a, b] \\times [c, d] \\times [e, f]$ est le produit des trois intégrales simples.",
+        "verdict": "impasse",
+        "retour": "La boule n'est pas un pavé dans les coordonnées cartésiennes : les bornes en $y$ dépendent de $x$, celles en $z$ de $x$ et $y$."
+      }
+    ],
+    "direction": "En sphériques : $V = \\int_0^{2\\pi}\\mathrm d\\theta \\int_0^\\pi \\sin\\varphi\\,\\mathrm d\\varphi \\int_0^R r^2\\,\\mathrm dr = 2\\pi \\cdot 2 \\cdot \\frac{R^3}3$. Par tranches : $\\int_{-R}^R \\pi(R^2 - z^2)\\,\\mathrm dz = \\pi\\left(2R^3 - \\frac{2R^3}3\\right)$. Même résultat $\\frac43\\pi R^3$."
+  },
+  {
+    "id": "integrales-multiples-piste-03", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soient $0 < a < b$. Montrer que $\\displaystyle\\int_0^{+\\infty} \\frac{e^{-at} - e^{-bt}}{t}\\,\\mathrm dt = \\ln\\frac ba$.",
+    "choix": [
+      {
+        "titre": "Écrire l'intégrande comme une intégrale, puis Fubini-Tonelli",
+        "info": "Pour $t > 0$, $\\frac{e^{-at} - e^{-bt}}{t} = \\int_a^b e^{-xt}\\,\\mathrm dx$. Fubini-Tonelli : pour $f$ continue positive sur un rectangle borné ou non, on peut intervertir les intégrations dans $[0, +\\infty]$.",
+        "verdict": "bon",
+        "retour": "$(x, t) \\mapsto e^{-xt}$ est continue positive sur $[a, b] \\times ]0, +\\infty[$ : l'interversion est licite et l'intégrale intérieure en $t$ vaut $\\frac1x$."
+      },
+      {
+        "titre": "Dérivation sous le signe intégrale par rapport à $b$",
+        "info": "On pose $G(b) = \\int_0^{+\\infty} \\frac{e^{-at} - e^{-bt}}{t}\\,\\mathrm dt$. Avec une hypothèse de domination de la dérivée sur tout segment, $G'(b) = \\int_0^{+\\infty} e^{-bt}\\,\\mathrm dt$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit ($G'(b) =\\frac1b$ et $G(a) = 0$), mais il faut vérifier convergence et domination sur $[b_0, +\\infty[$ pour tout $b_0 > 0$."
+      },
+      {
+        "titre": "Séparer en deux intégrales",
+        "info": "Linéarité : si $\\int f$ et $\\int g$ convergent, alors $\\int (f - g) = \\int f - \\int g$.",
+        "verdict": "impasse",
+        "retour": "$\\int_0^{+\\infty} \\frac{e^{-at}}{t}\\,\\mathrm dt$ diverge en $0$ (intégrande équivalente à $\\frac1t$) : on ne peut pas séparer."
+      },
+      {
+        "titre": "Développer les exponentielles en série et intégrer terme à terme",
+        "info": "$e^{-at} - e^{-bt} = \\sum_{n \\ge 1} \\frac{(b^n - a^n)(-1)^{n+1}}{n!}\\, t^n$ pour tout réel $t$. L'intégration terme à terme demande une convergence de $\\sum \\int |u_n|$.",
+        "verdict": "impasse",
+        "retour": "Chaque terme $t^{n-1}$ a une intégrale divergente sur $[0, +\\infty[$ : rien ne passe."
+      }
+    ],
+    "direction": "$\\int_0^{+\\infty} \\frac{e^{-at} - e^{-bt}}{t}\\,\\mathrm dt = \\int_0^{+\\infty}\\!\\!\\int_a^b e^{-xt}\\,\\mathrm dx\\,\\mathrm dt = \\int_a^b\\!\\int_0^{+\\infty} e^{-xt}\\,\\mathrm dt\\,\\mathrm dx$ par Fubini-Tonelli, puis $= \\int_a^b \\frac{\\mathrm dx}{x} = \\ln\\frac ba$."
+  },
+  {
+    "id": "integrales-multiples-piste-04", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soient $a, b > 0$. Montrer que l'aire du domaine $E = \\left\\{(x, y) : \\frac{x^2}{a^2} + \\frac{y^2}{b^2} \\le 1\\right\\}$ vaut $\\pi ab$.",
+    "choix": [
+      {
+        "titre": "Coordonnées polaires adaptées $x = ar\\cos\\theta$, $y = br\\sin\\theta$",
+        "info": "Théorème du changement de variables : si $\\varphi$ est un $\\mathcal C^1$-difféomorphisme de $U$ sur $V$, $\\iint_V f = \\iint_U f\\circ\\varphi\\,|J_\\varphi|$.",
+        "verdict": "bon",
+        "retour": "$E$ correspond à $r \\in [0, 1]$, $\\theta \\in [0, 2\\pi]$, et le jacobien vaut $abr$ : le calcul est immédiat."
+      },
+      {
+        "titre": "Fubini sur un domaine géométriquement simple",
+        "info": "$E = \\{-a \\le x \\le a,\\ |y| \\le b\\sqrt{1 - x^2/a^2}\\}$, donc $\\mathrm{aire}(E) = \\int_{-a}^a 2b\\sqrt{1 - \\frac{x^2}{a^2}}\\,\\mathrm dx$.",
+        "verdict": "bon",
+        "retour": "Le changement de variable $x = a\\sin t$ ramène à $2ab\\int_{-\\pi/2}^{\\pi/2} \\cos^2 t\\,\\mathrm dt = \\pi ab$."
+      },
+      {
+        "titre": "Coordonnées polaires usuelles",
+        "info": "En polaires, $E$ est décrit par $0 \\le r \\le \\rho(\\theta)$ avec $\\rho(\\theta)^{-2} = \\frac{\\cos^2\\theta}{a^2} + \\frac{\\sin^2\\theta}{b^2}$, et l'aire vaut $\\int_0^{2\\pi} \\frac{\\rho(\\theta)^2}2\\,\\mathrm d\\theta$.",
+        "verdict": "possible",
+        "retour": "Juste, mais l'intégrale de $\\rho^2$ demande un changement de variable $u = \\tan\\theta$ et un découpage soigneux de $[0, 2\\pi]$."
+      },
+      {
+        "titre": "Longueur d'un arc",
+        "info": "La longueur d'un arc $\\gamma : [\\alpha, \\beta] \\to \\mathbb R^2$ de classe $\\mathcal C^1$ vaut $\\int_\\alpha^\\beta \\|\\gamma'(t)\\|\\,\\mathrm dt$.",
+        "verdict": "impasse",
+        "retour": "Elle donne le périmètre de l'ellipse, pas son aire, et ce périmètre ne se calcule d'ailleurs pas avec les fonctions usuelles."
+      }
+    ],
+    "direction": "Avec $\\varphi(r, \\theta) = (ar\\cos\\theta, br\\sin\\theta)$, $|J_\\varphi| = abr$ et $\\mathrm{aire}(E) = \\int_0^{2\\pi}\\!\\int_0^1 abr\\,\\mathrm dr\\,\\mathrm d\\theta = \\pi ab$. On retrouve $\\pi R^2$ pour $a = b = R$."
+  },
+  {
+    "id": "integrales-multiples-piste-05", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Calculer la longueur d'une arche de cycloïde $\\gamma(t) = (t - \\sin t,\\ 1 - \\cos t)$, $t \\in [0, 2\\pi]$.",
+    "choix": [
+      {
+        "titre": "Formule $L = \\int \\|\\gamma'(t)\\|\\,\\mathrm dt$ et trigonométrie",
+        "info": "La longueur d'un arc $\\gamma : [\\alpha, \\beta] \\to \\mathbb R^2$ de classe $\\mathcal C^1$ vaut $\\int_\\alpha^\\beta \\|\\gamma'(t)\\|\\,\\mathrm dt$. Utile ici : $1 - \\cos t = 2\\sin^2\\frac t2$.",
+        "verdict": "bon",
+        "retour": "La racine carrée se simplifie grâce à la formule de l'angle moitié."
+      },
+      {
+        "titre": "Écrire l'arc comme un graphe $y = f(x)$",
+        "info": "Pour $f$ de classe $\\mathcal C^1$ sur $[a, b]$, la longueur du graphe vaut $\\int_a^b \\sqrt{1 + f'(x)^2}\\,\\mathrm dx$.",
+        "verdict": "impasse",
+        "retour": "$f$ n'est pas de classe $\\mathcal C^1$ sur $[0, 2\\pi]$ (tangentes verticales en $x = 0$ et $x = 2\\pi$), et $x = t - \\sin t$ ne s'inverse pas explicitement : pour calculer $f'$, on revient au paramètre $t$."
+      },
+      {
+        "titre": "Aire sous l'arche",
+        "info": "L'aire comprise entre l'axe des abscisses et l'arche vaut $\\int_0^{2\\pi} y(t)\\, x'(t)\\,\\mathrm dt$.",
+        "verdict": "impasse",
+        "retour": "Elle calcule une aire ($3\\pi$), pas une longueur."
+      },
+      {
+        "titre": "Majorer la vitesse",
+        "info": "Si $\\|\\gamma'(t)\\| \\le M$ sur $[\\alpha, \\beta]$, la longueur de l'arc est au plus $M(\\beta - \\alpha)$.",
+        "verdict": "impasse",
+        "retour": "Avec $M = 2$ on obtient seulement $L \\le 4\\pi$ : une majoration, pas la valeur."
+      }
+    ],
+    "direction": "$\\|\\gamma'(t)\\|^2 = (1 - \\cos t)^2 + \\sin^2 t = 2 - 2\\cos t = 4\\sin^2\\frac t2$, et $\\sin\\frac t2 \\ge 0$ sur $[0, 2\\pi]$. Donc $L = \\int_0^{2\\pi} 2\\sin\\frac t2\\,\\mathrm dt = 8$."
+  },
+  {
+    "id": "integrales-multiples-piste-06", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soit $F(x, y) = (2xy,\\ x^2)$ et $\\gamma(t) = \\left(t^2, \\sin\\frac{\\pi t}2\\right)$, $t \\in [0, 1]$. Calculer le travail de $F$ le long de $\\gamma$.",
+    "choix": [
+      {
+        "titre": "Chercher un potentiel",
+        "info": "Si $F = \\nabla U$ avec $U$ de classe $\\mathcal C^1$, le travail de $F$ le long d'un arc $\\mathcal C^1$ de $A$ à $B$ vaut $U(B) - U(A)$.",
+        "verdict": "bon",
+        "retour": "$U(x, y) = x^2 y$ convient : $\\frac{\\partial U}{\\partial x} = 2xy$ et $\\frac{\\partial U}{\\partial y} = x^2$."
+      },
+      {
+        "titre": "Calcul direct avec le paramétrage",
+        "info": "Le travail vaut $\\int_0^1 \\big(P(\\gamma(t))\\,x'(t) + Q(\\gamma(t))\\,y'(t)\\big)\\,\\mathrm dt$ où $F = (P, Q)$ et $\\gamma = (x, y)$.",
+        "verdict": "possible",
+        "retour": "On obtient $\\int_0^1 \\left(4t^3 \\sin\\frac{\\pi t}2 + \\frac\\pi2 t^4\\cos\\frac{\\pi t}2\\right)\\mathrm dt$ : faisable, mais long si l'on ne reconnaît pas une dérivée."
+      },
+      {
+        "titre": "Paramétrer par l'abscisse curviligne",
+        "info": "Avec $s(t) = \\int_0^t \\|\\gamma'(u)\\|\\,\\mathrm du$, l'arc reparamétré est parcouru à vitesse $1$.",
+        "verdict": "impasse",
+        "retour": "$\\|\\gamma'(t)\\| = \\sqrt{4t^2 + \\frac{\\pi^2}4\\cos^2\\frac{\\pi t}2}$ n'a pas de primitive explicite : $s$ n'est pas calculable."
+      },
+      {
+        "titre": "Majorer par longueur fois norme",
+        "info": "Le travail est majoré en valeur absolue par $L(\\gamma) \\cdot \\sup_\\gamma \\|F\\|$.",
+        "verdict": "impasse",
+        "retour": "Une majoration ne donne pas la valeur exacte demandée."
+      }
+    ],
+    "direction": "$F = \\nabla U$ avec $U(x, y) = x^2 y$. L'arc va de $\\gamma(0) = (0, 0)$ à $\\gamma(1) = (1, 1)$, donc le travail vaut $U(1, 1) - U(0, 0) = 1$."
+  },
+  {
+    "id": "integrales-multiples-piste-07", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soit $f(x, y) = \\dfrac{x^2 - y^2}{(x^2 + y^2)^2}$ sur $[1, +\\infty[^2$. Calculer les deux intégrales itérées de $f$. La fonction $f$ est-elle intégrable sur $[1, +\\infty[^2$ ?",
+    "choix": [
+      {
+        "titre": "Primitive explicite, puis raisonnement par l'absurde",
+        "info": "$\\frac{\\partial}{\\partial y} \\frac{y}{x^2 + y^2} = \\frac{x^2 - y^2}{(x^2+y^2)^2}$. Si $|f|$ est intégrable, les deux intégrales itérées de $f$ sont égales.",
+        "verdict": "bon",
+        "retour": "On calcule chaque intégrale itérée, on constate qu'elles diffèrent, et le théorème du programme interdit alors l'intégrabilité."
+      },
+      {
+        "titre": "Fubini-Tonelli appliqué à $f$",
+        "info": "Pour $f$ continue **positive** sur un rectangle borné ou non, on peut intervertir l'ordre des intégrations.",
+        "verdict": "impasse",
+        "retour": "$f$ change de signe (positive si $x > y$, négative si $x < y$) : le théorème ne s'applique pas à $f$."
+      },
+      {
+        "titre": "Majorer $|f|$ par une fonction intégrable",
+        "info": "Si $|f| \\le g$ avec $g$ continue positive intégrable, alors $|f|$ est intégrable. Ici $|f(x, y)| \\le \\frac{1}{x^2 + y^2}$.",
+        "verdict": "impasse",
+        "retour": "Ce majorant n'est pas intégrable sur $[1, +\\infty[^2$ (en polaires, $\\int \\frac1{r^2}\\, r\\,\\mathrm dr$ diverge) : la comparaison ne conclut pas."
+      },
+      {
+        "titre": "Antisymétrie $f(y, x) = -f(x, y)$",
+        "info": "Si $g$ est intégrable sur un domaine symétrique par rapport à la droite $y = x$ et vérifie $g(y, x) = -g(x, y)$, son intégrale est nulle.",
+        "verdict": "impasse",
+        "retour": "Le résultat suppose l'intégrabilité, qui est justement en question. C'est le piège de cet exemple."
+      }
+    ],
+    "direction": "$\\int_1^{+\\infty} f\\,\\mathrm dy = \\left[\\frac{y}{x^2+y^2}\\right]_1^{+\\infty} = -\\frac{1}{1+x^2}$, d'où $\\int_1^{+\\infty}\\!\\left(\\int_1^{+\\infty} f\\,\\mathrm dy\\right)\\mathrm dx = -\\frac\\pi4$ ; par antisymétrie l'autre vaut $\\frac\\pi4$. Si $|f|$ était intégrable, elles seraient égales : $f$ n'est pas intégrable."
+  },
+  {
+    "id": "integrales-multiples-piste-08", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soit $T = \\{(x, y) : x \\ge 0,\\ y \\ge 0,\\ x + y \\le 1\\}$. Calculer $\\displaystyle\\iint_T xy\\,\\mathrm dx\\,\\mathrm dy$.",
+    "choix": [
+      {
+        "titre": "Fubini sur un domaine géométriquement simple",
+        "info": "Si $T = \\{a \\le x \\le b,\\ \\alpha(x) \\le y \\le \\beta(x)\\}$ avec $\\alpha \\le \\beta$ continues, et $f$ continue sur $T$, alors $\\iint_T f = \\int_a^b \\!\\left(\\int_{\\alpha(x)}^{\\beta(x)} f(x, y)\\,\\mathrm dy\\right)\\mathrm dx$.",
+        "verdict": "bon",
+        "retour": "Ici $0 \\le x \\le 1$ et $0 \\le y \\le 1 - x$ : deux intégrales polynomiales."
+      },
+      {
+        "titre": "Coordonnées polaires",
+        "info": "En polaires, $T$ est décrit par $\\theta \\in [0, \\frac\\pi2]$ et $0 \\le r \\le \\frac{1}{\\cos\\theta + \\sin\\theta}$, et $\\mathrm dx\\,\\mathrm dy$ devient $r\\,\\mathrm dr\\,\\mathrm d\\theta$.",
+        "verdict": "possible",
+        "retour": "Juste, mais on doit ensuite intégrer $\\frac{\\cos\\theta\\sin\\theta}{4(\\cos\\theta + \\sin\\theta)^4}$ : bien plus pénible."
+      },
+      {
+        "titre": "Séparer les variables : $\\int x\\,\\mathrm dx \\cdot \\int y\\,\\mathrm dy$",
+        "info": "Si $f(x, y) = g(x)h(y)$ avec $g, h$ continues, $\\iint_{[a, b] \\times [c, d]} f = \\int_a^b g \\cdot \\int_c^d h$.",
+        "verdict": "impasse",
+        "retour": "La formule vaut sur un **rectangle**. $T$ est un triangle : la borne en $y$ dépend de $x$, et l'on obtiendrait à tort $\\frac14$."
+      },
+      {
+        "titre": "Symétrie par rapport à la droite $y = x$",
+        "info": "$T$ et $f(x, y) = xy$ sont invariants par l'échange de $x$ et $y$, donc $\\iint_T x^2 y = \\iint_T x y^2$, par exemple.",
+        "verdict": "impasse",
+        "retour": "La symétrie est réelle mais ne fournit aucune équation sur l'intégrale cherchée."
+      }
+    ],
+    "direction": "$\\iint_T xy = \\int_0^1 x \\frac{(1-x)^2}2\\,\\mathrm dx = \\frac12\\left(\\frac12 - \\frac23 + \\frac14\\right) = \\frac1{24}$."
+  },
+  {
+    "id": "integrales-multiples-piste-09", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Soit $B$ la boule unité fermée de $\\mathbb R^3$. Calculer $\\displaystyle\\iiint_B (x^2 + y^2 + z^2)\\,\\mathrm dx\\,\\mathrm dy\\,\\mathrm dz$.",
+    "choix": [
+      {
+        "titre": "Coordonnées sphériques",
+        "info": "$x = r\\sin\\varphi\\cos\\theta$, $y = r\\sin\\varphi\\sin\\theta$, $z = r\\cos\\varphi$, avec $r \\in [0, 1]$, $\\varphi \\in [0, \\pi]$, $\\theta \\in [0, 2\\pi]$. La valeur absolue du jacobien vaut $r^2\\sin\\varphi$.",
+        "verdict": "bon",
+        "retour": "L'intégrande devient $r^2$ et le domaine un pavé : l'intégrale triple se sépare."
+      },
+      {
+        "titre": "Symétrie, puis tranches $z = $ constante",
+        "info": "Par invariance de $B$ par permutation des coordonnées, $\\iiint_B x^2 = \\iiint_B y^2 = \\iiint_B z^2$. La section de $B$ à la hauteur $z$ est un disque d'aire $\\pi(1 - z^2)$.",
+        "verdict": "bon",
+        "retour": "On se ramène à $3\\int_{-1}^1 z^2\\,\\pi(1 - z^2)\\,\\mathrm dz$, une intégrale polynomiale."
+      },
+      {
+        "titre": "Coordonnées cylindriques",
+        "info": "$x = r\\cos\\theta$, $y = r\\sin\\theta$, $z = z$, jacobien $r$. La boule est décrite par $0 \\le r \\le 1$ et $|z| \\le \\sqrt{1 - r^2}$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais l'intégrale de $(r^2 + z^2)\\, r$ avec une borne en $\\sqrt{1 - r^2}$ est plus lourde."
+      },
+      {
+        "titre": "Majorer l'intégrande",
+        "info": "Si $0 \\le f \\le M$ sur $B$, alors $0 \\le \\iiint_B f \\le M \\cdot \\mathrm{vol}(B)$.",
+        "verdict": "impasse",
+        "retour": "On obtient seulement que l'intégrale est au plus $\\frac{4\\pi}3$ : une majoration, pas la valeur."
+      }
+    ],
+    "direction": "En sphériques : $\\int_0^{2\\pi}\\mathrm d\\theta \\int_0^\\pi \\sin\\varphi\\,\\mathrm d\\varphi \\int_0^1 r^4\\,\\mathrm dr = 2\\pi \\cdot 2 \\cdot \\frac15 = \\frac{4\\pi}5$. Par symétrie : $3\\pi\\left(\\frac23 - \\frac25\\right) = \\frac{4\\pi}5$."
+  },
+  {
+    "id": "integrales-multiples-piste-10", "ch": "integrales-multiples", "type": "piste",
+    "enonce": "Pour $x, y > 0$, on pose $\\Gamma(x) = \\displaystyle\\int_0^{+\\infty} t^{x-1}e^{-t}\\,\\mathrm dt$ et $B(x, y) = \\displaystyle\\int_0^1 t^{x-1}(1-t)^{y-1}\\,\\mathrm dt$. Montrer que $\\Gamma(x)\\Gamma(y) = \\Gamma(x+y)\\,B(x, y)$.",
+    "choix": [
+      {
+        "titre": "Intégrale double sur $]0, +\\infty[^2$, puis $u = sw$, $v = s(1-w)$",
+        "info": "Fubini-Tonelli (fonction continue positive) donne $\\Gamma(x)\\Gamma(y) = \\iint_{]0,+\\infty[^2} u^{x-1}v^{y-1}e^{-u-v}\\,\\mathrm du\\,\\mathrm dv$. L'application $(s, w) \\mapsto (sw, s(1-w))$ est un $\\mathcal C^1$-difféomorphisme de $]0, +\\infty[ \\times ]0, 1[$ sur $]0, +\\infty[^2$.",
+        "verdict": "bon",
+        "retour": "Le jacobien vaut $-s$ en valeur algébrique, et l'intégrande se sépare en une fonction de $s$ fois une fonction de $w$."
+      },
+      {
+        "titre": "Poser $t = u^2$, puis coordonnées polaires",
+        "info": "$\\Gamma(x) = 2\\int_0^{+\\infty} u^{2x-1}e^{-u^2}\\,\\mathrm du$. En polaires sur le quart de plan, $(u, v) = (\\rho\\cos\\theta, \\rho\\sin\\theta)$ avec $\\theta \\in ]0, \\frac\\pi2[$, jacobien $\\rho$.",
+        "verdict": "bon",
+        "retour": "On obtient $\\Gamma(x+y)$ fois $2\\int_0^{\\pi/2} \\cos^{2x-1}\\theta\\sin^{2y-1}\\theta\\,\\mathrm d\\theta$, qui vaut $B(x, y)$ par $t = \\cos^2\\theta$."
+      },
+      {
+        "titre": "Relation fonctionnelle $\\Gamma(x+1) = x\\Gamma(x)$",
+        "info": "Par intégration par parties, $\\Gamma(x+1) = x\\,\\Gamma(x)$ pour tout $x > 0$, et $\\Gamma(n+1) = n!$.",
+        "verdict": "impasse",
+        "retour": "Elle relie des valeurs de $\\Gamma$ en des points distants d'un entier, mais ne fait jamais apparaître $B(x, y)$."
+      },
+      {
+        "titre": "Intégration par parties dans $B(x, y)$",
+        "info": "Pour $x > 0$ et $y > 1$, une intégration par parties donne $B(x+1, y-1) = \\frac{x}{y-1}\\,B(x, y)$.",
+        "verdict": "impasse",
+        "retour": "On obtient des relations entre valeurs de $B$, sans lien avec les intégrales sur $]0, +\\infty[$ qui définissent $\\Gamma$."
+      }
+    ],
+    "direction": "Avec $u = sw$, $v = s(1-w)$ : $u^{x-1}v^{y-1}e^{-u-v}\\, s = s^{x+y-1}e^{-s}\\, w^{x-1}(1-w)^{y-1}$. Par Fubini-Tonelli, l'intégrale vaut $\\int_0^{+\\infty} s^{x+y-1}e^{-s}\\,\\mathrm ds \\cdot \\int_0^1 w^{x-1}(1-w)^{y-1}\\,\\mathrm dw = \\Gamma(x+y)B(x, y)$."
+  }
+]
