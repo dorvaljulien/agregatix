@@ -1,0 +1,611 @@
+[
+  {
+    "id": "arithmetique-vf-01", "ch": "arithmetique", "type": "vf",
+    "enonce": "Dans la division euclidienne de $-17$ par $5$, le quotient est $-3$ et le reste est $-2$.",
+    "reponse": false,
+    "explication": "Le reste doit vérifier $0 \\le r < 5$. On a $-17 = 5 \\times (-4) + 3$ : le quotient est $-4$ et le reste $3$. L'égalité $-17 = 5 \\times (-3) - 2$ est juste, mais ce n'est pas la division euclidienne."
+  },
+  {
+    "id": "arithmetique-vf-02", "ch": "arithmetique", "type": "vf",
+    "enonce": "Tout sous-groupe $H$ de $(\\mathbb Z, +)$ est de la forme $n\\mathbb Z$ pour un unique $n \\in \\mathbb N$.",
+    "reponse": true,
+    "explication": "Si $H \\ne \\{0\\}$, on prend $n$ le plus petit élément strictement positif de $H$. Pour $a \\in H$, la division $a = nq + r$ donne $r = a - nq \\in H$ avec $0 \\le r < n$, donc $r = 0$. L'unicité vient de ce que $n$ est le plus petit élément strictement positif de $n\\mathbb Z$."
+  },
+  {
+    "id": "arithmetique-vf-03", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soient $m, n \\ge 1$ et $\\mathbb U_k$ le groupe des racines $k$-ièmes de l'unité. On a $\\mathbb U_m \\subset \\mathbb U_n$ si et seulement si $m$ divise $n$.",
+    "reponse": true,
+    "explication": "Si $n = mq$ et $z^m = 1$, alors $z^n = (z^m)^q = 1$. Réciproquement, si $e^{2i\\pi/m} \\in \\mathbb U_n$, alors $e^{2i\\pi n/m} = 1$, donc $\\frac nm \\in \\mathbb Z$. On a aussi $\\mathbb U_m \\cap \\mathbb U_n = \\mathbb U_{\\mathrm{pgcd}(m,n)}$."
+  },
+  {
+    "id": "arithmetique-vf-04", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soient $a, b, c \\in \\mathbb Z$. Si $a \\mid bc$ et si $a \\nmid b$, alors $a \\mid c$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $a = 4$, $b = 2$, $c = 6$. On a $4 \\mid 12$, $4 \\nmid 2$ et $4 \\nmid 6$. Le théorème de Gauss demande $\\mathrm{pgcd}(a, b) = 1$ ; le lemme d'Euclide donne le résultat si $a$ est premier."
+  },
+  {
+    "id": "arithmetique-vf-05", "ch": "arithmetique", "type": "vf",
+    "enonce": "Pour tous entiers $a, b$ non nuls, $\\mathrm{pgcd}(a, b) \\times \\mathrm{ppcm}(a, b) = |ab|$.",
+    "reponse": true,
+    "explication": "Avec les décompositions en facteurs premiers, l'exposant de $p$ dans le PGCD est $\\min(\\alpha_p, \\beta_p)$, dans le PPCM $\\max(\\alpha_p, \\beta_p)$, et $\\min + \\max = \\alpha_p + \\beta_p$."
+  },
+  {
+    "id": "arithmetique-vf-06", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soient $a, b \\in \\mathbb Z$ et $d \\in \\mathbb N^*$. S'il existe $u, v \\in \\mathbb Z$ tels que $au + bv = d$, alors $d = \\mathrm{pgcd}(a, b)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $2 \\times 2 + 3 \\times 0 = 4$, alors que $\\mathrm{pgcd}(2, 3) = 1$. On peut seulement dire que le PGCD divise $d$. La conclusion devient vraie si $d = 1$ (théorème de Bézout) ou si l'on sait en plus que $d$ divise $a$ et $b$."
+  },
+  {
+    "id": "arithmetique-vf-07", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soit $n \\ge 2$. L'anneau $\\mathbb Z/n\\mathbb Z$ est un corps si et seulement si $n$ est premier.",
+    "reponse": true,
+    "explication": "La classe de $a$ est inversible si et seulement si $\\mathrm{pgcd}(a, n) = 1$ (Bézout). Si $n$ est premier, toute classe non nulle l'est. Si $n = rs$ avec $1 < r, s < n$, alors $\\bar r \\bar s = \\bar 0$ : l'anneau n'est même pas intègre."
+  },
+  {
+    "id": "arithmetique-vf-08", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soit $p$ un nombre premier. Dans $\\mathbb Z/p\\mathbb Z$, les solutions de $x^2 = \\bar 1$ sont exactement $\\bar 1$ et $-\\bar 1$.",
+    "reponse": true,
+    "explication": "$x^2 - \\bar 1 = (x - \\bar 1)(x + \\bar 1)$ et $\\mathbb Z/p\\mathbb Z$ est un corps, donc intègre. C'est faux pour $n$ non premier : dans $\\mathbb Z/8\\mathbb Z$, $\\bar 1, \\bar 3, \\bar 5, \\bar 7$ sont tous solutions."
+  },
+  {
+    "id": "arithmetique-vf-09", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soit $n \\ge 2$. Si $a^{n-1} \\equiv 1 \\pmod n$ pour tout entier $a$ premier avec $n$, alors $n$ est premier.",
+    "reponse": false,
+    "explication": "La réciproque du petit théorème de Fermat est fausse. Contre-exemple : $n = 561 = 3 \\times 11 \\times 17$. Pour $a$ premier avec $n$, Fermat donne $a^2 \\equiv 1 \\pmod 3$, $a^{10} \\equiv 1 \\pmod{11}$, $a^{16} \\equiv 1 \\pmod{17}$ ; comme $2$, $10$ et $16$ divisent $560$, on obtient $a^{560} \\equiv 1$ modulo $3$, $11$ et $17$, donc modulo $561$."
+  },
+  {
+    "id": "arithmetique-vf-10", "ch": "arithmetique", "type": "vf",
+    "enonce": "Pour tous entiers $m, n \\ge 1$, l'indicatrice d'Euler vérifie $\\varphi(mn) = \\varphi(m)\\varphi(n)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\varphi(4) = 2$ alors que $\\varphi(2)^2 = 1$. L'égalité est vraie si $m$ et $n$ sont premiers entre eux : c'est le théorème chinois, qui donne $(\\mathbb Z/mn\\mathbb Z)^\\times \\simeq (\\mathbb Z/m\\mathbb Z)^\\times \\times (\\mathbb Z/n\\mathbb Z)^\\times$."
+  },
+  {
+    "id": "arithmetique-vf-11", "ch": "arithmetique", "type": "vf",
+    "enonce": "Pour tout $n \\ge 2$, le groupe $(\\mathbb Z/n\\mathbb Z)^\\times$ des inversibles de $\\mathbb Z/n\\mathbb Z$ est cyclique.",
+    "reponse": false,
+    "explication": "Contre-exemple : $(\\mathbb Z/8\\mathbb Z)^\\times = \\{\\bar 1, \\bar 3, \\bar 5, \\bar 7\\}$ est de cardinal $4$, mais chaque élément vérifie $x^2 = \\bar 1$ : aucun n'est d'ordre $4$. Le groupe est cyclique quand $n$ est premier, par exemple."
+  },
+  {
+    "id": "arithmetique-vf-12", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soit $n \\ge 1$. Si $2^n - 1$ est premier, alors $n$ est premier.",
+    "reponse": true,
+    "explication": "Si $n = ab$ avec $1 < a < n$, alors $2^a - 1$ divise $(2^a)^b - 1$ et vérifie $1 < 2^a - 1 < 2^n - 1$. Le cas $n = 1$ ne se présente pas car $2^1 - 1 = 1$. La réciproque est fausse : $2^{11} - 1 = 2047 = 23 \\times 89$."
+  },
+  {
+    "id": "arithmetique-vf-13", "ch": "arithmetique", "type": "vf",
+    "enonce": "Soit $H$ un sous-groupe fini de $(\\mathbb C^*, \\times)$, de cardinal $n$. Alors $H = \\mathbb U_n$, groupe des racines $n$-ièmes de l'unité.",
+    "reponse": true,
+    "explication": "Par le théorème de Lagrange, tout $z \\in H$ vérifie $z^n = 1$, donc $H \\subset \\mathbb U_n$. Les deux ensembles ont $n$ éléments, d'où l'égalité. En particulier, $H$ est cyclique."
+  },
+  {
+    "id": "arithmetique-vf-14", "ch": "arithmetique", "type": "vf",
+    "enonce": "Pour tout entier $n \\ge 1$, la somme des racines $n$-ièmes de l'unité est nulle.",
+    "reponse": false,
+    "explication": "Pour $n = 1$, la seule racine est $1$ et la somme vaut $1$. Pour $n \\ge 2$, c'est vrai : $\\sum_{k=0}^{n-1} \\omega^k = \\frac{1 - \\omega^n}{1 - \\omega} = 0$ avec $\\omega = e^{2i\\pi/n} \\ne 1$."
+  },
+  {
+    "id": "arithmetique-qcm-01", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Théorème de Bézout.\nSoient $a, b \\in \\mathbb N^*$. Les entiers $a$ et $b$ sont premiers entre eux si et seulement si **[ ? ]**.",
+    "choix": [
+      "il existe $u, v \\in \\mathbb Z$ tels que $au + bv = 1$",
+      "il existe $u, v \\in \\mathbb N$ tels que $au + bv = 1$",
+      "$a$ ne divise pas $b$ et $b$ ne divise pas $a$",
+      "$a$ et $b$ sont deux nombres premiers distincts"
+    ],
+    "bonne": 0,
+    "explication": "Les coefficients de Bézout sont des entiers relatifs : $2$ et $3$ sont premiers entre eux, mais $2u + 3v = 1$ n'a pas de solution dans $\\mathbb N$. Le leurre « ne se divisent pas » échoue avec $6$ et $9$ ; le dernier avec $8$ et $9$, premiers entre eux sans être premiers."
+  },
+  {
+    "id": "arithmetique-qcm-02", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Théorème chinois.\nSoient $m, n \\ge 2$. L'application $\\mathbb Z/mn\\mathbb Z \\to \\mathbb Z/m\\mathbb Z \\times \\mathbb Z/n\\mathbb Z$ qui envoie la classe de $x$ modulo $mn$ sur le couple (classe de $x$ modulo $m$, classe de $x$ modulo $n$) est un isomorphisme d'anneaux si et seulement si **[ ? ]**.",
+    "choix": [
+      "$\\mathrm{pgcd}(m, n) = 1$",
+      "$m$ et $n$ sont premiers",
+      "$m \\ne n$",
+      "$m$ divise $n$"
+    ],
+    "bonne": 0,
+    "explication": "L'application est bien définie et c'est un morphisme dans tous les cas. Son noyau est $\\mathrm{ppcm}(m,n)\\mathbb Z / mn\\mathbb Z$, nul si et seulement si $\\mathrm{ppcm}(m,n) = mn$, c'est-à-dire $\\mathrm{pgcd}(m,n) = 1$ ; les cardinaux étant égaux, l'injectivité suffit. Pour $m = n = 2$ (deux premiers), $\\mathbb Z/4\\mathbb Z$ n'est pas isomorphe à $(\\mathbb Z/2\\mathbb Z)^2$."
+  },
+  {
+    "id": "arithmetique-qcm-03", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Soient $a, b \\in \\mathbb Z$. Le sous-groupe $a\\mathbb Z + b\\mathbb Z = \\{au + bv,\\ u, v \\in \\mathbb Z\\}$ est égal à :",
+    "choix": [
+      "$\\mathrm{pgcd}(a, b)\\,\\mathbb Z$",
+      "$\\mathrm{ppcm}(a, b)\\,\\mathbb Z$",
+      "$ab\\,\\mathbb Z$",
+      "$(a + b)\\,\\mathbb Z$"
+    ],
+    "bonne": 0,
+    "explication": "C'est un sous-groupe de $\\mathbb Z$, donc de la forme $d\\mathbb Z$, et $d$ est le PGCD : c'est la définition par les idéaux, qui contient le théorème de Bézout. Ne pas confondre avec l'intersection : $a\\mathbb Z \\cap b\\mathbb Z = \\mathrm{ppcm}(a,b)\\,\\mathbb Z$. Exemple : $2\\mathbb Z + 3\\mathbb Z = \\mathbb Z \\ne 5\\mathbb Z$."
+  },
+  {
+    "id": "arithmetique-qcm-04", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Quel est le chiffre des unités de $7^{2026}$ en écriture décimale ?",
+    "choix": ["$9$", "$1$", "$3$", "$7$"],
+    "bonne": 0,
+    "explication": "Modulo $10$ : $7^2 \\equiv 9$, $7^3 \\equiv 3$, $7^4 \\equiv 1$. Comme $2026 = 4 \\times 506 + 2$, on a $7^{2026} \\equiv 7^2 \\equiv 9 \\pmod{10}$. On peut aussi invoquer $\\varphi(10) = 4$ et le théorème d'Euler, $7$ étant premier avec $10$."
+  },
+  {
+    "id": "arithmetique-qcm-05", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Le 1er janvier 2027 est un vendredi. Quel jour de la semaine sera le 1er janvier 2030 ?",
+    "choix": ["mardi", "lundi", "mercredi", "samedi"],
+    "bonne": 0,
+    "explication": "Il s'écoule $365 + 366 + 365 = 1096$ jours (2028 est bissextile), et $1096 = 7 \\times 156 + 4$. On avance donc de $4$ jours : vendredi $\\to$ mardi. Oublier l'année bissextile donne lundi."
+  },
+  {
+    "id": "arithmetique-qcm-06", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Chiffrement RSA.\nSoient $p \\ne q$ deux nombres premiers, $n = pq$ et $e \\in \\mathbb N^*$ premier avec $(p-1)(q-1)$. On chiffre $m \\in \\{0, \\dots, n-1\\}$ en le reste de $m^e$ modulo $n$. Pour que $c \\mapsto c^d$ modulo $n$ déchiffre tout message, on choisit $d \\in \\mathbb N^*$ tel que **[ ? ]**.",
+    "choix": [
+      "$ed \\equiv 1 \\pmod{(p-1)(q-1)}$",
+      "$ed \\equiv 1 \\pmod{n}$",
+      "$ed \\equiv 1 \\pmod{p+q}$",
+      "$d \\equiv e \\pmod{(p-1)(q-1)}$"
+    ],
+    "bonne": 0,
+    "explication": "Avec $ed = 1 + k(p-1)(q-1)$, le petit théorème de Fermat donne $m^{ed} \\equiv m$ modulo $p$ et modulo $q$ (y compris si $p$ ou $q$ divise $m$), donc modulo $n$. Le module pertinent est $\\varphi(n) = (p-1)(q-1)$, pas $n$ : ce sont les exposants qu'on réduit."
+  },
+  {
+    "id": "arithmetique-qcm-07", "ch": "arithmetique", "type": "qcm",
+    "enonce": "Les racines primitives $12$-ièmes de l'unité (c'est-à-dire d'ordre exactement $12$ dans $\\mathbb U$) sont les $e^{2ik\\pi/12}$ avec :",
+    "choix": [
+      "$k \\in \\{1, 5, 7, 11\\}$",
+      "$k \\in \\{1, 3, 5, 7, 9, 11\\}$",
+      "$k \\in \\{2, 3, 5, 7, 11\\}$",
+      "$k \\in \\{1, 2, \\dots, 11\\}$"
+    ],
+    "bonne": 0,
+    "explication": "$e^{2ik\\pi/n}$ est d'ordre $\\frac{n}{\\mathrm{pgcd}(k, n)}$ : il faut $k$ premier avec $12$, ce qui donne $\\varphi(12) = 4$ racines. Pour $k = 3$, on obtient $i$, d'ordre $4$ ; pour $k = 2$, $e^{i\\pi/3}$, d'ordre $6$."
+  },
+  {
+    "id": "arithmetique-qcm-08", "ch": "arithmetique", "type": "qcm",
+    "enonce": "L'ensemble des couples $(x, y) \\in \\mathbb Z^2$ tels que $6x + 10y = 8$ est :",
+    "choix": [
+      "$\\{(-2 + 5k,\\ 2 - 3k),\\ k \\in \\mathbb Z\\}$",
+      "$\\{(-2 + 10k,\\ 2 - 6k),\\ k \\in \\mathbb Z\\}$",
+      "$\\{(-2 + 5k,\\ 2 + 3k),\\ k \\in \\mathbb Z\\}$",
+      "$\\{(-2 + 3k,\\ 2 - 5k),\\ k \\in \\mathbb Z\\}$"
+    ],
+    "bonne": 0,
+    "explication": "On divise par $\\mathrm{pgcd}(6, 10) = 2$ : $3x + 5y = 4$, de solution particulière $(-2, 2)$. Alors $3(x + 2) = -5(y - 2)$ et Gauss donne $5 \\mid x + 2$. Le piège : garder $10$ et $6$ comme pas, ce qui ne décrit qu'une solution sur deux (on perd par exemple $(3, -1)$)."
+  },
+  {
+    "id": "arithmetique-err-01", "ch": "arithmetique", "type": "erreur",
+    "enonce": "Une copie affirme : pour tout $n \\in \\mathbb Z$, si $12$ divise $n^2$, alors $12$ divise $n$. Voici sa preuve.",
+    "lignes": [
+      "Si $12 \\mid n^2$, alors $3 \\mid n^2$ et $4 \\mid n^2$.",
+      "Comme $3$ est premier et $3 \\mid n \\cdot n$, le lemme d'Euclide donne $3 \\mid n$.",
+      "Comme $4 \\mid n \\cdot n$, le lemme d'Euclide donne $4 \\mid n$ ; $3$ et $4$ étant premiers entre eux, $12 \\mid n$."
+    ],
+    "fausse": 2,
+    "explication": "Le lemme d'Euclide ne vaut que pour un diviseur premier, et $4$ ne l'est pas. Contre-exemple : $n = 6$, avec $12 \\mid 36$ mais $12 \\nmid 6$. De $4 \\mid n^2$ on tire seulement $2 \\mid n$ ; la conclusion correcte est $6 \\mid n$."
+  },
+  {
+    "id": "arithmetique-err-02", "ch": "arithmetique", "type": "erreur",
+    "enonce": "On résout dans $\\mathbb Z$ la congruence $6x \\equiv 4 \\pmod{10}$. Voici une copie.",
+    "lignes": [
+      "La congruence équivaut à $10 \\mid 6x - 4$.",
+      "C'est-à-dire $10 \\mid 2(3x - 2)$.",
+      "En simplifiant par $2$ : $10 \\mid 3x - 2$, donc les solutions sont les $x \\equiv 4 \\pmod{10}$."
+    ],
+    "fausse": 2,
+    "explication": "On simplifie par $2$ des **deux** côtés : $10 \\mid 2(3x-2)$ équivaut à $5 \\mid 3x - 2$, soit $x \\equiv 4 \\pmod 5$. Les solutions sont $x \\equiv 4$ ou $x \\equiv 9 \\pmod{10}$ ; la copie perd $x = 9$, qui vérifie $54 \\equiv 4 \\pmod{10}$."
+  },
+  {
+    "id": "arithmetique-err-03", "ch": "arithmetique", "type": "erreur",
+    "enonce": "On veut le reste de la division de $3^{2026}$ par $7$. Voici une copie.",
+    "lignes": [
+      "$7$ est premier et ne divise pas $3$, donc $3^6 \\equiv 1 \\pmod 7$ (petit théorème de Fermat).",
+      "On a $2026 = 7 \\times 289 + 3$.",
+      "Donc $3^{2026} \\equiv 3^3 = 27 \\equiv 6 \\pmod 7$."
+    ],
+    "fausse": 2,
+    "explication": "Puisque $3^6 \\equiv 1$, l'exposant se réduit modulo $6$, pas modulo $7$. Comme $2026 = 6 \\times 337 + 4$, on a $3^{2026} \\equiv 3^4 = 81 \\equiv 4 \\pmod 7$. Les deux premières lignes sont exactes, mais la seconde ne sert à rien."
+  },
+  {
+    "id": "arithmetique-err-04", "ch": "arithmetique", "type": "erreur",
+    "enonce": "On veut compter les éléments inversibles de $\\mathbb Z/72\\mathbb Z$. Voici une copie.",
+    "lignes": [
+      "La classe de $a$ est inversible dans $\\mathbb Z/72\\mathbb Z$ si et seulement si $\\mathrm{pgcd}(a, 72) = 1$ : il y a $\\varphi(72)$ inversibles.",
+      "On a $\\varphi(6) = 2$ et $\\varphi(12) = 4$.",
+      "Comme $72 = 6 \\times 12$, on obtient $\\varphi(72) = \\varphi(6)\\varphi(12) = 8$."
+    ],
+    "fausse": 2,
+    "explication": "La multiplicativité exige des facteurs premiers entre eux, ce que ne sont pas $6$ et $12$. Avec $72 = 8 \\times 9$ : $\\varphi(72) = \\varphi(8)\\varphi(9) = 4 \\times 6 = 24$, ce que confirme $72\\left(1 - \\frac12\\right)\\left(1 - \\frac13\\right) = 24$."
+  },
+  {
+    "id": "arithmetique-err-05", "ch": "arithmetique", "type": "erreur",
+    "enonce": "Une copie prétend démontrer que $\\mathbb Q \\cap [0, 1[$ n'est pas dénombrable, en imitant l'argument diagonal de Cantor.",
+    "lignes": [
+      "Supposons $\\mathbb Q \\cap [0, 1[$ dénombrable : c'est l'ensemble des termes d'une suite $(r_n)_{n \\ge 1}$.",
+      "On écrit le développement décimal propre de chaque $r_n$, et on pose $x = 0{,}d_1 d_2 d_3 \\dots$ où $d_n \\in \\{4, 5\\}$ est choisi différent du $n$-ième chiffre de $r_n$.",
+      "Le développement de $x$ est propre et diffère de celui de $r_n$ au rang $n$, donc $x \\ne r_n$ pour tout $n$.",
+      "Donc $x$ est un élément de $\\mathbb Q \\cap [0, 1[$ absent de la suite : contradiction."
+    ],
+    "fausse": 3,
+    "explication": "Rien ne dit que $x$ est rationnel : son développement n'a aucune raison d'être périodique. On a seulement construit un réel de $[0, 1[$ hors de la suite, ce qui ne contredit rien. Le même argument appliqué à une suite de réels prouve, lui, que $[0, 1[$ n'est pas dénombrable."
+  },
+  {
+    "id": "arithmetique-err-06", "ch": "arithmetique", "type": "erreur",
+    "enonce": "On cherche l'ordre de $\\omega = e^{12i\\pi/15}$ dans le groupe $(\\mathbb U, \\times)$. Voici une copie.",
+    "lignes": [
+      "On a $\\omega = e^{2i\\pi \\cdot 6/15}$.",
+      "Donc $\\omega^{15} = e^{12i\\pi} = 1$.",
+      "Donc $\\omega$ est d'ordre $15$, et il engendre $\\mathbb U_{15}$."
+    ],
+    "fausse": 2,
+    "explication": "$\\omega^{15} = 1$ montre seulement que l'ordre **divise** $15$ ; il faut vérifier la minimalité. Ici $\\frac{6}{15} = \\frac25$, donc $\\omega = e^{4i\\pi/5}$ est d'ordre $5$, conformément à la formule $\\frac{15}{\\mathrm{pgcd}(6, 15)}$."
+  },
+  {
+    "id": "arithmetique-piste-01", "ch": "arithmetique", "type": "piste",
+    "enonce": "Montrer que pour tout $n \\in \\mathbb N$, l'entier $3^{2n+1} + 2^{n+2}$ est divisible par $7$.",
+    "choix": [
+      {
+        "titre": "Calcul modulo $7$",
+        "info": "Les congruences modulo $n$ sont compatibles avec l'addition, la multiplication et les puissances : si $a \\equiv b \\pmod n$, alors $a^k \\equiv b^k \\pmod n$ pour tout $k \\in \\mathbb N$.",
+        "verdict": "bon",
+        "retour": "On écrit $3^{2n+1} = 3 \\cdot 9^n$ et $9 \\equiv 2$ : tout s'exprime avec $2^n$."
+      },
+      {
+        "titre": "Récurrence sur $n$",
+        "info": "On vérifie la propriété pour $n = 0$, puis on montre que si elle est vraie au rang $n$, elle l'est au rang $n + 1$.",
+        "verdict": "bon",
+        "retour": "En notant $u_n$ l'entier étudié, on trouve $u_{n+1} = 9u_n - 7 \\cdot 2^{n+2}$, ce qui conclut."
+      },
+      {
+        "titre": "Petit théorème de Fermat",
+        "info": "Si $p$ est premier et $p \\nmid a$, alors $a^{p-1} \\equiv 1 \\pmod p$.",
+        "verdict": "possible",
+        "retour": "Il rend les deux termes périodiques en $n$ modulo $7$, ce qui ramène à un nombre fini de cas à vérifier. Ça marche, mais c'est détourné."
+      },
+      {
+        "titre": "Décomposition en facteurs premiers",
+        "info": "Tout entier $N \\ge 2$ s'écrit de façon unique, à l'ordre près, comme produit de nombres premiers.",
+        "verdict": "impasse",
+        "retour": "On ne connaît pas la décomposition d'une somme : celles de $3^{2n+1}$ et $2^{n+2}$ ne disent rien de celle de leur somme."
+      }
+    ],
+    "direction": "Modulo $7$ : $3^{2n+1} = 3 \\cdot 9^n \\equiv 3 \\cdot 2^n$ et $2^{n+2} = 4 \\cdot 2^n$. La somme est congrue à $7 \\cdot 2^n \\equiv 0 \\pmod 7$."
+  },
+  {
+    "id": "arithmetique-piste-02", "ch": "arithmetique", "type": "piste",
+    "enonce": "Déterminer tous les couples $(x, y) \\in \\mathbb Z^2$ tels que $17x + 40y = 3$.",
+    "choix": [
+      {
+        "titre": "Algorithme d'Euclide étendu, puis théorème de Gauss",
+        "info": "Les divisions successives de l'algorithme d'Euclide, remontées, fournissent $u, v \\in \\mathbb Z$ avec $au + bv = \\mathrm{pgcd}(a, b)$. Gauss : si $a \\mid bc$ et $\\mathrm{pgcd}(a, b) = 1$, alors $a \\mid c$.",
+        "verdict": "bon",
+        "retour": "Euclide donne une solution particulière, Gauss décrit toutes les autres : c'est la méthode standard."
+      },
+      {
+        "titre": "Réduire l'équation modulo $17$",
+        "info": "Si $(x, y)$ est solution, alors $40y \\equiv 3 \\pmod{17}$. Une classe $\\bar a$ est inversible dans $\\mathbb Z/17\\mathbb Z$ dès que $17 \\nmid a$.",
+        "verdict": "bon",
+        "retour": "$40 \\equiv 6$ et $6 \\times 3 = 18 \\equiv 1 \\pmod{17}$ : on trouve directement $y \\equiv 9 \\pmod{17}$, puis $x$."
+      },
+      {
+        "titre": "Petit théorème de Fermat modulo $40$",
+        "info": "Si $p$ est premier et $p \\nmid a$, alors $a^{p-1} \\equiv 1 \\pmod p$, de sorte que $a^{p-2}$ est un inverse de $a$ modulo $p$.",
+        "verdict": "impasse",
+        "retour": "$40$ n'est pas premier : par exemple $17^{39} \\equiv 33 \\pmod{40}$, et $17^{38}$ n'est pas l'inverse de $17$."
+      },
+      {
+        "titre": "Essais systématiques",
+        "info": "On teste les valeurs de $y$ de $0$ à $16$ jusqu'à trouver $40y - 3$ divisible par $17$.",
+        "verdict": "possible",
+        "retour": "On finit par trouver $y = 9$, mais il reste à décrire toutes les solutions, ce qui demande de toute façon Gauss."
+      }
+    ],
+    "direction": "Euclide : $40 = 2 \\times 17 + 6$, $17 = 2 \\times 6 + 5$, $6 = 5 + 1$, d'où $3 \\times 40 - 7 \\times 17 = 1$ et la solution $(-21, 9)$. Gauss donne $(x, y) = (-21 + 40k,\\ 9 - 17k)$, $k \\in \\mathbb Z$."
+  },
+  {
+    "id": "arithmetique-piste-03", "ch": "arithmetique", "type": "piste",
+    "enonce": "Déterminer les entiers $x$ tels que $x \\equiv 2 \\pmod 3$, $x \\equiv 3 \\pmod 5$ et $x \\equiv 2 \\pmod 7$.",
+    "choix": [
+      {
+        "titre": "Théorème chinois avec des coefficients de Bézout",
+        "info": "Si $m_1, \\dots, m_r$ sont deux à deux premiers entre eux, le système $x \\equiv a_i \\pmod{m_i}$ a une unique solution modulo $m_1 \\cdots m_r$, qu'on construit avec des relations de Bézout entre $m_i$ et $\\prod_{j \\ne i} m_j$.",
+        "verdict": "bon",
+        "retour": "Les modules $3, 5, 7$ sont premiers entre eux deux à deux : existence et unicité modulo $105$, et une méthode de calcul."
+      },
+      {
+        "titre": "Regrouper les congruences de même reste",
+        "info": "Si $m$ et $m'$ sont premiers entre eux, $x \\equiv a \\pmod m$ et $x \\equiv a \\pmod{m'}$ équivaut à $x \\equiv a \\pmod{mm'}$.",
+        "verdict": "bon",
+        "retour": "La première et la troisième donnent $x \\equiv 2 \\pmod{21}$ : il ne reste qu'une congruence à combiner."
+      },
+      {
+        "titre": "Additionner les congruences",
+        "info": "Si $a \\equiv b \\pmod n$ et $c \\equiv d \\pmod n$, alors $a + c \\equiv b + d \\pmod n$, pour un **même** module $n$.",
+        "verdict": "impasse",
+        "retour": "Les trois congruences portent sur des modules différents : on ne peut pas les additionner."
+      },
+      {
+        "titre": "Tester les entiers de $0$ à $104$",
+        "info": "Le théorème chinois assure une unique solution dans $\\{0, \\dots, 104\\}$, qu'on peut chercher par balayage.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais c'est long à la main ; on peut le réduire en ne testant que les $x \\equiv 2 \\pmod{21}$."
+      }
+    ],
+    "direction": "$x \\equiv 2 \\pmod{21}$, donc $x = 2 + 21k$. Alors $2 + 21k \\equiv 2 + k \\equiv 3 \\pmod 5$, soit $k \\equiv 1 \\pmod 5$. Les solutions sont les $x \\equiv 23 \\pmod{105}$."
+  },
+  {
+    "id": "arithmetique-piste-04", "ch": "arithmetique", "type": "piste",
+    "enonce": "Montrer que pour tout $n \\in \\mathbb Z$, l'entier $n^7 - n$ est divisible par $42$.",
+    "choix": [
+      {
+        "titre": "Petit théorème de Fermat pour $2$, $3$ et $7$",
+        "info": "Si $p$ est premier, alors $n^p \\equiv n \\pmod p$ pour **tout** $n \\in \\mathbb Z$. Si des entiers deux à deux premiers entre eux divisent $N$, leur produit divise $N$.",
+        "verdict": "bon",
+        "retour": "$42 = 2 \\times 3 \\times 7$ : on montre la divisibilité par chacun des trois premiers, puis on recolle."
+      },
+      {
+        "titre": "Théorème d'Euler modulo $42$",
+        "info": "Si $\\mathrm{pgcd}(n, N) = 1$, alors $n^{\\varphi(N)} \\equiv 1 \\pmod N$. Ici $\\varphi(42) = 12$.",
+        "verdict": "impasse",
+        "retour": "Il ne concerne que les $n$ premiers avec $42$, et l'exposant $12$ n'a rien à voir avec $7$ : on n'en tire pas $n^7 \\equiv n$."
+      },
+      {
+        "titre": "Factoriser $n^7 - n$",
+        "info": "$n^7 - n = (n-1)n(n+1)(n^2 + n + 1)(n^2 - n + 1)$, et un produit de $k$ entiers consécutifs est divisible par $k$.",
+        "verdict": "possible",
+        "retour": "Les trois entiers consécutifs donnent la divisibilité par $6$ ; pour $7$, il faut une étude des restes modulo $7$, plus longue."
+      },
+      {
+        "titre": "Récurrence sur $n \\ge 0$ avec la formule du binôme",
+        "info": "$(n+1)^7 - (n+1) - (n^7 - n) = \\sum_{k=1}^{6} \\binom 7k n^k$.",
+        "verdict": "possible",
+        "retour": "Les $\\binom 7k$, $1 \\le k \\le 6$, sont divisibles par $7$, mais pas par $6$ : on n'obtient que la divisibilité par $7$, et il faut traiter $n < 0$ à part."
+      }
+    ],
+    "direction": "Pour $p \\in \\{2, 3, 7\\}$, $n^p \\equiv n$ entraîne $n^7 \\equiv n \\pmod p$ (pour $p = 3$ : $n^7 = n^3 \\cdot n^3 \\cdot n \\equiv n^3 \\equiv n$ ; pour $p = 2$ : $n^2 \\equiv n$). Les trois premiers étant distincts, leur produit $42$ divise $n^7 - n$."
+  },
+  {
+    "id": "arithmetique-piste-05", "ch": "arithmetique", "type": "piste",
+    "enonce": "Soient $p \\ne q$ deux nombres premiers, $n = pq$, et $e, d \\in \\mathbb N^*$ tels que $ed \\equiv 1 \\pmod{(p-1)(q-1)}$. Montrer que $m^{ed} \\equiv m \\pmod n$ pour tout $m \\in \\mathbb Z$.",
+    "choix": [
+      {
+        "titre": "Fermat modulo $p$ et modulo $q$, puis recollement",
+        "info": "Petit théorème de Fermat : si $p$ est premier et $p \\nmid m$, alors $m^{p-1} \\equiv 1 \\pmod p$. Si $p$ et $q$ sont premiers entre eux et divisent $N$, alors $pq$ divise $N$.",
+        "verdict": "bon",
+        "retour": "Travailler modulo chaque premier permet de traiter à part le cas $p \\mid m$, où les deux membres sont nuls."
+      },
+      {
+        "titre": "Théorème d'Euler modulo $n$",
+        "info": "Si $\\mathrm{pgcd}(m, n) = 1$, alors $m^{\\varphi(n)} \\equiv 1 \\pmod n$, avec ici $\\varphi(n) = (p-1)(q-1)$.",
+        "verdict": "possible",
+        "retour": "Il règle immédiatement le cas $m$ premier avec $n$, mais laisse de côté les $m$ multiples de $p$ ou de $q$."
+      },
+      {
+        "titre": "Utiliser que $\\mathbb Z/n\\mathbb Z$ est un corps",
+        "info": "$\\mathbb Z/N\\mathbb Z$ est un corps si et seulement si $N$ est premier ; alors $(\\mathbb Z/N\\mathbb Z)^\\times$ est de cardinal $N - 1$.",
+        "verdict": "impasse",
+        "retour": "$n = pq$ n'est pas premier : $\\mathbb Z/n\\mathbb Z$ n'est pas un corps, il a des diviseurs de zéro."
+      },
+      {
+        "titre": "Récurrence sur $m \\ge 0$",
+        "info": "On vérifie le résultat pour $m = 0$ et on cherche à passer de $m$ à $m + 1$.",
+        "verdict": "impasse",
+        "retour": "$(m+1)^{ed}$ ne s'exprime pas simplement à partir de $m^{ed}$ : le binôme fait apparaître une somme incontrôlable."
+      }
+    ],
+    "direction": "On écrit $ed = 1 + k(p-1)(q-1)$ avec $k \\in \\mathbb N$. Si $p \\nmid m$, $m^{ed} = m \\left(m^{p-1}\\right)^{k(q-1)} \\equiv m \\pmod p$ ; si $p \\mid m$, les deux membres sont nuls modulo $p$. Idem modulo $q$, et $p, q$ premiers distincts donnent la congruence modulo $pq$."
+  },
+  {
+    "id": "arithmetique-piste-06", "ch": "arithmetique", "type": "piste",
+    "enonce": "Soient $a, b \\in \\mathbb Z$ non tous deux nuls et $\\delta = \\mathrm{pgcd}(a, b)$. Montrer qu'il existe $u, v \\in \\mathbb Z$ tels que $au + bv = \\delta$.",
+    "choix": [
+      {
+        "titre": "Sous-groupe $a\\mathbb Z + b\\mathbb Z$",
+        "info": "Tout sous-groupe de $(\\mathbb Z, +)$ est de la forme $d\\mathbb Z$ avec $d \\in \\mathbb N$.",
+        "verdict": "bon",
+        "retour": "On écrit $a\\mathbb Z + b\\mathbb Z = d\\mathbb Z$ et on montre $d = \\delta$ : c'est la preuve la plus courte."
+      },
+      {
+        "titre": "Algorithme d'Euclide étendu",
+        "info": "Si $a = bq + r$, alors $\\mathrm{pgcd}(a, b) = \\mathrm{pgcd}(b, r)$. Les restes successifs décroissent strictement jusqu'à $0$ ; le dernier reste non nul est le PGCD.",
+        "verdict": "bon",
+        "retour": "Chaque reste est combinaison entière de $a$ et $b$ : par récurrence, le dernier reste non nul l'est aussi. Preuve constructive."
+      },
+      {
+        "titre": "Théorème de Gauss",
+        "info": "Si $a \\mid bc$ et $\\mathrm{pgcd}(a, b) = 1$, alors $a \\mid c$.",
+        "verdict": "impasse",
+        "retour": "Gauss se démontre habituellement à partir de Bézout : l'utiliser ici serait circulaire, et il ne fabrique aucune combinaison linéaire."
+      },
+      {
+        "titre": "Décompositions en facteurs premiers",
+        "info": "$\\delta = \\prod p^{\\min(\\alpha_p, \\beta_p)}$ où $\\alpha_p, \\beta_p$ sont les exposants de $p$ dans $a$ et $b$.",
+        "verdict": "impasse",
+        "retour": "Elles calculent $\\delta$ mais ne donnent aucun moyen d'écrire $\\delta$ comme combinaison de $a$ et $b$."
+      }
+    ],
+    "direction": "$a\\mathbb Z + b\\mathbb Z$ est un sous-groupe non nul, donc égal à $d\\mathbb Z$ avec $d \\ge 1$ et $d = au + bv$. Comme $a, b \\in d\\mathbb Z$, $d$ divise $a$ et $b$, donc $d \\mid \\delta$ ; et $\\delta$ divise $au + bv = d$. Donc $d = \\delta$."
+  },
+  {
+    "id": "arithmetique-piste-07", "ch": "arithmetique", "type": "piste",
+    "enonce": "Soient $n \\ge 2$, $\\omega = e^{2i\\pi/n}$ et $p \\in \\mathbb Z$. Calculer $S_p = \\displaystyle\\sum_{k=0}^{n-1} \\omega^{kp}$.",
+    "choix": [
+      {
+        "titre": "Somme géométrique de raison $\\omega^p$",
+        "info": "Pour $q \\ne 1$, $\\sum_{k=0}^{n-1} q^k = \\frac{1 - q^n}{1 - q}$ ; pour $q = 1$, la somme vaut $n$.",
+        "verdict": "bon",
+        "retour": "Tout repose sur la distinction $\\omega^p = 1$ ou non, c'est-à-dire $n \\mid p$ ou non."
+      },
+      {
+        "titre": "Relations coefficients-racines pour $X^n - 1$",
+        "info": "La somme des racines (avec multiplicité) d'un polynôme unitaire $X^n + a_{n-1}X^{n-1} + \\dots$ vaut $-a_{n-1}$.",
+        "verdict": "possible",
+        "retour": "Elle donne $S_p = 0$ quand $p$ est premier avec $n$ (les $\\omega^{kp}$ décrivent alors $\\mathbb U_n$). Le cas général demande de voir que chaque élément de $\\mathbb U_{n/\\mathrm{pgcd}(n,p)}$ est atteint le même nombre de fois."
+      },
+      {
+        "titre": "Inégalité triangulaire",
+        "info": "Pour tous complexes $z_1, \\dots, z_n$, $\\left|\\sum z_k\\right| \\le \\sum |z_k|$.",
+        "verdict": "impasse",
+        "retour": "Elle donne $|S_p| \\le n$, une majoration, pas la valeur."
+      },
+      {
+        "titre": "Récurrence sur $n$",
+        "info": "On établit la formule pour $n = 2$, puis on passe de $n$ à $n + 1$.",
+        "verdict": "impasse",
+        "retour": "$\\omega$ dépend de $n$ : les racines $(n+1)$-ièmes n'ont rien à voir avec les racines $n$-ièmes, la récurrence n'a pas de prise."
+      }
+    ],
+    "direction": "Si $n \\mid p$, alors $\\omega^p = 1$ et $S_p = n$. Sinon $\\omega^p \\ne 1$ et $S_p = \\frac{1 - \\omega^{np}}{1 - \\omega^p} = 0$ car $\\omega^{np} = 1$."
+  },
+  {
+    "id": "arithmetique-piste-08", "ch": "arithmetique", "type": "piste",
+    "enonce": "Calculer $\\cos\\frac{2\\pi}{5}$ en exprimant le résultat avec des radicaux. (Application : construction du pentagone régulier.)",
+    "choix": [
+      {
+        "titre": "Racines cinquièmes de l'unité et $x = \\omega + \\bar\\omega$",
+        "info": "Avec $\\omega = e^{2i\\pi/5}$, on a $1 + \\omega + \\omega^2 + \\omega^3 + \\omega^4 = 0$ et $\\bar\\omega = \\omega^{-1} = \\omega^4$.",
+        "verdict": "bon",
+        "retour": "En divisant la relation par $\\omega^2$, on obtient une équation du second degré en $x = \\omega + \\omega^{-1} = 2\\cos\\frac{2\\pi}5$."
+      },
+      {
+        "titre": "Développer $\\cos 5\\theta$ en fonction de $\\cos\\theta$",
+        "info": "$\\cos 5\\theta = 16\\cos^5\\theta - 20\\cos^3\\theta + 5\\cos\\theta$.",
+        "verdict": "possible",
+        "retour": "Avec $\\theta = \\frac{2\\pi}5$, $c = \\cos\\theta$ est racine de $16c^5 - 20c^3 + 5c - 1 = (c - 1)(4c^2 + 2c - 1)^2$. Ça aboutit, mais la factorisation est à trouver."
+      },
+      {
+        "titre": "Triangle isocèle d'angles $36°, 72°, 72°$",
+        "info": "Dans ce triangle, la bissectrice d'un angle de la base découpe un triangle semblable au premier, ce qui fournit une équation sur le rapport des côtés.",
+        "verdict": "possible",
+        "retour": "On obtient $\\cos 36°$ par le nombre d'or, puis $\\cos 72° = 2\\cos^2 36° - 1$. Joli mais plus long à rédiger proprement."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Une fonction continue sur un intervalle qui prend des valeurs de signes opposés en deux points s'annule entre ces deux points.",
+        "verdict": "impasse",
+        "retour": "Il prouve l'existence d'une racine, sans en donner l'expression par radicaux."
+      }
+    ],
+    "direction": "En divisant par $\\omega^2$ : $(\\omega^2 + \\omega^{-2}) + (\\omega + \\omega^{-1}) + 1 = 0$, soit $x^2 + x - 1 = 0$. Comme $x = 2\\cos\\frac{2\\pi}5 > 0$, $x = \\frac{\\sqrt5 - 1}{2}$ et $\\cos\\frac{2\\pi}5 = \\frac{\\sqrt5 - 1}{4}$."
+  },
+  {
+    "id": "arithmetique-piste-09", "ch": "arithmetique", "type": "piste",
+    "enonce": "Montrer que $\\mathbb R$ n'est pas dénombrable.",
+    "choix": [
+      {
+        "titre": "Argument diagonal de Cantor",
+        "info": "Tout réel de $[0, 1[$ admet un unique développement décimal propre (qui ne se termine pas par une infinité de $9$).",
+        "verdict": "bon",
+        "retour": "À partir d'une suite de réels de $[0,1[$, on construit un réel dont le $n$-ième chiffre diffère de celui du $n$-ième terme, en évitant le chiffre $9$."
+      },
+      {
+        "titre": "Segments emboîtés",
+        "info": "Toute suite décroissante de segments $[a_n, b_n]$ de $\\mathbb R$ a une intersection non vide.",
+        "verdict": "bon",
+        "retour": "Étant donnée une suite $(x_n)$, on construit des segments emboîtés avec $x_n \\notin [a_n, b_n]$ ; un point de l'intersection n'est aucun des $x_n$."
+      },
+      {
+        "titre": "Densité de $\\mathbb Q$ dans $\\mathbb R$",
+        "info": "Tout intervalle ouvert non vide de $\\mathbb R$ contient un rationnel.",
+        "verdict": "impasse",
+        "retour": "La densité est une propriété topologique ; elle ne dit rien du cardinal de $\\mathbb R$."
+      },
+      {
+        "titre": "Union dénombrable d'ensembles dénombrables",
+        "info": "Une réunion d'une suite d'ensembles dénombrables est dénombrable.",
+        "verdict": "impasse",
+        "retour": "Ce théorème sert à prouver qu'un ensemble **est** dénombrable. Écrire $\\mathbb R = \\bigcup_n [n, n+1[$ ne fait que déplacer la question."
+      }
+    ],
+    "direction": "Soit $(x_n)_{n \\ge 1}$ une suite de $[0,1[$. On pose $x = 0{,}d_1d_2\\dots$ avec $d_n = 5$ si le $n$-ième chiffre propre de $x_n$ vaut $4$, et $d_n = 4$ sinon. Ce développement est propre et diffère de celui de $x_n$ au rang $n$ : $x \\ne x_n$ pour tout $n$. Aucune suite n'épuise $[0,1[$."
+  },
+  {
+    "id": "arithmetique-piste-10", "ch": "arithmetique", "type": "piste",
+    "enonce": "Montrer que le groupe $(\\mathbb Z/15\\mathbb Z)^\\times$ des inversibles de $\\mathbb Z/15\\mathbb Z$ n'est pas cyclique.",
+    "choix": [
+      {
+        "titre": "Théorème chinois",
+        "info": "Si $\\mathrm{pgcd}(m, n) = 1$, l'isomorphisme d'anneaux $\\mathbb Z/mn\\mathbb Z \\simeq \\mathbb Z/m\\mathbb Z \\times \\mathbb Z/n\\mathbb Z$ induit un isomorphisme de groupes entre leurs inversibles.",
+        "verdict": "bon",
+        "retour": "On se ramène à $(\\mathbb Z/3\\mathbb Z)^\\times \\times (\\mathbb Z/5\\mathbb Z)^\\times$, où tout élément vérifie $x^4 = 1$."
+      },
+      {
+        "titre": "Calculer l'ordre de chaque inversible",
+        "info": "Les inversibles sont les classes de $1, 2, 4, 7, 8, 11, 13, 14$ ; l'ordre de $x$ est le plus petit $k \\ge 1$ tel que $x^k = \\bar 1$.",
+        "verdict": "possible",
+        "retour": "Huit calculs courts montrent qu'aucun ordre ne vaut $8$. Correct, mais sans idée de structure."
+      },
+      {
+        "titre": "Théorème de Lagrange",
+        "info": "Dans un groupe fini, l'ordre de tout élément divise le cardinal du groupe.",
+        "verdict": "impasse",
+        "retour": "Il dit que les ordres divisent $8$, ce qui n'exclut pas un élément d'ordre $8$."
+      },
+      {
+        "titre": "Cyclicité de $(\\mathbb Z/p\\mathbb Z)^\\times$",
+        "info": "Pour $p$ premier, le groupe $(\\mathbb Z/p\\mathbb Z)^\\times$ est cyclique d'ordre $p - 1$ (résultat classique, hors programme, à redémontrer).",
+        "verdict": "impasse",
+        "retour": "$15$ n'est pas premier, et le résultat dit qu'un groupe **est** cyclique, pas qu'il ne l'est pas."
+      }
+    ],
+    "direction": "$(\\mathbb Z/15\\mathbb Z)^\\times$ a $\\varphi(15) = 8$ éléments. Par le théorème chinois, $x^4 \\equiv 1$ modulo $3$ et modulo $5$ pour tout $x$ premier avec $15$, donc modulo $15$ : aucun élément n'est d'ordre $8$."
+  },
+  {
+    "id": "arithmetique-piste-11", "ch": "arithmetique", "type": "piste",
+    "enonce": "Soit $P = a_nX^n + \\dots + a_1X + a_0 \\in \\mathbb Z[X]$ avec $n \\ge 1$, $a_n \\ne 0$ et $a_0 \\ne 0$. Soit $\\frac pq$ une racine rationnelle de $P$, écrite sous forme irréductible ($p \\in \\mathbb Z$, $q \\in \\mathbb N^*$). Montrer que $p \\mid a_0$ et $q \\mid a_n$.",
+    "choix": [
+      {
+        "titre": "Chasser les dénominateurs, puis théorème de Gauss",
+        "info": "Gauss : si $a \\mid bc$ et $\\mathrm{pgcd}(a, b) = 1$, alors $a \\mid c$. Si $\\mathrm{pgcd}(p, q) = 1$, alors $\\mathrm{pgcd}(p, q^n) = 1$.",
+        "verdict": "bon",
+        "retour": "En multipliant $P(\\frac pq) = 0$ par $q^n$, on isole $a_0q^n$ puis $a_np^n$ : Gauss conclut deux fois."
+      },
+      {
+        "titre": "Valuations $p$-adiques",
+        "info": "Pour un premier $\\ell$, on note $v_\\ell(m)$ l'exposant de $\\ell$ dans la décomposition de $m$ ; on a $v_\\ell(mm') = v_\\ell(m) + v_\\ell(m')$.",
+        "verdict": "possible",
+        "retour": "On peut conclure en comparant les valuations premier par premier, mais c'est plus lourd que Gauss."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme non constant à coefficients complexes admet au moins une racine dans $\\mathbb C$.",
+        "verdict": "impasse",
+        "retour": "Il parle de l'existence de racines complexes, pas de divisibilité dans $\\mathbb Z$. Malgré le nom, c'est un autre théorème de Gauss."
+      },
+      {
+        "titre": "Division de $P$ par $X - \\frac pq$",
+        "info": "Si $\\alpha$ est racine de $P$, il existe $Q$ tel que $P = (X - \\alpha)Q$.",
+        "verdict": "impasse",
+        "retour": "Le quotient $Q$ est à coefficients rationnels, pas entiers : on ne peut rien en tirer sur la divisibilité."
+      }
+    ],
+    "direction": "On obtient $a_np^n + a_{n-1}p^{n-1}q + \\dots + a_0q^n = 0$. Donc $p \\mid a_0q^n$ et $\\mathrm{pgcd}(p, q^n) = 1$ : $p \\mid a_0$. De même $q \\mid a_np^n$, donc $q \\mid a_n$."
+  },
+  {
+    "id": "arithmetique-piste-12", "ch": "arithmetique", "type": "piste",
+    "enonce": "Montrer que toute année du calendrier grégorien comporte au moins un vendredi 13.",
+    "choix": [
+      {
+        "titre": "Décalages modulo $7$ des 13 de chaque mois",
+        "info": "Si le 13 janvier tombe le jour $j$, le 13 d'un mois donné tombe le jour $j + N$ modulo $7$, où $N$ est le nombre de jours écoulés depuis le 13 janvier.",
+        "verdict": "bon",
+        "retour": "Il suffit de vérifier que les douze décalages modulo $7$ prennent les sept valeurs, pour une année ordinaire et pour une année bissextile."
+      },
+      {
+        "titre": "Principe des tiroirs",
+        "info": "Si l'on range $k$ objets dans $r < k$ tiroirs, un tiroir contient au moins deux objets.",
+        "verdict": "impasse",
+        "retour": "Il dit que deux 13 tombent le même jour, alors qu'on veut que **tous** les jours soient atteints."
+      },
+      {
+        "titre": "Passer en revue les $14$ types d'années",
+        "info": "Une année est déterminée, du point de vue du calendrier, par le jour du 1er janvier et son caractère bissextile : $14$ cas.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais c'est sept fois plus long que l'étude des décalages, qui traite tous les jours de départ à la fois."
+      },
+      {
+        "titre": "Périodicité du calendrier grégorien",
+        "info": "Un cycle grégorien de $400$ ans compte $146097$ jours, qui est un multiple de $7$.",
+        "verdict": "impasse",
+        "retour": "Elle montre que les calendriers se répètent tous les $400$ ans, pas que chaque année contient un vendredi 13."
+      }
+    ],
+    "direction": "Année ordinaire : les décalages des 13 depuis janvier sont, modulo $7$, $0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5$, qui prennent les sept valeurs. Année bissextile : $0, 3, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6$, idem. Un des 13 tombe donc un vendredi."
+  }
+]
