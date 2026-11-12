@@ -1,0 +1,684 @@
+[
+  {
+    "id": "quadratique-euclidien-vf-01", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Deux matrices symétriques réelles congruentes sont semblables.",
+    "reponse": false,
+    "explication": "Contre-exemple : $2I_2 = P^{\\mathsf T} I_2 P$ avec $P = \\sqrt 2\\, I_2$, donc $2I_2$ et $I_2$ sont congruentes, mais seule $I_2$ est semblable à $I_2$. La congruence conserve le rang et la signature, pas les valeurs propres. Le résultat devient vrai si $P$ est orthogonale, car alors $P^{\\mathsf T} = P^{-1}$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-02", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Deux matrices symétriques réelles semblables sont congruentes.",
+    "reponse": true,
+    "explication": "Semblables, elles ont les mêmes valeurs propres avec multiplicités. Par le théorème spectral, $A = PDP^{\\mathsf T}$ et $B = QDQ^{\\mathsf T}$ avec $P, Q \\in O_n(\\mathbb R)$ et la même $D$. Donc $B = R A R^{\\mathsf T}$ avec $R = QP^{\\mathsf T}$ orthogonale : elles sont même orthogonalement semblables."
+  },
+  {
+    "id": "quadratique-euclidien-vf-03", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Toute matrice symétrique de $M_n(\\mathbb C)$ est diagonalisable.",
+    "reponse": false,
+    "explication": "Le théorème spectral est un résultat sur $\\mathbb R$. Contre-exemple : $A = \\begin{pmatrix} 1 & i \\\\ i & -1 \\end{pmatrix}$ est symétrique, et $A^2 = 0$ avec $A \\ne 0$ : nilpotente non nulle, donc non diagonalisable. Sur $\\mathbb C$, l'analogue concerne les matrices **hermitiennes** ($\\bar A^{\\mathsf T} = A$)."
+  },
+  {
+    "id": "quadratique-euclidien-vf-04", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ diagonalisable dans $M_n(\\mathbb R)$, dont toutes les valeurs propres sont positives ou nulles. Alors $X^{\\mathsf T} A X \\ge 0$ pour tout $X \\in \\mathbb R^n$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $A = \\begin{pmatrix} 1 & 0 \\\\ -4 & 2 \\end{pmatrix}$ a pour valeurs propres $1$ et $2$, mais avec $X = (1, 1)^{\\mathsf T}$, $X^{\\mathsf T}AX = 1 + 0 - 4 + 2 = -1$. L'équivalence « positive si et seulement si spectre dans $\\mathbb R_+$ » ne vaut que pour une matrice **symétrique**."
+  },
+  {
+    "id": "quadratique-euclidien-vf-05", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $q$ une forme quadratique sur $\\mathbb R^n$, $n \\ge 1$, telle que $q(x) \\ne 0$ pour tout $x \\ne 0$. Alors $q$ ou $-q$ est définie positive.",
+    "reponse": true,
+    "explication": "Si $q$ avait une signature $(r, s)$ avec $r \\ge 1$ et $s \\ge 1$, une base $q$-orthogonale $(e_i)$ avec $q(e_1) = 1$ et $q(e_2) = -1$ donnerait $q(e_1 + e_2) = 0$. Et $q$ est non dégénérée (un vecteur du noyau serait isotrope), donc sa signature est $(n, 0)$ ou $(0, n)$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-06", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $q$ une forme quadratique non dégénérée sur $\\mathbb R^n$ et $F$ un sous-espace de $\\mathbb R^n$. Alors $\\mathbb R^n = F \\oplus F^{\\perp}$, l'orthogonal étant pris pour $q$.",
+    "reponse": false,
+    "explication": "On a bien $\\dim F^\\perp = n - \\dim F$, mais $F \\cap F^\\perp$ peut être non nul. Contre-exemple : $q(x, y) = x^2 - y^2$ et $F = \\mathbb R(1, 1)$ ; la forme polaire $\\varphi$ donne $\\varphi((1,1),(u,v)) = u - v$, donc $F^\\perp = F$. C'est vrai si $q$ est définie positive, ou plus généralement si la restriction de $q$ à $F$ est non dégénérée."
+  },
+  {
+    "id": "quadratique-euclidien-vf-07", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $(e_1, \\dots, e_n)$ une base d'un espace euclidien $E$. Il existe une **unique** base orthonormée $(\\varepsilon_1, \\dots, \\varepsilon_n)$ telle que, pour tout $k$, $\\mathrm{Vect}(\\varepsilon_1, \\dots, \\varepsilon_k) = \\mathrm{Vect}(e_1, \\dots, e_k)$ et $\\langle \\varepsilon_k, e_k \\rangle > 0$.",
+    "reponse": true,
+    "explication": "C'est le procédé de Schmidt. $\\varepsilon_k$ est un vecteur unitaire de la droite $\\mathrm{Vect}(e_1, \\dots, e_k) \\cap \\mathrm{Vect}(e_1, \\dots, e_{k-1})^\\perp$ : il y a deux choix, et la condition de signe en retient un. Sans elle, l'unicité tombe (on peut changer chaque $\\varepsilon_k$ en $-\\varepsilon_k$)."
+  },
+  {
+    "id": "quadratique-euclidien-vf-08", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $p$ un projecteur d'un espace euclidien $E$ tel que $\\|p(x)\\| \\le \\|x\\|$ pour tout $x \\in E$. Alors $p$ est un projecteur orthogonal.",
+    "reponse": true,
+    "explication": "Soient $x \\in \\mathrm{Im}\\,p$ et $y \\in \\ker p$. Pour tout réel $t$, $p(x + ty) = x$, donc $\\|x\\|^2 \\le \\|x + ty\\|^2 = \\|x\\|^2 + 2t\\langle x, y\\rangle + t^2\\|y\\|^2$. Un trinôme en $t$ de signe constant et nul en $0$ a une dérivée nulle en $0$ : $\\langle x, y \\rangle = 0$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-09", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $p$ un projecteur d'un espace euclidien $E$ et $\\mathcal B$ une base de $E$. Alors $p$ est un projecteur orthogonal si et seulement si sa matrice dans $\\mathcal B$ est symétrique.",
+    "reponse": false,
+    "explication": "Il faut que $\\mathcal B$ soit **orthonormée**. Contre-exemple : dans $\\mathbb R^2$ usuel, la projection orthogonale sur $\\mathbb R e_1$ a pour matrice $\\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$ dans la base $(e_1, e_1 + e_2)$, car $p(e_1 + e_2) = e_1$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-10", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Le groupe orthogonal $O_2(\\mathbb R)$ est commutatif.",
+    "reponse": false,
+    "explication": "Seul $SO_2(\\mathbb R)$ l'est. Contre-exemple : $R = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ et $S = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$ donnent $RS = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ et $SR = \\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$. Plus généralement, $S R_\\theta S^{-1} = R_{-\\theta}$ pour toute réflexion $S$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-11", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $u$ un endomorphisme d'un espace euclidien $E$ tel que $\\langle u(x), x \\rangle = 0$ pour tout $x \\in E$. Alors $u = 0$.",
+    "reponse": false,
+    "explication": "Contre-exemple : la rotation d'angle $\\frac\\pi2$ du plan, $u(x, y) = (-y, x)$, vérifie $\\langle u(x,y), (x,y) \\rangle = -yx + xy = 0$. La condition caractérise les endomorphismes antisymétriques. C'est vrai si $u$ est de plus symétrique : la forme polaire $\\langle u(x), y \\rangle$ est alors nulle."
+  },
+  {
+    "id": "quadratique-euclidien-vf-12", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $u$ un endomorphisme symétrique d'un espace euclidien $E \\ne \\{0\\}$. Alors $\\sup_{\\|x\\| = 1} \\|u(x)\\| = \\max \\{ |\\lambda|,\\ \\lambda \\in \\mathrm{Sp}(u) \\}$.",
+    "reponse": true,
+    "explication": "Dans une base orthonormée de vecteurs propres, $\\|u(x)\\|^2 = \\sum \\lambda_i^2 x_i^2 \\le \\max \\lambda_i^2 \\, \\|x\\|^2$, avec égalité sur un vecteur propre associé. Faux sans la symétrie : $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ a pour norme $1$ et pour seule valeur propre $0$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-13", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $(x_1, \\dots, x_p)$ une famille d'un espace préhilbertien réel. Sa matrice de Gram $G = (\\langle x_i, x_j \\rangle)_{i,j}$ est inversible si et seulement si la famille est libre.",
+    "reponse": true,
+    "explication": "Pour $\\Lambda = (\\lambda_1, \\dots, \\lambda_p)^{\\mathsf T}$, on a $\\Lambda^{\\mathsf T} G \\Lambda = \\left\\| \\sum \\lambda_i x_i \\right\\|^2$. Donc $G\\Lambda = 0$ entraîne $\\sum \\lambda_i x_i = 0$ ; et réciproquement, une relation $\\sum \\lambda_i x_i = 0$ donne $G\\Lambda = 0$, puisque la $j$-ième coordonnée de $G\\Lambda$ est $\\langle x_j, \\sum_i \\lambda_i x_i \\rangle$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-14", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Dans $\\mathbb R^3$ euclidien orienté, le produit vectoriel est associatif : $(a \\wedge b) \\wedge c = a \\wedge (b \\wedge c)$ pour tous $a, b, c$.",
+    "reponse": false,
+    "explication": "Contre-exemple dans la base canonique orthonormée directe : $(e_1 \\wedge e_1) \\wedge e_2 = 0$, alors que $e_1 \\wedge (e_1 \\wedge e_2) = e_1 \\wedge e_3 = -e_2$. La bonne règle est la formule du double produit : $a \\wedge (b \\wedge c) = \\langle a, c \\rangle b - \\langle a, b \\rangle c$."
+  },
+  {
+    "id": "quadratique-euclidien-vf-15", "ch": "quadratique-euclidien", "type": "vf",
+    "enonce": "Soit $H \\in M_n(\\mathbb C)$ hermitienne, c'est-à-dire $\\bar H^{\\mathsf T} = H$. Il existe $U \\in U(n)$ telle que $\\bar U^{\\mathsf T} H U$ soit diagonale **à coefficients réels**.",
+    "reponse": true,
+    "explication": "C'est la réduction des endomorphismes hermitiens. Les valeurs propres sont réelles : si $HX = \\lambda X$ avec $X \\ne 0$, alors $\\bar X^{\\mathsf T} H X = \\lambda \\|X\\|^2$, et ce nombre est égal à son conjugué. Comparer avec les matrices symétriques complexes, qui ne sont pas toujours diagonalisables."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-01", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Loi d'inertie de Sylvester.\nSoit $q$ une forme quadratique sur un $\\mathbb R$-espace vectoriel $E$ de dimension $n$, et $(e_1, \\dots, e_n)$ une base $q$-orthogonale. Le nombre d'indices $i$ tels que $q(e_i) > 0$ **[ ? ]**.",
+    "choix": [
+      "ne dépend pas de la base $q$-orthogonale choisie",
+      "est égal au rang de $q$",
+      "vaut $n$ dès que $q$ est non dégénérée",
+      "est égal au nombre de coefficients diagonaux $> 0$ de la matrice de $q$ dans n'importe quelle base"
+    ],
+    "bonne": 0,
+    "explication": "C'est l'entier $r$ de la signature $(r, s)$. Le rang vaut $r + s$, pas $r$. Et les coefficients diagonaux dans une base non orthogonale ne disent rien : $q = x^2 + 4xy + y^2$ a deux coefficients diagonaux positifs, mais $q(1, -1) = -2$ et sa signature est $(1, 1)$."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-02", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Réduction simultanée.\nSoient $q_1, q_2$ deux formes quadratiques sur un $\\mathbb R$-espace vectoriel $E$ de dimension finie. Si **[ ? ]**, alors il existe une base de $E$ orthogonale à la fois pour $q_1$ et pour $q_2$.",
+    "choix": [
+      "l'une des deux est définie positive",
+      "les deux sont non dégénérées",
+      "l'une des deux est positive",
+      "$q_1$ et $q_2$ ont la même signature"
+    ],
+    "bonne": 0,
+    "explication": "On prend $q_1$ définie positive comme produit scalaire et on applique le théorème spectral à l'endomorphisme associé à $q_2$. Contre-exemple pour deux leurres à la fois : $q_1 = x^2 - y^2$ et $q_2 = 2xy$, non dégénérées, de même signature $(1, 1)$, sans base orthogonale commune (avec $J$ et $B$ leurs matrices canoniques, $J^{-1}B = \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$ n'est pas diagonalisable sur $\\mathbb R$). Avec $q_1 = x^2$ (positive) et $q_2 = 2xy$ non plus."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-03", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Théorème spectral.\nUne matrice $A \\in M_n(\\mathbb R)$ est symétrique si et seulement si **[ ? ]**.",
+    "choix": [
+      "il existe $P \\in O_n(\\mathbb R)$ et $D$ diagonale réelle telles que $A = PDP^{\\mathsf T}$",
+      "$A$ est diagonalisable dans $M_n(\\mathbb R)$",
+      "$A A^{\\mathsf T} = A^{\\mathsf T} A$",
+      "$A$ est semblable à $A^{\\mathsf T}$"
+    ],
+    "bonne": 0,
+    "explication": "La réciproque est immédiate : $PDP^{\\mathsf T}$ est symétrique. $\\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}$ est diagonalisable sans être symétrique ; une rotation d'angle $\\frac\\pi2$ commute avec sa transposée sans être symétrique ; et toute matrice carrée est semblable à sa transposée."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-04", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Soit $A \\in S_n(\\mathbb R)$. Alors $X^{\\mathsf T} A X \\ge 0$ pour tout $X \\in \\mathbb R^n$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "toutes les valeurs propres de $A$ sont positives ou nulles",
+      "tous les coefficients diagonaux de $A$ sont positifs ou nuls",
+      "$\\det A \\ge 0$",
+      "tous les coefficients de $A$ sont positifs ou nuls"
+    ],
+    "bonne": 0,
+    "explication": "Dans une base orthonormée de vecteurs propres, $X^{\\mathsf T}AX = \\sum \\lambda_i y_i^2$. Les leurres échouent : $\\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ a tous ses coefficients positifs et la valeur propre $-1$ ; $-I_2$ a un déterminant positif. La positivité des coefficients diagonaux est seulement nécessaire ($a_{ii} = E_i^{\\mathsf T} A E_i$)."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-05", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Soit $E$ euclidien de dimension $3$ et $u \\in SO(E)$, $u \\ne \\mathrm{id}_E$. Le nombre minimal de réflexions dont $u$ est la composée est :",
+    "choix": [
+      "$2$",
+      "$1$",
+      "$3$",
+      "$4$"
+    ],
+    "bonne": 0,
+    "explication": "Une réflexion a pour déterminant $-1$ : il en faut un nombre pair, et $0$ est exclu car $u \\ne \\mathrm{id}_E$. Deux suffisent : une rotation d'angle $\\theta$ est la composée des réflexions par rapport à deux plans contenant l'axe et faisant entre eux un angle $\\frac\\theta2$."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-06", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Soit $u$ la rotation de $\\mathbb R^3$ euclidien orienté d'axe dirigé et orienté par le vecteur unitaire $a$, d'angle $\\theta$. On a $\\mathrm{tr}\\,u = 1 + 2\\cos\\theta$, et pour tout $x$ non colinéaire à $a$, $\\sin\\theta$ est du signe de **[ ? ]**.",
+    "choix": [
+      "$\\det(a, x, u(x))$",
+      "$\\det(a, u(x), x)$",
+      "$\\langle x, u(x) \\rangle$",
+      "$\\mathrm{tr}\\,u - 1$"
+    ],
+    "bonne": 0,
+    "explication": "En écrivant $x = \\lambda a + x'$ avec $x' \\perp a$, on trouve $\\det(a, x, u(x)) = \\|x'\\|^2 \\sin\\theta$. Échanger deux colonnes change le signe. $\\mathrm{tr}\\,u - 1 = 2\\cos\\theta$ donne le signe du cosinus, pas du sinus, et $\\langle x, u(x) \\rangle = \\lambda^2 + \\|x'\\|^2\\cos\\theta$ non plus."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-07", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Moindres carrés.\nSoit $A \\in M_{n,p}(\\mathbb R)$ de rang $p$ et $b \\in \\mathbb R^n$. Un vecteur $x \\in \\mathbb R^p$ minimise $\\|Ax - b\\|$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "$A^{\\mathsf T} A x = A^{\\mathsf T} b$",
+      "$Ax = b$",
+      "$x = A^{\\mathsf T} b$",
+      "$Ax - b$ est orthogonal à $b$"
+    ],
+    "bonne": 0,
+    "explication": "$Ax$ doit être le projeté orthogonal de $b$ sur $\\mathrm{Im}\\,A$, c'est-à-dire $Ax - b \\perp \\mathrm{Im}\\,A$, soit $A^{\\mathsf T}(Ax - b) = 0$. Le rang $p$ rend $A^{\\mathsf T}A$ inversible, d'où l'unicité. Le système $Ax = b$ n'a en général pas de solution : c'est toute la raison d'être de la méthode."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-08", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Soit $(x_1, \\dots, x_p)$ une famille libre d'un espace euclidien $E$, $F = \\mathrm{Vect}(x_1, \\dots, x_p)$ et $x \\in E$. On note $\\mathrm G(\\cdot)$ le déterminant de Gram. Alors $d(x, F)^2 =$ **[ ? ]**.",
+    "choix": [
+      "$\\dfrac{\\mathrm G(x_1, \\dots, x_p, x)}{\\mathrm G(x_1, \\dots, x_p)}$",
+      "$\\dfrac{\\mathrm G(x_1, \\dots, x_p)}{\\mathrm G(x_1, \\dots, x_p, x)}$",
+      "$\\mathrm G(x_1, \\dots, x_p, x)$",
+      "$\\|x\\|^2 - \\sum_{i=1}^p \\langle x, x_i \\rangle^2$"
+    ],
+    "bonne": 0,
+    "explication": "On écrit $x = p_F(x) + h$ avec $h \\perp F$ ; par multilinéarité, $\\mathrm G(x_1, \\dots, x_p, x) = \\mathrm G(x_1, \\dots, x_p)\\, \\|h\\|^2$. La dernière formule (Pythagore) n'est valable que si $(x_1, \\dots, x_p)$ est **orthonormée**. Le deuxième choix n'est même pas défini quand $x \\in F$."
+  },
+  {
+    "id": "quadratique-euclidien-qcm-09", "ch": "quadratique-euclidien", "type": "qcm",
+    "enonce": "Soit $u$ un endomorphisme d'un espace euclidien $E$ et $F$ un sous-espace stable par $u$. Alors **[ ? ]** est stable par l'adjoint $u^*$.",
+    "choix": [
+      "$F^\\perp$",
+      "$F$",
+      "$u(F)$",
+      "$\\mathrm{Im}\\,u$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $y \\in F^\\perp$ et $x \\in F$ : $\\langle u^*(y), x \\rangle = \\langle y, u(x) \\rangle = 0$. Contre-exemple pour $F$ et $u(F)$ : $u$ de matrice $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ en base orthonormée, $F = u(F) = \\mathbb R e_1$, et $u^*(e_1) = e_1 + e_2 \\notin F$. Si $u$ est symétrique, $F$ et $F^\\perp$ sont tous deux stables."
+  },
+  {
+    "id": "quadratique-euclidien-err-01", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "On veut déterminer la signature de $q(x, y, z) = x^2 + y^2 + z^2 - xy - yz - zx$ sur $\\mathbb R^3$. Voici une copie.",
+    "lignes": [
+      "Pour tous $x, y, z$, $q(x, y, z) = \\frac12\\left[(x - y)^2 + (y - z)^2 + (z - x)^2\\right]$.",
+      "Donc $q(v) \\ge 0$ pour tout $v \\in \\mathbb R^3$ : $q$ est positive.",
+      "$q$ est une somme de trois carrés de formes linéaires affectés de coefficients $> 0$, donc, d'après la loi d'inertie de Sylvester, sa signature est $(3, 0)$ et $q$ est définie positive."
+    ],
+    "fausse": 2,
+    "explication": "La loi d'inertie suppose des formes linéaires **linéairement indépendantes**. Ici $(x - y) + (y - z) + (z - x) = 0$. D'ailleurs $q(1, 1, 1) = 0$. La méthode de Gauss donne $q = \\left(x - \\frac{y+z}{2}\\right)^2 + \\frac34 (y - z)^2$ : signature $(2, 0)$."
+  },
+  {
+    "id": "quadratique-euclidien-err-02", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Soit $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ et $q(X) = X^{\\mathsf T} A X$ sur $\\mathbb R^2$. On cherche une base dans laquelle la matrice de $q$ est diagonale. Voici une copie.",
+    "lignes": [
+      "$A$ est symétrique réelle, de valeurs propres $3$ et $1$, associées aux vecteurs propres $(1, 1)$ et $(1, -1)$.",
+      "Avec $P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}$, on a $P^{-1} A P = \\mathrm{diag}(3, 1)$.",
+      "Donc, dans la base $\\big((1,1), (1,-1)\\big)$, la matrice de $q$ est $\\mathrm{diag}(3, 1)$.",
+      "En particulier, $q$ est définie positive."
+    ],
+    "fausse": 2,
+    "explication": "La matrice d'une forme quadratique change par **congruence** : $P^{\\mathsf T} A P$, et non $P^{-1}AP$. Ici $P^{\\mathsf T} A P = \\mathrm{diag}(q(1,1), q(1,-1)) = \\mathrm{diag}(6, 2)$. Les deux coïncident quand $P$ est orthogonale : il fallait normer les vecteurs propres."
+  },
+  {
+    "id": "quadratique-euclidien-err-03", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Soit $A \\in S_n(\\mathbb R)$ dont toutes les valeurs propres sont positives ou nulles. On veut montrer que $X^{\\mathsf T} A X \\ge 0$ pour tout $X \\in \\mathbb R^n$. Voici une copie.",
+    "lignes": [
+      "$A$ est symétrique réelle, donc diagonalisable : soit $(X_1, \\dots, X_n)$ une base de $\\mathbb R^n$ telle que $AX_i = \\lambda_i X_i$, avec $\\lambda_i \\ge 0$.",
+      "Soit $X = \\sum_i x_i X_i$. Alors $AX = \\sum_i \\lambda_i x_i X_i$.",
+      "Donc $X^{\\mathsf T} A X = \\sum_i \\lambda_i x_i^2 \\|X_i\\|^2$.",
+      "Ce nombre est positif ou nul, donc $A$ est positive."
+    ],
+    "fausse": 2,
+    "explication": "Il manque les termes croisés $\\lambda_j x_i x_j \\langle X_i, X_j \\rangle$, qui ne s'annulent que si la base est **orthogonale**. Le théorème spectral donne justement une base orthonormée de vecteurs propres : c'est elle qu'il faut prendre. Sans symétrie, le résultat est d'ailleurs faux."
+  },
+  {
+    "id": "quadratique-euclidien-err-04", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Dans $\\mathbb R^3$ euclidien usuel, on cherche le projeté orthogonal $p(x)$ de $x = (0, 1, 1)$ sur le plan $F$ d'équation $z = 0$. Voici une copie.",
+    "lignes": [
+      "$F$ admet pour base $(f_1, f_2)$ avec $f_1 = (1, 0, 0)$ et $f_2 = (1, 1, 0)$.",
+      "$p(x)$ est caractérisé par $p(x) \\in F$ et $x - p(x) \\in F^\\perp$.",
+      "Comme $(f_1, f_2)$ est une base de $F$, $p(x) = \\langle x, f_1 \\rangle f_1 + \\langle x, f_2 \\rangle f_2 = (1, 1, 0)$."
+    ],
+    "fausse": 2,
+    "explication": "La formule $p(x) = \\sum \\langle x, f_i \\rangle f_i$ exige une base **orthonormée** de $F$. On vérifie d'ailleurs que $x - (1, 1, 0) = (-1, 0, 1)$ n'est pas orthogonal à $f_1$. Ici $p(x) = (0, 1, 0)$ : il fallait orthonormaliser $(f_1, f_2)$, ou résoudre les équations $\\langle x - p(x), f_i \\rangle = 0$."
+  },
+  {
+    "id": "quadratique-euclidien-err-05", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Dans une base orthonormée directe de $\\mathbb R^3$, on étudie $u$ de matrice $M = \\begin{pmatrix} 0 & 0 & 1 \\\\ 1 & 0 & 0 \\\\ 0 & 1 & 0 \\end{pmatrix}$. Voici une copie.",
+    "lignes": [
+      "$M^{\\mathsf T} M = I_3$ et $\\det M = 1$, donc $u$ est une rotation.",
+      "Son axe est dirigé par $a = -\\frac{1}{\\sqrt3}(1, 1, 1)$, car $Ma = a$ ; on l'oriente par $a$.",
+      "$\\mathrm{tr}\\,M = 1 + 2\\cos\\theta = 0$, donc $\\cos\\theta = -\\frac12$.",
+      "Donc $u$ est la rotation d'axe orienté par $a$ et d'angle $\\frac{2\\pi}{3}$."
+    ],
+    "fausse": 3,
+    "explication": "La trace ne donne que $\\cos\\theta$, donc $\\theta = \\pm\\frac{2\\pi}3$. Le signe de $\\sin\\theta$ est celui de $\\det(a, x, u(x))$ : avec $x = e_1$, $u(e_1) = e_2$, on trouve $\\det(a, e_1, e_2) = -\\frac{1}{\\sqrt3} < 0$. L'angle est $-\\frac{2\\pi}3$ pour cette orientation, et $\\frac{2\\pi}3$ si l'on oriente l'axe par $-a$."
+  },
+  {
+    "id": "quadratique-euclidien-err-06", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Soit $q$ une forme quadratique sur $\\mathbb R^n$, de forme polaire $b$. Une copie affirme que le cône isotrope $\\{x : q(x) = 0\\}$ est égal au noyau $\\{x : \\forall y,\\ b(x, y) = 0\\}$.",
+    "lignes": [
+      "Si $b(x, y) = 0$ pour tout $y$, alors en particulier $q(x) = b(x, x) = 0$ : le noyau est inclus dans le cône isotrope.",
+      "Réciproquement, soit $x$ tel que $q(x) = 0$, et soit $y \\in \\mathbb R^n$.",
+      "D'après l'inégalité de Cauchy-Schwarz, $b(x, y)^2 \\le q(x)\\, q(y) = 0$, donc $b(x, y) = 0$ et $x$ est dans le noyau."
+    ],
+    "fausse": 2,
+    "explication": "Cauchy-Schwarz exige une forme **positive** (ou négative). Contre-exemple : $q(x, y) = x^2 - y^2$, $x_0 = (1, 1)$ est isotrope, mais $b(x_0, (1, 0)) = 1$ ; $q$ est même non dégénérée. Pour $q$ positive, l'argument est correct et le cône isotrope est bien le noyau."
+  },
+  {
+    "id": "quadratique-euclidien-err-07", "ch": "quadratique-euclidien", "type": "erreur",
+    "enonce": "Sur $E = \\mathbb R_2[X]$ muni de $\\langle P, Q \\rangle = \\int_0^1 P(t)Q(t)\\,\\mathrm dt$, on considère $u(P) = \\big((X^2 - X)P'\\big)'$. Voici une copie.",
+    "lignes": [
+      "Une intégration par parties donne $\\langle u(P), Q \\rangle = -\\int_0^1 (t^2 - t) P'(t) Q'(t)\\,\\mathrm dt$.",
+      "Cette expression est symétrique en $P$ et $Q$ : $u$ est un endomorphisme symétrique de $E$.",
+      "Donc la matrice de $u$ dans la base $(1, X, X^2)$ est symétrique.",
+      "D'après le théorème spectral, $E$ admet une base orthonormée pour $\\langle \\cdot, \\cdot \\rangle$ formée de vecteurs propres de $u$."
+    ],
+    "fausse": 2,
+    "explication": "Un endomorphisme symétrique a une matrice symétrique dans une base **orthonormée**, et $(1, X, X^2)$ ne l'est pas. Calcul : $u(1) = 0$, $u(X) = 2X - 1$, $u(X^2) = 6X^2 - 4X$, d'où la matrice $\\begin{pmatrix} 0 & -1 & 0 \\\\ 0 & 2 & -4 \\\\ 0 & 0 & 6 \\end{pmatrix}$, non symétrique. La dernière ligne reste vraie."
+  },
+  {
+    "id": "quadratique-euclidien-piste-01", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Déterminer la signature de la forme quadratique $q(x, y, z) = xy + yz + zx$ sur $\\mathbb R^3$.",
+    "choix": [
+      {
+        "titre": "Méthode de Gauss",
+        "info": "On écrit $q$ comme combinaison linéaire de carrés de formes linéaires **indépendantes**. Sans terme carré, on utilise $ab = \\frac14\\left[(a+b)^2 - (a-b)^2\\right]$. La signature se lit alors sur les signes des coefficients.",
+        "verdict": "bon",
+        "retour": "C'est la méthode du programme, et elle s'applique sans difficulté malgré l'absence de carrés."
+      },
+      {
+        "titre": "Valeurs propres de la matrice de $q$",
+        "info": "La matrice $A$ de $q$ dans une base orthonormée est symétrique réelle. Par le théorème spectral, la signature est (nombre de valeurs propres $> 0$, nombre de valeurs propres $< 0$).",
+        "verdict": "bon",
+        "retour": "Ici $A = \\frac12 (J - I_3)$ où $J$ est la matrice remplie de $1$, de valeurs propres $3, 0, 0$ : le spectre se lit sans calcul."
+      },
+      {
+        "titre": "Évaluer $q$ sur la base canonique",
+        "info": "Si $(e_i)$ est une base $q$-orthogonale, la signature est donnée par les signes des $q(e_i)$.",
+        "verdict": "impasse",
+        "retour": "$q(e_i) = 0$ pour tout $i$, et la base canonique n'est pas $q$-orthogonale : on n'en tire rien."
+      },
+      {
+        "titre": "Exhiber un vecteur où $q > 0$ et un où $q < 0$",
+        "info": "Si $q(x) > 0$, alors $r \\ge 1$ ; si $q(y) < 0$, alors $s \\ge 1$, où $(r, s)$ est la signature.",
+        "verdict": "possible",
+        "retour": "$q(1,1,0) = 1$ et $q(1,-1,0) = -1$ donnent $r \\ge 1$ et $s \\ge 1$, mais ne départagent pas $(1,1)$, $(1,2)$ et $(2,1)$."
+      }
+    ],
+    "direction": "$xy + yz + zx = (x+z)(y+z) - z^2 = \\frac14 (x + y + 2z)^2 - \\frac14 (x - y)^2 - z^2$. Les trois formes linéaires sont indépendantes : la signature est $(1, 2)$, et $q$ est non dégénérée."
+  },
+  {
+    "id": "quadratique-euclidien-piste-02", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $A \\in S_n^{++}(\\mathbb R)$, symétrique définie positive. Montrer qu'il existe $B \\in S_n^{++}(\\mathbb R)$ telle que $B^2 = A$.",
+    "choix": [
+      {
+        "titre": "Théorème spectral en base orthonormée",
+        "info": "Toute $A \\in S_n(\\mathbb R)$ s'écrit $A = P D P^{\\mathsf T}$ avec $P \\in O_n(\\mathbb R)$ et $D$ diagonale réelle.",
+        "verdict": "bon",
+        "retour": "Les coefficients de $D$ sont $> 0$ ; on prend $B = P \\Delta P^{\\mathsf T}$ avec $\\Delta = \\mathrm{diag}(\\sqrt{\\lambda_i})$. Symétrie et définie positivité se lisent directement."
+      },
+      {
+        "titre": "Diagonaliser avec une matrice de passage quelconque",
+        "info": "Si $A = PDP^{-1}$ avec $P \\in GL_n(\\mathbb R)$ et $D$ diagonale, alors $(P \\Delta P^{-1})^2 = A$ dès que $\\Delta^2 = D$.",
+        "verdict": "possible",
+        "retour": "On a bien $B^2 = A$. Avec $\\Delta = \\mathrm{diag}(\\sqrt{\\lambda_i})$, $B$ est bien symétrique définie positive, mais ce n'est pas visible : il faut un argument de plus ($B$ est un polynôme en $A$, par interpolation de Lagrange). Prendre $P$ orthogonale l'évite."
+      },
+      {
+        "titre": "Méthode de Gauss",
+        "info": "Une forme quadratique définie positive s'écrit comme somme de $n$ carrés de formes linéaires indépendantes, ce qui donne $A = T^{\\mathsf T} T$ avec $T$ inversible.",
+        "verdict": "impasse",
+        "retour": "$T$ n'est pas symétrique en général, et $T^{\\mathsf T}T$ n'est pas $T^2$."
+      },
+      {
+        "titre": "Série du binôme $\\sqrt{1 + x}$",
+        "info": "Pour $|x| < 1$, $\\sqrt{1+x} = \\sum_k \\binom{1/2}{k} x^k$, ce qui suggère $B = \\sum_k \\binom{1/2}{k} (A - I_n)^k$.",
+        "verdict": "possible",
+        "retour": "Telle quelle, la série peut diverger. Elle aboutit après normalisation : pour $c > \\max \\lambda_i$, le spectre de $\\frac Ac - I_n$ est dans $]-1, 0[$. Mais la convergence et la preuve de $B^2 = A$ (produit de Cauchy) sont lourdes."
+      }
+    ],
+    "direction": "$A = P D P^{\\mathsf T}$, $P$ orthogonale, $D = \\mathrm{diag}(\\lambda_i)$ avec $\\lambda_i > 0$. On pose $B = P\\,\\mathrm{diag}(\\sqrt{\\lambda_i})\\,P^{\\mathsf T}$ : $B^{\\mathsf T} = B$, $B^2 = A$, et le spectre de $B$ est formé des $\\sqrt{\\lambda_i} > 0$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-03", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $A \\in S_n(\\mathbb R)$ de valeurs propres $\\lambda_1 \\le \\dots \\le \\lambda_n$. Montrer que pour tout $X \\in \\mathbb R^n$, $\\lambda_1 \\|X\\|^2 \\le X^{\\mathsf T} A X \\le \\lambda_n \\|X\\|^2$.",
+    "choix": [
+      {
+        "titre": "Base orthonormée de vecteurs propres",
+        "info": "Théorème spectral : il existe une base orthonormée $(V_1, \\dots, V_n)$ de $\\mathbb R^n$ avec $AV_i = \\lambda_i V_i$.",
+        "verdict": "bon",
+        "retour": "Dans cette base, $X^{\\mathsf T}AX = \\sum \\lambda_i y_i^2$ et $\\|X\\|^2 = \\sum y_i^2$ : l'encadrement est immédiat."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$|\\langle X, Y \\rangle| \\le \\|X\\|\\,\\|Y\\|$, avec égalité si et seulement si $X$ et $Y$ sont colinéaires.",
+        "verdict": "impasse",
+        "retour": "Elle donne $|X^{\\mathsf T}AX| \\le \\|AX\\|\\,\\|X\\|$, une majoration en valeur absolue qui ne fournit pas la minoration par $\\lambda_1$."
+      },
+      {
+        "titre": "Extremum sur la sphère unité",
+        "info": "En dimension finie, une fonction continue sur un fermé borné non vide est bornée et atteint ses bornes.",
+        "verdict": "possible",
+        "retour": "On obtient l'existence d'un minimum et d'un maximum de $X^{\\mathsf T}AX$ sur la sphère, mais les identifier à $\\lambda_1$ et $\\lambda_n$ demande encore du travail."
+      },
+      {
+        "titre": "Trigonaliser $A$",
+        "info": "Toute matrice de $M_n(\\mathbb R)$ à polynôme caractéristique scindé est semblable à une matrice triangulaire supérieure.",
+        "verdict": "impasse",
+        "retour": "Une base de trigonalisation quelconque ne respecte pas le produit scalaire : $X^{\\mathsf T}AX$ n'y prend pas une forme exploitable."
+      }
+    ],
+    "direction": "On écrit $X = \\sum y_i V_i$ dans une base orthonormée de vecteurs propres. Alors $X^{\\mathsf T} A X = \\sum \\lambda_i y_i^2$ est compris entre $\\lambda_1 \\sum y_i^2$ et $\\lambda_n \\sum y_i^2$, avec $\\sum y_i^2 = \\|X\\|^2$. Égalité pour $X = V_1$ et $X = V_n$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-04", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ et $|||A||| = \\sup_{\\|X\\| = 1} \\|AX\\|$ pour la norme euclidienne. Montrer que $|||A|||^2$ est la plus grande valeur propre de $A^{\\mathsf T}A$.",
+    "choix": [
+      {
+        "titre": "Passer par la matrice symétrique positive $A^{\\mathsf T} A$",
+        "info": "$\\|AX\\|^2 = X^{\\mathsf T} A^{\\mathsf T} A X$, et $A^{\\mathsf T} A \\in S_n^+(\\mathbb R)$. Pour $S \\in S_n(\\mathbb R)$, $X^{\\mathsf T} S X \\le \\lambda_{\\max}(S)\\, \\|X\\|^2$, avec égalité sur un vecteur propre.",
+        "verdict": "bon",
+        "retour": "On ramène la question à un endomorphisme symétrique, où le théorème spectral s'applique."
+      },
+      {
+        "titre": "Égalité avec le rayon spectral de $A$",
+        "info": "Le rayon spectral $\\rho(A)$ est le plus grand module des valeurs propres complexes de $A$. On a toujours $\\rho(A) \\le |||A|||$.",
+        "verdict": "impasse",
+        "retour": "L'égalité $|||A||| = \\rho(A)$ est fausse en général : $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ a pour norme $1$ et $\\rho = 0$."
+      },
+      {
+        "titre": "Diagonaliser $A$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, alors $AX = P D P^{-1}X$.",
+        "verdict": "impasse",
+        "retour": "$A$ n'est pas forcément diagonalisable, et même si elle l'est, $P$ n'est pas orthogonale : la norme n'est pas conservée."
+      },
+      {
+        "titre": "Compacité de la sphère unité",
+        "info": "En dimension finie, la sphère unité est compacte : une fonction continue y atteint sa borne supérieure.",
+        "verdict": "possible",
+        "retour": "Elle montre que la borne supérieure est un maximum, mais ne dit pas ce qu'il vaut."
+      }
+    ],
+    "direction": "$|||A|||^2 = \\sup_{\\|X\\|=1} X^{\\mathsf T}(A^{\\mathsf T}A)X$. Dans une base orthonormée de vecteurs propres de $A^{\\mathsf T}A$ (valeurs propres $\\mu_i \\ge 0$), ce quotient vaut $\\sum \\mu_i y_i^2$ avec $\\sum y_i^2 = 1$ : son maximum est $\\mu_{\\max}$, atteint en un vecteur propre."
+  },
+  {
+    "id": "quadratique-euclidien-piste-05", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soient $(x_1, y_1), \\dots, (x_n, y_n)$ des points de $\\mathbb R^2$, les $x_i$ n'étant pas tous égaux. Déterminer les réels $a, b$ qui minimisent $\\sum_{i=1}^n (y_i - a x_i - b)^2$.",
+    "choix": [
+      {
+        "titre": "Projection orthogonale dans $\\mathbb R^n$",
+        "info": "Pour $F$ sous-espace de $\\mathbb R^n$ et $Y \\in \\mathbb R^n$, $\\|Y - Z\\|$ est minimal pour $Z \\in F$ si et seulement si $Z$ est le projeté orthogonal de $Y$ sur $F$, caractérisé par $Y - Z \\perp F$.",
+        "verdict": "bon",
+        "retour": "Avec $X = (x_i)$, $U = (1, \\dots, 1)$, $Y = (y_i)$, on projette $Y$ sur $\\mathrm{Vect}(X, U)$ : existence et unicité sont gratuites."
+      },
+      {
+        "titre": "Annuler les dérivées partielles",
+        "info": "En un point intérieur où une fonction $\\mathcal C^1$ de deux variables admet un extremum local, ses dérivées partielles s'annulent.",
+        "verdict": "possible",
+        "retour": "On retrouve les mêmes équations, mais ce n'est qu'une condition nécessaire : il reste à prouver qu'un minimum global existe et qu'il est atteint là."
+      },
+      {
+        "titre": "Interpolation de Lagrange",
+        "info": "Pour $x_1, \\dots, x_n$ distincts et $y_1, \\dots, y_n$ donnés, il existe un unique polynôme de degré $\\le n - 1$ prenant la valeur $y_i$ en $x_i$.",
+        "verdict": "impasse",
+        "retour": "On cherche un polynôme de degré $\\le 1$, qui ne passe pas par les $n$ points en général ; et les $x_i$ ne sont pas supposés distincts."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$\\left(\\sum u_i v_i\\right)^2 \\le \\sum u_i^2 \\sum v_i^2$, avec égalité si et seulement si $u$ et $v$ sont colinéaires.",
+        "verdict": "impasse",
+        "retour": "Elle sert à justifier $\\mathrm{var}(x) > 0$, pas à trouver le minimum."
+      }
+    ],
+    "direction": "$X$ et $U$ sont libres car les $x_i$ ne sont pas tous égaux. Les conditions $\\langle Y - aX - bU, X \\rangle = \\langle Y - aX - bU, U \\rangle = 0$ donnent $a = \\frac{\\mathrm{cov}(x, y)}{\\mathrm{var}(x)}$ et $b = \\bar y - a \\bar x$ : c'est la droite de régression."
+  },
+  {
+    "id": "quadratique-euclidien-piste-06", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Calculer $\\displaystyle\\inf_{(a, b) \\in \\mathbb R^2} \\int_0^1 (t^2 - at - b)^2\\,\\mathrm dt$.",
+    "choix": [
+      {
+        "titre": "Distance à un sous-espace : projection orthogonale",
+        "info": "Dans un espace préhilbertien, si $F$ est de dimension finie, $\\inf_{f \\in F} \\|g - f\\|$ est atteint en un unique point, le projeté orthogonal $p_F(g)$, caractérisé par $g - p_F(g) \\perp F$.",
+        "verdict": "bon",
+        "retour": "Avec $\\langle f, g \\rangle = \\int_0^1 fg$, l'infimum est $d(t^2, \\mathbb R_1[t])^2$ : deux équations linéaires suffisent."
+      },
+      {
+        "titre": "Déterminants de Gram",
+        "info": "Si $(x_1, \\dots, x_p)$ est libre et $F = \\mathrm{Vect}(x_i)$, alors $d(x, F)^2 = \\frac{\\mathrm G(x_1, \\dots, x_p, x)}{\\mathrm G(x_1, \\dots, x_p)}$.",
+        "verdict": "bon",
+        "retour": "Avec $(1, t)$ et $x = t^2$, on calcule un déterminant $3 \\times 3$ et un $2 \\times 2$ de coefficients $\\frac1{i+j+1}$."
+      },
+      {
+        "titre": "Développer et minimiser en $(a, b)$ par dérivées partielles",
+        "info": "L'intégrale est un polynôme de degré $2$ en $(a, b)$ ; en un extremum local intérieur, les dérivées partielles s'annulent.",
+        "verdict": "possible",
+        "retour": "Aboutit, mais il faut développer, puis justifier que le point critique est un minimum global."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$\\left(\\int_0^1 fg\\right)^2 \\le \\int_0^1 f^2 \\int_0^1 g^2$.",
+        "verdict": "impasse",
+        "retour": "Elle majore des produits scalaires ; elle ne fournit pas la valeur d'un infimum."
+      }
+    ],
+    "direction": "Le projeté $at + b$ vérifie $\\langle t^2 - at - b, 1 \\rangle = \\langle t^2 - at - b, t \\rangle = 0$, soit $\\frac13 = \\frac a2 + b$ et $\\frac14 = \\frac a3 + \\frac b2$ : $a = 1$, $b = -\\frac16$. L'infimum vaut $\\langle t^2 - t + \\frac16, t^2 \\rangle = \\frac15 - \\frac14 + \\frac1{18} = \\frac1{180}$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-07", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $E$ un espace euclidien de dimension $n \\ge 2$ et $x, y \\in E$ distincts tels que $\\|x\\| = \\|y\\|$. Montrer qu'il existe une réflexion $s$ de $E$ telle que $s(x) = y$.",
+    "choix": [
+      {
+        "titre": "Réflexion par rapport à l'hyperplan $(x - y)^\\perp$",
+        "info": "Pour $v \\ne 0$, la réflexion d'hyperplan $v^\\perp$ est $s(z) = z - 2\\frac{\\langle z, v \\rangle}{\\|v\\|^2} v$.",
+        "verdict": "bon",
+        "retour": "Avec $v = x - y$, le calcul de $s(x)$ utilise exactement l'hypothèse $\\|x\\| = \\|y\\|$."
+      },
+      {
+        "titre": "Symétrie orthogonale par rapport à la droite $\\mathbb R(x + y)$",
+        "info": "La symétrie orthogonale par rapport à un sous-espace $F$ vaut $\\mathrm{id}$ sur $F$ et $-\\mathrm{id}$ sur $F^\\perp$. C'est une réflexion si et seulement si $F$ est un hyperplan.",
+        "verdict": "possible",
+        "retour": "Elle envoie bien $x$ sur $y$ (si $x + y \\ne 0$), mais ce n'est une réflexion qu'en dimension $2$."
+      },
+      {
+        "titre": "Compléter en bases orthonormées",
+        "info": "Si $(\\varepsilon_i)$ et $(\\varepsilon'_i)$ sont deux bases orthonormées de $E$, l'endomorphisme qui envoie chaque $\\varepsilon_i$ sur $\\varepsilon'_i$ est dans $O(E)$.",
+        "verdict": "impasse",
+        "retour": "En partant de $\\frac{x}{\\|x\\|}$ et $\\frac{y}{\\|y\\|}$, on obtient un élément de $O(E)$ envoyant $x$ sur $y$, mais rien n'assure que ce soit une réflexion."
+      },
+      {
+        "titre": "Projection orthogonale sur $\\mathrm{Vect}(x, y)$",
+        "info": "Le projeté orthogonal $p(z)$ est l'unique vecteur de $F$ tel que $z - p(z) \\perp F$.",
+        "verdict": "impasse",
+        "retour": "Une projection n'est pas une isométrie (sauf l'identité), encore moins une réflexion."
+      }
+    ],
+    "direction": "Avec $v = x - y \\ne 0$ : $\\|v\\|^2 = 2\\|x\\|^2 - 2\\langle x, y \\rangle = 2\\langle x, v \\rangle$ grâce à $\\|x\\| = \\|y\\|$. Donc $s(x) = x - 2\\frac{\\langle x, v\\rangle}{\\|v\\|^2} v = x - v = y$. C'est l'étape clé de la génération de $O(E)$ par les réflexions."
+  },
+  {
+    "id": "quadratique-euclidien-piste-08", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Dans une base orthonormée directe de $\\mathbb R^3$, déterminer la nature et les éléments géométriques de l'endomorphisme $u$ de matrice $M = \\frac13 \\begin{pmatrix} 2 & -1 & 2 \\\\ 2 & 2 & -1 \\\\ -1 & 2 & 2 \\end{pmatrix}$.",
+    "choix": [
+      {
+        "titre": "Orthogonalité, déterminant, axe, trace, signe du sinus",
+        "info": "Si $M \\in SO_3(\\mathbb R)$ et $M \\ne I_3$, $u$ est une rotation d'axe $\\ker(u - \\mathrm{id})$ ; en orientant l'axe par $a$, on a $\\mathrm{tr}\\,M = 1 + 2\\cos\\theta$ et $\\sin\\theta$ du signe de $\\det(a, x, u(x))$ pour $x \\notin \\mathbb R a$.",
+        "verdict": "bon",
+        "retour": "C'est la marche standard, et chaque étape est un calcul court ici."
+      },
+      {
+        "titre": "Diagonaliser $M$ dans $M_3(\\mathbb R)$",
+        "info": "$M$ est diagonalisable sur $\\mathbb R$ si et seulement si $\\chi_M$ est scindé sur $\\mathbb R$ et chaque sous-espace propre a pour dimension la multiplicité.",
+        "verdict": "impasse",
+        "retour": "Une rotation d'angle $\\theta \\notin \\pi\\mathbb Z$ a deux valeurs propres non réelles : $M$ n'est pas diagonalisable sur $\\mathbb R$."
+      },
+      {
+        "titre": "Polynôme caractéristique",
+        "info": "Pour une rotation d'angle $\\theta$, $\\chi_M = (X - 1)(X^2 - 2\\cos\\theta\\, X + 1)$, de racines $1$ et $e^{\\pm i\\theta}$.",
+        "verdict": "possible",
+        "retour": "On obtient $\\cos\\theta$, donc l'angle au signe près, mais ni l'axe ni l'orientation."
+      },
+      {
+        "titre": "Lire l'angle sur le coefficient $m_{11}$",
+        "info": "Dans le plan, la matrice de la rotation d'angle $\\theta$ en base orthonormée directe est $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$.",
+        "verdict": "impasse",
+        "retour": "En dimension 3, cette lecture ne vaut que dans une base orthonormée directe dont le dernier vecteur dirige l'axe, ce qui n'est pas le cas ici."
+      }
+    ],
+    "direction": "Les colonnes sont unitaires et orthogonales, et la troisième est le produit vectoriel des deux premières : $M \\in SO_3(\\mathbb R)$. L'axe est dirigé par $a = (1, 1, 1)$. $\\mathrm{tr}\\,M = 2$ donne $\\cos\\theta = \\frac12$, et $\\det(a, e_1, Me_1) = 1 > 0$ : rotation d'angle $\\frac\\pi3$ autour de l'axe orienté par $a$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-09", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Dans $\\mathbb R^3$ euclidien orienté, soient $a \\ne 0$ et $b$ deux vecteurs. Résoudre l'équation $a \\wedge x = b$ d'inconnue $x \\in \\mathbb R^3$.",
+    "choix": [
+      {
+        "titre": "Étudier l'application linéaire $\\varphi : x \\mapsto a \\wedge x$",
+        "info": "$a \\wedge x$ est orthogonal à $a$ et à $x$, et $a \\wedge x = 0$ si et seulement si $a$ et $x$ sont colinéaires.",
+        "verdict": "bon",
+        "retour": "$\\ker \\varphi = \\mathbb R a$, donc $\\mathrm{Im}\\,\\varphi$ est de dimension $2$, contenue dans $a^\\perp$ : elle lui est égale. D'où la condition $\\langle a, b \\rangle = 0$ et la structure des solutions."
+      },
+      {
+        "titre": "Formule du double produit vectoriel",
+        "info": "Pour tous $u, v, w$ : $u \\wedge (v \\wedge w) = \\langle u, w \\rangle v - \\langle u, v \\rangle w$.",
+        "verdict": "bon",
+        "retour": "Elle fournit une solution particulière explicite dès que $\\langle a, b \\rangle = 0$."
+      },
+      {
+        "titre": "Système en coordonnées et formules de Cramer",
+        "info": "Un système carré $MX = B$ avec $\\det M \\ne 0$ a une unique solution, donnée par les formules de Cramer.",
+        "verdict": "impasse",
+        "retour": "La matrice de $\\varphi$ est antisymétrique d'ordre $3$, donc de déterminant nul : Cramer ne s'applique pas."
+      },
+      {
+        "titre": "Pivot de Gauss sur le système $3 \\times 3$",
+        "info": "Le pivot de Gauss résout tout système linéaire et en donne le rang.",
+        "verdict": "possible",
+        "retour": "Faisable, mais les calculs en coordonnées générales sont lourds et masquent la condition géométrique $b \\perp a$."
+      }
+    ],
+    "direction": "Si $\\langle a, b \\rangle \\ne 0$, pas de solution. Sinon, $x_0 = \\frac{b \\wedge a}{\\|a\\|^2}$ convient, car $a \\wedge (b \\wedge a) = \\|a\\|^2 b - \\langle a, b \\rangle a = \\|a\\|^2 b$. L'ensemble des solutions est $x_0 + \\mathbb R a$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-10", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $H \\in M_n(\\mathbb C)$ hermitienne : $H^* = H$, où $H^* = \\bar H^{\\mathsf T}$. Montrer que $I_n + iH$ est inversible.",
+    "choix": [
+      {
+        "titre": "Les valeurs propres d'une matrice hermitienne sont réelles",
+        "info": "Si $H^* = H$, il existe $U \\in U(n)$ telle que $U^* H U$ soit diagonale réelle.",
+        "verdict": "bon",
+        "retour": "$I_n + iH$ est non inversible si et seulement si $-1$ est valeur propre de $iH$, c'est-à-dire si $i$ est valeur propre de $H$."
+      },
+      {
+        "titre": "Calcul direct avec le produit scalaire hermitien",
+        "info": "Pour $X \\in \\mathbb C^n$, $X^* X = \\sum |x_k|^2$, et $X^* H X$ est réel lorsque $H$ est hermitienne.",
+        "verdict": "bon",
+        "retour": "Si $(I_n + iH)X = 0$, alors $X^* X + i\\, X^* H X = 0$ : parties réelle et imaginaire s'annulent séparément."
+      },
+      {
+        "titre": "Série géométrique $\\sum (-iH)^k$",
+        "info": "Si $|||M||| < 1$ pour une norme subordonnée, alors $I_n - M$ est inversible, d'inverse $\\sum_k M^k$.",
+        "verdict": "impasse",
+        "retour": "Rien ne garantit $|||H||| < 1$ : $H$ est quelconque parmi les hermitiennes."
+      },
+      {
+        "titre": "Développer $\\det(I_n + iH)$",
+        "info": "Le déterminant est une fonction polynomiale des coefficients ; $\\det(I_n + iH) = \\prod (1 + i\\lambda_k)$ si $\\lambda_1, \\dots, \\lambda_n$ sont les valeurs propres de $H$.",
+        "verdict": "possible",
+        "retour": "Le développement brut est inutilisable ; la formule par les valeurs propres conclut, mais seulement une fois connu que les $\\lambda_k$ sont réels."
+      }
+    ],
+    "direction": "Les valeurs propres de $H$ sont réelles, donc $i \\notin \\mathrm{Sp}(H)$ et $\\det(I_n + iH) = \\prod (1 + i\\lambda_k) \\ne 0$. Variante : $(I_n + iH)X = 0$ donne $X^*X = 0$ en prenant la partie réelle de $X^*X + iX^*HX = 0$, donc $X = 0$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-11", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soient $A \\in S_n^{++}(\\mathbb R)$ et $B \\in S_n(\\mathbb R)$. Montrer qu'il existe $P \\in GL_n(\\mathbb R)$ et $D$ diagonale réelle telles que $A = P^{\\mathsf T} P$ et $B = P^{\\mathsf T} D P$.",
+    "choix": [
+      {
+        "titre": "Prendre $A$ comme nouveau produit scalaire",
+        "info": "Pour $A \\in S_n^{++}(\\mathbb R)$, $\\langle X, Y \\rangle_A = X^{\\mathsf T} A Y$ est un produit scalaire sur $\\mathbb R^n$, et $X \\mapsto A^{-1}BX$ est symétrique pour ce produit scalaire.",
+        "verdict": "bon",
+        "retour": "Le théorème spectral pour $\\langle \\cdot, \\cdot \\rangle_A$ fournit une base $A$-orthonormée qui est aussi $B$-orthogonale."
+      },
+      {
+        "titre": "Écrire $A = C^{\\mathsf T} C$ puis appliquer le théorème spectral",
+        "info": "Toute $A \\in S_n^{++}(\\mathbb R)$ s'écrit $C^{\\mathsf T} C$ avec $C$ inversible. Si $S \\in S_n(\\mathbb R)$, $S = O D O^{\\mathsf T}$ avec $O$ orthogonale.",
+        "verdict": "bon",
+        "retour": "C'est la version matricielle de la piste précédente, avec $S = (C^{-1})^{\\mathsf T} B C^{-1}$."
+      },
+      {
+        "titre": "Diagonaliser $A$ et $B$ séparément",
+        "info": "Théorème spectral : $A = Q_1 D_1 Q_1^{\\mathsf T}$ et $B = Q_2 D_2 Q_2^{\\mathsf T}$ avec $Q_1, Q_2$ orthogonales.",
+        "verdict": "impasse",
+        "retour": "Les deux bases orthonormées n'ont aucune raison de coïncider : on n'obtient pas une même matrice $P$."
+      },
+      {
+        "titre": "Codiagonalisation de matrices qui commutent",
+        "info": "Deux matrices diagonalisables qui commutent sont diagonalisables dans une même base.",
+        "verdict": "impasse",
+        "retour": "$A$ et $B$ ne commutent pas en général. Et une même base de diagonalisation ne donne pas des relations de congruence."
+      }
+    ],
+    "direction": "$A = C^{\\mathsf T}C$ (par exemple $C = \\Delta^{1/2} Q^{\\mathsf T}$ si $A = Q\\Delta Q^{\\mathsf T}$). $S = (C^{-1})^{\\mathsf T} B C^{-1}$ est symétrique : $S = O D O^{\\mathsf T}$. Avec $P = O^{\\mathsf T} C$, on vérifie $P^{\\mathsf T}P = A$ et $P^{\\mathsf T} D P = C^{\\mathsf T} S C = B$."
+  },
+  {
+    "id": "quadratique-euclidien-piste-12", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $f$ continue et strictement positive sur $[0, 1]$. Montrer que $\\displaystyle\\left(\\int_0^1 f\\right)\\left(\\int_0^1 \\frac1f\\right) \\ge 1$.",
+    "choix": [
+      {
+        "titre": "Cauchy-Schwarz dans $\\mathcal C([0,1], \\mathbb R)$",
+        "info": "$\\langle g, h \\rangle = \\int_0^1 gh$ est un produit scalaire sur $\\mathcal C([0, 1], \\mathbb R)$, et $\\langle g, h \\rangle^2 \\le \\langle g, g \\rangle \\langle h, h \\rangle$.",
+        "verdict": "bon",
+        "retour": "Le bon choix de $g$ et $h$ fait apparaître exactement les deux intégrales."
+      },
+      {
+        "titre": "Inégalité $t + \\frac1t \\ge 2$ ponctuelle",
+        "info": "Pour tout $t > 0$, $t + \\frac1t \\ge 2$. On peut l'appliquer à $\\lambda f(x)$ pour tout réel $\\lambda > 0$.",
+        "verdict": "possible",
+        "retour": "Intégrée, elle donne $\\lambda \\int f + \\frac1\\lambda \\int \\frac1f \\ge 2$ pour tout $\\lambda > 0$ ; en optimisant en $\\lambda$, on conclut. Correct, mais détourné."
+      },
+      {
+        "titre": "Inégalité de la moyenne",
+        "info": "$\\left|\\int_0^1 gh\\right| \\le \\sup_{[0,1]} |g| \\int_0^1 |h|$.",
+        "verdict": "impasse",
+        "retour": "Elle majore, alors qu'on veut minorer un produit d'intégrales."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "Pour $u, v$ de classe $\\mathcal C^1$ : $\\int_0^1 u'v = [uv]_0^1 - \\int_0^1 uv'$.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement continue, et aucune dérivée n'apparaît dans la question."
+      }
+    ],
+    "direction": "Avec $g = \\sqrt f$ et $h = \\frac{1}{\\sqrt f}$, continues sur $[0, 1]$ : $1 = \\left(\\int_0^1 gh\\right)^2 \\le \\int_0^1 f \\int_0^1 \\frac1f$. Égalité si et seulement si $f$ est constante."
+  },
+  {
+    "id": "quadratique-euclidien-piste-13", "ch": "quadratique-euclidien", "type": "piste",
+    "enonce": "Soit $A \\in GL_n(\\mathbb R)$. Montrer qu'il existe $Q \\in O_n(\\mathbb R)$ et $R$ triangulaire supérieure à coefficients diagonaux strictement positifs telles que $A = QR$.",
+    "choix": [
+      {
+        "titre": "Orthonormalisation de Schmidt des colonnes de $A$",
+        "info": "Pour une base $(e_1, \\dots, e_n)$, le procédé de Schmidt fournit une base orthonormée $(\\varepsilon_k)$ avec $\\mathrm{Vect}(\\varepsilon_1, \\dots, \\varepsilon_k) = \\mathrm{Vect}(e_1, \\dots, e_k)$ et $\\langle \\varepsilon_k, e_k \\rangle > 0$.",
+        "verdict": "bon",
+        "retour": "La matrice de passage de la base orthonormée $(\\varepsilon_k)$ à la base des colonnes de $A$ est exactement le $R$ cherché."
+      },
+      {
+        "titre": "Décomposer $A^{\\mathsf T}A$ sous la forme $R^{\\mathsf T}R$",
+        "info": "$A^{\\mathsf T}A$ est symétrique définie positive. Si $A^{\\mathsf T}A = R^{\\mathsf T}R$ avec $R$ triangulaire supérieure inversible, alors $AR^{-1}$ est orthogonale.",
+        "verdict": "possible",
+        "retour": "Correct, mais il faut d'abord établir la factorisation $R^{\\mathsf T}R$, ce qui revient à refaire Schmidt (ou Gauss) sur la forme $X \\mapsto \\|AX\\|^2$."
+      },
+      {
+        "titre": "Décomposition $LU$ par le pivot de Gauss",
+        "info": "Si tous les mineurs principaux de $A$ sont non nuls, $A = LU$ avec $L$ triangulaire inférieure à diagonale unité et $U$ triangulaire supérieure.",
+        "verdict": "impasse",
+        "retour": "$L$ n'est pas orthogonale, et $LU$ peut même ne pas exister pour $A$ inversible : $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$."
+      },
+      {
+        "titre": "Théorème spectral appliqué à $A$",
+        "info": "Une matrice symétrique réelle se diagonalise dans une base orthonormée.",
+        "verdict": "impasse",
+        "retour": "$A$ n'est pas supposée symétrique ; et un produit $PDP^{\\mathsf T}$ n'a pas la forme $QR$."
+      }
+    ],
+    "direction": "On applique Schmidt aux colonnes $C_1, \\dots, C_n$ de $A$ (base de $\\mathbb R^n$). Chaque $C_k$ est combinaison de $\\varepsilon_1, \\dots, \\varepsilon_k$, avec coefficient $\\langle \\varepsilon_k, C_k \\rangle > 0$ sur $\\varepsilon_k$. Donc $A = QR$, où $Q$ a pour colonnes les $\\varepsilon_k$."
+  }
+]
