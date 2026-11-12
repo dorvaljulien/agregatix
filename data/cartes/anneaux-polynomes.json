@@ -1,0 +1,686 @@
+[
+  {
+    "id": "anneaux-polynomes-vf-01", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Dans tout anneau $A$, pour tous $a, b \\in A$, on a $(a+b)^2 = a^2 + 2ab + b^2$.",
+    "reponse": false,
+    "explication": "En général $(a+b)^2 = a^2 + ab + ba + b^2$. Contre-exemple dans $M_2(\\mathbb R)$ : $a = E_{11}$, $b = E_{12}$. On a $ab = E_{12}$ et $ba = 0$, donc $(a+b)^2 = a + b$ alors que $a^2 + 2ab + b^2 = a + 2b$. La formule (et celle du binôme) vaut pour des éléments qui commutent."
+  },
+  {
+    "id": "anneaux-polynomes-vf-02", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Tout anneau commutatif unitaire, intègre et fini est un corps.",
+    "reponse": true,
+    "explication": "Pour $a \\ne 0$, l'application $x \\mapsto ax$ est injective par intégrité ($ax = ay \\Rightarrow a(x - y) = 0 \\Rightarrow x = y$). Sur un ensemble fini, elle est donc surjective : il existe $x$ tel que $ax = 1$."
+  },
+  {
+    "id": "anneaux-polynomes-vf-03", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Si $A$ et $B$ sont deux anneaux intègres, l'anneau produit $A \\times B$ est intègre.",
+    "reponse": false,
+    "explication": "Ce n'est jamais le cas : un anneau intègre est non nul, et pour $a \\ne 0$ dans $A$, $b \\ne 0$ dans $B$, on a $(a, 0)(0, b) = (0, 0)$ avec $(a, 0)$ et $(0, b)$ non nuls. Par exemple $\\mathbb Z \\times \\mathbb Z$ n'est pas intègre."
+  },
+  {
+    "id": "anneaux-polynomes-vf-04", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Soit $B$ un anneau unitaire non nul. Tout morphisme d'anneaux unitaires (vérifiant $f(1) = 1$) d'un corps commutatif $K$ vers $B$ est injectif.",
+    "reponse": true,
+    "explication": "Le noyau est un idéal de $K$, donc $\\{0\\}$ ou $K$. Il ne contient pas $1$ puisque $f(1) = 1 \\ne 0$ dans l'anneau d'arrivée. Donc $\\ker f = \\{0\\}$. Sans la condition $f(1) = 1$, le morphisme nul serait un contre-exemple."
+  },
+  {
+    "id": "anneaux-polynomes-vf-05", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Soit $f : A \\to B$ un morphisme d'anneaux commutatifs et $I$ un idéal de $A$. Alors $f(I)$ est un idéal de $B$.",
+    "reponse": false,
+    "explication": "Contre-exemple : l'inclusion $f : \\mathbb Z \\to \\mathbb Q$ et $I = \\mathbb Z$. L'image $\\mathbb Z$ contient $1$ sans être égale à $\\mathbb Q$ : ce n'est pas un idéal de $\\mathbb Q$. L'énoncé devient vrai si $f$ est surjectif. En revanche, l'image réciproque d'un idéal est toujours un idéal."
+  },
+  {
+    "id": "anneaux-polynomes-vf-06", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Si $A$ est un anneau principal, alors $A[X]$ est principal.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\mathbb Z[X]$ et l'idéal $(2, X)$. S'il valait $(P)$, $P$ diviserait $2$ donc serait constant, égal à $\\pm 1$ ou $\\pm 2$ ; $\\pm 2$ ne divise pas $X$, donc $1 = 2U + XV$, et en évaluant en $0$, $1 = 2U(0)$ : absurde. Le résultat vaut pour $K[X]$, $K$ corps, grâce à la division euclidienne."
+  },
+  {
+    "id": "anneaux-polynomes-vf-07", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Dans l'anneau $\\mathbb Z[i]$ des entiers de Gauss, $2$ est irréductible.",
+    "reponse": false,
+    "explication": "$2 = (1 + i)(1 - i)$, et ni $1 + i$ ni $1 - i$ n'est inversible : leur norme $a^2 + b^2$ vaut $2 \\ne 1$. Un nombre premier de $\\mathbb Z$ peut se décomposer dans $\\mathbb Z[i]$ : c'est le cas de $2$ et des premiers $p \\equiv 1 \\pmod 4$, comme $5 = (2 + i)(2 - i)$."
+  },
+  {
+    "id": "anneaux-polynomes-vf-08", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Le corps des fractions de $\\mathbb Z[i]$ est isomorphe au sous-corps $\\mathbb Q(i) = \\{a + ib \\,;\\, a, b \\in \\mathbb Q\\}$ de $\\mathbb C$.",
+    "reponse": true,
+    "explication": "$\\mathbb Q(i)$ est un corps qui contient $\\mathbb Z[i]$, et chacun de ses éléments est un quotient d'éléments de $\\mathbb Z[i]$ : avec un dénominateur commun $d$, $\\frac pd + i\\frac qd = \\frac{p + iq}{d}$. C'est donc le plus petit sous-corps de $\\mathbb C$ contenant $\\mathbb Z[i]$, isomorphe à son corps des fractions."
+  },
+  {
+    "id": "anneaux-polynomes-vf-09", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Tout corps commutatif de caractéristique nulle contient un sous-corps isomorphe à $\\mathbb Q$.",
+    "reponse": true,
+    "explication": "En caractéristique nulle, $n \\cdot 1_K \\ne 0$ pour tout $n \\ne 0$ : le morphisme $\\mathbb Z \\to K$, $n \\mapsto n \\cdot 1_K$, est injectif et se prolonge en $\\frac pq \\mapsto (p \\cdot 1_K)(q \\cdot 1_K)^{-1}$. Son image est le corps premier de $K$. En caractéristique $p$, le corps premier est isomorphe à $\\mathbb Z/p\\mathbb Z$."
+  },
+  {
+    "id": "anneaux-polynomes-vf-10", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Tout polynôme de $\\mathbb R[X]$ de degré $4$ sans racine réelle est irréductible dans $\\mathbb R[X]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $(X^2 + 1)^2$, sans racine réelle mais produit de deux facteurs de degré 2. Plus généralement, aucun polynôme réel de degré $\\ge 3$ n'est irréductible sur $\\mathbb R$. L'équivalence « irréductible $\\Leftrightarrow$ sans racine » ne vaut qu'en degré 2 ou 3."
+  },
+  {
+    "id": "anneaux-polynomes-vf-11", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Soit $K$ un corps commutatif et $P \\in K[X]$ de degré $2$ ou $3$. Alors $P$ est irréductible dans $K[X]$ si et seulement si $P$ n'a pas de racine dans $K$.",
+    "reponse": true,
+    "explication": "Si $P = AB$ avec $A$ et $B$ non constants, les degrés valent $1 + 1$ ou $1 + 2$ : l'un des facteurs est de degré 1, donc $P$ a une racine. Réciproquement, une racine $a$ donne le facteur $X - a$, avec un cofacteur non constant puisque $\\deg P \\ge 2$."
+  },
+  {
+    "id": "anneaux-polynomes-vf-12", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Soit $A$ un anneau commutatif. Tout polynôme de $A[X]$ de degré $2$ a au plus deux racines dans $A$.",
+    "reponse": false,
+    "explication": "Il faut $A$ intègre. Contre-exemple dans $\\mathbb Z/8\\mathbb Z$ : $X^2 - 1$ a quatre racines, $1, 3, 5, 7$, car $1, 9, 25, 49$ sont tous congrus à $1$ modulo $8$. Sur un corps, ou plus généralement un anneau intègre, un polynôme non nul de degré $n$ a au plus $n$ racines."
+  },
+  {
+    "id": "anneaux-polynomes-vf-13", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Soit $K$ un corps commutatif. Deux polynômes de $K[X]$ qui définissent la même fonction polynôme sur $K$ sont égaux.",
+    "reponse": false,
+    "explication": "Faux sur un corps fini. Dans $K = \\mathbb Z/p\\mathbb Z$, $X^p$ et $X$ sont distincts mais $a^p = a$ pour tout $a \\in K$ (petit théorème de Fermat). L'énoncé est vrai si $K$ est infini : $P - Q$ aurait une infinité de racines, donc serait nul."
+  },
+  {
+    "id": "anneaux-polynomes-vf-14", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Si $P, Q \\in \\mathbb R[X]$ sont premiers entre eux dans $\\mathbb R[X]$, alors ils sont premiers entre eux dans $\\mathbb C[X]$.",
+    "reponse": true,
+    "explication": "Une relation de Bézout $UP + VQ = 1$ avec $U, V \\in \\mathbb R[X]$ reste valable dans $\\mathbb C[X]$. Plus généralement, le PGCD ne dépend pas du corps : l'algorithme d'Euclide ne fait que des calculs dans le corps des coefficients."
+  },
+  {
+    "id": "anneaux-polynomes-vf-15", "ch": "anneaux-polynomes", "type": "vf",
+    "enonce": "Le réel $\\sqrt2 + \\sqrt3$ est algébrique sur $\\mathbb Q$.",
+    "reponse": true,
+    "explication": "Avec $x = \\sqrt2 + \\sqrt3$ : $x^2 = 5 + 2\\sqrt6$, donc $(x^2 - 5)^2 = 24$. Ainsi $x$ est racine de $X^4 - 10X^2 + 1 \\in \\mathbb Q[X]$, non nul."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-01", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Soit $n \\ge 2$. L'anneau $\\mathbb Z/n\\mathbb Z$ est intègre si et seulement si **[ ? ]**.",
+    "choix": [
+      "$n$ est premier",
+      "$n$ est impair",
+      "$n$ est sans facteur carré",
+      "$n$ est une puissance d'un nombre premier"
+    ],
+    "bonne": 0,
+    "explication": "Si $n = ab$ avec $1 < a, b < n$, alors $\\bar a \\bar b = \\bar 0$ avec $\\bar a, \\bar b \\ne \\bar 0$. Si $n$ est premier, $\\mathbb Z/n\\mathbb Z$ est même un corps. Les leurres tombent avec $n = 9$ ($\\bar 3^2 = \\bar 0$), $n = 6$ et $n = 4$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-02", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Les valeurs possibles de la caractéristique d'un corps commutatif sont exactement **[ ? ]**.",
+    "choix": [
+      "$0$ et les nombres premiers",
+      "les nombres premiers",
+      "$0$ et tous les entiers $n \\ge 2$",
+      "les entiers $n \\ge 1$"
+    ],
+    "bonne": 0,
+    "explication": "$\\mathbb Q$ est de caractéristique $0$ et $\\mathbb Z/p\\mathbb Z$ de caractéristique $p$. Si la caractéristique valait $n = ab$ avec $1 < a, b < n$, on aurait $(a \\cdot 1)(b \\cdot 1) = 0$ dans un corps, donc $a \\cdot 1 = 0$ ou $b \\cdot 1 = 0$, contre la minimalité de $n$. La valeur $1$ est exclue car $1 \\ne 0$ dans un corps. Attention : un corps de caractéristique $p$ peut être infini, comme $(\\mathbb Z/p\\mathbb Z)(X)$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-03", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Formule de Taylor pour les polynômes.\nSoit $K$ un corps commutatif **[ ? ]**. Pour tout $n$, tout $P \\in K[X]$ de degré au plus $n$ et tout $a \\in K$, $P = \\sum_{k=0}^n \\frac{P^{(k)}(a)}{k!}(X - a)^k$.",
+    "choix": [
+      "de caractéristique nulle",
+      "infini",
+      "fini",
+      "quelconque"
+    ],
+    "bonne": 0,
+    "explication": "Il faut pouvoir diviser par $k!$, c'est-à-dire $k! \\cdot 1_K \\ne 0$ pour tout $k$ : c'est la caractéristique nulle. Le leurre « infini » échoue : $(\\mathbb Z/p\\mathbb Z)(X)$ est infini de caractéristique $p$, et $p! = 0$ dans ce corps, donc la formule n'a pas de sens dès que $n \\ge p$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-04", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Soit $K$ un corps de caractéristique nulle, $P \\in K[X]$, $a \\in K$ et $m \\ge 1$. Le scalaire $a$ est racine de $P$ d'ordre de multiplicité exactement $m$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "$P(a) = P'(a) = \\dots = P^{(m-1)}(a) = 0$ et $P^{(m)}(a) \\ne 0$",
+      "$P(a) = P'(a) = \\dots = P^{(m)}(a) = 0$",
+      "$P^{(m-1)}(a) = 0$ et $P^{(m)}(a) \\ne 0$",
+      "$P(a) = 0$ et $P^{(m)}(a) \\ne 0$"
+    ],
+    "bonne": 0,
+    "explication": "C'est la caractérisation par les dérivées successives, conséquence de la formule de Taylor. Le deuxième choix traduit une multiplicité au moins $m + 1$. Le troisième oublie que $a$ doit être racine : $X^2 + 1$ en $0$ avec $m = 2$. Le quatrième oublie les dérivées intermédiaires : $X + X^2$ en $0$ avec $m = 2$, racine simple."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-05", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Les polynômes irréductibles de $\\mathbb R[X]$ sont **[ ? ]**.",
+    "choix": [
+      "les polynômes de degré 1 et ceux de degré 2 à discriminant strictement négatif",
+      "les polynômes sans racine réelle",
+      "les polynômes de degré 1 ou 2",
+      "les polynômes de degré 1"
+    ],
+    "bonne": 0,
+    "explication": "Conséquence de d'Alembert-Gauss : les racines non réelles d'un polynôme réel vont par paires conjuguées, et $(X - z)(X - \\bar z)$ est réel de degré 2. Contre les leurres : $(X^2 + 1)^2$ est sans racine réelle et réductible, $X^2 - 1$ est de degré 2 et réductible, $X^2 + 1$ est irréductible de degré 2."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-06", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Soient $x_1, x_2, x_3$ les racines complexes, comptées avec multiplicité, de $P = X^3 - 2X + 5$. Que vaut $x_1^2 + x_2^2 + x_3^2$ ?",
+    "choix": [
+      "$4$",
+      "$-4$",
+      "$0$",
+      "$2$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $X^3 + aX^2 + bX + c$ : $\\sigma_1 = -a$, $\\sigma_2 = b$, $\\sigma_3 = -c$. Ici $\\sigma_1 = 0$ et $\\sigma_2 = -2$, donc $\\sum x_i^2 = \\sigma_1^2 - 2\\sigma_2 = 4$. Le leurre $-4$ vient d'une erreur de signe sur $\\sigma_2$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-07", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Dans $\\mathbb R(X)$, la décomposition en éléments simples de $F = \\frac{1}{X(X^2 + 1)}$ est :",
+    "choix": [
+      "$\\frac1X - \\frac{X}{X^2 + 1}$",
+      "$\\frac1X - \\frac{1}{X^2 + 1}$",
+      "$\\frac1X + \\frac{X}{X^2 + 1}$",
+      "$\\frac1X - \\frac{X + 1}{X^2 + 1}$"
+    ],
+    "bonne": 0,
+    "explication": "Le coefficient de $\\frac1X$ s'obtient en multipliant par $X$ et en évaluant en $0$ : il vaut $1$. Puis $F - \\frac1X = \\frac{1 - (X^2 + 1)}{X(X^2 + 1)} = -\\frac{X}{X^2 + 1}$. On vérifie : réduire au même dénominateur redonne $\\frac{1}{X(X^2+1)}$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-08", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "Soit $F = \\frac PQ \\in K(X)$ et $a \\in K$ tel que $Q(a) = 0$, $Q'(a) \\ne 0$ et $P(a) \\ne 0$. Dans la décomposition en éléments simples de $F$, le coefficient de $\\frac{1}{X - a}$ est :",
+    "choix": [
+      "$\\frac{P(a)}{Q'(a)}$",
+      "$\\frac{P'(a)}{Q'(a)}$",
+      "$\\frac{Q'(a)}{P(a)}$",
+      "$P(a)\\,Q'(a)$"
+    ],
+    "bonne": 0,
+    "explication": "$a$ est racine simple de $Q$ : $Q = (X - a)Q_1$ avec $Q_1(a) = Q'(a) \\ne 0$. Le coefficient vaut $\\frac{P(a)}{Q_1(a)} = \\frac{P(a)}{Q'(a)}$. Utile quand $Q$ n'est pas factorisé, par exemple $Q = X^n - 1$ : le coefficient en $\\omega$ est $\\frac{\\omega P(\\omega)}{n}$."
+  },
+  {
+    "id": "anneaux-polynomes-qcm-09", "ch": "anneaux-polynomes", "type": "qcm",
+    "enonce": "On pose $N(a + ib) = a^2 + b^2$ pour $a, b \\in \\mathbb Z$. Un élément $z$ de $\\mathbb Z[i]$ est inversible dans $\\mathbb Z[i]$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "$N(z) = 1$",
+      "$z \\ne 0$",
+      "$N(z)$ est un nombre premier",
+      "$N(z)$ est impair"
+    ],
+    "bonne": 0,
+    "explication": "Si $zw = 1$, alors $N(z)N(w) = 1$ dans $\\mathbb N$, donc $N(z) = 1$. Réciproquement, $N(z) = z\\bar z = 1$ donne $z^{-1} = \\bar z \\in \\mathbb Z[i]$. Les inversibles sont $\\pm 1, \\pm i$. Contre les leurres : $2$, $1 + i$ (norme $2$) et $2 + i$ (norme $5$) ne sont pas inversibles."
+  },
+  {
+    "id": "anneaux-polynomes-err-01", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "On veut savoir si $P = X^4 + X^2 + 1$ est irréductible dans $\\mathbb R[X]$. Voici une copie.",
+    "lignes": [
+      "Pour tout réel $x$, $x^4 + x^2 + 1 \\ge 1$.",
+      "Donc $P$ n'a aucune racine réelle.",
+      "Donc $P$ n'a aucun diviseur de degré 1 dans $\\mathbb R[X]$.",
+      "Un polynôme sans diviseur de degré 1 est irréductible : $P$ est irréductible dans $\\mathbb R[X]$."
+    ],
+    "fausse": 3,
+    "explication": "En degré 4, l'absence de racine n'exclut pas un produit de deux facteurs de degré 2. Ici $P = (X^2 + 1)^2 - X^2 = (X^2 + X + 1)(X^2 - X + 1)$. Le jury rappelle qu'un argument sur le degré est indispensable : l'équivalence ne vaut qu'en degré 2 ou 3."
+  },
+  {
+    "id": "anneaux-polynomes-err-02", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "Soit $K$ un corps commutatif et $P \\in K[X]$ tel que $P' = 0$. Une copie veut montrer que $P$ est constant.",
+    "lignes": [
+      "On écrit $P = \\sum_{k=0}^n a_k X^k$.",
+      "Alors $P' = \\sum_{k=1}^n k\\,a_k X^{k-1}$.",
+      "$P' = 0$ donne $k\\,a_k = 0$ pour tout $k \\in \\{1, \\dots, n\\}$.",
+      "Comme $k \\ne 0$, on obtient $a_k = 0$ pour tout $k \\ge 1$, donc $P$ est constant."
+    ],
+    "fausse": 3,
+    "explication": "$k \\ne 0$ dans $\\mathbb N$ n'entraîne pas $k \\cdot 1_K \\ne 0$. Dans $K = \\mathbb Z/p\\mathbb Z$, $P = X^p$ vérifie $P' = pX^{p-1} = 0$ sans être constant. Le raisonnement est correct en caractéristique nulle."
+  },
+  {
+    "id": "anneaux-polynomes-err-03", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "On veut montrer que $\\mathbb R[X]/(X^2 + 1)$ est isomorphe à $\\mathbb C$. Voici une copie.",
+    "lignes": [
+      "L'application $\\varphi : P \\mapsto P(i)$ est un morphisme d'anneaux de $\\mathbb R[X]$ dans $\\mathbb C$.",
+      "Elle est surjective, car $a + ib = \\varphi(a + bX)$ pour tous réels $a, b$.",
+      "Comme $\\varphi(X^2 + 1) = 0$, on a $\\ker \\varphi = (X^2 + 1)$.",
+      "Par le théorème d'isomorphisme, $\\mathbb R[X]/(X^2 + 1)$ est isomorphe à $\\mathbb C$."
+    ],
+    "fausse": 2,
+    "explication": "$\\varphi(X^2 + 1) = 0$ donne seulement l'inclusion $(X^2 + 1) \\subset \\ker \\varphi$. Pour l'autre, on divise $P$ par $X^2 + 1$ : $P = (X^2+1)Q + a + bX$, et $P(i) = 0$ impose $a + ib = 0$, donc $a = b = 0$. La conclusion est juste."
+  },
+  {
+    "id": "anneaux-polynomes-err-04", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "On cherche le PGCD de $A = X^2 - 1$ et $B = X^2 + X$ dans $\\mathbb Q[X]$. Voici une copie.",
+    "lignes": [
+      "On calcule $B - A = X + 1$.",
+      "Donc $X + 1 = AU + BV$ avec $U = -1$ et $V = 1$.",
+      "Tout polynôme unitaire de la forme $AU + BV$ est le PGCD de $A$ et $B$.",
+      "Donc $\\mathrm{pgcd}(A, B) = X + 1$."
+    ],
+    "fausse": 2,
+    "explication": "C'est la réciproque fautive de Bézout : une combinaison $AU + BV$ est seulement un multiple du PGCD. Ainsi $A \\cdot X + B \\cdot 0 = X^3 - X$ est unitaire sans être le PGCD. Il faut ajouter que $X + 1$ divise $A$ et $B$. La conclusion, elle, est juste."
+  },
+  {
+    "id": "anneaux-polynomes-err-05", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "On veut décomposer $F = \\frac{X^3}{X^2 - 1}$ en éléments simples dans $\\mathbb R(X)$. Voici une copie.",
+    "lignes": [
+      "$X^2 - 1 = (X - 1)(X + 1)$ : $F$ a deux pôles simples, $1$ et $-1$.",
+      "On cherche $a, b \\in \\mathbb R$ tels que $F = \\frac{a}{X - 1} + \\frac{b}{X + 1}$.",
+      "En multipliant par $X - 1$ puis en évaluant en $1$, le coefficient de $\\frac{1}{X-1}$ vaut $a = \\frac12$.",
+      "De même, le coefficient de $\\frac{1}{X+1}$ vaut $b = \\frac12$."
+    ],
+    "fausse": 1,
+    "explication": "Le degré du numérateur dépasse celui du dénominateur : il faut une partie entière, quotient de la division euclidienne de $X^3$ par $X^2 - 1$. Ici $F = X + \\frac{1/2}{X - 1} + \\frac{1/2}{X + 1}$. Les coefficients calculés sont justes, la forme cherchée ne l'est pas."
+  },
+  {
+    "id": "anneaux-polynomes-err-06", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "Soit $A$ un anneau commutatif unitaire. Une copie affirme que les inversibles de $A[X]$ sont exactement les constantes inversibles de $A$.",
+    "lignes": [
+      "Toute constante inversible dans $A$ est inversible dans $A[X]$.",
+      "Réciproquement, soit $P$ inversible dans $A[X]$, d'inverse $Q$ : $PQ = 1$.",
+      "Alors $\\deg P + \\deg Q = \\deg(PQ) = 0$, donc $P$ est une constante, inversible dans $A$."
+    ],
+    "fausse": 2,
+    "explication": "$\\deg(PQ) = \\deg P + \\deg Q$ suppose que le produit des coefficients dominants est non nul : c'est garanti si $A$ est intègre. Contre-exemple dans $(\\mathbb Z/4\\mathbb Z)[X]$ : $(1 + 2X)^2 = 1 + 4X + 4X^2 = 1$, donc $1 + 2X$ est inversible sans être constant."
+  },
+  {
+    "id": "anneaux-polynomes-err-07", "ch": "anneaux-polynomes", "type": "erreur",
+    "enonce": "On veut montrer que l'ensemble des nombres complexes algébriques sur $\\mathbb Q$ est dénombrable. Voici une copie.",
+    "lignes": [
+      "Un complexe algébrique est racine d'un polynôme $P \\in \\mathbb Q[X]$ non nul, qui a au plus $\\deg P$ racines.",
+      "$\\mathbb Q[X]$ est dénombrable, car en bijection avec l'ensemble $\\mathbb Q^{\\mathbb N}$ des suites de rationnels, produit d'ensembles dénombrables.",
+      "L'ensemble des algébriques est la réunion, indexée par $\\mathbb Q[X] \\setminus \\{0\\}$, des ensembles finis de racines.",
+      "Une réunion dénombrable d'ensembles finis est dénombrable, d'où le résultat."
+    ],
+    "fausse": 1,
+    "explication": "$\\mathbb Q^{\\mathbb N}$ n'est pas dénombrable (il contient $\\{0,1\\}^{\\mathbb N}$), et $\\mathbb Q[X]$ ne s'identifie qu'aux suites **presque nulles**. Bonne justification : $\\mathbb Q[X] = \\bigcup_n \\mathbb Q_n[X]$, réunion dénombrable d'ensembles en bijection avec $\\mathbb Q^{n+1}$, produit fini d'ensembles dénombrables."
+  },
+  {
+    "id": "anneaux-polynomes-piste-01", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Montrer que l'anneau $\\mathbb Z[i] = \\{a + ib \\,;\\, a, b \\in \\mathbb Z\\}$ des entiers de Gauss est principal.",
+    "choix": [
+      {
+        "titre": "Division euclidienne pour la norme $N(z) = |z|^2$",
+        "info": "Si un anneau intègre admet une division euclidienne ($a = bq + r$ avec $r = 0$ ou $N(r) < N(b)$, pour une fonction $N$ à valeurs dans $\\mathbb N$), il est principal : un idéal non nul est engendré par n'importe lequel de ses éléments non nuls de $N$ minimal.",
+        "verdict": "bon",
+        "retour": "C'est la preuve standard. Tout le travail consiste à construire la division, en approchant le quotient complexe $\\frac ab$ par un entier de Gauss."
+      },
+      {
+        "titre": "$\\mathbb Z[i]$ est un sous-anneau de $\\mathbb C$",
+        "info": "Tout sous-anneau d'un corps commutatif est intègre.",
+        "verdict": "impasse",
+        "retour": "On obtient l'intégrité, pas la principalité : $\\mathbb Z[X]$ est un sous-anneau du corps $\\mathbb Q(X)$ et il n'est pas principal."
+      },
+      {
+        "titre": "Isomorphisme $\\mathbb Z[i] \\simeq \\mathbb Z[X]/(X^2 + 1)$",
+        "info": "Le morphisme $P \\mapsto P(i)$ de $\\mathbb Z[X]$ dans $\\mathbb C$ a pour image $\\mathbb Z[i]$ et pour noyau l'idéal engendré par $X^2 + 1$.",
+        "verdict": "impasse",
+        "retour": "L'isomorphisme est juste, mais $\\mathbb Z[X]$ n'est pas principal : cette description ne fournit aucun générateur d'un idéal de $\\mathbb Z[i]$."
+      },
+      {
+        "titre": "Relation de Bézout dans $\\mathbb Z[i]$",
+        "info": "Dans un anneau principal, si $a$ et $b$ n'ont pour diviseurs communs que des inversibles, il existe $u, v$ tels que $au + bv = 1$.",
+        "verdict": "impasse",
+        "retour": "Bézout est une conséquence de la principalité : s'en servir ici serait circulaire."
+      }
+    ],
+    "direction": "Pour $a, b \\in \\mathbb Z[i]$, $b \\ne 0$, on choisit $q \\in \\mathbb Z[i]$ le plus proche de $\\frac ab \\in \\mathbb C$ : $\\left|\\frac ab - q\\right|^2 \\le \\frac12$, donc $r = a - bq$ vérifie $N(r) < N(b)$. Si $I$ est un idéal non nul et $b \\in I \\setminus \\{0\\}$ de norme minimale, la division montre que $I = b\\,\\mathbb Z[i]$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-02", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soient $n = a^2 + b^2$ et $m = c^2 + d^2$, avec $a, b, c, d \\in \\mathbb Z$. Montrer que $nm$ est somme de deux carrés d'entiers.",
+    "choix": [
+      {
+        "titre": "Multiplicativité de la norme sur $\\mathbb Z[i]$",
+        "info": "Pour $z = x + iy \\in \\mathbb Z[i]$, on pose $N(z) = z\\bar z = x^2 + y^2$. On a $N(zw) = N(z)N(w)$ pour tous $z, w$.",
+        "verdict": "bon",
+        "retour": "$n = N(a + ib)$ et $m = N(c + id)$ : le produit $nm$ est la norme d'un entier de Gauss."
+      },
+      {
+        "titre": "Congruences modulo 4",
+        "info": "Un carré d'entier est congru à $0$ ou $1$ modulo $4$, donc une somme de deux carrés n'est jamais congrue à $3$ modulo $4$.",
+        "verdict": "impasse",
+        "retour": "Condition nécessaire seulement : elle sert à prouver qu'un entier n'est **pas** somme de deux carrés, jamais l'inverse."
+      },
+      {
+        "titre": "Théorème des deux carrés",
+        "info": "Un entier $N \\ge 1$ est somme de deux carrés si et seulement si chaque facteur premier $p \\equiv 3 \\pmod 4$ figure dans $N$ avec un exposant pair. Hors programme, à redémontrer.",
+        "verdict": "possible",
+        "retour": "La conclusion suit (les exposants s'additionnent), mais c'est un résultat difficile, dont la preuve repose justement sur $\\mathbb Z[i]$."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "Pour tous réels $a, b, c, d$ : $(ac + bd)^2 \\le (a^2 + b^2)(c^2 + d^2)$.",
+        "verdict": "impasse",
+        "retour": "Une inégalité ne donne pas l'égalité cherchée : elle ne dit pas que l'écart est un carré."
+      }
+    ],
+    "direction": "$(a + ib)(c + id) = (ac - bd) + i(ad + bc)$. En prenant les normes : $nm = (ac - bd)^2 + (ad + bc)^2$, identité de Lagrange."
+  },
+  {
+    "id": "anneaux-polynomes-piste-03", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Déterminer tous les morphismes d'anneaux unitaires $f : \\mathbb R \\to \\mathbb R$, c'est-à-dire vérifiant de plus $f(1) = 1$.",
+    "choix": [
+      {
+        "titre": "Positivité par les carrés, puis densité de $\\mathbb Q$",
+        "info": "Un réel est positif si et seulement s'il est le carré d'un réel. Entre deux réels distincts, il existe un rationnel.",
+        "verdict": "bon",
+        "retour": "$f(t^2) = f(t)^2 \\ge 0$ rend $f$ croissante. Jointe au fait que $f$ fixe les rationnels, la croissance suffit."
+      },
+      {
+        "titre": "Continuité et densité de $\\mathbb Q$",
+        "info": "Deux applications continues sur $\\mathbb R$ qui coïncident sur $\\mathbb Q$ sont égales.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $f$ est continue : c'est précisément la difficulté à contourner."
+      },
+      {
+        "titre": "Corps premier de $\\mathbb R$",
+        "info": "Un morphisme d'anneaux unitaires vérifie $f(1) = 1$. Il fixe donc les entiers, puis les rationnels, qui forment le corps premier $\\mathbb Q$ de $\\mathbb R$.",
+        "verdict": "possible",
+        "retour": "Étape indispensable, mais elle ne traite que les rationnels."
+      },
+      {
+        "titre": "Théorème d'isomorphisme",
+        "info": "Pour un morphisme d'anneaux $f : A \\to B$, l'anneau $A/\\ker f$ est isomorphe à $\\mathrm{Im} f$.",
+        "verdict": "impasse",
+        "retour": "$\\ker f = \\{0\\}$ car $\\mathbb R$ est un corps : on obtient l'injectivité, rien de plus."
+      }
+    ],
+    "direction": "$f$ vaut l'identité sur $\\mathbb Q$. Si $x \\le y$, $y - x = t^2$ et $f(y) - f(x) = f(t)^2 \\ge 0$ : $f$ est croissante. Pour $r < x < s$ rationnels, $r \\le f(x) \\le s$ ; en faisant tendre $r$ et $s$ vers $x$, $f(x) = x$. Seule l'identité convient."
+  },
+  {
+    "id": "anneaux-polynomes-piste-04", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Montrer que $\\mathbb Q(\\sqrt2) = \\{a + b\\sqrt2 \\,;\\, a, b \\in \\mathbb Q\\}$ est un sous-corps de $\\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Quantité conjuguée",
+        "info": "$(a + b\\sqrt2)(a - b\\sqrt2) = a^2 - 2b^2$, rationnel.",
+        "verdict": "bon",
+        "retour": "Elle donne explicitement l'inverse, à condition de vérifier que $a^2 - 2b^2 \\ne 0$."
+      },
+      {
+        "titre": "Multiplication injective en dimension finie",
+        "info": "Soit $A$ un anneau commutatif unitaire intègre qui est aussi un $\\mathbb Q$-espace vectoriel de dimension finie, le produit étant bilinéaire. Pour $a \\ne 0$, $x \\mapsto ax$ est linéaire injective, donc bijective, et $a$ est inversible.",
+        "verdict": "bon",
+        "retour": "$\\mathbb Q(\\sqrt2)$ est un sous-anneau de $\\mathbb R$ (donc intègre) engendré par $1$ et $\\sqrt2$ : c'est un corps, sans calcul d'inverse."
+      },
+      {
+        "titre": "Sous-anneau de $\\mathbb R$ contenant $\\mathbb Q$",
+        "info": "Tout sous-anneau d'un corps commutatif est intègre.",
+        "verdict": "impasse",
+        "retour": "Intègre ne veut pas dire corps : $\\mathbb Q[\\pi]$ est un sous-anneau de $\\mathbb R$ contenant $\\mathbb Q$, et $\\frac1\\pi \\notin \\mathbb Q[\\pi]$ car $\\pi$ est transcendant."
+      },
+      {
+        "titre": "Caractéristique nulle",
+        "info": "Un corps de caractéristique nulle contient un sous-corps isomorphe à $\\mathbb Q$.",
+        "verdict": "impasse",
+        "retour": "On sait déjà que $\\mathbb Q \\subset \\mathbb Q(\\sqrt2)$ ; cela ne dit rien des inverses de $a + b\\sqrt2$."
+      }
+    ],
+    "direction": "$\\mathbb Q(\\sqrt2)$ contient $1$ et est stable par différence et produit. Si $a + b\\sqrt2 \\ne 0$, alors $a^2 - 2b^2 \\ne 0$ (sinon $b \\ne 0$ et $\\sqrt2 = \\left|\\frac ab\\right|$ serait rationnel), et $(a + b\\sqrt2)^{-1} = \\frac{a - b\\sqrt2}{a^2 - 2b^2} \\in \\mathbb Q(\\sqrt2)$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-05", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $\\alpha \\in \\mathbb C$ non nul, algébrique sur $\\mathbb Q$. Montrer que $\\frac1\\alpha$ est algébrique sur $\\mathbb Q$.",
+    "choix": [
+      {
+        "titre": "Polynôme réciproque",
+        "info": "Pour $P = \\sum_{k=0}^n a_k X^k$ de degré $n$, on pose $\\tilde P = \\sum_{k=0}^n a_k X^{n-k}$ : les coefficients sont renversés, et $\\tilde P(x) = x^n P\\left(\\frac1x\\right)$ pour $x \\ne 0$.",
+        "verdict": "bon",
+        "retour": "$\\tilde P$ est non nul (son coefficient constant est $a_n \\ne 0$) et s'annule en $\\frac1\\alpha$."
+      },
+      {
+        "titre": "Bézout avec un polynôme irréductible annulateur",
+        "info": "Si $P \\in \\mathbb Q[X]$ est irréductible et ne divise pas $Q$, il existe $U, V \\in \\mathbb Q[X]$ tels que $UP + VQ = 1$.",
+        "verdict": "possible",
+        "retour": "Avec $Q = X$, on obtient $\\frac1\\alpha = V(\\alpha)$. Il reste à montrer qu'un élément de $\\mathbb Q[\\alpha]$ est algébrique, ce qui demande un argument de dimension finie."
+      },
+      {
+        "titre": "Dénombrabilité des algébriques",
+        "info": "L'ensemble des complexes algébriques sur $\\mathbb Q$ est dénombrable.",
+        "verdict": "impasse",
+        "retour": "Un argument de cardinal ne dit rien d'un nombre particulier."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme non constant de $\\mathbb C[X]$ admet au moins une racine dans $\\mathbb C$.",
+        "verdict": "impasse",
+        "retour": "Il fournit des racines, pas un polynôme à coefficients rationnels qui annule $\\frac1\\alpha$."
+      }
+    ],
+    "direction": "Soit $P = \\sum_{k=0}^n a_k X^k \\in \\mathbb Q[X]$ non nul, de degré $n$, avec $P(\\alpha) = 0$. Alors $\\tilde P = \\sum_{k=0}^n a_k X^{n-k} \\in \\mathbb Q[X]$ est non nul et $\\tilde P\\left(\\frac1\\alpha\\right) = \\alpha^{-n} P(\\alpha) = 0$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-06", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $p$ un nombre premier et $K = \\mathbb Z/p\\mathbb Z$. Montrer que $X^p - X = \\displaystyle\\prod_{a \\in K} (X - a)$ dans $K[X]$.",
+    "choix": [
+      {
+        "titre": "Petit théorème de Fermat et racines distinctes",
+        "info": "Pour tout $a \\in \\mathbb Z/p\\mathbb Z$, $a^p = a$. Si $a_1, \\dots, a_r$ sont des racines deux à deux distinctes de $P \\in K[X]$, alors $\\prod_{i=1}^r (X - a_i)$ divise $P$.",
+        "verdict": "bon",
+        "retour": "Les $p$ éléments de $K$ sont racines de $X^p - X$ : le produit, unitaire de degré $p$, divise ce polynôme unitaire de même degré."
+      },
+      {
+        "titre": "Comparer les fonctions polynômes",
+        "info": "Deux polynômes qui définissent la même fonction sur un corps **infini** sont égaux.",
+        "verdict": "impasse",
+        "retour": "$K$ est fini. Les deux membres définissent bien la fonction nulle, mais $X^p - X$ montre justement qu'un polynôme non nul peut définir la fonction nulle."
+      },
+      {
+        "titre": "Relations coefficients-racines",
+        "info": "Si $X^n + c_{n-1}X^{n-1} + \\dots + c_0$ est scindé de racines $x_1, \\dots, x_n$, alors $c_{n-k} = (-1)^k \\sigma_k$, où $\\sigma_k$ est la $k$-ième fonction symétrique élémentaire des racines.",
+        "verdict": "impasse",
+        "retour": "Elles supposent connu que $X^p - X$ est scindé et quelles sont ses racines : c'est ce qu'il faut démontrer."
+      },
+      {
+        "titre": "Formule de Taylor en $0$",
+        "info": "En caractéristique nulle, pour $P$ de degré au plus $n$ : $P = \\sum_{k=0}^n \\frac{P^{(k)}(0)}{k!} X^k$.",
+        "verdict": "impasse",
+        "retour": "$K$ est de caractéristique $p$ : $p! = 0$ dans $K$, la formule n'a pas de sens ici, et elle ne factoriserait rien."
+      }
+    ],
+    "direction": "Par Fermat, chaque $a \\in K$ est racine de $X^p - X$ ; ces $p$ racines sont distinctes, donc $\\prod_{a \\in K}(X - a)$ divise $X^p - X$. Les deux sont unitaires de degré $p$ : ils sont égaux. En comparant les coefficients de $X$, on obtient au passage le théorème de Wilson, $(p-1)! \\equiv -1 \\pmod p$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-07", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $n \\ge 1$ et $P = nX^{n+1} - (n+1)X^n + 1 \\in \\mathbb R[X]$. Montrer que $1$ est racine de $P$ et déterminer son ordre de multiplicité.",
+    "choix": [
+      {
+        "titre": "Dérivées successives en $1$",
+        "info": "En caractéristique nulle, $a$ est racine d'ordre exactement $m \\ge 1$ de $P$ si et seulement si $P(a) = P'(a) = \\dots = P^{(m-1)}(a) = 0$ et $P^{(m)}(a) \\ne 0$.",
+        "verdict": "bon",
+        "retour": "$P'$ se factorise aussitôt : $P' = n(n+1)X^{n-1}(X - 1)$."
+      },
+      {
+        "titre": "Divisions successives par $X - 1$",
+        "info": "$a$ est racine de $P$ si et seulement si $X - a$ divise $P$. On peut diviser à nouveau le quotient tant qu'il s'annule en $a$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit : $P = (X - 1)\\left(nX^n - \\sum_{k=0}^{n-1} X^k\\right)$, puis on recommence. Mais le calcul du second quotient est plus lourd que la dérivation."
+      },
+      {
+        "titre": "Relations coefficients-racines",
+        "info": "Pour un polynôme scindé, les coefficients s'expriment, au signe près, comme fonctions symétriques élémentaires des racines.",
+        "verdict": "impasse",
+        "retour": "Elles portent sur toutes les racines à la fois, inconnues ici, et ne renseignent pas sur une racine particulière."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f$ est continue sur $[a, b]$, dérivable sur $]a, b[$ et $f(a) = f(b)$, il existe $c \\in\\, ]a, b[$ tel que $f'(c) = 0$.",
+        "verdict": "impasse",
+        "retour": "Il localise des racines de $P'$ entre deux racines de $P$ ; il ne mesure pas une multiplicité."
+      }
+    ],
+    "direction": "$P(1) = n - (n+1) + 1 = 0$. $P' = n(n+1)(X^n - X^{n-1})$ donc $P'(1) = 0$. $P'' = n(n+1)\\left(nX^{n-1} - (n-1)X^{n-2}\\right)$ donc $P''(1) = n(n+1) \\ne 0$ : $1$ est racine double."
+  },
+  {
+    "id": "anneaux-polynomes-piste-08", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $n \\ge 2$. Déterminer le reste de la division euclidienne de $X^n$ par $(X - 1)^2$ dans $\\mathbb R[X]$.",
+    "choix": [
+      {
+        "titre": "Évaluer en $1$, puis dériver et évaluer en $1$",
+        "info": "Si $X^n = (X - 1)^2 Q + R$, alors $1$ est racine de $(X-1)^2 Q$ et de sa dérivée : $X^n$ et $R$ ont même valeur et même dérivée en $1$.",
+        "verdict": "bon",
+        "retour": "Avec $R = aX + b$, on obtient deux équations pour deux inconnues."
+      },
+      {
+        "titre": "Binôme en écrivant $X = 1 + (X - 1)$",
+        "info": "Formule du binôme : $(u + v)^n = \\sum_{k=0}^n \\binom nk u^k v^{n-k}$ pour des éléments $u, v$ qui commutent.",
+        "verdict": "bon",
+        "retour": "Tous les termes en $(X - 1)^k$ avec $k \\ge 2$ sont multiples de $(X - 1)^2$ : il reste les deux premiers."
+      },
+      {
+        "titre": "Évaluer en la racine $1$ du diviseur",
+        "info": "Si $A = BQ + R$ et $B(a) = 0$, alors $A(a) = R(a)$.",
+        "verdict": "impasse",
+        "retour": "Une seule racine distincte, donc une seule équation pour deux inconnues : il faut exploiter la multiplicité."
+      },
+      {
+        "titre": "Algorithme d'Euclide",
+        "info": "On enchaîne les divisions euclidiennes $A = BQ_1 + R_1$, $B = R_1Q_2 + R_2$, … ; le dernier reste non nul est le PGCD.",
+        "verdict": "impasse",
+        "retour": "Il calcule un PGCD. Sa première étape est la division demandée, qu'il ne dit pas comment effectuer pour $n$ quelconque."
+      }
+    ],
+    "direction": "$R = aX + b$. En $1$ : $a + b = 1$. Après dérivation, en $1$ : $a = n$. Donc $R = nX - (n - 1) = 1 + n(X - 1)$, ce que donne aussi directement le binôme."
+  },
+  {
+    "id": "anneaux-polynomes-piste-09", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soient $x_1, x_2, x_3$ les racines complexes, comptées avec multiplicité, de $P = X^3 + X + 1$. Calculer $x_1^3 + x_2^3 + x_3^3$.",
+    "choix": [
+      {
+        "titre": "Abaisser le degré grâce à $P(x_i) = 0$",
+        "info": "Une racine $x$ de $P$ vérifie $P(x) = 0$, ce qui permet de réécrire une puissance de $x$ de degré $\\ge \\deg P$ avec des puissances plus petites.",
+        "verdict": "bon",
+        "retour": "On remplace chaque $x_i^3$ par $-x_i - 1$ : il ne reste que $\\sum x_i$."
+      },
+      {
+        "titre": "Fonctions symétriques élémentaires",
+        "info": "Pour $X^3 + aX^2 + bX + c$ de racines $x_1, x_2, x_3$ : $\\sigma_1 = -a$, $\\sigma_2 = b$, $\\sigma_3 = -c$. De plus $\\sum x_i^3 = \\sigma_1^3 - 3\\sigma_1\\sigma_2 + 3\\sigma_3$.",
+        "verdict": "bon",
+        "retour": "Application directe de l'identité, avec $\\sigma_1 = 0$ et $\\sigma_3 = -1$."
+      },
+      {
+        "titre": "Formules de Cardan",
+        "info": "Résolution par radicaux de l'équation du troisième degré. Hors programme, à redémontrer.",
+        "verdict": "possible",
+        "retour": "On obtient les racines explicitement, mais élever au cube ces expressions et sommer est très lourd."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme non constant de $\\mathbb C[X]$ est scindé sur $\\mathbb C$.",
+        "verdict": "impasse",
+        "retour": "Il garantit l'existence des trois racines, sans rien dire de leurs puissances."
+      }
+    ],
+    "direction": "$x_i^3 = -x_i - 1$, donc $\\sum x_i^3 = -\\sigma_1 - 3$. Or $\\sigma_1 = 0$ (pas de terme en $X^2$). D'où $x_1^3 + x_2^3 + x_3^3 = -3$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-10", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Calculer, pour $n \\ge 1$, $S_n = \\displaystyle\\sum_{k=1}^n \\frac{1}{k(k+1)(k+2)}$.",
+    "choix": [
+      {
+        "titre": "Décomposition en éléments simples, puis télescopage",
+        "info": "Une fraction $\\frac{1}{(X - a_1)\\cdots(X - a_r)}$ à pôles simples distincts s'écrit $\\sum_i \\frac{c_i}{X - a_i}$, avec $c_i$ obtenu en multipliant par $X - a_i$ et en évaluant en $a_i$.",
+        "verdict": "bon",
+        "retour": "Les termes se regroupent en différences consécutives qui se télescopent."
+      },
+      {
+        "titre": "Récurrence sur $n$",
+        "info": "On vérifie une propriété au rang $1$, puis on montre que la propriété au rang $n$ entraîne celle au rang $n + 1$.",
+        "verdict": "impasse",
+        "retour": "Une récurrence prouve une formule connue ; elle ne permet pas de la trouver."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante, $\\int_k^{k+1} f \\le f(k) \\le \\int_{k-1}^k f$.",
+        "verdict": "impasse",
+        "retour": "Elle encadre $S_n$ mais ne donne pas sa valeur exacte."
+      },
+      {
+        "titre": "Équivalent du terme général",
+        "info": "$\\frac{1}{k(k+1)(k+2)} \\sim \\frac{1}{k^3}$ quand $k \\to +\\infty$.",
+        "verdict": "impasse",
+        "retour": "Il donne la convergence de la série, pas la valeur de la somme partielle."
+      }
+    ],
+    "direction": "$\\frac{1}{X(X+1)(X+2)} = \\frac{1/2}{X} - \\frac{1}{X+1} + \\frac{1/2}{X+2} = \\frac12\\left(\\frac1X - \\frac1{X+1}\\right) - \\frac12\\left(\\frac1{X+1} - \\frac1{X+2}\\right)$. Deux télescopages donnent $S_n = \\frac14 - \\frac{1}{2(n+1)(n+2)}$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-11", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $P \\in \\mathbb C[X]$ de degré $n \\ge 2$. Montrer que toute racine de $P'$ est un barycentre à coefficients positifs des racines de $P$.",
+    "choix": [
+      {
+        "titre": "Décomposition de $\\frac{P'}{P}$ en éléments simples",
+        "info": "Si $P = c\\prod_{k=1}^r (X - a_k)^{m_k}$ avec $c \\ne 0$ et les $a_k$ distincts, alors $\\frac{P'}{P} = \\sum_{k=1}^r \\frac{m_k}{X - a_k}$.",
+        "verdict": "bon",
+        "retour": "En une racine $z$ de $P'$ qui n'est pas racine de $P$, cette somme est nulle : c'est une relation linéaire entre $z$ et les $a_k$."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f : [a, b] \\to \\mathbb R$ est continue, dérivable sur $]a, b[$ et $f(a) = f(b)$, il existe $c \\in\\, ]a, b[$ tel que $f'(c) = 0$.",
+        "verdict": "impasse",
+        "retour": "Il ne vaut que pour des fonctions réelles d'une variable réelle ; ici les racines sont des points du plan complexe."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme non constant de $\\mathbb C[X]$ est scindé sur $\\mathbb C$.",
+        "verdict": "possible",
+        "retour": "Indispensable pour écrire $P$ sous forme factorisée, mais ne dit rien de la position des racines de $P'$."
+      },
+      {
+        "titre": "Relations coefficients-racines",
+        "info": "Pour un polynôme scindé, les coefficients s'expriment, au signe près, comme fonctions symétriques élémentaires des racines.",
+        "verdict": "impasse",
+        "retour": "Elles donnent par exemple que les racines de $P$ et de $P'$ ont le même isobarycentre, mais rien sur chaque racine de $P'$."
+      }
+    ],
+    "direction": "Soit $z$ racine de $P'$, non racine de $P$ (sinon c'est immédiat). Alors $0 = \\sum_k \\frac{m_k}{z - a_k} = \\sum_k m_k \\frac{\\bar z - \\bar a_k}{|z - a_k|^2}$. En conjuguant, $\\sum_k \\lambda_k (z - a_k) = 0$ avec $\\lambda_k = \\frac{m_k}{|z - a_k|^2} > 0$ : $z$ est le barycentre des $a_k$ affectés des poids $\\lambda_k$."
+  },
+  {
+    "id": "anneaux-polynomes-piste-12", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Montrer que $L = (\\mathbb Z/3\\mathbb Z)[X]/(X^2 + 1)$ est un corps et déterminer son cardinal.",
+    "choix": [
+      {
+        "titre": "Irréductibilité, puis relation de Bézout",
+        "info": "Un polynôme de degré 2 ou 3 sur un corps est irréductible si et seulement s'il n'a pas de racine. Si $P$ est irréductible et ne divise pas $A$, il existe $U, V$ tels que $AU + PV = 1$.",
+        "verdict": "bon",
+        "retour": "On teste les trois éléments de $\\mathbb Z/3\\mathbb Z$, puis Bézout fournit l'inverse de la classe de $A$ : celle de $U$."
+      },
+      {
+        "titre": "Anneau commutatif fini et intègre",
+        "info": "Un anneau commutatif unitaire, fini et intègre est un corps.",
+        "verdict": "bon",
+        "retour": "La finitude vient de la division euclidienne ; l'intégrité du lemme d'Euclide : si $P$ irréductible divise $AB$, il divise $A$ ou $B$."
+      },
+      {
+        "titre": "Irréductibilité de $X^2 + 1$ sur $\\mathbb R$",
+        "info": "$X^2 + 1$ n'a pas de racine réelle, il est donc irréductible dans $\\mathbb R[X]$.",
+        "verdict": "impasse",
+        "retour": "L'irréductibilité dépend du corps : $X^2 + 1 = (X + 1)^2$ dans $(\\mathbb Z/2\\mathbb Z)[X]$ et $X^2 + 1 = (X - 2)(X + 2)$ dans $(\\mathbb Z/5\\mathbb Z)[X]$."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme non constant de $\\mathbb C[X]$ admet une racine dans $\\mathbb C$.",
+        "verdict": "impasse",
+        "retour": "Il concerne $\\mathbb C$, pas $\\mathbb Z/3\\mathbb Z$."
+      }
+    ],
+    "direction": "$X^2 + 1$ prend les valeurs $1, 2, 2$ en $0, 1, 2$ : sans racine et de degré 2, il est irréductible, donc $L$ est un corps. Par division euclidienne, chaque classe a un unique représentant $a + bX$ avec $a, b \\in \\mathbb Z/3\\mathbb Z$ : $L$ a $9$ éléments."
+  },
+  {
+    "id": "anneaux-polynomes-piste-13", "ch": "anneaux-polynomes", "type": "piste",
+    "enonce": "Soit $P \\in \\mathbb R[X]$ tel que $P(x) \\ge 0$ pour tout $x \\in \\mathbb R$. Montrer qu'il existe $A, B \\in \\mathbb R[X]$ tels que $P = A^2 + B^2$.",
+    "choix": [
+      {
+        "titre": "Factoriser dans $\\mathbb C[X]$ sous la forme $Q\\bar Q$",
+        "info": "Par d'Alembert-Gauss, tout polynôme non constant de $\\mathbb C[X]$ est scindé. Pour $P$ réel, les racines non réelles vont par paires conjuguées de même multiplicité.",
+        "verdict": "bon",
+        "retour": "On répartit les racines entre $Q$ et $\\bar Q$, puis on écrit $Q = A + iB$ avec $A, B$ réels."
+      },
+      {
+        "titre": "Facteurs irréductibles réels et identité de Lagrange",
+        "info": "Les irréductibles de $\\mathbb R[X]$ sont de degré 1, ou de degré 2 à discriminant strictement négatif. Dans tout anneau commutatif, $(a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2$.",
+        "verdict": "bon",
+        "retour": "Par positivité, le coefficient dominant est $> 0$ et chaque facteur de degré 1 a une multiplicité paire : ce sont des carrés. Chaque facteur de degré 2 est une somme de deux carrés (forme canonique), et l'identité propage cette forme au produit."
+      },
+      {
+        "titre": "Écrire $P$ comme un carré",
+        "info": "Si $P = A^2$ avec $A \\in \\mathbb R[X]$, alors $P(x) \\ge 0$ pour tout réel $x$.",
+        "verdict": "impasse",
+        "retour": "La réciproque est fausse : $X^2 + 1$ est positif sur $\\mathbb R$ sans être le carré d'un polynôme."
+      },
+      {
+        "titre": "Formule de Taylor",
+        "info": "En caractéristique nulle, $P = \\sum_{k} \\frac{P^{(k)}(a)}{k!}(X - a)^k$ pour tout $a$.",
+        "verdict": "impasse",
+        "retour": "Elle réécrit $P$ autour d'un point, sans lien avec sa positivité globale."
+      }
+    ],
+    "direction": "Le cas $P = 0$ est clair. Sinon, le coefficient dominant $c$ est $> 0$ et chaque racine réelle est de multiplicité paire (sinon $P$ change de signe). Donc $P = c\\prod_j (X - a_j)^{2m_j} \\prod_k (X - z_k)(X - \\bar z_k)$. Avec $Q = \\sqrt c \\prod_j (X - a_j)^{m_j} \\prod_k (X - z_k)$, on a $P = Q\\bar Q$, et $Q = A + iB$ donne $P = A^2 + B^2$."
+  }
+]

@@ -6,10 +6,10 @@
       "couleur": "#7c9cff",
       "chapitres": [
         { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1", "cartes": true },
-        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4" },
+        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4", "cartes": true },
         { "id": "groupes", "nom": "Groupes", "ref": "4", "cartes": true },
         { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "cartes": true },
-        { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6" },
+        { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6", "cartes": true },
         { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "cartes": true },
         { "id": "quadratique-euclidien", "nom": "Formes quadratiques, espaces euclidiens", "ref": "5.9, 6", "cartes": true }
       ]
@@ -27,9 +27,9 @@
         { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12", "cartes": true },
         { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "cartes": true },
         { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7", "cartes": true },
-        { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9" },
+        { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9", "cartes": true },
         { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1", "cartes": true },
-        { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2" }
+        { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2", "cartes": true }
       ]
     },
     {

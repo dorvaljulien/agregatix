@@ -1,0 +1,624 @@
+[
+  {
+    "id": "determinants-dualite-vf-01", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Pour tout $n \\ge 2$ et toutes $A, B \\in M_n(\\mathbb R)$, $\\det(A + B) = \\det A + \\det B$.",
+    "reponse": false,
+    "explication": "Le déterminant n'est pas linéaire : il est linéaire par rapport à **chaque colonne** séparément. Contre-exemple : $A = B = I_n$ donne $\\det(2I_n) = 2^n \\ne 2$."
+  },
+  {
+    "id": "determinants-dualite-vf-02", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Pour tout $A \\in M_n(K)$ et tout $\\lambda \\in K$, $\\det(\\lambda A) = \\lambda^n \\det A$.",
+    "reponse": true,
+    "explication": "Multiplier $A$ par $\\lambda$ multiplie chacune des $n$ colonnes par $\\lambda$, et le déterminant est linéaire par rapport à chaque colonne : on sort $n$ fois le facteur $\\lambda$."
+  },
+  {
+    "id": "determinants-dualite-vf-03", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "$SL(n, K)$ est un sous-groupe distingué de $GL(n, K)$.",
+    "reponse": true,
+    "explication": "$\\det : GL(n, K) \\to K^*$ est un morphisme de groupes, puisque $\\det(AB) = \\det A \\det B$. $SL(n, K)$ en est le noyau, et un noyau de morphisme est toujours un sous-groupe distingué."
+  },
+  {
+    "id": "determinants-dualite-vf-04", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Pour tous entiers $n, p \\ge 1$, toute $A \\in M_{n,p}(K)$ et toute $B \\in M_{p,n}(K)$, on a $\\det(AB) = \\det(BA)$.",
+    "reponse": false,
+    "explication": "La multiplicativité ne s'applique qu'à des matrices **carrées de même taille**. Contre-exemple : $A = (1 \\;\\; 0) \\in M_{1,2}$ et $B = A^{\\mathsf T}$. Alors $AB = (1)$ a pour déterminant $1$, et $BA = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ a pour déterminant $0$."
+  },
+  {
+    "id": "determinants-dualite-vf-05", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Soient $A \\in M_p(K)$, $B \\in M_{p,q}(K)$ et $D \\in M_q(K)$. Alors $\\det \\begin{pmatrix} A & B \\\\ 0 & D \\end{pmatrix} = \\det A \\cdot \\det D$.",
+    "reponse": true,
+    "explication": "Si $A$ n'est pas inversible, les $p$ premières colonnes sont liées et les deux membres sont nuls. Sinon $\\begin{pmatrix} A & B \\\\ 0 & D \\end{pmatrix} = \\begin{pmatrix} A & 0 \\\\ 0 & I_q \\end{pmatrix}\\begin{pmatrix} I_p & A^{-1}B \\\\ 0 & D \\end{pmatrix}$, et chaque facteur se calcule par développements successifs."
+  },
+  {
+    "id": "determinants-dualite-vf-06", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Pour toutes $A, B, C, D \\in M_n(K)$, $\\det \\begin{pmatrix} A & B \\\\ C & D \\end{pmatrix} = \\det(AD - BC)$.",
+    "reponse": false,
+    "explication": "Contre-exemple avec $n = 2$ et les matrices élémentaires $E_{ij}$ : $A = I_2$, $B = E_{11}$, $C = E_{12}$, $D = E_{21}$. La matrice $4 \\times 4$ a ses lignes 2 et 3 égales à $(0, 1, 0, 0)$, donc un déterminant nul, alors que $AD - BC = E_{21} - E_{12}$ a pour déterminant $1$. La formule correcte dans le cas triangulaire par blocs ($C = 0$) est $\\det A \\det D$."
+  },
+  {
+    "id": "determinants-dualite-vf-07", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Si $n$ est impair, toute matrice antisymétrique $A \\in M_n(\\mathbb R)$ a un déterminant nul.",
+    "reponse": true,
+    "explication": "$\\det A = \\det A^{\\mathsf T} = \\det(-A) = (-1)^n \\det A = -\\det A$, donc $\\det A = 0$. L'argument utilise $2 \\ne 0$ dans $\\mathbb R$."
+  },
+  {
+    "id": "determinants-dualite-vf-08", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Si $A \\in M_n(\\mathbb Z)$ et $\\det A \\ne 0$, alors $A^{-1}$ est à coefficients entiers.",
+    "reponse": false,
+    "explication": "Contre-exemple : $A = 2I_n$, d'inverse $\\frac12 I_n$. C'est vrai si $\\det A = \\pm 1$ : la comatrice est à coefficients entiers et $A^{-1} = \\frac{1}{\\det A}\\,\\mathrm{com}(A)^{\\mathsf T}$."
+  },
+  {
+    "id": "determinants-dualite-vf-09", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Pour toute $A \\in M_n(K)$ avec $n \\ge 2$, $A$ et sa comatrice $\\mathrm{com}(A)$ ont le même rang.",
+    "reponse": false,
+    "explication": "Contre-exemple : $A = E_{11} \\in M_3(K)$, de rang 1. Toute matrice $2 \\times 2$ extraite de $A$ a au plus un coefficient non nul, donc un déterminant nul : $\\mathrm{com}(A) = 0$. L'égalité vaut si $A$ est inversible ; si $\\mathrm{rg} A = n - 1$, la comatrice est de rang 1, et si $\\mathrm{rg} A \\le n-2$, elle est nulle."
+  },
+  {
+    "id": "determinants-dualite-vf-10", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Dans $\\mathbb R^4$ muni de sa base canonique $(e_1, e_2, e_3, e_4)$, la base $(e_2, e_3, e_4, e_1)$ a la même orientation que la base canonique.",
+    "reponse": false,
+    "explication": "Le déterminant de $(e_2, e_3, e_4, e_1)$ dans la base canonique est la signature du cycle $(1\\,2\\,3\\,4)$, soit $(-1)^3 = -1$ : orientation opposée. Dans $\\mathbb R^3$, en revanche, la permutation circulaire $(e_2, e_3, e_1)$ conserve l'orientation (3-cycle, signature $+1$)."
+  },
+  {
+    "id": "determinants-dualite-vf-11", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Soit $E$ un $K$-espace vectoriel de dimension $n \\ge 1$ et $p > n$. Toute forme $p$-linéaire alternée sur $E$ est nulle.",
+    "reponse": true,
+    "explication": "Une forme alternée s'annule sur toute famille liée. Or toute famille de $p > n$ vecteurs de $E$ est liée."
+  },
+  {
+    "id": "determinants-dualite-vf-12", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Soit $(e_1, e_2)$ une base de $E$ et $(e_1^*, e_2^*)$ sa base duale. Le premier vecteur de la base duale de $(e_1, e_1 + e_2)$ est $e_1^*$.",
+    "reponse": false,
+    "explication": "Il faut $f_1(e_1) = 1$ et $f_1(e_1 + e_2) = 0$, donc $f_1 = e_1^* - e_2^*$. Chaque $e_i^*$ dépend de **toute** la base, pas seulement de $e_i$."
+  },
+  {
+    "id": "determinants-dualite-vf-13", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Soient $F$ et $G$ deux sous-espaces d'un espace $E$ de dimension finie, d'orthogonaux $F^\\perp$, $G^\\perp$ dans $E^*$. Alors $(F \\cap G)^\\perp = F^\\perp \\cap G^\\perp$.",
+    "reponse": false,
+    "explication": "Contre-exemple dans $\\mathbb R^2$ : $F = \\mathbb R e_1$, $G = \\mathbb R e_2$. $(F \\cap G)^\\perp = \\{0\\}^\\perp = E^*$, mais $F^\\perp \\cap G^\\perp = \\mathbb R e_2^* \\cap \\mathbb R e_1^* = \\{0\\}$. Les bonnes formules : $(F + G)^\\perp = F^\\perp \\cap G^\\perp$ et $(F \\cap G)^\\perp = F^\\perp + G^\\perp$."
+  },
+  {
+    "id": "determinants-dualite-vf-14", "ch": "determinants-dualite", "type": "vf",
+    "enonce": "Soit $u \\in \\mathcal L(E, F)$ et ${}^t u : F^* \\to E^*$, $\\varphi \\mapsto \\varphi \\circ u$ sa transposée. Alors $\\ker {}^t u = (\\mathrm{Im}\\, u)^\\perp$.",
+    "reponse": true,
+    "explication": "$\\varphi \\circ u = 0$ signifie exactement que $\\varphi$ s'annule sur $\\mathrm{Im}\\, u$. En dimension finie, on en déduit $\\mathrm{rg}\\, {}^t u = \\mathrm{rg}\\, u$ par le théorème du rang et la dimension de l'orthogonal."
+  },
+  {
+    "id": "determinants-dualite-qcm-01", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $A \\in M_n(K)$ avec $n \\ge 2$. Alors $A\\, \\mathrm{com}(A)^{\\mathsf T} =$ **[ ? ]**.",
+    "choix": [
+      "$\\det(A)\\, I_n$",
+      "$I_n$",
+      "$\\mathrm{tr}(A)\\, I_n$",
+      "$\\det(A)\\, A$"
+    ],
+    "bonne": 0,
+    "explication": "Le coefficient $(i, j)$ de $A\\,\\mathrm{com}(A)^{\\mathsf T}$ est $\\sum_k a_{ik} C_{jk}$ : le développement de $\\det A$ selon la ligne $i$ si $i = j$, celui d'une matrice à deux lignes égales sinon. La formule vaut même si $A$ n'est pas inversible ; si elle l'est, $A^{-1} = \\frac{1}{\\det A}\\,\\mathrm{com}(A)^{\\mathsf T}$."
+  },
+  {
+    "id": "determinants-dualite-qcm-02", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $A \\in M_n(K)$ avec $n \\ge 3$. Que vaut $\\det(\\mathrm{com}\\, A)$ ?",
+    "choix": [
+      "$(\\det A)^{n-1}$",
+      "$(\\det A)^n$",
+      "$\\det A$",
+      "$(\\det A)^{n+1}$"
+    ],
+    "bonne": 0,
+    "explication": "En prenant le déterminant de $A\\,\\mathrm{com}(A)^{\\mathsf T} = \\det(A) I_n$ : $\\det A \\cdot \\det(\\mathrm{com} A) = (\\det A)^n$, d'où le résultat si $A$ est inversible. Si $\\det A = 0$, alors $\\mathrm{rg}(\\mathrm{com} A) \\le 1 < n$ et les deux membres sont nuls. Vérification : $\\mathrm{com}(2I_3) = 4I_3$, de déterminant $64 = 8^2$."
+  },
+  {
+    "id": "determinants-dualite-qcm-03", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $D_n$ le déterminant de la matrice de $M_n(\\mathbb R)$, $n \\ge 1$, dont les coefficients diagonaux valent $2$, ceux juste au-dessus et juste au-dessous de la diagonale valent $-1$, et les autres $0$. Alors $D_n =$",
+    "choix": [
+      "$n + 1$",
+      "$2^n$",
+      "$n$",
+      "$2n$"
+    ],
+    "bonne": 0,
+    "explication": "Le développement selon la première ligne donne $D_n = 2D_{n-1} - D_{n-2}$, avec $D_1 = 2$ et $D_2 = 3$. La suite est arithmétique de raison 1. Les leurres échouent déjà sur $D_1$ ou $D_2$."
+  },
+  {
+    "id": "determinants-dualite-qcm-04", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Formules de Cramer.\nSoit $A \\in GL_n(K)$, $B \\in K^n$ et $X$ l'unique solution de $AX = B$. Alors $x_i = \\dfrac{\\det A_i}{\\det A}$, où $A_i$ est **[ ? ]**.",
+    "choix": [
+      "la matrice $A$ dont la $i$-ème colonne est remplacée par $B$",
+      "la matrice $A$ dont la $i$-ème ligne est remplacée par $B^{\\mathsf T}$",
+      "la matrice extraite de $A$ en supprimant la ligne $i$ et la colonne $i$",
+      "la matrice $A$ à laquelle on ajoute $B$ à la $i$-ème colonne"
+    ],
+    "bonne": 0,
+    "explication": "$B = \\sum_j x_j C_j$ où les $C_j$ sont les colonnes de $A$. En remplaçant $C_i$ par $B$ et en utilisant la multilinéarité et le caractère alterné, il reste $x_i \\det A$. Le dernier leurre donne $\\det A + \\det A_i$ par linéarité, pas $\\det A_i$."
+  },
+  {
+    "id": "determinants-dualite-qcm-05", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $E$ un $K$-espace vectoriel de dimension $n \\ge 2$. Une partie $H$ de $E$ est un hyperplan si et seulement si $H$ est **[ ? ]**.",
+    "choix": [
+      "le noyau d'une forme linéaire non nulle",
+      "le noyau d'une forme linéaire",
+      "un sous-espace distinct de $E$",
+      "un sous-espace de dimension au moins $n - 1$"
+    ],
+    "bonne": 0,
+    "explication": "Le noyau de la forme nulle est $E$ lui-même, qui n'est pas un hyperplan. Un sous-espace distinct de $E$ peut être $\\{0\\}$, et un sous-espace de dimension au moins $n - 1$ peut être $E$."
+  },
+  {
+    "id": "determinants-dualite-qcm-06", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soient $n \\ge 1$, $a_0, \\dots, a_n \\in K$ deux à deux distincts et $L_0, \\dots, L_n \\in K_n[X]$ les polynômes de Lagrange, $L_i(a_j) = \\delta_{ij}$. Alors $(L_0, \\dots, L_n)$ est la base antéduale de **[ ? ]**.",
+    "choix": [
+      "$(P \\mapsto P(a_i))_{0 \\le i \\le n}$",
+      "$(P \\mapsto \\text{coefficient de } X^i \\text{ dans } P)_{0 \\le i \\le n}$",
+      "$(P \\mapsto P'(a_i))_{0 \\le i \\le n}$",
+      "$(P \\mapsto \\int_0^1 t^i P(t)\\, \\mathrm dt)_{0 \\le i \\le n}$ (pour $K = \\mathbb R$)"
+    ],
+    "bonne": 0,
+    "explication": "Les formes $\\varphi_i : P \\mapsto P(a_i)$ vérifient $\\varphi_i(L_j) = \\delta_{ij}$. Les formes « coefficient de $X^i$ » ont pour base antéduale $(1, X, \\dots, X^n)$. Les formes $P \\mapsto P'(a_i)$ ne forment pas une base : elles s'annulent toutes sur $P = 1$."
+  },
+  {
+    "id": "determinants-dualite-qcm-07", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $u \\in \\mathcal L(E, F)$, de matrice $A \\in M_{p,n}(K)$ dans des bases $\\mathcal B$ de $E$ et $\\mathcal C$ de $F$. La matrice de ${}^t u$ dans les bases duales $\\mathcal C^*$ et $\\mathcal B^*$ est :",
+    "choix": [
+      "$A^{\\mathsf T}$",
+      "$A$",
+      "$\\mathrm{com}(A)$",
+      "$A^{-1}$ si $A$ est inversible, non définie sinon"
+    ],
+    "bonne": 0,
+    "explication": "Le coefficient cherché est ${}^t u(f_i^*)(e_j) = f_i^*(u(e_j)) = a_{ij}$, en position $(j, i)$. D'ailleurs ${}^t u$ va de $F^*$ (dimension $p$) dans $E^*$ (dimension $n$) : sa matrice est dans $M_{n,p}(K)$."
+  },
+  {
+    "id": "determinants-dualite-qcm-08", "ch": "determinants-dualite", "type": "qcm",
+    "enonce": "Soit $u \\in \\mathcal L(\\mathbb R^3)$ et $P$ un parallélépipède de $\\mathbb R^3$. Le volume de $u(P)$ est égal à **[ ? ]**.",
+    "choix": [
+      "$|\\det u| \\cdot \\mathrm{vol}(P)$",
+      "$\\det u \\cdot \\mathrm{vol}(P)$",
+      "$|\\mathrm{tr}\\, u| \\cdot \\mathrm{vol}(P)$",
+      "$(\\det u)^2 \\cdot \\mathrm{vol}(P)$"
+    ],
+    "bonne": 0,
+    "explication": "Si $P$ est construit sur $(a, b, c)$ à partir d'un sommet, $\\mathrm{vol}(P) = |\\det(a, b, c)|$ et $\\det(u(a), u(b), u(c)) = \\det u \\cdot \\det(a, b, c)$. Sans valeur absolue on obtient un volume **orienté**, négatif quand $u$ renverse l'orientation."
+  },
+  {
+    "id": "determinants-dualite-err-01", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "On cherche les réels $a$ pour lesquels $A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & a \\\\ 1 & 3 & 5 \\end{pmatrix}$ est inversible. Voici une copie.",
+    "lignes": [
+      "$A$ est inversible si et seulement si $\\det A \\ne 0$.",
+      "Quel que soit $a$, aucune ligne de $A$ n'est proportionnelle à une autre.",
+      "Quel que soit $a$, aucune colonne de $A$ n'est proportionnelle à une autre.",
+      "Or un déterminant n'est nul que si deux lignes ou deux colonnes sont proportionnelles : $A$ est inversible pour tout $a$."
+    ],
+    "fausse": 3,
+    "explication": "Un déterminant nul signifie que les lignes sont **liées**, pas que deux d'entre elles sont proportionnelles (ce n'est équivalent qu'en taille 2). Ici $\\det A = 6 - 2a$ : pour $a = 3$, $L_1 + L_3 = 2L_2$ et $A$ n'est pas inversible."
+  },
+  {
+    "id": "determinants-dualite-err-02", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "Une copie veut montrer qu'aucune matrice $A \\in M_2(\\mathbb R)$ ne vérifie $A^2 = -I_2$.",
+    "lignes": [
+      "Supposons qu'il existe $A \\in M_2(\\mathbb R)$ telle que $A^2 = -I_2$.",
+      "Alors $(\\det A)^2 = \\det(A^2) = \\det(-I_2)$.",
+      "Or $\\det(-I_2) = -\\det(I_2) = -1$, ce qui est impossible pour le carré d'un réel."
+    ],
+    "fausse": 2,
+    "explication": "$\\det(\\lambda A) = \\lambda^n \\det A$ : ici $\\det(-I_2) = (-1)^2 = 1$. D'ailleurs le résultat est faux : $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}^2 = -I_2$. L'argument fonctionne en revanche en dimension impaire, par exemple dans $M_3(\\mathbb R)$."
+  },
+  {
+    "id": "determinants-dualite-err-03", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "On veut calculer le déterminant de $A = \\begin{pmatrix} 2 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 1 & 2 \\end{pmatrix}$ par opérations élémentaires. Voici une copie.",
+    "lignes": [
+      "Une opération $L_i \\leftarrow L_i + \\lambda L_j$ avec $i \\ne j$ ne change pas le déterminant.",
+      "On peut donc effectuer simultanément $L_1 \\leftarrow L_1 - L_2$, $L_2 \\leftarrow L_2 - L_3$, $L_3 \\leftarrow L_3 - L_1$ sans changer le déterminant.",
+      "Après ces opérations, la somme des trois lignes est nulle, donc la nouvelle matrice a un déterminant nul."
+    ],
+    "fausse": 1,
+    "explication": "Les opérations s'enchaînent : chacune agit sur la matrice déjà modifiée. Faites simultanément, elles reviennent à multiplier à gauche par $\\begin{pmatrix} 1 & -1 & 0 \\\\ 0 & 1 & -1 \\\\ -1 & 0 & 1 \\end{pmatrix}$, de déterminant nul. En réalité $\\det A = 4$ : faire $C_1 \\leftarrow C_1 + C_2 + C_3$, factoriser $4$, puis retrancher la première ligne aux autres."
+  },
+  {
+    "id": "determinants-dualite-err-04", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "Soient $\\varphi, \\psi$ deux formes linéaires sur un espace $E$ de dimension finie, avec $\\ker \\varphi \\subset \\ker \\psi$. On veut montrer qu'il existe $\\lambda \\in K$ tel que $\\psi = \\lambda \\varphi$. Voici une copie.",
+    "lignes": [
+      "Si $\\varphi = 0$, alors $\\ker \\psi \\supset E$, donc $\\psi = 0$ et $\\lambda = 1$ convient.",
+      "Si $\\varphi \\ne 0$, $\\ker \\varphi$ est un hyperplan de $E$.",
+      "Alors $\\ker \\psi$ est un hyperplan contenant $\\ker \\varphi$, donc $\\ker \\psi = \\ker \\varphi$.",
+      "Deux formes linéaires non nulles ayant le même noyau sont proportionnelles."
+    ],
+    "fausse": 2,
+    "explication": "Rien n'empêche $\\psi = 0$, et alors $\\ker \\psi = E$ n'est pas un hyperplan. Il faut traiter ce cas à part ($\\lambda = 0$). Plus direct : si $\\varphi \\ne 0$, choisir $a$ avec $\\varphi(a) = 1$ ; $\\psi$ et $\\psi(a)\\varphi$ coïncident sur $\\ker \\varphi$ et en $a$, donc sur $E = \\ker \\varphi \\oplus K a$."
+  },
+  {
+    "id": "determinants-dualite-err-05", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "On résout, selon $m \\in \\mathbb R$, le système $mx + y = 1$, $x + my = 1$. Voici une copie.",
+    "lignes": [
+      "Le déterminant du système vaut $m^2 - 1$.",
+      "Pour $m \\notin \\{-1, 1\\}$, c'est un système de Cramer, d'unique solution $x = y = \\frac{1}{m+1}$.",
+      "Pour $m = 1$, le déterminant est nul, donc le système n'a pas de solution.",
+      "Pour $m = -1$, le système s'écrit $-x + y = 1$, $x - y = 1$ : en ajoutant, $0 = 2$, il n'a pas de solution."
+    ],
+    "fausse": 2,
+    "explication": "Un déterminant nul dit seulement que la solution, si elle existe, n'est pas unique. Pour $m = 1$, les deux équations sont $x + y = 1$ : une infinité de solutions. Il faut étudier la compatibilité au cas par cas, comme pour $m = -1$."
+  },
+  {
+    "id": "determinants-dualite-err-06", "ch": "determinants-dualite", "type": "erreur",
+    "enonce": "On veut montrer que toute matrice $A \\in M_2(\\mathbb C)$ est semblable à sa transposée. Voici une copie.",
+    "lignes": [
+      "$A$ et $A^{\\mathsf T}$ ont le même déterminant.",
+      "$A$ et $A^{\\mathsf T}$ ont la même trace.",
+      "Deux matrices de $M_2(\\mathbb C)$ qui ont même trace et même déterminant sont semblables.",
+      "Donc $A$ et $A^{\\mathsf T}$ sont semblables."
+    ],
+    "fausse": 2,
+    "explication": "$I_2$ et $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ ont même trace et même déterminant, mais seule $I_2$ est semblable à $I_2$. La conclusion est pourtant vraie : si $A$ n'est pas scalaire, il existe $x$ tel que $(x, Ax)$ soit une base, et $A$ est semblable à la matrice compagnon de $\\chi_A$ ; de même pour $A^{\\mathsf T}$."
+  },
+  {
+    "id": "determinants-dualite-piste-01", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soient $a_1, \\dots, a_n \\in K$ et $V(a_1, \\dots, a_n) = \\det\\big(a_i^{\\,j-1}\\big)_{1 \\le i, j \\le n}$. Montrer que $V(a_1, \\dots, a_n) = \\prod_{1 \\le i < j \\le n} (a_j - a_i)$.",
+    "choix": [
+      {
+        "titre": "Remplacer $a_n$ par une indéterminée $X$",
+        "info": "Un déterminant dont une seule ligne dépend de $X$, de façon polynomiale, est un polynôme en $X$ : on le voit en développant selon cette ligne, les cofacteurs ne dépendant pas de $X$.",
+        "verdict": "bon",
+        "retour": "$P(X) = V(a_1, \\dots, a_{n-1}, X)$ est de degré au plus $n - 1$, s'annule en $a_1, \\dots, a_{n-1}$ (deux lignes égales), et son coefficient de $X^{n-1}$ est $V(a_1, \\dots, a_{n-1})$."
+      },
+      {
+        "titre": "Opérations sur les colonnes $C_j \\leftarrow C_j - a_1 C_{j-1}$",
+        "info": "Ajouter à une colonne un multiple d'une **autre** colonne ne change pas le déterminant. En partant de la dernière colonne, chaque opération utilise une colonne encore intacte.",
+        "verdict": "bon",
+        "retour": "La première ligne devient $(1, 0, \\dots, 0)$ et la ligne $i$ vaut $(a_i - a_1)(1, a_i, \\dots, a_i^{n-2})$ hors première colonne : on factorise et on obtient une récurrence."
+      },
+      {
+        "titre": "Développer selon la première ligne",
+        "info": "$\\det A = \\sum_j a_{1j} C_{1j}$, où $C_{1j} = (-1)^{1+j} M_{1j}$ et $M_{1j}$ est le mineur obtenu en supprimant la ligne 1 et la colonne $j$.",
+        "verdict": "impasse",
+        "retour": "Les mineurs obtenus ne sont pas des déterminants de Vandermonde (il manque une puissance au milieu) : aucune récurrence n'apparaît."
+      },
+      {
+        "titre": "Règle de Sarrus",
+        "info": "Pour une matrice $3 \\times 3$, le déterminant est la somme des trois produits « descendants » moins les trois produits « montants ».",
+        "verdict": "impasse",
+        "retour": "Elle ne vaut qu'en taille 3 ; elle ne démontre pas la formule pour tout $n$."
+      }
+    ],
+    "direction": "Si deux $a_i$ sont égaux, les deux membres sont nuls. Sinon $P(X) = V(a_1, \\dots, a_{n-1}) \\prod_{i < n}(X - a_i)$, d'où $V(a_1, \\dots, a_n) = V(a_1, \\dots, a_{n-1}) \\prod_{i < n}(a_n - a_i)$, et on conclut par récurrence."
+  },
+  {
+    "id": "determinants-dualite-piste-02", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $x \\in \\mathbb R$ et $D_n$ ($n \\ge 1$) le déterminant de la matrice de $M_n(\\mathbb R)$ dont les coefficients diagonaux valent $1 + x^2$, ceux juste au-dessus et juste au-dessous de la diagonale valent $x$, et les autres $0$. Calculer $D_n$.",
+    "choix": [
+      {
+        "titre": "Développer selon la première ligne",
+        "info": "$\\det A = \\sum_j a_{1j} C_{1j}$ avec $C_{1j} = (-1)^{1+j} M_{1j}$. Utile quand la première ligne a peu de coefficients non nuls.",
+        "verdict": "bon",
+        "retour": "Deux termes seulement ; le second se développe à son tour selon sa première colonne. On obtient une récurrence linéaire d'ordre 2."
+      },
+      {
+        "titre": "Triangulariser par le pivot de Gauss",
+        "info": "Les opérations $L_i \\leftarrow L_i + \\lambda L_j$ ($i \\ne j$) conservent le déterminant ; celui d'une matrice triangulaire est le produit des coefficients diagonaux.",
+        "verdict": "possible",
+        "retour": "Les pivots successifs sont les quotients $D_k / D_{k-1}$ : on retombe sur la même récurrence, avec des fractions en plus."
+      },
+      {
+        "titre": "Déterminant de Vandermonde",
+        "info": "$\\det\\big(a_i^{\\,j-1}\\big) = \\prod_{i < j}(a_j - a_i)$.",
+        "verdict": "impasse",
+        "retour": "La matrice n'a pas la structure de Vandermonde : ses lignes ne sont pas des puissances successives."
+      },
+      {
+        "titre": "Formule $\\det(A + B) = \\det A + \\det B$ avec $A = (1+x^2) I_n$",
+        "info": "Le déterminant est linéaire par rapport à chaque colonne, à toutes les autres fixées.",
+        "verdict": "impasse",
+        "retour": "Le déterminant n'est pas additif : la formule proposée est fausse dès $n = 2$."
+      }
+    ],
+    "direction": "$D_1 = 1 + x^2$, $D_2 = 1 + x^2 + x^4$, et $D_n = (1+x^2) D_{n-1} - x^2 D_{n-2}$ pour $n \\ge 3$. Donc $D_n - D_{n-1} = x^2(D_{n-1} - D_{n-2})$, puis $D_n - D_{n-1} = x^{2n}$, et $D_n = 1 + x^2 + \\dots + x^{2n}$."
+  },
+  {
+    "id": "determinants-dualite-piste-03", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soient $a_0, \\dots, a_n$ des réels deux à deux distincts. Montrer qu'il existe des réels $\\lambda_0, \\dots, \\lambda_n$ tels que, pour tout $P \\in \\mathbb R_n[X]$, $\\int_0^1 P(t)\\,\\mathrm dt = \\sum_{i=0}^n \\lambda_i P(a_i)$.",
+    "choix": [
+      {
+        "titre": "Décomposer une forme linéaire dans une base du dual",
+        "info": "Si $(\\varphi_0, \\dots, \\varphi_n)$ est une base de $E^*$ et $(e_0, \\dots, e_n)$ sa base antéduale, toute $\\varphi \\in E^*$ s'écrit $\\varphi = \\sum_i \\varphi(e_i)\\, \\varphi_i$.",
+        "verdict": "bon",
+        "retour": "Les évaluations $P \\mapsto P(a_i)$ forment une base de $\\mathbb R_n[X]^*$, de base antéduale les polynômes de Lagrange ; l'intégrale est une forme linéaire."
+      },
+      {
+        "titre": "Système linéaire sur la base $(1, X, \\dots, X^n)$",
+        "info": "Une égalité entre deux formes linéaires se vérifie sur une base. Un système carré de matrice inversible a une unique solution.",
+        "verdict": "bon",
+        "retour": "On demande $\\sum_i \\lambda_i a_i^k = \\frac{1}{k+1}$ pour $0 \\le k \\le n$ : la matrice est de Vandermonde, inversible car les $a_i$ sont distincts."
+      },
+      {
+        "titre": "Formule de la moyenne",
+        "info": "Si $P$ est continue sur $[0, 1]$, il existe $c \\in [0, 1]$ tel que $\\int_0^1 P = P(c)$.",
+        "verdict": "impasse",
+        "retour": "Le point $c$ dépend de $P$ : on cherche au contraire des points et des poids fixes."
+      },
+      {
+        "titre": "Formule de Taylor en $0$",
+        "info": "Pour $P \\in \\mathbb R_n[X]$, $P(t) = \\sum_{k=0}^n \\frac{P^{(k)}(0)}{k!} t^k$.",
+        "verdict": "impasse",
+        "retour": "Elle exprime $\\int_0^1 P$ à l'aide des dérivées en $0$, pas des valeurs aux points $a_i$."
+      }
+    ],
+    "direction": "Avec $\\varphi_i : P \\mapsto P(a_i)$ et $L_i$ les polynômes de Lagrange, $\\varphi_i(L_j) = \\delta_{ij}$. La forme $P \\mapsto \\int_0^1 P$ s'écrit $\\sum_i \\big(\\int_0^1 L_i\\big) \\varphi_i$ : $\\lambda_i = \\int_0^1 L_i(t)\\,\\mathrm dt$, et ces réels sont uniques."
+  },
+  {
+    "id": "determinants-dualite-piste-04", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $f$ une forme linéaire sur $M_n(K)$ telle que $f(AB) = f(BA)$ pour toutes $A, B \\in M_n(K)$. Montrer qu'il existe $\\lambda \\in K$ tel que $f = \\lambda\\, \\mathrm{tr}$.",
+    "choix": [
+      {
+        "titre": "Évaluer $f$ sur les matrices élémentaires $E_{ij}$",
+        "info": "Les $E_{ij}$ forment une base de $M_n(K)$, et $E_{ij} E_{kl} = \\delta_{jk} E_{il}$.",
+        "verdict": "bon",
+        "retour": "On écrit chaque $E_{ij}$ comme un produit de deux matrices élémentaires et on les permute grâce à l'hypothèse."
+      },
+      {
+        "titre": "Représenter $f$ par une matrice : $f(M) = \\mathrm{tr}(AM)$",
+        "info": "L'application $A \\mapsto (M \\mapsto \\mathrm{tr}(AM))$ est un isomorphisme de $M_n(K)$ sur son dual.",
+        "verdict": "possible",
+        "retour": "L'hypothèse donne $AM = MA$ pour toute $M$, puis il faut encore montrer que $A$ est scalaire, ce qui se fait… avec les $E_{ij}$."
+      },
+      {
+        "titre": "Invariance par similitude et diagonalisation",
+        "info": "L'hypothèse donne $f(P^{-1}MP) = f(M)$ pour $P \\in GL_n(K)$. Une matrice diagonalisable est semblable à une matrice diagonale.",
+        "verdict": "possible",
+        "retour": "On obtient $f = \\lambda\\,\\mathrm{tr}$ sur les matrices diagonalisables ; comme elles engendrent $M_n(K)$ (par exemple $E_{ij} = (E_{ii} + E_{ij}) - E_{ii}$ pour $i \\ne j$) et que $f$ est linéaire, ça aboutit, par un détour."
+      },
+      {
+        "titre": "Théorème du rang appliqué à $f$",
+        "info": "Si $f$ est une forme linéaire non nulle, $\\ker f$ est un hyperplan de $M_n(K)$.",
+        "verdict": "impasse",
+        "retour": "Il faudrait savoir que $\\ker f = \\ker \\mathrm{tr}$ ; le théorème du rang ne relie pas $f$ à la trace."
+      }
+    ],
+    "direction": "Pour $i \\ne j$ : $f(E_{ij}) = f(E_{ii}E_{ij}) = f(E_{ij}E_{ii}) = f(0) = 0$. Et $f(E_{ii}) = f(E_{ij}E_{ji}) = f(E_{ji}E_{ij}) = f(E_{jj})$. Avec $\\lambda = f(E_{11})$, $f$ et $\\lambda\\,\\mathrm{tr}$ coïncident sur la base des $E_{ij}$."
+  },
+  {
+    "id": "determinants-dualite-piste-05", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $A \\in M_n(K)$, $n \\ge 2$, de rang $n - 1$. Montrer que sa comatrice $\\mathrm{com}(A)$ est de rang $1$.",
+    "choix": [
+      {
+        "titre": "Relation $A\\, \\mathrm{com}(A)^{\\mathsf T} = \\det(A) I_n$",
+        "info": "Pour toute $A \\in M_n(K)$, $A\\, \\mathrm{com}(A)^{\\mathsf T} = \\mathrm{com}(A)^{\\mathsf T} A = \\det(A) I_n$.",
+        "verdict": "bon",
+        "retour": "Ici $\\det A = 0$, donc l'image de $\\mathrm{com}(A)^{\\mathsf T}$ est contenue dans $\\ker A$, qui est une droite."
+      },
+      {
+        "titre": "Déterminant de la comatrice",
+        "info": "Pour $n \\ge 2$, $\\det(\\mathrm{com}\\, A) = (\\det A)^{n-1}$.",
+        "verdict": "impasse",
+        "retour": "On obtient $\\det(\\mathrm{com} A) = 0$, donc seulement $\\mathrm{rg}(\\mathrm{com} A) \\le n - 1$."
+      },
+      {
+        "titre": "Réduire $A$ par équivalence à $J_{n-1}$",
+        "info": "$A = P J_{n-1} Q$ avec $P, Q$ inversibles et $J_{n-1} = \\mathrm{diag}(1, \\dots, 1, 0)$. La formule $\\mathrm{com}(MN) = \\mathrm{com}(M)\\,\\mathrm{com}(N)$ n'est pas au programme : à redémontrer.",
+        "verdict": "possible",
+        "retour": "$\\mathrm{com}(J_{n-1}) = E_{nn}$ est de rang 1, mais il faut établir la multiplicativité de la comatrice, d'abord pour les matrices inversibles puis en général."
+      },
+      {
+        "titre": "Une matrice et sa comatrice ont le même rang",
+        "info": "Si $A$ est inversible, $\\mathrm{com}(A) = \\det(A)\\, (A^{-1})^{\\mathsf T}$ est inversible.",
+        "verdict": "impasse",
+        "retour": "L'égalité des rangs est fausse hors du cas inversible : elle donnerait ici $n - 1$ au lieu de $1$."
+      }
+    ],
+    "direction": "$\\det A = 0$ donne $A\\, \\mathrm{com}(A)^{\\mathsf T} = 0$, donc $\\mathrm{rg}(\\mathrm{com} A) \\le \\dim \\ker A = 1$. Comme $\\mathrm{rg} A = n - 1$, $A$ possède une matrice extraite inversible de taille $n - 1$ : un cofacteur est non nul, donc $\\mathrm{com}(A) \\ne 0$."
+  },
+  {
+    "id": "determinants-dualite-piste-06", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $E$ de dimension $n$ et $\\varphi_1, \\dots, \\varphi_p \\in E^*$. Montrer que $\\dim \\bigcap_{i=1}^p \\ker \\varphi_i = n - \\mathrm{rg}(\\varphi_1, \\dots, \\varphi_p)$.",
+    "choix": [
+      {
+        "titre": "Dimension de l'orthogonal",
+        "info": "Pour un sous-espace $G$ de $E^*$, on note $G^\\circ = \\{x \\in E : \\forall \\varphi \\in G,\\ \\varphi(x) = 0\\}$. Alors $\\dim G^\\circ = n - \\dim G$.",
+        "verdict": "bon",
+        "retour": "L'intersection des noyaux est exactement l'orthogonal de $\\mathrm{Vect}(\\varphi_1, \\dots, \\varphi_p)$."
+      },
+      {
+        "titre": "Théorème du rang pour $x \\mapsto (\\varphi_1(x), \\dots, \\varphi_p(x))$",
+        "info": "Pour $u \\in \\mathcal L(E, K^p)$, $\\dim \\ker u + \\mathrm{rg}\\, u = n$. Dans une base de $E$, la matrice de $u$ a pour lignes les coordonnées des $\\varphi_i$ dans la base duale.",
+        "verdict": "bon",
+        "retour": "Le noyau est l'intersection cherchée et le rang de la matrice est celui de ses lignes, donc celui de la famille $(\\varphi_i)$."
+      },
+      {
+        "titre": "Chaque $\\ker \\varphi_i$ est un hyperplan",
+        "info": "Le noyau d'une forme linéaire non nulle est un hyperplan, de dimension $n - 1$. Grassmann : $\\dim(F \\cap H) \\ge \\dim F - 1$ pour un hyperplan $H$.",
+        "verdict": "impasse",
+        "retour": "On obtient seulement $\\dim \\bigcap \\ker \\varphi_i \\ge n - p$. La dimension exacte dépend des relations entre les $\\varphi_i$."
+      },
+      {
+        "titre": "Base antéduale",
+        "info": "Toute base $(\\psi_1, \\dots, \\psi_n)$ de $E^*$ est la base duale d'une unique base $(e_1, \\dots, e_n)$ de $E$.",
+        "verdict": "bon",
+        "retour": "On extrait de $(\\varphi_i)$ une base de l'espace qu'ils engendrent, on la complète en base de $E^*$ ; l'intersection est engendrée par les derniers vecteurs de la base antéduale."
+      }
+    ],
+    "direction": "Soit $r = \\mathrm{rg}(\\varphi_i)$ et $G = \\mathrm{Vect}(\\varphi_1, \\dots, \\varphi_p)$, de dimension $r$. Un vecteur annule tous les $\\varphi_i$ si et seulement s'il annule $G$ : $\\bigcap \\ker \\varphi_i = G^\\circ$, de dimension $n - r$."
+  },
+  {
+    "id": "determinants-dualite-piste-07", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Calculer le volume du parallélépipède de $\\mathbb R^3$ construit sur les vecteurs $u = (1, 1, 0)$, $v = (0, 1, 1)$, $w = (1, 0, 1)$.",
+    "choix": [
+      {
+        "titre": "Valeur absolue d'un déterminant",
+        "info": "Le volume du parallélépipède construit sur $(a, b, c)$ est $|\\det(a, b, c)|$, le déterminant étant pris dans une base orthonormée.",
+        "verdict": "bon",
+        "retour": "Un déterminant $3 \\times 3$ à calculer, et c'est fini."
+      },
+      {
+        "titre": "Aire de la base fois hauteur",
+        "info": "Volume = aire du parallélogramme construit sur $(u, v)$ multipliée par la distance de l'extrémité de $w$ au plan $\\mathrm{Vect}(u, v)$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais il faut une aire, une équation de plan et une distance : trois calculs au lieu d'un."
+      },
+      {
+        "titre": "Produit des normes",
+        "info": "Pour un pavé droit, le volume est le produit des longueurs des trois arêtes issues d'un sommet.",
+        "verdict": "impasse",
+        "retour": "Les vecteurs ne sont pas orthogonaux : $\\|u\\|\\|v\\|\\|w\\| = 2\\sqrt 2$ n'est qu'un majorant du volume."
+      },
+      {
+        "titre": "Déterminant de Gram",
+        "info": "Le carré du volume est le déterminant de la matrice des produits scalaires $\\big(\\langle x_i, x_j \\rangle\\big)$ des trois vecteurs.",
+        "verdict": "possible",
+        "retour": "Correct, mais il faut d'abord calculer six produits scalaires, puis un déterminant qui donne le carré du volume."
+      }
+    ],
+    "direction": "$\\det(u, v, w) = \\det \\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1 + 1 = 2$ en développant selon la première ligne. Le volume vaut $2$ ; le signe positif indique que $(u, v, w)$ est directe."
+  },
+  {
+    "id": "determinants-dualite-piste-08", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $E$ de dimension $n$, $\\mathcal B = (e_1, \\dots, e_n)$ une base et $f \\in \\mathcal L(E)$. Montrer que pour tous $x_1, \\dots, x_n \\in E$ : $\\sum_{i=1}^n \\det_{\\mathcal B}(x_1, \\dots, f(x_i), \\dots, x_n) = \\mathrm{tr}(f) \\det_{\\mathcal B}(x_1, \\dots, x_n)$.",
+    "choix": [
+      {
+        "titre": "Dimension de l'espace des formes $n$-linéaires alternées",
+        "info": "Les formes $n$-linéaires alternées sur $E$ forment une droite engendrée par $\\det_{\\mathcal B}$ : toute telle forme $\\psi$ vérifie $\\psi = \\psi(e_1, \\dots, e_n) \\det_{\\mathcal B}$.",
+        "verdict": "bon",
+        "retour": "Le membre de gauche est $n$-linéaire et alterné en $(x_1, \\dots, x_n)$ : il suffit de calculer sa valeur en $\\mathcal B$."
+      },
+      {
+        "titre": "Travailler dans la base $(x_1, \\dots, x_n)$",
+        "info": "Si $(x_1, \\dots, x_n)$ est une base et $f(x_i) = \\sum_j b_{ji} x_j$, alors $\\mathrm{tr} f = \\sum_i b_{ii}$.",
+        "verdict": "possible",
+        "retour": "Le cas d'une base se règle bien ; si la famille est liée, il reste à montrer que le membre de gauche est nul, ce qui demande l'argument d'alternance."
+      },
+      {
+        "titre": "Multiplicativité du déterminant",
+        "info": "$\\det_{\\mathcal B}(f(x_1), \\dots, f(x_n)) = \\det f \\cdot \\det_{\\mathcal B}(x_1, \\dots, x_n)$.",
+        "verdict": "impasse",
+        "retour": "Elle concerne l'application de $f$ à **tous** les vecteurs à la fois et fait apparaître $\\det f$, pas la trace."
+      },
+      {
+        "titre": "Dériver $t \\mapsto \\det(\\mathrm{id} + t f)$ en $0$",
+        "info": "La dérivée en $0$ de $t \\mapsto \\det_{\\mathcal B}(x_1 + t f(x_1), \\dots, x_n + t f(x_n))$ est le membre de gauche (développement multilinéaire).",
+        "verdict": "possible",
+        "retour": "Avec $\\det_{\\mathcal B}(x_i + t f(x_i))_i = \\det(\\mathrm{id} + tf) \\det_{\\mathcal B}(x_1, \\dots, x_n)$, ça aboutit si l'on sait déjà que la dérivée en $0$ de $\\det(\\mathrm{id} + tf)$ est $\\mathrm{tr} f$ ; sinon c'est ce point qu'il faut établir."
+      }
+    ],
+    "direction": "$\\psi(x_1, \\dots, x_n) = \\sum_i \\det_{\\mathcal B}(\\dots, f(x_i), \\dots)$ est $n$-linéaire. Si $x_k = x_l$ ($k < l$), les termes $i \\ne k, l$ sont nuls et les termes $i = k$ et $i = l$ sont opposés : $\\psi$ est alternée. Donc $\\psi = \\psi(e_1, \\dots, e_n) \\det_{\\mathcal B}$, et $\\psi(e_1, \\dots, e_n) = \\sum_i a_{ii} = \\mathrm{tr} f$, où $(a_{ij})$ est la matrice de $f$ dans $\\mathcal B$."
+  },
+  {
+    "id": "determinants-dualite-piste-09", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soient $E$, $F$ de dimension finie et $u \\in \\mathcal L(E, F)$. Montrer que $\\mathrm{rg}\\, {}^t u = \\mathrm{rg}\\, u$.",
+    "choix": [
+      {
+        "titre": "Noyau de la transposée et dimension de l'orthogonal",
+        "info": "$\\ker {}^t u = (\\mathrm{Im}\\, u)^\\perp$ dans $F^*$, et pour un sous-espace $G$ de $F$, $\\dim G^\\perp = \\dim F - \\dim G$.",
+        "verdict": "bon",
+        "retour": "On calcule la dimension du noyau de ${}^t u$, puis on applique le théorème du rang à ${}^t u$."
+      },
+      {
+        "titre": "Passer aux matrices",
+        "info": "Dans des bases $\\mathcal B$, $\\mathcal C$ et les bases duales, $\\mathrm{Mat}({}^t u) = \\mathrm{Mat}(u)^{\\mathsf T}$. Une matrice de rang $r$ est équivalente à $J_r$, et donc sa transposée aussi.",
+        "verdict": "bon",
+        "retour": "$A = P J_r Q$ donne $A^{\\mathsf T} = Q^{\\mathsf T} J_r^{\\mathsf T} P^{\\mathsf T}$, de rang $r$."
+      },
+      {
+        "titre": "Théorème du rang pour $u$ seul",
+        "info": "$\\dim \\ker u + \\mathrm{rg}\\, u = \\dim E$.",
+        "verdict": "impasse",
+        "retour": "Il ne dit rien de ${}^t u$ : il faut un lien entre $u$ et sa transposée."
+      },
+      {
+        "titre": "Montrer que ${}^t u$ est injective",
+        "info": "Une application linéaire injective entre espaces de même dimension est bijective.",
+        "verdict": "impasse",
+        "retour": "${}^t u$ n'a aucune raison d'être injective : elle l'est si et seulement si $u$ est surjective."
+      }
+    ],
+    "direction": "$\\dim \\ker {}^t u = \\dim F - \\mathrm{rg}\\, u$. Par le théorème du rang appliqué à ${}^t u : F^* \\to E^*$, $\\mathrm{rg}\\, {}^t u = \\dim F^* - \\dim \\ker {}^t u = \\mathrm{rg}\\, u$."
+  },
+  {
+    "id": "determinants-dualite-piste-10", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $A = (a_{ij}) \\in M_n(\\mathbb C)$ telle que, pour tout $i$, $|a_{ii}| > \\sum_{j \\ne i} |a_{ij}|$. Montrer que $\\det A \\ne 0$.",
+    "choix": [
+      {
+        "titre": "Montrer que $\\ker A = \\{0\\}$",
+        "info": "$A$ est inversible si et seulement si $AX = 0$ entraîne $X = 0$.",
+        "verdict": "bon",
+        "retour": "Pour $X \\ne 0$ dans le noyau, on regarde l'équation d'indice $i$ où $|x_i|$ est maximal."
+      },
+      {
+        "titre": "Pivot de Gauss",
+        "info": "Les opérations $L_i \\leftarrow L_i + \\lambda L_j$ ($i \\ne j$) conservent le déterminant.",
+        "verdict": "possible",
+        "retour": "On peut prouver que la dominance diagonale stricte se conserve après élimination de la première colonne, puis récurrer ; c'est plus long."
+      },
+      {
+        "titre": "Développer selon une ligne et récurrer",
+        "info": "$\\det A = \\sum_j a_{ij} C_{ij}$ pour toute ligne $i$.",
+        "verdict": "impasse",
+        "retour": "Les mineurs ne sont pas à diagonale dominante en général, et on ne sait pas contrôler les cofacteurs."
+      },
+      {
+        "titre": "Inégalité de Hadamard",
+        "info": "$|\\det A|$ est majoré par le produit des normes euclidiennes des colonnes (hors programme, à redémontrer).",
+        "verdict": "impasse",
+        "retour": "C'est une majoration : elle ne peut pas montrer que $\\det A \\ne 0$."
+      }
+    ],
+    "direction": "Si $AX = 0$ avec $X \\ne 0$, soit $i$ tel que $|x_i| = \\max_j |x_j| > 0$. Alors $|a_{ii}|\\,|x_i| = \\big|\\sum_{j \\ne i} a_{ij} x_j\\big| \\le \\sum_{j \\ne i} |a_{ij}|\\,|x_i| < |a_{ii}|\\,|x_i|$ : contradiction."
+  },
+  {
+    "id": "determinants-dualite-piste-11", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soient $a, b \\in \\mathbb R$, $n \\ge 2$ et $J \\in M_n(\\mathbb R)$ la matrice dont tous les coefficients valent $1$. Calculer $\\det(aI_n + bJ)$.",
+    "choix": [
+      {
+        "titre": "Somme des colonnes puis soustraction de lignes",
+        "info": "Ajouter à une colonne une combinaison des autres colonnes ne change pas le déterminant, qui est linéaire par rapport à chaque colonne.",
+        "verdict": "bon",
+        "retour": "Toutes les lignes ont la même somme $a + nb$ : on la met dans la première colonne, on la factorise, puis on retranche la première ligne aux autres."
+      },
+      {
+        "titre": "Valeurs propres de $J$",
+        "info": "$J^2 = nJ$, donc $X(X - n)$ annule $J$ ; il est scindé à racines simples sur $\\mathbb R$. Le déterminant d'une matrice diagonalisable est le produit de ses valeurs propres comptées avec multiplicité.",
+        "verdict": "bon",
+        "retour": "$J$ est de rang 1 et de trace $n$ : valeurs propres $n$ (simple) et $0$ (d'ordre $n - 1$). Celles de $aI_n + bJ$ s'en déduisent."
+      },
+      {
+        "titre": "Additivité : $\\det(aI_n) + \\det(bJ)$",
+        "info": "Le déterminant est linéaire par rapport à chaque colonne, les autres étant fixées.",
+        "verdict": "impasse",
+        "retour": "Le déterminant n'est pas additif : pour $n = 2$, $a = b = 1$, on trouverait $1$ au lieu de $3$."
+      },
+      {
+        "titre": "Développer selon la première ligne",
+        "info": "$\\det A = \\sum_j a_{1j} C_{1j}$ avec $C_{1j} = (-1)^{1+j} M_{1j}$.",
+        "verdict": "possible",
+        "retour": "Les mineurs ne sont plus de la forme $aI + bJ$ : on s'en sort, mais au prix de calculs lourds."
+      }
+    ],
+    "direction": "Après $C_1 \\leftarrow C_1 + \\dots + C_n$, la première colonne vaut $(a + nb)$ partout. On factorise, puis $L_i \\leftarrow L_i - L_1$ pour $i \\ge 2$ donne une matrice triangulaire de diagonale $(1, a, \\dots, a)$. Donc $\\det(aI_n + bJ) = (a + nb)\\, a^{n-1}$."
+  },
+  {
+    "id": "determinants-dualite-piste-12", "ch": "determinants-dualite", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb Z)$. Montrer que $A$ est inversible et d'inverse à coefficients entiers si et seulement si $\\det A \\in \\{-1, 1\\}$.",
+    "choix": [
+      {
+        "titre": "Formule de la comatrice",
+        "info": "Si $\\det A \\ne 0$, $A^{-1} = \\frac{1}{\\det A}\\, \\mathrm{com}(A)^{\\mathsf T}$. Les cofacteurs sont des déterminants extraits, au signe près.",
+        "verdict": "bon",
+        "retour": "Si $A \\in M_n(\\mathbb Z)$, sa comatrice est entière : diviser par $\\pm 1$ la laisse entière."
+      },
+      {
+        "titre": "Théorème de Cayley-Hamilton",
+        "info": "$\\chi_A(A) = 0$, où $\\chi_A = X^n + c_{n-1}X^{n-1} + \\dots + c_0$ et $c_0 = (-1)^n \\det A$.",
+        "verdict": "bon",
+        "retour": "Les $c_k$ sont entiers et $A^{-1} = -c_0^{-1}(A^{n-1} + c_{n-1}A^{n-2} + \\dots + c_1 I_n)$, entière si $c_0 = \\pm 1$."
+      },
+      {
+        "titre": "Diagonaliser $A$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale inversible, $A^{-1} = PD^{-1}P^{-1}$.",
+        "verdict": "impasse",
+        "retour": "$A$ n'est pas forcément diagonalisable, et même si elle l'est, $P$ n'a aucune raison d'être entière."
+      },
+      {
+        "titre": "Pivot de Gauss",
+        "info": "Les opérations élémentaires sur les lignes transforment $(A \\mid I_n)$ en $(I_n \\mid A^{-1})$ quand $A$ est inversible.",
+        "verdict": "impasse",
+        "retour": "Utile sur une matrice explicite ; pour une $A$ générale, les divisions par les pivots ne disent rien sur l'intégralité de $A^{-1}$."
+      }
+    ],
+    "direction": "Sens direct : $\\det A \\cdot \\det A^{-1} = 1$ avec deux entiers, donc $\\det A = \\pm 1$. Réciproque : $A^{-1} = \\pm\\, \\mathrm{com}(A)^{\\mathsf T}$, à coefficients entiers."
+  }
+]

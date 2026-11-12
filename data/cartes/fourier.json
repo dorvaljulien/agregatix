@@ -1,0 +1,566 @@
+[
+  {
+    "id": "fourier-vf-01", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction réelle, $2\\pi$-périodique et continue par morceaux. Alors $\\displaystyle\\frac1\\pi\\int_{-\\pi}^{\\pi} f(t)^2\\,\\mathrm dt = \\frac{a_0^2}{2} + \\sum_{n \\ge 1} \\left(a_n^2 + b_n^2\\right)$.",
+    "reponse": true,
+    "explication": "C'est Parseval, valable dès que $f$ est continue par morceaux : $\\frac1{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2 = \\sum_{n \\in \\mathbb Z} |c_n|^2 = \\frac{a_0^2}{4} + \\frac12\\sum_{n \\ge 1}(a_n^2 + b_n^2)$, multiplié par $2$. Le piège est le terme constant : avec la convention $S_n = \\frac{a_0}2 + \\dots$, il apparaît en $\\frac{a_0^2}{2}$ ici, pas en $a_0^2$."
+  },
+  {
+    "id": "fourier-vf-02", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique et continue par morceaux. Alors, pour tout $x \\in \\mathbb R$, $S_n(f)(x) \\to f(x)$ quand $n \\to +\\infty$.",
+    "reponse": false,
+    "explication": "Contre-exemple : le créneau $f = 1$ sur $[0, \\pi[$, $f = -1$ sur $[\\pi, 2\\pi[$. Ses coefficients sont $a_n = 0$ et $b_n = \\frac{4}{\\pi n}$ pour $n$ impair, $0$ sinon, donc $S_n(f)(0) = 0$ pour tout $n$, alors que $f(0) = 1$. Si $f$ est de plus $\\mathcal C^1$ par morceaux, Dirichlet donne la convergence vers $\\frac{f(x^+) + f(x^-)}{2}$."
+  },
+  {
+    "id": "fourier-vf-03", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction continue et $2\\pi$-périodique. Alors sa série de Fourier converge simplement vers $f$ sur $\\mathbb R$.",
+    "reponse": false,
+    "explication": "Le contre-exemple repose sur un résultat admis, hors programme : il existe des fonctions continues et $2\\pi$-périodiques dont la série de Fourier diverge en un point (du Bois-Reymond, 1873). Le résultat devient vrai si $f$ est de plus $\\mathcal C^1$ par morceaux. Pour $f$ seulement continue, ce sont les moyennes de Cesàro des $S_n(f)$ qui convergent uniformément vers $f$ (Fejér)."
+  },
+  {
+    "id": "fourier-vf-04", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique, continue et de classe $\\mathcal C^1$ par morceaux. Alors la série $\\sum_{n \\in \\mathbb Z} |c_n(f)|$ converge.",
+    "reponse": true,
+    "explication": "Pour $n \\ne 0$, $c_n(f) = \\frac{c_n(f')}{in}$, donc $|c_n(f)| \\le \\frac12\\left(|c_n(f')|^2 + \\frac1{n^2}\\right)$. La série $\\sum |c_n(f')|^2$ converge par Bessel appliqué à $f'$, continue par morceaux. D'où la convergence normale de la série de Fourier de $f$."
+  },
+  {
+    "id": "fourier-vf-05", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique, continue et de classe $\\mathcal C^1$ par morceaux. Alors $n\\,c_n(f) \\to 0$ quand $|n| \\to +\\infty$.",
+    "reponse": true,
+    "explication": "On a $c_n(f') = in\\,c_n(f)$, et $c_n(f') \\to 0$ par le lemme de Riemann-Lebesgue appliqué à $f'$, continue par morceaux. La continuité de $f$ est indispensable : pour $f(x) = x$ sur $]-\\pi, \\pi[$, on a $|c_n(f)| = \\frac1{|n|}$, donc $|n\\,c_n(f)| = 1$."
+  },
+  {
+    "id": "fourier-vf-06", "ch": "fourier", "type": "vf",
+    "enonce": "Il existe une fonction $f$ $2\\pi$-périodique et continue par morceaux telle que $b_n(f) = \\frac{1}{\\sqrt n}$ pour tout $n \\ge 1$.",
+    "reponse": false,
+    "explication": "Par l'inégalité de Bessel, $\\sum_{n \\ge 1} b_n(f)^2 \\le \\frac1\\pi\\int_{-\\pi}^{\\pi} f^2 < +\\infty$, alors que $\\sum \\frac1n$ diverge. Piège : la série $\\sum \\frac{\\sin nx}{\\sqrt n}$ converge pourtant en tout point (transformation d'Abel) ; sa somme n'est simplement pas une fonction continue par morceaux."
+  },
+  {
+    "id": "fourier-vf-07", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ continue et $2\\pi$-périodique, et $\\mathcal T_n$ l'espace des polynômes trigonométriques de degré au plus $n$. Alors $S_n(f)$ minimise $\\|f - P\\|_\\infty$ pour $P \\in \\mathcal T_n$.",
+    "reponse": false,
+    "explication": "$S_n(f)$ est la meilleure approximation **en moyenne quadratique**, pas uniforme. Contre-exemple avec $n = 0$ et $f(x) = x^2$ sur $[-\\pi, \\pi]$ : $S_0(f) = \\frac{\\pi^2}3$ donne $\\|f - S_0(f)\\|_\\infty = \\frac{2\\pi^2}{3}$, alors que la constante $\\frac{\\pi^2}{2}$ donne $\\frac{\\pi^2}{2}$."
+  },
+  {
+    "id": "fourier-vf-08", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ continue par morceaux et $2\\pi$-périodique. Pour tout polynôme trigonométrique $P$ de degré au plus $n$, $\\displaystyle\\int_{-\\pi}^{\\pi} |f - S_n(f)|^2 \\le \\int_{-\\pi}^{\\pi} |f - P|^2$.",
+    "reponse": true,
+    "explication": "$S_n(f)$ est le projeté orthogonal de $f$ sur $\\mathrm{Vect}(e_k)_{|k| \\le n}$, où $e_k(x) = e^{ikx}$, famille orthonormée pour $\\langle f, g\\rangle = \\frac1{2\\pi}\\int_{-\\pi}^{\\pi} \\bar f g$. Comme $f - S_n(f)$ est orthogonal à $S_n(f) - P$, Pythagore donne $\\|f - P\\|^2 = \\|f - S_n(f)\\|^2 + \\|S_n(f) - P\\|^2$."
+  },
+  {
+    "id": "fourier-vf-09", "ch": "fourier", "type": "vf",
+    "enonce": "Toute fonction continue sur $[0, 2\\pi]$ est, sur $[0, 2\\pi]$, limite uniforme d'une suite de polynômes trigonométriques.",
+    "reponse": false,
+    "explication": "Un polynôme trigonométrique $P$ vérifie $P(0) = P(2\\pi)$. Pour $f(x) = x$, on a donc $|f(0) - P(0)| + |f(2\\pi) - P(2\\pi)| \\ge 2\\pi$, d'où $\\|f - P\\|_\\infty \\ge \\pi$. Le théorème de Weierstrass trigonométrique demande que $f$ soit continue **et** $2\\pi$-périodique, c'est-à-dire ici $f(0) = f(2\\pi)$."
+  },
+  {
+    "id": "fourier-vf-10", "ch": "fourier", "type": "vf",
+    "enonce": "Toute fonction continue sur $[0, \\pi]$ est, sur $[0, \\pi]$, limite uniforme d'une suite de polynômes trigonométriques.",
+    "reponse": true,
+    "explication": "On prolonge $f$ par parité à $[-\\pi, \\pi]$, puis par $2\\pi$-périodicité : le prolongement est continu sur $\\mathbb R$ car $f(-\\pi) = f(\\pi)$ par parité. Le théorème de Weierstrass trigonométrique s'applique à ce prolongement, et on restreint à $[0, \\pi]$."
+  },
+  {
+    "id": "fourier-vf-11", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique et continue par morceaux telle que $\\sum_{n \\in \\mathbb Z} |c_n(f)|$ converge. Alors $f$ est continue.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f$ vaut $1$ sur $2\\pi\\mathbb Z$ et $0$ ailleurs. Tous ses coefficients sont nuls, mais $f$ n'est pas continue. Ce qui est vrai : la somme $g$ de la série est continue (convergence normale) et, par Parseval appliqué à $f - g$, $f$ coïncide avec $g$ sauf en un nombre fini de points par période."
+  },
+  {
+    "id": "fourier-vf-12", "ch": "fourier", "type": "vf",
+    "enonce": "Soit $f$ une fonction continue par morceaux et $\\pi$-périodique. Alors $c_n(f) = 0$ pour tout entier $n$ impair.",
+    "reponse": true,
+    "explication": "$f$ est aussi $2\\pi$-périodique. Le changement de variable $t = s + \\pi$, puis l'invariance de l'intégrale d'une fonction $2\\pi$-périodique sur une période, donnent $c_n(f) = \\frac1{2\\pi}\\int_{-\\pi}^{\\pi} f(s + \\pi)\\,e^{-in(s+\\pi)}\\,\\mathrm ds = (-1)^n c_n(f)$."
+  },
+  {
+    "id": "fourier-qcm-01", "ch": "fourier", "type": "qcm",
+    "enonce": "Soit $f$ continue par morceaux et $2\\pi$-périodique, avec la convention du programme $S_n(f)(x) = \\frac{a_0(f)}{2} + \\sum_{k=1}^n \\left(a_k(f)\\cos kx + b_k(f)\\sin kx\\right)$. Que vaut $a_0(f)$ ?",
+    "choix": [
+      "$\\frac1\\pi\\int_{-\\pi}^{\\pi} f(t)\\,\\mathrm dt$",
+      "$\\frac1{2\\pi}\\int_{-\\pi}^{\\pi} f(t)\\,\\mathrm dt$",
+      "$\\frac2\\pi\\int_{0}^{\\pi} f(t)\\,\\mathrm dt$",
+      "$\\frac1\\pi\\int_{0}^{\\pi} f(t)\\,\\mathrm dt$"
+    ],
+    "bonne": 0,
+    "explication": "La même formule $a_n = \\frac1\\pi\\int_{-\\pi}^{\\pi} f(t)\\cos(nt)\\,\\mathrm dt$ vaut pour $n = 0$ : c'est pour cela que le terme constant s'écrit $\\frac{a_0}{2} = c_0$, la valeur moyenne de $f$. La formule $\\frac2\\pi\\int_0^\\pi f$ n'est correcte que si $f$ est paire."
+  },
+  {
+    "id": "fourier-qcm-02", "ch": "fourier", "type": "qcm",
+    "enonce": "Théorème de Dirichlet.\nSoit $f$ une fonction $2\\pi$-périodique **[ ? ]**. Alors, pour tout $x \\in \\mathbb R$, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$.",
+    "choix": [
+      "de classe $\\mathcal C^1$ par morceaux",
+      "continue par morceaux",
+      "continue",
+      "continue par morceaux, dont les coefficients de Fourier tendent vers $0$"
+    ],
+    "bonne": 0,
+    "explication": "L'hypothèse est la régularité $\\mathcal C^1$ par morceaux, sans continuité exigée. La continuité seule ne suffit pas : il existe des fonctions continues dont la série de Fourier diverge en un point (résultat admis, hors programme). Le leurre sur les coefficients tendant vers $0$ n'ajoute rien : les coefficients d'une fonction continue par morceaux tendent toujours vers $0$ (Riemann-Lebesgue)."
+  },
+  {
+    "id": "fourier-qcm-03", "ch": "fourier", "type": "qcm",
+    "enonce": "Théorème de Fejér.\nSoit $f$ une fonction $2\\pi$-périodique **[ ? ]**. Alors $\\sigma_n(f) = \\frac{1}{n+1}\\sum_{k=0}^{n} S_k(f)$ converge uniformément vers $f$ sur $\\mathbb R$.",
+    "choix": [
+      "continue",
+      "continue par morceaux",
+      "de classe $\\mathcal C^1$ par morceaux",
+      "continue par morceaux et vérifiant $f(x) = \\frac12\\left(f(x^+) + f(x^-)\\right)$ pour tout $x$"
+    ],
+    "bonne": 0,
+    "explication": "Chaque $\\sigma_n(f)$ est un polynôme trigonométrique, donc continu : une limite uniforme de telles fonctions est continue. Les trois leurres autorisent des fonctions discontinues, comme le créneau, qui ne peuvent pas être limites uniformes de $\\sigma_n(f)$."
+  },
+  {
+    "id": "fourier-qcm-04", "ch": "fourier", "type": "qcm",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique **[ ? ]**. Alors sa série de Fourier converge normalement sur $\\mathbb R$, et sa somme est $f$.",
+    "choix": [
+      "continue et de classe $\\mathcal C^1$ par morceaux",
+      "de classe $\\mathcal C^1$ par morceaux",
+      "continue",
+      "continue par morceaux, avec $\\sum |c_n(f)|^2 < +\\infty$"
+    ],
+    "bonne": 0,
+    "explication": "Il faut les deux hypothèses. Sans la continuité, le créneau ($1$ sur $]0, \\pi[$, $-1$ sur $]-\\pi, 0[$) a des coefficients $b_n = \\frac{4}{\\pi n}$ ($n$ impair), qui ne sont pas sommables. Sans la régularité $\\mathcal C^1$ par morceaux, il existe des fonctions continues dont la série de Fourier diverge en un point (résultat admis, hors programme). Enfin, $\\sum |c_n|^2 < +\\infty$ est toujours vrai (Bessel)."
+  },
+  {
+    "id": "fourier-qcm-05", "ch": "fourier", "type": "qcm",
+    "enonce": "Que vaut $\\displaystyle\\sum_{k=0}^{+\\infty} \\frac{1}{(2k+1)^4}$ ?",
+    "choix": [
+      "$\\frac{\\pi^4}{96}$",
+      "$\\frac{\\pi^4}{90}$",
+      "$\\frac{\\pi^4}{48}$",
+      "$\\frac{\\pi^2}{8}$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $f(x) = |x|$ sur $[-\\pi, \\pi]$ : $a_0 = \\pi$, $a_{2k+1} = -\\frac{4}{\\pi(2k+1)^2}$, les autres coefficients sont nuls. Parseval donne $\\frac{\\pi^2}{3} = \\frac{\\pi^2}{4} + \\frac{8}{\\pi^2}\\sum \\frac{1}{(2k+1)^4}$, d'où $\\frac{\\pi^4}{96}$. Puis $\\zeta(4) = \\frac{16}{15}\\cdot\\frac{\\pi^4}{96} = \\frac{\\pi^4}{90}$, et $\\frac{\\pi^2}{8}$ est la somme des $\\frac1{(2k+1)^2}$."
+  },
+  {
+    "id": "fourier-qcm-06", "ch": "fourier", "type": "qcm",
+    "enonce": "Soit $f$ la fonction $2\\pi$-périodique égale à $x \\mapsto x^2$ sur $[-\\pi, \\pi]$. Pour $n \\ge 1$, que vaut $a_n(f)$ ?",
+    "choix": [
+      "$\\frac{4(-1)^n}{n^2}$",
+      "$\\frac{4(-1)^{n+1}}{n^2}$",
+      "$\\frac{2(-1)^n}{n^2}$",
+      "$\\frac{4}{n^2}$"
+    ],
+    "bonne": 0,
+    "explication": "Par parité, $a_n = \\frac2\\pi\\int_0^\\pi x^2\\cos(nx)\\,\\mathrm dx$, et deux intégrations par parties donnent $\\frac{4(-1)^n}{n^2}$. Contrôle : $a_0 = \\frac{2\\pi^2}3$ et la série en $x = 0$ donne $0 = \\frac{\\pi^2}{3} + 4\\sum \\frac{(-1)^n}{n^2}$, soit $\\sum_{n \\ge 1} \\frac{(-1)^{n+1}}{n^2} = \\frac{\\pi^2}{12}$, qui est bien positif. Le choix $\\frac4{n^2}$ est le coefficient de $x \\mapsto x^2$ sur $[0, 2\\pi[$, une autre fonction."
+  },
+  {
+    "id": "fourier-qcm-07", "ch": "fourier", "type": "qcm",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique **[ ? ]**. Alors $c_n(f') = in\\,c_n(f)$ pour tout $n \\in \\mathbb Z$.",
+    "choix": [
+      "continue et de classe $\\mathcal C^1$ par morceaux",
+      "de classe $\\mathcal C^1$ par morceaux",
+      "de classe $\\mathcal C^1$ par morceaux et impaire",
+      "continue par morceaux et dérivable sur $]-\\pi, \\pi[$"
+    ],
+    "bonne": 0,
+    "explication": "L'intégration par parties sur chaque morceau laisse des termes de bord qui se compensent seulement si $f$ est continue. Contre-exemple aux trois leurres : $f(x) = x$ sur $]-\\pi, \\pi[$, $f(\\pi) = 0$, impaire et $\\mathcal C^1$ par morceaux. Alors $c_n(f') = 0$ pour $n \\ne 0$, mais $in\\,c_n(f) = -(-1)^n$."
+  },
+  {
+    "id": "fourier-err-01", "ch": "fourier", "type": "erreur",
+    "enonce": "Soit $f$ la fonction $2\\pi$-périodique telle que $f(x) = x$ pour $x \\in [0, 2\\pi[$. On veut calculer $b_n(f)$ pour $n \\ge 1$. Voici une copie.",
+    "lignes": [
+      "Les coefficients se calculent sur n'importe quelle période : $b_n(f) = \\frac1\\pi\\int_{-\\pi}^{\\pi} f(x)\\sin(nx)\\,\\mathrm dx$.",
+      "Pour $x \\in\\, ]0, \\pi[$, on a $f(x) = x$.",
+      "Pour $x \\in\\, ]-\\pi, 0[$, on a aussi $f(x) = x$, donc $f$ est impaire et $b_n(f) = \\frac2\\pi\\int_0^\\pi x\\sin(nx)\\,\\mathrm dx$."
+    ],
+    "fausse": 2,
+    "explication": "Sur $]-\\pi, 0[$, la périodicité donne $f(x) = x + 2\\pi$ : $f$ n'est pas impaire (c'est $f - \\pi$ qui l'est). Le plus simple est d'intégrer sur $[0, 2\\pi]$, où la formule $f(x) = x$ est valable : $b_n(f) = -\\frac2n$, $a_n(f) = 0$ pour $n \\ge 1$ et $a_0(f) = 2\\pi$."
+  },
+  {
+    "id": "fourier-err-02", "ch": "fourier", "type": "erreur",
+    "enonce": "Soit $f$ la fonction $2\\pi$-périodique telle que $f(x) = x$ sur $]-\\pi, \\pi[$ et $f(\\pi) = 0$. On cherche $c_n(f)$ pour $n \\ne 0$. Voici une copie.",
+    "lignes": [
+      "$f$ est de classe $\\mathcal C^1$ par morceaux.",
+      "Sa dérivée $f'$, définie sauf en $\\pi + 2\\pi\\mathbb Z$, est constante égale à $1$, donc $c_n(f') = 0$ pour $n \\ne 0$.",
+      "Comme $f$ est $\\mathcal C^1$ par morceaux, $c_n(f') = in\\,c_n(f)$, d'où $c_n(f) = 0$ pour $n \\ne 0$."
+    ],
+    "fausse": 2,
+    "explication": "La relation $c_n(f') = in\\,c_n(f)$ exige que $f$ soit **continue** (et $\\mathcal C^1$ par morceaux) : le saut de $f$ en $\\pi$ ajoute un terme de bord. Ici l'intégration par parties donne $c_n(f') = (-1)^n + in\\,c_n(f)$, d'où $c_n(f) = \\frac{i(-1)^n}{n}$."
+  },
+  {
+    "id": "fourier-err-03", "ch": "fourier", "type": "erreur",
+    "enonce": "Soit $f$ la fonction $2\\pi$-périodique telle que $f(x) = x^2$ pour $x \\in [0, 2\\pi[$. On veut en déduire $\\zeta(2) = \\sum_{n \\ge 1} \\frac1{n^2}$. Voici une copie.",
+    "lignes": [
+      "Calcul sur $[0, 2\\pi]$ : $a_0(f) = \\frac{8\\pi^2}{3}$ et, pour $n \\ge 1$, $a_n(f) = \\frac{4}{n^2}$, $b_n(f) = -\\frac{4\\pi}{n}$.",
+      "$f$ est de classe $\\mathcal C^1$ par morceaux sur $\\mathbb R$.",
+      "En $x = 0$, $\\sin(n \\cdot 0) = 0$, donc $S_n(f)(0) = \\frac{4\\pi^2}{3} + \\sum_{k=1}^n \\frac{4}{k^2}$.",
+      "D'après le théorème de Dirichlet, $S_n(f)(0) \\to f(0) = 0$."
+    ],
+    "fausse": 3,
+    "explication": "$f$ est discontinue en $0$ : $f(0^-) = 4\\pi^2$ et $f(0^+) = 0$. Dirichlet donne la convergence vers la demi-somme $2\\pi^2$, d'où $\\frac{4\\pi^2}3 + 4\\zeta(2) = 2\\pi^2$ et $\\zeta(2) = \\frac{\\pi^2}6$. La copie aurait obtenu une somme négative."
+  },
+  {
+    "id": "fourier-err-04", "ch": "fourier", "type": "erreur",
+    "enonce": "On part du développement de $x \\mapsto x$ sur $]-\\pi, \\pi[$ et on cherche à en tirer une autre formule. Voici une copie.",
+    "lignes": [
+      "Par le théorème de Dirichlet, pour tout $x \\in\\, ]-\\pi, \\pi[$, $x = 2\\sum_{n \\ge 1} \\frac{(-1)^{n+1}}{n}\\sin(nx)$.",
+      "Chaque terme $x \\mapsto \\frac{(-1)^{n+1}}{n}\\sin(nx)$ est de classe $\\mathcal C^1$ sur $\\mathbb R$.",
+      "On dérive terme à terme : pour tout $x \\in\\, ]-\\pi, \\pi[$, $1 = 2\\sum_{n \\ge 1} (-1)^{n+1}\\cos(nx)$."
+    ],
+    "fausse": 2,
+    "explication": "Dériver terme à terme demande la convergence uniforme (au moins locale) de la série des dérivées. Ici son terme général $(-1)^{n+1}\\cos(nx)$ ne tend même pas vers $0$ : la série dérivée diverge en tout point."
+  },
+  {
+    "id": "fourier-err-05", "ch": "fourier", "type": "erreur",
+    "enonce": "Soit $f$ continue et $2\\pi$-périodique. Une copie affirme que $S_n(f)$ converge uniformément vers $f$.",
+    "lignes": [
+      "Posons $\\sigma_n(f) = \\frac{1}{n+1}\\sum_{k=0}^n S_k(f)$ : c'est un polynôme trigonométrique de degré au plus $n$.",
+      "Par le théorème de Fejér, $\\sigma_n(f)$ converge uniformément vers $f$ sur $\\mathbb R$.",
+      "Une suite et sa moyenne de Cesàro ont la même limite, donc $S_n(f)$ converge uniformément vers $f$."
+    ],
+    "fausse": 2,
+    "explication": "Le lemme de Cesàro ne marche que dans un sens : si $(u_n)$ converge, ses moyennes convergent vers la même limite ; la réciproque est fausse ($u_n = (-1)^n$). Et la conclusion elle-même est fausse : il existe des fonctions continues dont la série de Fourier diverge en un point (résultat admis, hors programme)."
+  },
+  {
+    "id": "fourier-err-06", "ch": "fourier", "type": "erreur",
+    "enonce": "Soit $f$ continue par morceaux et $2\\pi$-périodique dont tous les coefficients de Fourier sont nuls. Une copie conclut que $f$ est la fonction nulle.",
+    "lignes": [
+      "Par Parseval, valable pour $f$ continue par morceaux : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2 = \\sum_{n \\in \\mathbb Z} |c_n(f)|^2 = 0$.",
+      "$|f|^2$ est continue par morceaux, positive, d'intégrale nulle sur $[-\\pi, \\pi]$.",
+      "Une fonction positive d'intégrale nulle est nulle, donc $f = 0$ sur $[-\\pi, \\pi]$, puis sur $\\mathbb R$ par périodicité."
+    ],
+    "fausse": 2,
+    "explication": "Ce résultat vaut pour une fonction **continue** positive. Pour une fonction continue par morceaux, on obtient seulement $f = 0$ sauf en un nombre fini de points par période : la fonction égale à $1$ sur $2\\pi\\mathbb Z$ et à $0$ ailleurs a tous ses coefficients nuls. Si $f$ est continue, la conclusion est juste."
+  },
+  {
+    "id": "fourier-piste-01", "ch": "fourier", "type": "piste",
+    "enonce": "Montrer que $\\displaystyle\\sum_{n=1}^{+\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}$.",
+    "choix": [
+      {
+        "titre": "Série de Fourier de $x \\mapsto x^2$ sur $[-\\pi, \\pi]$, évaluée en $\\pi$",
+        "info": "Si $f$ est $2\\pi$-périodique, continue et $\\mathcal C^1$ par morceaux, sa série de Fourier converge normalement vers $f$ sur $\\mathbb R$ : on peut l'évaluer en tout point.",
+        "verdict": "bon",
+        "retour": "Le prolongement de $x^2$ est continu car $(-\\pi)^2 = \\pi^2$, et $a_n = \\frac{4(-1)^n}{n^2}$ : en $x = \\pi$, les signes disparaissent."
+      },
+      {
+        "titre": "Parseval pour $x \\mapsto x$ sur $]-\\pi, \\pi[$",
+        "info": "Pour $f$ continue par morceaux et $2\\pi$-périodique : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2 = \\sum_{n \\in \\mathbb Z} |c_n(f)|^2$.",
+        "verdict": "bon",
+        "retour": "Parseval ne demande aucune continuité. Avec $b_n = \\frac{2(-1)^{n+1}}{n}$, les carrés font apparaître $\\frac{4}{n^2}$."
+      },
+      {
+        "titre": "Théorème de Dirichlet pour $x \\mapsto x$ en $x = \\pi$",
+        "info": "Si $f$ est $2\\pi$-périodique et $\\mathcal C^1$ par morceaux, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$ en tout $x$.",
+        "verdict": "impasse",
+        "retour": "En $\\pi$, tous les $\\sin(n\\pi)$ sont nuls et la demi-somme des limites vaut $0$ : on obtient $0 = 0$. Les coefficients en $\\frac1n$ ne donnent de toute façon pas de $\\frac1{n^2}$ par évaluation."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante, $\\int_k^{k+1} f \\le f(k) \\le \\int_{k-1}^{k} f$, ce qui encadre sommes partielles et restes.",
+        "verdict": "impasse",
+        "retour": "Elle encadre la somme, par exemple $1 \\le \\zeta(2) \\le 2$, mais ne donne jamais sa valeur exacte."
+      }
+    ],
+    "direction": "Pour $f(x) = x^2$ sur $[-\\pi, \\pi]$ : $\\frac{a_0}2 = \\frac{\\pi^2}3$ et $a_n = \\frac{4(-1)^n}{n^2}$. En $x = \\pi$, $\\pi^2 = \\frac{\\pi^2}{3} + 4\\sum \\frac{1}{n^2}$, d'où $\\frac{\\pi^2}6$. Variante : Parseval pour $x$ donne $\\frac{\\pi^2}{3} = \\frac12\\sum\\frac{4}{n^2}$."
+  },
+  {
+    "id": "fourier-piste-02", "ch": "fourier", "type": "piste",
+    "enonce": "On admet $\\zeta(2) = \\frac{\\pi^2}6$. Calculer $\\zeta(4) = \\displaystyle\\sum_{n=1}^{+\\infty} \\frac{1}{n^4}$.",
+    "choix": [
+      {
+        "titre": "Parseval pour $x \\mapsto x^2$ sur $[-\\pi, \\pi]$",
+        "info": "Pour $f$ réelle continue par morceaux et $2\\pi$-périodique : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} f^2 = \\frac{a_0^2}{4} + \\frac12\\sum_{n \\ge 1}(a_n^2 + b_n^2)$.",
+        "verdict": "bon",
+        "retour": "Les coefficients $a_n = \\frac{4(-1)^n}{n^2}$ donnent des carrés en $\\frac{16}{n^4}$ : c'est exactement ce qu'il faut."
+      },
+      {
+        "titre": "Série de Fourier de $x \\mapsto x^4$ sur $[-\\pi, \\pi]$, évaluée en $\\pi$",
+        "info": "Une fonction continue, $\\mathcal C^1$ par morceaux et $2\\pi$-périodique est somme de sa série de Fourier en tout point.",
+        "verdict": "possible",
+        "retour": "On trouve $a_n = \\frac{8\\pi^2(-1)^n}{n^2} - \\frac{48(-1)^n}{n^4}$, et l'évaluation en $\\pi$ relie $\\zeta(4)$ à $\\zeta(2)$. Ça aboutit, mais au prix de quatre intégrations par parties."
+      },
+      {
+        "titre": "Série de Fourier de $x \\mapsto x^2$ évaluée en un point",
+        "info": "Pour tout $x \\in [-\\pi, \\pi]$, $x^2 = \\frac{\\pi^2}{3} + 4\\sum_{n \\ge 1} \\frac{(-1)^n}{n^2}\\cos(nx)$.",
+        "verdict": "impasse",
+        "retour": "Une évaluation ne produit que des sommes en $\\frac{1}{n^2}$ : on retrouve $\\zeta(2)$ ou la série alternée, jamais $\\frac1{n^4}$."
+      },
+      {
+        "titre": "Parseval pour $x \\mapsto x$ sur $]-\\pi, \\pi[$",
+        "info": "Pour $f$ continue par morceaux et $2\\pi$-périodique : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2 = \\sum_{n \\in \\mathbb Z} |c_n(f)|^2$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients de $x$ sont en $\\frac1n$ : leurs carrés redonnent $\\zeta(2)$. Pour $\\frac1{n^4}$, il faut des coefficients en $\\frac1{n^2}$, donc une fonction continue."
+      }
+    ],
+    "direction": "Pour $f(x) = x^2$ : $\\frac1{2\\pi}\\int_{-\\pi}^{\\pi} x^4\\,\\mathrm dx = \\frac{\\pi^4}{5}$, et Parseval donne $\\frac{\\pi^4}5 = \\frac{\\pi^4}{9} + \\frac12\\sum \\frac{16}{n^4}$. Donc $8\\zeta(4) = \\frac{4\\pi^4}{45}$, soit $\\zeta(4) = \\frac{\\pi^4}{90}$."
+  },
+  {
+    "id": "fourier-piste-03", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ une fonction $2\\pi$-périodique, continue et de classe $\\mathcal C^1$ par morceaux. Montrer que $\\sum_{n \\in \\mathbb Z} |c_n(f)|$ converge.",
+    "choix": [
+      {
+        "titre": "Coefficients de $f'$, puis Bessel et $|ab| \\le \\frac{a^2 + b^2}{2}$",
+        "info": "Si $f$ est continue et $\\mathcal C^1$ par morceaux, $c_n(f') = in\\,c_n(f)$. Bessel : pour $g$ continue par morceaux, $\\sum |c_n(g)|^2 \\le \\frac1{2\\pi}\\int_{-\\pi}^{\\pi} |g|^2$.",
+        "verdict": "bon",
+        "retour": "Pour $n \\ne 0$, $|c_n(f)| = \\frac{|c_n(f')|}{|n|}$ : produit de deux suites de carré sommable."
+      },
+      {
+        "titre": "Lemme de Riemann-Lebesgue appliqué à $f'$",
+        "info": "Si $g$ est continue par morceaux et $2\\pi$-périodique, $c_n(g) \\to 0$ quand $|n| \\to +\\infty$.",
+        "verdict": "impasse",
+        "retour": "On obtient $c_n(f) = o\\!\\left(\\frac1n\\right)$, ce qui ne suffit pas : une série de terme général $o\\!\\left(\\frac1n\\right)$ peut diverger, comme $\\sum \\frac{1}{n \\ln n}$."
+      },
+      {
+        "titre": "Parseval appliqué à $f$",
+        "info": "Pour $f$ continue par morceaux : $\\sum_{n \\in \\mathbb Z} |c_n(f)|^2 = \\frac1{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2$.",
+        "verdict": "impasse",
+        "retour": "Il donne la sommabilité des **carrés**, vraie pour toute fonction continue par morceaux. Elle n'entraîne pas celle des $|c_n|$."
+      },
+      {
+        "titre": "Théorème de Dirichlet",
+        "info": "Si $f$ est $\\mathcal C^1$ par morceaux, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$ pour tout $x$.",
+        "verdict": "impasse",
+        "retour": "Une convergence simple ne dit rien de la convergence absolue des coefficients : le créneau vérifie Dirichlet avec des coefficients non sommables."
+      }
+    ],
+    "direction": "Pour $n \\ne 0$, $|c_n(f)| = \\frac{|c_n(f')|}{|n|} \\le \\frac12\\left(|c_n(f')|^2 + \\frac1{n^2}\\right)$. Bessel appliqué à $f'$, continue par morceaux, donne la convergence de $\\sum |c_n(f')|^2$, et $\\sum \\frac1{n^2}$ converge."
+  },
+  {
+    "id": "fourier-piste-04", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ une fonction continue et $2\\pi$-périodique dont tous les coefficients de Fourier $c_n(f)$, $n \\in \\mathbb Z$, sont nuls. Montrer que $f = 0$.",
+    "choix": [
+      {
+        "titre": "Égalité de Parseval",
+        "info": "Pour $f$ continue par morceaux et $2\\pi$-périodique : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} |f|^2 = \\sum_{n \\in \\mathbb Z} |c_n(f)|^2$.",
+        "verdict": "bon",
+        "retour": "On obtient $\\int |f|^2 = 0$, et $|f|^2$ est continue et positive."
+      },
+      {
+        "titre": "Théorème de Fejér",
+        "info": "Si $f$ est continue et $2\\pi$-périodique, $\\sigma_n(f) = \\frac1{n+1}\\sum_{k=0}^n S_k(f)$ converge uniformément vers $f$.",
+        "verdict": "bon",
+        "retour": "Toutes les sommes partielles $S_k(f)$ sont nulles, donc tous les $\\sigma_n(f)$ aussi."
+      },
+      {
+        "titre": "Weierstrass trigonométrique et orthogonalité",
+        "info": "Toute fonction continue et $2\\pi$-périodique est limite uniforme sur $\\mathbb R$ de polynômes trigonométriques.",
+        "verdict": "bon",
+        "retour": "$\\int f P = 0$ pour tout polynôme trigonométrique $P$. En prenant $P_k \\to \\bar f$ uniformément, on passe à la limite : $\\int |f|^2 = 0$."
+      },
+      {
+        "titre": "Théorème de Dirichlet",
+        "info": "Si $f$ est $2\\pi$-périodique et $\\mathcal C^1$ par morceaux, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$ pour tout $x$.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement supposée continue, pas $\\mathcal C^1$ par morceaux : la série de Fourier pourrait ne pas converger vers $f$."
+      }
+    ],
+    "direction": "Le plus court : Parseval donne $\\int_{-\\pi}^{\\pi} |f|^2 = 0$. Comme $|f|^2$ est continue et positive, elle est nulle sur $[-\\pi, \\pi]$, donc $f = 0$ par périodicité."
+  },
+  {
+    "id": "fourier-piste-05", "ch": "fourier", "type": "piste",
+    "enonce": "On admet que la série de Fourier de $f : x \\mapsto |\\sin x|$ est $\\frac{2}{\\pi} - \\frac{4}{\\pi}\\sum_{k \\ge 1} \\frac{\\cos(2kx)}{4k^2 - 1}$. Calculer $\\displaystyle\\sum_{k=1}^{+\\infty} \\frac{(-1)^k}{4k^2 - 1}$.",
+    "choix": [
+      {
+        "titre": "Évaluer en $x = \\frac\\pi2$, après avoir justifié la convergence vers $f$",
+        "info": "Si $f$ est $2\\pi$-périodique, continue et $\\mathcal C^1$ par morceaux, sa série de Fourier converge (normalement) vers $f$ en tout point.",
+        "verdict": "bon",
+        "retour": "$|\\sin|$ est continue et $\\mathcal C^1$ par morceaux, et $\\cos(k\\pi) = (-1)^k$ fait apparaître la série demandée."
+      },
+      {
+        "titre": "Évaluer en $x = 0$",
+        "info": "En $x = 0$, tous les $\\cos(2kx)$ valent $1$.",
+        "verdict": "impasse",
+        "retour": "On obtient $\\sum \\frac{1}{4k^2 - 1} = \\frac12$ : la série sans les signes, pas celle demandée."
+      },
+      {
+        "titre": "Égalité de Parseval",
+        "info": "Pour $f$ continue par morceaux : $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} f^2 = \\frac{a_0^2}{4} + \\frac12\\sum_{n \\ge 1}(a_n^2 + b_n^2)$.",
+        "verdict": "impasse",
+        "retour": "Elle fait intervenir les carrés $\\frac{1}{(4k^2-1)^2}$, et aucun signe alterné."
+      },
+      {
+        "titre": "Éléments simples et série de Leibniz",
+        "info": "$\\frac{1}{4k^2-1} = \\frac12\\left(\\frac1{2k-1} - \\frac1{2k+1}\\right)$, et $\\sum_{k \\ge 0} \\frac{(-1)^k}{2k+1} = \\frac\\pi4$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, à condition de connaître la somme de la série de Leibniz et de bien découper deux séries convergentes."
+      }
+    ],
+    "direction": "En $x = \\frac\\pi2$ : $1 = \\frac2\\pi - \\frac4\\pi\\sum \\frac{(-1)^k}{4k^2-1}$, d'où $\\displaystyle\\sum_{k \\ge 1} \\frac{(-1)^k}{4k^2-1} = \\frac12 - \\frac\\pi4$."
+  },
+  {
+    "id": "fourier-piste-06", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ continue par morceaux sur un segment $[a, b]$. Montrer que $\\displaystyle\\int_a^b f(t)\\sin(\\lambda t)\\,\\mathrm dt \\to 0$ quand le réel $\\lambda$ tend vers $+\\infty$.",
+    "choix": [
+      {
+        "titre": "Approximation par des fonctions en escalier",
+        "info": "Toute fonction continue par morceaux sur $[a, b]$ est limite uniforme sur $[a, b]$ d'une suite de fonctions en escalier.",
+        "verdict": "bon",
+        "retour": "Pour l'indicatrice d'un intervalle $[c, d]$, l'intégrale vaut $\\frac{\\cos(\\lambda c) - \\cos(\\lambda d)}{\\lambda}$, qui tend vers $0$. On conclut par linéarité et un argument en $\\varepsilon$."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "Si $f$ est de classe $\\mathcal C^1$ sur $[a, b]$, $\\int_a^b f(t)\\sin(\\lambda t)\\,\\mathrm dt = \\left[-f(t)\\frac{\\cos(\\lambda t)}{\\lambda}\\right]_a^b + \\frac1\\lambda\\int_a^b f'(t)\\cos(\\lambda t)\\,\\mathrm dt$.",
+        "verdict": "possible",
+        "retour": "Le cas $f$ de classe $\\mathcal C^1$ est immédiat, mais pour $f$ continue par morceaux il faut encore un argument d'approximation."
+      },
+      {
+        "titre": "Inégalité de Bessel",
+        "info": "Pour $g$ continue par morceaux et $2\\pi$-périodique, $\\frac{a_0^2}{2} + \\sum_{n \\ge 1}\\left(a_n^2 + b_n^2\\right) \\le \\frac1\\pi\\int_{-\\pi}^{\\pi} g^2$.",
+        "verdict": "impasse",
+        "retour": "Elle ne concerne que des fréquences entières sur une période $2\\pi$ ; ici $\\lambda$ est réel et $[a, b]$ quelconque."
+      },
+      {
+        "titre": "Convergence dominée",
+        "info": "Si $g_\\lambda \\to g$ simplement et $|g_\\lambda| \\le \\varphi$ intégrable, alors $\\int g_\\lambda \\to \\int g$.",
+        "verdict": "impasse",
+        "retour": "$\\sin(\\lambda t)$ n'a pas de limite simple quand $\\lambda \\to +\\infty$ : la convergence vers $0$ vient des oscillations, pas d'une limite ponctuelle."
+      }
+    ],
+    "direction": "Soit $\\varepsilon > 0$ et $\\varphi$ en escalier avec $\\|f - \\varphi\\|_\\infty \\le \\varepsilon$. Alors $\\left|\\int_a^b (f - \\varphi)(t)\\sin(\\lambda t)\\,\\mathrm dt\\right| \\le (b-a)\\varepsilon$, et $\\int_a^b \\varphi(t)\\sin(\\lambda t)\\,\\mathrm dt = O\\!\\left(\\frac1\\lambda\\right)$ par calcul explicite."
+  },
+  {
+    "id": "fourier-piste-07", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ de classe $\\mathcal C^1$, $2\\pi$-périodique, telle que $\\int_0^{2\\pi} f = 0$. Montrer que $\\displaystyle\\int_0^{2\\pi} |f|^2 \\le \\int_0^{2\\pi} |f'|^2$ (inégalité de Wirtinger).",
+    "choix": [
+      {
+        "titre": "Parseval pour $f$ et pour $f'$",
+        "info": "Pour $g$ continue par morceaux et $2\\pi$-périodique, $\\frac1{2\\pi}\\int_0^{2\\pi} |g|^2 = \\sum_{n \\in \\mathbb Z} |c_n(g)|^2$. Et $c_n(f') = in\\,c_n(f)$ pour $f$ de classe $\\mathcal C^1$.",
+        "verdict": "bon",
+        "retour": "L'hypothèse donne $c_0(f) = 0$, et il suffit de comparer $|c_n|^2$ et $n^2|c_n|^2$ pour $n \\ne 0$."
+      },
+      {
+        "titre": "Inégalité de Bessel pour $f$ et pour $f'$",
+        "info": "Pour $g$ continue par morceaux et $2\\pi$-périodique, $\\sum_{n \\in \\mathbb Z} |c_n(g)|^2 \\le \\frac1{2\\pi}\\int_0^{2\\pi} |g|^2$.",
+        "verdict": "impasse",
+        "retour": "Pour $f'$, elle va dans le bon sens. Mais pour $f$, il faut majorer $\\int |f|^2$ par la somme des $|c_n|^2$ : Bessel donne l'inégalité inverse."
+      },
+      {
+        "titre": "Cauchy-Schwarz sur $f(x) - f(y) = \\int_y^x f'$",
+        "info": "Pour $y \\le x$ : $\\left|\\int_y^x f'\\right|^2 \\le (x - y)\\int_y^x |f'|^2$.",
+        "verdict": "impasse",
+        "retour": "Avec $f(x) = \\frac1{2\\pi}\\int_0^{2\\pi}(f(x) - f(y))\\,\\mathrm dy$, on obtient $\\int_0^{2\\pi} |f|^2 \\le 4\\pi^2\\int_0^{2\\pi} |f'|^2$ : la constante $4\\pi^2$ au lieu de $1$, que cette méthode n'atteint pas."
+      },
+      {
+        "titre": "Théorème de Dirichlet",
+        "info": "Si $f$ est $\\mathcal C^1$ par morceaux, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$ pour tout $x$.",
+        "verdict": "impasse",
+        "retour": "Une convergence point par point ne permet pas de calculer des intégrales de carrés."
+      }
+    ],
+    "direction": "Comme $c_0(f) = 0$, Parseval donne $\\frac1{2\\pi}\\int |f|^2 = \\sum_{n \\ne 0} |c_n(f)|^2 \\le \\sum_{n \\ne 0} n^2|c_n(f)|^2 = \\frac1{2\\pi}\\int |f'|^2$. Égalité si et seulement si $c_n(f) = 0$ pour $|n| \\ge 2$, c'est-à-dire $f(x) = a\\cos x + b\\sin x$."
+  },
+  {
+    "id": "fourier-piste-08", "ch": "fourier", "type": "piste",
+    "enonce": "Calculer, pour $x \\in\\, ]0, 2\\pi[$, la somme $\\displaystyle\\sum_{n=1}^{+\\infty} \\frac{\\sin(nx)}{n}$.",
+    "choix": [
+      {
+        "titre": "Reconnaître une série de Fourier et appliquer Dirichlet",
+        "info": "Si $g$ est $2\\pi$-périodique et $\\mathcal C^1$ par morceaux, $S_n(g)(x) \\to \\frac12\\left(g(x^+) + g(x^-)\\right)$ pour tout $x$.",
+        "verdict": "bon",
+        "retour": "La fonction $g$ égale à $\\frac{\\pi - x}{2}$ sur $]0, 2\\pi[$ a pour coefficients $a_n = 0$ et $b_n = \\frac1n$, et elle est continue sur $]0, 2\\pi[$."
+      },
+      {
+        "titre": "Partie imaginaire de $-\\ln(1 - e^{ix})$",
+        "info": "Pour $|z| < 1$, $\\sum_{n \\ge 1} \\frac{z^n}{n} = -\\ln(1 - z)$. Passer à $|z| = 1$ demande le théorème radial d'Abel (hors programme, à redémontrer).",
+        "verdict": "possible",
+        "retour": "Le calcul formel donne vite la réponse, mais la justification sur le cercle unité est délicate."
+      },
+      {
+        "titre": "Dériver terme à terme",
+        "info": "Si $\\sum u_n$ converge simplement et si $\\sum u_n'$ converge uniformément, alors on peut dériver terme à terme.",
+        "verdict": "impasse",
+        "retour": "La série dérivée $\\sum \\cos(nx)$ diverge : son terme général ne tend pas vers $0$."
+      },
+      {
+        "titre": "Convergence normale de la série de Fourier",
+        "info": "Si $g$ est continue et $\\mathcal C^1$ par morceaux, sa série de Fourier converge normalement vers $g$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients $\\frac1n$ ne sont pas sommables, et la fonction cherchée est discontinue en $0$."
+      }
+    ],
+    "direction": "Pour $g(x) = \\frac{\\pi - x}{2}$ sur $]0, 2\\pi[$ : $b_n(g) = \\frac1\\pi\\int_0^{2\\pi} \\frac{\\pi - x}{2}\\sin(nx)\\,\\mathrm dx = \\frac1n$, et $a_n(g) = 0$. Dirichlet donne $\\sum_{n \\ge 1} \\frac{\\sin(nx)}{n} = \\frac{\\pi - x}{2}$ sur $]0, 2\\pi[$, et $0$ en $x = 0$."
+  },
+  {
+    "id": "fourier-piste-09", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ la fonction $2\\pi$-périodique impaire égale à $1$ sur $]0, \\pi[$, avec $f(0) = f(\\pi) = 0$. Montrer que sa série de Fourier ne converge pas uniformément sur $\\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Une limite uniforme de fonctions continues est continue",
+        "info": "Si une suite de fonctions continues converge uniformément sur $\\mathbb R$, sa limite est continue.",
+        "verdict": "bon",
+        "retour": "Par Dirichlet, la limite simple des $S_n(f)$ est $f$ elle-même, qui est discontinue en $0$."
+      },
+      {
+        "titre": "Les coefficients ne sont pas sommables",
+        "info": "Une série de fonctions $\\sum u_n$ converge normalement sur $\\mathbb R$ si $\\sum \\|u_n\\|_\\infty$ converge.",
+        "verdict": "impasse",
+        "retour": "Ici $\\sum |b_n|$ diverge, donc pas de convergence normale. Mais une série peut converger uniformément sans converger normalement : on ne peut rien conclure."
+      },
+      {
+        "titre": "Phénomène de Gibbs",
+        "info": "On étudie $S_n(f)$ au voisinage d'une discontinuité, par exemple en $x = \\frac{\\pi}{n}$, à l'aide d'une somme de Riemann.",
+        "verdict": "possible",
+        "retour": "On montre que $S_{n}(f)\\!\\left(\\frac\\pi n\\right)$ tend vers une limite strictement supérieure à $1$ : c'est juste, mais bien plus long."
+      },
+      {
+        "titre": "Égalité de Parseval",
+        "info": "Pour $f$ continue par morceaux, $\\|f - S_n(f)\\|_2 \\to 0$, avec $\\|g\\|_2^2 = \\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} |g|^2$.",
+        "verdict": "impasse",
+        "retour": "Elle établit une convergence en moyenne quadratique : rien sur la convergence uniforme, ni dans un sens ni dans l'autre."
+      }
+    ],
+    "direction": "$f$ est $\\mathcal C^1$ par morceaux et égale en tout point à la demi-somme de ses limites : par Dirichlet, $S_n(f) \\to f$ simplement. Si la convergence était uniforme, $f$ serait continue comme limite uniforme des polynômes trigonométriques $S_n(f)$ : contradiction en $0$."
+  },
+  {
+    "id": "fourier-piste-10", "ch": "fourier", "type": "piste",
+    "enonce": "Déterminer $\\displaystyle\\min_{(a, b) \\in \\mathbb R^2} \\int_{-\\pi}^{\\pi} \\left(x - a\\cos x - b\\sin x\\right)^2 \\mathrm dx$.",
+    "choix": [
+      {
+        "titre": "Projection orthogonale sur $\\mathrm{Vect}(\\cos, \\sin)$",
+        "info": "Dans un espace préhilbertien, la distance d'un vecteur à un sous-espace de dimension finie est atteinte en son projeté orthogonal, que l'on calcule dans une base orthogonale.",
+        "verdict": "bon",
+        "retour": "$\\cos$ et $\\sin$ sont orthogonales pour $\\int_{-\\pi}^{\\pi} fg$, et les coordonnées du projeté de $x \\mapsto x$ sont ses coefficients $a_1 = 0$ et $b_1 = 2$."
+      },
+      {
+        "titre": "Fonction de deux variables : point critique",
+        "info": "On développe l'intégrale en un polynôme de degré $2$ en $(a, b)$, puis on cherche le point où les dérivées partielles s'annulent.",
+        "verdict": "bon",
+        "retour": "Le polynôme obtenu est $\\pi a^2 + \\pi b^2 - 4\\pi b + \\frac{2\\pi^3}{3}$ : le minimum se lit directement."
+      },
+      {
+        "titre": "Inégalité de Bessel",
+        "info": "Pour $f$ continue par morceaux, $\\frac{a_0^2}{2} + \\sum_{n \\ge 1}(a_n^2 + b_n^2) \\le \\frac1\\pi\\int_{-\\pi}^{\\pi} f^2$.",
+        "verdict": "impasse",
+        "retour": "Elle donne une inégalité entre la norme de $f$ et ses coefficients, mais n'identifie pas le couple qui réalise le minimum."
+      },
+      {
+        "titre": "Théorème de Weierstrass trigonométrique",
+        "info": "Toute fonction continue et $2\\pi$-périodique est limite uniforme de polynômes trigonométriques.",
+        "verdict": "impasse",
+        "retour": "C'est un résultat de densité quand le degré tend vers l'infini ; ici le sous-espace est fixé, de dimension $2$."
+      }
+    ],
+    "direction": "Le minimum est atteint en $a = a_1 = 0$, $b = b_1 = 2$. Par Pythagore, il vaut $\\int_{-\\pi}^{\\pi} x^2\\,\\mathrm dx - \\pi b_1^2 = \\frac{2\\pi^3}{3} - 4\\pi$."
+  },
+  {
+    "id": "fourier-piste-11", "ch": "fourier", "type": "piste",
+    "enonce": "Soit $f$ continue et $2\\pi$-périodique, et $x_0 \\in \\mathbb R$. On suppose que la suite $(S_n(f)(x_0))$ converge vers un réel $s$. Montrer que $s = f(x_0)$.",
+    "choix": [
+      {
+        "titre": "Théorème de Fejér et lemme de Cesàro",
+        "info": "Fejér : pour $f$ continue et $2\\pi$-périodique, $\\sigma_n(f) = \\frac{1}{n+1}\\sum_{k=0}^n S_k(f)$ converge uniformément vers $f$. Cesàro : si $u_n \\to s$, alors $\\frac1{n+1}\\sum_{k=0}^n u_k \\to s$.",
+        "verdict": "bon",
+        "retour": "La suite $\\sigma_n(f)(x_0)$ tend à la fois vers $s$ (Cesàro) et vers $f(x_0)$ (Fejér)."
+      },
+      {
+        "titre": "Théorème de Dirichlet",
+        "info": "Si $f$ est $2\\pi$-périodique et $\\mathcal C^1$ par morceaux, $S_n(f)(x) \\to \\frac12\\left(f(x^+) + f(x^-)\\right)$ pour tout $x$.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement continue : l'hypothèse $\\mathcal C^1$ par morceaux manque."
+      },
+      {
+        "titre": "Convergence en moyenne quadratique",
+        "info": "Pour $f$ continue par morceaux, $\\int_{-\\pi}^{\\pi} |f - S_n(f)|^2 \\to 0$.",
+        "verdict": "impasse",
+        "retour": "Une convergence en moyenne quadratique ne contrôle pas la valeur en un point donné."
+      },
+      {
+        "titre": "Approcher $f$ par un polynôme trigonométrique",
+        "info": "Weierstrass : il existe un polynôme trigonométrique $P$ avec $\\|f - P\\|_\\infty \\le \\varepsilon$, et $S_n(P) = P$ dès que $n \\ge \\deg P$.",
+        "verdict": "impasse",
+        "retour": "Il faudrait majorer $|S_n(f - P)(x_0)|$ par $\\|f - P\\|_\\infty$ uniformément en $n$. Cauchy-Schwarz et Bessel ne donnent que $\\sqrt{2n+1}\\,\\|f - P\\|_\\infty$, qui explose, et cette piste n'utilise pas l'hypothèse de convergence de $S_n(f)(x_0)$."
+      }
+    ],
+    "direction": "Par le lemme de Cesàro, $\\sigma_n(f)(x_0) \\to s$. Par Fejér, $\\sigma_n(f)(x_0) \\to f(x_0)$. Par unicité de la limite, $s = f(x_0)$."
+  }
+]

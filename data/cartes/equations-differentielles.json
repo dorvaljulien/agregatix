@@ -1,0 +1,626 @@
+[
+  {
+    "id": "equations-differentielles-vf-01", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $A : I \\to M_n(\\mathbb C)$ continue sur un intervalle $I$. L'ensemble des solutions sur $I$ de $X' = A(t)X$ est un $\\mathbb C$-espace vectoriel de dimension $n$.",
+    "reponse": true,
+    "explication": "Pour $t_0 \\in I$ fixé, l'application $X \\mapsto X(t_0)$ est linéaire, et le théorème de Cauchy linéaire dit exactement qu'elle est bijective de l'espace des solutions sur $\\mathbb C^n$ : c'est un isomorphisme."
+  },
+  {
+    "id": "equations-differentielles-vf-02", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soient $a, b$ continues sur un intervalle $I$ et $x$ une solution sur $I$, non identiquement nulle, de $x'' + a(t)x' + b(t)x = 0$. Si $x(t_0) = 0$ pour un $t_0 \\in I$, alors $x'(t_0) \\neq 0$.",
+    "reponse": true,
+    "explication": "Si l'on avait $x(t_0) = x'(t_0) = 0$, $x$ et la fonction nulle seraient deux solutions du même problème de Cauchy en $t_0$ : par unicité, $x$ serait nulle. Les zéros d'une solution non nulle sont donc simples."
+  },
+  {
+    "id": "equations-differentielles-vf-03", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soient $a, b$ continues sur un intervalle $I$ et $y_1, y_2$ deux solutions sur $I$ de $x'' + a(t)x' + b(t)x = 0$. Si leur wronskien $W = y_1 y_2' - y_1' y_2$ s'annule en un point de $I$, il est nul sur $I$ tout entier.",
+    "reponse": true,
+    "explication": "Un calcul direct donne $W' = -a(t)W$, donc $W(t) = W(t_0)\\exp\\!\\left(-\\int_{t_0}^t a\\right)$ : $W$ est identiquement nul ou ne s'annule jamais. Autre argument : $W(t_0) = 0$ donne une combinaison non triviale de $y_1, y_2$ nulle en $t_0$ ainsi que sa dérivée, donc nulle partout."
+  },
+  {
+    "id": "equations-differentielles-vf-04", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soient $f, g \\in \\mathcal C^1(\\mathbb R, \\mathbb R)$ telles que $f g' - f' g$ soit identiquement nulle sur $\\mathbb R$. Alors la famille $(f, g)$ est liée.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(t) = t^3$ et $g(t) = |t|^3$, de classe $\\mathcal C^1$. Pour $t > 0$ comme pour $t < 0$, $fg' - f'g = 0$, et aussi en $0$. Pourtant $\\lambda t^3 + \\mu|t|^3 = 0$ en $t = \\pm 1$ force $\\lambda = \\mu = 0$. L'énoncé devient vrai si $f$ et $g$ sont solutions d'une même équation $x'' + a(t)x' + b(t)x = 0$ à coefficients continus."
+  },
+  {
+    "id": "equations-differentielles-vf-05", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Le problème de Cauchy $x' = 3|x|^{2/3}$, $x(0) = 0$ admet une unique solution sur $\\mathbb R$.",
+    "reponse": false,
+    "explication": "La fonction nulle et $t \\mapsto t^3$ sont deux solutions : $(t^3)' = 3t^2 = 3|t^3|^{2/3}$. Cauchy-Lipschitz ne s'applique pas, car $x \\mapsto 3|x|^{2/3}$ n'est pas de classe $\\mathcal C^1$ en $0$ (sa dérivée $2x^{-1/3}$ y explose)."
+  },
+  {
+    "id": "equations-differentielles-vf-06", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$. Toute solution maximale de $x' = f(t, x)$ est définie sur $\\mathbb R$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $x' = x^2$, $x(0) = 1$. La solution maximale est $t \\mapsto \\frac{1}{1-t}$ sur $]-\\infty, 1[$ : elle explose en temps fini. L'énoncé est vrai pour une équation linéaire $x' = a(t)x + b(t)$ à coefficients continus sur $\\mathbb R$."
+  },
+  {
+    "id": "equations-differentielles-vf-07", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$ et $x_1, x_2$ deux solutions maximales de $x' = f(t, x)$, d'intervalles $J_1, J_2$. S'il existe $t_0 \\in J_1 \\cap J_2$ tel que $x_1(t_0) < x_2(t_0)$, alors $x_1(t) < x_2(t)$ pour tout $t \\in J_1 \\cap J_2$.",
+    "reponse": true,
+    "explication": "Si $x_1 - x_2$ changeait de signe sur l'intervalle $J_1 \\cap J_2$, elle s'annulerait en un $t_1$ (valeurs intermédiaires). Les deux solutions maximales vérifieraient le même problème de Cauchy en $t_1$, donc seraient égales, ce qui contredit $x_1(t_0) < x_2(t_0)$."
+  },
+  {
+    "id": "equations-differentielles-vf-08", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^3 \\to \\mathbb R$ de classe $\\mathcal C^1$ et $x_1, x_2$ deux solutions sur $\\mathbb R$ de $x'' = f(t, x, x')$. S'il existe $t_0$ tel que $x_1(t_0) = x_2(t_0)$, alors $x_1 = x_2$.",
+    "reponse": false,
+    "explication": "Pour une équation d'ordre 2, la condition de Cauchy porte sur $x(t_0)$ **et** $x'(t_0)$. Contre-exemple avec $f(t, x, y) = -x$ : $\\sin$ et la fonction nulle sont solutions de $x'' = -x$ et valent $0$ en $t_0 = 0$. Les graphes de solutions distinctes peuvent se couper, contrairement à l'ordre 1."
+  },
+  {
+    "id": "equations-differentielles-vf-09", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Pour toutes matrices $A, B \\in M_n(\\mathbb C)$, on a $\\exp(A + B) = \\exp(A)\\exp(B)$.",
+    "reponse": false,
+    "explication": "Il faut que $A$ et $B$ commutent. Contre-exemple : $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$, $B = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$. On a $e^Ae^B = \\begin{pmatrix} e & e \\\\ 0 & 1 \\end{pmatrix}$, alors que $(A+B)^2 = A + B$ donne $e^{A+B} = I_2 + (e-1)(A+B) = \\begin{pmatrix} e & e-1 \\\\ 0 & 1 \\end{pmatrix}$."
+  },
+  {
+    "id": "equations-differentielles-vf-10", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $A : \\mathbb R \\to M_n(\\mathbb R)$ continue. La solution de $X' = A(t)X$, $X(0) = X_0$, est $t \\mapsto \\exp\\!\\left(\\int_0^t A(s)\\,\\mathrm ds\\right) X_0$.",
+    "reponse": false,
+    "explication": "Vrai si $n = 1$, ou si les $A(s)$ commutent deux à deux ; faux en général. Avec $A(t) = \\begin{pmatrix} 0 & t \\\\ 0 & 1 \\end{pmatrix}$ et $X_0 = (0, 1)^{\\mathsf T}$, la vraie solution a pour première composante $(t-1)e^t + 1$, la formule donne $\\frac t2(e^t - 1)$ : en $t = 1$, on trouve $1$ d'un côté et $\\frac{e-1}{2}$ de l'autre."
+  },
+  {
+    "id": "equations-differentielles-vf-11", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $A \\in M_n(\\mathbb C)$ dont toutes les valeurs propres ont une partie réelle strictement négative. Alors toute solution de $X' = AX$ tend vers $0$ en $+\\infty$.",
+    "reponse": true,
+    "explication": "En trigonalisant $A$ (ou par la décomposition en sous-espaces caractéristiques), chaque coordonnée d'une solution est combinaison linéaire de fonctions $t^k e^{\\lambda t}$ avec $\\lambda \\in \\mathrm{Sp}(A)$. Comme $\\mathrm{Re}\\,\\lambda < 0$, chacune tend vers $0$."
+  },
+  {
+    "id": "equations-differentielles-vf-12", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $A \\in M_n(\\mathbb C)$ dont toutes les valeurs propres ont une partie réelle négative ou nulle. Alors toute solution de $X' = AX$ est bornée sur $[0, +\\infty[$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$, de seule valeur propre $0$, et la solution $X(t) = (t, 1)^{\\mathsf T}$. Les termes $t^k e^{\\lambda t}$ avec $\\mathrm{Re}\\,\\lambda = 0$ et $k \\ge 1$ ne sont pas bornés. C'est vrai si de plus $A$ est diagonalisable."
+  },
+  {
+    "id": "equations-differentielles-vf-13", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "L'ensemble des solutions sur $\\mathbb R$ de l'équation $t\\,x' = x$ est une droite vectorielle.",
+    "reponse": true,
+    "explication": "Sur $]0, +\\infty[$ les solutions sont $t \\mapsto Ct$, sur $]-\\infty, 0[$ ce sont $t \\mapsto Dt$. Une solution sur $\\mathbb R$ est dérivable en $0$ : la dérivée à droite $C$ doit égaler la dérivée à gauche $D$. Réciproquement $t \\mapsto Ct$ convient. C'est la droite engendrée par $t \\mapsto t$."
+  },
+  {
+    "id": "equations-differentielles-vf-14", "ch": "equations-differentielles", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ de classe $\\mathcal C^1$ et $x$ une solution maximale non constante de $x' = f(x)$. Alors $x$ est strictement monotone.",
+    "reponse": true,
+    "explication": "Si $x'(t_0) = 0$, alors $f(x(t_0)) = 0$ et la constante $x(t_0)$ est solution du même problème de Cauchy : par unicité, $x$ serait constante. Donc $x'$ ne s'annule pas, et, étant continue, garde un signe constant."
+  },
+  {
+    "id": "equations-differentielles-qcm-01", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Théorème de Cauchy linéaire.\nSoient $A : I \\to M_n(\\mathbb C)$ et $B : I \\to \\mathbb C^n$ **[ ? ]**. Pour tout $(t_0, X_0) \\in I \\times \\mathbb C^n$, le problème $X' = A(t)X + B(t)$, $X(t_0) = X_0$ admet une unique solution définie sur $I$ tout entier.",
+    "choix": [
+      "continues sur $I$",
+      "continues par morceaux sur $I$",
+      "bornées sur $I$",
+      "continues sur $I$ privé d'un point"
+    ],
+    "bonne": 0,
+    "explication": "La continuité sur tout $I$ est indispensable. Avec $n = 1$, $I = ]0, 2[$, $A = 0$ et $B$ valant $0$ sur $]0, 1]$ et $1$ sur $]1, 2[$ (bornée, continue par morceaux, continue sauf en $1$) : une solution serait affine de pente $0$ à gauche de $1$ et de pente $1$ à droite, donc non dérivable en $1$."
+  },
+  {
+    "id": "equations-differentielles-qcm-02", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Soient $a, b, c$ continues sur un intervalle $I$, à valeurs complexes, avec $c$ non identiquement nulle. L'ensemble des solutions sur $I$ de $x'' + a(t)x' + b(t)x = c(t)$ est :",
+    "choix": [
+      "un sous-espace affine de dimension 2 de $\\mathcal C^2(I, \\mathbb C)$",
+      "un sous-espace vectoriel de dimension 2 de $\\mathcal C^2(I, \\mathbb C)$",
+      "un sous-espace affine de dimension 1 de $\\mathcal C^2(I, \\mathbb C)$",
+      "vide ou non selon $c$"
+    ],
+    "bonne": 0,
+    "explication": "Le théorème de Cauchy, appliqué au système d'ordre 1 associé, assure qu'il existe une solution particulière. L'ensemble est cette solution plus l'espace des solutions homogènes, de dimension 2. Ce n'est pas un sous-espace vectoriel : la fonction nulle n'est pas solution puisque $c \\neq 0$."
+  },
+  {
+    "id": "equations-differentielles-qcm-03", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Soit $\\lambda \\in \\mathbb C$ et $A = \\begin{pmatrix} \\lambda & 1 \\\\ 0 & \\lambda \\end{pmatrix}$. Pour tout réel $t$, $\\exp(tA)$ vaut :",
+    "choix": [
+      "$e^{\\lambda t}\\begin{pmatrix} 1 & t \\\\ 0 & 1 \\end{pmatrix}$",
+      "$\\begin{pmatrix} e^{\\lambda t} & e^t \\\\ 0 & e^{\\lambda t} \\end{pmatrix}$",
+      "$\\begin{pmatrix} e^{\\lambda t} & t \\\\ 0 & e^{\\lambda t} \\end{pmatrix}$",
+      "$\\begin{pmatrix} e^{\\lambda t} & \\lambda t e^{\\lambda t} \\\\ 0 & e^{\\lambda t} \\end{pmatrix}$"
+    ],
+    "bonne": 0,
+    "explication": "On écrit $tA = \\lambda t I_2 + tN$ avec $N = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$. Les deux termes commutent et $N^2 = 0$, donc $e^{tA} = e^{\\lambda t}(I_2 + tN)$. On ne prend pas l'exponentielle coefficient par coefficient."
+  },
+  {
+    "id": "equations-differentielles-qcm-04", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Théorème de Cauchy-Lipschitz.\nSoit $U$ un ouvert de $\\mathbb R^2$ et $f : U \\to \\mathbb R$ **[ ? ]**. Pour tout $(t_0, x_0) \\in U$, le problème $x' = f(t, x)$, $x(t_0) = x_0$ admet une unique solution maximale.",
+    "choix": [
+      "de classe $\\mathcal C^1$ sur $U$",
+      "continue sur $U$",
+      "continue sur $U$ et de classe $\\mathcal C^\\infty$ par rapport à $t$",
+      "continue sur $U$ et de classe $\\mathcal C^1$ sur l'ouvert où elle ne s'annule pas"
+    ],
+    "bonne": 0,
+    "explication": "Les trois leurres sont vérifiés par $f(t, x) = 3|x|^{2/3}$ sur $U = \\mathbb R^2$, qui ne dépend pas de $t$ et n'est pas $\\mathcal C^1$ seulement sur la droite $x = 0$, où elle s'annule. Or le problème $x(0) = 0$ admet deux solutions maximales distinctes : la fonction nulle et $t \\mapsto t^3$."
+  },
+  {
+    "id": "equations-differentielles-qcm-05", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Soient $a, b$ continues sur $I$, $y_1, y_2$ deux solutions sur $I$ de $x'' + a(t)x' + b(t)x = 0$, et $W = y_1 y_2' - y_1' y_2$ leur wronskien. Alors $W$ vérifie :",
+    "choix": [
+      "$W' = -a(t)\\,W$",
+      "$W' = a(t)\\,W$",
+      "$W' = -b(t)\\,W$",
+      "$W' = 0$"
+    ],
+    "bonne": 0,
+    "explication": "$W' = y_1 y_2'' - y_1'' y_2$ (les termes $y_1'y_2'$ se compensent). En remplaçant $y_i'' = -a y_i' - b y_i$, les termes en $b$ s'éliminent et il reste $-a(y_1 y_2' - y_1' y_2)$. $W$ est constant seulement si $a = 0$."
+  },
+  {
+    "id": "equations-differentielles-qcm-06", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Quel est l'intervalle de définition de la solution maximale du problème $x' = 1 + x^2$, $x(0) = 0$ ?",
+    "choix": [
+      "$]-\\frac\\pi2, \\frac\\pi2[$",
+      "$\\mathbb R$",
+      "$\\mathbb R$ privé des réels $\\frac\\pi2 + k\\pi$, $k \\in \\mathbb Z$",
+      "$[0, \\frac\\pi2[$"
+    ],
+    "bonne": 0,
+    "explication": "$\\tan$ est solution sur $]-\\frac\\pi2, \\frac\\pi2[$ et tend vers $\\pm\\infty$ aux bornes, donc ne se prolonge pas : c'est la solution maximale. L'intervalle de définition d'une solution est un **intervalle** contenant $0$, ouvert : il ne peut pas être une réunion d'intervalles."
+  },
+  {
+    "id": "equations-differentielles-qcm-07", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Soient $a, b$ continues sur $I$ et $y_1$ une solution de $x'' + a(t)x' + b(t)x = 0$ ne s'annulant pas sur $I$. On cherche les solutions sous la forme $x = y_1 z$, avec $z$ de classe $\\mathcal C^2$. Alors $x$ est solution si et seulement si :",
+    "choix": [
+      "$y_1 z'' + (2y_1' + a\\,y_1)\\,z' = 0$",
+      "$y_1 z'' + (y_1' + a\\,y_1)\\,z' = 0$",
+      "$y_1 z'' + (2y_1' + a\\,y_1)\\,z' + b\\,y_1 z = 0$",
+      "$z'' + a\\,z' + b\\,z = 0$"
+    ],
+    "bonne": 0,
+    "explication": "$x'' + ax' + bx = z\\,(y_1'' + a y_1' + b y_1) + y_1 z'' + (2y_1' + a y_1) z'$, et le premier terme est nul. C'est une équation linéaire d'ordre 1 en $z'$ : on abaisse l'ordre, puis on intègre."
+  },
+  {
+    "id": "equations-differentielles-qcm-08", "ch": "equations-differentielles", "type": "qcm",
+    "enonce": "Soit $g$ continue sur $\\mathbb R$. Pour ramener l'équation homogène $x' = g\\!\\left(\\frac xt\\right)$, sur $]0, +\\infty[$, à une équation à variables séparables, on pose :",
+    "choix": [
+      "$u(t) = \\frac{x(t)}{t}$",
+      "$u(t) = t\\,x(t)$",
+      "$u(t) = x'(t)$",
+      "$u(t) = x(t) - t$"
+    ],
+    "bonne": 0,
+    "explication": "Avec $x = tu$, on a $x' = u + tu'$, d'où $t\\,u' = g(u) - u$ : les variables se séparent. Ce changement traduit l'invariance de l'équation par les homothéties $(t, x) \\mapsto (\\lambda t, \\lambda x)$."
+  },
+  {
+    "id": "equations-differentielles-err-01", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "On veut déterminer les solutions sur $\\mathbb R$ de l'équation $t\\,x' - 2x = 0$. Voici une copie.",
+    "lignes": [
+      "Sur $]0, +\\infty[$, l'équation équivaut à $x' = \\frac2t x$ : les solutions sont les $t \\mapsto Ct^2$, $C \\in \\mathbb R$.",
+      "De même, sur $]-\\infty, 0[$, les solutions sont les $t \\mapsto Dt^2$, $D \\in \\mathbb R$.",
+      "Une solution sur $\\mathbb R$ est donc, sur chacun de ces deux intervalles, de la forme ci-dessus.",
+      "Pour qu'elle soit dérivable en $0$, il faut $C = D$ : les solutions sur $\\mathbb R$ sont les $t \\mapsto Ct^2$."
+    ],
+    "fausse": 3,
+    "explication": "La fonction égale à $Ct^2$ pour $t \\ge 0$ et à $Dt^2$ pour $t < 0$ est dérivable en $0$ quels que soient $C$ et $D$ : ses deux demi-dérivées sont nulles, et l'équation est vérifiée en $0$. L'espace des solutions sur $\\mathbb R$ est de dimension 2 (il contient $t \\mapsto t|t|$)."
+  },
+  {
+    "id": "equations-differentielles-err-02", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "Soient $y_1, y_2$ des fonctions réelles de classe $\\mathcal C^1$ sur un intervalle $I$, et $W = y_1 y_2' - y_1' y_2$. Une copie veut montrer : si $(y_1, y_2)$ est libre, alors $W$ ne s'annule pas sur $I$.",
+    "lignes": [
+      "Par l'absurde, supposons que $W(t_0) = 0$ pour un $t_0 \\in I$.",
+      "Alors les vecteurs $(y_1(t_0), y_1'(t_0))$ et $(y_2(t_0), y_2'(t_0))$ de $\\mathbb R^2$ sont liés.",
+      "Il existe donc $(\\lambda, \\mu) \\neq (0, 0)$ tel que $z = \\lambda y_1 + \\mu y_2$ vérifie $z(t_0) = z'(t_0) = 0$.",
+      "Donc $z$ est la fonction nulle, ce qui contredit la liberté de $(y_1, y_2)$."
+    ],
+    "fausse": 3,
+    "explication": "Cette étape invoque l'unicité de Cauchy alors que $y_1, y_2$ ne sont solutions d'aucune équation. Contre-exemple : $y_1 = t^3$, $y_2 = |t|^3$ forment une famille libre de wronskien identiquement nul. L'argument est correct si $y_1, y_2$ sont solutions d'une même équation $x'' + a(t)x' + b(t)x = 0$ : alors $z$ aussi."
+  },
+  {
+    "id": "equations-differentielles-err-03", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "On veut calculer $\\exp(tA)$ pour $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}$. Voici une copie.",
+    "lignes": [
+      "On écrit $A = D + N$ avec $D = \\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$ et $N = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$.",
+      "Comme $N^2 = 0$, on a $\\exp(tN) = I_2 + tN$.",
+      "On a $\\exp(tD) = \\begin{pmatrix} e^t & 0 \\\\ 0 & e^{2t} \\end{pmatrix}$.",
+      "Donc $\\exp(tA) = \\exp(tD)\\exp(tN) = \\begin{pmatrix} e^t & te^t \\\\ 0 & e^{2t} \\end{pmatrix}$."
+    ],
+    "fausse": 3,
+    "explication": "$D$ et $N$ ne commutent pas ($DN = N$, $ND = 2N$) : on ne peut pas séparer l'exponentielle. Ce n'est pas la décomposition de Dunford : $A$ a deux valeurs propres distinctes, elle est diagonalisable, et l'on trouve $\\exp(tA) = \\begin{pmatrix} e^t & e^{2t} - e^t \\\\ 0 & e^{2t} \\end{pmatrix}$."
+  },
+  {
+    "id": "equations-differentielles-err-04", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "On veut montrer que le problème $x'' + \\pi^2 x = 0$, $x(0) = 0$, $x(1) = 0$ admet une unique solution réelle sur $\\mathbb R$. Voici une copie.",
+    "lignes": [
+      "L'équation est linéaire d'ordre 2, à coefficients constants.",
+      "Ses solutions réelles sont les $t \\mapsto \\alpha\\cos(\\pi t) + \\beta\\sin(\\pi t)$, $(\\alpha, \\beta) \\in \\mathbb R^2$.",
+      "La fonction nulle vérifie l'équation et les deux conditions.",
+      "D'après le théorème de Cauchy linéaire, deux conditions déterminent une unique solution : la fonction nulle est la seule solution."
+    ],
+    "fausse": 3,
+    "explication": "Le théorème de Cauchy porte sur $x(t_0)$ et $x'(t_0)$ **au même point**. Ici les conditions sont aux deux bords : $x(0) = 0$ impose $\\alpha = 0$, puis $x(1) = \\beta\\sin\\pi = 0$ n'impose rien. Toutes les fonctions $t \\mapsto \\beta\\sin(\\pi t)$ conviennent."
+  },
+  {
+    "id": "equations-differentielles-err-05", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "On cherche la solution maximale $x$, d'intervalle $J$, du problème $x' = x^2$, $x(0) = 1$. Voici une copie.",
+    "lignes": [
+      "La fonction nulle est solution de $x' = x^2$. Comme $x \\mapsto x^2$ est $\\mathcal C^1$ et $x(0) \\neq 0$, l'unicité de Cauchy-Lipschitz montre que $x$ ne s'annule pas sur $J$.",
+      "On a donc $\\left(-\\frac1x\\right)' = \\frac{x'}{x^2} = 1$ sur $J$.",
+      "Comme $J$ est un intervalle contenant $0$, $-\\frac{1}{x(t)} = t - 1$, soit $x(t) = \\frac{1}{1-t}$ pour tout $t \\in J$.",
+      "La solution maximale est donc $t \\mapsto \\frac{1}{1-t}$, définie sur $\\mathbb R \\setminus \\{1\\}$."
+    ],
+    "fausse": 3,
+    "explication": "Une solution est définie sur un **intervalle**. La formule vaut sur $J$, qui contient $0$ et pas $1$, donc $J \\subset ]-\\infty, 1[$ ; et comme $\\frac{1}{1-t}$ est solution sur $]-\\infty, 1[$, $J = ]-\\infty, 1[$. La branche sur $]1, +\\infty[$ est une autre solution, d'un autre problème de Cauchy."
+  },
+  {
+    "id": "equations-differentielles-err-06", "ch": "equations-differentielles", "type": "erreur",
+    "enonce": "Soit $x$ la solution maximale de $x' = x(1 - x)$, $x(0) = \\frac12$. On admet qu'elle est définie sur $\\mathbb R$ et on cherche sa limite en $+\\infty$. Voici une copie.",
+    "lignes": [
+      "Les constantes $0$ et $1$ sont solutions, et $x \\mapsto x(1-x)$ est $\\mathcal C^1$ : par unicité, $0 < x(t) < 1$ pour tout réel $t$.",
+      "Donc $x'(t) = x(t)(1 - x(t)) > 0$ : $x$ est strictement croissante.",
+      "Croissante et majorée par $1$, $x$ admet en $+\\infty$ une limite $\\ell \\in ]\\frac12, 1]$.",
+      "Une fonction dérivable qui a une limite finie en $+\\infty$ a une dérivée qui tend vers $0$, donc $\\ell(1-\\ell) = 0$ et $\\ell = 1$."
+    ],
+    "fausse": 3,
+    "explication": "Le principe invoqué est faux : $t \\mapsto \\frac{\\sin(t^2)}{t}$ tend vers $0$ mais sa dérivée $2\\cos(t^2) - \\frac{\\sin(t^2)}{t^2}$ n'a pas de limite. Ici, $x'(t) = x(t)(1-x(t)) \\to \\ell(1-\\ell)$ ; si cette limite était $> 0$, on aurait $x(t) \\to +\\infty$. La conclusion $\\ell = 1$ est juste (d'ailleurs $x(t) = \\frac{e^t}{1+e^t}$)."
+  },
+  {
+    "id": "equations-differentielles-piste-01", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Résoudre le système différentiel $x' = 3x - y$, $y' = x + y$, d'inconnues $x, y : \\mathbb R \\to \\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Écrire $A = \\lambda I_2 + N$ avec $N$ nilpotente",
+        "info": "Si $A = \\lambda I_n + N$ avec $N$ nilpotente, $\\lambda I_n$ et $N$ commutent, donc $e^{tA} = e^{\\lambda t}\\sum_{k} \\frac{t^k}{k!} N^k$, somme finie. Les solutions de $X' = AX$ sont les $t \\mapsto e^{tA}X_0$.",
+        "verdict": "bon",
+        "retour": "Ici $\\chi_A = (X - 2)^2$ et $N = A - 2I_2$ vérifie $N^2 = 0$ : l'exponentielle se calcule en une ligne."
+      },
+      {
+        "titre": "Diagonaliser la matrice du système",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, alors $e^{tA} = Pe^{tD}P^{-1}$, et les solutions sont combinaisons de fonctions $t \\mapsto e^{\\lambda t}V$, $V$ vecteur propre.",
+        "verdict": "impasse",
+        "retour": "La seule valeur propre est $2$ et $A \\neq 2I_2$ : $A$ n'est pas diagonalisable."
+      },
+      {
+        "titre": "Éliminer $y$ pour obtenir une équation scalaire d'ordre 2",
+        "info": "Dans un système $2 \\times 2$ à coefficients constants, on exprime une inconnue à l'aide de l'autre et de sa dérivée, puis on reporte dans l'autre équation.",
+        "verdict": "bon",
+        "retour": "$y = 3x - x'$, et la seconde équation donne $x'' - 4x' + 4x = 0$, qu'on résout par l'équation caractéristique."
+      },
+      {
+        "titre": "Chercher les solutions de la forme $t \\mapsto e^{\\lambda t}V$",
+        "info": "Pour $V \\neq 0$, $t \\mapsto e^{\\lambda t}V$ est solution de $X' = AX$ si et seulement si $V$ est vecteur propre de $A$ associé à $\\lambda$.",
+        "verdict": "possible",
+        "retour": "On trouve seulement la droite engendrée par $t \\mapsto e^{2t}(1, 1)$ : il manque une solution indépendante, car l'espace est de dimension 2."
+      }
+    ],
+    "direction": "Avec $N = \\begin{pmatrix} 1 & -1 \\\\ 1 & -1 \\end{pmatrix}$, $N^2 = 0$ et $e^{tA} = e^{2t}(I_2 + tN)$. Donc $x(t) = e^{2t}\\big((1+t)x_0 - t y_0\\big)$ et $y(t) = e^{2t}\\big(t x_0 + (1-t)y_0\\big)$, où $x_0 = x(0)$ et $y_0 = y(0)$."
+  },
+  {
+    "id": "equations-differentielles-piste-02", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Résoudre sur $I = ]-\\frac\\pi2, \\frac\\pi2[$ l'équation $x'' + x = \\dfrac{1}{\\cos t}$.",
+    "choix": [
+      {
+        "titre": "Variation des constantes",
+        "info": "Si $(y_1, y_2)$ est une base de solutions homogènes, on cherche $x = \\lambda y_1 + \\mu y_2$ avec $\\lambda' y_1 + \\mu' y_2 = 0$ et $\\lambda' y_1' + \\mu' y_2' = c(t)$, pour l'équation normalisée $x'' + a x' + b x = c$.",
+        "verdict": "bon",
+        "retour": "Avec $y_1 = \\cos$ et $y_2 = \\sin$, le système donne $\\lambda' = -\\tan t$ et $\\mu' = 1$, qui s'intègrent immédiatement."
+      },
+      {
+        "titre": "Abaisser l'ordre avec $y_1 = \\cos$",
+        "info": "Si $y_1$ est une solution homogène ne s'annulant pas sur $I$, on pose $x = y_1 z$ : l'équation devient une équation linéaire d'ordre 1 en $z'$.",
+        "verdict": "bon",
+        "retour": "$\\cos$ ne s'annule pas sur $I$, et l'on obtient $(\\cos^2 t\\; z')' = 1$, qui s'intègre deux fois."
+      },
+      {
+        "titre": "Solution particulière de la même forme que le second membre",
+        "info": "Pour une équation à coefficients constants et un second membre $P(t)e^{mt}$, $P$ polynôme, on cherche une solution particulière $Q(t)e^{mt}$, avec $Q$ polynôme de degré convenable.",
+        "verdict": "impasse",
+        "retour": "$\\frac{1}{\\cos t}$ n'est pas de la forme polynôme-exponentielle : la méthode ne s'applique pas."
+      },
+      {
+        "titre": "Changement de variable $s = \\sin t$",
+        "info": "Si $\\varphi$ est un $\\mathcal C^2$-difféomorphisme, on pose $x(t) = y(\\varphi(t))$ et l'on réécrit l'équation pour $y$, en espérant une équation plus simple.",
+        "verdict": "impasse",
+        "retour": "On obtient $(1 - s^2)y'' - sy' + y = (1 - s^2)^{-1/2}$, qui n'est pas plus simple."
+      }
+    ],
+    "direction": "Par variation des constantes, $\\lambda = \\ln(\\cos t)$ et $\\mu = t$. Les solutions sont les $t \\mapsto t\\sin t + \\cos t\\,\\ln(\\cos t) + \\alpha\\cos t + \\beta\\sin t$, $(\\alpha, \\beta) \\in \\mathbb R^2$."
+  },
+  {
+    "id": "equations-differentielles-piste-03", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Sur $I = ]0, +\\infty[$, on considère l'équation $t\\,x'' - (t+1)\\,x' + x = 0$. Vérifier que $t \\mapsto e^t$ est solution, puis déterminer toutes les solutions sur $I$.",
+    "choix": [
+      {
+        "titre": "Abaissement de l'ordre : $x = e^t z$",
+        "info": "Si $y_1$ est solution de l'équation homogène et ne s'annule pas sur $I$, on pose $x = y_1 z$ : l'équation devient linéaire d'ordre 1 en $z'$.",
+        "verdict": "bon",
+        "retour": "$e^t$ ne s'annule pas, et l'on trouve $t z'' + (t-1) z' = 0$."
+      },
+      {
+        "titre": "Chercher une solution polynomiale",
+        "info": "On cherche $x$ polynomiale de degré $d$ : le terme de plus haut degré donne une condition sur $d$, puis on identifie les coefficients.",
+        "verdict": "bon",
+        "retour": "$t \\mapsto t + 1$ est solution. Avec $e^t$, on a deux solutions indépendantes de l'espace des solutions, qui est de dimension 2 sur $I$ (le coefficient $t$ ne s'y annule pas)."
+      },
+      {
+        "titre": "Équation caractéristique",
+        "info": "Pour $x'' + px' + qx = 0$ avec $p, q$ **constants**, $t \\mapsto e^{rt}$ est solution si et seulement si $r^2 + pr + q = 0$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients dépendent de $t$ : la méthode ne s'applique pas."
+      },
+      {
+        "titre": "Développement en série entière",
+        "info": "On cherche $x(t) = \\sum a_n t^n$, on obtient une relation de récurrence sur les $a_n$, puis on vérifie le rayon de convergence et l'on identifie la somme.",
+        "verdict": "possible",
+        "retour": "La récurrence $(n-1)\\big((n+1)a_{n+1} - a_n\\big) = 0$ redonne $1 + t$ et $e^t$, mais c'est plus long et il faut encore justifier qu'on a toutes les solutions."
+      }
+    ],
+    "direction": "Avec $x = e^t z$ : $t z'' + (t-1)z' = 0$, donc $z' = C t e^{-t}$ et $z = -C(t+1)e^{-t} + D$. Les solutions sur $I$ sont les $t \\mapsto D e^t + \\alpha(t+1)$, $(\\alpha, D) \\in \\mathbb R^2$."
+  },
+  {
+    "id": "equations-differentielles-piste-04", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Soit $x$ la solution maximale, d'intervalle $J$, du problème $x' = \\sin x$, $x(0) = 1$. Montrer que $0 < x(t) < \\pi$ pour tout $t \\in J$.",
+    "choix": [
+      {
+        "titre": "Solutions constantes et unicité de Cauchy-Lipschitz",
+        "info": "Pour $f$ de classe $\\mathcal C^1$, les graphes de deux solutions maximales distinctes de $x' = f(t, x)$ sont disjoints. Les zéros de $f$ (si $f$ ne dépend que de $x$) fournissent des solutions constantes.",
+        "verdict": "bon",
+        "retour": "Les constantes $0$ et $\\pi$ sont solutions ; leurs graphes forment des barrières que $x$ ne peut pas franchir."
+      },
+      {
+        "titre": "Résolution explicite par séparation des variables",
+        "info": "Si $f(x) \\neq 0$ le long de la solution, $x' = f(x)$ s'écrit $\\frac{x'}{f(x)} = 1$, et l'on intègre en cherchant une primitive de $\\frac1f$.",
+        "verdict": "possible",
+        "retour": "On obtient $\\tan\\frac{x}{2} = \\tan\\frac12\\, e^t$, mais il faut déjà savoir que $\\sin x$ ne s'annule pas pour diviser : c'est l'argument de la bonne piste."
+      },
+      {
+        "titre": "Théorème de Cauchy linéaire",
+        "info": "Pour $X' = A(t)X + B(t)$ avec $A, B$ continues sur $I$, le problème de Cauchy a une unique solution définie sur tout $I$.",
+        "verdict": "impasse",
+        "retour": "L'équation n'est pas linéaire en $x$."
+      },
+      {
+        "titre": "Inégalité des accroissements finis",
+        "info": "Si $|x'| \\le M$ sur un intervalle, alors $|x(t) - x(s)| \\le M|t - s|$.",
+        "verdict": "impasse",
+        "retour": "On obtient $|x(t) - 1| \\le |t|$, ce qui ne confine $x$ que pour $|t| < 1$."
+      }
+    ],
+    "direction": "Si $x$ sortait de $]0, \\pi[$, par valeurs intermédiaires il existerait $t_1 \\in J$ avec $x(t_1) \\in \\{0, \\pi\\}$. Par unicité ($\\sin$ est $\\mathcal C^1$), $x$ serait la constante $0$ ou $\\pi$, ce qui contredit $x(0) = 1$."
+  },
+  {
+    "id": "equations-differentielles-piste-05", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Déterminer les courbes intégrales (graphes des solutions) de l'équation $x' = \\dfrac{t + x}{t - x}$ dans le domaine $t > 0$, $x < t$.",
+    "choix": [
+      {
+        "titre": "Poser $u = \\frac xt$",
+        "info": "Une équation $x' = g\\!\\left(\\frac xt\\right)$ (équation homogène) devient à variables séparables avec $x = tu$ : $t\\,u' = g(u) - u$.",
+        "verdict": "bon",
+        "retour": "Le second membre ne dépend que de $\\frac xt$. On obtient $\\frac{1-u}{1+u^2}\\,u' = \\frac1t$, qui s'intègre."
+      },
+      {
+        "titre": "Coordonnées polaires",
+        "info": "L'équation est invariante par les homothéties de centre $O$. On décrit une courbe par $r$ en fonction de $\\theta$, avec $t = r\\cos\\theta$ et $x = r\\sin\\theta$.",
+        "verdict": "bon",
+        "retour": "L'invariance par homothétie rend les polaires naturelles : on trouve $\\frac{\\mathrm dr}{\\mathrm d\\theta} = r$."
+      },
+      {
+        "titre": "Séparer directement les variables",
+        "info": "Une équation $x' = a(t)\\,b(x)$ se résout en intégrant $\\frac{x'}{b(x)} = a(t)$ là où $b$ ne s'annule pas.",
+        "verdict": "impasse",
+        "retour": "$\\frac{t+x}{t-x}$ ne s'écrit pas sous la forme $a(t)\\,b(x)$."
+      },
+      {
+        "titre": "Théorème de Cauchy linéaire",
+        "info": "Pour $x' = a(t)x + b(t)$ avec $a, b$ continues sur $I$, les solutions forment une droite affine et sont définies sur tout $I$.",
+        "verdict": "impasse",
+        "retour": "L'équation n'est pas linéaire."
+      }
+    ],
+    "direction": "Avec $u = \\frac xt$ : $\\arctan u - \\frac12\\ln(1+u^2) = \\ln t + C$. En polaires ($\\theta \\in ]-\\frac\\pi2, \\frac\\pi4[$), c'est $r = K e^{\\theta}$, $K > 0$ : les courbes intégrales sont des arcs de spirales logarithmiques."
+  },
+  {
+    "id": "equations-differentielles-piste-06", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Pendule simple. Soit $v_0 \\in ]0, 2[$ et $x$ une solution, sur un intervalle $J$ contenant $0$, de $x'' + \\sin x = 0$ avec $x(0) = 0$ et $x'(0) = v_0$. Montrer que $|x(t)| < \\pi$ pour tout $t \\in J$.",
+    "choix": [
+      {
+        "titre": "Conservation de l'énergie",
+        "info": "Pour $x'' = -V'(x)$, la quantité $E = \\frac12 x'^2 + V(x)$ a une dérivée nulle le long d'une solution : $E' = x'(x'' + V'(x))$.",
+        "verdict": "bon",
+        "retour": "Avec $V = -\\cos$, l'énergie est constante et majore $-\\cos x(t)$."
+      },
+      {
+        "titre": "Linéariser : $\\sin x \\approx x$",
+        "info": "Pour de petites oscillations, on remplace $x'' + \\sin x = 0$ par $x'' + x = 0$, dont les solutions sont $t \\mapsto \\alpha\\cos t + \\beta\\sin t$.",
+        "verdict": "impasse",
+        "retour": "C'est une approximation, pas une preuve, et $v_0$ n'est pas supposé petit."
+      },
+      {
+        "titre": "Système d'ordre 1 et Cauchy-Lipschitz",
+        "info": "En posant $Y = (x, x')$, l'équation devient $Y' = F(Y)$ avec $F(u, v) = (v, -\\sin u)$ de classe $\\mathcal C^1$ : le problème de Cauchy a une unique solution maximale.",
+        "verdict": "impasse",
+        "retour": "On obtient existence et unicité, mais aucune information sur la taille de $x(t)$."
+      },
+      {
+        "titre": "Comparaison avec l'oscillateur harmonique",
+        "info": "On a $|\\sin u| \\le |u|$ pour tout réel $u$. Il n'y a pas, au programme, de théorème de comparaison des solutions pour les équations d'ordre 2.",
+        "verdict": "impasse",
+        "retour": "Une inégalité sur le second membre ne se transmet pas aux solutions d'une équation d'ordre 2."
+      }
+    ],
+    "direction": "$E = \\frac12 x'^2 - \\cos x$ est constante, égale à $\\frac{v_0^2}{2} - 1 < 1$. Donc $-\\cos x(t) \\le E < 1$, et $x(t)$ n'atteint jamais $\\pm\\pi$. Comme $x(0) = 0$ et $x$ est continue, $x(t) \\in ]-\\pi, \\pi[$ pour tout $t \\in J$."
+  },
+  {
+    "id": "equations-differentielles-piste-07", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Oscillateur amorti. Soient $\\lambda > 0$ et $\\omega > 0$. Montrer que toute solution réelle sur $\\mathbb R$ de $x'' + 2\\lambda x' + \\omega^2 x = 0$ tend vers $0$ en $+\\infty$.",
+    "choix": [
+      {
+        "titre": "Équation caractéristique",
+        "info": "Les solutions de $x'' + px' + qx = 0$ ($p, q$ constants) s'expriment à l'aide des racines de $r^2 + pr + q = 0$ : $e^{r_1 t}$ et $e^{r_2 t}$ si $r_1 \\ne r_2$, $e^{rt}$ et $te^{rt}$ pour une racine double.",
+        "verdict": "bon",
+        "retour": "Il suffit de voir que les racines ont une partie réelle strictement négative, sans distinguer longuement les cas."
+      },
+      {
+        "titre": "Fonction énergie $E = \\frac12 x'^2 + \\frac{\\omega^2}{2}x^2$",
+        "info": "Le long d'une solution, $E' = x'(x'' + \\omega^2 x) = -2\\lambda x'^2$.",
+        "verdict": "possible",
+        "retour": "$E$ décroît, donc $x$ est bornée sur $[0, +\\infty[$. Mais en déduire $x(t) \\to 0$ demande un travail supplémentaire."
+      },
+      {
+        "titre": "Variation des constantes",
+        "info": "Pour une équation avec second membre, on cherche une solution particulière $\\lambda(t)y_1 + \\mu(t)y_2$ à partir d'une base $(y_1, y_2)$ de solutions homogènes.",
+        "verdict": "impasse",
+        "retour": "L'équation est homogène : il n'y a pas de solution particulière à chercher."
+      },
+      {
+        "titre": "Théorème de Cauchy linéaire",
+        "info": "Pour des coefficients continus sur $I$, le problème de Cauchy a une unique solution, définie sur tout $I$.",
+        "verdict": "impasse",
+        "retour": "Il donne l'existence et l'unicité, pas le comportement à l'infini."
+      }
+    ],
+    "direction": "Les racines de $r^2 + 2\\lambda r + \\omega^2$ ont pour somme $-2\\lambda < 0$ et pour produit $\\omega^2 > 0$. Réelles, elles sont donc toutes deux négatives ; complexes conjuguées, leur partie réelle vaut $-\\lambda$. Dans tous les cas, les solutions sont combinaisons de $t^k e^{rt}$ avec $\\mathrm{Re}\\,r < 0$."
+  },
+  {
+    "id": "equations-differentielles-piste-08", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Soit $q$ continue sur $\\mathbb R$ et $(y_1, y_2)$ une famille libre de solutions de $x'' + q(t)x = 0$. Montrer que $y_1$ et $y_2$ n'ont aucun zéro commun.",
+    "choix": [
+      {
+        "titre": "Wronskien",
+        "info": "Pour deux solutions de $x'' + a(t)x' + b(t)x = 0$, le wronskien $W = y_1y_2' - y_1'y_2$ vérifie $W' = -aW$. Il est identiquement nul si et seulement si la famille est liée.",
+        "verdict": "bon",
+        "retour": "Ici $a = 0$ : $W$ est constant, non nul puisque la famille est libre."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f$ est continue sur $[\\alpha, \\beta]$, dérivable sur $]\\alpha, \\beta[$ et $f(\\alpha) = f(\\beta)$, alors $f'$ s'annule sur $]\\alpha, \\beta[$.",
+        "verdict": "impasse",
+        "retour": "Il localise des zéros de dérivées, mais ne dit rien sur un zéro commun à $y_1$ et $y_2$."
+      },
+      {
+        "titre": "Résoudre explicitement l'équation",
+        "info": "Une équation linéaire d'ordre 2 se résout explicitement à coefficients constants, ou quand une solution est connue (abaissement de l'ordre).",
+        "verdict": "impasse",
+        "retour": "$q$ est quelconque : aucune solution n'est connue."
+      },
+      {
+        "titre": "Valeurs intermédiaires",
+        "info": "Une fonction continue sur un intervalle qui prend des valeurs de signes opposés s'y annule.",
+        "verdict": "impasse",
+        "retour": "On cherche à exclure un zéro commun, pas à en produire un."
+      }
+    ],
+    "direction": "Comme le coefficient de $x'$ est nul, $W' = 0$ : $W$ est constant, et non nul car $(y_1, y_2)$ est libre. Si $y_1(t_0) = y_2(t_0) = 0$, alors $W(t_0) = 0$ : contradiction."
+  },
+  {
+    "id": "equations-differentielles-piste-09", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Déterminer les solutions sur $\\mathbb R$ de l'équation $t\\,x' - x = t^2$.",
+    "choix": [
+      {
+        "titre": "Résoudre sur chaque intervalle où $t \\neq 0$, puis raccorder",
+        "info": "Sur un intervalle où le coefficient de $x'$ ne s'annule pas, on met l'équation sous forme résolue et l'on applique la théorie linéaire. Une solution sur $\\mathbb R$ se restreint en solutions sur chaque morceau, et l'on étudie les recollements en $0$ : continuité, dérivabilité, équation au point.",
+        "verdict": "bon",
+        "retour": "C'est la méthode attendue quand le coefficient dominant s'annule."
+      },
+      {
+        "titre": "Théorème de Cauchy linéaire directement sur $\\mathbb R$",
+        "info": "Pour $x' = a(t)x + b(t)$ avec $a, b$ continues sur $I$, les solutions sur $I$ forment une droite affine.",
+        "verdict": "impasse",
+        "retour": "On ne peut pas diviser par $t$ sur $\\mathbb R$ : l'équation n'est pas sous forme résolue au voisinage de $0$."
+      },
+      {
+        "titre": "Chercher les solutions développables en série entière",
+        "info": "On cherche $x(t) = \\sum a_n t^n$ et l'on identifie les coefficients dans l'équation.",
+        "verdict": "possible",
+        "retour": "On trouve $t \\mapsto t^2 + Ct$, mais rien ne dit a priori que toutes les solutions sont développables en série entière."
+      },
+      {
+        "titre": "Dériver l'équation",
+        "info": "En dérivant une équation d'ordre 1, on obtient une équation d'ordre 2 vérifiée par toute solution de classe $\\mathcal C^2$.",
+        "verdict": "possible",
+        "retour": "Pour $t \\neq 0$, $x$ est $\\mathcal C^2$ et $t\\,x'' = 2t$ donne $x'' = 2$. Mais il faut réinjecter dans l'équation initiale et raccorder en $0$ de toute façon : c'est un détour."
+      }
+    ],
+    "direction": "Sur $]0, +\\infty[$, $\\left(\\frac xt\\right)' = 1$ donne $x = t^2 + Ct$ ; sur $]-\\infty, 0[$, $x = t^2 + Dt$. Le recollement est continu en $0$, et dérivable si et seulement si $C = D$. Les solutions sur $\\mathbb R$ sont les $t \\mapsto t^2 + Ct$, $C \\in \\mathbb R$."
+  },
+  {
+    "id": "equations-differentielles-piste-10", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Résoudre sur $]0, +\\infty[$ l'équation $t^2 x'' + t\\,x' + x = 0$.",
+    "choix": [
+      {
+        "titre": "Changement de variable $t = e^s$",
+        "info": "On pose $y(s) = x(e^s)$ pour $s \\in \\mathbb R$. Alors $y'(s) = e^s x'(e^s)$ et $y''(s) = e^{2s}x''(e^s) + e^s x'(e^s)$.",
+        "verdict": "bon",
+        "retour": "L'équation devient $y'' + y = 0$, à coefficients constants."
+      },
+      {
+        "titre": "Chercher des solutions $t \\mapsto t^r$",
+        "info": "Pour $r \\in \\mathbb C$ et $t > 0$, $t^r = e^{r\\ln t}$. On reporte dans l'équation et l'on obtient une condition sur $r$.",
+        "verdict": "possible",
+        "retour": "On trouve $r^2 + 1 = 0$, donc $r = \\pm i$ : il faut passer par les puissances complexes, puis revenir aux solutions réelles."
+      },
+      {
+        "titre": "Équation caractéristique $r^2 + r + 1 = 0$",
+        "info": "Pour $x'' + px' + qx = 0$ avec $p, q$ **constants**, $t \\mapsto e^{rt}$ est solution si et seulement si $r^2 + pr + q = 0$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients $t^2$ et $t$ ne sont pas constants : cette équation caractéristique n'a pas de sens ici."
+      },
+      {
+        "titre": "Série entière en $0$",
+        "info": "On cherche $x(t) = \\sum a_n t^n$, on obtient une récurrence sur les coefficients, puis on vérifie le rayon de convergence.",
+        "verdict": "impasse",
+        "retour": "La récurrence donne $(n^2 + 1)a_n = 0$ : seule la solution nulle est développable en série entière en $0$."
+      }
+    ],
+    "direction": "Avec $y(s) = x(e^s)$, on obtient $y'' + y = 0$, donc $y(s) = \\alpha\\cos s + \\beta\\sin s$. Les solutions sont les $t \\mapsto \\alpha\\cos(\\ln t) + \\beta\\sin(\\ln t)$, $(\\alpha, \\beta) \\in \\mathbb R^2$."
+  },
+  {
+    "id": "equations-differentielles-piste-11", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ antisymétrique ($A^{\\mathsf T} = -A$). Montrer que toute solution $X$ de $X' = AX$ a une norme euclidienne constante.",
+    "choix": [
+      {
+        "titre": "Dériver $t \\mapsto \\|X(t)\\|^2$",
+        "info": "Pour $X$ dérivable à valeurs dans $\\mathbb R^n$, $\\frac{\\mathrm d}{\\mathrm dt}\\|X(t)\\|^2 = 2\\langle X(t), X'(t)\\rangle$.",
+        "verdict": "bon",
+        "retour": "On obtient $2\\langle X, AX\\rangle$, et $\\langle Y, AY \\rangle = 0$ pour tout $Y$ quand $A$ est antisymétrique."
+      },
+      {
+        "titre": "Montrer que $e^{tA}$ est orthogonale",
+        "info": "Pour $M \\in M_n(\\mathbb R)$, $(e^M)^{\\mathsf T} = e^{M^{\\mathsf T}}$, et $e^M e^{-M} = I_n$. Les solutions de $X' = AX$ sont les $t \\mapsto e^{tA}X_0$.",
+        "verdict": "bon",
+        "retour": "$(e^{tA})^{\\mathsf T} = e^{-tA} = (e^{tA})^{-1}$ : $e^{tA}$ est orthogonale, donc conserve la norme."
+      },
+      {
+        "titre": "Diagonaliser $A$ dans $M_n(\\mathbb R)$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ réelle diagonale, les solutions sont $t \\mapsto Pe^{tD}P^{-1}X_0$.",
+        "verdict": "impasse",
+        "retour": "Les valeurs propres d'une matrice antisymétrique réelle sont imaginaires pures : $A$ n'est diagonalisable sur $\\mathbb R$ que si $A = 0$."
+      },
+      {
+        "titre": "Critère sur les parties réelles des valeurs propres",
+        "info": "Si toutes les valeurs propres de $A$ ont une partie réelle strictement négative, toutes les solutions de $X' = AX$ tendent vers $0$ en $+\\infty$.",
+        "verdict": "impasse",
+        "retour": "Les valeurs propres sont de partie réelle nulle : le critère ne s'applique pas, et il ne parle pas de conservation de la norme."
+      }
+    ],
+    "direction": "$\\frac{\\mathrm d}{\\mathrm dt}\\|X\\|^2 = 2\\langle X, AX\\rangle = 2X^{\\mathsf T}AX$, et ce réel est égal à sa transposée $X^{\\mathsf T}A^{\\mathsf T}X = -X^{\\mathsf T}AX$, donc nul. La norme est constante : les trajectoires restent sur des sphères."
+  },
+  {
+    "id": "equations-differentielles-piste-12", "ch": "equations-differentielles", "type": "piste",
+    "enonce": "Soient $A \\in M_n(\\mathbb C)$, $B : \\mathbb R \\to \\mathbb C^n$ continue et $X_0 \\in \\mathbb C^n$. Exprimer à l'aide de l'exponentielle la solution de $X' = AX + B(t)$, $X(0) = X_0$.",
+    "choix": [
+      {
+        "titre": "Variation des constantes : $X(t) = e^{tA}C(t)$",
+        "info": "Les solutions homogènes sont les $t \\mapsto e^{tA}C$, $C$ constant. On cherche une solution en remplaçant $C$ par une fonction $C(t)$, et l'on utilise $\\frac{\\mathrm d}{\\mathrm dt}e^{tA} = Ae^{tA}$.",
+        "verdict": "bon",
+        "retour": "On obtient $C'(t) = e^{-tA}B(t)$, qu'on intègre."
+      },
+      {
+        "titre": "Diagonaliser $A$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, le changement d'inconnue $Y = P^{-1}X$ découple le système en $n$ équations scalaires d'ordre 1.",
+        "verdict": "possible",
+        "retour": "Cela ne traite que le cas où $A$ est diagonalisable, qui n'est pas supposé. Dans ce cas, on retrouve bien la formule, puisque $Pe^{tD}P^{-1} = e^{tA}$."
+      },
+      {
+        "titre": "Solution particulière de la même forme que $B$",
+        "info": "Pour un second membre polynôme-exponentielle, on cherche une solution particulière de forme analogue, à coefficients inconnus.",
+        "verdict": "impasse",
+        "retour": "$B$ est une fonction continue quelconque : il n'y a pas de forme à imiter."
+      },
+      {
+        "titre": "Réécrire en équation intégrale",
+        "info": "$X$ est solution si et seulement si $X(t) = X_0 + \\int_0^t \\big(AX(s) + B(s)\\big)\\,\\mathrm ds$ pour tout $t$.",
+        "verdict": "impasse",
+        "retour": "C'est une reformulation : l'inconnue reste sous l'intégrale, et l'on n'obtient pas d'expression."
+      }
+    ],
+    "direction": "$C'(t) = e^{-tA}B(t)$ et $C(0) = X_0$, d'où $X(t) = e^{tA}X_0 + \\int_0^t e^{(t-s)A}B(s)\\,\\mathrm ds$. On utilise $e^{tA}e^{-sA} = e^{(t-s)A}$, valable car $tA$ et $-sA$ commutent."
+  }
+]
