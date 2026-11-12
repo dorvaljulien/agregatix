@@ -1,0 +1,622 @@
+[
+  {
+    "id": "theoremes-limites-vf-01", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$ et $X$ des variables aléatoires réelles définies sur un même espace probabilisé. Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge en loi vers $X$.",
+    "reponse": true,
+    "explication": "Pour $\\varepsilon > 0$ et tout réel $x$ : $F_X(x - \\varepsilon) - P(|X_n - X| > \\varepsilon) \\le F_{X_n}(x) \\le F_X(x + \\varepsilon) + P(|X_n - X| > \\varepsilon)$. On fait tendre $n$ vers $+\\infty$, puis $\\varepsilon$ vers $0$ : $F_{X_n}(x) \\to F_X(x)$ en tout point $x$ où $F_X$ est continue."
+  },
+  {
+    "id": "theoremes-limites-vf-02", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$ et $X$ des variables aléatoires réelles définies sur un même espace probabilisé. Si $(X_n)$ converge en loi vers $X$, alors $(X_n)$ converge en probabilité vers $X$.",
+    "reponse": false,
+    "explication": "La convergence en loi ne porte que sur les lois. Contre-exemple : $X$ de loi de Bernoulli de paramètre $\\frac12$ et $X_n = 1 - X$ pour tout $n$. Les $X_n$ ont la loi de $X$, donc convergent en loi vers $X$, mais $|X_n - X| = 1$. L'implication devient vraie si la limite est une constante."
+  },
+  {
+    "id": "theoremes-limites-vf-03", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $c \\in \\mathbb R$. Si la suite de variables aléatoires réelles $(X_n)$ converge en loi vers la variable constante égale à $c$, alors $(X_n)$ converge en probabilité vers $c$.",
+    "reponse": true,
+    "explication": "La fonction de répartition limite est $\\mathbf 1_{[c, +\\infty[}$, continue en $c \\pm \\varepsilon$. Donc $P(|X_n - c| > \\varepsilon) \\le 1 - F_{X_n}(c + \\varepsilon) + F_{X_n}(c - \\varepsilon) \\to 1 - 1 + 0 = 0$."
+  },
+  {
+    "id": "theoremes-limites-vf-04", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$ et $X$ des variables aléatoires réelles définies sur un même espace probabilisé. Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge presque sûrement vers $X$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $(X_n)_{n \\ge 1}$ indépendantes, $X_n$ de loi de Bernoulli de paramètre $\\frac1n$. On a $P(X_n \\ne 0) = \\frac1n \\to 0$, donc $X_n \\to 0$ en probabilité. Mais les événements $\\{X_n = 1\\}$ sont indépendants et $\\sum \\frac1n$ diverge : par Borel-Cantelli, presque sûrement $X_n = 1$ pour une infinité de $n$. C'est la réciproque qui est vraie : la convergence presque sûre entraîne la convergence en probabilité."
+  },
+  {
+    "id": "theoremes-limites-vf-05", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Si la suite de variables aléatoires réelles $(X_n)$ converge en loi vers $X$, alors $F_{X_n}(x) \\to F_X(x)$ pour **tout** réel $x$.",
+    "reponse": false,
+    "explication": "La définition n'exige la convergence qu'aux points de continuité de $F_X$. Contre-exemple : $X_n = \\frac1n$ et $X = 0$ (constantes). Pour $x \\ne 0$, $F_{X_n}(x) \\to F_X(x)$, donc $X_n \\to X$ en loi ; mais $F_{X_n}(0) = 0$ pour tout $n$ alors que $F_X(0) = 1$."
+  },
+  {
+    "id": "theoremes-limites-vf-06", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$ et $X$ des variables aléatoires réelles admettant une espérance. Si $(X_n)$ converge en probabilité vers $X$, alors $E(X_n) \\to E(X)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $P(X_n = n) = \\frac1n$ et $P(X_n = 0) = 1 - \\frac1n$. Alors $P(X_n \\ne 0) = \\frac1n \\to 0$, donc $X_n \\to 0$ en probabilité, mais $E(X_n) = 1$ pour tout $n$. Le résultat devient vrai si les $X_n$ et $X$ sont bornées par une même constante $M$ : $|E(X_n) - E(X)| \\le \\varepsilon + 2M\\,P(|X_n - X| > \\varepsilon)$."
+  },
+  {
+    "id": "theoremes-limites-vf-07", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$, $(Y_n)$, $X$, $Y$ des variables aléatoires réelles sur un même espace probabilisé. Si $X_n \\to X$ et $Y_n \\to Y$ en probabilité, alors $X_n + Y_n \\to X + Y$ en probabilité.",
+    "reponse": true,
+    "explication": "Par l'inégalité triangulaire, $\\{|X_n + Y_n - X - Y| > \\varepsilon\\} \\subset \\{|X_n - X| > \\frac\\varepsilon2\\} \\cup \\{|Y_n - Y| > \\frac\\varepsilon2\\}$, et la probabilité de la réunion est majorée par la somme des deux probabilités, qui tend vers $0$."
+  },
+  {
+    "id": "theoremes-limites-vf-08", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soient $(X_n)$, $(Y_n)$, $X$, $Y$ des variables aléatoires réelles sur un même espace probabilisé. Si $X_n \\to X$ et $Y_n \\to Y$ en loi, alors $X_n + Y_n \\to X + Y$ en loi.",
+    "reponse": false,
+    "explication": "Contre-exemple : $X$ telle que $P(X = 1) = P(X = -1) = \\frac12$, $X_n = X$ et $Y_n = -X$. Comme $-X$ a la même loi que $X$, on a $X_n \\to X$ et $Y_n \\to X$ en loi. Mais $X_n + Y_n = 0$, alors que $X + X = 2X$ n'est pas de loi $\\delta_0$. La convergence en loi ne voit que les lois marginales, pas la loi du couple."
+  },
+  {
+    "id": "theoremes-limites-vf-09", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $(A_n)$ une suite d'événements quelconques (non nécessairement indépendants) telle que $\\sum P(A_n)$ converge. Alors, presque sûrement, seul un nombre fini des $A_n$ est réalisé.",
+    "reponse": true,
+    "explication": "C'est la première partie du lemme de Borel-Cantelli, sans hypothèse d'indépendance : $P\\left(\\limsup A_n\\right) \\le P\\left(\\bigcup_{k \\ge n} A_k\\right) \\le \\sum_{k \\ge n} P(A_k)$, reste d'une série convergente, qui tend vers $0$."
+  },
+  {
+    "id": "theoremes-limites-vf-10", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $(A_n)$ une suite d'événements telle que $\\sum P(A_n)$ diverge. Alors, presque sûrement, une infinité des $A_n$ sont réalisés.",
+    "reponse": false,
+    "explication": "Il faut l'indépendance mutuelle des $A_n$ (seconde partie du lemme de Borel-Cantelli). Contre-exemple : $A_n = A$ pour tout $n$, avec $P(A) = \\frac12$. La série $\\sum P(A_n)$ diverge, mais $\\limsup A_n = A$ est de probabilité $\\frac12$."
+  },
+  {
+    "id": "theoremes-limites-vf-11", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles **deux à deux** indépendantes, de même loi, admettant un moment d'ordre $2$, et $m = E(X_1)$. Alors $\\frac1n \\sum_{k=1}^n X_k$ converge en probabilité vers $m$.",
+    "reponse": true,
+    "explication": "La preuve de la loi faible n'utilise que l'additivité de la variance, qui demande seulement des covariances nulles : l'indépendance deux à deux suffit. Avec $\\sigma^2 = V(X_1)$, on a $V(\\bar X_n) = \\frac{\\sigma^2}{n}$, et Bienaymé-Tchebychev donne $P(|\\bar X_n - m| \\ge \\varepsilon) \\le \\frac{\\sigma^2}{n\\varepsilon^2} \\to 0$."
+  },
+  {
+    "id": "theoremes-limites-vf-12", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $p \\in\\, ]0, 1[$ fixé et $S_n$ de loi binomiale $\\mathcal B(n, p)$. Alors pour tous réels $a < b$, $P\\left(a \\le \\dfrac{S_n - np}{\\sqrt{np(1-p)}} \\le b\\right) \\to \\dfrac{1}{\\sqrt{2\\pi}} \\displaystyle\\int_a^b e^{-t^2/2}\\,\\mathrm dt$.",
+    "reponse": true,
+    "explication": "$S_n$ a la loi d'une somme de $n$ variables indépendantes de loi de Bernoulli de paramètre $p$, d'espérance $p$ et de variance $p(1-p) > 0$. Le théorème central limite donne la convergence en loi vers $\\mathcal N(0, 1)$, dont la fonction de répartition est continue sur $\\mathbb R$ : on peut donc conclure pour tout intervalle, bornes comprises ou non."
+  },
+  {
+    "id": "theoremes-limites-vf-13", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $(X_1, \\dots, X_n)$, $n \\ge 2$, un $n$-échantillon d'une loi de variance $\\sigma^2$. Alors $V_n = \\frac1n \\sum_{k=1}^n (X_k - \\bar X_n)^2$ est un estimateur sans biais de $\\sigma^2$.",
+    "reponse": false,
+    "explication": "On calcule $E(V_n) = \\frac{n-1}{n}\\sigma^2$ : le biais vaut $-\\frac{\\sigma^2}{n}$, non nul dès que $\\sigma^2 > 0$. Par exemple, pour la loi de Bernoulli de paramètre $\\frac12$ et $n = 2$, $E(V_2) = \\frac18 \\ne \\frac14$. $V_n$ est seulement asymptotiquement sans biais ; l'estimateur sans biais est $\\frac{1}{n-1} \\sum_{k=1}^n (X_k - \\bar X_n)^2$."
+  },
+  {
+    "id": "theoremes-limites-vf-14", "ch": "theoremes-limites", "type": "vf",
+    "enonce": "Soit $(T_n)$ une suite d'estimateurs d'un paramètre réel $\\theta$. Si chaque $T_n$ est sans biais, alors $(T_n)$ est convergente : $T_n \\to \\theta$ en probabilité.",
+    "reponse": false,
+    "explication": "Contre-exemple : pour estimer l'espérance $m$ d'une loi non constante, $T_n = X_1$ est sans biais, mais $P(|T_n - m| > \\varepsilon)$ ne dépend pas de $n$ et n'est pas nul pour $\\varepsilon$ assez petit. Il suffit en revanche que le risque quadratique $E\\left((T_n - \\theta)^2\\right)$ tende vers $0$ (Markov appliquée à $(T_n - \\theta)^2$)."
+  },
+  {
+    "id": "theoremes-limites-qcm-01", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Inégalité de Markov.\nSoit $X$ une variable aléatoire réelle **[ ? ]**. Alors pour tout $a > 0$, $P(X \\ge a) \\le \\dfrac{E(X)}{a}$.",
+    "choix": [
+      "positive et admettant une espérance",
+      "admettant une espérance",
+      "admettant un moment d'ordre $2$",
+      "admettant une espérance positive ou nulle"
+    ],
+    "bonne": 0,
+    "explication": "La preuve repose sur $a\\,\\mathbf 1_{\\{X \\ge a\\}} \\le X$, qui demande $X \\ge 0$. Sans positivité : $X = -1$ donne $0 \\le -\\frac1a$, absurde, même avec un moment d'ordre 2. Une espérance positive ne suffit pas non plus : si $P(X = 1) = P(X = -1) = \\frac12$, alors $P(X \\ge 1) = \\frac12 > 0 = E(X)$."
+  },
+  {
+    "id": "theoremes-limites-qcm-02", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Loi forte des grands nombres.\nSoit $m \\in \\mathbb R$ et $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles **[ ? ]**. Alors $\\frac1n \\sum_{k=1}^n X_k \\to m$ presque sûrement.",
+    "choix": [
+      "indépendantes, de même loi, admettant une espérance égale à $m$",
+      "indépendantes, admettant toutes une espérance égale à $m$",
+      "de même loi, admettant une espérance égale à $m$",
+      "indépendantes, de même loi, à valeurs dans $[m - 1, m + 1]$"
+    ],
+    "bonne": 0,
+    "explication": "Aucun moment d'ordre 2 n'est requis. Sans même loi : $X_n = m + \\varepsilon_n 3^n$ avec $\\varepsilon_n = \\pm 1$ indépendants équiprobables ; alors $|\\bar X_n - m| \\ge \\frac{3^n}{2n} \\to +\\infty$. Sans indépendance : $X_n = X_1$ non constante. Valeurs dans $[m-1, m+1]$ : avec $m = 0$ et la loi de Bernoulli de paramètre $\\frac13$, $\\bar X_n \\to \\frac13$."
+  },
+  {
+    "id": "theoremes-limites-qcm-03", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Théorème central limite.\nSoit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles indépendantes, de même loi, admettant un moment d'ordre $2$, avec $m = E(X_1)$, $\\sigma^2 = V(X_1) > 0$ et $S_n = X_1 + \\dots + X_n$. Pour **toute** telle suite, **[ ? ]** converge en loi vers $\\mathcal N(0, 1)$.",
+    "choix": [
+      "$\\dfrac{S_n - nm}{\\sigma\\sqrt n}$",
+      "$\\dfrac{S_n - nm}{n\\sigma}$",
+      "$\\dfrac{S_n - nm}{\\sigma^2\\sqrt n}$",
+      "$\\dfrac{S_n - m}{\\sigma\\sqrt n}$"
+    ],
+    "bonne": 0,
+    "explication": "On centre et on réduit $S_n$ : $E(S_n) = nm$ et $V(S_n) = n\\sigma^2$. Diviser par $n\\sigma$ donne une variance $\\frac1n$, donc une limite nulle (c'est la loi des grands nombres). Diviser par $\\sigma^2\\sqrt n$ donne la limite $\\mathcal N(0, \\frac{1}{\\sigma^2})$ : faux dès que $\\sigma = 2$. Le dernier choix est faux dès que $m = 1$ : il vaut $\\frac{S_n - nm}{\\sigma\\sqrt n} + \\frac{n - 1}{\\sigma\\sqrt n}$, qui tend vers $+\\infty$ en probabilité."
+  },
+  {
+    "id": "theoremes-limites-qcm-04", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Pour tout $n \\ge 1$, soit $X_n$ de loi binomiale $\\mathcal B(n, p_n)$ avec $p_n \\in [0, 1]$, et soit $\\lambda > 0$. Si **[ ? ]**, alors $(X_n)$ converge en loi vers la loi de Poisson de paramètre $\\lambda$.",
+    "choix": [
+      "$n p_n \\to \\lambda$",
+      "$p_n \\to 0$",
+      "$\\sqrt n\\, p_n \\to \\lambda$",
+      "$n^2 p_n \\to \\lambda$"
+    ],
+    "bonne": 0,
+    "explication": "Si $np_n \\to \\lambda$, alors $P(X_n = k) \\to e^{-\\lambda}\\frac{\\lambda^k}{k!}$ pour tout $k$. Les leurres échouent dès $k = 0$, alors que la limite exigerait $P(X_n = 0) \\to e^{-\\lambda}$. Si $np_n \\to +\\infty$ (cas $p_n = \\frac1{\\sqrt n}$ ou $\\sqrt n\\,p_n \\to \\lambda$), $P(X_n = 0) = (1-p_n)^n \\le e^{-np_n} \\to 0$. Si $np_n \\to 0$, $P(X_n = 0) \\ge 1 - np_n \\to 1$."
+  },
+  {
+    "id": "theoremes-limites-qcm-05", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Soit $(X_1, \\dots, X_n)$ un $n$-échantillon de la loi de Bernoulli de paramètre $p \\in\\, ]0, 1[$ inconnu, et $\\alpha \\in\\, ]0, 1[$. On majore $P(|\\bar X_n - p| \\ge a)$ par Bienaymé-Tchebychev, puis à l'aide de $p(1-p) \\le \\frac14$. Pour quelle valeur de $a > 0$ cette majoration vaut-elle exactement $\\alpha$ ?",
+    "choix": [
+      "$\\dfrac{1}{2\\sqrt{n\\alpha}}$",
+      "$\\dfrac{1}{4n\\alpha}$",
+      "$\\dfrac{1}{2\\sqrt n\\,\\alpha}$",
+      "$\\dfrac{1}{\\sqrt{n\\alpha}}$"
+    ],
+    "bonne": 0,
+    "explication": "$V(\\bar X_n) = \\frac{p(1-p)}{n} \\le \\frac{1}{4n}$, donc $P(|\\bar X_n - p| \\ge a) \\le \\frac{1}{4na^2}$, qui vaut $\\alpha$ pour $a = \\frac{1}{2\\sqrt{n\\alpha}}$. L'intervalle $[\\bar X_n - a, \\bar X_n + a]$ est alors un intervalle de confiance de niveau au moins $1 - \\alpha$, pour tout $n$ (non asymptotique)."
+  },
+  {
+    "id": "theoremes-limites-qcm-06", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Soit $(X_k)$ une suite de variables indépendantes de loi de Bernoulli de paramètre $p \\in\\, ]0, 1[$ inconnu, $\\bar X_n = \\frac1n \\sum_{k=1}^n X_k$, et $Z$ de loi $\\mathcal N(0, 1)$ ; on admet $P(|Z| \\le 1{,}96) \\approx 0{,}95$. Quelle est la plus petite constante $c$ telle que, pour tout $p$, $\\left[\\bar X_n - \\frac{c}{\\sqrt n}, \\bar X_n + \\frac{c}{\\sqrt n}\\right]$ soit un intervalle de confiance asymptotique de niveau $0{,}95$ ?",
+    "choix": [
+      "$0{,}98$",
+      "$1{,}96$",
+      "$0{,}49$",
+      "$0{,}82$"
+    ],
+    "bonne": 0,
+    "explication": "Par le TCL, la probabilité que $p$ soit dans l'intervalle tend vers $P\\left(|Z| \\le \\frac{c}{\\sqrt{p(1-p)}}\\right)$. Comme $\\sqrt{p(1-p)} \\le \\frac12$ avec égalité en $p = \\frac12$, il faut et il suffit que $2c \\ge 1{,}96$. Le choix $1{,}96$ convient mais n'est pas le plus petit ; $0{,}82 = \\frac{1{,}64}{2}$ correspond au niveau $0{,}90$."
+  },
+  {
+    "id": "theoremes-limites-qcm-07", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Soit $\\theta > 0$ et $(X_1, \\dots, X_n)$ un $n$-échantillon de la loi uniforme sur $[0, \\theta]$. Quel est le risque quadratique $E\\left((T_n - \\theta)^2\\right)$ de l'estimateur $T_n = 2\\bar X_n$ ?",
+    "choix": [
+      "$\\dfrac{\\theta^2}{3n}$",
+      "$\\dfrac{\\theta^2}{12n}$",
+      "$\\dfrac{\\theta^2}{6n}$",
+      "$\\dfrac{\\theta^2}{3n^2}$"
+    ],
+    "bonne": 0,
+    "explication": "Le risque quadratique vaut biais au carré plus variance. Ici $E(T_n) = 2 \\cdot \\frac\\theta2 = \\theta$ : le biais est nul. Puis $V(T_n) = 4\\,V(\\bar X_n) = 4 \\cdot \\frac{\\theta^2}{12n} = \\frac{\\theta^2}{3n}$, par indépendance. Le piège : oublier que le facteur $2$ sort au carré de la variance."
+  },
+  {
+    "id": "theoremes-limites-qcm-08", "ch": "theoremes-limites", "type": "qcm",
+    "enonce": "Méthode de Monte-Carlo.\nSoit $f$ continue et non constante sur $[0, 1]$, $I = \\int_0^1 f$, $(U_k)$ indépendantes de loi uniforme sur $[0, 1]$ et $I_n = \\frac1n \\sum_{k=1}^n f(U_k)$. Alors $\\sqrt n\\,(I_n - I)$ converge en loi vers $\\mathcal N(0, \\sigma^2)$ avec $\\sigma^2 =$ **[ ? ]**.",
+    "choix": [
+      "$\\displaystyle\\int_0^1 f^2 - I^2$",
+      "$\\displaystyle\\int_0^1 f^2$",
+      "$\\dfrac{1}{12}$",
+      "$\\displaystyle\\int_0^1 |f - I|$"
+    ],
+    "bonne": 0,
+    "explication": "On applique le TCL aux $f(U_k)$, indépendantes, de même loi, bornées, d'espérance $I$ et de variance $\\sigma^2 = E(f(U)^2) - I^2 = \\int_0^1 f^2 - I^2$ (théorème de transfert), non nulle car $f$ est continue non constante. $\\frac1{12}$ est la variance de $U$, pas de $f(U)$ : pour $f(x) = 2x$, $\\sigma^2 = \\frac13$."
+  },
+  {
+    "id": "theoremes-limites-err-01", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles **de même loi**, admettant un moment d'ordre 2, d'espérance $m$ et de variance $\\sigma^2$, et $\\bar X_n = \\frac1n \\sum_{k=1}^n X_k$. Une copie veut montrer que $\\bar X_n \\to m$ en probabilité.",
+    "lignes": [
+      "Par linéarité de l'espérance, $E(\\bar X_n) = m$.",
+      "Par l'inégalité de Bienaymé-Tchebychev, pour tout $\\varepsilon > 0$, $P(|\\bar X_n - m| \\ge \\varepsilon) \\le \\dfrac{V(\\bar X_n)}{\\varepsilon^2}$.",
+      "Les $X_k$ ayant même loi, $V(\\bar X_n) = \\dfrac{1}{n^2} \\displaystyle\\sum_{k=1}^n V(X_k) = \\dfrac{\\sigma^2}{n}$."
+    ],
+    "fausse": 2,
+    "explication": "La variance d'une somme n'est la somme des variances que si les covariances sont nulles, par exemple si les $X_k$ sont deux à deux indépendantes. Ici rien ne le garantit, et le résultat visé est faux : avec $X_k = X_1$ pour tout $k$, $\\bar X_n = X_1$ ne converge pas vers $m$ si $\\sigma^2 > 0$. Le jury signale régulièrement cet oubli de l'indépendance."
+  },
+  {
+    "id": "theoremes-limites-err-02", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "Soit $U$ de loi uniforme sur $]0, 1[$ et, pour $n \\ge 1$, $A_n = \\{U < \\frac1n\\}$ et $X_n = \\mathbf 1_{A_n}$. Une copie étudie la convergence presque sûre de $(X_n)$.",
+    "lignes": [
+      "$P(X_n \\ne 0) = P(A_n) = \\frac1n \\to 0$, donc $(X_n)$ converge en probabilité vers $0$.",
+      "La série $\\sum P(A_n) = \\sum \\frac1n$ diverge.",
+      "Par le lemme de Borel-Cantelli, presque sûrement une infinité des $A_n$ sont réalisés : $(X_n)$ ne converge pas presque sûrement vers $0$."
+    ],
+    "fausse": 2,
+    "explication": "La seconde partie du lemme de Borel-Cantelli exige des événements mutuellement indépendants. Ici les $A_n$ sont emboîtés, et la conclusion est fausse : pour tout $\\omega$, $X_n(\\omega) = 0$ dès que $n > \\frac{1}{U(\\omega)}$. Donc $X_n \\to 0$ partout, a fortiori presque sûrement."
+  },
+  {
+    "id": "theoremes-limites-err-03", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "On interroge $n = 1000$ personnes, tirées indépendamment dans une population où la proportion de « oui » est $p \\in\\, ]0, 1[$, inconnue. On note $\\bar X_n$ la fréquence de « oui » dans l'échantillon, et on observe $450$ « oui ». Voici une copie.",
+    "lignes": [
+      "La fréquence observée $0{,}45$ est une estimation ponctuelle de $p$.",
+      "Pour tout $p \\in\\, ]0, 1[$, $P\\left(p \\in \\left[\\bar X_n - \\frac{1}{\\sqrt n}, \\bar X_n + \\frac{1}{\\sqrt n}\\right]\\right)$ a une limite supérieure ou égale à $0{,}95$ quand $n \\to +\\infty$.",
+      "Ici $\\frac{1}{\\sqrt{1000}} \\approx 0{,}032$, et l'intervalle réalisé est environ $[0{,}418\\,;\\,0{,}482]$.",
+      "Donc $p$ appartient à $[0{,}418\\,;\\,0{,}482]$ avec une probabilité au moins égale à $0{,}95$."
+    ],
+    "fausse": 3,
+    "explication": "$p$ est un nombre fixé et l'intervalle réalisé aussi : « $p \\in [0{,}418\\,;\\,0{,}482]$ » est vrai ou faux, sans probabilité. Le niveau $0{,}95$ porte sur l'intervalle **aléatoire**, avant l'observation, et seulement asymptotiquement. La ligne 2 est juste : la limite vaut $P\\left(|Z| \\le \\frac{1}{\\sqrt{p(1-p)}}\\right) \\ge P(|Z| \\le 2) \\approx 0{,}954$."
+  },
+  {
+    "id": "theoremes-limites-err-04", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "Soit $(X_1, \\dots, X_n)$, $n \\ge 2$, un $n$-échantillon d'une loi d'espérance $m$ et de variance $\\sigma^2 > 0$, et $V_n = \\frac1n \\sum_{k=1}^n (X_k - \\bar X_n)^2$. Une copie calcule le biais de $V_n$.",
+    "lignes": [
+      "En développant, $V_n = \\dfrac1n \\displaystyle\\sum_{k=1}^n X_k^2 - \\bar X_n^2$.",
+      "Pour tout $k$, $E(X_k^2) = V(X_k) + E(X_k)^2$, donc $E\\left(\\dfrac1n \\displaystyle\\sum_{k=1}^n X_k^2\\right) = \\sigma^2 + m^2$.",
+      "Comme $E(\\bar X_n) = m$, on a $E(\\bar X_n^2) = m^2$, donc $E(V_n) = \\sigma^2$ : $V_n$ est sans biais."
+    ],
+    "fausse": 2,
+    "explication": "$E(Y^2) = E(Y)^2$ est faux en général : $E(\\bar X_n^2) = V(\\bar X_n) + m^2 = \\frac{\\sigma^2}{n} + m^2$, par indépendance. Donc $E(V_n) = \\frac{n-1}{n}\\sigma^2$ : $V_n$ est biaisé, mais asymptotiquement sans biais."
+  },
+  {
+    "id": "theoremes-limites-err-05", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "Soit $(X_n)$ une suite de variables aléatoires réelles telle que, pour tout $\\varepsilon > 0$, la série $\\sum_n P(|X_n| > \\varepsilon)$ converge. Une copie veut montrer que $X_n \\to 0$ presque sûrement.",
+    "lignes": [
+      "Soit $\\varepsilon > 0$. Par le lemme de Borel-Cantelli, $P\\left(\\limsup_n \\{|X_n| > \\varepsilon\\}\\right) = 0$.",
+      "Donc l'événement $\\Omega_\\varepsilon$ : « $|X_n| \\le \\varepsilon$ à partir d'un certain rang » est de probabilité $1$.",
+      "Pour tout $\\omega \\in \\bigcap_{\\varepsilon > 0} \\Omega_\\varepsilon$, la suite $(X_n(\\omega))$ tend vers $0$.",
+      "L'ensemble $\\bigcap_{\\varepsilon > 0} \\Omega_\\varepsilon$ est de probabilité $1$, car toute intersection d'événements de probabilité $1$ est de probabilité $1$."
+    ],
+    "fausse": 3,
+    "explication": "Ce n'est vrai que pour une intersection **dénombrable**. Contre-exemple : si $U$ suit la loi uniforme sur $[0, 1]$, chaque événement $\\{U \\ne x\\}$ est de probabilité $1$, mais leur intersection pour $x \\in [0, 1]$ est vide. Réparation : $\\Omega_\\varepsilon$ croît avec $\\varepsilon$, donc $\\bigcap_{\\varepsilon > 0} \\Omega_\\varepsilon = \\bigcap_{k \\ge 1} \\Omega_{1/k}$, intersection dénombrable."
+  },
+  {
+    "id": "theoremes-limites-err-06", "ch": "theoremes-limites", "type": "erreur",
+    "enonce": "Soit $p \\in\\, ]0, 1[$ fixé et $S_n$ de loi binomiale $\\mathcal B(n, p)$. Une copie décrit le comportement de $S_n$ pour $n$ grand.",
+    "lignes": [
+      "$S_n$ a la loi de $X_1 + \\dots + X_n$, où les $X_k$ sont indépendantes de loi de Bernoulli de paramètre $p$.",
+      "$E(S_n) = np$ et $V(S_n) = np(1-p)$.",
+      "Par le théorème central limite, $S_n$ converge en loi vers la loi normale $\\mathcal N\\big(np, np(1-p)\\big)$."
+    ],
+    "fausse": 2,
+    "explication": "Une limite ne peut pas dépendre de $n$. Le théorème dit que $\\frac{S_n - np}{\\sqrt{np(1-p)}}$ converge en loi vers $\\mathcal N(0, 1)$. $S_n$ elle-même ne converge pas en loi : $P(S_n \\le x) \\to 0$ pour tout $x$. Le jury note que l'énoncé exact du TCL est souvent mal connu."
+  },
+  {
+    "id": "theoremes-limites-piste-01", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Pour tout $n \\ge 1$, soit $X_n$ de loi de Poisson de paramètre $n$. Montrer que $\\frac{X_n}{n}$ converge en probabilité vers $1$.",
+    "choix": [
+      {
+        "titre": "Inégalité de Bienaymé-Tchebychev",
+        "info": "Si $Y$ admet un moment d'ordre 2, alors pour tout $\\varepsilon > 0$, $P(|Y - E(Y)| \\ge \\varepsilon) \\le \\frac{V(Y)}{\\varepsilon^2}$.",
+        "verdict": "bon",
+        "retour": "$E\\left(\\frac{X_n}{n}\\right) = 1$ et $V\\left(\\frac{X_n}{n}\\right) = \\frac{n}{n^2} = \\frac1n$ : la majoration tend vers $0$."
+      },
+      {
+        "titre": "Écrire $X_n$ comme une somme, puis la loi faible des grands nombres",
+        "info": "La somme de $n$ variables indépendantes de loi de Poisson de paramètre $1$ suit la loi de Poisson de paramètre $n$. Loi faible : pour $(Y_k)$ indépendantes de même loi avec moment d'ordre 2, $\\frac1n\\sum_{k=1}^n Y_k \\to E(Y_1)$ en probabilité.",
+        "verdict": "bon",
+        "retour": "La convergence en probabilité vers une constante ne dépend que de la loi de chaque $\\frac{X_n}{n}$, qui est celle de $\\frac1n\\sum_{k=1}^n Y_k$."
+      },
+      {
+        "titre": "Inégalité de Markov appliquée à $\\frac{X_n}{n}$",
+        "info": "Si $Y \\ge 0$ admet une espérance et $a > 0$, alors $P(Y \\ge a) \\le \\frac{E(Y)}{a}$.",
+        "verdict": "impasse",
+        "retour": "Appliquée à $\\frac{X_n}{n}$, elle donne $P\\left(\\frac{X_n}{n} \\ge 1 + \\varepsilon\\right) \\le \\frac{1}{1+\\varepsilon}$, qui ne tend pas vers $0$, et rien pour l'écart inférieur."
+      },
+      {
+        "titre": "Convergence des espérances",
+        "info": "$E\\left(\\frac{X_n}{n}\\right) = 1$ pour tout $n$.",
+        "verdict": "impasse",
+        "retour": "Une espérance constante ne dit rien de la concentration : il faut contrôler l'écart à la moyenne, donc la variance."
+      }
+    ],
+    "direction": "Bienaymé-Tchebychev donne directement $P\\left(\\left|\\frac{X_n}{n} - 1\\right| \\ge \\varepsilon\\right) \\le \\frac{1}{n\\varepsilon^2} \\to 0$. C'est la preuve de la loi faible, appliquée à une seule variable."
+  },
+  {
+    "id": "theoremes-limites-piste-02", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires indépendantes de loi exponentielle de paramètre $1$ (densité $x \\mapsto e^{-x}$ sur $[0, +\\infty[$). Montrer que, presque sûrement, $X_n \\le 2\\ln n$ à partir d'un certain rang.",
+    "choix": [
+      {
+        "titre": "Lemme de Borel-Cantelli, première partie",
+        "info": "Si $\\sum P(A_n)$ converge, alors $P(\\limsup A_n) = 0$ : presque sûrement, seul un nombre fini des $A_n$ est réalisé. Aucune hypothèse d'indépendance.",
+        "verdict": "bon",
+        "retour": "Avec $A_n = \\{X_n > 2\\ln n\\}$, la loi exponentielle donne $P(A_n)$ exactement, et c'est le terme général d'une série convergente."
+      },
+      {
+        "titre": "Lemme de Borel-Cantelli, seconde partie",
+        "info": "Si les $A_n$ sont mutuellement indépendants et si $\\sum P(A_n)$ diverge, alors $P(\\limsup A_n) = 1$.",
+        "verdict": "impasse",
+        "retour": "Elle conclut qu'une infinité d'événements se réalisent : c'est l'inverse de ce qu'on veut, et la série est ici convergente."
+      },
+      {
+        "titre": "Inégalité de Markov appliquée à $X_n$",
+        "info": "Si $Y \\ge 0$ admet une espérance et $a > 0$, alors $P(Y \\ge a) \\le \\frac{E(Y)}{a}$.",
+        "verdict": "impasse",
+        "retour": "Elle donne $P(X_n \\ge 2\\ln n) \\le \\frac{1}{2\\ln n}$, terme général d'une série divergente : trop grossier, alors que la loi exacte est connue."
+      },
+      {
+        "titre": "Loi forte des grands nombres",
+        "info": "Si les $X_n$ sont indépendantes, de même loi et admettent une espérance, $\\frac1n \\sum_{k=1}^n X_k \\to E(X_1)$ presque sûrement.",
+        "verdict": "impasse",
+        "retour": "Elle porte sur les moyennes, pas sur la taille de chaque $X_n$ à l'échelle $\\ln n$."
+      }
+    ],
+    "direction": "$P(X_n > 2\\ln n) = e^{-2\\ln n} = \\frac{1}{n^2}$, et $\\sum \\frac{1}{n^2}$ converge. Par Borel-Cantelli, $P(\\limsup \\{X_n > 2\\ln n\\}) = 0$ : presque sûrement, $X_n > 2\\ln n$ n'a lieu que pour un nombre fini de $n$."
+  },
+  {
+    "id": "theoremes-limites-piste-03", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires indépendantes de loi exponentielle de paramètre $1$. Montrer que, presque sûrement, $X_n \\ge \\ln n$ pour une infinité d'entiers $n$.",
+    "choix": [
+      {
+        "titre": "Lemme de Borel-Cantelli, seconde partie",
+        "info": "Si les $A_n$ sont mutuellement indépendants et si $\\sum P(A_n)$ diverge, alors $P(\\limsup A_n) = 1$ : presque sûrement, une infinité des $A_n$ sont réalisés.",
+        "verdict": "bon",
+        "retour": "Les événements $A_n = \\{X_n \\ge \\ln n\\}$ sont indépendants car les $X_n$ le sont, et $P(A_n)$ se calcule exactement."
+      },
+      {
+        "titre": "Lemme de Borel-Cantelli, première partie",
+        "info": "Si $\\sum P(A_n)$ converge, alors $P(\\limsup A_n) = 0$.",
+        "verdict": "impasse",
+        "retour": "Ici la série diverge : cette partie du lemme ne dit rien."
+      },
+      {
+        "titre": "Étudier la loi de $\\max(X_1, \\dots, X_n)$",
+        "info": "Par indépendance, $P(\\max(X_1, \\dots, X_n) \\le x) = (1 - e^{-x})^n$ pour $x \\ge 0$.",
+        "verdict": "impasse",
+        "retour": "On obtient $P(\\max_{k \\le n} X_k \\ge \\ln n) \\to 1 - e^{-1}$ : une information à $n$ fixé, pas un « infiniment souvent » presque sûr."
+      },
+      {
+        "titre": "Loi forte des grands nombres",
+        "info": "Si les $X_n$ sont indépendantes, de même loi et admettent une espérance, $\\frac1n \\sum_{k=1}^n X_k \\to E(X_1)$ presque sûrement.",
+        "verdict": "impasse",
+        "retour": "Elle contrôle la moyenne, qui tend vers $1$ ; elle ne dit rien des grandes valeurs isolées."
+      }
+    ],
+    "direction": "$P(X_n \\ge \\ln n) = e^{-\\ln n} = \\frac1n$ et $\\sum \\frac1n$ diverge. Les événements étant mutuellement indépendants, la seconde partie de Borel-Cantelli donne $P(\\limsup \\{X_n \\ge \\ln n\\}) = 1$."
+  },
+  {
+    "id": "theoremes-limites-piste-04", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $\\lambda > 0$ inconnu et $(X_1, \\dots, X_n)$, $n \\ge 2$, un $n$-échantillon de la loi de Poisson de paramètre $\\lambda$. Proposer un estimateur sans biais et convergent de $e^{-\\lambda}$, et calculer son risque quadratique.",
+    "choix": [
+      {
+        "titre": "Fréquence empirique de l'événement $\\{X = 0\\}$",
+        "info": "Pour un événement $A$, la proportion $\\frac1n \\sum_{k=1}^n \\mathbf 1_{\\{X_k \\in A\\}}$ est la moyenne empirique de variables de Bernoulli de paramètre $P(X \\in A)$.",
+        "verdict": "bon",
+        "retour": "On remarque que $e^{-\\lambda} = P(X = 0)$ : on est ramené à l'estimation d'un paramètre de Bernoulli."
+      },
+      {
+        "titre": "Substitution : $e^{-\\bar X_n}$",
+        "info": "$\\bar X_n$ est un estimateur sans biais et convergent de $\\lambda$. La fonction $x \\mapsto e^{-x}$ est continue.",
+        "verdict": "impasse",
+        "retour": "L'estimateur est convergent, mais biaisé : $E(e^{-\\bar X_n}) = \\exp\\left(n\\lambda(e^{-1/n} - 1)\\right) \\ne e^{-\\lambda}$. L'espérance ne commute pas avec une fonction non affine."
+      },
+      {
+        "titre": "Fonction génératrice : $\\left(1 - \\frac1n\\right)^{S_n}$ avec $S_n = X_1 + \\dots + X_n$",
+        "info": "$S_n$ suit la loi de Poisson de paramètre $n\\lambda$, et $E(t^{S_n}) = e^{n\\lambda(t - 1)}$ pour tout réel $t$.",
+        "verdict": "bon",
+        "retour": "Avec $t = 1 - \\frac1n$, l'estimateur est sans biais ; avec $t = (1 - \\frac1n)^2$, son risque quadratique vaut $e^{-2\\lambda}(e^{\\lambda/n} - 1) \\to 0$, plus petit même que celui de la fréquence empirique."
+      },
+      {
+        "titre": "L'indicatrice $\\mathbf 1_{\\{X_1 = 0\\}}$",
+        "info": "$E(\\mathbf 1_{\\{X_1 = 0\\}}) = P(X_1 = 0)$.",
+        "verdict": "impasse",
+        "retour": "Sans biais, mais elle ne dépend pas de $n$ : elle ne converge pas vers $e^{-\\lambda}$."
+      }
+    ],
+    "direction": "$T_n = \\frac1n \\sum_{k=1}^n \\mathbf 1_{\\{X_k = 0\\}}$ est la moyenne de $n$ variables indépendantes de loi de Bernoulli de paramètre $e^{-\\lambda}$. Donc $E(T_n) = e^{-\\lambda}$ et le risque quadratique vaut $V(T_n) = \\frac{e^{-\\lambda}(1 - e^{-\\lambda})}{n} \\to 0$, ce qui donne la convergence."
+  },
+  {
+    "id": "theoremes-limites-piste-05", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "On dispose d'un générateur de variables aléatoires indépendantes. Proposer une méthode de Monte-Carlo pour approcher $S = \\displaystyle\\sum_{k=1}^{+\\infty} \\frac{1}{k^3}$, avec un contrôle de l'erreur par l'inégalité de Bienaymé-Tchebychev.",
+    "choix": [
+      {
+        "titre": "Loi $P(N = k) = \\frac{1}{k(k+1)}$ sur $\\mathbb N^*$ et $Y = \\frac{N+1}{N^2}$",
+        "info": "Si $U$ suit la loi uniforme sur $]0, 1]$, $N = \\lfloor 1/U \\rfloor$ vérifie $P(N = k) = \\frac1k - \\frac1{k+1}$. Pour $g \\ge 0$, $E(g(N)) = \\sum_k g(k)P(N = k)$.",
+        "verdict": "bon",
+        "retour": "$E(Y) = \\sum_k \\frac{k+1}{k^2} \\cdot \\frac{1}{k(k+1)} = S$, et $E(Y^2) = \\sum_k \\frac{k+1}{k^5} < +\\infty$ : la variance est finie."
+      },
+      {
+        "titre": "Loi géométrique $P(N = k) = 2^{-k}$ et $Y = \\frac{2^N}{N^3}$",
+        "info": "Pour $g \\ge 0$, $E(g(N)) = \\sum_{k \\ge 1} g(k)\\,2^{-k}$. La loi forte des grands nombres demande seulement une espérance finie.",
+        "verdict": "possible",
+        "retour": "$E(Y) = S$ et la moyenne empirique converge presque sûrement. Mais $E(Y^2) = \\sum_k \\frac{2^k}{k^6} = +\\infty$ : aucun contrôle par Bienaymé-Tchebychev."
+      },
+      {
+        "titre": "$N$ de loi uniforme sur $\\mathbb N^*$ et $Y = \\frac{1}{N^3}$",
+        "info": "Une loi sur $\\mathbb N^*$ est une suite $(p_k)$ de réels positifs de somme $1$.",
+        "verdict": "impasse",
+        "retour": "Il n'existe pas de loi uniforme sur $\\mathbb N^*$ : des $p_k$ tous égaux ne peuvent pas être de somme $1$."
+      },
+      {
+        "titre": "$N$ uniforme sur $\\{1, \\dots, n\\}$ et $Y = \\frac{n}{N^3}$",
+        "info": "$E(Y) = \\sum_{k=1}^n \\frac{1}{k^3}$, et le reste vérifie $\\sum_{k > n} \\frac{1}{k^3} \\le \\frac{1}{2n^2}$ par comparaison série-intégrale.",
+        "verdict": "possible",
+        "retour": "On estime une somme partielle : il faut ajouter l'erreur de troncature, ce qui demande d'ajuster $n$ et la taille de l'échantillon."
+      }
+    ],
+    "direction": "On simule $N_1, \\dots, N_m$ indépendantes de loi $\\frac{1}{k(k+1)}$ via $\\lfloor 1/U \\rfloor$, et on pose $\\bar Y_m = \\frac1m \\sum_i \\frac{N_i + 1}{N_i^2}$. Sans biais, de variance $\\frac{V(Y)}{m}$ finie : Bienaymé-Tchebychev donne $P(|\\bar Y_m - S| \\ge \\varepsilon) \\le \\frac{V(Y)}{m\\varepsilon^2}$, et $V(Y) \\le E(Y^2) = \\sum_k \\frac{k+1}{k^5}$."
+  },
+  {
+    "id": "theoremes-limites-piste-06", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $f : [0, 1] \\to [0, 1]$ continue, $I = \\int_0^1 f$, $(U_k)$ indépendantes de loi uniforme sur $[0, 1]$ et $I_n = \\frac1n \\sum_{k=1}^n f(U_k)$. Déterminer un $n$ qui **garantit** $P(|I_n - I| \\ge 0{,}01) \\le 0{,}05$, quelle que soit $f$.",
+    "choix": [
+      {
+        "titre": "Bienaymé-Tchebychev et majoration de la variance",
+        "info": "$P(|Y - E(Y)| \\ge \\varepsilon) \\le \\frac{V(Y)}{\\varepsilon^2}$. Une variable $Z$ à valeurs dans $[0, 1]$ vérifie $Z^2 \\le Z$, donc $V(Z) \\le E(Z) - E(Z)^2 \\le \\frac14$.",
+        "verdict": "bon",
+        "retour": "$V(I_n) = \\frac{V(f(U_1))}{n} \\le \\frac{1}{4n}$ : on obtient une condition explicite sur $n$, valable pour tout $f$."
+      },
+      {
+        "titre": "Théorème central limite",
+        "info": "Pour $(Y_k)$ indépendantes de même loi, de variance $\\sigma^2 > 0$ : $\\frac{\\sqrt n(\\bar Y_n - E(Y_1))}{\\sigma}$ converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "impasse",
+        "retour": "Il donne une approximation pour $n$ grand (environ $n \\approx 9600$), sans contrôle de l'erreur pour $n$ fixé : aucune garantie."
+      },
+      {
+        "titre": "Inégalité de Markov appliquée à $|I_n - I|$",
+        "info": "Si $Y \\ge 0$ admet une espérance et $a > 0$, alors $P(Y \\ge a) \\le \\frac{E(Y)}{a}$. Par Cauchy-Schwarz, $E(|I_n - I|) \\le \\sqrt{V(I_n)}$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais la borne obtenue est bien moins bonne : il faut $n \\ge 10^6$."
+      },
+      {
+        "titre": "Loi forte des grands nombres",
+        "info": "Si $(Y_k)$ sont indépendantes, de même loi et admettent une espérance, $\\bar Y_n \\to E(Y_1)$ presque sûrement.",
+        "verdict": "impasse",
+        "retour": "Elle assure la convergence de $I_n$ vers $I$, sans aucune vitesse."
+      }
+    ],
+    "direction": "Par Bienaymé-Tchebychev, $P(|I_n - I| \\ge 0{,}01) \\le \\frac{1}{4n \\cdot 10^{-4}}$. Cette borne est inférieure à $0{,}05$ dès que $n \\ge 50\\,000$."
+  },
+  {
+    "id": "theoremes-limites-piste-07", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $(U_n)_{n \\ge 1}$ une suite de variables indépendantes de loi uniforme sur $[0, 1]$ et $M_n = \\max(U_1, \\dots, U_n)$. Montrer que $n(1 - M_n)$ converge en loi et identifier la limite.",
+    "choix": [
+      {
+        "titre": "Calculer la fonction de répartition",
+        "info": "Par indépendance, $P(M_n \\le t) = P(U_1 \\le t) \\cdots P(U_n \\le t)$. La convergence en loi se lit sur les fonctions de répartition, aux points de continuité de la limite.",
+        "verdict": "bon",
+        "retour": "On obtient une expression explicite en $x$ et $n$, dont la limite est une exponentielle."
+      },
+      {
+        "titre": "Théorème central limite",
+        "info": "Pour des variables indépendantes de même loi de variance finie non nulle, la somme centrée réduite converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "impasse",
+        "retour": "$M_n$ n'est pas une somme : le TCL ne s'applique pas, et la limite n'est d'ailleurs pas normale."
+      },
+      {
+        "titre": "Calculer $E(n(1 - M_n))$ et $V(n(1 - M_n))$",
+        "info": "$M_n$ a pour densité $t \\mapsto n t^{n-1}$ sur $[0, 1]$.",
+        "verdict": "impasse",
+        "retour": "On trouve des limites ($1$ et $1$), mais la convergence de l'espérance et de la variance n'entraîne pas la convergence en loi."
+      },
+      {
+        "titre": "Loi forte des grands nombres",
+        "info": "Pour $(Y_k)$ indépendantes, de même loi, admettant une espérance, $\\frac1n \\sum_{k=1}^n Y_k \\to E(Y_1)$ presque sûrement.",
+        "verdict": "impasse",
+        "retour": "Elle concerne des moyennes, pas un maximum."
+      }
+    ],
+    "direction": "Pour $0 \\le x \\le n$, $P(n(1 - M_n) > x) = P(M_n < 1 - \\frac xn) = \\left(1 - \\frac xn\\right)^n \\to e^{-x}$. La fonction de répartition converge donc vers $1 - e^{-x}$ pour $x \\ge 0$ et vaut $0$ pour $x < 0$ : la limite est la loi exponentielle de paramètre $1$."
+  },
+  {
+    "id": "theoremes-limites-piste-08", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $(X_n)_{n \\ge 1}$ une suite de variables aléatoires réelles indépendantes, de même loi, admettant un moment d'ordre 2, et $\\sigma^2 = V(X_1)$. On pose $S_n^2 = \\frac{1}{n-1} \\sum_{k=1}^n (X_k - \\bar X_n)^2$ pour $n \\ge 2$. Montrer que $S_n^2 \\to \\sigma^2$ presque sûrement.",
+    "choix": [
+      {
+        "titre": "Loi forte des grands nombres appliquée à $(X_k)$ et à $(X_k^2)$",
+        "info": "Si les $Y_k$ sont indépendantes, de même loi et admettent une espérance, alors $\\frac1n \\sum_{k=1}^n Y_k \\to E(Y_1)$ presque sûrement. Des fonctions de variables indépendantes sont indépendantes.",
+        "verdict": "bon",
+        "retour": "Les $X_k^2$ admettent une espérance grâce au moment d'ordre 2, et $S_n^2$ s'exprime à l'aide des deux moyennes empiriques."
+      },
+      {
+        "titre": "Risque quadratique de $S_n^2$, puis inégalité de Markov",
+        "info": "Si $E\\left((T_n - \\theta)^2\\right) \\to 0$, alors $T_n \\to \\theta$ en probabilité.",
+        "verdict": "impasse",
+        "retour": "Il faudrait un moment d'ordre 4 pour calculer ce risque, et on n'obtiendrait que la convergence en probabilité."
+      },
+      {
+        "titre": "$S_n^2$ est sans biais",
+        "info": "$E(S_n^2) = \\sigma^2$ pour tout $n \\ge 2$.",
+        "verdict": "impasse",
+        "retour": "L'absence de biais n'entraîne aucune convergence."
+      },
+      {
+        "titre": "Théorème central limite",
+        "info": "Pour des variables indépendantes de même loi de variance $\\sigma^2 > 0$, $\\frac{\\sqrt n(\\bar X_n - m)}{\\sigma}$ converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "impasse",
+        "retour": "Il décrit les fluctuations de $\\bar X_n$ en loi, pas une convergence presque sûre de $S_n^2$."
+      }
+    ],
+    "direction": "On écrit $S_n^2 = \\frac{n}{n-1}\\left(\\frac1n \\sum_{k=1}^n X_k^2 - \\bar X_n^2\\right)$. La loi forte donne $\\frac1n \\sum X_k^2 \\to E(X_1^2)$ et $\\bar X_n \\to E(X_1)$ presque sûrement. Sur l'intersection de ces deux événements de probabilité $1$, $S_n^2 \\to E(X_1^2) - E(X_1)^2 = \\sigma^2$."
+  },
+  {
+    "id": "theoremes-limites-piste-09", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $\\theta > 0$ inconnu, $(X_1, \\dots, X_n)$ un $n$-échantillon de la loi uniforme sur $[0, \\theta]$ et $M_n = \\max(X_1, \\dots, X_n)$. Montrer que $M_n$ est un estimateur convergent de $\\theta$.",
+    "choix": [
+      {
+        "titre": "Calcul direct de $P(|M_n - \\theta| > \\varepsilon)$",
+        "info": "Par indépendance, $P(M_n \\le t) = \\left(\\frac t\\theta\\right)^n$ pour $t \\in [0, \\theta]$. Et $M_n \\le \\theta$ presque sûrement.",
+        "verdict": "bon",
+        "retour": "L'événement $\\{|M_n - \\theta| > \\varepsilon\\}$ se réduit à $\\{M_n < \\theta - \\varepsilon\\}$, de probabilité explicite."
+      },
+      {
+        "titre": "Risque quadratique, puis inégalité de Markov",
+        "info": "Le risque quadratique vaut biais au carré plus variance. S'il tend vers $0$, Markov appliquée à $(M_n - \\theta)^2$ donne la convergence en probabilité.",
+        "verdict": "bon",
+        "retour": "Avec la densité $t \\mapsto \\frac{nt^{n-1}}{\\theta^n}$ sur $[0, \\theta]$, on trouve $E\\left((M_n - \\theta)^2\\right) = \\frac{2\\theta^2}{(n+1)(n+2)}$."
+      },
+      {
+        "titre": "Loi faible des grands nombres",
+        "info": "Pour $(X_k)$ indépendantes de même loi avec moment d'ordre 2, $\\bar X_n \\to E(X_1)$ en probabilité.",
+        "verdict": "impasse",
+        "retour": "Elle concerne $\\bar X_n$, qui tend vers $\\frac\\theta2$, pas le maximum."
+      },
+      {
+        "titre": "Théorème central limite",
+        "info": "Pour des variables indépendantes de même loi de variance finie non nulle, la somme centrée réduite converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "impasse",
+        "retour": "$M_n$ n'est pas une somme de variables indépendantes : le théorème ne s'applique pas."
+      }
+    ],
+    "direction": "Pour $0 < \\varepsilon < \\theta$, $P(|M_n - \\theta| > \\varepsilon) = P(M_n < \\theta - \\varepsilon) = \\left(1 - \\frac\\varepsilon\\theta\\right)^n \\to 0$, et cette probabilité est nulle si $\\varepsilon \\ge \\theta$. Donc $M_n \\to \\theta$ en probabilité."
+  },
+  {
+    "id": "theoremes-limites-piste-10", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Une machine produit $1000$ pièces ; chacune est défectueuse avec probabilité $0{,}002$, indépendamment des autres. Donner une valeur approchée de la probabilité qu'au plus $2$ pièces soient défectueuses.",
+    "choix": [
+      {
+        "titre": "Approximation par la loi de Poisson",
+        "info": "Si $X_n$ suit $\\mathcal B(n, p_n)$ avec $np_n \\to \\lambda > 0$, alors $P(X_n = k) \\to e^{-\\lambda}\\frac{\\lambda^k}{k!}$ pour tout $k \\in \\mathbb N$.",
+        "verdict": "bon",
+        "retour": "$n$ est grand, $p$ petit et $np = 2$ : c'est le cadre de cette approximation."
+      },
+      {
+        "titre": "Approximation par la loi normale",
+        "info": "Si $S_n$ suit $\\mathcal B(n, p)$ avec $p \\in\\, ]0,1[$ fixé, $\\frac{S_n - np}{\\sqrt{np(1-p)}}$ converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "possible",
+        "retour": "Elle fournit une valeur, mais médiocre : ici $np(1-p) \\approx 2$ et la loi est très dissymétrique. Sans correction, elle donne $0{,}5$ ; avec la correction de continuité, environ $0{,}64$, contre $0{,}677$ en valeur exacte."
+      },
+      {
+        "titre": "Calcul exact avec la loi binomiale",
+        "info": "$P(S = k) = \\binom{n}{k} p^k (1-p)^{n-k}$ pour $S$ de loi $\\mathcal B(n, p)$.",
+        "verdict": "possible",
+        "retour": "Faisable avec une calculatrice : trois termes avec des puissances $0{,}998^{998}$ à $0{,}998^{1000}$. On trouve presque exactement la même valeur."
+      },
+      {
+        "titre": "Inégalité de Bienaymé-Tchebychev",
+        "info": "Si $S$ admet un moment d'ordre 2, alors pour tout $\\varepsilon > 0$, $P(|S - E(S)| \\ge \\varepsilon) \\le \\frac{V(S)}{\\varepsilon^2}$.",
+        "verdict": "impasse",
+        "retour": "Elle majore une probabilité d'écart, elle n'en donne pas de valeur approchée."
+      }
+    ],
+    "direction": "Le nombre $S$ de pièces défectueuses suit $\\mathcal B(1000\\,;\\,0{,}002)$, approchée par la loi de Poisson de paramètre $\\lambda = np = 2$. Donc $P(S \\le 2) \\approx e^{-2}\\left(1 + 2 + \\frac{4}{2}\\right) = 5e^{-2} \\approx 0{,}677$, très proche de la valeur exacte."
+  },
+  {
+    "id": "theoremes-limites-piste-11", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Dans un sondage portant sur $n = 1600$ personnes tirées indépendamment, $40\\,\\%$ répondent « oui ». Donner un intervalle de confiance asymptotique de niveau $0{,}95$ pour la proportion $p$ de « oui » dans la population (on admet $P(|Z| \\le 1{,}96) \\approx 0{,}95$ pour $Z$ de loi $\\mathcal N(0, 1)$).",
+    "choix": [
+      {
+        "titre": "Théorème central limite et majoration $p(1-p) \\le \\frac14$",
+        "info": "Pour $(X_k)$ indépendantes de loi de Bernoulli de paramètre $p \\in\\, ]0, 1[$, $\\frac{\\sqrt n(\\bar X_n - p)}{\\sqrt{p(1-p)}}$ converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "bon",
+        "retour": "On remplace l'écart-type inconnu $\\sqrt{p(1-p)}$ par sa borne $\\frac12$, ce qui ne fait qu'élargir l'intervalle."
+      },
+      {
+        "titre": "Inégalité de Bienaymé-Tchebychev",
+        "info": "$P(|\\bar X_n - p| \\ge a) \\le \\frac{p(1-p)}{na^2} \\le \\frac{1}{4na^2}$.",
+        "verdict": "possible",
+        "retour": "On obtient un intervalle de niveau au moins $0{,}95$ pour tout $n$, donc a fortiori asymptotique, mais plus large : $0{,}4 \\pm 0{,}056$."
+      },
+      {
+        "titre": "Approximation par la loi de Poisson",
+        "info": "Si $np_n \\to \\lambda > 0$, la loi $\\mathcal B(n, p_n)$ est proche de la loi de Poisson de paramètre $\\lambda$.",
+        "verdict": "impasse",
+        "retour": "Elle concerne les événements rares ($p$ petit), pas une proportion de l'ordre de $0{,}4$."
+      },
+      {
+        "titre": "Loi forte des grands nombres",
+        "info": "Pour $(X_k)$ indépendantes de loi de Bernoulli de paramètre $p$, $\\bar X_n = \\frac1n \\sum_{k=1}^n X_k \\to p$ presque sûrement.",
+        "verdict": "impasse",
+        "retour": "Elle justifie l'estimation ponctuelle $\\bar X_n$ mais ne fournit aucune marge d'erreur."
+      }
+    ],
+    "direction": "La probabilité que $p$ soit dans $\\left[\\bar X_n \\pm \\frac{1{,}96}{2\\sqrt n}\\right]$ tend vers $P\\left(|Z| \\le \\frac{1{,}96}{2\\sqrt{p(1-p)}}\\right) \\ge 0{,}95$. Avec $\\frac{1{,}96}{2 \\times 40} = 0{,}0245$, l'intervalle réalisé est $[0{,}3755\\,;\\,0{,}4245]$."
+  },
+  {
+    "id": "theoremes-limites-piste-12", "ch": "theoremes-limites", "type": "piste",
+    "enonce": "Soit $\\lambda > 0$ et, pour tout entier $n \\ge \\lambda$, $X_n$ de loi binomiale $\\mathcal B\\left(n, \\frac\\lambda n\\right)$. Montrer que $(X_n)$ converge en loi vers la loi de Poisson de paramètre $\\lambda$.",
+    "choix": [
+      {
+        "titre": "Limite de $P(X_n = k)$ à $k$ fixé",
+        "info": "Pour des variables à valeurs dans $\\mathbb N$, la fonction de répartition en $x \\ge 0$ est la somme finie $\\sum_{k=0}^{\\lfloor x \\rfloor} P(X_n = k)$.",
+        "verdict": "bon",
+        "retour": "On montre $P(X_n = k) \\to e^{-\\lambda}\\frac{\\lambda^k}{k!}$, puis on somme un nombre fini de limites."
+      },
+      {
+        "titre": "Fonctions génératrices",
+        "info": "$G_{X_n}(t) = \\left(1 + \\frac{\\lambda(t-1)}{n}\\right)^n \\to e^{\\lambda(t-1)}$, fonction génératrice de la loi de Poisson.",
+        "verdict": "possible",
+        "retour": "Le calcul est immédiat, mais « convergence des fonctions génératrices entraîne convergence en loi » est hors programme, à redémontrer."
+      },
+      {
+        "titre": "Théorème central limite",
+        "info": "Pour des variables indépendantes de même loi de variance finie non nulle, la somme centrée réduite converge en loi vers $\\mathcal N(0, 1)$.",
+        "verdict": "impasse",
+        "retour": "Le paramètre $\\frac\\lambda n$ change avec $n$ : ce n'est pas la somme d'une suite fixée, et la limite n'est pas normale."
+      },
+      {
+        "titre": "Convergence de l'espérance et de la variance",
+        "info": "$E(X_n) = \\lambda$ et $V(X_n) = \\lambda\\left(1 - \\frac\\lambda n\\right) \\to \\lambda$.",
+        "verdict": "impasse",
+        "retour": "Ce sont les moments de la loi de Poisson, mais deux moments ne déterminent pas une loi limite."
+      }
+    ],
+    "direction": "$P(X_n = k) = \\frac{n(n-1)\\cdots(n-k+1)}{n^k} \\cdot \\frac{\\lambda^k}{k!} \\cdot \\left(1 - \\frac\\lambda n\\right)^{n-k}$. Le premier facteur tend vers $1$ et le dernier vers $e^{-\\lambda}$. On conclut en sommant sur $k \\le \\lfloor x \\rfloor$."
+  }
+]
