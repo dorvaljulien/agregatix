@@ -1,0 +1,682 @@
+[
+  {
+    "id": "probabilites-vf-01", "ch": "probabilites", "type": "vf",
+    "enonce": "La réunion de deux tribus sur un même ensemble $\\Omega$ est une tribu sur $\\Omega$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\Omega = \\{1, 2, 3\\}$, $\\mathcal T_1 = \\{\\emptyset, \\{1\\}, \\{2, 3\\}, \\Omega\\}$ et $\\mathcal T_2 = \\{\\emptyset, \\{2\\}, \\{1, 3\\}, \\Omega\\}$. La réunion contient $\\{1\\}$ et $\\{2\\}$ mais pas $\\{1, 2\\}$. En revanche, une intersection de tribus est toujours une tribu."
+  },
+  {
+    "id": "probabilites-vf-02", "ch": "probabilites", "type": "vf",
+    "enonce": "Soit $(A_n)_{n \\in \\mathbb N}$ une suite d'événements tels que $P(A_n) = 0$ pour tout $n$. Alors $P\\left(\\bigcup_{n} A_n\\right) = 0$.",
+    "reponse": true,
+    "explication": "Par sous-additivité (dénombrable), $0 \\le P\\left(\\bigcup_n A_n\\right) \\le \\sum_n P(A_n) = 0$. De même, une intersection dénombrable d'événements de probabilité $1$ est de probabilité $1$, par passage au complémentaire."
+  },
+  {
+    "id": "probabilites-vf-03", "ch": "probabilites", "type": "vf",
+    "enonce": "Soit $(A_i)_{i \\in I}$ une famille quelconque d'événements de probabilité nulle, dont la réunion $\\bigcup_{i \\in I} A_i$ est un événement. Alors cette réunion est de probabilité nulle.",
+    "reponse": false,
+    "explication": "Faux en général pour $I$ non dénombrable. Soit $X$ une variable de loi uniforme sur $[0, 1]$, à valeurs dans $[0, 1]$. Chaque $\\{X = x\\}$ est de probabilité nulle (loi à densité), mais $\\bigcup_{x \\in [0,1]} \\{X = x\\} = \\Omega$ est de probabilité $1$. C'est vrai pour $I$ dénombrable, par sous-additivité."
+  },
+  {
+    "id": "probabilites-vf-04", "ch": "probabilites", "type": "vf",
+    "enonce": "Soit $(A_n)_{n \\in \\mathbb N}$ une suite décroissante (pour l'inclusion) d'événements. Alors $P\\left(\\bigcap_{n} A_n\\right) = \\lim\\limits_{n \\to +\\infty} P(A_n)$.",
+    "reponse": true,
+    "explication": "C'est la continuité décroissante. On l'obtient en passant aux complémentaires : $(\\overline{A_n})$ est croissante, et la continuité croissante, conséquence de la $\\sigma$-additivité appliquée aux différences $\\overline{A_{n+1}} \\setminus \\overline{A_n}$, donne le résultat."
+  },
+  {
+    "id": "probabilites-vf-05", "ch": "probabilites", "type": "vf",
+    "enonce": "Trois événements $A$, $B$, $C$ deux à deux indépendants sont mutuellement indépendants.",
+    "reponse": false,
+    "explication": "On lance deux fois une pièce équilibrée. $A$ : « pile au premier lancer », $B$ : « pile au second », $C$ : « les deux résultats sont égaux ». Chacun est de probabilité $\\frac12$, chaque intersection de deux d'entre eux est de probabilité $\\frac14$, mais $P(A \\cap B \\cap C) = \\frac14 \\ne \\frac18$."
+  },
+  {
+    "id": "probabilites-vf-06", "ch": "probabilites", "type": "vf",
+    "enonce": "Si $A$ et $B$ sont deux événements indépendants, alors $A$ et $\\overline B$ sont indépendants.",
+    "reponse": true,
+    "explication": "$A$ est réunion disjointe de $A \\cap B$ et $A \\cap \\overline B$, donc $P(A \\cap \\overline B) = P(A) - P(A)P(B) = P(A)P(\\overline B)$. Le résultat s'étend aux familles mutuellement indépendantes : on peut remplacer n'importe quels événements par leurs complémentaires."
+  },
+  {
+    "id": "probabilites-vf-07", "ch": "probabilites", "type": "vf",
+    "enonce": "Deux événements incompatibles, tous deux de probabilité non nulle, sont indépendants.",
+    "reponse": false,
+    "explication": "C'est même toujours faux : $P(A \\cap B) = 0$ alors que $P(A)P(B) > 0$. Exemple : un lancer de dé équilibré, $A = \\{1\\}$ et $B = \\{2\\}$. Incompatibilité et indépendance sont deux notions sans rapport, souvent confondues."
+  },
+  {
+    "id": "probabilites-vf-08", "ch": "probabilites", "type": "vf",
+    "enonce": "Soient $X$ et $Y$ deux variables aléatoires discrètes admettant un moment d'ordre $2$. Si $\\mathrm{Cov}(X, Y) = 0$, alors $X$ et $Y$ sont indépendantes.",
+    "reponse": false,
+    "explication": "Seule la réciproque est vraie. Contre-exemple : $X$ uniforme sur $\\{-1, 0, 1\\}$ et $Y = X^2$. On a $E(X) = 0$ et $E(XY) = E(X^3) = 0$, donc $\\mathrm{Cov}(X, Y) = 0$. Mais $P(X = 0, Y = 1) = 0 \\ne P(X = 0)P(Y = 1) = \\frac13 \\cdot \\frac23$."
+  },
+  {
+    "id": "probabilites-vf-09", "ch": "probabilites", "type": "vf",
+    "enonce": "Soient $X$ et $Y$ deux variables aléatoires discrètes admettant un moment d'ordre $2$, telles que $\\mathrm{Cov}(X, Y) = 0$. Alors $V(X + Y) = V(X) + V(Y)$.",
+    "reponse": true,
+    "explication": "En général $V(X + Y) = V(X) + V(Y) + 2\\,\\mathrm{Cov}(X, Y)$. L'indépendance n'est donc pas nécessaire : il suffit que les variables soient non corrélées."
+  },
+  {
+    "id": "probabilites-vf-10", "ch": "probabilites", "type": "vf",
+    "enonce": "La loi d'un couple $(X, Y)$ de variables aléatoires discrètes est déterminée par les lois de $X$ et de $Y$.",
+    "reponse": false,
+    "explication": "Soient $X$ et $Y$ indépendantes de loi de Bernoulli de paramètre $\\frac12$. Les couples $(X, Y)$ et $(X, X)$ ont les mêmes lois marginales, mais $P(X = 1, Y = 0) = \\frac14$ alors que $P(X = 1, X = 0) = 0$. Les marginales déterminent la loi du couple quand on sait que $X$ et $Y$ sont indépendantes."
+  },
+  {
+    "id": "probabilites-vf-11", "ch": "probabilites", "type": "vf",
+    "enonce": "Soit $X$ une variable aléatoire possédant une densité paire. Alors $X$ admet une espérance, et $E(X) = 0$.",
+    "reponse": false,
+    "explication": "La loi de Cauchy, de densité $x \\mapsto \\frac{1}{\\pi(1 + x^2)}$, est paire, mais $x \\mapsto \\frac{|x|}{\\pi(1+x^2)}$ n'est pas intégrable sur $\\mathbb R$ : $X$ n'a pas d'espérance. Si $X$ admet une espérance et une densité paire, alors $E(X) = 0$."
+  },
+  {
+    "id": "probabilites-vf-12", "ch": "probabilites", "type": "vf",
+    "enonce": "Soit $X$ de loi exponentielle de paramètre $\\lambda > 0$ (densité $x \\mapsto \\lambda e^{-\\lambda x}$ sur $[0, +\\infty[$, nulle ailleurs). Pour tous $s, t \\ge 0$, $P(X > s + t \\mid X > s) = P(X > t)$.",
+    "reponse": true,
+    "explication": "Pour $u \\ge 0$, $P(X > u) = e^{-\\lambda u}$. Comme $\\{X > s+t\\} \\subset \\{X > s\\}$, le quotient vaut $\\frac{e^{-\\lambda(s+t)}}{e^{-\\lambda s}} = e^{-\\lambda t}$. C'est l'absence de mémoire, qui caractérise les lois exponentielles parmi les lois à densité."
+  },
+  {
+    "id": "probabilites-vf-13", "ch": "probabilites", "type": "vf",
+    "enonce": "Soient $X$ et $Y$ indépendantes, de lois de Poisson de paramètres $\\lambda > 0$ et $\\mu > 0$. Alors $X + Y$ suit la loi de Poisson de paramètre $\\lambda + \\mu$.",
+    "reponse": true,
+    "explication": "Par indépendance, $G_{X+Y}(t) = G_X(t)\\,G_Y(t) = e^{\\lambda(t-1)}e^{\\mu(t-1)} = e^{(\\lambda+\\mu)(t-1)}$, et la fonction génératrice caractérise la loi. On peut aussi calculer $P(X+Y = n) = \\sum_{k=0}^n P(X=k)P(Y=n-k)$ avec la formule du binôme."
+  },
+  {
+    "id": "probabilites-vf-14", "ch": "probabilites", "type": "vf",
+    "enonce": "Soient $X$ et $Y$ de lois de Poisson de paramètres $\\lambda > 0$ et $\\mu > 0$. Alors $X + Y$ suit la loi de Poisson de paramètre $\\lambda + \\mu$.",
+    "reponse": false,
+    "explication": "Sans indépendance, c'est faux. Avec $Y = X$, $X + Y = 2X$ ne prend que des valeurs paires : $P(2X = 1) = 0$, alors qu'une loi de Poisson de paramètre $2\\lambda$ charge $1$ avec probabilité $2\\lambda e^{-2\\lambda} > 0$."
+  },
+  {
+    "id": "probabilites-vf-15", "ch": "probabilites", "type": "vf",
+    "enonce": "Soient $X$ et $Y$ indépendantes, de lois exponentielles de paramètres $\\lambda > 0$ et $\\mu > 0$ (densités $\\lambda e^{-\\lambda x}$ et $\\mu e^{-\\mu x}$ sur $[0, +\\infty[$). Alors $\\min(X, Y)$ suit la loi exponentielle de paramètre $\\lambda + \\mu$.",
+    "reponse": true,
+    "explication": "Pour $t \\ge 0$, $\\{\\min(X,Y) > t\\} = \\{X > t\\} \\cap \\{Y > t\\}$, donc par indépendance $P(\\min(X,Y) > t) = e^{-\\lambda t}e^{-\\mu t} = e^{-(\\lambda+\\mu)t}$. La fonction de répartition est celle de la loi exponentielle de paramètre $\\lambda + \\mu$."
+  },
+  {
+    "id": "probabilites-qcm-01", "ch": "probabilites", "type": "qcm",
+    "enonce": "Formule des probabilités totales.\nSoit $(B_1, \\dots, B_n)$ **[ ? ]**. Alors pour tout événement $A$, $P(A) = \\displaystyle\\sum_{i=1}^n P(A \\mid B_i)\\,P(B_i)$.",
+    "choix": [
+      "un système complet d'événements, tous de probabilité non nulle",
+      "une famille d'événements deux à deux incompatibles, tous de probabilité non nulle",
+      "une famille d'événements de probabilité non nulle dont la réunion est $\\Omega$",
+      "une famille d'événements mutuellement indépendants, tous de probabilité non nulle"
+    ],
+    "bonne": 0,
+    "explication": "Il faut à la fois l'incompatibilité deux à deux et la réunion égale à $\\Omega$. Incompatibles seulement : avec $n = 1$, $P(B_1) = \\frac12$ et $A = \\Omega$, la formule donne $\\frac12$. Réunion égale à $\\Omega$ seulement, ou indépendance : $B_1 = B_2 = \\Omega$ donne $2P(A)$."
+  },
+  {
+    "id": "probabilites-qcm-02", "ch": "probabilites", "type": "qcm",
+    "enonce": "Une maladie touche $1\\,\\%$ d'une population. Un test est positif chez $99\\,\\%$ des malades et chez $2\\,\\%$ des non-malades. Quelle est la probabilité qu'une personne dont le test est positif soit malade ?",
+    "choix": [
+      "$\\frac13$",
+      "$0{,}99$",
+      "$0{,}98$",
+      "$0{,}0099$"
+    ],
+    "bonne": 0,
+    "explication": "Probabilités totales : $P(T) = 0{,}01 \\times 0{,}99 + 0{,}99 \\times 0{,}02 = 0{,}0297$. Bayes : $P(M \\mid T) = \\frac{0{,}0099}{0{,}0297} = \\frac13$. Le leurre $0{,}99$ confond $P(M \\mid T)$ et $P(T \\mid M)$ ; $0{,}0099$ est $P(M \\cap T)$."
+  },
+  {
+    "id": "probabilites-qcm-03", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soit $p \\in\\, ]0, 1[$ et $X$ de loi géométrique de paramètre $p$ sur $\\mathbb N^*$ : $P(X = k) = (1-p)^{k-1}p$ pour $k \\ge 1$. Que vaut $V(X)$ ?",
+    "choix": [
+      "$\\frac{1-p}{p^2}$",
+      "$\\frac{1}{p^2}$",
+      "$\\frac{1-p}{p}$",
+      "$p(1-p)$"
+    ],
+    "bonne": 0,
+    "explication": "Avec $G_X(t) = \\frac{pt}{1 - (1-p)t}$, on obtient $E(X) = G_X'(1) = \\frac1p$ et $E(X(X-1)) = G_X''(1) = \\frac{2(1-p)}{p^2}$, d'où $V(X) = \\frac{2(1-p)}{p^2} + \\frac1p - \\frac1{p^2} = \\frac{1-p}{p^2}$. Le leurre $\\frac1{p^2}$ est $E(X)^2$, et $p(1-p)$ est la variance d'une loi de Bernoulli."
+  },
+  {
+    "id": "probabilites-qcm-04", "ch": "probabilites", "type": "qcm",
+    "enonce": "Une urne contient $N$ boules dont $m$ blanches. On en tire $n \\le N$ simultanément, et $X$ est le nombre de boules blanches obtenues. Pour $k \\in \\{0, \\dots, n\\}$, $P(X = k)$ vaut :",
+    "choix": [
+      "$\\binom{m}{k}\\binom{N-m}{n-k} \\big/ \\binom{N}{n}$",
+      "$\\binom{n}{k}\\left(\\frac mN\\right)^k\\left(1 - \\frac mN\\right)^{n-k}$",
+      "$\\binom{m}{k}\\binom{N-m}{n-k} \\big/ \\binom{N}{m}$",
+      "$\\binom{m}{k}\\binom{N}{n-k} \\big/ \\binom{N}{n}$"
+    ],
+    "bonne": 0,
+    "explication": "Loi hypergéométrique : les $\\binom Nn$ tirages sont équiprobables, et on choisit $k$ blanches parmi $m$ et $n - k$ autres parmi $N - m$ (avec la convention $\\binom ab = 0$ hors de $0 \\le b \\le a$). La loi binomiale correspond aux tirages avec remise."
+  },
+  {
+    "id": "probabilites-qcm-05", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soit $X$ à valeurs dans $\\mathbb N$ et $G_X(t) = \\sum_{k \\ge 0} P(X = k)\\,t^k$ sa fonction génératrice, définie au moins sur $[-1, 1]$. Alors $X$ admet une espérance si et seulement si **[ ? ]**, et dans ce cas $E(X) = G_X'(1)$.",
+    "choix": [
+      "$G_X$ est dérivable (à gauche) en $1$",
+      "le rayon de convergence de la série entière $\\sum P(X=k)\\,t^k$ est strictement supérieur à $1$",
+      "$G_X$ est continue sur $[-1, 1]$",
+      "$G_X(1) = 1$"
+    ],
+    "bonne": 0,
+    "explication": "Un rayon $> 1$ est suffisant mais pas nécessaire : si $P(X = k) = \\frac{c}{k^3}$ pour $k \\ge 1$, $X$ a une espérance et le rayon vaut $1$. Continuité sur $[-1, 1]$ et $G_X(1) = 1$ sont toujours vraies (convergence normale), même sans espérance."
+  },
+  {
+    "id": "probabilites-qcm-06", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soit $a > 0$ et $X$ de loi Gamma de paramètre $a$, de densité $x \\mapsto \\frac{x^{a-1}e^{-x}}{\\Gamma(a)}$ sur $]0, +\\infty[$, nulle ailleurs. Alors $E(X)$ et $V(X)$ valent :",
+    "choix": [
+      "$a$ et $a$",
+      "$a$ et $a^2$",
+      "$\\frac1a$ et $\\frac1{a^2}$",
+      "$a$ et $a(a+1)$"
+    ],
+    "bonne": 0,
+    "explication": "Par transfert, $E(X^k) = \\frac{\\Gamma(a+k)}{\\Gamma(a)}$, donc $E(X) = a$ et $E(X^2) = a(a+1)$, d'où $V(X) = a(a+1) - a^2 = a$. Le leurre $a(a+1)$ est le moment d'ordre $2$, pas la variance. Pour $a = 1$ on retrouve la loi exponentielle de paramètre $1$."
+  },
+  {
+    "id": "probabilites-qcm-07", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soit $X$ de loi normale $\\mathcal N(m, \\sigma^2)$ (espérance $m$, variance $\\sigma^2 > 0$), et $a \\ne 0$, $b$ deux réels. Alors $aX + b$ suit la loi :",
+    "choix": [
+      "$\\mathcal N(am + b,\\ a^2\\sigma^2)$",
+      "$\\mathcal N(am + b,\\ a\\sigma^2)$",
+      "$\\mathcal N(am + b,\\ |a|\\sigma^2)$",
+      "$\\mathcal N(am,\\ a^2\\sigma^2)$"
+    ],
+    "bonne": 0,
+    "explication": "Que $aX + b$ soit encore normale se montre avec sa fonction de répartition (en séparant $a > 0$ et $a < 0$). Ses paramètres sont alors $E(aX+b) = am + b$ et $V(aX + b) = a^2V(X)$ : la constante $b$ décale l'espérance sans changer la variance."
+  },
+  {
+    "id": "probabilites-qcm-08", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soient $X$ et $Y$ deux variables aléatoires discrètes admettant un moment d'ordre $2$, de variances non nulles, et $\\rho$ leur coefficient de corrélation. Alors $|\\rho| = 1$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "il existe $(a, b) \\in \\mathbb R^2$, $a \\ne 0$, tel que $P(Y = aX + b) = 1$",
+      "$X$ et $Y$ sont indépendantes",
+      "$P(Y = X) = 1$",
+      "$X$ et $Y$ ont la même loi"
+    ],
+    "bonne": 0,
+    "explication": "C'est le cas d'égalité de Cauchy-Schwarz : $V(Y - tX)$, polynôme en $t$, s'annule. Indépendantes donne $\\rho = 0$. $P(Y = X) = 1$ est suffisant mais pas nécessaire ($Y = -X$ donne $\\rho = -1$). Deux variables indépendantes de même loi ont $\\rho = 0$."
+  },
+  {
+    "id": "probabilites-qcm-09", "ch": "probabilites", "type": "qcm",
+    "enonce": "Soit $(A_n)_{n \\in \\mathbb N}$ une suite d'événements **[ ? ]**. Alors $P\\left(\\bigcup_n A_n\\right) = \\lim\\limits_{n \\to +\\infty} P(A_n)$.",
+    "choix": [
+      "croissante pour l'inclusion",
+      "décroissante pour l'inclusion",
+      "deux à deux incompatibles",
+      "mutuellement indépendants"
+    ],
+    "bonne": 0,
+    "explication": "Continuité croissante. Décroissante ou incompatibles : $A_0 = \\Omega$ et $A_n = \\emptyset$ pour $n \\ge 1$ donnent $1$ à gauche et $0$ à droite. Indépendants : avec $A_n$ = « pile au $n$-ième lancer » d'une pièce équilibrée, la réunion est de probabilité $1$ et $P(A_n) = \\frac12$."
+  },
+  {
+    "id": "probabilites-err-01", "ch": "probabilites", "type": "erreur",
+    "enonce": "Une urne contient $N$ boules dont $m$ blanches ; on pose $p = \\frac mN$. On tire successivement sans remise $n$ boules ($2 \\le n \\le N$). On note $X_i$ l'indicatrice de « la $i$-ème boule tirée est blanche » et $S = X_1 + \\dots + X_n$. Voici une copie.",
+    "lignes": [
+      "Par symétrie, chaque $X_i$ suit la loi de Bernoulli de paramètre $p$.",
+      "Par linéarité de l'espérance, $E(S) = np$.",
+      "Les $X_i$ étant des variables de Bernoulli de paramètre $p$, $V(S) = \\sum_{i=1}^n V(X_i) = np(1-p)$."
+    ],
+    "fausse": 2,
+    "explication": "L'additivité de la variance demande des variables non corrélées (par exemple indépendantes), ce qui est faux sans remise : $\\mathrm{Cov}(X_i, X_j) = -\\frac{p(1-p)}{N-1}$ pour $i \\ne j$. On trouve $V(S) = np(1-p)\\frac{N-n}{N-1}$. La linéarité de l'espérance, elle, ne demande aucune indépendance."
+  },
+  {
+    "id": "probabilites-err-02", "ch": "probabilites", "type": "erreur",
+    "enonce": "Soit $X$ de loi de Poisson de paramètre $\\lambda > 0$. On veut calculer $E\\left(\\frac{1}{X+1}\\right)$. Voici une copie.",
+    "lignes": [
+      "La variable $\\frac{1}{X+1}$ est à valeurs dans $]0, 1]$, donc bornée : elle admet une espérance.",
+      "Par linéarité de l'espérance, $E(X + 1) = \\lambda + 1$.",
+      "Donc $E\\left(\\frac{1}{X+1}\\right) = \\frac{1}{E(X+1)} = \\frac{1}{\\lambda + 1}$."
+    ],
+    "fausse": 2,
+    "explication": "L'espérance est linéaire, elle ne commute pas avec $x \\mapsto \\frac1x$. Le théorème de transfert donne $E\\left(\\frac1{X+1}\\right) = \\sum_{k \\ge 0} \\frac{e^{-\\lambda}\\lambda^k}{(k+1)!} = \\frac{1 - e^{-\\lambda}}{\\lambda}$, qui diffère de $\\frac1{\\lambda+1}$."
+  },
+  {
+    "id": "probabilites-err-03", "ch": "probabilites", "type": "erreur",
+    "enonce": "Soit $X$ de loi uniforme sur $[-1, 1]$ et $Y = X^2$. On cherche la fonction de répartition $F_Y$. Voici une copie.",
+    "lignes": [
+      "$X$ a pour densité la fonction égale à $\\frac12$ sur $[-1, 1]$, nulle ailleurs.",
+      "$Y$ est à valeurs dans $[0, 1]$, donc $F_Y(y) = 0$ si $y < 0$ et $F_Y(y) = 1$ si $y \\ge 1$.",
+      "Pour $y \\in [0, 1[$, $F_Y(y) = P(X^2 \\le y) = P(X \\le \\sqrt y) = \\frac{1 + \\sqrt y}{2}$."
+    ],
+    "fausse": 2,
+    "explication": "$X^2 \\le y$ équivaut à $-\\sqrt y \\le X \\le \\sqrt y$, pas à $X \\le \\sqrt y$ : $X$ prend des valeurs négatives. On trouve $F_Y(y) = \\sqrt y$. Indice de l'erreur : la formule de la copie donnerait $F_Y(0) = \\frac12$, alors que $P(Y \\le 0) = P(X = 0) = 0$."
+  },
+  {
+    "id": "probabilites-err-04", "ch": "probabilites", "type": "erreur",
+    "enonce": "Soit $X$ une variable discrète telle que, pour tout $k \\ge 1$, $P\\left(X = \\frac{(-1)^k 2^k}{k}\\right) = \\frac{1}{2^k}$. Une copie étudie l'espérance de $X$.",
+    "lignes": [
+      "On a $\\sum_{k \\ge 1} \\frac1{2^k} = 1$ : il s'agit bien d'une loi de probabilité.",
+      "La série $\\sum_{k \\ge 1} \\frac{(-1)^k 2^k}{k} \\cdot \\frac{1}{2^k} = \\sum_{k \\ge 1} \\frac{(-1)^k}{k}$ converge, d'après le critère spécial des séries alternées.",
+      "Donc $X$ admet une espérance, et $E(X) = \\sum_{k \\ge 1} \\frac{(-1)^k}{k} = -\\ln 2$."
+    ],
+    "fausse": 2,
+    "explication": "Une variable discrète admet une espérance si la série $\\sum x_k P(X = x_k)$ converge **absolument**. Ici $\\sum \\frac1k$ diverge : $X$ n'a pas d'espérance. L'absolue convergence garantit que la somme ne dépend pas de l'ordre d'énumération des valeurs."
+  },
+  {
+    "id": "probabilites-err-05", "ch": "probabilites", "type": "erreur",
+    "enonce": "Le couple $(X, Y)$ a pour densité $f(x, y) = 8xy$ si $0 \\le x \\le y \\le 1$, et $f(x, y) = 0$ sinon. Voici une copie.",
+    "lignes": [
+      "$f$ est positive et $\\int_0^1 \\int_0^y 8xy \\,\\mathrm dx\\,\\mathrm dy = \\int_0^1 4y^3\\,\\mathrm dy = 1$ : c'est bien une densité.",
+      "Pour $x \\in [0, 1]$, $f_X(x) = \\int_x^1 8xy\\,\\mathrm dy = 4x(1 - x^2)$.",
+      "Pour $y \\in [0, 1]$, $f_Y(y) = \\int_0^y 8xy\\,\\mathrm dx = 4y^3$.",
+      "Comme $8xy$ est le produit d'une fonction de $x$ et d'une fonction de $y$, $X$ et $Y$ sont indépendantes."
+    ],
+    "fausse": 3,
+    "explication": "La densité vaut $8xy\\,\\mathbf 1_{0 \\le x \\le y \\le 1}$, et l'indicatrice d'un triangle ne se factorise pas. D'ailleurs $f_X(x)f_Y(y) \\ne f(x, y)$, et $P(X > \\frac12,\\ Y < \\frac12) = 0$ (car $X \\le Y$) alors que $P(X > \\frac12)\\,P(Y < \\frac12) > 0$ : les variables ne sont pas indépendantes."
+  },
+  {
+    "id": "probabilites-err-06", "ch": "probabilites", "type": "erreur",
+    "enonce": "Soient $X$ et $Y$ indépendantes de loi exponentielle de paramètre $\\lambda > 0$ (densité $\\lambda e^{-\\lambda x}$ sur $[0, +\\infty[$), et $Z = \\min(X, Y)$. On cherche $F_Z$. Voici une copie.",
+    "lignes": [
+      "Pour $t < 0$, $F_Z(t) = P(Z \\le t) = 0$.",
+      "Pour $t \\ge 0$, par indépendance, $P(X \\le t,\\ Y \\le t) = (1 - e^{-\\lambda t})^2$.",
+      "Or $\\{Z \\le t\\} = \\{X \\le t\\} \\cap \\{Y \\le t\\}$, donc $F_Z(t) = (1 - e^{-\\lambda t})^2$ pour $t \\ge 0$."
+    ],
+    "fausse": 2,
+    "explication": "Le minimum est inférieur à $t$ dès que **l'une** des deux variables l'est : $\\{Z \\le t\\}$ est une réunion. Il faut passer au complémentaire : $\\{Z > t\\} = \\{X > t\\} \\cap \\{Y > t\\}$, donc $F_Z(t) = 1 - e^{-2\\lambda t}$ et $Z$ suit la loi exponentielle de paramètre $2\\lambda$. La formule de la copie est celle de $\\max(X, Y)$."
+  },
+  {
+    "id": "probabilites-err-07", "ch": "probabilites", "type": "erreur",
+    "enonce": "On lance $n$ fois un dé équilibré, les lancers étant indépendants. On cherche la probabilité d'obtenir au moins un $6$. Voici une copie.",
+    "lignes": [
+      "Notons $A_i$ l'événement « obtenir $6$ au $i$-ème lancer » : $P(A_i) = \\frac16$.",
+      "L'événement étudié est $A_1 \\cup \\dots \\cup A_n$.",
+      "Par sous-additivité, $P(A_1 \\cup \\dots \\cup A_n) \\le \\frac n6$.",
+      "Les $A_i$ étant mutuellement indépendants, $P(A_1 \\cup \\dots \\cup A_n) = \\sum_{i=1}^n P(A_i) = \\frac n6$."
+    ],
+    "fausse": 3,
+    "explication": "L'additivité demande des événements **incompatibles**, pas indépendants (pour $n = 7$, on trouverait une probabilité $> 1$). L'indépendance sert au complémentaire : $P\\left(\\overline{A_1} \\cap \\dots \\cap \\overline{A_n}\\right) = \\left(\\frac56\\right)^n$, donc la probabilité cherchée vaut $1 - \\left(\\frac56\\right)^n$."
+  },
+  {
+    "id": "probabilites-piste-01", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $X$ une variable à valeurs dans $\\mathbb N^*$ telle que $P(X > n) > 0$ pour tout $n \\in \\mathbb N$ et $P(X > m + n \\mid X > m) = P(X > n)$ pour tous $m, n \\in \\mathbb N$. Montrer que $X$ suit une loi géométrique.",
+    "choix": [
+      {
+        "titre": "Étudier la suite $u_n = P(X > n)$",
+        "info": "Pour $X$ à valeurs dans $\\mathbb N^*$, la loi est déterminée par les $P(X > n)$ : $P(X = n) = P(X > n-1) - P(X > n)$ pour $n \\ge 1$.",
+        "verdict": "bon",
+        "retour": "L'hypothèse se traduit par $u_{m+n} = u_m u_n$ : une équation très simple sur la suite."
+      },
+      {
+        "titre": "Calculer $E(X)$ et $V(X)$ et les comparer à ceux d'une loi géométrique",
+        "info": "Pour la loi géométrique de paramètre $p$ sur $\\mathbb N^*$ : $E = \\frac1p$ et $V = \\frac{1-p}{p^2}$.",
+        "verdict": "impasse",
+        "retour": "On ne sait même pas a priori que $X$ a une espérance, et deux lois peuvent avoir mêmes espérance et variance sans être égales."
+      },
+      {
+        "titre": "Fonction génératrice",
+        "info": "$G_X(t) = \\sum_{k \\ge 1} P(X = k)\\,t^k$ caractérise la loi de $X$. Pour $|t| < 1$, $\\sum_{n \\ge 0} P(X > n)\\,t^n = \\frac{1 - G_X(t)}{1 - t}$.",
+        "verdict": "possible",
+        "retour": "On peut y traduire la relation sur les queues, mais c'est un détour : il faut de toute façon exploiter la relation de récurrence sur $P(X > n)$."
+      },
+      {
+        "titre": "Absence de mémoire de la loi exponentielle",
+        "info": "Si $X$ suit une loi exponentielle de paramètre $\\lambda$, alors $P(X > s+t \\mid X > s) = P(X > t)$ pour tous $s, t \\ge 0$.",
+        "verdict": "impasse",
+        "retour": "C'est le résultat analogue pour les lois à densité ; ici $X$ est discrète et c'est la réciproque qui est demandée."
+      }
+    ],
+    "direction": "Avec $u_n = P(X > n)$ : $u_0 = 1$ et $u_{m+n} = u_m u_n$, donc $u_n = q^n$ où $q = u_1$. On a $q > 0$ par hypothèse, et $q < 1$ car $u_n \\to P(\\emptyset) = 0$ (continuité décroissante). Alors $P(X = n) = q^{n-1}(1 - q)$ : loi géométrique de paramètre $1 - q$."
+  },
+  {
+    "id": "probabilites-piste-02", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $X$ de loi binomiale $\\mathcal B(n, p)$, avec $n \\ge 1$ et $p \\in [0, 1]$. Calculer $E(X)$ et $V(X)$.",
+    "choix": [
+      {
+        "titre": "Somme de variables de Bernoulli indépendantes",
+        "info": "Si $X_1, \\dots, X_n$ sont indépendantes de loi de Bernoulli de paramètre $p$, leur somme suit $\\mathcal B(n, p)$. Espérance et variance ne dépendent que de la loi.",
+        "verdict": "bon",
+        "retour": "Linéarité de l'espérance, puis variance d'une somme de variables indépendantes : deux lignes."
+      },
+      {
+        "titre": "Fonction génératrice",
+        "info": "Pour $X$ à valeurs dans $\\mathbb N$, $G_X(t) = E(t^X)$. Si $G_X$ est deux fois dérivable en $1$ : $E(X) = G_X'(1)$ et $E(X(X-1)) = G_X''(1)$.",
+        "verdict": "bon",
+        "retour": "Ici $G_X(t) = (1 - p + pt)^n$ est un polynôme : les dérivées en $1$ se calculent immédiatement."
+      },
+      {
+        "titre": "Calcul direct des sommes",
+        "info": "$E(X) = \\sum_{k=0}^n k\\binom nk p^k(1-p)^{n-k}$, et pour $1 \\le k \\le n$, $k\\binom nk = n\\binom{n-1}{k-1}$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais la variance demande de passer par $E(X(X-1))$ et une deuxième manipulation du même type."
+      },
+      {
+        "titre": "Inégalité de Bienaymé-Tchebychev",
+        "info": "Si $X$ admet une variance, $P(|X - E(X)| \\ge \\varepsilon) \\le \\frac{V(X)}{\\varepsilon^2}$ pour tout $\\varepsilon > 0$.",
+        "verdict": "impasse",
+        "retour": "Elle utilise la variance, elle ne la calcule pas."
+      }
+    ],
+    "direction": "$X$ a même loi que $X_1 + \\dots + X_n$ avec les $X_i$ indépendantes de loi de Bernoulli de paramètre $p$. Donc $E(X) = np$, et par indépendance $V(X) = \\sum V(X_i) = np(1-p)$."
+  },
+  {
+    "id": "probabilites-piste-03", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $X$ une variable à valeurs dans $\\mathbb N$ admettant une espérance. Montrer que $E(X) = \\displaystyle\\sum_{n=1}^{+\\infty} P(X \\ge n)$.",
+    "choix": [
+      {
+        "titre": "Interversion dans une somme double positive",
+        "info": "Pour une famille $(a_{n,k})$ de réels positifs, $\\sum_n \\sum_k a_{n,k} = \\sum_k \\sum_n a_{n,k}$, dans $[0, +\\infty]$.",
+        "verdict": "bon",
+        "retour": "On écrit $P(X \\ge n) = \\sum_{k \\ge n} P(X = k)$ et on intervertit : tous les termes sont positifs."
+      },
+      {
+        "titre": "Transformation d'Abel sur les sommes partielles",
+        "info": "Avec $r_k = P(X \\ge k)$, on a $P(X = k) = r_k - r_{k+1}$, et $\\sum_{k=1}^N k(r_k - r_{k+1}) = \\sum_{k=1}^N r_k - N r_{N+1}$.",
+        "verdict": "bon",
+        "retour": "Il reste à voir que $N\\,P(X \\ge N+1) \\le \\sum_{k > N} k\\,P(X = k)$, reste d'une série convergente, qui tend vers $0$."
+      },
+      {
+        "titre": "Inégalité de Markov",
+        "info": "Si $X \\ge 0$ admet une espérance, $P(X \\ge a) \\le \\frac{E(X)}{a}$ pour tout $a > 0$.",
+        "verdict": "impasse",
+        "retour": "Elle majore chaque terme par $\\frac{E(X)}{n}$, ce qui ne donne même pas la convergence de la série."
+      },
+      {
+        "titre": "Fonction génératrice",
+        "info": "Pour $|t| < 1$, $\\sum_{n \\ge 0} P(X > n)\\,t^n = \\frac{1 - G_X(t)}{1 - t}$, et si $X$ admet une espérance, $E(X) = G_X'(1)$.",
+        "verdict": "possible",
+        "retour": "On conclut en faisant tendre $t$ vers $1$, mais il faut justifier ce passage à la limite des deux côtés : plus long que l'interversion directe."
+      }
+    ],
+    "direction": "$\\sum_{n \\ge 1} P(X \\ge n) = \\sum_{n \\ge 1} \\sum_{k \\ge n} P(X = k) = \\sum_{k \\ge 1} \\sum_{n=1}^{k} P(X = k) = \\sum_{k \\ge 1} k\\,P(X = k) = E(X)$, l'interversion étant licite car tous les termes sont positifs."
+  },
+  {
+    "id": "probabilites-piste-04", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $U$ de loi uniforme sur $]0, 1[$ et $\\lambda > 0$. Déterminer la loi de $Y = -\\frac{1}{\\lambda}\\ln U$.",
+    "choix": [
+      {
+        "titre": "Calculer la fonction de répartition de $Y$",
+        "info": "La fonction de répartition $F_Y(y) = P(Y \\le y)$ caractérise la loi de $Y$. Si elle est continue et de classe $\\mathcal C^1$ sauf en un nombre fini de points, $Y$ a pour densité $F_Y'$.",
+        "verdict": "bon",
+        "retour": "L'événement $\\{Y \\le y\\}$ se réécrit directement en un événement portant sur $U$."
+      },
+      {
+        "titre": "Vérifier l'absence de mémoire",
+        "info": "Une variable à densité $Y$ telle que $P(Y > t) > 0$ et $P(Y > s+t \\mid Y > s) = P(Y > t)$ pour tous $s, t \\ge 0$ suit une loi exponentielle.",
+        "verdict": "possible",
+        "retour": "Il faut d'abord calculer $P(Y > t)$, ce qui donne déjà la loi ; et la caractérisation ne fournit pas le paramètre sans calcul supplémentaire."
+      },
+      {
+        "titre": "Calculer $E(Y)$ et $V(Y)$",
+        "info": "Théorème de transfert : pour $\\Phi$ continue sur $]0, 1[$, $E(\\Phi(U)) = \\int_0^1 \\Phi(u)\\,\\mathrm du$ dès que $|\\Phi|$ est intégrable sur $]0, 1[$.",
+        "verdict": "impasse",
+        "retour": "On trouve $\\frac1\\lambda$ et $\\frac1{\\lambda^2}$, mais l'espérance et la variance ne caractérisent pas une loi."
+      },
+      {
+        "titre": "Composer les densités : $f_Y(y) = f_U(e^{-\\lambda y})$",
+        "info": "Si $X$ a pour densité $f$, alors $P(X \\in I) = \\int_I f(x)\\,\\mathrm dx$ pour tout intervalle $I$.",
+        "verdict": "impasse",
+        "retour": "Une densité ne se transporte pas par simple composition : il manque le facteur venant du changement de variable, et on obtiendrait ici une fonction d'intégrale infinie."
+      }
+    ],
+    "direction": "Pour $y \\ge 0$, $P(Y > y) = P(U < e^{-\\lambda y}) = e^{-\\lambda y}$, et $P(Y > y) = 1$ pour $y < 0$. Donc $Y$ suit la loi exponentielle de paramètre $\\lambda$, de densité $\\lambda e^{-\\lambda y}$ sur $[0, +\\infty[$ : c'est la méthode classique de simulation."
+  },
+  {
+    "id": "probabilites-piste-05", "ch": "probabilites", "type": "piste",
+    "enonce": "Soient $X$ et $Y$ indépendantes, de lois de Poisson de paramètres $\\lambda > 0$ et $\\mu > 0$, et $n \\in \\mathbb N$. Déterminer la loi de $X$ conditionnellement à l'événement $\\{X + Y = n\\}$.",
+    "choix": [
+      {
+        "titre": "Définition de la probabilité conditionnelle",
+        "info": "$P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}$ si $P(B) > 0$. Ici $\\{X = k\\} \\cap \\{X + Y = n\\} = \\{X = k\\} \\cap \\{Y = n - k\\}$.",
+        "verdict": "bon",
+        "retour": "Le numérateur se calcule par indépendance, le dénominateur avec la loi de $X + Y$."
+      },
+      {
+        "titre": "Fonction génératrice de $X + Y$",
+        "info": "Si $X$ et $Y$ sont indépendantes à valeurs dans $\\mathbb N$, $G_{X+Y} = G_X G_Y$.",
+        "verdict": "possible",
+        "retour": "Elle donne la loi de $X + Y$, utile pour le dénominateur, mais pas la loi conditionnelle elle-même."
+      },
+      {
+        "titre": "Covariance de $X$ et $X + Y$",
+        "info": "$\\mathrm{Cov}(X, X + Y) = V(X) + \\mathrm{Cov}(X, Y)$.",
+        "verdict": "impasse",
+        "retour": "Un nombre ne décrit pas une loi conditionnelle."
+      },
+      {
+        "titre": "Approximation de la loi binomiale par la loi de Poisson",
+        "info": "Si $np_n \\to \\lambda$, la loi $\\mathcal B(n, p_n)$ converge vers la loi de Poisson de paramètre $\\lambda$.",
+        "verdict": "impasse",
+        "retour": "C'est un résultat asymptotique, et dans le mauvais sens : ici on part de lois de Poisson et le résultat est exact."
+      }
+    ],
+    "direction": "$X + Y$ suit la loi de Poisson de paramètre $\\lambda + \\mu$. Pour $0 \\le k \\le n$, $P(X = k \\mid X + Y = n) = \\frac{P(X=k)P(Y=n-k)}{P(X+Y=n)} = \\binom nk \\left(\\frac{\\lambda}{\\lambda+\\mu}\\right)^k \\left(\\frac{\\mu}{\\lambda+\\mu}\\right)^{n-k}$ : loi binomiale $\\mathcal B\\left(n, \\frac{\\lambda}{\\lambda+\\mu}\\right)$."
+  },
+  {
+    "id": "probabilites-piste-06", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $p \\in\\, ]0, 1[$ et $X$, $Y$ indépendantes de loi géométrique de paramètre $p$ sur $\\mathbb N^*$ ($P(X = k) = (1-p)^{k-1}p$ pour $k \\ge 1$). Déterminer la loi de $S = X + Y$.",
+    "choix": [
+      {
+        "titre": "Formule de convolution discrète",
+        "info": "Pour $X$, $Y$ indépendantes à valeurs dans $\\mathbb N$ : $P(X + Y = n) = \\sum_{k=0}^{n} P(X = k)\\,P(Y = n - k)$ (probabilités totales avec le système $(\\{X = k\\})_k$).",
+        "verdict": "bon",
+        "retour": "Tous les termes non nuls de la somme sont égaux : le calcul est immédiat."
+      },
+      {
+        "titre": "Fonction génératrice",
+        "info": "Pour $X$, $Y$ indépendantes à valeurs dans $\\mathbb N$, $G_{X+Y} = G_X G_Y$, et la fonction génératrice caractérise la loi.",
+        "verdict": "bon",
+        "retour": "$G_S(t) = \\frac{p^2t^2}{(1 - (1-p)t)^2}$, qu'on développe en série entière pour lire les $P(S = n)$."
+      },
+      {
+        "titre": "Calculer $E(S)$ et $V(S)$",
+        "info": "$E(S) = E(X) + E(Y)$ et, par indépendance, $V(S) = V(X) + V(Y)$.",
+        "verdict": "impasse",
+        "retour": "On obtient $\\frac2p$ et $\\frac{2(1-p)}{p^2}$, mais ces deux nombres ne déterminent pas la loi."
+      },
+      {
+        "titre": "Stabilité par somme, comme pour la loi de Poisson",
+        "info": "La somme de deux variables de Poisson indépendantes est une variable de Poisson ; de même pour deux binomiales indépendantes de même paramètre $p$.",
+        "verdict": "impasse",
+        "retour": "La loi géométrique n'est pas stable par somme : $S \\ge 2$ presque sûrement, ce n'est pas une loi géométrique sur $\\mathbb N^*$."
+      }
+    ],
+    "direction": "Pour $n \\ge 2$, $P(S = n) = \\sum_{k=1}^{n-1} (1-p)^{k-1}p\\,(1-p)^{n-k-1}p = (n-1)\\,p^2(1-p)^{n-2}$, et $P(S = n) = 0$ pour $n \\le 1$."
+  },
+  {
+    "id": "probabilites-piste-07", "ch": "probabilites", "type": "piste",
+    "enonce": "Soient $X$ et $Y$ indépendantes de loi normale $\\mathcal N(0, 1)$, et $r > 0$. Calculer $P(X^2 + Y^2 \\le r^2)$.",
+    "choix": [
+      {
+        "titre": "Densité du couple et coordonnées polaires",
+        "info": "Si $X$ et $Y$ sont indépendantes de densités $f$ et $g$, le couple a pour densité $(x, y) \\mapsto f(x)g(y)$, et $P((X, Y) \\in D) = \\iint_D f(x)g(y)\\,\\mathrm dx\\,\\mathrm dy$ pour $D$ géométriquement simple.",
+        "verdict": "bon",
+        "retour": "La densité $\\frac{1}{2\\pi}e^{-(x^2+y^2)/2}$ et le disque sont adaptés aux coordonnées polaires."
+      },
+      {
+        "titre": "Passer par des lois Gamma",
+        "info": "La loi Gamma de paramètre $a > 0$ a pour densité $\\frac{x^{a-1}e^{-x}}{\\Gamma(a)}$ sur $]0, +\\infty[$. Si $X \\sim \\mathcal N(0, 1)$, alors $\\frac{X^2}{2}$ suit la loi Gamma de paramètre $\\frac12$. La somme de deux variables indépendantes de lois Gamma de paramètres $a$ et $b$ suit la loi Gamma de paramètre $a + b$ (hors programme, à redémontrer).",
+        "verdict": "possible",
+        "retour": "On obtient que $\\frac{X^2+Y^2}{2}$ suit la loi Gamma de paramètre $1$, de densité $e^{-x}$ sur $]0, +\\infty[$, mais il faut établir deux résultats intermédiaires."
+      },
+      {
+        "titre": "Utiliser $X + Y \\sim \\mathcal N(0, 2)$",
+        "info": "La somme de deux variables normales indépendantes $\\mathcal N(m_1, \\sigma_1^2)$ et $\\mathcal N(m_2, \\sigma_2^2)$ suit $\\mathcal N(m_1 + m_2, \\sigma_1^2 + \\sigma_2^2)$.",
+        "verdict": "impasse",
+        "retour": "$X^2 + Y^2$ n'est pas une fonction de $X + Y$ : cette loi ne sert à rien ici."
+      },
+      {
+        "titre": "Intégrer en coordonnées cartésiennes (Fubini)",
+        "info": "Pour $f$ continue positive, l'intégrale sur le disque s'écrit $\\int_{-r}^{r} \\left(\\int_{-\\sqrt{r^2-x^2}}^{\\sqrt{r^2-x^2}} f(x,y)\\,\\mathrm dy\\right)\\mathrm dx$.",
+        "verdict": "impasse",
+        "retour": "L'intégrale intérieure fait apparaître la fonction de répartition de la loi normale, qui n'a pas d'expression élémentaire : on reste bloqué."
+      }
+    ],
+    "direction": "$P(X^2+Y^2 \\le r^2) = \\frac1{2\\pi}\\int_0^{2\\pi}\\int_0^r e^{-\\rho^2/2}\\rho\\,\\mathrm d\\rho\\,\\mathrm d\\theta = 1 - e^{-r^2/2}$. Autrement dit, $X^2 + Y^2$ suit la loi exponentielle de densité $\\frac12 e^{-x/2}$ sur $[0, +\\infty[$."
+  },
+  {
+    "id": "probabilites-piste-08", "ch": "probabilites", "type": "piste",
+    "enonce": "On lance deux dés équilibrés indépendants ; $X$ est le résultat du premier, $Y$ celui du second, et $S = X + Y$. Calculer le coefficient de corrélation de $X$ et $S$.",
+    "choix": [
+      {
+        "titre": "Bilinéarité de la covariance",
+        "info": "La covariance est bilinéaire et symétrique, $\\mathrm{Cov}(X, X) = V(X)$, et $\\mathrm{Cov}(X, Y) = 0$ si $X$ et $Y$ sont indépendantes.",
+        "verdict": "bon",
+        "retour": "$\\mathrm{Cov}(X, S) = V(X) + \\mathrm{Cov}(X, Y) = V(X)$, sans calculer aucune loi."
+      },
+      {
+        "titre": "Loi du couple $(X, S)$ puis $E(XS)$",
+        "info": "Pour un couple discret, $E(XS) = \\sum_{(x, s)} xs\\,P(X = x, S = s)$, et $\\mathrm{Cov}(X, S) = E(XS) - E(X)E(S)$.",
+        "verdict": "possible",
+        "retour": "Juste, mais il faut manipuler les $36$ issues : long et propice aux erreurs de calcul."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$|\\mathrm{Cov}(X, S)| \\le \\sigma(X)\\,\\sigma(S)$, c'est-à-dire $|\\rho| \\le 1$.",
+        "verdict": "impasse",
+        "retour": "Elle borne $\\rho$, elle ne le calcule pas."
+      },
+      {
+        "titre": "Indépendance de $X$ et $S$",
+        "info": "Si deux variables admettant un moment d'ordre $2$ sont indépendantes, leur covariance est nulle.",
+        "verdict": "impasse",
+        "retour": "$X$ et $S$ ne sont pas indépendantes : $P(X = 1, S = 12) = 0 \\ne P(X=1)P(S=12)$."
+      }
+    ],
+    "direction": "$\\mathrm{Cov}(X, S) = V(X)$ et $V(S) = 2V(X)$ par indépendance, avec $V(X) = \\frac{35}{12} \\ne 0$. Donc $\\rho(X, S) = \\frac{V(X)}{\\sqrt{V(X)}\\sqrt{2V(X)}} = \\frac{1}{\\sqrt 2}$."
+  },
+  {
+    "id": "probabilites-piste-09", "ch": "probabilites", "type": "piste",
+    "enonce": "Une urne contient une boule blanche et une noire. On tire une boule, on la remet et on ajoute une boule de sa couleur, puis on effectue un second tirage. $B_i$ : « la $i$-ème boule tirée est blanche ». Calculer $P(B_1 \\mid B_2)$.",
+    "choix": [
+      {
+        "titre": "Probabilités totales, puis formule de Bayes",
+        "info": "Si $(A, \\overline A)$ est un système complet avec $0 < P(A) < 1$, alors $P(B) = P(B \\mid A)P(A) + P(B \\mid \\overline A)P(\\overline A)$ et, si $P(B) > 0$, $P(A \\mid B) = \\frac{P(B \\mid A)P(A)}{P(B)}$.",
+        "verdict": "bon",
+        "retour": "On connaît naturellement les probabilités « dans le sens du temps », $P(B_2 \\mid B_1)$ et $P(B_2 \\mid \\overline{B_1})$ : Bayes les retourne."
+      },
+      {
+        "titre": "Indépendance des tirages",
+        "info": "Si $B_1$ et $B_2$ sont indépendants et $P(B_2) > 0$, alors $P(B_1 \\mid B_2) = P(B_1)$.",
+        "verdict": "impasse",
+        "retour": "La composition de l'urne au second tirage dépend du premier : les tirages ne sont pas indépendants."
+      },
+      {
+        "titre": "Équiprobabilité sur $\\{B, N\\}^2$",
+        "info": "Sur un univers fini muni de la probabilité uniforme, $P(A) = \\frac{\\mathrm{card}\\,A}{\\mathrm{card}\\,\\Omega}$.",
+        "verdict": "impasse",
+        "retour": "Les quatre issues ne sont pas équiprobables : $P(B_1 \\cap B_2) = \\frac12 \\cdot \\frac23 = \\frac13$."
+      },
+      {
+        "titre": "Écrire $P(B_1 \\mid B_2) = P(B_2 \\mid B_1)$",
+        "info": "Si $P(A \\cap B) > 0$, l'égalité $P(A \\mid B) = P(B \\mid A)$ équivaut à $P(A) = P(B)$.",
+        "verdict": "possible",
+        "retour": "L'égalité est vraie ici, mais seulement parce que $P(B_1) = P(B_2)$, ce qui demande de calculer $P(B_2)$ : on refait alors la première méthode."
+      }
+    ],
+    "direction": "$P(B_2) = \\frac12 \\cdot \\frac23 + \\frac12 \\cdot \\frac13 = \\frac12$ par probabilités totales. Bayes : $P(B_1 \\mid B_2) = \\frac{\\frac23 \\cdot \\frac12}{\\frac12} = \\frac23$."
+  },
+  {
+    "id": "probabilites-piste-10", "ch": "probabilites", "type": "piste",
+    "enonce": "Soient $A_1, \\dots, A_n$ des événements mutuellement indépendants. Montrer que $\\overline{A_1}, \\dots, \\overline{A_n}$ sont mutuellement indépendants.",
+    "choix": [
+      {
+        "titre": "Remplacer un seul événement par son complémentaire, puis itérer",
+        "info": "Si $C$ et $D$ sont indépendants, alors $\\overline C$ et $D$ le sont, car $P(\\overline C \\cap D) = P(D) - P(C \\cap D)$.",
+        "verdict": "bon",
+        "retour": "On montre que $\\overline{A_1}, A_2, \\dots, A_n$ restent mutuellement indépendants, puis on répète $n$ fois."
+      },
+      {
+        "titre": "Formule du crible (Poincaré)",
+        "info": "$P\\left(\\bigcup_{i=1}^n A_i\\right) = \\sum_{k=1}^n (-1)^{k+1} \\sum_{i_1 < \\dots < i_k} P(A_{i_1} \\cap \\dots \\cap A_{i_k})$.",
+        "verdict": "possible",
+        "retour": "En passant au complémentaire et en développant $\\prod (1 - P(A_i))$, on conclut, mais la gestion des indices est lourde."
+      },
+      {
+        "titre": "Vérifier l'indépendance deux à deux",
+        "info": "$C$ et $D$ sont indépendants si $P(C \\cap D) = P(C)P(D)$.",
+        "verdict": "impasse",
+        "retour": "L'indépendance deux à deux est strictement plus faible que l'indépendance mutuelle : elle ne suffit pas à conclure."
+      },
+      {
+        "titre": "Formule des probabilités composées",
+        "info": "Si $P(A_1 \\cap \\dots \\cap A_{n-1}) > 0$ : $P(A_1 \\cap \\dots \\cap A_n) = P(A_1)P(A_2 \\mid A_1)\\cdots P(A_n \\mid A_1 \\cap \\dots \\cap A_{n-1})$.",
+        "verdict": "impasse",
+        "retour": "Elle réécrit une probabilité d'intersection sans rien dire des complémentaires, et ses hypothèses de non-nullité ne sont pas garanties."
+      }
+    ],
+    "direction": "Pour $I \\subset \\{2, \\dots, n\\}$, posons $D = \\bigcap_{i \\in I} A_i$. Alors $P(\\overline{A_1} \\cap D) = P(D) - P(A_1 \\cap D) = (1 - P(A_1))\\prod_{i \\in I} P(A_i)$. Donc $\\overline{A_1}, A_2, \\dots, A_n$ sont mutuellement indépendants, et on recommence avec chaque indice."
+  },
+  {
+    "id": "probabilites-piste-11", "ch": "probabilites", "type": "piste",
+    "enonce": "Le nombre $N$ d'œufs pondus par un insecte suit la loi de Poisson de paramètre $\\lambda > 0$. Chaque œuf éclot avec probabilité $p \\in\\, ]0, 1[$, indépendamment des autres : sachant $\\{N = n\\}$, le nombre $X$ d'œufs éclos suit la loi $\\mathcal B(n, p)$. Déterminer la loi de $X$.",
+    "choix": [
+      {
+        "titre": "Probabilités totales avec le système $(\\{N = n\\})_{n \\in \\mathbb N}$",
+        "info": "Pour un système complet dénombrable $(B_n)$ d'événements de probabilités non nulles, $P(A) = \\sum_n P(A \\mid B_n)P(B_n)$.",
+        "verdict": "bon",
+        "retour": "On obtient une série que l'on reconnaît comme une exponentielle après factorisation."
+      },
+      {
+        "titre": "Fonction génératrice",
+        "info": "$G_X(t) = E(t^X)$ caractérise la loi. La fonction génératrice de $\\mathcal B(n, p)$ est $t \\mapsto (1 - p + pt)^n$.",
+        "verdict": "bon",
+        "retour": "Avec les probabilités totales, $G_X(t) = \\sum_n P(N = n)(1 - p + pt)^n$ se calcule directement."
+      },
+      {
+        "titre": "Espérance de $X$",
+        "info": "Par probabilités totales, $E(X) = \\sum_n E(X \\mid N = n)P(N = n)$, et $E(X \\mid N = n) = np$.",
+        "verdict": "impasse",
+        "retour": "On trouve $E(X) = \\lambda p$, mais un seul moment ne détermine pas la loi."
+      },
+      {
+        "titre": "Approximation de la loi binomiale par la loi de Poisson",
+        "info": "Si $np_n \\to \\lambda$, la loi $\\mathcal B(n, p_n)$ converge vers la loi de Poisson de paramètre $\\lambda$.",
+        "verdict": "impasse",
+        "retour": "C'est un résultat asymptotique, alors qu'on demande ici une loi exacte, pour $p$ fixé."
+      }
+    ],
+    "direction": "Pour $k \\in \\mathbb N$, $P(X = k) = \\sum_{n \\ge k} e^{-\\lambda}\\frac{\\lambda^n}{n!}\\binom nk p^k(1-p)^{n-k} = e^{-\\lambda}\\frac{(\\lambda p)^k}{k!}\\sum_{j \\ge 0}\\frac{(\\lambda(1-p))^j}{j!} = e^{-\\lambda p}\\frac{(\\lambda p)^k}{k!}$ : $X$ suit la loi de Poisson de paramètre $\\lambda p$."
+  },
+  {
+    "id": "probabilites-piste-12", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $X$ de loi de Cauchy, de densité $x \\mapsto \\frac{1}{\\pi(1 + x^2)}$. On pose $Y = \\frac1X$ si $X \\ne 0$ et $Y = 0$ sinon. Montrer que $Y$ suit aussi la loi de Cauchy.",
+    "choix": [
+      {
+        "titre": "Calculer la fonction de répartition de $Y$",
+        "info": "La loi de $Y$ est caractérisée par $F_Y(y) = P(Y \\le y)$. Pour la loi de Cauchy, $F_X(x) = \\frac12 + \\frac1\\pi\\arctan x$.",
+        "verdict": "bon",
+        "retour": "On réécrit $\\{Y \\le y\\}$ en événements sur $X$, en distinguant $y > 0$ et $y < 0$, et $P(X = 0) = 0$."
+      },
+      {
+        "titre": "Représenter $X$ comme $\\tan\\Theta$",
+        "info": "Si $\\Theta$ suit la loi uniforme sur $\\left]-\\frac\\pi2, \\frac\\pi2\\right[$, alors $\\tan\\Theta$ suit la loi de Cauchy.",
+        "verdict": "possible",
+        "retour": "Élégant, mais il faut d'abord établir ce résultat, puis travailler sur $\\frac1{\\tan\\Theta}$ et sa loi, ce qui revient à un calcul de même nature."
+      },
+      {
+        "titre": "Calculer $E(Y)$",
+        "info": "Théorème de transfert : si $\\Phi$ est continue par morceaux sur tout segment et $|\\Phi| f$ intégrable sur $\\mathbb R$, alors $E(\\Phi(X)) = \\int_{\\mathbb R} \\Phi(x)f(x)\\,\\mathrm dx$.",
+        "verdict": "impasse",
+        "retour": "Une variable de Cauchy n'a pas d'espérance, et de toute façon une espérance ne caractérise pas une loi."
+      },
+      {
+        "titre": "Composer la densité : $f_Y(y) = f_X\\left(\\frac1y\\right)$",
+        "info": "Si $X$ a pour densité $f$, alors $P(X \\in I) = \\int_I f(x)\\,\\mathrm dx$ pour tout intervalle $I$.",
+        "verdict": "impasse",
+        "retour": "Il manque le facteur $\\frac1{y^2}$ du changement de variable : la fonction $y \\mapsto \\frac{y^2}{\\pi(1+y^2)}$ obtenue n'est même pas intégrable."
+      }
+    ],
+    "direction": "Pour $y > 0$, $\\{Y \\le y\\} = \\{X < 0\\} \\cup \\{X \\ge \\frac1y\\}$ à un événement négligeable près, d'où $F_Y(y) = 1 - \\frac1\\pi\\arctan\\frac1y = \\frac12 + \\frac1\\pi\\arctan y$. Même résultat pour $y < 0$ avec $\\{\\frac1y \\le X < 0\\}$. Donc $F_Y = F_X$."
+  },
+  {
+    "id": "probabilites-piste-13", "ch": "probabilites", "type": "piste",
+    "enonce": "Soit $n \\ge 2$ et $\\sigma$ une permutation choisie uniformément dans $\\mathfrak S_n$. On note $X$ le nombre de points fixes de $\\sigma$. Calculer $E(X)$ et $V(X)$.",
+    "choix": [
+      {
+        "titre": "Décomposer $X$ en somme d'indicatrices",
+        "info": "$X = \\sum_{i=1}^n \\mathbf 1_{\\{\\sigma(i) = i\\}}$, et $V\\left(\\sum X_i\\right) = \\sum V(X_i) + \\sum_{i \\ne j} \\mathrm{Cov}(X_i, X_j)$.",
+        "verdict": "bon",
+        "retour": "Il suffit de connaître $P(\\sigma(i) = i)$ et $P(\\sigma(i) = i, \\sigma(j) = j)$ pour $i \\ne j$."
+      },
+      {
+        "titre": "Calculer la loi de $X$",
+        "info": "Le nombre $d_m$ de permutations sans point fixe de $\\{1, \\dots, m\\}$ vérifie $d_m = m!\\sum_{k=0}^m \\frac{(-1)^k}{k!}$, et $P(X = k) = \\frac{\\binom nk d_{n-k}}{n!}$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais les sommes à calculer ensuite sont pénibles, alors que $E(X)$ et $V(X)$ ne demandent pas la loi."
+      },
+      {
+        "titre": "Indicatrices indépendantes : loi binomiale",
+        "info": "Si $X_1, \\dots, X_n$ sont indépendantes de loi de Bernoulli de paramètre $p$, leur somme suit $\\mathcal B(n, p)$, de variance $np(1-p)$.",
+        "verdict": "impasse",
+        "retour": "Les indicatrices ne sont pas indépendantes : si $n - 1$ points sont fixes, le dernier l'est aussi. On obtiendrait $1 - \\frac1n$ au lieu de la bonne variance."
+      },
+      {
+        "titre": "Inégalité de Bienaymé-Tchebychev",
+        "info": "Si $X$ admet une variance, $P(|X - E(X)| \\ge \\varepsilon) \\le \\frac{V(X)}{\\varepsilon^2}$ pour tout $\\varepsilon > 0$.",
+        "verdict": "impasse",
+        "retour": "Elle exploite une variance connue, elle ne la calcule pas."
+      }
+    ],
+    "direction": "$P(\\sigma(i) = i) = \\frac1n$ donne $E(X) = 1$. Pour $i \\ne j$, $P(\\sigma(i) = i, \\sigma(j) = j) = \\frac{1}{n(n-1)}$, d'où $\\mathrm{Cov}(X_i, X_j) = \\frac{1}{n^2(n-1)}$. Alors $V(X) = n \\cdot \\frac1n\\left(1 - \\frac1n\\right) + n(n-1) \\cdot \\frac{1}{n^2(n-1)} = 1$."
+  }
+]

@@ -48,7 +48,7 @@
       "couleur": "#e88bd0",
       "chapitres": [
         { "id": "integrales-multiples", "nom": "Intégrales multiples", "ref": "13.1" },
-        { "id": "probabilites", "nom": "Probabilités et variables aléatoires", "ref": "13.2 – 13.5" },
+        { "id": "probabilites", "nom": "Probabilités et variables aléatoires", "ref": "13.2 – 13.5", "cartes": true },
         { "id": "theoremes-limites", "nom": "Théorèmes limites et estimation", "ref": "13.6 – 13.7" }
       ]
     },
