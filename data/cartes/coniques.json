@@ -1,0 +1,510 @@
+[
+  {
+    "id": "coniques-vf-01", "ch": "coniques", "type": "vf",
+    "enonce": "Soient $F$ et $F'$ deux points distincts du plan euclidien et $a$ un réel tel que $2a > FF'$. L'ensemble des points $M$ tels que $MF + MF' = 2a$ est une ellipse de foyers $F$ et $F'$.",
+    "reponse": true,
+    "explication": "Dans un repère orthonormé où $F(-c, 0)$ et $F'(c, 0)$ avec $0 < c < a$, on isole une racine et on élève deux fois au carré : on obtient $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ avec $b^2 = a^2 - c^2 > 0$. Si $2a = FF'$, on obtient le segment $[FF']$ ; si $2a < FF'$, l'ensemble est vide."
+  },
+  {
+    "id": "coniques-vf-02", "ch": "coniques", "type": "vf",
+    "enonce": "Soient $F$ et $F'$ deux points distincts du plan euclidien et $a > 0$. L'ensemble des points $M$ tels que $|MF - MF'| = 2a$ est une hyperbole de foyers $F$ et $F'$.",
+    "reponse": false,
+    "explication": "Il faut $2a < FF'$. Par l'inégalité triangulaire, $|MF - MF'| \\le FF'$ : si $2a > FF'$, l'ensemble est vide (par exemple $FF' = 2$ et $a = 2$). Si $2a = FF'$, on obtient la droite $(FF')$ privée de l'intérieur du segment $[FF']$."
+  },
+  {
+    "id": "coniques-vf-03", "ch": "coniques", "type": "vf",
+    "enonce": "Soient $D$ une droite, $F$ un point **de** $D$ et $e > 1$. L'ensemble des points $M$ tels que $MF = e\\, d(M, D)$ est une hyperbole.",
+    "reponse": false,
+    "explication": "La définition par foyer et directrice exige $F \\notin D$. Avec $F = O$ et $D : x = 0$, on obtient $x^2 + y^2 = e^2x^2$, soit $y = \\pm\\sqrt{e^2 - 1}\\, x$ : deux droites sécantes en $F$. Pour $F \\notin D$, on obtient bien une hyperbole."
+  },
+  {
+    "id": "coniques-vf-04", "ch": "coniques", "type": "vf",
+    "enonce": "Il existe un point $F$, une droite $D$ ne contenant pas $F$ et un réel $e > 0$ tels que le cercle unité soit l'ensemble des points $M$ vérifiant $MF = e\\, d(M, D)$.",
+    "reponse": false,
+    "explication": "Pour $F \\notin D$, cet ensemble est une parabole ou une hyperbole (non bornées) si $e \\ge 1$, et pour $0 < e < 1$ une ellipse de demi-axes $a$ et $b = a\\sqrt{1 - e^2} < a$, donc jamais un cercle. Le cercle est la conique d'excentricité $0$ par convention, sans couple foyer-directrice."
+  },
+  {
+    "id": "coniques-vf-05", "ch": "coniques", "type": "vf",
+    "enonce": "Dans un repère orthonormé, soit $\\Gamma$ l'ensemble des points dont les coordonnées vérifient $ax^2 + 2bxy + cy^2 + dx + ey + f = 0$, avec $ac - b^2 > 0$. Alors $\\Gamma$ est une ellipse.",
+    "reponse": false,
+    "explication": "La condition $ac - b^2 > 0$ dit seulement que la partie quadratique est définie (positive ou négative) : $\\Gamma$ est une ellipse, un point ou l'ensemble vide. Contre-exemples : $x^2 + y^2 + 1 = 0$ (vide) et $x^2 + y^2 = 0$ (un point)."
+  },
+  {
+    "id": "coniques-vf-06", "ch": "coniques", "type": "vf",
+    "enonce": "L'image d'une hyperbole équilatère (asymptotes perpendiculaires) par une bijection affine du plan est une hyperbole équilatère.",
+    "reponse": false,
+    "explication": "Une bijection affine conserve le genre, pas les angles. Contre-exemple : $(x, y) \\mapsto (x, 2y)$ envoie $x^2 - y^2 = 1$ sur $x^2 - \\frac{y^2}{4} = 1$, dont les asymptotes $y = \\pm 2x$ ne sont pas perpendiculaires. C'est vrai pour une similitude."
+  },
+  {
+    "id": "coniques-vf-07", "ch": "coniques", "type": "vf",
+    "enonce": "Toute ellipse du plan euclidien est l'image du cercle unité par une bijection affine.",
+    "reponse": true,
+    "explication": "Dans un repère orthonormé réduit, l'ellipse a pour équation $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ : c'est l'image du cercle $x^2 + y^2 = 1$ par $(x, y) \\mapsto (ax, by)$. C'est la base de la classification affine : deux ellipses sont toujours affinement équivalentes."
+  },
+  {
+    "id": "coniques-vf-08", "ch": "coniques", "type": "vf",
+    "enonce": "Soit $E$ une ellipse de foyers $F \\neq F'$ et $M$ un point de $E$ hors de la droite $(FF')$. La tangente à $E$ en $M$ est la bissectrice extérieure de l'angle $\\widehat{FMF'}$.",
+    "reponse": true,
+    "explication": "$E$ est une ligne de niveau de $g(M) = MF + MF'$, dont le gradient $\\vec u + \\vec u'$ (somme des vecteurs unitaires dirigés de $F$ et $F'$ vers $M$) est non nul et dirige la bissectrice intérieure : c'est la normale. La tangente est donc la bissectrice extérieure (propriété de réflexion)."
+  },
+  {
+    "id": "coniques-vf-09", "ch": "coniques", "type": "vf",
+    "enonce": "Soit $\\mathcal C$ un cône de révolution de sommet $S$ (réunion de ses deux nappes) et $P$ un plan ne passant pas par $S$. Alors $P \\cap \\mathcal C$ est une ellipse, une parabole ou une hyperbole.",
+    "reponse": true,
+    "explication": "Selon l'angle entre $P$ et l'axe, comparé au demi-angle du cône, on obtient une ellipse (éventuellement un cercle), une parabole (plan parallèle à une génératrice) ou une hyperbole. Les sphères de Dandelin fournissent foyers et directrices. Les coniques dégénérées n'apparaissent que si $P$ passe par $S$."
+  },
+  {
+    "id": "coniques-vf-10", "ch": "coniques", "type": "vf",
+    "enonce": "Un objet lancé avec une vitesse initiale non nulle dans un champ de pesanteur uniforme, sans frottement, a une trajectoire contenue dans une parabole.",
+    "reponse": false,
+    "explication": "Contre-exemple : une vitesse initiale verticale donne un mouvement rectiligne sur une droite verticale. La trajectoire est un arc de parabole dès que la vitesse initiale n'est pas colinéaire à $\\vec g$ : on élimine $t$ grâce à la composante horizontale non nulle."
+  },
+  {
+    "id": "coniques-vf-11", "ch": "coniques", "type": "vf",
+    "enonce": "Soit $M$ un point mobile dont l'accélération est centrale de centre $O$ (colinéaire à $\\overrightarrow{OM}$ à tout instant), avec $\\overrightarrow{OM}$ et $\\vec v$ non colinéaires à l'instant initial. Alors la trajectoire de $M$ est plane.",
+    "reponse": true,
+    "explication": "$\\frac{\\mathrm d}{\\mathrm dt}\\left(\\overrightarrow{OM} \\wedge \\vec v\\right) = \\vec v \\wedge \\vec v + \\overrightarrow{OM} \\wedge \\vec a = \\vec 0$. Donc $\\vec C = \\overrightarrow{OM} \\wedge \\vec v$ est constant, non nul par hypothèse, et $\\overrightarrow{OM} \\cdot \\vec C = 0$ : $M$ reste dans le plan passant par $O$ orthogonal à $\\vec C$."
+  },
+  {
+    "id": "coniques-qcm-01", "ch": "coniques", "type": "qcm",
+    "enonce": "Dans un repère orthonormé, l'hyperbole $\\mathcal H : \\frac{x^2}{9} - \\frac{y^2}{16} = 1$ a pour foyer d'abscisse positive et pour directrice associée **[ ? ]**.",
+    "choix": [
+      "$F(5, 0)$ et $x = \\frac95$",
+      "$F(\\sqrt7, 0)$ et $x = \\frac{9}{\\sqrt7}$",
+      "$F(5, 0)$ et $x = \\frac{16}{5}$",
+      "$F(4, 0)$ et $x = \\frac94$"
+    ],
+    "bonne": 0,
+    "explication": "Pour une hyperbole, $c^2 = a^2 + b^2 = 25$ (et non $a^2 - b^2$ comme pour l'ellipse), d'où $c = 5$, $e = \\frac53$, directrice $x = \\frac{a^2}{c} = \\frac95$. Contrôle au sommet $(3, 0)$ : $MF = 2$ et $d(M, D) = \\frac65$, rapport $\\frac53$."
+  },
+  {
+    "id": "coniques-qcm-02", "ch": "coniques", "type": "qcm",
+    "enonce": "Dans un repère orthonormé d'origine $F$, soit $\\Gamma$ la conique de foyer $F$, d'excentricité $e > 0$ et de directrice $D : x = -d$ ($d > 0$). En coordonnées polaires ($r$ de signe quelconque), une équation de $\\Gamma$ est **[ ? ]**.",
+    "choix": [
+      "$r = \\frac{ed}{1 - e\\cos\\theta}$",
+      "$r = \\frac{ed}{1 + e\\cos\\theta}$",
+      "$r = \\frac{ed}{1 - e\\sin\\theta}$",
+      "$r = \\frac{ed}{1 + e\\sin\\theta}$"
+    ],
+    "bonne": 0,
+    "explication": "Du côté de $F$, $d(M, D) = x + d = r\\cos\\theta + d$, et $MF = e\\,d(M, D)$ donne $r(1 - e\\cos\\theta) = ed$. Le signe $+$ correspond à la directrice $x = d$ ; les sinus, à une directrice horizontale $y = \\mp d$. Le paramètre est $p = ed$."
+  },
+  {
+    "id": "coniques-qcm-03", "ch": "coniques", "type": "qcm",
+    "enonce": "Troisième loi de Kepler.\nUn point décrit une ellipse non circulaire de demi-grand axe $a$ sous l'accélération $\\vec a = -\\mu \\frac{\\overrightarrow{OM}}{OM^3}$ ($\\mu > 0$). Sa période $T$ vérifie **[ ? ]**.",
+    "choix": [
+      "$T^2 = \\frac{4\\pi^2 a^3}{\\mu}$",
+      "$T^2 = \\frac{4\\pi^2 a^2}{\\mu}$",
+      "$T^2 = \\frac{4\\pi^2 p^3}{\\mu}$, où $p$ est le paramètre de l'ellipse",
+      "$T^2 = \\frac{\\pi^2 a^3}{\\mu}$"
+    ],
+    "bonne": 0,
+    "explication": "Loi des aires : l'aire $\\pi ab$ est balayée en $T$ à la vitesse aréolaire $\\frac{|C|}2$. Avec $C^2 = \\mu p$ et $p = \\frac{b^2}{a}$ : $T^2 = \\frac{4\\pi^2a^2b^2}{\\mu p} = \\frac{4\\pi^2a^3}{\\mu}$. La version avec $p$ ne coïncide qu'avec le cercle, où $p = a$."
+  },
+  {
+    "id": "coniques-qcm-04", "ch": "coniques", "type": "qcm",
+    "enonce": "Dans un repère orthonormé, l'ensemble d'équation $x^2 + 4xy + y^2 = 1$ est :",
+    "choix": [
+      "une hyperbole",
+      "une ellipse",
+      "une parabole",
+      "la réunion de deux droites sécantes"
+    ],
+    "bonne": 0,
+    "explication": "La matrice $\\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ a pour valeurs propres $3$ et $-1$ (vecteurs propres $(1, 1)$ et $(1, -1)$). Dans le repère orthonormé associé : $3X^2 - Y^2 = 1$. Des coefficients diagonaux positifs ne suffisent pas pour une ellipse : c'est le signe de $ac - b^2 = -3$ qui compte. Les deux droites sécantes correspondraient au second membre $0$."
+  },
+  {
+    "id": "coniques-qcm-05", "ch": "coniques", "type": "qcm",
+    "enonce": "Classification affine.\nDeux coniques du plan, chacune étant une ellipse, une parabole ou une hyperbole, sont images l'une de l'autre par une bijection affine si et seulement si **[ ? ]**.",
+    "choix": [
+      "elles sont de même genre",
+      "elles ont la même excentricité",
+      "elles sont isométriques",
+      "elles ont le même nombre d'axes de symétrie"
+    ],
+    "bonne": 0,
+    "explication": "Toute ellipse est l'image du cercle unité, toute parabole de $y = x^2$, toute hyperbole de $xy = 1$. Même excentricité ou isométrie sont suffisantes mais pas nécessaires : un cercle et une ellipse quelconque sont affinement équivalents. Le nombre d'axes ne convient pas : une ellipse et une hyperbole en ont chacune deux."
+  },
+  {
+    "id": "coniques-qcm-06", "ch": "coniques", "type": "qcm",
+    "enonce": "Dans un repère orthonormé, soit $p > 0$ et $\\mathcal P$ la parabole d'équation $y^2 = 2px$. La tangente à $\\mathcal P$ en un point $M_0(x_0, y_0)$ de $\\mathcal P$ distinct du sommet a pour équation **[ ? ]**.",
+    "choix": [
+      "$y_0\\, y = p(x + x_0)$",
+      "$y_0\\, y = p(x - x_0)$",
+      "$y_0\\, y = 2p(x + x_0)$",
+      "$y_0\\, y = px$"
+    ],
+    "bonne": 0,
+    "explication": "En dérivant, $2yy' = 2p$ : pente $\\frac{p}{y_0}$. La droite $y_0y = p(x + x_0)$ a cette pente et passe par $M_0$ car $y_0^2 = 2px_0$ (règle du dédoublement). Elle coupe l'axe en $(-x_0, 0)$ : le sommet est le milieu de la sous-tangente. Les autres droites ne passent pas par $M_0$ ou n'ont pas la bonne pente."
+  },
+  {
+    "id": "coniques-err-01", "ch": "coniques", "type": "erreur",
+    "enonce": "On cherche les demi-axes de l'ensemble $\\Gamma$ d'équation $5x^2 + 4xy + 2y^2 = 1$ dans un repère orthonormé. Voici une copie.",
+    "lignes": [
+      "On complète le carré : $5x^2 + 4xy + 2y^2 = 5\\left(x + \\frac25 y\\right)^2 + \\frac65 y^2$.",
+      "On pose $X = x + \\frac25 y$ et $Y = y$ ; l'application $(x, y) \\mapsto (X, Y)$ est linéaire bijective.",
+      "L'équation devient $5X^2 + \\frac65 Y^2 = 1$, donc $\\Gamma$ est une ellipse.",
+      "Ses demi-axes valent donc $\\frac{1}{\\sqrt5}$ et $\\sqrt{\\frac56}$."
+    ],
+    "fausse": 3,
+    "explication": "La réduction de Gauss donne le genre (invariant affine), mais le changement de coordonnées n'est pas orthogonal : les longueurs ne sont pas conservées. Il faut diagonaliser $\\begin{pmatrix} 5 & 2 \\\\ 2 & 2 \\end{pmatrix}$ en base orthonormée : valeurs propres $1$ et $6$, d'où $X'^2 + 6Y'^2 = 1$ et des demi-axes $1$ et $\\frac{1}{\\sqrt6}$."
+  },
+  {
+    "id": "coniques-err-02", "ch": "coniques", "type": "erreur",
+    "enonce": "Dans un repère orthonormé, $F(-2, 0)$ et $F'(2, 0)$. On cherche l'ensemble $E$ des points $M$ tels que $MF - MF' = 2$. Voici une copie.",
+    "lignes": [
+      "Pour tout point $M$, $|MF - MF'| \\le FF' = 4$.",
+      "Comme $0 < 2 < 4$, l'ensemble des $M$ tels que $|MF - MF'| = 2$ est l'hyperbole $\\mathcal H$ de foyers $F, F'$ et de demi-axe focal $a = 1$.",
+      "Ici $c = 2$ et $b^2 = c^2 - a^2 = 3$, donc $\\mathcal H$ a pour équation $x^2 - \\frac{y^2}{3} = 1$.",
+      "Donc $E = \\mathcal H$."
+    ],
+    "fausse": 3,
+    "explication": "La définition bifocale porte sur la valeur absolue. Sans elle, on n'obtient qu'une branche : $MF^2 - MF'^2 = 8x$, donc $MF - MF'$ a le signe de $x$. Ainsi $E$ est la branche $x \\ge 1$ de $\\mathcal H$, celle qui entoure $F'$."
+  },
+  {
+    "id": "coniques-err-03", "ch": "coniques", "type": "erreur",
+    "enonce": "On cherche les foyers de l'ellipse $E$ d'équation $\\frac{x^2}{4} + y^2 = 1$ dans un repère orthonormé. Voici une copie.",
+    "lignes": [
+      "L'application $f : (x, y) \\mapsto (2x, y)$ est une bijection affine du plan.",
+      "Elle envoie le cercle unité $\\mathcal C$ sur $E$.",
+      "Le cercle $\\mathcal C$ est une ellipse dont les deux foyers sont confondus en son centre $O$.",
+      "Donc les foyers de $E$ sont confondus en $f(O) = O$."
+    ],
+    "fausse": 3,
+    "explication": "Une bijection affine conserve le centre, les tangentes, les milieux, mais pas les distances : les foyers, notion métrique, ne se transportent pas. Ici $a = 2$, $b = 1$, $c = \\sqrt{a^2 - b^2} = \\sqrt3$ : les foyers sont $(\\pm\\sqrt3, 0)$."
+  },
+  {
+    "id": "coniques-err-04", "ch": "coniques", "type": "erreur",
+    "enonce": "Une planète $M$ décrit une ellipse non circulaire dont un foyer est le Soleil $O$, sous l'effet d'une accélération centrale de centre $O$. Une copie affirme que $M$ tourne autour de $O$ à vitesse angulaire constante.",
+    "lignes": [
+      "L'accélération est centrale, donc $\\vec C = \\overrightarrow{OM} \\wedge \\vec v$ est constant.",
+      "En coordonnées polaires de pôle $O$ dans le plan de l'orbite, cela s'écrit $r^2\\theta' = C$, constante non nulle.",
+      "L'aire balayée par $\\overrightarrow{OM}$ entre les instants $t_1 < t_2$ vaut donc $\\frac{|C|}{2}(t_2 - t_1)$.",
+      "Donc $\\theta'$ est constant : $M$ parcourt l'orbite à vitesse angulaire constante."
+    ],
+    "fausse": 3,
+    "explication": "C'est la vitesse **aréolaire** qui est constante, pas la vitesse angulaire : $\\theta' = \\frac{C}{r^2}$ varie avec $r$. La planète va plus vite au périhélie qu'à l'aphélie. Seule l'orbite circulaire donne un mouvement uniforme."
+  },
+  {
+    "id": "coniques-err-05", "ch": "coniques", "type": "erreur",
+    "enonce": "Un projectile est lancé depuis $O$ avec une vitesse $v_0 > 0$ faisant un angle $\\alpha \\in \\left]0, \\frac\\pi2\\right[$ avec l'horizontale, dans un champ de pesanteur uniforme $g$, sans frottement. On cherche l'angle qui maximise la portée. Voici une copie.",
+    "lignes": [
+      "$x(t) = v_0\\cos\\alpha\\; t$ et $y(t) = v_0\\sin\\alpha\\; t - \\frac12 g t^2$.",
+      "En éliminant $t$ : $y = x\\tan\\alpha - \\frac{g x^2}{2v_0^2\\cos^2\\alpha}$, arc de parabole d'axe vertical.",
+      "Le projectile repasse à l'altitude de $O$ en $x = \\frac{v_0^2 \\sin 2\\alpha}{g}$, maximal pour $\\alpha = \\frac\\pi4$.",
+      "Lancé du haut d'une falaise de hauteur $h > 0$, la distance atteinte au pied de la falaise est donc encore maximale pour $\\alpha = \\frac\\pi4$."
+    ],
+    "fausse": 3,
+    "explication": "Le résultat $\\alpha = \\frac\\pi4$ vaut pour un point d'impact au niveau du lancer. Avec l'impact à l'altitude $-h$, on résout $y = -h$ et l'optimum est $\\tan\\alpha = \\frac{v_0}{\\sqrt{v_0^2 + 2gh}} < 1$, soit $\\alpha < \\frac\\pi4$."
+  },
+  {
+    "id": "coniques-piste-01", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un repère orthonormé, soit $\\Gamma$ d'équation $5x^2 - 6xy + 5y^2 = 8$. Déterminer la nature de $\\Gamma$, ses axes et ses demi-axes.",
+    "choix": [
+      {
+        "titre": "Diagonaliser la matrice de la forme quadratique en base orthonormée",
+        "info": "Une matrice symétrique réelle $A$ s'écrit $A = PDP^{\\mathsf T}$ avec $P$ orthogonale et $D$ diagonale. Dans le repère orthonormé formé de $O$ et des colonnes de $P$, la forme $q$ de matrice $A$ devient $\\alpha X^2 + \\beta Y^2$, où $\\alpha, \\beta$ sont les valeurs propres.",
+        "verdict": "bon",
+        "retour": "$\\begin{pmatrix} 5 & -3 \\\\ -3 & 5 \\end{pmatrix}$ a pour valeurs propres $2$ et $8$, de vecteurs propres $(1, 1)$ et $(1, -1)$ : tout se lit dans ce repère."
+      },
+      {
+        "titre": "Réduction de Gauss (compléter les carrés)",
+        "info": "Toute forme quadratique s'écrit comme combinaison linéaire de carrés de formes linéaires indépendantes, obtenues en complétant successivement les carrés.",
+        "verdict": "possible",
+        "retour": "$5\\left(x - \\frac35y\\right)^2 + \\frac{16}5y^2 = 8$ montre que $\\Gamma$ est une ellipse. Mais le changement de coordonnées n'est pas orthogonal : les demi-axes lus ainsi sont faux."
+      },
+      {
+        "titre": "Passer en coordonnées polaires de pôle $O$",
+        "info": "Si $q$ est une forme quadratique définie positive, la courbe $q(x, y) = k$ ($k > 0$) a pour équation polaire $r^2 = \\frac{k}{q(\\cos\\theta, \\sin\\theta)}$.",
+        "verdict": "possible",
+        "retour": "Ici $r^2 = \\frac{8}{5 - 3\\sin 2\\theta}$ : les extremums de $r$ ($2$ en $\\theta = \\frac\\pi4$, $1$ en $\\theta = -\\frac\\pi4$) donnent demi-axes et directions. Ça aboutit, à condition de justifier que les axes sont les directions où $r$ est extrémal."
+      },
+      {
+        "titre": "Paramétrer par $(a\\cos t, b\\sin t)$",
+        "info": "L'ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ est paramétrée par $t \\mapsto (a\\cos t, b\\sin t)$, $t \\in [0, 2\\pi]$.",
+        "verdict": "impasse",
+        "retour": "Ce paramétrage suppose l'ellipse déjà rapportée à ses axes : c'est précisément ce qu'on cherche."
+      }
+    ],
+    "direction": "Dans le repère orthonormé de vecteurs $u = \\frac{1}{\\sqrt2}(1, 1)$, $v = \\frac{1}{\\sqrt2}(1, -1)$ : $2X^2 + 8Y^2 = 8$, soit $\\frac{X^2}{4} + Y^2 = 1$. Ellipse de centre $O$, de grand axe dirigé par $u$, demi-axes $2$ et $1$, $c = \\sqrt3$, $e = \\frac{\\sqrt3}{2}$."
+  },
+  {
+    "id": "coniques-piste-02", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un repère orthonormé, soit $\\Gamma$ d'équation $x^2 + 2xy + y^2 - 4\\sqrt2\\, x = 0$. Montrer que $\\Gamma$ est une parabole et déterminer son paramètre.",
+    "choix": [
+      {
+        "titre": "Diagonaliser la partie quadratique en base orthonormée, puis compléter le carré",
+        "info": "Dans un repère orthonormé de vecteurs propres de la matrice symétrique de la partie quadratique, celle-ci devient $\\alpha X^2 + \\beta Y^2$ ; les termes du premier degré se transforment linéairement, puis on complète les carrés.",
+        "verdict": "bon",
+        "retour": "La matrice $\\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$ a pour valeurs propres $0$ et $2$ : une seule variable apparaît au carré, c'est la situation d'une parabole."
+      },
+      {
+        "titre": "Changement de repère affine $X = x + y$, $Y = x$",
+        "info": "Une bijection affine du plan conserve le genre d'une conique (ellipse, parabole, hyperbole).",
+        "verdict": "possible",
+        "retour": "On obtient $X^2 = 4\\sqrt2\\, Y$ : c'est bien une parabole. Mais le paramètre n'est pas conservé par une bijection affine non isométrique : la moitié de la question reste à faire."
+      },
+      {
+        "titre": "Chercher le centre et s'y placer",
+        "info": "Pour une conique à centre d'équation $f(x, y) = 0$, le centre est le point où le gradient de $f$ s'annule ; en le prenant pour origine, les termes du premier degré disparaissent.",
+        "verdict": "impasse",
+        "retour": "$\\nabla f = 0$ donne $2x + 2y = 4\\sqrt2$ et $2x + 2y = 0$ : système incompatible. Une parabole n'a pas de centre."
+      },
+      {
+        "titre": "Équation polaire de pôle $O$",
+        "info": "Une conique de foyer $O$ admet une équation polaire de la forme $r = \\frac{p}{1 + e\\cos(\\theta - \\theta_0)}$.",
+        "verdict": "impasse",
+        "retour": "$O$ appartient à $\\Gamma$, donc n'en est pas le foyer : l'équation polaire de pôle $O$ n'a pas cette forme."
+      }
+    ],
+    "direction": "Avec $x = \\frac{X + Y}{\\sqrt2}$, $y = \\frac{X - Y}{\\sqrt2}$ (repère orthonormé), $(x + y)^2 = 2X^2$ et l'équation devient $2X^2 - 4X - 4Y = 0$, soit $(X - 1)^2 = 2\\left(Y + \\frac12\\right)$. Parabole de paramètre $p = 1$."
+  },
+  {
+    "id": "coniques-piste-03", "ch": "coniques", "type": "piste",
+    "enonce": "Soit $\\mathcal P$ une parabole de foyer $F$ et de directrice $D$, $M$ un point de $\\mathcal P$ et $H$ le projeté orthogonal de $M$ sur $D$. Montrer que la tangente à $\\mathcal P$ en $M$ est la médiatrice de $[FH]$.",
+    "choix": [
+      {
+        "titre": "Calcul dans un repère où $\\mathcal P : y^2 = 2px$",
+        "info": "Pour $p > 0$, la parabole $y^2 = 2px$ a pour foyer $F\\left(\\frac p2, 0\\right)$, pour directrice $x = -\\frac p2$, et sa tangente en $(x_0, y_0)$ a pour équation $y_0y = p(x + x_0)$.",
+        "verdict": "bon",
+        "retour": "Avec $H\\left(-\\frac p2, y_0\\right)$, le vecteur $\\overrightarrow{FH} = (-p, y_0)$ est orthogonal au vecteur $(y_0, p)$ qui dirige la tangente."
+      },
+      {
+        "titre": "Montrer que la médiatrice ne rencontre $\\mathcal P$ qu'en $M$",
+        "info": "Une droite non parallèle à l'axe d'une parabole et qui la rencontre en un seul point est tangente en ce point.",
+        "verdict": "bon",
+        "retour": "Pour $N \\neq M$ sur la médiatrice, $NF = NH > d(N, D)$, donc $N \\notin \\mathcal P$. Il faut aussi vérifier que la médiatrice n'est pas parallèle à l'axe : elle est orthogonale à $\\overrightarrow{FH}$, qui a une composante non nulle selon l'axe."
+      },
+      {
+        "titre": "Définition bifocale",
+        "info": "Une ellipse est l'ensemble des $M$ tels que $MF + MF' = 2a$ ; sa tangente en $M$ est la bissectrice extérieure de $\\widehat{FMF'}$.",
+        "verdict": "impasse",
+        "retour": "Une parabole n'a qu'un foyer : il n'y a pas de définition bifocale à exploiter."
+      },
+      {
+        "titre": "Transporter le résultat depuis un cercle par une application affine",
+        "info": "Une bijection affine envoie une conique sur une conique de même genre et la tangente en $M$ sur la tangente en l'image de $M$.",
+        "verdict": "impasse",
+        "retour": "Une parabole n'est l'image d'aucun cercle (elle n'est pas bornée), et une bijection affine ne conserve pas l'orthogonalité qu'il faut établir."
+      }
+    ],
+    "direction": "Dans le repère réduit, $\\overrightarrow{FH} = (-p, y_0)$ est orthogonal à la tangente en $M$, et $MF = MH$ : la tangente est la droite passant par $M$ orthogonale à $(FH)$, c'est-à-dire la médiatrice de $[FH]$. Le triangle $FMH$ étant isocèle en $M$, c'est aussi la bissectrice de $\\widehat{FMH}$ : propriété de réflexion."
+  },
+  {
+    "id": "coniques-piste-04", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un repère orthonormé d'origine $O$, déterminer la nature, l'excentricité, la directrice associée au foyer $O$, le centre et les asymptotes de la courbe $\\Gamma$ d'équation polaire $r = \\frac{2}{1 + 2\\cos\\theta}$ ($r$ de signe quelconque).",
+    "choix": [
+      {
+        "titre": "Reconnaître la forme $r = \\frac{p}{1 + e\\cos\\theta}$",
+        "info": "Dans un repère orthonormé d'origine $O$, la conique de foyer $O$, d'excentricité $e > 0$ et de directrice $x = d$ ($d > 0$) a pour équation polaire $r = \\frac{ed}{1 + e\\cos\\theta}$, avec $r$ de signe quelconque.",
+        "verdict": "bon",
+        "retour": "Lecture immédiate : $e = 2$, $ed = 2$, donc hyperbole de foyer $O$ et de directrice $x = 1$. Le centre et les asymptotes demandent encore un calcul."
+      },
+      {
+        "titre": "Revenir en cartésiennes",
+        "info": "On a $x = r\\cos\\theta$, $y = r\\sin\\theta$ et $r^2 = x^2 + y^2$. Une relation polynomiale entre $r$ et $r\\cos\\theta$ se traduit en équation cartésienne.",
+        "verdict": "bon",
+        "retour": "$r + 2r\\cos\\theta = 2$ donne $r = 2 - 2x$, puis $x^2 + y^2 = (2 - 2x)^2$ : une équation du second degré qu'on réduit en complétant le carré."
+      },
+      {
+        "titre": "Étude des branches infinies de la courbe polaire",
+        "info": "Si $|r(\\theta)| \\to +\\infty$ quand $\\theta \\to \\theta_0$, la courbe a une direction asymptotique d'angle $\\theta_0$. Dans le repère tourné de $\\theta_0$, l'ordonnée de $M(\\theta)$ est $Y = r(\\theta)\\sin(\\theta - \\theta_0)$ : si $Y \\to \\ell$, la droite $Y = \\ell$ est asymptote.",
+        "verdict": "possible",
+        "retour": "Les directions $\\theta_0 = \\pm\\frac{2\\pi}{3}$ et les asymptotes s'obtiennent ainsi, mais c'est plus long, et la nature de la courbe n'en découle pas."
+      },
+      {
+        "titre": "Paramétrage $(a\\cos t, b\\sin t)$",
+        "info": "Une ellipse de centre $O$ d'axes les axes de coordonnées, de demi-axes $a$ et $b$, est paramétrée par $t \\mapsto (a\\cos t, b\\sin t)$.",
+        "verdict": "impasse",
+        "retour": "$\\Gamma$ n'est pas bornée ($r \\to \\infty$ quand $\\cos\\theta \\to -\\frac12$) : ce n'est pas une ellipse, et son centre n'est pas $O$."
+      }
+    ],
+    "direction": "$e = 2$ : hyperbole de foyer $O$, directrice $x = 1$. En cartésiennes, $3x^2 - 8x + 4 - y^2 = 0$, soit $\\frac{(x - 4/3)^2}{4/9} - \\frac{y^2}{4/3} = 1$ : centre $\\left(\\frac43, 0\\right)$, $a = \\frac23$, $c = \\frac43$, asymptotes $y = \\pm\\sqrt3\\left(x - \\frac43\\right)$."
+  },
+  {
+    "id": "coniques-piste-05", "ch": "coniques", "type": "piste",
+    "enonce": "Un point $M$ se déplace dans un plan sous l'accélération $\\vec a = -\\mu\\frac{\\overrightarrow{OM}}{OM^3}$ ($\\mu > 0$). En coordonnées polaires de pôle $O$, on suppose $r^2\\theta' = C$ constante non nulle. Montrer que la trajectoire est une conique de foyer $O$.",
+    "choix": [
+      {
+        "titre": "Formule de Binet",
+        "info": "Si $r^2\\theta' = C \\neq 0$, $\\theta$ est strictement monotone et $u = \\frac1r$ peut être vue comme fonction de $\\theta$. L'accélération radiale vaut alors $-C^2u^2\\left(\\frac{\\mathrm d^2u}{\\mathrm d\\theta^2} + u\\right)$.",
+        "verdict": "bon",
+        "retour": "On obtient $\\frac{\\mathrm d^2u}{\\mathrm d\\theta^2} + u = \\frac{\\mu}{C^2}$, équation linéaire à coefficients constants."
+      },
+      {
+        "titre": "Intégrer l'accélération à l'aide de $\\vec u_\\theta$",
+        "info": "On a $\\frac{\\mathrm d\\vec u_\\theta}{\\mathrm dt} = -\\theta'\\,\\vec u_r$ et $\\vec v \\cdot \\vec u_\\theta = r\\theta'$.",
+        "verdict": "bon",
+        "retour": "Avec $\\theta' = \\frac{C}{r^2}$, $\\vec a = \\frac{\\mu}{C}\\frac{\\mathrm d\\vec u_\\theta}{\\mathrm dt}$, donc $\\vec v = \\frac\\mu C\\vec u_\\theta + \\vec w$ avec $\\vec w$ constant. En projetant sur $\\vec u_\\theta$ : $\\frac Cr = \\frac\\mu C + \\vec w \\cdot \\vec u_\\theta$, équation polaire d'une conique."
+      },
+      {
+        "titre": "Conservation de l'énergie",
+        "info": "L'énergie $\\frac12 v^2 - \\frac{\\mu}{r}$ est constante, et $v^2 = r'^2 + r^2\\theta'^2$.",
+        "verdict": "possible",
+        "retour": "Avec $\\theta' = \\frac C{r^2}$ on obtient une équation différentielle du premier ordre en $r(\\theta)$, intégrable, mais il faut gérer une racine carrée et ses changements de signe."
+      },
+      {
+        "titre": "Résoudre le système en coordonnées cartésiennes",
+        "info": "Un système différentiel linéaire à coefficients constants se résout par réduction de sa matrice.",
+        "verdict": "impasse",
+        "retour": "$x'' = -\\frac{\\mu x}{(x^2 + y^2)^{3/2}}$ : le système est non linéaire, aucune résolution directe."
+      }
+    ],
+    "direction": "Par Binet, $u = \\frac{\\mu}{C^2}\\left(1 + e\\cos(\\theta - \\theta_0)\\right)$ avec $e \\ge 0$ quitte à changer $\\theta_0$. Donc $r = \\frac{p}{1 + e\\cos(\\theta - \\theta_0)}$ avec $p = \\frac{C^2}{\\mu}$ : conique de foyer $O$ et d'excentricité $e$ (cercle si $e = 0$)."
+  },
+  {
+    "id": "coniques-piste-06", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un plan vertical rapporté à un repère orthonormé ($Oy$ vertical ascendant), on lance depuis $O$ un projectile de vitesse initiale de norme $v_0 > 0$ fixée, dans une direction quelconque du plan, sous une pesanteur uniforme $g$, sans frottement. Déterminer l'ensemble des points atteignables.",
+    "choix": [
+      {
+        "titre": "Trinôme en $\\tan\\alpha$ et discriminant",
+        "info": "Pour un angle de tir $\\alpha \\in \\left]-\\frac\\pi2, \\frac\\pi2\\right[$, la trajectoire est la courbe $y = x\\tan\\alpha - \\frac{gx^2}{2v_0^2}(1 + \\tan^2\\alpha)$, $x \\ge 0$.",
+        "verdict": "bon",
+        "retour": "Un point $(x, y)$ avec $x > 0$ est atteint si et seulement si l'équation, vue comme trinôme en $T = \\tan\\alpha$, a une racine réelle."
+      },
+      {
+        "titre": "Conservation de l'énergie",
+        "info": "Le long de la trajectoire, $\\|\\vec v\\|^2 = v_0^2 - 2gy$.",
+        "verdict": "impasse",
+        "retour": "Elle donne la condition nécessaire $y \\le \\frac{v_0^2}{2g}$, qui n'est pas suffisante : les points éloignés horizontalement ne sont pas atteints."
+      },
+      {
+        "titre": "Portée maximale sur sol horizontal",
+        "info": "Le projectile repasse à l'altitude de $O$ à la distance $\\frac{v_0^2\\sin 2\\alpha}{g}$, maximale pour $\\alpha = \\frac\\pi4$.",
+        "verdict": "possible",
+        "retour": "Elle ne règle que les points de l'axe horizontal : on obtient le segment $[-\\frac{v_0^2}g, \\frac{v_0^2}g]$ de cet axe, pas le reste du plan."
+      },
+      {
+        "titre": "Lieu des sommets des trajectoires",
+        "info": "Le sommet de la trajectoire d'angle $\\alpha \\in \\left]0, \\frac\\pi2\\right[$ est le point $\\left(\\frac{v_0^2\\sin 2\\alpha}{2g}, \\frac{v_0^2\\sin^2\\alpha}{2g}\\right)$.",
+        "verdict": "impasse",
+        "retour": "Ce lieu (une ellipse) n'est pas la frontière de la zone atteignable : des points situés au-dessus de certains sommets sont atteints par d'autres tirs."
+      }
+    ],
+    "direction": "Pour $x > 0$, avec $k = \\frac{gx^2}{2v_0^2}$, le trinôme $kT^2 - xT + k + y$ a une racine réelle si et seulement si $y \\le \\frac{v_0^2}{2g} - \\frac{gx^2}{2v_0^2}$ ; le cas $x < 0$ est symétrique, $x = 0$ correspond au tir vertical. Zone atteignable : sous la « parabole de sûreté », de foyer $O$."
+  },
+  {
+    "id": "coniques-piste-07", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un repère orthonormé, montrer que la courbe $\\Gamma$ d'équation $xy = 1$ est une hyperbole ; déterminer son excentricité et ses foyers.",
+    "choix": [
+      {
+        "titre": "Diagonaliser la forme quadratique $xy$ en base orthonormée",
+        "info": "Une matrice symétrique réelle est diagonalisable dans une base orthonormée de vecteurs propres ; dans le repère associé, la partie quadratique devient $\\alpha X^2 + \\beta Y^2$.",
+        "verdict": "bon",
+        "retour": "La matrice $\\begin{pmatrix} 0 & 1/2 \\\\ 1/2 & 0 \\end{pmatrix}$ a pour valeurs propres $\\pm\\frac12$, de vecteurs propres $(1, 1)$ et $(-1, 1)$ : rotation d'angle $\\frac\\pi4$."
+      },
+      {
+        "titre": "Vérifier la définition bifocale",
+        "info": "Si $0 < 2a < FF'$, l'ensemble des $M$ tels que $|MF - MF'| = 2a$ est l'hyperbole de foyers $F, F'$ et de demi-axe focal $a$.",
+        "verdict": "possible",
+        "retour": "Il faut d'abord deviner les foyers (sur $y = x$ par symétrie) et $a$, puis vérifier une égalité entre racines carrées pour tout point : faisable mais lourd."
+      },
+      {
+        "titre": "Classification affine",
+        "info": "Une bijection affine du plan conserve le genre d'une conique, et toute hyperbole est l'image de $X^2 - Y^2 = 1$ par une bijection affine.",
+        "verdict": "possible",
+        "retour": "Avec $x = X - Y$, $y = X + Y$, on obtient $X^2 - Y^2 = 1$ : $\\Gamma$ est une hyperbole. Mais ce changement n'est pas isométrique : ni l'excentricité ni les foyers ne s'en déduisent."
+      },
+      {
+        "titre": "Étude de la fonction inverse",
+        "info": "La fonction $x \\mapsto \\frac1x$ est décroissante sur $]-\\infty, 0[$ et sur $]0, +\\infty[$, et son graphe admet les deux axes pour asymptotes.",
+        "verdict": "impasse",
+        "retour": "On obtient l'allure et les asymptotes, mais ni la preuve que c'est une hyperbole au sens des coniques, ni ses foyers."
+      }
+    ],
+    "direction": "Avec $x = \\frac{X - Y}{\\sqrt2}$, $y = \\frac{X + Y}{\\sqrt2}$ : $\\frac{X^2}{2} - \\frac{Y^2}{2} = 1$. Hyperbole équilatère, $a = b = \\sqrt2$, $c = 2$, $e = \\sqrt2$. Foyers $(\\sqrt2, \\sqrt2)$ et $(-\\sqrt2, -\\sqrt2)$."
+  },
+  {
+    "id": "coniques-piste-08", "ch": "coniques", "type": "piste",
+    "enonce": "Dans un repère orthonormé de l'espace, soit $\\mathcal C$ le cône d'équation $x^2 + y^2 = z^2$ et $P$ le plan d'équation $z = 1 + \\frac x2$. Déterminer la nature de $\\mathcal C \\cap P$.",
+    "choix": [
+      {
+        "titre": "Projeter orthogonalement sur le plan $xOy$",
+        "info": "La projection orthogonale sur $xOy$, restreinte à un plan non vertical $P$, est une bijection affine de $P$ sur $xOy$. Une bijection affine conserve le genre d'une conique.",
+        "verdict": "bon",
+        "retour": "L'image de $\\mathcal C \\cap P$ est la courbe $x^2 + y^2 = \\left(1 + \\frac x2\\right)^2$ du plan $xOy$, qu'on réduit."
+      },
+      {
+        "titre": "Comparer l'angle du plan avec le demi-angle du cône",
+        "info": "Soit un cône de révolution de demi-angle $\\varphi \\in \\left]0, \\frac\\pi2\\right[$ et un plan ne passant pas par le sommet, faisant avec l'axe un angle $\\beta \\in \\left[0, \\frac\\pi2\\right]$. La section est une ellipse si $\\beta > \\varphi$, une parabole si $\\beta = \\varphi$, une hyperbole si $\\beta < \\varphi$.",
+        "verdict": "bon",
+        "retour": "Ici $\\varphi = \\frac\\pi4$, $O \\notin P$, et avec $\\vec n = \\left(-\\frac12, 0, 1\\right)$ normal à $P$ : $\\sin\\beta = \\frac{|\\vec n \\cdot \\vec k|}{\\|\\vec n\\|} = \\frac{2}{\\sqrt5} > \\frac{\\sqrt2}2$."
+      },
+      {
+        "titre": "Calculer dans un repère orthonormé du plan $P$",
+        "info": "On choisit un point de $P$ et une base orthonormée de sa direction, puis on écrit l'équation de la section dans ce repère.",
+        "verdict": "possible",
+        "retour": "Ça aboutit et donne même les éléments métriques, mais le calcul est plus long que nécessaire pour la seule nature."
+      },
+      {
+        "titre": "Projeter orthogonalement sur le plan $xOz$",
+        "info": "La projection orthogonale sur $xOz$ envoie $(x, y, z)$ sur $(x, 0, z)$.",
+        "verdict": "impasse",
+        "retour": "La direction $Oy$ est contenue dans $P$ : cette projection n'est pas injective sur $P$ et écrase la section sur un segment."
+      }
+    ],
+    "direction": "$x^2 + y^2 = 1 + x + \\frac{x^2}4$ équivaut à $\\frac34\\left(x - \\frac23\\right)^2 + y^2 = \\frac43$ : ellipse. La section est donc une ellipse, ce que confirme le critère angulaire $\\beta > \\frac\\pi4$."
+  },
+  {
+    "id": "coniques-piste-09", "ch": "coniques", "type": "piste",
+    "enonce": "Soit $E$ une ellipse de foyers $F, F'$, de centre $O$ et de demi-grand axe $a$. Pour $M \\in E$, soit $H$ le projeté orthogonal de $F$ sur la tangente en $M$. Montrer que $OH = a$.",
+    "choix": [
+      {
+        "titre": "Symétrique de $F$ par rapport à la tangente et théorème des milieux",
+        "info": "La tangente en $M$ à l'ellipse est la bissectrice extérieure de $\\widehat{FMF'}$. Dans un triangle, le segment joignant les milieux de deux côtés mesure la moitié du troisième.",
+        "verdict": "bon",
+        "retour": "Le symétrique $F_1$ de $F$ par rapport à la tangente est sur la demi-droite $[F'M)$ au-delà de $M$, avec $MF_1 = MF$. Puis $H$ et $O$ sont les milieux de $[FF_1]$ et $[FF']$."
+      },
+      {
+        "titre": "Calcul dans le repère réduit",
+        "info": "Dans le repère réduit, $E : \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$, $F(c, 0)$ avec $c^2 = a^2 - b^2$, et la tangente en $(x_0, y_0)$ a pour équation $\\frac{x_0x}{a^2} + \\frac{y_0y}{b^2} = 1$.",
+        "verdict": "possible",
+        "retour": "On calcule $H$ puis $OH^2$ : ça aboutit, mais l'élimination à l'aide de l'équation de $E$ est lourde."
+      },
+      {
+        "titre": "Transporter le résultat depuis le cercle principal",
+        "info": "$E$ est l'image du cercle de centre $O$ et de rayon $a$ par une affinité orthogonale ; une bijection affine conserve l'alignement, le parallélisme et les milieux.",
+        "verdict": "impasse",
+        "retour": "Une affinité ne conserve ni l'orthogonalité ni les distances : projeté orthogonal et foyer ne se transportent pas."
+      },
+      {
+        "titre": "Adapter la propriété de la parabole avec la directrice",
+        "info": "Soit une parabole de foyer $F$ et de directrice $D$, $M$ un de ses points et $K$ le projeté orthogonal de $M$ sur $D$. La tangente en $M$ est la médiatrice de $[FK]$ : le symétrique de $F$ par rapport à cette tangente est $K$.",
+        "verdict": "impasse",
+        "retour": "Elle repose sur $MF = MK$, propre à la parabole. Pour l'ellipse, $MF = e\\,MK$ avec $e < 1$ : le symétrique $F_1$ de $F$ vérifie $MF_1 = MF < MK$, il n'est donc jamais sur la directrice."
+      }
+    ],
+    "direction": "Par la propriété de la bissectrice, $F'$, $M$, $F_1$ sont alignés dans cet ordre, donc $F'F_1 = F'M + MF = 2a$. Dans le triangle $FF'F_1$, $O$ et $H$ sont les milieux de $[FF']$ et $[FF_1]$, donc $OH = \\frac{F'F_1}{2} = a$ : $H$ décrit le cercle principal."
+  },
+  {
+    "id": "coniques-piste-10", "ch": "coniques", "type": "piste",
+    "enonce": "Pour $\\lambda \\in \\mathbb R$, on note $\\Gamma_\\lambda$ l'ensemble d'équation $x^2 + 2\\lambda xy + y^2 = 1$ dans un repère orthonormé. Déterminer, selon $\\lambda$, la nature de $\\Gamma_\\lambda$.",
+    "choix": [
+      {
+        "titre": "Valeurs propres de la matrice de la forme quadratique",
+        "info": "Dans un repère orthonormé de vecteurs propres de la matrice symétrique $A$ de $q$, l'équation $q(x, y) = 1$ devient $\\alpha X^2 + \\beta Y^2 = 1$, où $\\alpha, \\beta$ sont les valeurs propres de $A$.",
+        "verdict": "bon",
+        "retour": "Les valeurs propres de $\\begin{pmatrix} 1 & \\lambda \\\\ \\lambda & 1 \\end{pmatrix}$ sont $1 + \\lambda$ et $1 - \\lambda$ : leurs signes donnent tout."
+      },
+      {
+        "titre": "Réduction de Gauss",
+        "info": "En complétant les carrés, $q$ s'écrit comme combinaison de carrés de formes linéaires indépendantes ; le changement de coordonnées associé est affine bijectif et conserve le genre.",
+        "verdict": "bon",
+        "retour": "$(x + \\lambda y)^2 + (1 - \\lambda^2)y^2 = 1$ : le signe de $1 - \\lambda^2$ donne directement la nature, ce qui suffit ici puisqu'on ne demande aucun élément métrique."
+      },
+      {
+        "titre": "Passer en coordonnées polaires",
+        "info": "En polaires, $q(x, y) = r^2\\, q(\\cos\\theta, \\sin\\theta)$.",
+        "verdict": "possible",
+        "retour": "$r^2(1 + \\lambda\\sin 2\\theta) = 1$ : $\\Gamma_\\lambda$ est bornée si et seulement si $|\\lambda| < 1$. Distinguer ensuite droites et hyperbole demande un travail supplémentaire."
+      },
+      {
+        "titre": "Intersections avec les axes de coordonnées",
+        "info": "Les points d'intersection d'une courbe d'équation $f(x, y) = 0$ avec l'axe des abscisses sont les $(x, 0)$ tels que $f(x, 0) = 0$.",
+        "verdict": "impasse",
+        "retour": "Toutes les $\\Gamma_\\lambda$ passent par $(\\pm1, 0)$ et $(0, \\pm1)$ : aucune information sur $\\lambda$."
+      }
+    ],
+    "direction": "Ellipse si $|\\lambda| < 1$ (cercle pour $\\lambda = 0$) ; si $|\\lambda| = 1$, réunion des deux droites parallèles $x + \\lambda y = 1$ et $x + \\lambda y = -1$ ; hyperbole si $|\\lambda| > 1$. Jamais de parabole : sans terme du premier degré, $\\Gamma_\\lambda$ est symétrique par rapport à $O$, ce qu'une parabole n'est pas."
+  }
+]

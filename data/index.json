@@ -38,7 +38,7 @@
       "couleur": "#5fd3a6",
       "chapitres": [
         { "id": "geometrie-affine-euclidienne", "nom": "Géométrie affine et euclidienne", "ref": "7, 8.1 – 8.3" },
-        { "id": "coniques", "nom": "Coniques", "ref": "8.4" },
+        { "id": "coniques", "nom": "Coniques", "ref": "8.4", "cartes": true },
         { "id": "courbes", "nom": "Courbes et géométrie différentielle", "ref": "11", "cartes": true }
       ]
     },
