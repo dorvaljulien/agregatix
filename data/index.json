@@ -28,7 +28,7 @@
         { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "cartes": true },
         { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7", "cartes": true },
         { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9" },
-        { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1" },
+        { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1", "cartes": true },
         { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2" }
       ]
     },

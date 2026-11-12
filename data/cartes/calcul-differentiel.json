@@ -1,0 +1,624 @@
+[
+  {
+    "id": "calcul-differentiel-vf-01", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Si $f : \\mathbb R^2 \\to \\mathbb R$ admet des dérivées partielles en tout point de $\\mathbb R^2$, alors $f$ est continue sur $\\mathbb R^2$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x,y) = \\frac{xy}{x^2+y^2}$, $f(0,0) = 0$. Comme $f(x,0) = f(0,y) = 0$, les deux dérivées partielles en $(0,0)$ sont nulles ; ailleurs $f$ est une fraction rationnelle. Mais $f(t,t) = \\frac12$ pour $t \\ne 0$ : $f$ n'est pas continue en $(0,0)$. Avec des dérivées partielles **continues**, $f$ serait de classe $\\mathcal C^1$, donc continue."
+  },
+  {
+    "id": "calcul-differentiel-vf-02", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $f : U \\to \\mathbb R^p$, $U$ ouvert de $\\mathbb R^n$, différentiable en $a \\in U$. Alors pour tout $v \\in \\mathbb R^n$, $f$ admet en $a$ une dérivée selon $v$, égale à $\\mathrm df(a)(v)$.",
+    "reponse": true,
+    "explication": "Pour $t$ réel petit, $f(a+tv) = f(a) + t\\,\\mathrm df(a)(v) + o(t)$. En divisant par $t$, on obtient $\\frac{f(a+tv) - f(a)}{t} \\to \\mathrm df(a)(v)$. La réciproque est fausse."
+  },
+  {
+    "id": "calcul-differentiel-vf-03", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ admettant en $(0,0)$ une dérivée selon tout vecteur $v$, et telle que $v \\mapsto D_v f(0,0)$ soit linéaire. Alors $f$ est différentiable en $(0,0)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x,y) = \\frac{x^3y}{x^6+y^2}$, $f(0,0) = 0$. Pour $v = (\\alpha, \\beta)$ avec $\\beta \\ne 0$, $\\frac{f(tv)}{t} = \\frac{t\\alpha^3\\beta}{t^4\\alpha^6 + \\beta^2} \\to 0$, et $f(t\\alpha, 0) = 0$ : toutes les dérivées directionnelles sont nulles, donc linéaires en $v$. Pourtant $f(x, x^3) = \\frac12$ : $f$ n'est même pas continue en $(0,0)$."
+  },
+  {
+    "id": "calcul-differentiel-vf-04", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $U$ un ouvert convexe de $\\mathbb R^n$ et $f : U \\to \\mathbb R$ de classe $\\mathcal C^1$ telle que $\\|\\nabla f(x)\\| \\le k$ pour tout $x \\in U$ (norme euclidienne). Alors $|f(b) - f(a)| \\le k\\|b - a\\|$ pour tous $a, b \\in U$.",
+    "reponse": true,
+    "explication": "Le segment $[a,b]$ est dans $U$. Avec $g(t) = f(a + t(b-a))$, on a $g'(t) = \\langle \\nabla f(a+t(b-a)), b-a \\rangle$, d'où $|g'(t)| \\le k\\|b-a\\|$ par Cauchy-Schwarz, puis l'inégalité des accroissements finis sur $[0,1]$. La convexité est essentielle."
+  },
+  {
+    "id": "calcul-differentiel-vf-05", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Si $f : \\mathbb R^2 \\to \\mathbb R$ admet en tout point des dérivées partielles secondes $\\frac{\\partial^2 f}{\\partial x \\partial y}$ et $\\frac{\\partial^2 f}{\\partial y \\partial x}$, alors ces deux fonctions sont égales.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x,y) = \\frac{xy(x^2-y^2)}{x^2+y^2}$, $f(0,0) = 0$. On trouve $\\frac{\\partial f}{\\partial x}(0,y) = -y$ et $\\frac{\\partial f}{\\partial y}(x,0) = x$, donc $\\frac{\\partial^2 f}{\\partial y \\partial x}(0,0) = -1$ et $\\frac{\\partial^2 f}{\\partial x \\partial y}(0,0) = 1$. Le théorème de Schwarz exige que $f$ soit de classe $\\mathcal C^2$."
+  },
+  {
+    "id": "calcul-differentiel-vf-06", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $U$ un ouvert **convexe** de $\\mathbb R^2$ et $f : U \\to \\mathbb R$ de classe $\\mathcal C^1$ telle que $\\frac{\\partial f}{\\partial x} = 0$ sur $U$. Alors $f(x,y)$ ne dépend que de $y$ : si $(x_1, y)$ et $(x_2, y)$ sont dans $U$, $f(x_1,y) = f(x_2,y)$.",
+    "reponse": true,
+    "explication": "Par convexité, le segment horizontal joignant $(x_1,y)$ à $(x_2,y)$ est dans $U$. La fonction d'une variable $x \\mapsto f(x,y)$ y a une dérivée nulle, donc elle est constante sur ce segment."
+  },
+  {
+    "id": "calcul-differentiel-vf-07", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $U$ un ouvert **connexe** de $\\mathbb R^2$ et $f : U \\to \\mathbb R$ de classe $\\mathcal C^1$ telle que $\\frac{\\partial f}{\\partial x} = 0$ sur $U$. Alors $f(x,y)$ ne dépend que de $y$ : si $(x_1, y)$ et $(x_2, y)$ sont dans $U$, $f(x_1,y) = f(x_2,y)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $U = \\mathbb R^2$ privé de la demi-droite $\\{(0,y),\\ y \\ge 0\\}$, connexe, et $f(x,y) = y^2$ si $x > 0$ et $y > 0$, $f(x,y) = 0$ sinon. $f$ est $\\mathcal C^1$ sur $U$ et $\\frac{\\partial f}{\\partial x} = 0$, mais $f(1,1) = 1 \\ne f(-1,1) = 0$. Le résultat est vrai si les sections horizontales de $U$ sont des intervalles, par exemple si $U$ est convexe."
+  },
+  {
+    "id": "calcul-differentiel-vf-08", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^2$ et $a$ un point critique de $f$. Avec $r = \\frac{\\partial^2 f}{\\partial x^2}(a)$, $s = \\frac{\\partial^2 f}{\\partial x \\partial y}(a)$, $t = \\frac{\\partial^2 f}{\\partial y^2}(a)$, si $rt - s^2 = 0$, alors $f$ n'a pas d'extremum local en $a$.",
+    "reponse": false,
+    "explication": "Si $rt - s^2 = 0$, on ne peut pas conclure à l'ordre 2. Contre-exemple : $f(x,y) = x^4 + y^4$ a $r = s = t = 0$ en $(0,0)$, et y admet un minimum strict. Avec $x^4 - y^4$ ou $-x^4 - y^4$, on obtient un point col ou un maximum."
+  },
+  {
+    "id": "calcul-differentiel-vf-09", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $f : U \\to \\mathbb R$ de classe $\\mathcal C^2$ sur un ouvert $U$ de $\\mathbb R^2$, admettant un minimum local en $a$. Avec $r = \\frac{\\partial^2 f}{\\partial x^2}(a)$, $s = \\frac{\\partial^2 f}{\\partial x \\partial y}(a)$, $t = \\frac{\\partial^2 f}{\\partial y^2}(a)$, on a $r \\ge 0$ et $rt - s^2 \\ge 0$.",
+    "reponse": true,
+    "explication": "En $a$, le gradient est nul et Taylor-Young donne $f(a+h) - f(a) = \\frac12 q(h) + o(\\|h\\|^2)$ avec $q(h) = rh_1^2 + 2sh_1h_2 + th_2^2$. En remplaçant $h$ par $\\varepsilon h$ et en faisant $\\varepsilon \\to 0$, on obtient $q(h) \\ge 0$ pour tout $h$ : la forme $q$ est positive, ce qui équivaut à $r \\ge 0$, $t \\ge 0$ et $rt - s^2 \\ge 0$."
+  },
+  {
+    "id": "calcul-differentiel-vf-10", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $D$ le disque unité fermé de $\\mathbb R^2$ et $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$. Si la restriction de $f$ à $D$ atteint son maximum en $a \\in D$, alors $\\nabla f(a) = 0$.",
+    "reponse": false,
+    "explication": "La condition $\\nabla f(a) = 0$ n'est nécessaire qu'en un point **intérieur**. Contre-exemple : $f(x,y) = x$ atteint son maximum sur $D$ en $(1,0)$, où $\\nabla f = (1,0)$. Sur un compact, il faut toujours étudier le bord à part."
+  },
+  {
+    "id": "calcul-differentiel-vf-11", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R^2$ de classe $\\mathcal C^1$ dont la matrice jacobienne est inversible en tout point. Alors $f$ est injective.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x,y) = (e^x\\cos y,\\ e^x \\sin y)$, de jacobien $e^{2x} \\ne 0$, mais $f(0,0) = f(0,2\\pi)$. L'inversion locale donne seulement une injectivité **locale**."
+  },
+  {
+    "id": "calcul-differentiel-vf-12", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "Soit $U$ un ouvert de $\\mathbb R^n$ et $f : U \\to \\mathbb R^n$ injective, de classe $\\mathcal C^1$, de différentielle inversible en tout point. Alors $f(U)$ est ouvert et $f$ est un $\\mathcal C^1$-difféomorphisme de $U$ sur $f(U)$.",
+    "reponse": true,
+    "explication": "C'est la caractérisation du programme. L'inversion locale montre que $f(U)$ est ouvert et que la réciproque, qui existe par injectivité, coïncide au voisinage de chaque point avec une réciproque locale de classe $\\mathcal C^1$."
+  },
+  {
+    "id": "calcul-differentiel-vf-13", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "L'application $x \\mapsto x^3$ est un $\\mathcal C^1$-difféomorphisme de $\\mathbb R$ sur $\\mathbb R$.",
+    "reponse": false,
+    "explication": "C'est une bijection de classe $\\mathcal C^1$, mais sa réciproque $y \\mapsto y^{1/3}$ n'est pas dérivable en $0$. On le voit sans calcul : si $g \\circ f = \\mathrm{id}$ avec $g$ dérivable, alors $g'(0) f'(0) = 1$, impossible car $f'(0) = 0$."
+  },
+  {
+    "id": "calcul-differentiel-vf-14", "ch": "calcul-differentiel", "type": "vf",
+    "enonce": "La fonction $f : (x,y) \\mapsto |xy|$ est différentiable en $(0,0)$.",
+    "reponse": true,
+    "explication": "On a $|xy| \\le \\frac{x^2+y^2}{2}$, donc $f(h) = o(\\|h\\|)$ : $f$ est différentiable en $(0,0)$, de différentielle nulle. En revanche, elle n'est pas différentiable en $(1,0)$ : $y \\mapsto |y|$ n'y est pas dérivable."
+  },
+  {
+    "id": "calcul-differentiel-qcm-01", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $U$ un ouvert de $\\mathbb R^n$. Une fonction $f : U \\to \\mathbb R^p$ est de classe $\\mathcal C^1$ sur $U$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "ses dérivées partielles existent et sont continues sur $U$",
+      "elle est différentiable en tout point de $U$",
+      "elle est continue et admet des dérivées partielles en tout point de $U$",
+      "elle admet en tout point de $U$ une dérivée selon tout vecteur"
+    ],
+    "bonne": 0,
+    "explication": "C'est le théorème central du chapitre. $f(x,y) = x^2\\sin\\frac1x$ (prolongée par $0$) est différentiable partout sans être $\\mathcal C^1$. $\\frac{xy}{\\sqrt{x^2+y^2}}$ est continue, a des dérivées partielles, mais n'est pas différentiable en $(0,0)$. $\\frac{x^3y}{x^6+y^2}$ a des dérivées directionnelles partout sans être continue."
+  },
+  {
+    "id": "calcul-differentiel-qcm-02", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$ et $g(r,\\theta) = f(r\\cos\\theta, r\\sin\\theta)$. On note $M = (r\\cos\\theta, r\\sin\\theta)$. Que vaut $\\frac{\\partial g}{\\partial \\theta}(r,\\theta)$ ?",
+    "choix": [
+      "$-r\\sin\\theta\\,\\frac{\\partial f}{\\partial x}(M) + r\\cos\\theta\\,\\frac{\\partial f}{\\partial y}(M)$",
+      "$-\\sin\\theta\\,\\frac{\\partial f}{\\partial x}(M) + \\cos\\theta\\,\\frac{\\partial f}{\\partial y}(M)$",
+      "$\\cos\\theta\\,\\frac{\\partial f}{\\partial x}(M) + \\sin\\theta\\,\\frac{\\partial f}{\\partial y}(M)$",
+      "$-r\\sin\\theta\\,\\frac{\\partial f}{\\partial x}(r,\\theta) + r\\cos\\theta\\,\\frac{\\partial f}{\\partial y}(r,\\theta)$"
+    ],
+    "bonne": 0,
+    "explication": "Règle de la chaîne : $\\frac{\\partial g}{\\partial \\theta} = \\frac{\\partial f}{\\partial x}(M)\\frac{\\partial x}{\\partial \\theta} + \\frac{\\partial f}{\\partial y}(M)\\frac{\\partial y}{\\partial \\theta}$, avec $\\frac{\\partial x}{\\partial\\theta} = -r\\sin\\theta$ et $\\frac{\\partial y}{\\partial\\theta} = r\\cos\\theta$. Le troisième choix est $\\frac{\\partial g}{\\partial r}$. Le dernier évalue les dérivées de $f$ au mauvais point."
+  },
+  {
+    "id": "calcul-differentiel-qcm-03", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $f(x,y) = x^2 + 3xy + y^2$. Le point $(0,0)$ est critique. En ce point, $f$ admet :",
+    "choix": [
+      "un point col : ni minimum ni maximum local",
+      "un minimum local strict",
+      "un maximum local strict",
+      "un point où l'ordre 2 ne permet pas de conclure"
+    ],
+    "bonne": 0,
+    "explication": "$r = 2$, $s = 3$, $t = 2$, donc $rt - s^2 = -5 < 0$ : point col. Concrètement, $f(x,0) = x^2 > 0$ et $f(x,-x) = -x^2 < 0$. Les coefficients positifs de $x^2$ et $y^2$ ne suffisent pas : le terme croisé l'emporte."
+  },
+  {
+    "id": "calcul-differentiel-qcm-04", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Inversion locale.\nSoit $U$ un ouvert de $\\mathbb R^n$, $f : U \\to \\mathbb R^n$ de classe $\\mathcal C^1$ et $a \\in U$ **[ ? ]**. Alors il existe un voisinage ouvert $V$ de $a$ tel que $f(V)$ soit ouvert et que $f$ induise un $\\mathcal C^1$-difféomorphisme de $V$ sur $f(V)$.",
+    "choix": [
+      "tel que $\\mathrm df(a)$ soit inversible",
+      "tel que $f$ soit injective sur un voisinage de $a$",
+      "tel que toutes les dérivées partielles de $f$ en $a$ soient non nulles",
+      "tel que $f$ soit de classe $\\mathcal C^\\infty$ au voisinage de $a$"
+    ],
+    "bonne": 0,
+    "explication": "L'injectivité locale ne suffit pas : $x \\mapsto x^3$ en $0$ a une réciproque non dérivable. Des dérivées partielles non nulles non plus : $f(x,y) = (x+y,\\ x+y)$ a pour image une droite, qui n'est pas ouverte. La régularité seule ne sert à rien : pensez à une fonction constante."
+  },
+  {
+    "id": "calcul-differentiel-qcm-05", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Fonctions implicites.\nSoit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$ et $(a,b)$ tel que $f(a,b) = 0$ et **[ ? ]**. Alors il existe des intervalles ouverts $I \\ni a$, $J \\ni b$ et $\\varphi : I \\to J$ de classe $\\mathcal C^1$ tels que, pour $(x,y) \\in I \\times J$, $f(x,y) = 0 \\iff y = \\varphi(x)$.",
+    "choix": [
+      "$\\frac{\\partial f}{\\partial y}(a,b) \\ne 0$",
+      "$\\frac{\\partial f}{\\partial x}(a,b) \\ne 0$",
+      "$\\nabla f(a,b) \\ne 0$",
+      "$\\frac{\\partial f}{\\partial y}(a,b) = 0$"
+    ],
+    "bonne": 0,
+    "explication": "On exprime $y$ en fonction de $x$ : c'est la dérivée par rapport à $y$ qui doit être non nulle, et alors $\\varphi'(a) = -\\frac{\\partial_x f(a,b)}{\\partial_y f(a,b)}$. Les trois leurres tombent avec $f(x,y) = x - y^2$ en $(0,0)$ : l'ensemble $\\{x = y^2\\}$ n'est pas un graphe au-dessus de l'axe des $x$."
+  },
+  {
+    "id": "calcul-differentiel-qcm-06", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $f : \\mathbb R^2 \\to \\mathbb R$ de classe $\\mathcal C^1$ et $S$ la surface d'équation $z = f(x,y)$. Une équation du plan tangent à $S$ au point $(a, b, f(a,b))$ est :",
+    "choix": [
+      "$z = f(a,b) + \\frac{\\partial f}{\\partial x}(a,b)(x-a) + \\frac{\\partial f}{\\partial y}(a,b)(y-b)$",
+      "$z = f(a,b) + \\frac{\\partial f}{\\partial x}(a,b)\\,x + \\frac{\\partial f}{\\partial y}(a,b)\\,y$",
+      "$\\frac{\\partial f}{\\partial x}(a,b)(x-a) + \\frac{\\partial f}{\\partial y}(a,b)(y-b) = 0$",
+      "$z = f(a,b) + \\frac{\\partial f}{\\partial x}(a,b)(y-b) + \\frac{\\partial f}{\\partial y}(a,b)(x-a)$"
+    ],
+    "bonne": 0,
+    "explication": "C'est le développement limité à l'ordre 1 de $f$ en $(a,b)$, dont on garde la partie affine. Le deuxième choix ne passe pas par le point de contact en général. Le troisième est, dans le plan, la tangente à la ligne de niveau de $f$ passant par $(a,b)$ (si $\\nabla f(a,b) \\ne 0$) : ce n'est pas un plan tangent au graphe."
+  },
+  {
+    "id": "calcul-differentiel-qcm-07", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $f(x,y) = x^2y$. On note $D_v f(a) = \\lim_{t \\to 0} \\frac{f(a+tv) - f(a)}{t}$. Que vaut $D_v f(1,2)$ pour $v = (3,4)$ ?",
+    "choix": [
+      "$16$",
+      "$\\frac{16}{5}$",
+      "$19$",
+      "$\\sqrt{17}$"
+    ],
+    "bonne": 0,
+    "explication": "$f$ est $\\mathcal C^1$, donc $D_v f(a) = \\langle \\nabla f(a), v\\rangle$ avec $\\nabla f(1,2) = (2xy, x^2) = (4, 1)$ : $12 + 4 = 16$. Avec cette définition, on ne normalise pas $v$ ($\\frac{16}{5}$). $19$ vient d'un gradient écrit à l'envers, $\\sqrt{17} = \\|\\nabla f(1,2)\\|$ est la pente maximale pour un vecteur unitaire."
+  },
+  {
+    "id": "calcul-differentiel-qcm-08", "ch": "calcul-differentiel", "type": "qcm",
+    "enonce": "Soit $U$ un ouvert **[ ? ]** de $\\mathbb R^n$ et $f : U \\to \\mathbb R^p$ de classe $\\mathcal C^1$ telle que $\\|\\mathrm df(x)\\| \\le k$ pour tout $x \\in U$ (norme subordonnée). Alors $f$ est $k$-lipschitzienne sur $U$.",
+    "choix": [
+      "convexe",
+      "connexe",
+      "borné",
+      "connexe et borné"
+    ],
+    "bonne": 0,
+    "explication": "La preuve intègre $\\mathrm df$ le long du segment $[a,b]$, qui doit être dans $U$. Contre-exemple pour les trois leurres : la couronne $1 < \\|x\\| < 2$ de $\\mathbb R^2$ privée de $]-2,-1[ \\times \\{0\\}$, connexe et bornée, et $f = \\theta$ l'angle polaire dans $]-\\pi, \\pi[$. On a $\\|\\nabla \\theta\\| = \\frac1r \\le 1$, mais $\\theta$ saute de près de $2\\pi$ entre deux points voisins de part et d'autre de la fente."
+  },
+  {
+    "id": "calcul-differentiel-err-01", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "On cherche les extremums de $f(x,y) = x^3 + y^3 - 3xy$ sur $\\mathbb R^2$, avec les notations de Monge $r, s, t$. Voici une copie.",
+    "lignes": [
+      "$\\nabla f(x,y) = (3x^2 - 3y,\\ 3y^2 - 3x)$ s'annule exactement en $(0,0)$ et en $(1,1)$.",
+      "En $(0,0)$ : $r = 0$, $s = -3$, $t = 0$, donc $rt - s^2 < 0$ : point col.",
+      "En $(1,1)$ : $r = 6$, $s = -3$, $t = 6$, donc $rt - s^2 = 27 > 0$ et $r > 0$ : minimum local strict.",
+      "C'est le seul minimum local de $f$ sur $\\mathbb R^2$, donc $f$ admet en $(1,1)$ un minimum global, égal à $-1$."
+    ],
+    "fausse": 3,
+    "explication": "Un minimum local, même unique, n'est pas global en général. Ici $f(x, 0) = x^3 \\to -\\infty$ quand $x \\to -\\infty$ : $f$ n'a pas de minimum global. Pour conclure à un extremum global, il faut un argument supplémentaire : compacité, coercivité, inégalité directe."
+  },
+  {
+    "id": "calcul-differentiel-err-02", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "Soit $U$ un ouvert convexe de $\\mathbb R^n$ et $f : U \\to \\mathbb R^p$, avec $p \\ge 2$, de classe $\\mathcal C^1$ et de différentielle nulle. On veut montrer que $f$ est constante. Voici une copie.",
+    "lignes": [
+      "Soient $a, b \\in U$. Par convexité, le segment $[a,b]$ est inclus dans $U$.",
+      "$g : t \\mapsto f(a + t(b-a))$ est de classe $\\mathcal C^1$ sur un intervalle ouvert contenant $[0,1]$, et $g'(t) = \\mathrm df(a + t(b-a))(b-a)$.",
+      "D'après l'égalité des accroissements finis, il existe $c \\in \\, ]0,1[$ tel que $g(1) - g(0) = g'(c)$.",
+      "Or $g'(c) = 0$, donc $f(b) = f(a)$."
+    ],
+    "fausse": 2,
+    "explication": "L'égalité des accroissements finis est fausse pour une fonction à valeurs dans $\\mathbb R^p$, $p \\ge 2$ : avec $g(t) = (\\cos 2\\pi t, \\sin 2\\pi t)$, $g(1) - g(0) = 0$ alors que $g'$ ne s'annule jamais. On répare en raisonnant coordonnée par coordonnée, ou avec l'inégalité des accroissements finis. Le résultat, lui, est juste."
+  },
+  {
+    "id": "calcul-differentiel-err-03", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "Soit $f(x,y) = \\dfrac{x^2y}{x^4+y^2}$ et $f(0,0) = 0$. On étudie la continuité de $f$ en $(0,0)$. Voici une copie.",
+    "lignes": [
+      "Pour $(x,y) \\ne (0,0)$, en posant $x = \\rho\\cos\\theta$, $y = \\rho\\sin\\theta$ : $f(x,y) = \\dfrac{\\rho\\cos^2\\theta\\sin\\theta}{\\rho^2\\cos^4\\theta + \\sin^2\\theta}$.",
+      "Pour tout $\\theta$ fixé, cette expression tend vers $0$ quand $\\rho \\to 0^+$.",
+      "Donc $f(x,y) \\to 0$ quand $(x,y) \\to (0,0)$ : $f$ est continue en $(0,0)$."
+    ],
+    "fausse": 2,
+    "explication": "Une limite à $\\theta$ fixé ne porte que sur les droites passant par l'origine. Il faut une majoration **uniforme en $\\theta$** par une quantité qui tend vers $0$. Ici c'est impossible : sur la parabole $y = x^2$, $f(x, x^2) = \\frac12$. La fonction n'est pas continue en $(0,0)$."
+  },
+  {
+    "id": "calcul-differentiel-err-04", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "Soient $f(x,y) = (x+y,\\ xy)$ et $g(u,v) = u^2 - 2v$. On veut la matrice jacobienne de $g \\circ f$ en $(1,1)$. Voici une copie.",
+    "lignes": [
+      "$f$ et $g$ sont polynomiales, donc de classe $\\mathcal C^1$, et $J_f(x,y) = \\begin{pmatrix} 1 & 1 \\\\ y & x \\end{pmatrix}$.",
+      "$J_g(u,v) = \\begin{pmatrix} 2u & -2 \\end{pmatrix}$.",
+      "Par la règle de la chaîne, $J_{g\\circ f}(1,1) = J_g(1,1)\\,J_f(1,1) = \\begin{pmatrix} 2 & -2 \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\end{pmatrix}$."
+    ],
+    "fausse": 2,
+    "explication": "La différentielle de $g$ s'évalue au point $f(a)$, pas en $a$ : $J_{g\\circ f}(a) = J_g(f(a))\\,J_f(a)$. Ici $f(1,1) = (2,1)$ et $J_g(2,1) = (4, -2)$, d'où $J_{g\\circ f}(1,1) = (2, 2)$. Vérification : $g \\circ f(x,y) = x^2 + y^2$."
+  },
+  {
+    "id": "calcul-differentiel-err-05", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "On cherche les $f \\in \\mathcal C^1(\\mathbb R^2, \\mathbb R)$ telles que $\\frac{\\partial f}{\\partial x} - \\frac{\\partial f}{\\partial y} = 0$. Voici une copie.",
+    "lignes": [
+      "$\\varphi(x,y) = (x+y,\\ x-y)$ est linéaire bijective, donc un $\\mathcal C^1$-difféomorphisme de $\\mathbb R^2$ sur $\\mathbb R^2$.",
+      "On pose $g = f \\circ \\varphi^{-1}$, de classe $\\mathcal C^1$, de sorte que $f(x,y) = g(x+y,\\ x-y)$.",
+      "Par la règle de la chaîne, $\\frac{\\partial f}{\\partial x} - \\frac{\\partial f}{\\partial y} = 2\\frac{\\partial g}{\\partial v}(x+y, x-y)$, et l'équation équivaut à $\\frac{\\partial g}{\\partial v} = 0$ sur $\\mathbb R^2$.",
+      "Une fonction de classe $\\mathcal C^1$ sur $\\mathbb R^2$ dont une dérivée partielle est nulle est constante : les solutions sont les fonctions constantes."
+    ],
+    "fausse": 3,
+    "explication": "$\\frac{\\partial g}{\\partial v} = 0$ sur le convexe $\\mathbb R^2$ dit seulement que $g(u,v)$ ne dépend que de $u$ : $g(u,v) = h(u)$ avec $h$ de classe $\\mathcal C^1$. Les solutions sont les $f(x,y) = h(x+y)$, $h \\in \\mathcal C^1(\\mathbb R, \\mathbb R)$, par exemple $f(x,y) = x + y$."
+  },
+  {
+    "id": "calcul-differentiel-err-06", "ch": "calcul-differentiel", "type": "erreur",
+    "enonce": "On cherche le maximum de $f(x,y) = xy$ sur le disque fermé $D = \\{x^2 + y^2 \\le 1\\}$. Voici une copie.",
+    "lignes": [
+      "$f$ est continue sur le compact $D$, donc elle y atteint son maximum.",
+      "Si ce maximum est atteint en un point $a$ intérieur à $D$, alors $\\nabla f(a) = 0$.",
+      "$\\nabla f(x,y) = (y, x)$ ne s'annule qu'en $(0,0)$, où $f$ vaut $0$.",
+      "Donc le maximum de $f$ sur $D$ vaut $0$."
+    ],
+    "fausse": 3,
+    "explication": "Le maximum peut être atteint sur le bord, où le gradient n'a aucune raison de s'annuler. Sur le cercle, $f(\\cos\\theta, \\sin\\theta) = \\frac12\\sin 2\\theta$ : le maximum vaut $\\frac12$, atteint en $\\left(\\frac{1}{\\sqrt2}, \\frac{1}{\\sqrt2}\\right)$ et en son opposé."
+  },
+  {
+    "id": "calcul-differentiel-piste-01", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $f(x,y) = \\dfrac{x^2y^2}{x^2+y^2}$ pour $(x,y) \\ne (0,0)$ et $f(0,0) = 0$. Montrer que $f$ est différentiable en $(0,0)$.",
+    "choix": [
+      {
+        "titre": "Majorer $|f(h)|$ par $o(\\|h\\|)$",
+        "info": "$f$ est différentiable en $a$, de différentielle $L$ linéaire, si et seulement si $f(a+h) - f(a) - L(h) = o(\\|h\\|)$. Le seul candidat possible pour $L$ est l'application de matrice $\\left(\\frac{\\partial f}{\\partial x}(a), \\frac{\\partial f}{\\partial y}(a)\\right)$.",
+        "verdict": "bon",
+        "retour": "Les dérivées partielles en $(0,0)$ sont nulles, et $\\frac{x^2}{x^2+y^2} \\le 1$ donne $0 \\le f(x,y) \\le y^2 \\le \\|(x,y)\\|^2$."
+      },
+      {
+        "titre": "Montrer que les dérivées partielles sont continues en $(0,0)$",
+        "info": "Une fonction définie sur un ouvert est de classe $\\mathcal C^1$, donc différentiable, si et seulement si ses dérivées partielles existent et sont continues sur cet ouvert.",
+        "verdict": "possible",
+        "retour": "Ça marche : $\\frac{\\partial f}{\\partial x} = \\frac{2xy^4}{(x^2+y^2)^2}$ est majorée par $2|x|$. Mais c'est plus de calculs, pour un résultat plus fort que demandé."
+      },
+      {
+        "titre": "Calculer les dérivées partielles en $(0,0)$",
+        "info": "$\\frac{\\partial f}{\\partial x}(0,0)$ est la dérivée en $0$ de $x \\mapsto f(x,0)$, et de même pour $y$.",
+        "verdict": "impasse",
+        "retour": "Elles existent et sont nulles, mais leur existence n'entraîne pas la différentiabilité. Elles fournissent seulement le candidat $L = 0$."
+      },
+      {
+        "titre": "Étudier $f$ le long des droites passant par l'origine",
+        "info": "Restreindre $f$ à la droite dirigée par $v$ revient à étudier $t \\mapsto f(tv)$, ce qui donne les dérivées directionnelles en $(0,0)$.",
+        "verdict": "impasse",
+        "retour": "Des informations droite par droite ne contrôlent pas $f$ uniformément : une fonction peut avoir toutes ses dérivées directionnelles sans être continue."
+      }
+    ],
+    "direction": "Les dérivées partielles en $(0,0)$ sont nulles. Pour $(x,y) \\ne (0,0)$, $0 \\le f(x,y) \\le y^2 \\le x^2 + y^2$, donc $f(h) = o(\\|h\\|)$ : $f$ est différentiable en $(0,0)$ et $\\mathrm df(0,0) = 0$."
+  },
+  {
+    "id": "calcul-differentiel-piste-02", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $f(x,y) = \\dfrac{xy(x^2-y^2)}{x^2+y^2}$ pour $(x,y) \\ne (0,0)$ et $f(0,0) = 0$. Montrer que $f$ est de classe $\\mathcal C^1$ sur $\\mathbb R^2$.",
+    "choix": [
+      {
+        "titre": "Dérivées partielles continues",
+        "info": "Une fonction définie sur un ouvert est de classe $\\mathcal C^1$ si et seulement si ses dérivées partielles existent et sont continues sur cet ouvert.",
+        "verdict": "bon",
+        "retour": "Hors de l'origine, $f$ est rationnelle. En $(0,0)$, les dérivées partielles se calculent par définition, puis on montre la continuité par une majoration."
+      },
+      {
+        "titre": "Montrer que $f$ est différentiable en tout point",
+        "info": "$f$ est différentiable en $a$ s'il existe $L$ linéaire telle que $f(a+h) = f(a) + L(h) + o(\\|h\\|)$.",
+        "verdict": "impasse",
+        "retour": "Ce n'est pas suffisant : $\\mathcal C^1$ demande en plus la continuité de $a \\mapsto \\mathrm df(a)$, et une fonction différentiable partout peut ne pas être $\\mathcal C^1$."
+      },
+      {
+        "titre": "Majoration $|f(x,y)| \\le x^2 + y^2$",
+        "info": "Si $|f(h)| \\le C\\|h\\|^2$ au voisinage de $0$ et $f(0) = 0$, alors $f$ est différentiable en $0$ et $\\mathrm df(0) = 0$.",
+        "verdict": "possible",
+        "retour": "La majoration est juste (car $|x^2 - y^2| \\le x^2 + y^2$ et $|xy| \\le x^2 + y^2$) mais ne règle que la différentiabilité en $(0,0)$. La continuité des dérivées partielles reste à faire."
+      },
+      {
+        "titre": "Théorème de Schwarz",
+        "info": "Si $f$ est de classe $\\mathcal C^2$ sur un ouvert, ses dérivées partielles secondes croisées sont égales.",
+        "verdict": "impasse",
+        "retour": "Il concerne l'ordre 2 et suppose déjà la régularité. D'ailleurs, cette fonction est l'exemple classique où les dérivées croisées diffèrent en $(0,0)$."
+      }
+    ],
+    "direction": "Pour $(x,y) \\ne 0$, $\\frac{\\partial f}{\\partial x} = \\frac{y(x^4 + 4x^2y^2 - y^4)}{(x^2+y^2)^2}$, majorée en valeur absolue par $2|y|$. En $(0,0)$, $f(x,0) = 0$ donne $\\frac{\\partial f}{\\partial x}(0,0) = 0$. Donc $\\frac{\\partial f}{\\partial x}$ est continue. Même chose pour $\\frac{\\partial f}{\\partial y}$, par l'antisymétrie $f(y,x) = -f(x,y)$."
+  },
+  {
+    "id": "calcul-differentiel-piste-03", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $f(x,y) = x^4 + y^4 - 2(x-y)^2$. Le point $(0,0)$ est critique. Déterminer s'il s'agit d'un extremum local.",
+    "choix": [
+      {
+        "titre": "Signe de $f$ le long de courbes bien choisies",
+        "info": "Si $f(a) = 0$ et si $f$ prend des valeurs $> 0$ et des valeurs $< 0$ dans tout voisinage de $a$, alors $a$ n'est pas un extremum local.",
+        "verdict": "bon",
+        "retour": "La partie quadratique $-2(x-y)^2$ s'annule sur la droite $y = x$ : c'est là qu'il faut regarder, et le comparer à une autre direction."
+      },
+      {
+        "titre": "Critère $rt - s^2$",
+        "info": "En un point critique d'une fonction $\\mathcal C^2$ : si $rt - s^2 > 0$, extremum local strict (minimum si $r > 0$, maximum si $r < 0$) ; si $rt - s^2 < 0$, point col ; si $rt - s^2 = 0$, on ne peut pas conclure.",
+        "verdict": "impasse",
+        "retour": "Ici $r = t = -4$ et $s = 4$, donc $rt - s^2 = 0$ : le critère est muet."
+      },
+      {
+        "titre": "Hessienne négative, donc maximum local",
+        "info": "Taylor-Young à l'ordre 2 : $f(a+h) = f(a) + \\mathrm df(a)(h) + \\frac12 q_a(h) + o(\\|h\\|^2)$, où $q_a$ est la forme quadratique hessienne.",
+        "verdict": "impasse",
+        "retour": "La hessienne est négative mais dégénérée : le reste $o(\\|h\\|^2)$ décide dans la direction où $q_a$ s'annule. Le raisonnement ne vaut que pour une hessienne définie négative."
+      },
+      {
+        "titre": "Changement de variables $u = x - y$, $v = x + y$",
+        "info": "Un changement de variables linéaire inversible conserve la nature d'un point critique : $f$ a un extremum local en $a$ si et seulement si $f \\circ \\varphi$ en a un en $\\varphi^{-1}(a)$.",
+        "verdict": "possible",
+        "retour": "On obtient $\\frac18(u^4 + 6u^2v^2 + v^4) - 2u^2$ : la conclusion est la même, après un calcul plus long."
+      }
+    ],
+    "direction": "$f(0,0) = 0$, $f(x,x) = 2x^4 > 0$ pour $x \\ne 0$ et $f(x,0) = x^4 - 2x^2 < 0$ pour $0 < |x| < \\sqrt2$. Dans tout voisinage de $(0,0)$, $f$ prend les deux signes : ce n'est pas un extremum local."
+  },
+  {
+    "id": "calcul-differentiel-piste-04", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $T = \\{(x,y) : x \\ge 0,\\ y \\ge 0,\\ x + y \\le 1\\}$ et $f(x,y) = xy(1-x-y)$. Déterminer le maximum de $f$ sur $T$.",
+    "choix": [
+      {
+        "titre": "Compacité, puis intérieur et bord séparément",
+        "info": "Une fonction continue sur un compact non vide y atteint son maximum. En un point intérieur où une fonction différentiable atteint un extremum, son gradient est nul.",
+        "verdict": "bon",
+        "retour": "$T$ est compact, $f$ est nulle sur le bord et strictement positive à l'intérieur : le maximum est atteint en un point critique intérieur."
+      },
+      {
+        "titre": "Inégalité arithmético-géométrique",
+        "info": "Pour $a, b, c \\ge 0$ : $abc \\le \\left(\\frac{a+b+c}{3}\\right)^3$, avec égalité si et seulement si $a = b = c$.",
+        "verdict": "bon",
+        "retour": "Sur $T$, les trois facteurs $x$, $y$, $1-x-y$ sont positifs et de somme $1$ : la majoration est immédiate, avec cas d'égalité."
+      },
+      {
+        "titre": "Critère $rt - s^2$ au point critique intérieur",
+        "info": "En un point critique d'une fonction $\\mathcal C^2$, si $rt - s^2 > 0$ et $r < 0$, la fonction admet un maximum local strict.",
+        "verdict": "possible",
+        "retour": "On trouve bien un maximum local en $\\left(\\frac13, \\frac13\\right)$, mais local seulement : il faut encore un argument global."
+      },
+      {
+        "titre": "Points critiques de $f$ sur $\\mathbb R^2$, et garder la plus grande valeur",
+        "info": "Sur un ouvert, un extremum local d'une fonction différentiable est un point critique. La réciproque est fausse.",
+        "verdict": "impasse",
+        "retour": "$T$ n'est pas ouvert et $f$ n'a pas de maximum sur $\\mathbb R^2$ : rien ne justifie que le maximum sur $T$ soit en un point critique, ni lequel."
+      }
+    ],
+    "direction": "$f$ est continue sur le compact $T$, nulle sur le bord, positive à l'intérieur. À l'intérieur, $\\nabla f = 0$ donne $1 - 2x - y = 0$ et $1 - x - 2y = 0$, soit $x = y = \\frac13$. Le maximum vaut $f\\left(\\frac13, \\frac13\\right) = \\frac1{27}$."
+  },
+  {
+    "id": "calcul-differentiel-piste-05", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $f(x,y) = (x + y^2,\\ y + x^2)$. Montrer qu'il existe un voisinage ouvert $V$ de $(0,0)$ tel que $f(V)$ soit ouvert et que $f$ induise un $\\mathcal C^1$-difféomorphisme de $V$ sur $f(V)$.",
+    "choix": [
+      {
+        "titre": "Théorème d'inversion locale",
+        "info": "Si $f : U \\to \\mathbb R^n$ est de classe $\\mathcal C^1$ sur un ouvert $U$ de $\\mathbb R^n$ et si $\\mathrm df(a)$ est inversible, alors il existe un voisinage ouvert $V$ de $a$ tel que $f(V)$ soit ouvert et $f|_V$ soit un $\\mathcal C^1$-difféomorphisme sur $f(V)$.",
+        "verdict": "bon",
+        "retour": "$f$ est polynomiale et sa jacobienne en $(0,0)$ est l'identité."
+      },
+      {
+        "titre": "Montrer que $f$ est injective sur $\\mathbb R^2$",
+        "info": "Une fonction injective de classe $\\mathcal C^1$ sur un ouvert, de différentielle partout inversible, est un $\\mathcal C^1$-difféomorphisme sur son image, qui est ouverte.",
+        "verdict": "impasse",
+        "retour": "$f$ n'est pas injective sur $\\mathbb R^2$ : $f(-1,-1) = (0,0) = f(0,0)$. Et sa jacobienne s'annule par exemple en $\\left(\\frac12, \\frac12\\right)$."
+      },
+      {
+        "titre": "Résoudre explicitement $f(x,y) = (u,v)$",
+        "info": "Exprimer $(x,y)$ en fonction de $(u,v)$ donne la réciproque, dont on étudie ensuite la régularité.",
+        "verdict": "impasse",
+        "retour": "En éliminant $x$, on tombe sur une équation de degré 4 en $y$ : pas de formule exploitable."
+      },
+      {
+        "titre": "Injectivité sur une petite boule, puis caractérisation globale",
+        "info": "Inégalité des accroissements finis : si $g$ est de classe $\\mathcal C^1$ sur un ouvert convexe et $\\|\\mathrm dg\\| \\le k$ (norme subordonnée), alors $g$ est $k$-lipschitzienne.",
+        "verdict": "possible",
+        "retour": "Sur une petite boule, $g = f - \\mathrm{id}$ est $\\frac12$-lipschitzienne, d'où l'injectivité de $f$. Ça aboutit, mais c'est refaire une partie de la preuve de l'inversion locale."
+      }
+    ],
+    "direction": "$f$ est de classe $\\mathcal C^1$ et $J_f(x,y) = \\begin{pmatrix} 1 & 2y \\\\ 2x & 1 \\end{pmatrix}$, donc $J_f(0,0) = I_2$ est inversible. Le théorème d'inversion locale donne directement $V$."
+  },
+  {
+    "id": "calcul-differentiel-piste-06", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Montrer qu'au voisinage de $(0,0)$, l'ensemble des solutions de $x e^y + y e^x = 0$ est le graphe d'une fonction $y = \\varphi(x)$ de classe $\\mathcal C^1$, et calculer $\\varphi'(0)$.",
+    "choix": [
+      {
+        "titre": "Théorème des fonctions implicites",
+        "info": "Si $F : \\mathbb R^2 \\to \\mathbb R$ est de classe $\\mathcal C^1$, $F(a,b) = 0$ et $\\frac{\\partial F}{\\partial y}(a,b) \\ne 0$, alors au voisinage de $(a,b)$, $F(x,y) = 0 \\iff y = \\varphi(x)$ avec $\\varphi$ de classe $\\mathcal C^1$, et $\\varphi' = -\\frac{\\partial_x F}{\\partial_y F}(x, \\varphi(x))$.",
+        "verdict": "bon",
+        "retour": "$F(x,y) = xe^y + ye^x$ vérifie $F(0,0) = 0$ et $\\frac{\\partial F}{\\partial y}(0,0) = 1$."
+      },
+      {
+        "titre": "Résoudre l'équation en $y$",
+        "info": "Isoler $y$ dans l'équation donne $\\varphi$ explicitement, et on la dérive.",
+        "verdict": "impasse",
+        "retour": "$y$ apparaît à la fois en facteur et dans une exponentielle : pas de résolution explicite."
+      },
+      {
+        "titre": "Inversion locale appliquée à $F$",
+        "info": "Si $\\mathrm dF(a)$ est un isomorphisme de $\\mathbb R^n$ sur $\\mathbb R^n$ et $F$ de classe $\\mathcal C^1$, alors $F$ est un $\\mathcal C^1$-difféomorphisme local au voisinage de $a$.",
+        "verdict": "impasse",
+        "retour": "$F$ va de $\\mathbb R^2$ dans $\\mathbb R$ : sa différentielle n'est jamais un isomorphisme."
+      },
+      {
+        "titre": "Dériver la relation $x e^{\\varphi(x)} + \\varphi(x) e^x = 0$",
+        "info": "Si $\\varphi$ est dérivable, on peut dériver une identité vérifiée par $\\varphi$ et évaluer en $0$.",
+        "verdict": "possible",
+        "retour": "Cela donne bien $\\varphi'(0)$, mais suppose l'existence et la dérivabilité de $\\varphi$, qui sont précisément à démontrer."
+      }
+    ],
+    "direction": "$F$ est $\\mathcal C^1$, $F(0,0) = 0$, $\\frac{\\partial F}{\\partial y}(0,0) = 1 \\ne 0$ : le théorème des fonctions implicites donne $\\varphi$. Avec $\\frac{\\partial F}{\\partial x}(0,0) = 1$, on obtient $\\varphi'(0) = -1$."
+  },
+  {
+    "id": "calcul-differentiel-piste-07", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Déterminer les fonctions $f \\in \\mathcal C^1(\\mathbb R^2, \\mathbb R)$ telles que $\\dfrac{\\partial f}{\\partial x} + 2\\dfrac{\\partial f}{\\partial y} = 0$.",
+    "choix": [
+      {
+        "titre": "Changement de variables linéaire $u = x$, $v = y - 2x$",
+        "info": "Si $\\varphi$ est un $\\mathcal C^1$-difféomorphisme de $\\mathbb R^2$ sur $\\mathbb R^2$, $f$ est $\\mathcal C^1$ si et seulement si $g = f \\circ \\varphi^{-1}$ l'est, et la règle de la chaîne traduit l'équation sur $f$ en une équation sur $g$.",
+        "verdict": "bon",
+        "retour": "On choisit $v$ constant le long des droites de direction $(1,2)$, et l'équation devient $\\frac{\\partial g}{\\partial u} = 0$."
+      },
+      {
+        "titre": "Coordonnées polaires",
+        "info": "Avec $g(r,\\theta) = f(r\\cos\\theta, r\\sin\\theta)$, on a $r\\frac{\\partial g}{\\partial r} = x\\frac{\\partial f}{\\partial x} + y\\frac{\\partial f}{\\partial y}$.",
+        "verdict": "impasse",
+        "retour": "Les polaires sont adaptées à l'opérateur $x\\partial_x + y\\partial_y$, pas à une équation à coefficients constants."
+      },
+      {
+        "titre": "Séparation des variables $f(x,y) = A(x)B(y)$",
+        "info": "On cherche des solutions produits : l'équation donne $\\frac{A'(x)}{A(x)} = -2\\frac{B'(y)}{B(y)}$, constante.",
+        "verdict": "impasse",
+        "retour": "On trouve des solutions particulières, comme $e^{\\lambda(y - 2x)}$, mais pas toutes : $(y-2x)^2$ est solution sans être un produit $A(x)B(y)$, et rien ne permet d'atteindre un $h(y-2x)$ quelconque."
+      },
+      {
+        "titre": "Théorème des fonctions implicites",
+        "info": "Si $F(a,b) = 0$ et $\\frac{\\partial F}{\\partial y}(a,b) \\ne 0$, l'équation $F(x,y) = 0$ définit localement $y$ comme fonction $\\mathcal C^1$ de $x$.",
+        "verdict": "impasse",
+        "retour": "Il décrit les lignes de niveau d'une fonction donnée, il ne résout pas une équation aux dérivées partielles."
+      }
+    ],
+    "direction": "Avec $f(x,y) = g(x, y - 2x)$, on obtient $\\frac{\\partial f}{\\partial x} + 2\\frac{\\partial f}{\\partial y} = \\frac{\\partial g}{\\partial u}$. Sur le convexe $\\mathbb R^2$, $g(u,v) = h(v)$, d'où $f(x,y) = h(y - 2x)$ avec $h \\in \\mathcal C^1(\\mathbb R, \\mathbb R)$ quelconque, et réciproquement."
+  },
+  {
+    "id": "calcul-differentiel-piste-08", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $U = \\, ]0, +\\infty[ \\times \\mathbb R$. Déterminer les $f \\in \\mathcal C^1(U, \\mathbb R)$ telles que $x\\dfrac{\\partial f}{\\partial x} + y\\dfrac{\\partial f}{\\partial y} = 0$ sur $U$.",
+    "choix": [
+      {
+        "titre": "Coordonnées polaires",
+        "info": "$(r,\\theta) \\mapsto (r\\cos\\theta, r\\sin\\theta)$ est un $\\mathcal C^1$-difféomorphisme de $]0,+\\infty[ \\times \\left]-\\frac\\pi2, \\frac\\pi2\\right[$ sur $U$. Avec $g(r,\\theta) = f(r\\cos\\theta, r\\sin\\theta)$, on a $r\\frac{\\partial g}{\\partial r} = x\\frac{\\partial f}{\\partial x} + y\\frac{\\partial f}{\\partial y}$.",
+        "verdict": "bon",
+        "retour": "L'équation devient $\\frac{\\partial g}{\\partial r} = 0$ sur un ouvert convexe : $g$ ne dépend que de $\\theta$."
+      },
+      {
+        "titre": "Changement de variables $u = x$, $v = \\frac yx$",
+        "info": "$(x,y) \\mapsto \\left(x, \\frac yx\\right)$ est un $\\mathcal C^1$-difféomorphisme de $U$ sur lui-même, de réciproque $(u,v) \\mapsto (u, uv)$.",
+        "verdict": "bon",
+        "retour": "Avec $f(x,y) = g\\left(x, \\frac yx\\right)$, l'équation devient $u\\frac{\\partial g}{\\partial u} = 0$."
+      },
+      {
+        "titre": "Dériver $t \\mapsto f(tx, ty)$ pour $t > 0$",
+        "info": "Règle de la chaîne : $\\frac{\\mathrm d}{\\mathrm dt} f(tx,ty) = x\\frac{\\partial f}{\\partial x}(tx,ty) + y\\frac{\\partial f}{\\partial y}(tx,ty)$.",
+        "verdict": "bon",
+        "retour": "Cette dérivée vaut $\\frac1t$ fois le membre de gauche de l'équation en $(tx,ty)$, donc elle est nulle : $f(tx,ty) = f(x,y)$."
+      },
+      {
+        "titre": "Changement de variables $u = x + y$, $v = x - y$",
+        "info": "Changement de variables linéaire inversible : $f(x,y) = g(x+y, x-y)$ et la règle de la chaîne donne les dérivées partielles de $f$ en fonction de celles de $g$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients $x$ et $y$ ne sont pas constants : l'équation obtenue n'est pas plus simple."
+      }
+    ],
+    "direction": "Par l'une des trois routes, $f$ est constante sur chaque demi-droite issue de l'origine : $f(x,y) = h\\left(\\frac yx\\right)$ avec $h \\in \\mathcal C^1(\\mathbb R, \\mathbb R)$, et réciproquement ces fonctions conviennent."
+  },
+  {
+    "id": "calcul-differentiel-piste-09", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $f(x,y) = \\dfrac{xy(x^2-y^2)}{x^2+y^2}$ pour $(x,y) \\ne (0,0)$ et $f(0,0) = 0$. On admet que $f$ est de classe $\\mathcal C^1$. Montrer que $f$ n'est pas de classe $\\mathcal C^2$.",
+    "choix": [
+      {
+        "titre": "Comparer les dérivées croisées en $(0,0)$ (Schwarz)",
+        "info": "Théorème de Schwarz : si $f$ est de classe $\\mathcal C^2$ sur un ouvert, alors $\\frac{\\partial^2 f}{\\partial x \\partial y} = \\frac{\\partial^2 f}{\\partial y \\partial x}$.",
+        "verdict": "bon",
+        "retour": "Il suffit de calculer $\\frac{\\partial f}{\\partial x}$ sur l'axe des $y$ et $\\frac{\\partial f}{\\partial y}$ sur l'axe des $x$, par la définition."
+      },
+      {
+        "titre": "Montrer qu'une dérivée seconde n'a pas de limite en $(0,0)$",
+        "info": "$f$ est de classe $\\mathcal C^2$ si et seulement si ses dérivées partielles d'ordre 2 existent et sont continues.",
+        "verdict": "possible",
+        "retour": "Ça marche : $\\frac{\\partial^2 f}{\\partial x\\partial y}$ vaut $1$ sur l'axe des $x$ et $-1$ sur l'axe des $y$ privés de l'origine. Mais il faut d'abord calculer ces dérivées secondes hors de l'origine."
+      },
+      {
+        "titre": "Montrer qu'une dérivée partielle seconde n'existe pas en $(0,0)$",
+        "info": "Une fonction de classe $\\mathcal C^2$ admet en tout point toutes ses dérivées partielles d'ordre 2.",
+        "verdict": "impasse",
+        "retour": "Elles existent toutes en $(0,0)$ : par exemple $\\frac{\\partial^2 f}{\\partial x^2}(0,0) = 0$ car $f(x,0) = 0$, et les dérivées croisées valent $\\pm 1$."
+      },
+      {
+        "titre": "Montrer que $f$ n'est pas de classe $\\mathcal C^1$",
+        "info": "$\\mathcal C^2$ entraîne $\\mathcal C^1$ ; par contraposée, une fonction non $\\mathcal C^1$ n'est pas $\\mathcal C^2$.",
+        "verdict": "impasse",
+        "retour": "$f$ est de classe $\\mathcal C^1$ (c'est admis dans l'énoncé) : cette route ne peut pas aboutir."
+      }
+    ],
+    "direction": "$\\frac{\\partial f}{\\partial x}(0,y) = \\lim_{x\\to0} \\frac{f(x,y)}{x} = -y$ et $\\frac{\\partial f}{\\partial y}(x,0) = x$. Donc $\\frac{\\partial^2 f}{\\partial y \\partial x}(0,0) = -1 \\ne 1 = \\frac{\\partial^2 f}{\\partial x \\partial y}(0,0)$. Par Schwarz, $f$ n'est pas $\\mathcal C^2$."
+  },
+  {
+    "id": "calcul-differentiel-piste-10", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Déterminer les fonctions $f$ de classe $\\mathcal C^2$ sur $\\mathbb R^2 \\setminus \\{(0,0)\\}$, de la forme $f(x,y) = \\varphi\\left(\\sqrt{x^2+y^2}\\right)$, telles que $\\dfrac{\\partial^2 f}{\\partial x^2} + \\dfrac{\\partial^2 f}{\\partial y^2} = 0$.",
+    "choix": [
+      {
+        "titre": "Règle de la chaîne directement sur $\\varphi(r)$",
+        "info": "Avec $r = \\sqrt{x^2+y^2}$, on a $\\frac{\\partial r}{\\partial x} = \\frac xr$ et $\\frac{\\partial r}{\\partial y} = \\frac yr$ hors de l'origine. $\\varphi$ est $\\mathcal C^2$ sur $]0,+\\infty[$, car $\\varphi(r) = f(r, 0)$.",
+        "verdict": "bon",
+        "retour": "Deux dérivations donnent une équation différentielle linéaire d'ordre 2 en $\\varphi$, que l'on résout."
+      },
+      {
+        "titre": "Formule du laplacien en coordonnées polaires",
+        "info": "$\\Delta f = \\frac{\\partial^2 g}{\\partial r^2} + \\frac1r\\frac{\\partial g}{\\partial r} + \\frac{1}{r^2}\\frac{\\partial^2 g}{\\partial\\theta^2}$ avec $g(r,\\theta) = f(r\\cos\\theta, r\\sin\\theta)$. Formule hors programme, à redémontrer.",
+        "verdict": "possible",
+        "retour": "Avec $g$ indépendante de $\\theta$, on conclut tout de suite, mais la formule doit être établie, ce qui est plus long que le calcul direct."
+      },
+      {
+        "titre": "Théorème de Schwarz",
+        "info": "Si $f$ est $\\mathcal C^2$ sur un ouvert, ses dérivées croisées $\\frac{\\partial^2 f}{\\partial x \\partial y}$ et $\\frac{\\partial^2 f}{\\partial y \\partial x}$ sont égales.",
+        "verdict": "impasse",
+        "retour": "Le laplacien ne fait intervenir aucune dérivée croisée."
+      },
+      {
+        "titre": "Formule de Taylor-Young à l'ordre 2",
+        "info": "Pour $f$ de classe $\\mathcal C^2$ : $f(a+h) = f(a) + \\mathrm df(a)(h) + \\frac12 q_a(h) + o(\\|h\\|^2)$.",
+        "verdict": "impasse",
+        "retour": "C'est un résultat local en un point, il ne fournit pas d'équation sur $\\varphi$."
+      }
+    ],
+    "direction": "$\\frac{\\partial f}{\\partial x} = \\varphi'(r)\\frac xr$, puis $\\frac{\\partial^2 f}{\\partial x^2} = \\varphi''(r)\\frac{x^2}{r^2} + \\varphi'(r)\\frac{y^2}{r^3}$. En sommant, $\\varphi'' + \\frac1r \\varphi' = 0$, soit $(r\\varphi')' = 0$. Donc $\\varphi(r) = a\\ln r + b$ et $f(x,y) = \\frac a2 \\ln(x^2+y^2) + b$."
+  },
+  {
+    "id": "calcul-differentiel-piste-11", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $S$ la surface d'équation $x^2 + 2y^2 + 3z^2 = 6$. Déterminer une équation du plan tangent à $S$ au point $(1,1,1)$.",
+    "choix": [
+      {
+        "titre": "Le gradient est normal à la surface de niveau",
+        "info": "Si $F : \\mathbb R^3 \\to \\mathbb R$ est $\\mathcal C^1$, $F(a) = c$ et $\\nabla F(a) \\ne 0$, alors la surface $\\{F = c\\}$ admet en $a$ un plan tangent, d'équation $\\langle \\nabla F(a), M - a \\rangle = 0$.",
+        "verdict": "bon",
+        "retour": "Avec $F(x,y,z) = x^2 + 2y^2 + 3z^2$, on a $\\nabla F(1,1,1) = (2, 4, 6)$, non nul."
+      },
+      {
+        "titre": "Fonctions implicites : $z = \\varphi(x,y)$ au voisinage du point",
+        "info": "Si $\\frac{\\partial F}{\\partial z}(a) \\ne 0$, $S$ est localement le graphe d'une fonction $\\mathcal C^1$ $z = \\varphi(x,y)$, avec $\\frac{\\partial\\varphi}{\\partial x} = -\\frac{\\partial_x F}{\\partial_z F}$ et $\\frac{\\partial\\varphi}{\\partial y} = -\\frac{\\partial_y F}{\\partial_z F}$.",
+        "verdict": "possible",
+        "retour": "On obtient le plan tangent au graphe de $\\varphi$, donc le même plan, mais par un chemin plus long."
+      },
+      {
+        "titre": "Plan orthogonal au vecteur $(1,1,1)$",
+        "info": "Pour une sphère centrée en $O$, le plan tangent en $a$ est le plan passant par $a$ et orthogonal à $\\overrightarrow{Oa}$.",
+        "verdict": "impasse",
+        "retour": "$S$ est un ellipsoïde, pas une sphère : le rayon vecteur n'est pas normal. On trouverait $x + y + z = 3$, qui est faux."
+      },
+      {
+        "titre": "Formule de Taylor-Young à l'ordre 2 pour $F$",
+        "info": "$F(a+h) = F(a) + \\mathrm dF(a)(h) + \\frac12 q_a(h) + o(\\|h\\|^2)$, où $q_a$ est la forme quadratique hessienne.",
+        "verdict": "impasse",
+        "retour": "Le plan tangent ne dépend que de l'ordre 1 : l'ordre 2 renseigne sur la position de la surface par rapport au plan, pas sur le plan."
+      }
+    ],
+    "direction": "$\\nabla F(1,1,1) = (2,4,6)$ est normal à $S$ en $(1,1,1)$. Le plan tangent a pour équation $2(x-1) + 4(y-1) + 6(z-1) = 0$, soit $x + 2y + 3z = 6$."
+  },
+  {
+    "id": "calcul-differentiel-piste-12", "ch": "calcul-differentiel", "type": "piste",
+    "enonce": "Soit $\\Omega = \\mathbb R^2 \\setminus \\left(]-\\infty, 0] \\times \\{0\\}\\right)$. Montrer que $\\Phi : (r,\\theta) \\mapsto (r\\cos\\theta, r\\sin\\theta)$ est un $\\mathcal C^1$-difféomorphisme de $]0,+\\infty[ \\times \\, ]-\\pi, \\pi[$ sur $\\Omega$.",
+    "choix": [
+      {
+        "titre": "Injectivité, image et jacobien inversible",
+        "info": "Une fonction injective de classe $\\mathcal C^1$ sur un ouvert de $\\mathbb R^n$, à valeurs dans $\\mathbb R^n$, de différentielle inversible en tout point, est un $\\mathcal C^1$-difféomorphisme sur son image, qui est ouverte.",
+        "verdict": "bon",
+        "retour": "Le jacobien vaut $r > 0$. L'injectivité vient de $r = \\|\\Phi(r,\\theta)\\|$ et de l'unicité de l'argument dans $]-\\pi, \\pi[$."
+      },
+      {
+        "titre": "Expliciter la réciproque",
+        "info": "Une bijection de classe $\\mathcal C^1$ dont la réciproque est de classe $\\mathcal C^1$ est un $\\mathcal C^1$-difféomorphisme.",
+        "verdict": "bon",
+        "retour": "Sur $\\Omega$, $r = \\sqrt{x^2+y^2}$ et $\\theta = 2\\arctan \\frac{y}{x + \\sqrt{x^2+y^2}}$, formules de classe $\\mathcal C^1$ car $x + \\sqrt{x^2+y^2} > 0$ sur $\\Omega$."
+      },
+      {
+        "titre": "Théorème d'inversion locale seul",
+        "info": "Si $\\mathrm d\\Phi(a)$ est inversible, $\\Phi$ induit un $\\mathcal C^1$-difféomorphisme d'un voisinage de $a$ sur un ouvert.",
+        "verdict": "impasse",
+        "retour": "Il ne donne qu'un résultat local : il ne dit rien de l'injectivité globale ni de l'image."
+      },
+      {
+        "titre": "Réciproque $\\theta = \\arctan \\frac yx$",
+        "info": "$\\arctan$ est une bijection $\\mathcal C^\\infty$ de $\\mathbb R$ sur $\\left]-\\frac\\pi2, \\frac\\pi2\\right[$.",
+        "verdict": "impasse",
+        "retour": "Cette formule n'est valable que pour $x > 0$ : elle ne couvre ni $x \\le 0$ ni les angles hors de $\\left]-\\frac\\pi2, \\frac\\pi2\\right[$."
+      }
+    ],
+    "direction": "$\\Phi$ est $\\mathcal C^1$, de jacobien $r > 0$. Tout point de $\\Omega$ s'écrit de façon unique $(r\\cos\\theta, r\\sin\\theta)$ avec $r > 0$ et $\\theta \\in \\, ]-\\pi, \\pi[$ : $\\Phi$ est injective d'image $\\Omega$. La caractérisation des difféomorphismes conclut."
+  }
+]
