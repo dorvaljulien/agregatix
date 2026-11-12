@@ -1,0 +1,624 @@
+[
+  {
+    "id": "series-entieres-vf-01", "ch": "series-entieres", "type": "vf",
+    "enonce": "Toute série entière $\\sum a_n z^n$ de rayon $R \\in \\, ]0, +\\infty[$ converge normalement sur le disque ouvert $D(0, R)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\sum z^n$, de rayon $1$. On a $\\sup_{|z| < 1} |z^n| = 1$, et $\\sum 1$ diverge. La convergence n'est même pas uniforme sur $]-1, 1[$ : le reste $\\frac{x^{n+1}}{1-x}$ n'est pas borné. La convergence normale a lieu sur tout disque fermé $\\overline D(0, r)$ avec $r < R$."
+  },
+  {
+    "id": "series-entieres-vf-02", "ch": "series-entieres", "type": "vf",
+    "enonce": "Une série entière de rayon $R > 0$ converge normalement sur tout compact $K$ inclus dans le disque ouvert $D(0, R)$.",
+    "reponse": true,
+    "explication": "La fonction continue $z \\mapsto |z|$ atteint sur $K$ un maximum $r < R$. Donc $K \\subset \\overline D(0, r)$ et $\\sup_K |a_n z^n| \\le |a_n| r^n$, terme général d'une série convergente puisque $r < R$."
+  },
+  {
+    "id": "series-entieres-vf-03", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $\\sum a_n z^n$ de rayon $R \\in \\, ]0, +\\infty[$. Si $\\sum |a_n| R^n$ converge, alors la série converge normalement sur le disque fermé $\\overline D(0, R)$.",
+    "reponse": true,
+    "explication": "Pour $|z| \\le R$, $|a_n z^n| \\le |a_n| R^n$. La somme est alors continue sur le disque fermé. Exemple : $\\sum \\frac{z^n}{n^2}$ sur $\\overline D(0, 1)$."
+  },
+  {
+    "id": "series-entieres-vf-04", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $z_0 \\in \\mathbb C$ tel que la suite $(a_n z_0^n)$ soit bornée. Alors $\\sum a_n z^n$ converge absolument pour tout $z$ tel que $|z| < |z_0|$.",
+    "reponse": true,
+    "explication": "C'est le lemme d'Abel. Si $|a_n z_0^n| \\le M$, alors $|a_n z^n| \\le M \\left|\\frac{z}{z_0}\\right|^n$, terme général d'une série géométrique convergente. Il suffit donc que les termes soient bornés en un point, pas que la série y converge."
+  },
+  {
+    "id": "series-entieres-vf-05", "ch": "series-entieres", "type": "vf",
+    "enonce": "Les séries entières $\\sum a_n z^n$ et $\\sum n^2 a_n z^n$ ont le même rayon de convergence.",
+    "reponse": true,
+    "explication": "La série dérivée $\\sum n a_n z^{n-1}$ a le même rayon que $\\sum a_n z^n$, et multiplier par $z$ ne change pas le rayon : $\\sum n a_n z^n$ a donc le même rayon. On recommence une fois pour $n^2 a_n$."
+  },
+  {
+    "id": "series-entieres-vf-06", "ch": "series-entieres", "type": "vf",
+    "enonce": "Une série entière et sa série dérivée convergent exactement aux mêmes points du cercle de convergence.",
+    "reponse": false,
+    "explication": "Elles ont le même rayon, mais pas le même comportement au bord. Contre-exemple : $\\sum_{n \\ge 1} \\frac{z^n}{n}$ converge en $z = -1$ (série alternée), alors que sa dérivée $\\sum_{n \\ge 1} z^{n-1}$ diverge en $-1$ (terme général de module $1$)."
+  },
+  {
+    "id": "series-entieres-vf-07", "ch": "series-entieres", "type": "vf",
+    "enonce": "Si $\\sum a_n z^n$ et $\\sum b_n z^n$ ont pour rayons $R_a$ et $R_b$, leur produit de Cauchy a pour rayon exactement $\\min(R_a, R_b)$.",
+    "reponse": false,
+    "explication": "On a seulement $R \\ge \\min(R_a, R_b)$. Contre-exemple : $1 - z$ (rayon $+\\infty$) et $\\sum z^n$ (rayon $1$). Le produit de Cauchy a pour coefficients $c_0 = 1$ et $c_n = 1 - 1 = 0$ pour $n \\ge 1$ : c'est la série $1$, de rayon $+\\infty$."
+  },
+  {
+    "id": "series-entieres-vf-08", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $f$ de classe $\\mathcal C^\\infty$ sur $\\mathbb R$ dont la série de Taylor en $0$ a un rayon $R > 0$. Alors $f(x) = \\sum_{n=0}^{+\\infty} \\frac{f^{(n)}(0)}{n!} x^n$ pour tout $x \\in \\, ]-R, R[$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = e^{-1/x^2}$ pour $x \\ne 0$, $f(0) = 0$. Elle est $\\mathcal C^\\infty$ avec $f^{(n)}(0) = 0$ pour tout $n$ : sa série de Taylor est nulle, de rayon $+\\infty$, mais $f(x) \\ne 0$ pour $x \\ne 0$. L'égalité vaut si l'on sait que $f$ est développable en série entière."
+  },
+  {
+    "id": "series-entieres-vf-09", "ch": "series-entieres", "type": "vf",
+    "enonce": "La fonction $x \\mapsto \\frac{1}{1 + x^2}$, de classe $\\mathcal C^\\infty$ sur $\\mathbb R$, est développable en série entière en $0$ avec un rayon de convergence $+\\infty$.",
+    "reponse": false,
+    "explication": "Son développement est $\\sum (-1)^n x^{2n}$, qui diverge dès que $|x| \\ge 1$ (le terme général ne tend pas vers $0$) : le rayon vaut $1$. Être $\\mathcal C^\\infty$ sur $\\mathbb R$ ne dit rien sur le rayon. Vue dans $\\mathbb C$, la fonction n'est pas définie en $\\pm i$."
+  },
+  {
+    "id": "series-entieres-vf-10", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $\\sum a_n x^n$ de rayon $R > 0$ et de somme $S$. Si $S\\left(\\frac1k\\right) = 0$ pour tout entier $k$ assez grand, alors $a_n = 0$ pour tout $n$.",
+    "reponse": true,
+    "explication": "Sinon, soit $p$ le plus petit indice tel que $a_p \\ne 0$. Alors $S(x) = x^p \\left(a_p + x\\,T(x)\\right)$ où $T$ est la somme d'une série entière de rayon $R$, donc continue en $0$ : $S$ ne s'annule pas sur un voisinage épointé de $0$, ce qui contredit $S\\left(\\frac1k\\right) = 0$."
+  },
+  {
+    "id": "series-entieres-vf-11", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $\\sum a_n x^n$ de rayon $1$. Si $\\sum_{n=0}^{+\\infty} a_n x^n$ admet une limite finie quand $x \\to 1^-$, alors la série $\\sum a_n$ converge.",
+    "reponse": false,
+    "explication": "Contre-exemple : $a_n = (-1)^n$. Pour $x \\in \\, ]-1, 1[$, la somme vaut $\\frac{1}{1+x} \\to \\frac12$, mais $\\sum (-1)^n$ diverge. L'énoncé devient vrai si $a_n \\ge 0$ pour tout $n$ : les sommes partielles sont alors majorées par la limite."
+  },
+  {
+    "id": "series-entieres-vf-12", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $X$ une variable aléatoire à valeurs dans $\\mathbb N$. La série entière $\\sum P(X = n)\\, t^n$ a un rayon de convergence supérieur ou égal à $1$.",
+    "reponse": true,
+    "explication": "Elle converge (absolument) en $t = 1$, de somme $1$. Donc le rayon est au moins $1$, et la série converge même normalement sur $[-1, 1]$ puisque $|P(X = n)\\, t^n| \\le P(X = n)$."
+  },
+  {
+    "id": "series-entieres-vf-13", "ch": "series-entieres", "type": "vf",
+    "enonce": "Soit $X$ à valeurs dans $\\mathbb N$. Si la série génératrice $G_X(t) = \\sum P(X = n)\\, t^n$ a un rayon égal à $1$, alors $X$ n'admet pas d'espérance.",
+    "reponse": false,
+    "explication": "Contre-exemple : $P(X = n) = \\frac{c}{n^3}$ pour $n \\ge 1$, avec $c = \\left(\\sum_{k \\ge 1} \\frac1{k^3}\\right)^{-1}$. Le rayon vaut $1$ (pour $t > 1$, $\\frac{t^n}{n^3} \\to +\\infty$) et pourtant $E(X) = c \\sum \\frac{1}{n^2}$ est fini. Le bon critère : $X$ admet une espérance si et seulement si $G_X$ est dérivable à gauche en $1$. Si le rayon est $> 1$, l'espérance existe."
+  },
+  {
+    "id": "series-entieres-vf-14", "ch": "series-entieres", "type": "vf",
+    "enonce": "Pour tout $z \\in \\mathbb C$, $|\\cos z| \\le 1$, où $\\cos z = \\frac{e^{iz} + e^{-iz}}{2}$.",
+    "reponse": false,
+    "explication": "C'est vrai sur $\\mathbb R$ seulement. Contre-exemple : $\\cos(i) = \\frac{e^{-1} + e}{2} = \\mathrm{ch}\\,1 > 1$. Plus généralement $\\cos(iy) = \\mathrm{ch}\\,y \\to +\\infty$ : $\\cos$ n'est pas bornée sur $\\mathbb C$."
+  },
+  {
+    "id": "series-entieres-qcm-01", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Construction de $\\pi$ à partir de la série exponentielle.\nOn définit $\\cos$ et $\\sin$ par leurs séries entières, puis on définit $\\frac\\pi2$ comme **[ ? ]**.",
+    "choix": [
+      "le plus petit zéro strictement positif de $\\cos$",
+      "le plus petit zéro strictement positif de $\\sin$",
+      "la plus petite période strictement positive de $t \\mapsto e^{it}$",
+      "l'intégrale $\\int_0^1 \\frac{\\mathrm dt}{1 + t^2}$"
+    ],
+    "bonne": 0,
+    "explication": "On montre que $\\cos$ s'annule sur $]0, 2[$ et l'on note $\\frac\\pi2$ son plus petit zéro positif. Les leurres sont des caractérisations d'autres multiples : le premier zéro positif de $\\sin$ est $\\pi$, la période de $t \\mapsto e^{it}$ est $2\\pi$, et l'intégrale vaut $\\arctan 1 = \\frac\\pi4$."
+  },
+  {
+    "id": "series-entieres-qcm-02", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Quel est le rayon de convergence de la série entière $\\displaystyle\\sum_{n \\ge 0} \\sin(n)\\, z^n$ ?",
+    "choix": [
+      "$1$",
+      "$+\\infty$",
+      "$0$",
+      "il n'est pas défini, car $\\frac{\\sin(n+1)}{\\sin n}$ n'a pas de limite"
+    ],
+    "bonne": 0,
+    "explication": "La suite $(\\sin n)$ est bornée, donc $R \\ge 1$ (lemme d'Abel). Elle ne tend pas vers $0$ (sinon $\\sin(n+1) = \\sin n \\cos 1 + \\cos n \\sin 1$ forcerait $\\cos n \\to 0$, ce qui contredit $\\cos^2 + \\sin^2 = 1$), donc la série diverge en $z = 1$ et $R \\le 1$. Le rayon existe toujours : l'échec de la règle de d'Alembert ne dit rien."
+  },
+  {
+    "id": "series-entieres-qcm-03", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Soit $\\sum a_n x^n$ une série entière réelle de rayon $R > 0$ et $S$ sa somme. Alors $S$ est de classe $\\mathcal C^\\infty$ sur **[ ? ]**, et $a_n = \\frac{S^{(n)}(0)}{n!}$.",
+    "choix": [
+      "$]-R, R[$",
+      "$[-R, R]$",
+      "$\\mathbb R$",
+      "l'ensemble des réels où la série converge"
+    ],
+    "bonne": 0,
+    "explication": "Le résultat porte sur l'intervalle ouvert de convergence. Au bord, même la dérivabilité peut tomber : $\\sum_{n \\ge 1} \\frac{x^n}{n^2}$ converge sur $[-1, 1]$, mais sa somme a une dérivée $-\\frac{\\ln(1-x)}{x}$ qui tend vers $+\\infty$ en $1^-$ : elle n'est pas dérivable en $1$."
+  },
+  {
+    "id": "series-entieres-qcm-04", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Quel est l'ensemble des réels $x$ pour lesquels la série $\\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^{n-1} x^n}{n}$ converge ?",
+    "choix": [
+      "$]-1, 1]$",
+      "$[-1, 1[$",
+      "$]-1, 1[$",
+      "$[-1, 1]$"
+    ],
+    "bonne": 0,
+    "explication": "Le rayon vaut $1$. En $x = 1$, on obtient la série harmonique alternée, convergente (de somme $\\ln 2$). En $x = -1$, on obtient $-\\sum \\frac1n$, divergente. C'est le développement de $\\ln(1 + x)$ ; ne pas confondre avec celui de $-\\ln(1 - x)$, qui converge sur $[-1, 1[$."
+  },
+  {
+    "id": "series-entieres-qcm-05", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Soient $X$ et $Y$ deux variables aléatoires **indépendantes** à valeurs dans $\\mathbb N$, de fonctions génératrices $G_X$ et $G_Y$. Pour $t \\in [-1, 1]$, $G_{X+Y}(t) =$ **[ ? ]**.",
+    "choix": [
+      "$G_X(t)\\, G_Y(t)$",
+      "$G_X(t) + G_Y(t)$",
+      "$G_X\\big(G_Y(t)\\big)$",
+      "$\\frac12 \\big(G_X(t) + G_Y(t)\\big)$"
+    ],
+    "bonne": 0,
+    "explication": "$G_{X+Y}(t) = E(t^X t^Y) = E(t^X)E(t^Y)$ par indépendance. Autrement dit, la loi de $X + Y$ est le produit de Cauchy des deux lois. La composée $G_X \\circ G_Y$ apparaît pour une somme d'un nombre aléatoire de variables, et la demi-somme pour un mélange de lois."
+  },
+  {
+    "id": "series-entieres-qcm-06", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Pour tout $x \\in \\, ]-1, 1[$, $\\arctan x =$ **[ ? ]**.",
+    "choix": [
+      "$\\displaystyle\\sum_{n=0}^{+\\infty} \\frac{(-1)^n x^{2n+1}}{2n+1}$",
+      "$\\displaystyle\\sum_{n=0}^{+\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$",
+      "$\\displaystyle\\sum_{n=0}^{+\\infty} \\frac{x^{2n+1}}{2n+1}$",
+      "$\\displaystyle\\sum_{n=0}^{+\\infty} \\frac{(-1)^n x^{2n}}{2n+1}$"
+    ],
+    "bonne": 0,
+    "explication": "On intègre terme à terme $\\frac{1}{1 + t^2} = \\sum (-1)^n t^{2n}$ sur $[0, x]$, avec $\\arctan 0 = 0$. Le deuxième choix est $\\sin x$, le troisième $\\frac12 \\ln\\frac{1+x}{1-x}$, et le dernier vaut $\\frac{\\arctan x}{x}$ pour $x \\ne 0$."
+  },
+  {
+    "id": "series-entieres-qcm-07", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Quel est le rayon de convergence de $\\displaystyle\\sum_{n \\ge 1} \\frac{n!}{n^n}\\, z^n$ ?",
+    "choix": [
+      "$e$",
+      "$\\frac1e$",
+      "$1$",
+      "$+\\infty$"
+    ],
+    "bonne": 0,
+    "explication": "Avec $a_n = \\frac{n!}{n^n} > 0$, $\\frac{a_{n+1}}{a_n} = \\left(\\frac{n}{n+1}\\right)^n = \\left(1 + \\frac1n\\right)^{-n} \\to \\frac1e$. La règle de d'Alembert donne $R = e$. Piège classique : prendre la limite du quotient au lieu de son inverse."
+  },
+  {
+    "id": "series-entieres-qcm-08", "ch": "series-entieres", "type": "qcm",
+    "enonce": "Soit $\\sum a_n z^n$ de rayon $R \\in \\, ]0, +\\infty[$, avec $R \\ne 1$. Le rayon de convergence de $\\sum a_n z^{2n}$ est :",
+    "choix": [
+      "$\\sqrt R$",
+      "$R$",
+      "$R^2$",
+      "$\\frac1R$"
+    ],
+    "bonne": 0,
+    "explication": "On pose $w = z^2$ : la série converge absolument si $|z|^2 < R$, et son terme général n'est pas borné si $|z|^2 > R$. Donc le rayon vaut $\\sqrt R$. Exemple : $\\sum \\frac{z^{2n}}{2^n}$ a pour rayon $\\sqrt 2$, et non $2$."
+  },
+  {
+    "id": "series-entieres-err-01", "ch": "series-entieres", "type": "erreur",
+    "enonce": "On cherche le rayon de convergence de $\\displaystyle\\sum_{n \\ge 0} \\frac{z^{2n}}{2^n}$. Voici une copie.",
+    "lignes": [
+      "La série s'écrit $\\sum_n b_n z^{2n}$ avec $b_n = 2^{-n}$.",
+      "Pour tout $n$, $b_n \\ne 0$ et $\\dfrac{b_{n+1}}{b_n} = \\dfrac12$.",
+      "D'après la règle de d'Alembert pour les séries entières, le rayon de convergence vaut $2$."
+    ],
+    "fausse": 2,
+    "explication": "Les $b_n$ ne sont pas les coefficients de la série entière : le coefficient de $z^k$ est nul pour $k$ impair. Il faut appliquer la règle de d'Alembert à la série numérique $\\sum u_n$ avec $u_n = \\frac{z^{2n}}{2^n}$ : $\\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|z|^2}{2}$, d'où $R = \\sqrt 2$."
+  },
+  {
+    "id": "series-entieres-err-02", "ch": "series-entieres", "type": "erreur",
+    "enonce": "On veut montrer que $\\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^{n-1}}{n} = \\ln 2$. Voici une copie.",
+    "lignes": [
+      "Pour tout $x \\in \\, ]-1, 1[$, $\\ln(1 + x) = \\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^{n-1} x^n}{n}$.",
+      "Cette série de fonctions converge normalement sur $[0, 1]$, puisqu'elle converge en $x = 1$.",
+      "Donc sa somme est continue sur $[0, 1]$.",
+      "En faisant tendre $x$ vers $1$, on obtient $\\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^{n-1}}{n} = \\ln 2$."
+    ],
+    "fausse": 1,
+    "explication": "Converger en un point ne donne pas la convergence normale : ici $\\sup_{[0,1]} \\left|\\frac{(-1)^{n-1} x^n}{n}\\right| = \\frac1n$, et $\\sum \\frac1n$ diverge. On obtient en revanche la convergence **uniforme** sur $[0, 1]$ par le critère spécial : pour $x \\in [0, 1]$, le reste d'ordre $n$ est majoré par $\\frac{x^{n+1}}{n+1} \\le \\frac{1}{n+1}$. La suite de la copie est alors juste."
+  },
+  {
+    "id": "series-entieres-err-03", "ch": "series-entieres", "type": "erreur",
+    "enonce": "Soit $f$ de classe $\\mathcal C^\\infty$ sur $\\mathbb R$ telle que $f^{(n)}(0) = 0$ pour tout $n \\in \\mathbb N$. Une copie affirme que $f$ est la fonction nulle.",
+    "lignes": [
+      "La série de Taylor de $f$ en $0$ est $\\sum \\frac{f^{(n)}(0)}{n!} x^n$, c'est-à-dire la série nulle.",
+      "Son rayon de convergence est $+\\infty$.",
+      "Comme $f$ est de classe $\\mathcal C^\\infty$, elle est égale sur $\\mathbb R$ à la somme de sa série de Taylor, donc $f = 0$."
+    ],
+    "fausse": 2,
+    "explication": "Une fonction $\\mathcal C^\\infty$ n'est pas forcément somme de sa série de Taylor. Contre-exemple : $f(x) = e^{-1/x^2}$, $f(0) = 0$, vérifie les hypothèses sans être nulle. Pour conclure, il faudrait savoir que $f$ est développable en série entière, ou montrer que le reste de Taylor tend vers $0$."
+  },
+  {
+    "id": "series-entieres-err-04", "ch": "series-entieres", "type": "erreur",
+    "enonce": "On pose $S(x) = \\displaystyle\\sum_{n \\ge 1} \\frac{x^n}{n^2}$. On étudie la régularité de $S$. Voici une copie.",
+    "lignes": [
+      "Le rayon vaut $1$, et la série converge normalement sur $[-1, 1]$ car $\\sum \\frac1{n^2}$ converge.",
+      "Donc $S$ est continue sur $[-1, 1]$.",
+      "Pour $x \\in \\, ]-1, 1[$, $S'(x) = \\displaystyle\\sum_{n \\ge 1} \\frac{x^{n-1}}{n}$.",
+      "La série dérivée ayant le même rayon de convergence, $S$ est dérivable sur $[-1, 1]$."
+    ],
+    "fausse": 3,
+    "explication": "Le même rayon ne donne rien au bord. Ici $S'(x) = -\\frac{\\ln(1-x)}{x} \\to +\\infty$ quand $x \\to 1^-$, et par l'égalité des accroissements finis $\\frac{S(1) - S(x)}{1 - x} \\to +\\infty$ : $S$ n'est pas dérivable en $1$. Elle l'est en revanche en $-1$ (à droite), où la série dérivée converge uniformément sur $[-1, 0]$."
+  },
+  {
+    "id": "series-entieres-err-05", "ch": "series-entieres", "type": "erreur",
+    "enonce": "On cherche une solution développable en série entière au voisinage de $0$ de l'équation $x^2 y' = y - x$. Voici une copie.",
+    "lignes": [
+      "On cherche $y = \\sum a_n x^n$, de rayon $R > 0$, solution de l'équation sur $]-R, R[$.",
+      "En identifiant les coefficients : $a_0 = 0$, $a_1 = 1$ et $a_{n+1} = n\\, a_n$ pour tout $n \\ge 1$.",
+      "Donc $a_n = (n-1)!$ pour tout $n \\ge 1$.",
+      "Ainsi $y(x) = \\displaystyle\\sum_{n \\ge 1} (n-1)!\\, x^n$ est solution sur un voisinage de $0$."
+    ],
+    "fausse": 3,
+    "explication": "L'analyse donne des conditions nécessaires ; la synthèse exige de vérifier que la série obtenue a un rayon $> 0$. Ici $\\frac{n!}{(n-1)!} = n \\to +\\infty$ : le rayon est nul. Conclusion juste : l'équation n'a **aucune** solution développable en série entière en $0$."
+  },
+  {
+    "id": "series-entieres-err-06", "ch": "series-entieres", "type": "erreur",
+    "enonce": "On veut montrer que $\\exp(a + b) = \\exp(a)\\exp(b)$ pour tous $a, b \\in \\mathbb C$, où $\\exp(z) = \\sum \\frac{z^n}{n!}$. Voici une copie.",
+    "lignes": [
+      "Les séries $\\sum \\frac{a^n}{n!}$ et $\\sum \\frac{b^n}{n!}$ convergent.",
+      "Le terme général de leur produit de Cauchy est $c_n = \\displaystyle\\sum_{k=0}^n \\frac{a^k}{k!} \\frac{b^{n-k}}{(n-k)!} = \\frac{(a+b)^n}{n!}$.",
+      "Le produit de Cauchy de deux séries convergentes converge vers le produit de leurs sommes, donc $\\sum c_n = \\exp(a)\\exp(b)$.",
+      "Donc $\\exp(a + b) = \\exp(a)\\exp(b)$."
+    ],
+    "fausse": 2,
+    "explication": "Le théorème sur le produit de Cauchy exige la convergence **absolue** des deux séries ; pour de simples séries convergentes il est faux ($u_n = v_n = \\frac{(-1)^n}{\\sqrt{n+1}}$ donne un produit divergent). Ici l'hypothèse est vérifiée, car $\\sum \\frac{|a|^n}{n!}$ converge : il fallait l'invoquer. Le résultat est juste, la justification ne l'est pas."
+  },
+  {
+    "id": "series-entieres-piste-01", "ch": "series-entieres", "type": "piste",
+    "enonce": "Déterminer le rayon de convergence de la série entière $\\displaystyle\\sum_{n \\ge 1} \\frac{z^{n^2}}{n}$.",
+    "choix": [
+      {
+        "titre": "Règle de d'Alembert appliquée aux coefficients",
+        "info": "Si $a_n \\ne 0$ à partir d'un certain rang et $\\left|\\frac{a_{n+1}}{a_n}\\right| \\to \\ell \\in [0, +\\infty]$, alors le rayon de $\\sum a_n z^n$ vaut $\\frac1\\ell$.",
+        "verdict": "impasse",
+        "retour": "Le coefficient de $z^k$ est nul dès que $k$ n'est pas un carré : le quotient $\\frac{a_{k+1}}{a_k}$ n'est même pas défini."
+      },
+      {
+        "titre": "Fixer $z$ et appliquer d'Alembert à la série numérique",
+        "info": "Pour $z \\ne 0$ fixé, on étudie $\\sum u_n$ avec $u_n \\ne 0$ : si $\\left|\\frac{u_{n+1}}{u_n}\\right| \\to \\ell$, la série converge absolument si $\\ell < 1$ et diverge grossièrement si $\\ell > 1$.",
+        "verdict": "bon",
+        "retour": "Avec $u_n = \\frac{z^{n^2}}{n}$, le quotient vaut $\\frac{n}{n+1}|z|^{2n+1}$ : il tend vers $0$ si $|z| < 1$, vers $+\\infty$ si $|z| > 1$."
+      },
+      {
+        "titre": "Caractérisation par la bornitude de $(a_n r^n)$",
+        "info": "Le rayon $R$ est la borne supérieure des $r \\ge 0$ tels que la suite $(a_n r^n)$ soit bornée.",
+        "verdict": "bon",
+        "retour": "Pour $r < 1$, $\\frac{r^{n^2}}{n} \\le 1$ ; pour $r > 1$, $\\frac{r^{n^2}}{n} \\to +\\infty$. On conclut directement."
+      },
+      {
+        "titre": "Comparaison à $\\sum \\frac{z^n}{n}$",
+        "info": "Si $|a_n| \\le |b_n|$ à partir d'un certain rang, le rayon de $\\sum a_n z^n$ est supérieur ou égal à celui de $\\sum b_n z^n$.",
+        "verdict": "impasse",
+        "retour": "Ici $a_k = \\frac1n$ si $k = n^2$, $0$ sinon. En $k = n^2$, $a_k = \\frac1n > \\frac1{n^2}$ : la majoration par $\\frac1k$ est fausse, et la minoration l'est aux $k$ non carrés. Aucune comparaison ne s'applique."
+      }
+    ],
+    "direction": "Pour $|z| < 1$, $\\left|\\frac{z^{n^2}}{n}\\right| \\le |z|^n$ et la série converge. Pour $|z| > 1$, le terme général tend vers l'infini en module. Le rayon vaut $1$."
+  },
+  {
+    "id": "series-entieres-piste-02", "ch": "series-entieres", "type": "piste",
+    "enonce": "Calculer, pour $x \\in \\, ]-1, 1[$, la somme $\\displaystyle\\sum_{n=0}^{+\\infty} n^2 x^n$.",
+    "choix": [
+      {
+        "titre": "Dérivation terme à terme de $\\sum x^n$",
+        "info": "Sur l'intervalle ouvert de convergence, la somme d'une série entière se dérive terme à terme, et la série dérivée a le même rayon.",
+        "verdict": "bon",
+        "retour": "On écrit $n^2 = n(n-1) + n$ et l'on reconnaît $x^2 f''(x) + x f'(x)$ avec $f(x) = \\frac1{1-x}$."
+      },
+      {
+        "titre": "Produits de Cauchy de $\\frac1{1-x}$ avec elle-même",
+        "info": "Pour $|x| < 1$, $\\left(\\frac1{1-x}\\right)^3 = \\sum_{n \\ge 0} \\binom{n+2}{2} x^n$, par produit de Cauchy de séries absolument convergentes.",
+        "verdict": "possible",
+        "retour": "Ça aboutit en décomposant $n^2$ sur $\\binom{n+2}{2}$, $n+1$ et $1$, mais c'est plus long."
+      },
+      {
+        "titre": "Intégration terme à terme",
+        "info": "Sur $]-R, R[$, $\\int_0^x \\sum a_n t^n\\,\\mathrm dt = \\sum \\frac{a_n}{n+1} x^{n+1}$.",
+        "verdict": "impasse",
+        "retour": "Intégrer fait apparaître $\\frac{n^2}{n+1}$ : on s'éloigne de séries connues. C'est dériver qu'il faut pour faire monter des facteurs $n$."
+      },
+      {
+        "titre": "Sommes partielles explicites puis limite",
+        "info": "On calcule $\\sum_{k=0}^N k^2 x^k$ sous forme close, puis on fait tendre $N$ vers $+\\infty$.",
+        "verdict": "possible",
+        "retour": "Faisable (dériver la somme géométrique finie), mais les calculs sont lourds et le passage à la limite n'apporte rien."
+      }
+    ],
+    "direction": "$\\sum n x^n = \\frac{x}{(1-x)^2}$ et $\\sum n(n-1) x^n = \\frac{2x^2}{(1-x)^3}$. En sommant : $\\sum n^2 x^n = \\frac{x(1+x)}{(1-x)^3}$."
+  },
+  {
+    "id": "series-entieres-piste-03", "ch": "series-entieres", "type": "piste",
+    "enonce": "Soit $\\alpha \\in \\mathbb R \\setminus \\mathbb N$. Montrer que $f : x \\mapsto (1 + x)^\\alpha$ est développable en série entière en $0$ et préciser le rayon.",
+    "choix": [
+      {
+        "titre": "Équation différentielle puis analyse-synthèse",
+        "info": "On trouve une équation différentielle linéaire satisfaite par $f$, on cherche une série entière solution avec la même condition initiale, puis on conclut par unicité de la solution du problème de Cauchy.",
+        "verdict": "bon",
+        "retour": "$f$ vérifie $(1+x) y' = \\alpha y$ et $y(0) = 1$ : on obtient une relation de récurrence simple sur les coefficients."
+      },
+      {
+        "titre": "Formule de Taylor avec reste intégral",
+        "info": "$f(x) = \\sum_{k=0}^n \\frac{f^{(k)}(0)}{k!} x^k + \\int_0^x \\frac{(x-t)^n}{n!} f^{(n+1)}(t)\\,\\mathrm dt$ ; on montre que le reste tend vers $0$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit sur $]-1, 1[$, mais la majoration du reste pour $x$ négatif est délicate."
+      },
+      {
+        "titre": "$f$ est de classe $\\mathcal C^\\infty$ au voisinage de $0$",
+        "info": "La série de Taylor d'une fonction $\\mathcal C^\\infty$ est définie, mais peut avoir un rayon nul, ou converger vers une autre fonction.",
+        "verdict": "impasse",
+        "retour": "La régularité $\\mathcal C^\\infty$ ne suffit jamais à conclure."
+      },
+      {
+        "titre": "Formule du binôme de Newton",
+        "info": "Pour $m \\in \\mathbb N$, $(1+x)^m = \\sum_{k=0}^m \\binom mk x^k$, somme finie.",
+        "verdict": "impasse",
+        "retour": "Elle ne vaut que pour un exposant entier naturel, exclu ici."
+      }
+    ],
+    "direction": "Analyse : $(n+1)a_{n+1} + n a_n = \\alpha a_n$, d'où $a_n = \\frac{\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)}{n!}$, tous non nuls. $\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{|\\alpha - n|}{n+1} \\to 1$, donc $R = 1$. Synthèse : la somme et $f$ résolvent le même problème de Cauchy sur $]-1, 1[$, donc coïncident."
+  },
+  {
+    "id": "series-entieres-piste-04", "ch": "series-entieres", "type": "piste",
+    "enonce": "Soit $f$ définie par $f(x) = e^{-1/x^2}$ pour $x \\ne 0$ et $f(0) = 0$. On admet que $f$ est de classe $\\mathcal C^\\infty$ sur $\\mathbb R$. Montrer que $f$ n'est pas développable en série entière en $0$.",
+    "choix": [
+      {
+        "titre": "Calcul des $f^{(n)}(0)$ et unicité du développement",
+        "info": "Si $f(x) = \\sum a_n x^n$ au voisinage de $0$, avec un rayon $> 0$, alors nécessairement $a_n = \\frac{f^{(n)}(0)}{n!}$.",
+        "verdict": "bon",
+        "retour": "On montre que $f^{(n)}(x) = P_n\\!\\left(\\frac1x\\right) e^{-1/x^2}$ pour $x \\ne 0$, avec $P_n$ polynôme, d'où $f^{(n)}(0) = 0$."
+      },
+      {
+        "titre": "Théorème de la limite de la dérivée",
+        "info": "Si $g$ est continue sur $I$, de classe $\\mathcal C^1$ sur $I \\setminus \\{a\\}$, et si $g'$ a une limite finie $\\ell$ en $a$, alors $g$ est $\\mathcal C^1$ sur $I$ et $g'(a) = \\ell$.",
+        "verdict": "possible",
+        "retour": "Il sert à prouver que $f$ est $\\mathcal C^\\infty$ avec $f^{(n)}(0) = 0$. Ici la régularité est admise : la continuité de $f^{(n)}$ en $0$ suffit. Il ne fournit qu'une étape."
+      },
+      {
+        "titre": "Règle de d'Alembert sur la série de Taylor",
+        "info": "Si $a_n \\ne 0$ à partir d'un certain rang et $\\left|\\frac{a_{n+1}}{a_n}\\right| \\to \\ell$, le rayon vaut $\\frac1\\ell$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients de Taylor sont tous nuls : le quotient n'a pas de sens, et le rayon est de toute façon infini. Le problème n'est pas le rayon."
+      },
+      {
+        "titre": "Composer le développement de l'exponentielle",
+        "info": "Pour tout $u \\in \\mathbb C$, $e^u = \\sum_{n \\ge 0} \\frac{u^n}{n!}$.",
+        "verdict": "impasse",
+        "retour": "Avec $u = -\\frac1{x^2}$ on obtient une série en puissances **négatives** de $x$ : ce n'est pas une série entière, et cela ne prouve rien."
+      }
+    ],
+    "direction": "Par récurrence, $f^{(n)}(0) = 0$ pour tout $n$ (croissances comparées). Si $f$ était développable, elle serait nulle au voisinage de $0$. Or $f(x) > 0$ pour $x \\ne 0$ : contradiction."
+  },
+  {
+    "id": "series-entieres-piste-05", "ch": "series-entieres", "type": "piste",
+    "enonce": "Soit $D_n$ le nombre de permutations de $\\{1, \\dots, n\\}$ sans point fixe ($D_0 = 1$). On admet que $n! = \\sum_{k=0}^n \\binom nk D_k$ pour tout $n$. En déduire une expression de $D_n$.",
+    "choix": [
+      {
+        "titre": "Série génératrice exponentielle $\\sum \\frac{D_n}{n!} x^n$",
+        "info": "Le produit de Cauchy de $\\sum \\frac{a_n}{n!} x^n$ et $\\sum \\frac{b_n}{n!} x^n$ a pour coefficients $\\frac{1}{n!}\\sum_{k=0}^n \\binom nk a_k b_{n-k}$.",
+        "verdict": "bon",
+        "retour": "La relation admise devient $e^x D(x) = \\frac1{1-x}$ sur $]-1, 1[$. Le rayon est au moins $1$ car $D_n \\le n!$."
+      },
+      {
+        "titre": "Série génératrice ordinaire $\\sum D_n x^n$",
+        "info": "Le produit de Cauchy de $\\sum a_n x^n$ et $\\sum b_n x^n$ a pour coefficients $\\sum_{k=0}^n a_k b_{n-k}$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients binomiaux ne s'y retrouvent pas, et le rayon est nul puisque $D_n$ croît comme $\\frac{n!}{e}$."
+      },
+      {
+        "titre": "Formule d'inversion de Pascal",
+        "info": "Si $f(n) = \\sum_{k=0}^n \\binom nk g(k)$ pour tout $n$, alors $g(n) = \\sum_{k=0}^n (-1)^{n-k} \\binom nk f(k)$.",
+        "verdict": "possible",
+        "retour": "Ça donne le résultat immédiatement, à condition de démontrer la formule d'inversion, ce qui demande un calcul de sommes doubles."
+      },
+      {
+        "titre": "Récurrence forte sur $n$",
+        "info": "On suppose la formule vraie pour tous les rangs $k \\le n$ et on l'établit au rang $n+1$.",
+        "verdict": "impasse",
+        "retour": "Une récurrence vérifie une formule déjà connue ; elle ne permet pas de la trouver."
+      }
+    ],
+    "direction": "Avec $D(x) = \\sum \\frac{D_n}{n!} x^n$ (rayon $\\ge 1$), la relation s'écrit $e^x D(x) = \\sum x^n = \\frac{1}{1-x}$. Donc $D(x) = \\frac{e^{-x}}{1-x}$, et par produit de Cauchy puis unicité des coefficients, $D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}$."
+  },
+  {
+    "id": "series-entieres-piste-06", "ch": "series-entieres", "type": "piste",
+    "enonce": "Soient $X$ et $Y$ deux variables aléatoires indépendantes suivant des lois de Poisson de paramètres $\\lambda > 0$ et $\\mu > 0$. Déterminer la loi de $X + Y$.",
+    "choix": [
+      {
+        "titre": "Fonctions génératrices",
+        "info": "Pour $X, Y$ indépendantes à valeurs dans $\\mathbb N$, $G_{X+Y} = G_X G_Y$. La fonction génératrice caractérise la loi (unicité des coefficients d'une série entière).",
+        "verdict": "bon",
+        "retour": "$G_X(t) = e^{\\lambda(t-1)}$, donc le produit se calcule en une ligne."
+      },
+      {
+        "titre": "Calcul direct de $P(X + Y = n)$",
+        "info": "Par la formule des probabilités totales et l'indépendance, $P(X + Y = n) = \\sum_{k=0}^n P(X = k) P(Y = n - k)$.",
+        "verdict": "bon",
+        "retour": "La formule du binôme fait apparaître $(\\lambda + \\mu)^n$. C'est le même calcul que le produit de Cauchy, écrit à la main."
+      },
+      {
+        "titre": "Linéarité de l'espérance",
+        "info": "$E(X + Y) = E(X) + E(Y)$, sans hypothèse d'indépendance.",
+        "verdict": "impasse",
+        "retour": "On obtient l'espérance $\\lambda + \\mu$, pas la loi : deux lois différentes peuvent avoir la même espérance."
+      },
+      {
+        "titre": "Composer les fonctions génératrices",
+        "info": "Si $N$ est indépendante d'une suite $(X_i)$ i.i.d., la somme $\\sum_{i=1}^N X_i$ a pour fonction génératrice $G_N \\circ G_{X_1}$.",
+        "verdict": "impasse",
+        "retour": "Ce résultat concerne une somme d'un nombre aléatoire de termes, pas la somme de deux variables."
+      }
+    ],
+    "direction": "$G_{X+Y}(t) = e^{\\lambda(t-1)} e^{\\mu(t-1)} = e^{(\\lambda+\\mu)(t-1)}$, qui est la fonction génératrice d'une loi de Poisson de paramètre $\\lambda + \\mu$. Par unicité des coefficients, $X + Y$ suit cette loi."
+  },
+  {
+    "id": "series-entieres-piste-07", "ch": "series-entieres", "type": "piste",
+    "enonce": "Montrer que $f : x \\mapsto \\dfrac{\\arcsin x}{\\sqrt{1 - x^2}}$ est développable en série entière sur $]-1, 1[$ et calculer ses coefficients.",
+    "choix": [
+      {
+        "titre": "Équation différentielle vérifiée par $f$",
+        "info": "On dérive $f$ et on cherche une relation linéaire entre $f$, $f'$ et des fonctions simples, qu'on traduit en relation de récurrence sur les coefficients.",
+        "verdict": "bon",
+        "retour": "On trouve $(1 - x^2) f'(x) - x f(x) = 1$, qui donne une récurrence à deux termes."
+      },
+      {
+        "titre": "Produit de Cauchy des développements de $\\arcsin$ et $\\frac{1}{\\sqrt{1-x^2}}$",
+        "info": "Le produit de deux fonctions développables en série entière sur $]-r, r[$ l'est aussi, avec pour coefficients ceux du produit de Cauchy.",
+        "verdict": "possible",
+        "retour": "Il prouve que $f$ est développable avec un rayon $\\ge 1$, mais les coefficients obtenus sont des sommes qu'on ne sait pas simplifier directement."
+      },
+      {
+        "titre": "Calculer $f^{(n)}(0)$ par la formule de Leibniz",
+        "info": "$(gh)^{(n)} = \\sum_{k=0}^n \\binom nk g^{(k)} h^{(n-k)}$.",
+        "verdict": "impasse",
+        "retour": "Il faudrait toutes les dérivées en $0$ de $\\arcsin$ et de $(1-x^2)^{-1/2}$, et la somme obtenue reste inexploitable."
+      },
+      {
+        "titre": "Intégrer terme à terme le développement de $\\frac1{\\sqrt{1-x^2}}$",
+        "info": "Sur $]-R, R[$, on peut intégrer une série entière terme à terme ; le rayon ne change pas.",
+        "verdict": "impasse",
+        "retour": "On obtient le développement de $\\arcsin$, mais pas celui du quotient."
+      }
+    ],
+    "direction": "Le produit de Cauchy assure que $f = \\sum a_n x^n$ avec $R \\ge 1$. L'équation donne $a_1 = 1$ et $(n+1) a_{n+1} = n\\, a_{n-1}$ ; comme $f$ est impaire, $a_{2p} = 0$ et $a_{2p+1} = \\frac{4^p (p!)^2}{(2p+1)!}$."
+  },
+  {
+    "id": "series-entieres-piste-08", "ch": "series-entieres", "type": "piste",
+    "enonce": "Montrer que $\\displaystyle\\int_0^1 \\frac{\\ln(1 - t)}{t}\\,\\mathrm dt = -\\sum_{n \\ge 1} \\frac{1}{n^2}$.",
+    "choix": [
+      {
+        "titre": "Théorème d'intégration terme à terme sur un intervalle",
+        "info": "Si $\\sum u_n$ converge simplement sur $I$ vers une fonction continue par morceaux, avec $u_n$ intégrables et $\\sum \\int_I |u_n|$ convergente, alors $\\int_I \\sum u_n = \\sum \\int_I u_n$.",
+        "verdict": "bon",
+        "retour": "Sur $]0, 1[$, $\\frac{\\ln(1-t)}{t} = -\\sum_{n \\ge 1} \\frac{t^{n-1}}{n}$ et $\\int_0^1 \\frac{t^{n-1}}{n}\\,\\mathrm dt = \\frac{1}{n^2}$ : l'hypothèse est vérifiée."
+      },
+      {
+        "titre": "Intégrer sur $[0, x]$ avec $x < 1$, puis faire tendre $x$ vers $1$",
+        "info": "On peut intégrer terme à terme une série entière sur un segment inclus dans l'intervalle ouvert de convergence.",
+        "verdict": "bon",
+        "retour": "On obtient $-\\sum \\frac{x^n}{n^2}$, série normalement convergente sur $[-1, 1]$ donc continue en $1$ ; l'intégrale converge, on passe à la limite."
+      },
+      {
+        "titre": "Convergence normale sur $[0, 1]$",
+        "info": "Si $\\sum \\sup_{[a,b]} |u_n|$ converge, on peut intervertir somme et intégrale sur le segment $[a, b]$.",
+        "verdict": "impasse",
+        "retour": "$\\sup_{[0,1[} \\frac{t^{n-1}}{n} = \\frac1n$ : la série des sup diverge."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "$\\int_a^b u' v = [uv]_a^b - \\int_a^b u v'$, pour $u, v$ de classe $\\mathcal C^1$ sur $[a, b]$.",
+        "verdict": "impasse",
+        "retour": "Avec $u = \\ln t$, on arrive à $\\int_0^1 \\frac{\\ln t}{1-t}\\,\\mathrm dt$, qui n'est autre que l'intégrale de départ après le changement de variable $s = 1 - t$."
+      }
+    ],
+    "direction": "On développe $\\ln(1-t) = -\\sum_{n \\ge 1} \\frac{t^n}{n}$ pour $t \\in [0, 1[$, on divise par $t$, puis on intervertit grâce au théorème d'intégration terme à terme : $\\sum \\int_0^1 \\frac{t^{n-1}}{n}\\,\\mathrm dt = \\sum \\frac1{n^2} < +\\infty$."
+  },
+  {
+    "id": "series-entieres-piste-09", "ch": "series-entieres", "type": "piste",
+    "enonce": "On note $H_n = \\displaystyle\\sum_{k=1}^n \\frac1k$ et $H_0 = 0$. Montrer que $\\displaystyle\\sum_{n \\ge 0} H_n x^n = -\\frac{\\ln(1-x)}{1-x}$ pour tout $x \\in \\, ]-1, 1[$.",
+    "choix": [
+      {
+        "titre": "Produit de Cauchy",
+        "info": "Si $\\sum a_n$ et $\\sum b_n$ convergent absolument, alors $\\sum c_n$, avec $c_n = \\sum_{k=0}^n a_k b_{n-k}$, converge absolument et $\\sum c_n = \\left(\\sum a_n\\right)\\left(\\sum b_n\\right)$.",
+        "verdict": "bon",
+        "retour": "Le produit de $-\\ln(1-x) = \\sum_{k \\ge 1} \\frac{x^k}{k}$ par $\\frac1{1-x} = \\sum x^j$ a exactement $H_n$ pour coefficients."
+      },
+      {
+        "titre": "Équation différentielle",
+        "info": "Une fonction $y$ développable en série entière vérifiant une équation différentielle linéaire donne une relation de récurrence sur ses coefficients.",
+        "verdict": "possible",
+        "retour": "$f$ vérifie $(1-x) f' - f = \\frac{1}{1-x}$, ce qui donne $a_{n+1} = a_n + \\frac{1}{n+1}$. Mais il faut d'abord savoir que $f$ est développable, ce que fournit justement le produit de Cauchy."
+      },
+      {
+        "titre": "Équivalent $H_n \\sim \\ln n$",
+        "info": "Par comparaison série-intégrale, $H_n = \\ln n + \\gamma + o(1)$.",
+        "verdict": "impasse",
+        "retour": "Un équivalent des coefficients donne au mieux le rayon ($1$), jamais une égalité entre deux fonctions."
+      },
+      {
+        "titre": "Calcul de $f^{(n)}(0)$ par la formule de Leibniz",
+        "info": "$(gh)^{(n)} = \\sum_{k=0}^n \\binom nk g^{(k)} h^{(n-k)}$.",
+        "verdict": "possible",
+        "retour": "On trouve bien $\\frac{f^{(n)}(0)}{n!} = H_n$, mais cela donne seulement la série de Taylor : il reste à prouver que $f$ en est la somme."
+      }
+    ],
+    "direction": "Pour $|x| < 1$, les deux séries $\\sum_{k \\ge 1} \\frac{x^k}{k}$ et $\\sum x^j$ convergent absolument. Le terme d'indice $n$ de leur produit de Cauchy est $\\sum_{k=1}^n \\frac1k x^k x^{n-k} = H_n x^n$."
+  },
+  {
+    "id": "series-entieres-piste-10", "ch": "series-entieres", "type": "piste",
+    "enonce": "On définit $\\cos x = \\displaystyle\\sum_{n \\ge 0} \\frac{(-1)^n x^{2n}}{(2n)!}$ pour $x \\in \\mathbb R$. Montrer que $\\cos$ s'annule sur $]0, 2[$.",
+    "choix": [
+      {
+        "titre": "Critère spécial pour encadrer $\\cos 2$, puis valeurs intermédiaires",
+        "info": "Si $(a_n)$ décroît vers $0$, le reste de $\\sum (-1)^n a_n$ est du signe de son premier terme et majoré par lui en valeur absolue.",
+        "verdict": "bon",
+        "retour": "Les termes $\\frac{4^n}{(2n)!}$ décroissent à partir de $n = 1$ : on contrôle le reste après le terme $\\frac{2^4}{4!}$."
+      },
+      {
+        "titre": "Utiliser $\\cos \\frac\\pi2 = 0$ et $\\frac\\pi2 < 2$",
+        "info": "Valeurs remarquables du cosinus.",
+        "verdict": "impasse",
+        "retour": "Raisonnement circulaire : dans cette construction, c'est précisément ce zéro qui sert à **définir** $\\pi$."
+      },
+      {
+        "titre": "Raisonnement par l'absurde sur $\\mathbb R_+$",
+        "info": "On a $\\cos' = -\\sin$ et $\\sin' = \\cos$. Si $\\cos > 0$ sur $[0, +\\infty[$, alors $\\sin$ est croissante et minore $-\\cos'$ par $\\sin 1 > 0$ sur $[1, +\\infty[$.",
+        "verdict": "possible",
+        "retour": "On obtient que $\\cos$ s'annule sur $]0, +\\infty[$, mais sans localiser le zéro dans $]0, 2[$."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $g$ est continue sur $[a, b]$, dérivable sur $]a, b[$ et $g(a) = g(b)$, alors $g'$ s'annule sur $]a, b[$.",
+        "verdict": "impasse",
+        "retour": "Il faudrait deux points où $\\sin$ prend la même valeur, ce qu'on ne sait pas encore."
+      }
+    ],
+    "direction": "$\\cos 2 = 1 - 2 + \\frac23 + R$ où $R = \\sum_{n \\ge 3} \\frac{(-1)^n 4^n}{(2n)!}$ est négatif (critère spécial). Donc $\\cos 2 < -\\frac13 < 0 < \\cos 0$, et le théorème des valeurs intermédiaires conclut."
+  },
+  {
+    "id": "series-entieres-piste-11", "ch": "series-entieres", "type": "piste",
+    "enonce": "Déterminer le rayon de convergence de $\\displaystyle\\sum_{n \\ge 0} \\binom{2n}{n}^{-1} z^n$.",
+    "choix": [
+      {
+        "titre": "Règle de d'Alembert pour les séries entières",
+        "info": "Si $a_n \\ne 0$ à partir d'un certain rang et $\\left|\\frac{a_{n+1}}{a_n}\\right| \\to \\ell \\in [0, +\\infty]$, le rayon vaut $\\frac1\\ell$.",
+        "verdict": "bon",
+        "retour": "Les coefficients sont tous non nuls et le quotient se simplifie bien."
+      },
+      {
+        "titre": "Encadrement $\\frac{4^n}{2n+1} \\le \\binom{2n}{n} \\le 4^n$",
+        "info": "$\\binom{2n}{n}$ est le plus grand des $2n + 1$ coefficients binomiaux $\\binom{2n}{k}$, dont la somme vaut $4^n$. Si $|a_n| \\le |b_n|$, le rayon de $\\sum a_n z^n$ est au moins celui de $\\sum b_n z^n$.",
+        "verdict": "bon",
+        "retour": "Les deux bornes donnent des séries de rayon $4$ : le rayon cherché est coincé."
+      },
+      {
+        "titre": "Formule de Stirling",
+        "info": "$n! \\sim \\sqrt{2\\pi n}\\, \\left(\\frac ne\\right)^n$. Deux séries entières à coefficients équivalents ont le même rayon.",
+        "verdict": "possible",
+        "retour": "On obtient $\\binom{2n}{n} \\sim \\frac{4^n}{\\sqrt{\\pi n}}$, ce qui conclut, mais c'est plus lourd que nécessaire."
+      },
+      {
+        "titre": "Étudier la série en $z = 4$",
+        "info": "Si la série converge en $z_0$, alors $R \\ge |z_0|$ ; si elle diverge en $z_0$, alors $R \\le |z_0|$.",
+        "verdict": "impasse",
+        "retour": "Il faut déjà deviner que $4$ est la bonne valeur, et l'étude en ce point n'encadre le rayon que d'un côté."
+      }
+    ],
+    "direction": "$\\frac{a_{n+1}}{a_n} = \\binom{2n}{n} \\Big/ \\binom{2n+2}{n+1} = \\frac{(n+1)^2}{(2n+1)(2n+2)} \\to \\frac14$. Le rayon vaut $4$."
+  },
+  {
+    "id": "series-entieres-piste-12", "ch": "series-entieres", "type": "piste",
+    "enonce": "Déterminer les fonctions développables en série entière en $0$ qui sont solutions de $x y'' + y' + x y = 0$ au voisinage de $0$.",
+    "choix": [
+      {
+        "titre": "Analyse-synthèse avec $y = \\sum a_n x^n$",
+        "info": "On injecte une série entière de rayon $R > 0$ dans l'équation, on identifie les coefficients (unicité du développement), puis on vérifie que la série obtenue a un rayon non nul.",
+        "verdict": "bon",
+        "retour": "On obtient une récurrence à deux termes et un rayon infini."
+      },
+      {
+        "titre": "Théorème de Cauchy-Lipschitz linéaire",
+        "info": "Pour $y'' + a(x) y' + b(x) y = 0$ avec $a, b$ continues sur un intervalle $I$, les solutions sur $I$ forment un plan vectoriel.",
+        "verdict": "impasse",
+        "retour": "L'équation n'est pas résolue en $y''$ : le coefficient $x$ s'annule en $0$, et le théorème ne s'applique que sur $]0, +\\infty[$ ou $]-\\infty, 0[$."
+      },
+      {
+        "titre": "Équation caractéristique $r^2 + \\dots = 0$",
+        "info": "Pour $a y'' + b y' + c y = 0$ à coefficients **constants**, on cherche des solutions $e^{rx}$ avec $a r^2 + b r + c = 0$.",
+        "verdict": "impasse",
+        "retour": "Les coefficients dépendent de $x$ : la méthode ne s'applique pas."
+      },
+      {
+        "titre": "Chercher des solutions polynomiales",
+        "info": "On suppose $y$ polynomiale de degré $d$ et on examine le coefficient dominant.",
+        "verdict": "impasse",
+        "retour": "Le terme $x y$ est de degré $d + 1$, les autres de degré au plus $d - 1$ : seule la fonction nulle convient."
+      }
+    ],
+    "direction": "On trouve $a_1 = 0$ et $(m+1)^2 a_{m+1} = -a_{m-1}$, donc les coefficients impairs sont nuls et $a_{2p} = \\frac{(-1)^p a_0}{4^p (p!)^2}$. Le rayon est infini : les solutions cherchées sont les $a_0 \\sum_p \\frac{(-1)^p x^{2p}}{4^p (p!)^2}$."
+  }
+]

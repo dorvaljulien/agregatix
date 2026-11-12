@@ -1,0 +1,622 @@
+[
+  {
+    "id": "suites-series-fonctions-vf-01", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions continues sur $[0, 1]$ qui converge simplement vers $f$. Alors $f$ est continue sur $[0, 1]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f_n(x) = x^n$. La limite simple vaut $0$ sur $[0, 1[$ et $1$ en $1$ : elle est discontinue. L'énoncé devient vrai si la convergence est **uniforme**."
+  },
+  {
+    "id": "suites-series-fonctions-vf-02", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $I$ un intervalle de $\\mathbb R$ et $(f_n)$ une suite de fonctions continues sur $I$ qui converge uniformément sur tout segment inclus dans $I$ vers $f$. Alors $f$ est continue sur $I$.",
+    "reponse": true,
+    "explication": "La continuité est une propriété locale. Tout point de $I$ admet un voisinage relatif dans $I$ qui est un segment ; la convergence y est uniforme, donc $f$ y est continue."
+  },
+  {
+    "id": "suites-series-fonctions-vf-03", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions continues sur $[0, 1]$ qui converge simplement vers une fonction $f$ **continue**. Alors la convergence est uniforme sur $[0, 1]$.",
+    "reponse": false,
+    "explication": "La continuité de la limite est nécessaire à la convergence uniforme, pas suffisante. Contre-exemple : $f_n(x) = nx(1-x)^n$ converge simplement vers $0$, mais $f_n\\!\\left(\\frac1n\\right) = \\left(1 - \\frac1n\\right)^n \\to \\frac1e$, donc $\\|f_n\\|_\\infty \\not\\to 0$."
+  },
+  {
+    "id": "suites-series-fonctions-vf-04", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "La suite de fonctions $x \\mapsto x^n$ converge uniformément vers $0$ sur tout segment inclus dans $[0, 1[$, mais pas uniformément sur $[0, 1[$.",
+    "reponse": true,
+    "explication": "Sur $[0, a]$ avec $a < 1$, $\\sup |x^n| = a^n \\to 0$. Sur $[0, 1[$, $\\sup_{x \\in [0,1[} x^n = 1$ pour tout $n$. C'est l'exemple type de convergence uniforme sur tout compact sans convergence uniforme."
+  },
+  {
+    "id": "suites-series-fonctions-vf-05", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions continues sur $[a, b]$ qui converge uniformément vers $f$ sur $[a, b]$. Alors $\\int_a^b f_n \\to \\int_a^b f$.",
+    "reponse": true,
+    "explication": "$f$ est continue comme limite uniforme, et $\\left|\\int_a^b f_n - \\int_a^b f\\right| \\le (b - a)\\,\\|f_n - f\\|_\\infty \\to 0$. Le facteur $b - a$ est fini parce qu'on est sur un segment."
+  },
+  {
+    "id": "suites-series-fonctions-vf-06", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions continues et intégrables sur $[0, +\\infty[$ qui converge uniformément vers une fonction $f$ intégrable. Alors $\\int_0^{+\\infty} f_n \\to \\int_0^{+\\infty} f$.",
+    "reponse": false,
+    "explication": "Hors d'un segment, la convergence uniforme ne suffit pas. Contre-exemple : $f_n(x) = \\frac1n e^{-x/n}$. On a $\\|f_n\\|_\\infty = \\frac1n \\to 0$, mais $\\int_0^{+\\infty} f_n = 1$ pour tout $n$. Il faut une domination par une fonction intégrable (convergence dominée)."
+  },
+  {
+    "id": "suites-series-fonctions-vf-07", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Si une suite de fonctions de classe $\\mathcal C^1$ sur $[-1, 1]$ converge uniformément vers $f$, alors $f$ est dérivable sur $[-1, 1]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f_n(x) = \\sqrt{x^2 + \\frac1n}$, de classe $\\mathcal C^1$. On a $0 \\le f_n(x) - |x| \\le \\frac{1}{\\sqrt n}$, donc $f_n \\to |x|$ uniformément, et $|x|$ n'est pas dérivable en $0$. Il faut la convergence uniforme de la suite des **dérivées**."
+  },
+  {
+    "id": "suites-series-fonctions-vf-08", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $(f_n)$ une suite de fonctions de classe $\\mathcal C^1$ sur $[a, b]$ telle que $(f_n(a))$ converge et que $(f_n')$ converge uniformément sur $[a, b]$ vers $g$. Alors $(f_n)$ converge uniformément sur $[a, b]$ vers une fonction $f$ de classe $\\mathcal C^1$ telle que $f' = g$.",
+    "reponse": true,
+    "explication": "On écrit $f_n(x) = f_n(a) + \\int_a^x f_n'$. Avec $\\ell = \\lim f_n(a)$ et $f(x) = \\ell + \\int_a^x g$, on a $\\|f_n - f\\|_\\infty \\le |f_n(a) - \\ell| + (b - a)\\|f_n' - g\\|_\\infty \\to 0$. Comme $g$ est continue, $f$ est $\\mathcal C^1$ et $f' = g$."
+  },
+  {
+    "id": "suites-series-fonctions-vf-09", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Soit $E$ un espace de Banach et $(f_n)$ des fonctions bornées de $A$ dans $E$. Si $\\sum \\|f_n\\|_\\infty$ converge, alors $\\sum f_n$ converge uniformément sur $A$.",
+    "reponse": true,
+    "explication": "Pour chaque $x$, la série $\\sum f_n(x)$ converge absolument dans le Banach $E$, donc converge. Son reste vérifie $\\|R_n(x)\\| \\le \\sum_{k > n} \\|f_k\\|_\\infty$, majorant indépendant de $x$ qui tend vers $0$."
+  },
+  {
+    "id": "suites-series-fonctions-vf-10", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Si une série de fonctions $\\sum f_n$ converge uniformément sur $A$, alors elle converge normalement sur $A$.",
+    "reponse": false,
+    "explication": "Contre-exemple minimal : les fonctions constantes $f_n = \\frac{(-1)^n}{n}$. La série converge uniformément (ses restes sont des constantes qui tendent vers $0$), mais $\\sum \\|f_n\\|_\\infty = \\sum \\frac1n$ diverge. La convergence normale est plus forte que la convergence uniforme."
+  },
+  {
+    "id": "suites-series-fonctions-vf-11", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Si une série de fonctions $\\sum f_n$ converge uniformément sur $A$, alors la suite $(f_n)$ converge uniformément vers la fonction nulle sur $A$.",
+    "reponse": true,
+    "explication": "Avec $R_n$ le reste d'ordre $n$, on a $f_n = R_{n-1} - R_n$, donc $\\|f_n\\|_\\infty \\le \\|R_{n-1}\\|_\\infty + \\|R_n\\|_\\infty \\to 0$. C'est l'analogue uniforme de la condition nécessaire $u_n \\to 0$."
+  },
+  {
+    "id": "suites-series-fonctions-vf-12", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Dans tout espace vectoriel normé, une série absolument convergente est convergente.",
+    "reponse": false,
+    "explication": "Il faut que l'espace soit complet. Contre-exemple : $\\mathbb R[X]$ muni de $\\left\\|\\sum a_k X^k\\right\\| = \\sum |a_k|$. La série $\\sum_{k \\ge 1} \\frac{X^k}{k^2}$ est absolument convergente. Si elle convergeait vers $P$, comme $|a_k| \\le \\|\\cdot\\|$, le $k$-ième coefficient de $P$ vaudrait $\\frac1{k^2}$ pour tout $k \\ge 1$ : impossible pour un polynôme."
+  },
+  {
+    "id": "suites-series-fonctions-vf-13", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Pour toutes matrices $A, B \\in M_n(\\mathbb R)$, $\\exp(A + B) = \\exp(A)\\exp(B)$.",
+    "reponse": false,
+    "explication": "Vrai si $A$ et $B$ commutent, faux en général sinon. Avec $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ et $B = A^{\\mathsf T}$ : $\\exp(A)\\exp(B) = \\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \\end{pmatrix}$, alors que $(A+B)^2 = I_2$ donne $\\exp(A+B) = \\begin{pmatrix} \\mathrm{ch}\\,1 & \\mathrm{sh}\\,1 \\\\ \\mathrm{sh}\\,1 & \\mathrm{ch}\\,1 \\end{pmatrix}$."
+  },
+  {
+    "id": "suites-series-fonctions-vf-14", "ch": "suites-series-fonctions", "type": "vf",
+    "enonce": "Pour toute matrice $A \\in M_n(\\mathbb C)$, $\\exp(A)$ est inversible et $\\exp(A)^{-1} = \\exp(-A)$.",
+    "reponse": true,
+    "explication": "$A$ et $-A$ commutent, donc $\\exp(A)\\exp(-A) = \\exp(A - A) = \\exp(0) = I_n$."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-01", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Soit $I$ un intervalle de $\\mathbb R$ et $(f_n)$ une suite de fonctions continues sur $I$ qui converge **[ ? ]** vers $f$. Alors $f$ est continue sur $I$.",
+    "choix": [
+      "uniformément sur tout segment inclus dans $I$",
+      "simplement sur $I$",
+      "simplement sur $I$, la suite $(f_n(x))$ étant croissante pour tout $x$",
+      "uniformément sur tout segment inclus dans l'intérieur de $I$"
+    ],
+    "bonne": 0,
+    "explication": "La continuité est locale : l'uniformité sur tout segment suffit. Le dernier leurre ne donne la continuité qu'à l'intérieur de $I$ : $x \\mapsto x^n$ sur $I = [0, 1]$ converge uniformément sur tout segment de $]0, 1[$, mais la limite est discontinue en $1$. Avec $f_n(x) = -x^n$, la suite est croissante et la limite discontinue."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-02", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Soit $(f_n)$ une suite de fonctions de classe $\\mathcal C^1$ sur $[a, b]$ qui converge simplement vers $f$. Si **[ ? ]**, alors $f$ est de classe $\\mathcal C^1$ et $f' = \\lim f_n'$.",
+    "choix": [
+      "$(f_n')$ converge uniformément sur $[a, b]$",
+      "$(f_n)$ converge uniformément sur $[a, b]$",
+      "$(f_n')$ converge simplement sur $[a, b]$",
+      "$(f_n)$ et $(f_n')$ sont uniformément bornées sur $[a, b]$"
+    ],
+    "bonne": 0,
+    "explication": "Un seul exemple élimine les trois leurres : $f_n(x) = \\sqrt{x^2 + \\frac1n}$ sur $[-1, 1]$. Elle converge uniformément vers $|x|$, $|f_n| \\le \\sqrt 2$, $f_n'(x) = \\frac{x}{\\sqrt{x^2 + 1/n}}$ est bornée par $1$ et converge simplement vers la fonction signe. Pourtant $|x|$ n'est pas dérivable en $0$."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-03", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Soit $(f_n)$ une suite de fonctions bornées de $A$ dans $\\mathbb R$. La série $\\sum f_n$ converge normalement sur $A$ si **[ ? ]**.",
+    "choix": [
+      "la série numérique $\\sum_n \\sup_{x \\in A} |f_n(x)|$ converge",
+      "$\\sup_{x \\in A} \\left|\\sum_{k > n} f_k(x)\\right| \\to 0$",
+      "pour tout $x \\in A$, la série $\\sum |f_n(x)|$ converge",
+      "$\\sup_{x \\in A} \\sum_{n} |f_n(x)| < +\\infty$"
+    ],
+    "bonne": 0,
+    "explication": "Le deuxième choix définit la convergence uniforme, le troisième la convergence absolue en chaque point. Le dernier est plus faible que la convergence normale : sur $\\mathbb R$, $f_n = \\mathbf 1_{[n, n+1[}$ donne $\\sum_n |f_n(x)| \\le 1$ pour tout $x$, mais $\\sup |f_n| = 1$ pour tout $n$."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-04", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "La série de fonctions $\\displaystyle\\sum_{n \\ge 1} \\frac{1}{n^x}$ converge :",
+    "choix": [
+      "normalement sur $[a, +\\infty[$ pour tout $a > 1$, mais pas uniformément sur $]1, +\\infty[$",
+      "normalement sur $]1, +\\infty[$",
+      "uniformément sur $]1, +\\infty[$, mais pas normalement",
+      "simplement sur $]1, +\\infty[$, mais uniformément sur aucun intervalle $[a, +\\infty[$"
+    ],
+    "bonne": 0,
+    "explication": "Sur $[a, +\\infty[$, $\\frac1{n^x} \\le \\frac1{n^a}$, terme d'une série convergente. Sur $]1, +\\infty[$, le reste vérifie $R_n(x) \\ge \\int_{n+1}^{+\\infty} \\frac{\\mathrm dt}{t^x} = \\frac{(n+1)^{1-x}}{x-1}$, qui tend vers $+\\infty$ quand $x \\to 1^+$ : le reste n'est pas uniformément petit."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-05", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "La suite de fonctions $f_n : x \\mapsto \\left(1 + \\frac{x}{n}\\right)^n$ converge vers $x \\mapsto e^x$ :",
+    "choix": [
+      "uniformément sur tout segment de $\\mathbb R$, mais pas uniformément sur $\\mathbb R$",
+      "uniformément sur $\\mathbb R$",
+      "uniformément sur $[0, +\\infty[$, mais pas sur $]-\\infty, 0]$",
+      "simplement sur $\\mathbb R$, mais uniformément sur aucun segment non réduit à un point"
+    ],
+    "bonne": 0,
+    "explication": "Sur $[-a, a]$ et pour $n > a$, $n \\ln\\!\\left(1 + \\frac xn\\right) = x + O\\!\\left(\\frac{a^2}{n}\\right)$ uniformément en $x$, et $\\exp$ est lipschitzienne sur les bornés. Sur $[0, +\\infty[$, en revanche, $e^n - f_n(n) = e^n - 2^n \\to +\\infty$ : pas de convergence uniforme."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-06", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Critère de Cauchy uniforme.\nSoit $(f_n)$ une suite de fonctions de $A$ dans un espace de Banach $E$. La suite $(f_n)$ converge uniformément sur $A$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "pour tout $\\varepsilon > 0$, il existe $N$ tel que $\\|f_p(x) - f_q(x)\\| \\le \\varepsilon$ pour tous $p, q \\ge N$ et tout $x \\in A$",
+      "pour tout $x \\in A$, la suite $(f_n(x))$ est de Cauchy dans $E$",
+      "pour tout $\\varepsilon > 0$, il existe $N$ tel que $\\|f_{n+1}(x) - f_n(x)\\| \\le \\varepsilon$ pour tout $n \\ge N$ et tout $x \\in A$",
+      "il existe $M$ tel que $\\|f_n(x)\\| \\le M$ pour tout $n$ et tout $x \\in A$"
+    ],
+    "bonne": 0,
+    "explication": "Le rang $N$ doit être choisi avant $x$. Le deuxième choix caractérise la convergence simple. Le troisième échoue déjà pour des constantes : $f_n = \\ln n$ vérifie $f_{n+1} - f_n \\to 0$ sans converger. Le dernier échoue avec $x \\mapsto x^n$ sur $[0, 1]$."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-07", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Soit $\\theta \\in \\mathbb R$ et $A = \\begin{pmatrix} 0 & -\\theta \\\\ \\theta & 0 \\end{pmatrix}$. Pour tout réel $\\theta$, $\\exp(A)$ vaut :",
+    "choix": [
+      "$\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$",
+      "$\\begin{pmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{pmatrix}$",
+      "$\\begin{pmatrix} 1 & -\\theta \\\\ \\theta & 1 \\end{pmatrix}$",
+      "$\\begin{pmatrix} \\mathrm{ch}\\,\\theta & -\\mathrm{sh}\\,\\theta \\\\ \\mathrm{sh}\\,\\theta & \\mathrm{ch}\\,\\theta \\end{pmatrix}$"
+    ],
+    "bonne": 0,
+    "explication": "$A^2 = -\\theta^2 I_2$. En séparant puissances paires et impaires dans la série, $\\exp(A) = \\cos\\theta\\, I_2 + \\frac{\\sin\\theta}{\\theta} A$ (pour $\\theta \\ne 0$) : c'est la rotation d'angle $\\theta$. Les fonctions hyperboliques apparaîtraient si $A^2 = \\theta^2 I_2$."
+  },
+  {
+    "id": "suites-series-fonctions-qcm-08", "ch": "suites-series-fonctions", "type": "qcm",
+    "enonce": "Soient $E$ et $F$ deux espaces vectoriels normés. L'espace $\\mathcal L_c(E, F)$ des applications linéaires continues, muni de la norme subordonnée, est complet dès que **[ ? ]**.",
+    "choix": [
+      "$F$ est un espace de Banach",
+      "$E$ est un espace de Banach",
+      "$E$ est de dimension finie",
+      "$E$ est un espace de Hilbert"
+    ],
+    "bonne": 0,
+    "explication": "C'est la complétude de l'espace d'arrivée qui compte : une suite de Cauchy $(u_n)$ donne, pour chaque $x$, une suite de Cauchy $(u_n(x))$ dans $F$. Les leurres échouent avec $E = \\mathbb R$ (Hilbert, de dimension finie) : $\\mathcal L_c(\\mathbb R, F)$ est isométrique à $F$, qui peut ne pas être complet."
+  },
+  {
+    "id": "suites-series-fonctions-err-01", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "Soit $f_n(x) = \\dfrac{n}{n^2 + x^2}$ pour $x \\ge 0$ et $n \\ge 1$. On cherche la limite de $\\displaystyle\\int_0^{+\\infty} f_n(x)\\,\\mathrm dx$. Voici une copie.",
+    "lignes": [
+      "Pour tout $n \\ge 1$ et tout $x \\ge 0$, $0 \\le f_n(x) \\le \\dfrac1n$.",
+      "Donc $(f_n)$ converge uniformément vers la fonction nulle sur $[0, +\\infty[$.",
+      "La convergence uniforme permet d'intervertir limite et intégrale, donc $\\displaystyle\\int_0^{+\\infty} f_n \\to 0$."
+    ],
+    "fausse": 2,
+    "explication": "L'interversion par convergence uniforme ne vaut que sur un **segment**. Ici $\\int_0^{+\\infty} f_n = \\left[\\arctan\\frac xn\\right]_0^{+\\infty} = \\frac\\pi2$ pour tout $n$. Aucune domination intégrable n'existe : en prenant l'entier $n \\in [x, x+1[$, on voit que $\\sup_n f_n(x) \\ge \\frac{1}{2(x+1)}$ pour $x \\ge 1$, fonction non intégrable."
+  },
+  {
+    "id": "suites-series-fonctions-err-02", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "On veut montrer que $S : x \\mapsto \\displaystyle\\sum_{n \\ge 1} e^{-nx}$ est continue sur $]0, +\\infty[$. Voici une copie.",
+    "lignes": [
+      "Pour tout $n \\ge 1$, $f_n : x \\mapsto e^{-nx}$ est continue sur $]0, +\\infty[$.",
+      "Pour tout $x > 0$, $\\sum e^{-nx}$ est une série géométrique de raison $e^{-x} \\in\\, ]0, 1[$, donc elle converge.",
+      "Ainsi, la série $\\sum f_n$ converge normalement sur $]0, +\\infty[$.",
+      "Donc $S$ est continue sur $]0, +\\infty[$."
+    ],
+    "fausse": 2,
+    "explication": "La convergence en chaque point n'est pas la convergence normale : $\\sup_{x > 0} e^{-nx} = 1$, et $\\sum 1$ diverge. La conclusion est juste, mais il faut l'obtenir autrement : pour $a > 0$, $\\sup_{[a, +\\infty[} e^{-nx} = e^{-na}$, d'où la convergence normale sur $[a, +\\infty[$, puis la continuité sur $]0, +\\infty[$ par caractère local."
+  },
+  {
+    "id": "suites-series-fonctions-err-03", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "On étudie la régularité de $S : x \\mapsto \\displaystyle\\sum_{n \\ge 1} \\frac{\\sin(nx)}{n^2}$ sur $\\mathbb R$. Voici une copie.",
+    "lignes": [
+      "Chaque $f_n : x \\mapsto \\dfrac{\\sin(nx)}{n^2}$ est de classe $\\mathcal C^1$ sur $\\mathbb R$, et $\\|f_n\\|_\\infty \\le \\dfrac1{n^2}$.",
+      "Donc $\\sum f_n$ converge normalement, donc uniformément, sur $\\mathbb R$.",
+      "Une limite uniforme de fonctions de classe $\\mathcal C^1$ est de classe $\\mathcal C^1$, donc $S$ est de classe $\\mathcal C^1$ sur $\\mathbb R$."
+    ],
+    "fausse": 2,
+    "explication": "La convergence uniforme ne transmet que la continuité. Pour dériver terme à terme, il faut la convergence uniforme de la série **dérivée** $\\sum \\frac{\\cos(nx)}{n}$, qui diverge en $x = 0$."
+  },
+  {
+    "id": "suites-series-fonctions-err-04", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "On veut calculer $\\exp(A)$ pour $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}$. Voici une copie.",
+    "lignes": [
+      "On écrit $A = D + N$ avec $D = \\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$ et $N = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$.",
+      "Comme $N^2 = 0$, on a $\\exp(N) = I_2 + N$.",
+      "Donc $\\exp(A) = \\exp(D)\\exp(N) = \\begin{pmatrix} e & e \\\\ 0 & e^2 \\end{pmatrix}$."
+    ],
+    "fausse": 2,
+    "explication": "$\\exp(D + N) = \\exp(D)\\exp(N)$ exige que $D$ et $N$ commutent. Or $DN = N$ et $ND = 2N$. Ici $A$ a deux valeurs propres distinctes, elle est diagonalisable (vecteurs propres $(1, 0)$ et $(1, 1)$), et l'on trouve $\\exp(A) = \\begin{pmatrix} e & e^2 - e \\\\ 0 & e^2 \\end{pmatrix}$."
+  },
+  {
+    "id": "suites-series-fonctions-err-05", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "Soit $f_n(x) = nx\\,e^{-nx}$ sur $[0, +\\infty[$. On étudie la convergence de $(f_n)$. Voici une copie.",
+    "lignes": [
+      "On a $f_n(0) = 0$ et, pour $x > 0$ fixé, $f_n(x) \\to 0$ par croissances comparées.",
+      "Donc $(f_n)$ converge simplement vers la fonction nulle sur $[0, +\\infty[$.",
+      "Ainsi, pour tout $\\varepsilon > 0$, il existe $N$ tel que $|f_n(x)| \\le \\varepsilon$ pour tout $n \\ge N$ et tout $x \\ge 0$ : la convergence est uniforme."
+    ],
+    "fausse": 2,
+    "explication": "Inversion de quantificateurs : la convergence simple fournit un rang $N$ qui dépend de $x$. Ici $f_n\\!\\left(\\frac1n\\right) = \\frac1e$ pour tout $n$, donc $\\|f_n\\|_\\infty \\ge \\frac1e$ : pas de convergence uniforme sur $[0, +\\infty[$. Elle a lieu sur $[a, +\\infty[$ pour $a > 0$, car pour $n \\ge \\frac1a$ le sup y vaut $na\\,e^{-na}$."
+  },
+  {
+    "id": "suites-series-fonctions-err-06", "ch": "suites-series-fonctions", "type": "erreur",
+    "enonce": "On veut montrer que $S : x \\mapsto \\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^n}{n + x}$ est continue sur $[0, +\\infty[$. On note $f_n(x) = \\frac{(-1)^n}{n + x}$. Voici une copie.",
+    "lignes": [
+      "Pour $x \\ge 0$ fixé, $\\left(\\frac{1}{n + x}\\right)_{n \\ge 1}$ décroît vers $0$, donc $\\sum f_n(x)$ converge d'après le critère spécial.",
+      "Pour tout $n \\ge 1$, $\\sup_{x \\ge 0} |f_n(x)| = \\dfrac1n$.",
+      "La série $\\sum \\frac1n$ diverge, donc $\\sum f_n$ ne converge pas normalement sur $[0, +\\infty[$.",
+      "Elle ne converge donc pas uniformément sur $[0, +\\infty[$, et on ne peut pas conclure à la continuité de $S$."
+    ],
+    "fausse": 3,
+    "explication": "L'absence de convergence normale n'empêche pas la convergence uniforme. Le critère spécial majore le reste : $|R_n(x)| \\le \\frac{1}{n + 1 + x} \\le \\frac{1}{n+1}$, majorant indépendant de $x$. La convergence est donc uniforme et $S$ est continue sur $[0, +\\infty[$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-01", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $f_n(x) = x^n(1 - x)$ pour $x \\in [0, 1]$. Montrer que $(f_n)$ converge uniformément sur $[0, 1]$.",
+    "choix": [
+      {
+        "titre": "Calculer $\\|f_n - f\\|_\\infty$ par une étude de fonction",
+        "info": "$(f_n)$ converge uniformément vers $f$ sur $A$ si et seulement si $\\sup_{x \\in A} |f_n(x) - f(x)| \\to 0$. On calcule ce sup en étudiant les variations de $f_n - f$.",
+        "verdict": "bon",
+        "retour": "$f_n \\ge 0$ atteint son maximum en un point intérieur où $f_n'$ s'annule : le calcul est court."
+      },
+      {
+        "titre": "Découper $[0, 1]$ en $[0, a]$ et $[a, 1]$",
+        "info": "Pour majorer un sup, on peut découper l'ensemble et majorer séparément sur chaque morceau, en choisissant le point de coupure en fonction de $\\varepsilon$.",
+        "verdict": "bon",
+        "retour": "Sur $[0, a]$, $f_n \\le a^n$ ; sur $[a, 1]$, $f_n \\le 1 - a$. Avec $a = 1 - \\varepsilon$, on conclut sans calculer le maximum exact."
+      },
+      {
+        "titre": "Majorer par $x^n$",
+        "info": "Si $|f_n - f| \\le g_n$ sur $A$ avec $\\sup_A g_n \\to 0$, alors la convergence est uniforme.",
+        "verdict": "impasse",
+        "retour": "On a bien $0 \\le f_n(x) \\le x^n$, mais $\\sup_{[0,1]} x^n = 1$ : la majoration est trop grossière près de $1$, là où le facteur $1 - x$ fait tout le travail."
+      },
+      {
+        "titre": "Théorème de continuité de la limite uniforme",
+        "info": "Une limite uniforme de fonctions continues est continue. Par contraposée, si la limite simple est discontinue, la convergence n'est pas uniforme.",
+        "verdict": "impasse",
+        "retour": "La limite simple est la fonction nulle, continue : le théorème ne dit rien, dans un sens comme dans l'autre."
+      }
+    ],
+    "direction": "La limite simple est $0$. $f_n'(x) = x^{n-1}\\big(n - (n+1)x\\big)$ s'annule en $x_n = \\frac{n}{n+1}$, d'où $\\|f_n\\|_\\infty = \\left(\\frac{n}{n+1}\\right)^n \\frac{1}{n+1} \\le \\frac1{n+1} \\to 0$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-02", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $f_n(x) = \\dfrac{nx}{1 + n^2x^2}$ pour $x \\ge 0$. Étudier la convergence uniforme de $(f_n)$ sur $[0, +\\infty[$, puis sur $[a, +\\infty[$ pour $a > 0$.",
+    "choix": [
+      {
+        "titre": "Évaluer en un point mobile",
+        "info": "Si $f_n \\to f$ simplement et s'il existe des points $x_n \\in A$ tels que $|f_n(x_n) - f(x_n)| \\not\\to 0$, alors la convergence n'est pas uniforme sur $A$.",
+        "verdict": "bon",
+        "retour": "Le point $x_n = \\frac1n$ donne une valeur constante non nulle : la convergence n'est pas uniforme sur $[0, +\\infty[$."
+      },
+      {
+        "titre": "Majoration indépendante de $x$ sur $[a, +\\infty[$",
+        "info": "Si $|f_n(x) - f(x)| \\le \\varepsilon_n$ pour tout $x \\in A$, avec $\\varepsilon_n \\to 0$, la convergence est uniforme sur $A$.",
+        "verdict": "bon",
+        "retour": "Sur $[a, +\\infty[$, $0 \\le f_n(x) \\le \\frac{nx}{n^2x^2} \\le \\frac{1}{na}$ : c'est la deuxième moitié de la question."
+      },
+      {
+        "titre": "Contraposée du théorème de continuité",
+        "info": "Une limite uniforme de fonctions continues est continue.",
+        "verdict": "impasse",
+        "retour": "La limite simple est la fonction nulle, continue : aucune contradiction à en tirer."
+      },
+      {
+        "titre": "Passer à la limite dans $\\int_0^1 f_n$",
+        "info": "Si $(f_n)$ converge uniformément vers $f$ sur $[0, 1]$, alors $\\int_0^1 f_n \\to \\int_0^1 f$.",
+        "verdict": "impasse",
+        "retour": "$\\int_0^1 f_n = \\frac{\\ln(1 + n^2)}{2n} \\to 0$ : c'est compatible avec la limite nulle, on n'obtient aucune contradiction."
+      }
+    ],
+    "direction": "La limite simple est nulle. $f_n\\!\\left(\\frac1n\\right) = \\frac12$, donc pas de convergence uniforme sur $[0, +\\infty[$. Sur $[a, +\\infty[$, $\\|f_n\\|_\\infty \\le \\frac{1}{na} \\to 0$ : convergence uniforme."
+  },
+  {
+    "id": "suites-series-fonctions-piste-03", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Montrer que la fonction $f : x \\mapsto \\displaystyle\\sum_{n \\ge 1} \\frac1n \\sin\\frac{x}{n}$ est définie et continue sur $\\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Convergence normale sur tout segment $[-a, a]$",
+        "info": "Une série de fonctions continues qui converge normalement sur tout segment d'un intervalle $I$ a une somme continue sur $I$.",
+        "verdict": "bon",
+        "retour": "$|\\sin u| \\le |u|$ donne $\\left|\\frac1n \\sin\\frac xn\\right| \\le \\frac{a}{n^2}$ pour $|x| \\le a$."
+      },
+      {
+        "titre": "Convergence normale sur $\\mathbb R$",
+        "info": "Si $\\sum \\|f_n\\|_\\infty$ converge, la série converge uniformément, et sa somme est continue si les $f_n$ le sont.",
+        "verdict": "impasse",
+        "retour": "$\\sup_{\\mathbb R} \\left|\\frac1n \\sin\\frac xn\\right| = \\frac1n$ : la série des normes diverge."
+      },
+      {
+        "titre": "Critère spécial des séries alternées",
+        "info": "Si $(a_n)$ décroît vers $0$, $\\sum (-1)^n a_n$ converge et son reste est majoré par son premier terme.",
+        "verdict": "impasse",
+        "retour": "Pour $x > 0$ fixé, $\\sin\\frac xn > 0$ dès que $n > \\frac x\\pi$ : la série n'est pas alternée."
+      },
+      {
+        "titre": "Transformation d'Abel",
+        "info": "Si les sommes partielles de $\\sum b_n$ sont bornées et si $(a_n)$ décroît vers $0$, alors $\\sum a_n b_n$ converge.",
+        "verdict": "impasse",
+        "retour": "Le sinus évoque Abel, mais ici l'argument $\\frac xn$ tend vers $0$ : rien n'oscille, et les termes sont de signe constant à partir d'un rang."
+      }
+    ],
+    "direction": "Pour $|x| \\le a$, $\\left|\\frac1n \\sin\\frac xn\\right| \\le \\frac{a}{n^2}$ : la série converge normalement sur $[-a, a]$, donc sa somme y est continue. La continuité étant locale et $a$ arbitraire, $f$ est continue sur $\\mathbb R$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-04", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Montrer que $S : x \\mapsto \\displaystyle\\sum_{n \\ge 1} \\frac{(-1)^n}{n + x}$ est de classe $\\mathcal C^1$ sur $[0, +\\infty[$. On note $f_n(x) = \\frac{(-1)^n}{n + x}$.",
+    "choix": [
+      {
+        "titre": "Théorème de dérivation terme à terme",
+        "info": "Si les $f_n$ sont de classe $\\mathcal C^1$ sur $I$, si $\\sum f_n$ converge simplement sur $I$ et si $\\sum f_n'$ converge uniformément sur $I$ (ou sur tout segment de $I$), alors la somme est $\\mathcal C^1$ et se dérive terme à terme.",
+        "verdict": "bon",
+        "retour": "$f_n'(x) = \\frac{(-1)^{n+1}}{(n+x)^2}$, majoré en valeur absolue par $\\frac{1}{n^2}$ : la série dérivée converge normalement."
+      },
+      {
+        "titre": "Convergence normale de $\\sum f_n$",
+        "info": "La convergence normale de $\\sum f_n$ sur $I$ entraîne sa convergence uniforme sur $I$.",
+        "verdict": "impasse",
+        "retour": "$\\sup_{x \\ge 0} |f_n(x)| = \\frac1n$ : pas de convergence normale. Et même uniforme, elle ne donnerait pas la dérivabilité."
+      },
+      {
+        "titre": "Convergence uniforme de $\\sum f_n$ par le critère spécial",
+        "info": "Pour une série alternée vérifiant le critère spécial en chaque $x$, $|R_n(x)| \\le |f_{n+1}(x)|$.",
+        "verdict": "possible",
+        "retour": "On obtient la convergence uniforme, donc la continuité de $S$. Mais la classe $\\mathcal C^1$ demande une hypothèse sur la série dérivée."
+      },
+      {
+        "titre": "Calculer $S$ explicitement",
+        "info": "Quand la somme d'une série de fonctions s'exprime avec des fonctions usuelles, sa régularité se lit sur la formule.",
+        "verdict": "impasse",
+        "retour": "Il n'y a pas de forme close élémentaire de $S$."
+      }
+    ],
+    "direction": "Les $f_n$ sont $\\mathcal C^1$, $\\sum f_n$ converge simplement (critère spécial) et $\\left|f_n'(x)\\right| \\le \\frac1{n^2}$ donne la convergence normale de $\\sum f_n'$ sur $[0, +\\infty[$. Donc $S$ est $\\mathcal C^1$ et $S'(x) = \\sum_{n \\ge 1} \\frac{(-1)^{n+1}}{(n+x)^2}$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-05", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Déterminer la limite de $I_n = \\displaystyle\\int_0^1 \\frac{x^n}{1 + x}\\,\\mathrm dx$ quand $n \\to +\\infty$.",
+    "choix": [
+      {
+        "titre": "Majoration directe",
+        "info": "Positivité de l'intégrale : si $0 \\le f \\le g$ sur $[a, b]$, alors $0 \\le \\int_a^b f \\le \\int_a^b g$.",
+        "verdict": "bon",
+        "retour": "$0 \\le \\frac{x^n}{1+x} \\le x^n$ sur $[0, 1]$ donne $0 \\le I_n \\le \\frac{1}{n+1}$ en une ligne."
+      },
+      {
+        "titre": "Théorème de convergence dominée",
+        "info": "Si $f_n \\to f$ simplement sur $I$, avec $f$ continue par morceaux, et si $|f_n| \\le g$ avec $g$ intégrable sur $I$, alors $\\int_I f_n \\to \\int_I f$.",
+        "verdict": "bon",
+        "retour": "La limite simple vaut $0$ sur $[0, 1[$ et $\\frac12$ en $1$, elle est continue par morceaux, et $|f_n| \\le 1$ sur $[0, 1]$."
+      },
+      {
+        "titre": "Convergence uniforme sur $[0, 1]$",
+        "info": "Si $(f_n)$ converge uniformément vers $f$ sur le segment $[a, b]$, alors $\\int_a^b f_n \\to \\int_a^b f$.",
+        "verdict": "impasse",
+        "retour": "La limite simple est discontinue en $1$ alors que les $f_n$ sont continues : la convergence n'est pas uniforme sur $[0, 1]$."
+      },
+      {
+        "titre": "Relation de récurrence",
+        "info": "Écrire $x^{n+1} + x^n = x^n(1 + x)$ fournit une relation simple entre $I_{n+1}$ et $I_n$.",
+        "verdict": "possible",
+        "retour": "$I_n + I_{n+1} = \\frac{1}{n+1}$ et $(I_n)$ décroît : on encadre $I_n$, mais c'est plus long que la majoration directe."
+      }
+    ],
+    "direction": "Pour $x \\in [0, 1]$, $0 \\le \\frac{x^n}{1+x} \\le x^n$, donc $0 \\le I_n \\le \\frac{1}{n+1}$ et $I_n \\to 0$. La récurrence donne même $I_n \\sim \\frac{1}{2n}$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-06", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Montrer que $\\displaystyle\\int_0^1 x^{-x}\\,\\mathrm dx = \\sum_{n \\ge 1} \\frac{1}{n^n}$, où $x^{-x} = e^{-x \\ln x}$ est prolongée par $1$ en $0$.",
+    "choix": [
+      {
+        "titre": "Développer en série et intégrer terme à terme sur le segment",
+        "info": "Si $\\sum g_k$ est une série de fonctions continues qui converge uniformément sur $[a, b]$, alors $\\int_a^b \\sum_k g_k = \\sum_k \\int_a^b g_k$.",
+        "verdict": "bon",
+        "retour": "Avec $g_k(x) = \\frac{(-x \\ln x)^k}{k!}$ et $|x \\ln x| \\le \\frac1e$ sur $]0, 1]$, la série converge normalement sur $[0, 1]$."
+      },
+      {
+        "titre": "Convergence dominée appliquée aux sommes partielles",
+        "info": "Le théorème de convergence dominée porte sur une suite de fonctions ; pour une série, on l'applique à la suite des sommes partielles.",
+        "verdict": "bon",
+        "retour": "Les sommes partielles sont majorées par $e^{|x \\ln x|} \\le e^{1/e}$, constante intégrable sur $[0, 1]$ : ça marche aussi."
+      },
+      {
+        "titre": "Chercher une primitive de $x^{-x}$",
+        "info": "Si $F$ est une primitive de $f$ continue sur $[a, b]$, alors $\\int_a^b f = F(b) - F(a)$.",
+        "verdict": "impasse",
+        "retour": "$x^{-x}$ n'a pas de primitive exprimable avec les fonctions usuelles."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante sur $[1, +\\infty[$, $\\sum f(n)$ et $\\int_1^{+\\infty} f$ sont de même nature.",
+        "verdict": "impasse",
+        "retour": "L'énoncé mêle une série et une intégrale, mais il s'agit d'une égalité exacte, pas d'une question de nature."
+      }
+    ],
+    "direction": "$x^{-x} = \\sum_{k \\ge 0} \\frac{(-x\\ln x)^k}{k!}$ avec convergence normale sur $[0, 1]$, d'où l'interversion. Le changement de variable $x = e^{-t}$ donne $\\int_0^1 (-x \\ln x)^k\\,\\mathrm dx = \\int_0^{+\\infty} t^k e^{-(k+1)t}\\,\\mathrm dt = \\frac{k!}{(k+1)^{k+1}}$. On somme et on pose $n = k + 1$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-07", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $a \\in\\, ]0, \\pi[$. Montrer que la série $\\displaystyle\\sum_{n \\ge 1} \\frac{\\sin(nx)}{n}$ converge uniformément sur $[a, 2\\pi - a]$.",
+    "choix": [
+      {
+        "titre": "Transformation d'Abel avec majoration uniforme",
+        "info": "Avec $B_n = \\sum_{k=1}^n b_k$ : $\\sum_{k=n+1}^{m} a_k b_k = a_m B_m - a_{n+1} B_n - \\sum_{k=n+1}^{m-1} (a_{k+1} - a_k) B_k$. Utile quand $(B_n)$ est bornée et $(a_n)$ décroît vers $0$.",
+        "verdict": "bon",
+        "retour": "Il faut une borne de $B_n(x) = \\sum_{k=1}^n \\sin(kx)$ **indépendante de $x$** sur le segment : c'est là que sert $a > 0$."
+      },
+      {
+        "titre": "Convergence normale",
+        "info": "Si $\\sum \\sup_A |f_n|$ converge, la série converge uniformément sur $A$.",
+        "verdict": "impasse",
+        "retour": "$\\sup_{[a, 2\\pi - a]} \\frac{|\\sin(nx)|}{n} = \\frac1n$ pour $n$ assez grand : la série des normes diverge."
+      },
+      {
+        "titre": "Critère spécial des séries alternées",
+        "info": "Si $(a_n)$ décroît vers $0$, $\\sum (-1)^n a_n$ converge et $|R_n| \\le a_{n+1}$.",
+        "verdict": "impasse",
+        "retour": "Le signe de $\\sin(nx)$ ne change pas à chaque rang : la série n'est pas alternée."
+      },
+      {
+        "titre": "Calculer la somme",
+        "info": "Pour $x \\in\\, ]0, 2\\pi[$, $\\sum_{n \\ge 1} \\frac{\\sin(nx)}{n} = \\frac{\\pi - x}{2}$.",
+        "verdict": "impasse",
+        "retour": "Connaître la limite ne dit rien sur la vitesse de convergence : il faut toujours majorer le reste uniformément."
+      }
+    ],
+    "direction": "$|B_n(x)| = \\left|\\frac{\\sin(nx/2)\\sin((n+1)x/2)}{\\sin(x/2)}\\right| \\le \\frac{1}{\\sin(a/2)} = M$ sur $[a, 2\\pi - a]$. La transformation d'Abel donne alors $|R_n(x)| \\le \\frac{2M}{n+1}$ pour tout $x$ du segment."
+  },
+  {
+    "id": "suites-series-fonctions-piste-08", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ antisymétrique. Montrer que $\\exp(A)$ est une matrice orthogonale de déterminant $1$.",
+    "choix": [
+      {
+        "titre": "Transposer l'exponentielle",
+        "info": "La transposition est linéaire et continue, donc $\\exp(A)^{\\mathsf T} = \\exp(A^{\\mathsf T})$. Et si $A$ et $B$ commutent, $\\exp(A + B) = \\exp(A)\\exp(B)$.",
+        "verdict": "bon",
+        "retour": "$\\exp(A)^{\\mathsf T} = \\exp(-A) = \\exp(A)^{-1}$ : l'orthogonalité tombe en une ligne."
+      },
+      {
+        "titre": "Formule $\\det \\exp(A) = e^{\\mathrm{tr}\\,A}$",
+        "info": "Pour toute matrice carrée complexe $A$, $\\det(\\exp A) = e^{\\mathrm{tr}\\,A}$ (trigonaliser sur $\\mathbb C$).",
+        "verdict": "possible",
+        "retour": "Elle règle le déterminant ($\\mathrm{tr}\\,A = 0$), mais pas l'orthogonalité."
+      },
+      {
+        "titre": "Diagonaliser $A$ dans $M_n(\\mathbb R)$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, alors $\\exp(A) = P \\exp(D) P^{-1}$.",
+        "verdict": "impasse",
+        "retour": "Les valeurs propres d'une antisymétrique réelle sont imaginaires pures : $A$ n'est diagonalisable sur $\\mathbb R$ que si $A = 0$."
+      },
+      {
+        "titre": "Développer la série et regrouper les puissances",
+        "info": "$\\exp(A) = \\sum_{k \\ge 0} \\frac{A^k}{k!}$ ; on sépare parfois puissances paires et impaires quand $A^2$ est simple.",
+        "verdict": "impasse",
+        "retour": "En dimension quelconque, $A^2$ n'a pas de forme simple : le calcul ne se referme pas."
+      }
+    ],
+    "direction": "$\\exp(A)^{\\mathsf T}\\exp(A) = \\exp(-A)\\exp(A) = I_n$ car $A$ et $-A$ commutent. Puis $\\det \\exp(A) = e^{\\mathrm{tr}\\,A} = e^0 = 1$ (ou : $t \\mapsto \\det \\exp(tA)$ est continue, à valeurs dans $\\{-1, 1\\}$, et vaut $1$ en $0$)."
+  },
+  {
+    "id": "suites-series-fonctions-piste-09", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$. Calculer $\\exp(tA)$ pour tout $t \\in \\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Écrire $A = I_2 + N$ avec $N$ nilpotente",
+        "info": "Si $A$ et $B$ commutent, $\\exp(A + B) = \\exp(A)\\exp(B)$. Si $N^p = 0$, la série $\\exp(N)$ est une somme finie.",
+        "verdict": "bon",
+        "retour": "$I_2$ commute avec tout et $N^2 = 0$ : deux lignes suffisent."
+      },
+      {
+        "titre": "Calculer $A^k$ puis sommer la série",
+        "info": "Par définition, $\\exp(tA) = \\sum_{k \\ge 0} \\frac{t^k A^k}{k!}$. On calcule $A^k$ (récurrence) puis on somme coefficient par coefficient.",
+        "verdict": "bon",
+        "retour": "$A^k = \\begin{pmatrix} 1 & k \\\\ 0 & 1 \\end{pmatrix}$, et $\\sum \\frac{k t^k}{k!} = t e^t$."
+      },
+      {
+        "titre": "Diagonaliser $A$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale, alors $\\exp(tA) = P \\exp(tD) P^{-1}$.",
+        "verdict": "impasse",
+        "retour": "$A$ a pour seule valeur propre $1$ et $A \\ne I_2$ : elle n'est pas diagonalisable."
+      },
+      {
+        "titre": "Formule $\\det \\exp(tA) = e^{t\\,\\mathrm{tr}\\,A}$",
+        "info": "Pour toute matrice carrée complexe $M$, $\\det(\\exp M) = e^{\\mathrm{tr}\\,M}$.",
+        "verdict": "impasse",
+        "retour": "Elle donne le déterminant, $e^{2t}$, pas la matrice."
+      }
+    ],
+    "direction": "$tA = tI_2 + tN$ avec $tI_2$ et $tN$ qui commutent, et $\\exp(tN) = I_2 + tN$. Donc $\\exp(tA) = e^t(I_2 + tN) = \\begin{pmatrix} e^t & t e^t \\\\ 0 & e^t \\end{pmatrix}$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-10", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Montrer que l'espace $\\mathcal C([0, 1], \\mathbb R)$, muni de la norme $\\|f\\|_\\infty = \\sup_{[0,1]} |f|$, est un espace de Banach.",
+    "choix": [
+      {
+        "titre": "Suite de Cauchy, limite simple, puis uniforme",
+        "info": "Démarche type : partir d'une suite de Cauchy, construire un candidat limite point par point, montrer la convergence en norme, puis que la limite est dans l'espace.",
+        "verdict": "bon",
+        "retour": "On passe à la limite $q \\to +\\infty$ dans l'inégalité de Cauchy, à $x$ fixé : l'uniformité se conserve. La continuité vient du théorème sur les limites uniformes."
+      },
+      {
+        "titre": "Complétude de $\\mathbb R$, point par point",
+        "info": "Toute suite de Cauchy de $\\mathbb R$ converge.",
+        "verdict": "possible",
+        "retour": "C'est la première étape : elle fournit la limite simple $f$. Il reste à prouver que la convergence est uniforme et que $f$ est continue."
+      },
+      {
+        "titre": "Extraire une sous-suite convergente",
+        "info": "Une suite de Cauchy qui admet une valeur d'adhérence converge. De toute suite bornée d'un espace vectoriel normé de dimension finie, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "L'espace est de dimension infinie : sa boule unité n'est pas compacte, et une suite bornée n'a pas forcément de valeur d'adhérence."
+      },
+      {
+        "titre": "Tout espace vectoriel normé de dimension finie est complet",
+        "info": "En dimension finie, toutes les normes sont équivalentes et l'espace est complet.",
+        "verdict": "impasse",
+        "retour": "$\\mathcal C([0, 1], \\mathbb R)$ contient tous les polynômes : il est de dimension infinie."
+      }
+    ],
+    "direction": "Soit $(f_n)$ de Cauchy. Pour chaque $x$, $(f_n(x))$ est de Cauchy dans $\\mathbb R$, de limite $f(x)$. En faisant $q \\to +\\infty$ dans $|f_p(x) - f_q(x)| \\le \\varepsilon$, on obtient $\\|f_p - f\\|_\\infty \\le \\varepsilon$ pour $p \\ge N$. Donc $f_n \\to f$ uniformément, et $f$ est continue."
+  },
+  {
+    "id": "suites-series-fonctions-piste-11", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "Soit $E$ un espace de Banach et $u \\in \\mathcal L_c(E)$ tel que $\\|u\\| < 1$ (norme subordonnée). Montrer que $\\mathrm{id}_E - u$ est bijective, d'inverse continu.",
+    "choix": [
+      {
+        "titre": "Série de Neumann $\\sum u^n$",
+        "info": "$\\mathcal L_c(E)$ est complet quand $E$ l'est, la norme subordonnée vérifie $\\|u^n\\| \\le \\|u\\|^n$, et dans un Banach toute série absolument convergente converge.",
+        "verdict": "bon",
+        "retour": "La série $\\sum u^n$ converge absolument, et un télescopage montre que sa somme est l'inverse de $\\mathrm{id}_E - u$."
+      },
+      {
+        "titre": "Théorème du point fixe",
+        "info": "Une application $k$-lipschitzienne avec $k < 1$ d'un espace complet dans lui-même admet un unique point fixe.",
+        "verdict": "bon",
+        "retour": "Pour $y$ donné, $x \\mapsto y + u(x)$ est une contraction de $E$ : l'équation $x - u(x) = y$ a une unique solution. La continuité de l'inverse vient de $\\|x\\| \\le \\|y\\| + \\|u\\|\\,\\|x\\|$."
+      },
+      {
+        "titre": "Montrer que $1$ n'est pas valeur propre de $u$",
+        "info": "$\\mathrm{id}_E - u$ est injective si et seulement si $1$ n'est pas valeur propre de $u$.",
+        "verdict": "impasse",
+        "retour": "On obtient l'injectivité, mais en dimension infinie elle n'entraîne pas la surjectivité."
+      },
+      {
+        "titre": "Calculer $\\det(\\mathrm{id}_E - u)$",
+        "info": "En dimension finie, un endomorphisme est inversible si et seulement si son déterminant est non nul.",
+        "verdict": "impasse",
+        "retour": "$E$ est un Banach quelconque, éventuellement de dimension infinie : le déterminant n'y a pas de sens."
+      }
+    ],
+    "direction": "$\\sum \\|u^n\\| \\le \\sum \\|u\\|^n < +\\infty$, donc $v = \\sum_{n \\ge 0} u^n$ existe dans le Banach $\\mathcal L_c(E)$. Comme $(\\mathrm{id}_E - u)\\sum_{n=0}^N u^n = \\mathrm{id}_E - u^{N+1} \\to \\mathrm{id}_E$, on obtient $(\\mathrm{id}_E - u)v = v(\\mathrm{id}_E - u) = \\mathrm{id}_E$, avec $\\|v\\| \\le \\frac{1}{1 - \\|u\\|}$."
+  },
+  {
+    "id": "suites-series-fonctions-piste-12", "ch": "suites-series-fonctions", "type": "piste",
+    "enonce": "On pose $\\zeta(x) = \\displaystyle\\sum_{n \\ge 1} \\frac{1}{n^x}$ pour $x > 1$. Déterminer $\\displaystyle\\lim_{x \\to +\\infty} \\zeta(x)$.",
+    "choix": [
+      {
+        "titre": "Théorème de la double limite",
+        "info": "Si $\\sum f_n$ converge uniformément sur $[a, +\\infty[$ et si chaque $f_n$ a une limite finie $\\ell_n$ en $+\\infty$, alors $\\sum \\ell_n$ converge et la somme tend vers $\\sum \\ell_n$ en $+\\infty$.",
+        "verdict": "bon",
+        "retour": "Convergence normale sur $[2, +\\infty[$, et $\\frac1{n^x}$ tend vers $1$ si $n = 1$, vers $0$ si $n \\ge 2$."
+      },
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante, $f(n) \\le \\int_{n-1}^{n} f$ pour $n \\ge 2$ ; en sommant, on majore un reste par une intégrale.",
+        "verdict": "bon",
+        "retour": "$0 \\le \\zeta(x) - 1 = \\sum_{n \\ge 2} \\frac1{n^x} \\le \\int_1^{+\\infty} \\frac{\\mathrm dt}{t^x} = \\frac{1}{x - 1}$ : majoration explicite et immédiate."
+      },
+      {
+        "titre": "Continuité de $\\zeta$",
+        "info": "$\\zeta$ est continue sur $]1, +\\infty[$, par convergence normale sur tout $[a, +\\infty[$ avec $a > 1$.",
+        "verdict": "impasse",
+        "retour": "La continuité renseigne sur les limites en des points de $]1, +\\infty[$, pas en $+\\infty$."
+      },
+      {
+        "titre": "Équivalent $\\zeta(x) \\sim \\dfrac{1}{x - 1}$",
+        "info": "Par comparaison série-intégrale, $\\zeta(x) \\sim \\frac{1}{x-1}$ quand $x \\to 1^+$.",
+        "verdict": "impasse",
+        "retour": "Cet équivalent vaut au voisinage de $1$, pas de $+\\infty$ : il n'y donne pas la limite."
+      }
+    ],
+    "direction": "Pour $x \\ge 2$, $\\frac1{n^x} \\le \\frac1{n^2}$ : convergence normale sur $[2, +\\infty[$. La double limite donne $\\lim_{x \\to +\\infty} \\zeta(x) = 1 + 0 + 0 + \\cdots = 1$. Ou plus directement, $1 \\le \\zeta(x) \\le 1 + \\frac{1}{x-1}$."
+  }
+]

@@ -1,0 +1,624 @@
+[
+  {
+    "id": "fonctions-vf-01", "ch": "fonctions", "type": "vf",
+    "enonce": "Si $f$ est continue sur le segment $[a, b]$, alors $f([a, b])$ est un segment.",
+    "reponse": true,
+    "explication": "Par le théorème des bornes atteintes, $f$ admet un minimum $m$ et un maximum $M$ sur $[a, b]$. Par le théorème des valeurs intermédiaires, $f([a, b])$ est un intervalle contenant $m$ et $M$, donc $f([a, b]) = [m, M]$."
+  },
+  {
+    "id": "fonctions-vf-02", "ch": "fonctions", "type": "vf",
+    "enonce": "Toute fonction continue et bornée sur $]0, 1[$ atteint ses bornes.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = x$ est continue et bornée sur $]0, 1[$, mais $\\inf f = 0$ et $\\sup f = 1$ ne sont pas atteints. Le théorème des bornes atteintes demande un **segment**."
+  },
+  {
+    "id": "fonctions-vf-03", "ch": "fonctions", "type": "vf",
+    "enonce": "Toute fonction continue sur $]0, 1]$ est uniformément continue sur $]0, 1]$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = \\frac1x$. Avec $x_n = \\frac1n$ et $y_n = \\frac1{n+1}$, on a $|x_n - y_n| \\to 0$ mais $|f(x_n) - f(y_n)| = 1$. Le théorème de Heine demande un segment ; il s'applique ici si $f$ se prolonge par continuité en $0$."
+  },
+  {
+    "id": "fonctions-vf-04", "ch": "fonctions", "type": "vf",
+    "enonce": "Si $f$ est continue sur $[0, +\\infty[$ et admet une limite finie en $+\\infty$, alors $f$ est uniformément continue sur $[0, +\\infty[$.",
+    "reponse": true,
+    "explication": "Soit $\\varepsilon > 0$ et $A$ tel que $|f(x) - \\ell| \\le \\frac\\varepsilon2$ pour $x \\ge A$. Par Heine sur $[0, A+1]$, on obtient $\\delta \\le 1$. Si $|x - y| \\le \\delta$, soit $x, y \\ge A$, soit $x$ et $y$ sont tous deux dans $[0, A+1]$ : dans les deux cas $|f(x) - f(y)| \\le \\varepsilon$."
+  },
+  {
+    "id": "fonctions-vf-05", "ch": "fonctions", "type": "vf",
+    "enonce": "Toute fonction continue sur $\\mathbb R$ est limite uniforme sur $\\mathbb R$ d'une suite de fonctions polynomiales.",
+    "reponse": false,
+    "explication": "Le théorème de Weierstrass vaut sur un **segment**. Sur $\\mathbb R$, si $P_n \\to f$ uniformément, alors $P_n - P_N$ est bornée sur $\\mathbb R$ pour $n \\ge N$ assez grand, donc constante : $f$ est alors un polynôme. Ainsi $x \\mapsto e^x$ n'est pas limite uniforme de polynômes sur $\\mathbb R$."
+  },
+  {
+    "id": "fonctions-vf-06", "ch": "fonctions", "type": "vf",
+    "enonce": "Une fonction continue et injective sur un intervalle $I$ est strictement monotone sur $I$.",
+    "reponse": true,
+    "explication": "Sinon, on trouve $x < y < z$ dans $I$ avec $f(y)$ non compris entre $f(x)$ et $f(z)$, par exemple $f(y) > \\max(f(x), f(z))$. Le théorème des valeurs intermédiaires sur $[x, y]$ et sur $[y, z]$ fournit alors deux antécédents distincts d'une même valeur, ce qui contredit l'injectivité."
+  },
+  {
+    "id": "fonctions-vf-07", "ch": "fonctions", "type": "vf",
+    "enonce": "Toute fonction continue par morceaux sur $[a, b]$ est limite uniforme sur $[a, b]$ d'une suite de fonctions continues.",
+    "reponse": false,
+    "explication": "Une limite uniforme de fonctions continues est continue. Contre-exemple : l'indicatrice de $[\\frac12, 1]$ sur $[0, 1]$. Ce qui est vrai : toute fonction continue par morceaux est limite uniforme de fonctions **en escalier**, et toute fonction **continue** sur $[a, b]$ est limite uniforme de fonctions affines par morceaux continues."
+  },
+  {
+    "id": "fonctions-vf-08", "ch": "fonctions", "type": "vf",
+    "enonce": "Soit $f$ dérivable sur un intervalle $I$, avec $f' \\ge 0$ sur $I$ et $f'$ nulle seulement en un nombre fini de points. Alors $f$ est strictement croissante sur $I$.",
+    "reponse": true,
+    "explication": "$f$ est croissante. Si $f(a) = f(b)$ avec $a < b$, la croissance force $f$ à être constante sur $[a, b]$, donc $f' = 0$ en une infinité de points : contradiction. Le même argument vaut si les zéros de $f'$ ne contiennent aucun intervalle : ainsi $x \\mapsto x - \\sin x$, dont la dérivée s'annule en tous les $2k\\pi$, est strictement croissante sur $\\mathbb R$."
+  },
+  {
+    "id": "fonctions-vf-09", "ch": "fonctions", "type": "vf",
+    "enonce": "Si $f$ est dérivable sur $[1, +\\infty[$ et admet une limite finie en $+\\infty$, alors $f'(x) \\to 0$ quand $x \\to +\\infty$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = \\frac{\\sin(x^2)}{x} \\to 0$, mais $f'(x) = 2\\cos(x^2) - \\frac{\\sin(x^2)}{x^2}$ n'a pas de limite. C'est vrai si l'on sait que $f'$ admet une limite $\\ell$ : les accroissements finis sur $[x, x+1]$ imposent alors $\\ell = 0$."
+  },
+  {
+    "id": "fonctions-vf-10", "ch": "fonctions", "type": "vf",
+    "enonce": "Soit $f$ continue sur $[a, b]$, dérivable sur $]a, b]$, telle que $f'(x) \\to \\ell \\in \\mathbb R$ quand $x \\to a^+$. Alors $f$ est dérivable en $a$ et $f'(a) = \\ell$.",
+    "reponse": true,
+    "explication": "Pour $x \\in ]a, b]$, l'égalité des accroissements finis donne $c_x \\in ]a, x[$ tel que $\\frac{f(x) - f(a)}{x - a} = f'(c_x)$. Quand $x \\to a^+$, $c_x \\to a^+$, donc le taux d'accroissement tend vers $\\ell$. La continuité de $f$ en $a$ est indispensable."
+  },
+  {
+    "id": "fonctions-vf-11", "ch": "fonctions", "type": "vf",
+    "enonce": "Toute fonction dérivable sur $\\mathbb R$ est de classe $\\mathcal C^1$ sur $\\mathbb R$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = x^2 \\sin\\frac1x$, $f(0) = 0$. On a $f'(0) = \\lim x \\sin\\frac1x = 0$, et pour $x \\ne 0$, $f'(x) = 2x\\sin\\frac1x - \\cos\\frac1x$, qui n'a pas de limite en $0$."
+  },
+  {
+    "id": "fonctions-vf-12", "ch": "fonctions", "type": "vf",
+    "enonce": "Une fonction convexe de classe $\\mathcal C^1$ sur $\\mathbb R$ et majorée sur $\\mathbb R$ est constante.",
+    "reponse": true,
+    "explication": "La courbe est au-dessus de ses tangentes : $f(x) \\ge f(c) + f'(c)(x - c)$ pour tous $x, c$. Si $f'(c) \\ne 0$ pour un $c$, le membre de droite n'est pas majoré, ce qui contredit l'hypothèse. Donc $f' = 0$ sur l'intervalle $\\mathbb R$ et $f$ est constante."
+  },
+  {
+    "id": "fonctions-vf-13", "ch": "fonctions", "type": "vf",
+    "enonce": "Si $f$ admet un développement limité à l'ordre $2$ en $0$, alors $f$ est deux fois dérivable en $0$.",
+    "reponse": false,
+    "explication": "Vrai à l'ordre $1$ (DL d'ordre 1 équivaut à dérivable), faux au-delà. Contre-exemple : $f(x) = x^3\\sin\\frac1x$, $f(0) = 0$, vérifie $f(x) = o(x^2)$. Mais $f'(0) = 0$ et $\\frac{f'(x)}{x} = 3x\\sin\\frac1x - \\cos\\frac1x$ n'a pas de limite en $0$ : $f'$ n'est pas dérivable en $0$."
+  },
+  {
+    "id": "fonctions-vf-14", "ch": "fonctions", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ telle que $f(x + y) = f(x) + f(y)$ pour tous $x, y$, continue en $0$. Alors il existe $a \\in \\mathbb R$ tel que $f(x) = ax$ pour tout $x$.",
+    "reponse": true,
+    "explication": "$f(x + h) - f(x) = f(h) \\to f(0) = 0$, donc $f$ est continue partout. On montre $f(r) = r f(1)$ pour tout $r \\in \\mathbb Q$, puis on conclut par densité de $\\mathbb Q$ dans $\\mathbb R$ et continuité, avec $a = f(1)$."
+  },
+  {
+    "id": "fonctions-qcm-01", "ch": "fonctions", "type": "qcm",
+    "enonce": "Égalité des accroissements finis.\nSoit $f$ une fonction **[ ? ]**. Alors il existe $c \\in ]a, b[$ tel que $f(b) - f(a) = (b - a) f'(c)$.",
+    "choix": [
+      "à valeurs réelles, continue sur $[a, b]$ et dérivable sur $]a, b[$",
+      "à valeurs complexes, continue sur $[a, b]$ et dérivable sur $]a, b[$",
+      "à valeurs réelles, dérivable sur $]a, b[$",
+      "à valeurs réelles, continue sur $[a, b]$ et dérivable sur $]a, b[$ sauf en un point"
+    ],
+    "bonne": 0,
+    "explication": "Pour $f(t) = e^{it}$ sur $[0, 2\\pi]$, $f(2\\pi) - f(0) = 0$ alors que $|f'| = 1$ : seule l'**inégalité** passe aux fonctions complexes. Sans continuité aux bornes, $f = 0$ sur $[0, 1[$ et $f(1) = 1$ échoue. Avec un point de non-dérivabilité, $|x|$ sur $[-1, 2]$ échoue : le taux vaut $\\frac13$, et $f' = \\pm 1$."
+  },
+  {
+    "id": "fonctions-qcm-02", "ch": "fonctions", "type": "qcm",
+    "enonce": "Soit $f$ continue et strictement monotone sur un intervalle $I$, dérivable en $a \\in I$, et $b = f(a)$. Alors $f^{-1}$ est dérivable en $b$ **[ ? ]**.",
+    "choix": [
+      "si et seulement si $f'(a) \\ne 0$, et alors $(f^{-1})'(b) = \\frac{1}{f'(a)}$",
+      "toujours, et $(f^{-1})'(b) = \\frac{1}{f'(a)}$ lorsque $f'(a) \\ne 0$",
+      "si et seulement si $f'(a) \\ne 0$, et alors $(f^{-1})'(b) = \\frac{1}{f'(b)}$",
+      "si et seulement si $f'$ est continue en $a$"
+    ],
+    "bonne": 0,
+    "explication": "Si $f^{-1}$ est dérivable en $b$, dériver $f^{-1} \\circ f = \\mathrm{id}$ en $a$ donne $(f^{-1})'(b)\\, f'(a) = 1$, donc $f'(a) \\ne 0$. Contre-exemple au « toujours » : $f(x) = x^3$, de classe $\\mathcal C^1$, dont la réciproque $x \\mapsto x^{1/3}$ (prolongée aux négatifs) n'est pas dérivable en $0$."
+  },
+  {
+    "id": "fonctions-qcm-03", "ch": "fonctions", "type": "qcm",
+    "enonce": "Formule de Taylor avec reste intégral.\nSoit $n \\ge 1$ et $f$ de classe $\\mathcal C^{n+1}$ sur un intervalle contenant $a$ et $b$. Alors $f(b) = \\displaystyle\\sum_{k=0}^{n} \\frac{f^{(k)}(a)}{k!}(b-a)^k$ + **[ ? ]**.",
+    "choix": [
+      "$\\displaystyle\\int_a^b \\frac{(b-t)^n}{n!} f^{(n+1)}(t)\\,\\mathrm dt$",
+      "$\\displaystyle\\int_a^b \\frac{(b-t)^{n+1}}{(n+1)!} f^{(n+1)}(t)\\,\\mathrm dt$",
+      "$\\displaystyle\\int_a^b \\frac{(t-a)^n}{n!} f^{(n+1)}(t)\\,\\mathrm dt$",
+      "$\\displaystyle\\int_a^b \\frac{(b-t)^n}{n!} f^{(n)}(t)\\,\\mathrm dt$"
+    ],
+    "bonne": 0,
+    "explication": "Le poids est $(b - t)^n$, qui s'annule en $t = b$ : c'est ce qui fait marcher la récurrence par intégration par parties. Le leurre en $(t - a)^n$ est faux dès $n = 1$ : pour $f(t) = t^3$, $a = 0$, $b = 1$, le reste vaut $\\int_0^1 (1-t)\\,6t\\,\\mathrm dt = 1$, et non $\\int_0^1 t \\cdot 6t\\,\\mathrm dt = 2$."
+  },
+  {
+    "id": "fonctions-qcm-04", "ch": "fonctions", "type": "qcm",
+    "enonce": "Pour tout entier $n \\ge 2$, la dérivée $n$-ième de $x \\mapsto x^2 e^x$ est :",
+    "choix": [
+      "$\\left(x^2 + 2nx + n(n-1)\\right)e^x$",
+      "$\\left(x^2 + 2nx + n^2\\right)e^x$",
+      "$\\left(x^2 + 2nx + \\frac{n(n-1)}{2}\\right)e^x$",
+      "$\\left(x^2 + 2x + 2\\right)e^x$"
+    ],
+    "bonne": 0,
+    "explication": "Formule de Leibniz : $(fg)^{(n)} = \\sum_{k} \\binom nk f^{(k)} g^{(n-k)}$, avec $f = x^2$ dont seules les dérivées d'ordre $0, 1, 2$ sont non nulles. On obtient $x^2 + n \\cdot 2x + \\binom n2 \\cdot 2$. Oublier le facteur $2$ de $(x^2)''$ donne le troisième choix."
+  },
+  {
+    "id": "fonctions-qcm-05", "ch": "fonctions", "type": "qcm",
+    "enonce": "Soit $f$ de classe $\\mathcal C^1$ sur un intervalle $I$. Alors $f$ est convexe sur $I$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "$f'$ est croissante sur $I$",
+      "$f'$ est positive sur $I$",
+      "$f$ est deux fois dérivable sur $I$ et $f'' \\ge 0$",
+      "la courbe de $f$ est au-dessous de ses tangentes"
+    ],
+    "bonne": 0,
+    "explication": "$x \\mapsto x^2$ est convexe sans que $f'$ soit positive, et sa courbe est **au-dessus** de ses tangentes. Le critère $f'' \\ge 0$ suppose $f$ deux fois dérivable : $f(x) = x^2$ pour $x \\ge 0$, $f(x) = 0$ pour $x < 0$ est convexe et $\\mathcal C^1$, mais pas deux fois dérivable en $0$."
+  },
+  {
+    "id": "fonctions-qcm-06", "ch": "fonctions", "type": "qcm",
+    "enonce": "Le développement limité à l'ordre $3$ en $0$ de $x \\mapsto e^{\\sin x}$ est :",
+    "choix": [
+      "$1 + x + \\frac{x^2}{2} + o(x^3)$",
+      "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + o(x^3)$",
+      "$1 + x + \\frac{x^2}{2} - \\frac{x^3}{6} + o(x^3)$",
+      "$1 + x + \\frac{x^2}{2} + \\frac{x^3}{3} + o(x^3)$"
+    ],
+    "bonne": 0,
+    "explication": "Avec $u = \\sin x = x - \\frac{x^3}{6} + o(x^3)$ : $e^u = 1 + u + \\frac{u^2}{2} + \\frac{u^3}{6} + o(u^3)$, et $u^2 = x^2 + o(x^3)$, $u^3 = x^3 + o(x^3)$. Le $-\\frac{x^3}{6}$ de $u$ et le $\\frac{x^3}{6}$ de $\\frac{u^3}{6}$ se compensent."
+  },
+  {
+    "id": "fonctions-qcm-07", "ch": "fonctions", "type": "qcm",
+    "enonce": "Théorème de la bijection.\nSoit $f$ continue et strictement monotone sur un intervalle $I$. Alors **[ ? ]**.",
+    "choix": [
+      "$f(I)$ est un intervalle, et $f^{-1}$ est continue et de même monotonie que $f$",
+      "$f(I)$ est un segment, et $f^{-1}$ est continue",
+      "$f(I)$ est un intervalle, et $f^{-1}$ est dérivable sur $f(I)$",
+      "$f(I)$ est un intervalle, et $f^{-1}$ est de monotonie contraire à celle de $f$"
+    ],
+    "bonne": 0,
+    "explication": "$f(I)$ est un intervalle par le théorème des valeurs intermédiaires, mais pas forcément un segment ($f = \\mathrm{id}$ sur $\\mathbb R$). La réciproque n'est pas toujours dérivable : $x \\mapsto x^3$ a une réciproque non dérivable en $0$, car $f'(0) = 0$."
+  },
+  {
+    "id": "fonctions-qcm-08", "ch": "fonctions", "type": "qcm",
+    "enonce": "Les fonctions $f : \\mathbb R \\to \\mathbb R$ continues telles que $f(x + y) = f(x) f(y)$ pour tous $x, y$ réels sont :",
+    "choix": [
+      "la fonction nulle et les fonctions $x \\mapsto e^{ax}$, $a \\in \\mathbb R$",
+      "les fonctions $x \\mapsto e^{ax}$, $a \\in \\mathbb R$",
+      "la fonction nulle et les fonctions $x \\mapsto ax$, $a \\in \\mathbb R$",
+      "la fonction nulle et les fonctions $x \\mapsto e^{ax}$, $a > 0$"
+    ],
+    "bonne": 0,
+    "explication": "Si $f(x_0) = 0$, alors $f(x) = f(x_0) f(x - x_0) = 0$ pour tout $x$. Sinon $f(x) = f(\\frac x2)^2 > 0$, et $g = \\ln f$ est continue et additive, donc $g(x) = ax$. Oublier la solution nulle est l'erreur classique ; restreindre à $a > 0$ perd les exponentielles décroissantes et la constante $1$."
+  },
+  {
+    "id": "fonctions-err-01", "ch": "fonctions", "type": "erreur",
+    "enonce": "On veut montrer que toute fonction continue $f : [0, 1] \\to [0, 1]$ admet un point fixe. Voici une copie.",
+    "lignes": [
+      "On pose $g(x) = f(x) - x$ : $g$ est continue sur $[0, 1]$.",
+      "On a $g(0) = f(0) \\ge 0$ et $g(1) = f(1) - 1 \\le 0$.",
+      "D'après le théorème des valeurs intermédiaires, il existe $c \\in ]0, 1[$ tel que $g(c) = 0$, c'est-à-dire $f(c) = c$."
+    ],
+    "fausse": 2,
+    "explication": "Les inégalités sont larges : le théorème des valeurs intermédiaires donne seulement $c \\in [0, 1]$. Pour $f$ constante égale à $1$, le seul point fixe est $1$. Le résultat est juste, mais le point fixe peut être une extrémité."
+  },
+  {
+    "id": "fonctions-err-02", "ch": "fonctions", "type": "erreur",
+    "enonce": "On veut montrer que $|e^{ib} - e^{ia}| \\le |b - a|$ pour tous réels $a < b$. Voici une copie.",
+    "lignes": [
+      "La fonction $f : t \\mapsto e^{it}$ est de classe $\\mathcal C^1$ sur $\\mathbb R$ et $f'(t) = i e^{it}$.",
+      "Pour tout réel $t$, $|f'(t)| = 1$.",
+      "D'après l'égalité des accroissements finis, il existe $c \\in ]a, b[$ tel que $e^{ib} - e^{ia} = i(b - a)e^{ic}$, d'où l'inégalité en passant au module."
+    ],
+    "fausse": 2,
+    "explication": "L'égalité des accroissements finis (Rolle) est fausse pour une fonction à valeurs complexes : avec $a = 0$, $b = 2\\pi$, le membre de gauche est nul et celui de droite ne l'est pas. Il faut citer l'**inégalité** des accroissements finis, valable dans $\\mathbb C$ : $|f(b) - f(a)| \\le \\sup |f'| \\cdot |b - a|$."
+  },
+  {
+    "id": "fonctions-err-03", "ch": "fonctions", "type": "erreur",
+    "enonce": "Soit $f$ continue sur $\\mathbb R$ et $T$-périodique ($T > 0$). On veut montrer que $f$ est uniformément continue sur $\\mathbb R$. Voici une copie.",
+    "lignes": [
+      "Par le théorème de Heine, $f$ est uniformément continue sur le segment $[0, T]$.",
+      "Soit $\\varepsilon > 0$ et $\\delta > 0$ tel que, pour $x, y \\in [0, T]$, $|x - y| \\le \\delta \\Rightarrow |f(x) - f(y)| \\le \\varepsilon$.",
+      "Par périodicité, $f(x - kT) = f(x)$ pour tout réel $x$ et tout $k \\in \\mathbb Z$.",
+      "Soient $x, y$ réels avec $|x - y| \\le \\delta$. En choisissant $k$ tel que $x - kT \\in [0, T]$, on a aussi $y - kT \\in [0, T]$, d'où $|f(x) - f(y)| \\le \\varepsilon$."
+    ],
+    "fausse": 3,
+    "explication": "Deux points proches peuvent être de part et d'autre d'un multiple de $T$ : pour $x = T - \\frac\\delta4$ et $y = T + \\frac\\delta4$ (avec $\\delta < T$), aucun $k$ ne les ramène tous deux dans $[0, T]$. On répare en appliquant Heine sur $[0, 2T]$, en imposant $\\delta \\le T$ et en ramenant le plus petit des deux points dans $[0, T]$ : l'autre tombe alors dans $[0, 2T]$. Le jury signale régulièrement cet oubli."
+  },
+  {
+    "id": "fonctions-err-04", "ch": "fonctions", "type": "erreur",
+    "enonce": "On veut montrer que $\\mathrm{Arctan}\\, x + \\mathrm{Arctan}\\, \\frac1x = \\frac\\pi2$ pour tout réel $x \\ne 0$. Voici une copie.",
+    "lignes": [
+      "La fonction $g : x \\mapsto \\mathrm{Arctan}\\, x + \\mathrm{Arctan}\\, \\frac1x$ est dérivable sur $\\mathbb R^*$.",
+      "Pour $x \\ne 0$, $g'(x) = \\frac{1}{1+x^2} - \\frac{1}{x^2} \\cdot \\frac{1}{1 + 1/x^2} = 0$.",
+      "La dérivée de $g$ est nulle sur $\\mathbb R^*$, donc $g$ est constante sur $\\mathbb R^*$.",
+      "On a $g(1) = \\frac\\pi4 + \\frac\\pi4 = \\frac\\pi2$."
+    ],
+    "fausse": 2,
+    "explication": "Une dérivée nulle donne une fonction constante sur un **intervalle**, et $\\mathbb R^*$ n'en est pas un. $g$ est constante sur $]0, +\\infty[$ et sur $]-\\infty, 0[$ séparément : $g(-1) = -\\frac\\pi2$. La formule n'est vraie que pour $x > 0$."
+  },
+  {
+    "id": "fonctions-err-05", "ch": "fonctions", "type": "erreur",
+    "enonce": "On étudie si $f : x \\mapsto \\sin x - x$ admet un extremum local en $0$. Voici une copie.",
+    "lignes": [
+      "$f$ est de classe $\\mathcal C^\\infty$ sur $\\mathbb R$, avec $f'(x) = \\cos x - 1$, donc $f'(0) = 0$.",
+      "$0$ est un point intérieur où $f'$ s'annule : la condition nécessaire d'extremum est satisfaite.",
+      "On a $f''(x) = -\\sin x$, donc $f''(0) = 0$.",
+      "En un point critique, une dérivée seconde positive ou nulle donne un minimum local : $f$ admet un minimum local en $0$."
+    ],
+    "fausse": 3,
+    "explication": "La condition suffisante est $f''(a) > 0$, stricte. Si $f''(a) = 0$, on ne peut rien conclure à l'ordre 2. Ici $f(x) = -\\frac{x^3}{6} + o(x^3)$ change de signe en $0$ : pas d'extremum. D'ailleurs $f' \\le 0$, donc $f$ est décroissante."
+  },
+  {
+    "id": "fonctions-err-06", "ch": "fonctions", "type": "erreur",
+    "enonce": "On cherche un équivalent de $f(x) = \\left(1 + \\frac1x\\right)^{x^2}$ quand $x \\to +\\infty$. Voici une copie.",
+    "lignes": [
+      "Pour $x > 0$, $f(x) = \\exp\\!\\left(x^2 \\ln\\!\\left(1 + \\frac1x\\right)\\right)$.",
+      "Quand $x \\to +\\infty$, $\\ln\\!\\left(1 + \\frac1x\\right) \\sim \\frac1x$.",
+      "Donc $x^2 \\ln\\!\\left(1 + \\frac1x\\right) \\sim x$.",
+      "Donc $f(x) \\sim e^x$."
+    ],
+    "fausse": 3,
+    "explication": "On ne compose pas un équivalent par l'exponentielle : $e^{u} \\sim e^{v}$ équivaut à $u - v \\to 0$. Il faut un ordre de plus : $x^2 \\ln\\!\\left(1 + \\frac1x\\right) = x - \\frac12 + O\\!\\left(\\frac1x\\right)$, donc $f(x) \\sim e^{-1/2} e^x$."
+  },
+  {
+    "id": "fonctions-piste-01", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $n \\ge 1$. Montrer que l'équation $x^n + x = 1$ admet une unique solution $x_n$ dans $[0, 1]$.",
+    "choix": [
+      {
+        "titre": "Théorème de la bijection",
+        "info": "Une fonction continue et strictement monotone sur un intervalle $I$ réalise une bijection de $I$ sur l'intervalle $f(I)$.",
+        "verdict": "bon",
+        "retour": "$g_n(x) = x^n + x - 1$ est continue et strictement croissante sur $[0, 1]$, avec $g_n(0) = -1$ et $g_n(1) = 1$ : existence et unicité d'un coup."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires seul",
+        "info": "Si $f$ est continue sur $[a, b]$, elle prend toute valeur comprise entre $f(a)$ et $f(b)$.",
+        "verdict": "possible",
+        "retour": "Il donne l'existence d'un zéro de $g_n$, pas l'unicité."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f$ est continue sur $[a, b]$, dérivable sur $]a, b[$ et $f(a) = f(b)$, il existe $c \\in ]a, b[$ tel que $f'(c) = 0$.",
+        "verdict": "possible",
+        "retour": "Deux zéros de $g_n$ donneraient un zéro de $g_n'(x) = nx^{n-1} + 1 > 0$ : cela prouve l'unicité, mais pas l'existence."
+      },
+      {
+        "titre": "Théorème des bornes atteintes",
+        "info": "Une fonction continue sur un segment est bornée et atteint ses bornes.",
+        "verdict": "impasse",
+        "retour": "Savoir que $g_n$ a un minimum et un maximum ne dit rien sur l'annulation de $g_n$."
+      }
+    ],
+    "direction": "On pose $g_n(x) = x^n + x - 1$, continue et strictement croissante sur $[0, 1]$ (somme d'une fonction croissante et d'une strictement croissante). Elle réalise une bijection de $[0, 1]$ sur $[-1, 1]$, qui contient $0$ : d'où un unique $x_n$, et même $x_n \\in ]0, 1[$."
+  },
+  {
+    "id": "fonctions-piste-02", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $f$ continue sur $[0, 1]$ telle que $f(0) = f(1)$. Montrer qu'il existe $c \\in \\left[0, \\frac12\\right]$ tel que $f\\!\\left(c + \\frac12\\right) = f(c)$.",
+    "choix": [
+      {
+        "titre": "Valeurs intermédiaires sur une fonction auxiliaire",
+        "info": "Si $g$ est continue sur un segment et prend en deux points des valeurs de signes opposés (au sens large), elle s'annule entre ces deux points.",
+        "verdict": "bon",
+        "retour": "La fonction $g(x) = f\\!\\left(x + \\frac12\\right) - f(x)$ sur $\\left[0, \\frac12\\right]$ est faite pour ça."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f$ est continue sur $[a, b]$, dérivable sur $]a, b[$ et $f(a) = f(b)$, il existe $c \\in ]a, b[$ tel que $f'(c) = 0$.",
+        "verdict": "impasse",
+        "retour": "$f$ n'est pas supposée dérivable, et une tangente horizontale ne dit rien sur une corde de longueur $\\frac12$."
+      },
+      {
+        "titre": "Égalité des accroissements finis",
+        "info": "Si $f$ est continue sur $[a, b]$ et dérivable sur $]a, b[$, il existe $c \\in ]a, b[$ tel que $f(b) - f(a) = (b - a)f'(c)$.",
+        "verdict": "impasse",
+        "retour": "Même obstacle : pas de dérivabilité, et la conclusion porte sur $f'$, pas sur $f$."
+      },
+      {
+        "titre": "Théorème des bornes atteintes",
+        "info": "Une fonction continue sur un segment est bornée et atteint ses bornes.",
+        "verdict": "impasse",
+        "retour": "Connaître le point où $f$ est maximale ne fournit pas directement deux points distants de $\\frac12$ de même image."
+      }
+    ],
+    "direction": "On pose $g(x) = f\\!\\left(x + \\frac12\\right) - f(x)$, continue sur $\\left[0, \\frac12\\right]$. Alors $g(0) + g\\!\\left(\\frac12\\right) = f(1) - f(0) = 0$ : $g(0)$ et $g\\!\\left(\\frac12\\right)$ sont de signes opposés au sens large, et le théorème des valeurs intermédiaires donne $c \\in \\left[0, \\frac12\\right]$ avec $g(c) = 0$."
+  },
+  {
+    "id": "fonctions-piste-03", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $f$ de classe $\\mathcal C^2$ sur $[a, b]$ telle que $f(a) = f(b) = 0$, et $M_2 = \\sup_{[a, b]} |f''|$. Montrer que $|f(x)| \\le \\frac{M_2}{2}(x - a)(b - x)$ pour tout $x \\in [a, b]$.",
+    "choix": [
+      {
+        "titre": "Fonction auxiliaire et Rolle appliqué deux fois",
+        "info": "Si une fonction deux fois dérivable s'annule en trois points distincts, sa dérivée seconde s'annule au moins une fois (Rolle sur la fonction, puis sur sa dérivée).",
+        "verdict": "bon",
+        "retour": "Pour $x_0$ fixé dans $]a, b[$, on choisit $K$ pour que $\\varphi(t) = f(t) - K(t - a)(t - b)$ s'annule en $x_0$ : $\\varphi$ s'annule en $a$, $x_0$, $b$."
+      },
+      {
+        "titre": "Convexité",
+        "info": "Une fonction de classe $\\mathcal C^2$ telle que $g'' \\ge 0$ est convexe, et sa courbe est au-dessous de ses cordes.",
+        "verdict": "bon",
+        "retour": "$g = f + \\frac{M_2}{2}(t - a)(t - b)$ vérifie $g'' = f'' + M_2 \\ge 0$ et $g(a) = g(b) = 0$, donc $g \\le 0$ sur $[a, b]$. Même chose avec $-f$."
+      },
+      {
+        "titre": "Taylor-Lagrange en $a$",
+        "info": "Si $f$ est de classe $\\mathcal C^2$ sur $[a, b]$, $|f(x) - f(a) - f'(a)(x - a)| \\le \\frac{M_2}{2}(x - a)^2$.",
+        "verdict": "impasse",
+        "retour": "Le terme $f'(a)$ est inconnu, et la majoration ne fait pas apparaître le facteur $(b - x)$."
+      },
+      {
+        "titre": "Inégalité des accroissements finis",
+        "info": "Si $|f'| \\le M_1$ sur $[a, b]$, alors $|f(x) - f(y)| \\le M_1 |x - y|$.",
+        "verdict": "impasse",
+        "retour": "Elle donne une borne en $M_1 \\min(x - a, b - x)$, qui porte sur $f'$ et pas sur $f''$."
+      }
+    ],
+    "direction": "Avec la fonction auxiliaire : $\\varphi$ s'annule en $a < x_0 < b$, donc par Rolle deux fois il existe $\\xi$ avec $\\varphi''(\\xi) = 0$, soit $f''(\\xi) = 2K$. Alors $|K| \\le \\frac{M_2}{2}$ et $|f(x_0)| = |K|(x_0 - a)(b - x_0)$ donne le résultat."
+  },
+  {
+    "id": "fonctions-piste-04", "ch": "fonctions", "type": "piste",
+    "enonce": "Montrer que pour tout réel $x$, $\\displaystyle e^x = \\lim_{n \\to +\\infty} \\sum_{k=0}^{n} \\frac{x^k}{k!}$, l'exponentielle étant définie comme l'unique solution de $y' = y$, $y(0) = 1$.",
+    "choix": [
+      {
+        "titre": "Inégalité de Taylor-Lagrange",
+        "info": "Si $f$ est de classe $\\mathcal C^{n+1}$ sur un intervalle contenant $0$ et $x$, alors $\\left|f(x) - \\sum_{k=0}^n \\frac{f^{(k)}(0)}{k!}x^k\\right| \\le \\frac{|x|^{n+1}}{(n+1)!} \\sup |f^{(n+1)}|$, le sup étant pris entre $0$ et $x$.",
+        "verdict": "bon",
+        "retour": "Toutes les dérivées de $\\exp$ valent $\\exp$, majorée par $e^{|x|}$ entre $0$ et $x$ : le reste est contrôlé à $x$ fixé."
+      },
+      {
+        "titre": "Formule de Taylor avec reste intégral",
+        "info": "$f(x) = \\sum_{k=0}^n \\frac{f^{(k)}(0)}{k!}x^k + \\int_0^x \\frac{(x - t)^n}{n!} f^{(n+1)}(t)\\,\\mathrm dt$ pour $f$ de classe $\\mathcal C^{n+1}$.",
+        "verdict": "bon",
+        "retour": "On majore l'intégrale exactement comme dans Taylor-Lagrange : même route, écrite à la main."
+      },
+      {
+        "titre": "Formule de Taylor-Young",
+        "info": "Si $f$ est de classe $\\mathcal C^n$ au voisinage de $0$, alors $f(x) = \\sum_{k=0}^n \\frac{f^{(k)}(0)}{k!}x^k + o(x^n)$ quand $x \\to 0$.",
+        "verdict": "impasse",
+        "retour": "C'est un résultat local, à $n$ fixé quand $x \\to 0$. Ici $x$ est fixé et $n \\to +\\infty$ : il faut un contrôle **global** du reste."
+      },
+      {
+        "titre": "Théorème de Weierstrass",
+        "info": "Toute fonction continue sur un segment est limite uniforme sur ce segment d'une suite de polynômes.",
+        "verdict": "impasse",
+        "retour": "Il affirme l'existence de polynômes approchants, sans dire que ce sont les sommes partielles $\\sum_{k \\le n} \\frac{x^k}{k!}$."
+      }
+    ],
+    "direction": "Pour $x$ fixé, Taylor-Lagrange donne $\\left|e^x - \\sum_{k=0}^n \\frac{x^k}{k!}\\right| \\le \\frac{|x|^{n+1}}{(n+1)!} e^{|x|}$. Comme $\\frac{|x|^{n}}{n!} \\to 0$ (le quotient de deux termes consécutifs tend vers $0$), le reste tend vers $0$."
+  },
+  {
+    "id": "fonctions-piste-05", "ch": "fonctions", "type": "piste",
+    "enonce": "Montrer que pour tout $x \\in \\left[0, \\frac\\pi2\\right]$, $\\sin x \\ge \\frac{2}{\\pi}x$.",
+    "choix": [
+      {
+        "titre": "Concavité et position par rapport à une corde",
+        "info": "Si $f$ est concave sur $I$, sa courbe est au-dessus de chacune de ses cordes sur l'intervalle correspondant. Pour $f$ de classe $\\mathcal C^2$, $f$ est concave si et seulement si $f'' \\le 0$.",
+        "verdict": "bon",
+        "retour": "$\\sin'' = -\\sin \\le 0$ sur $\\left[0, \\frac\\pi2\\right]$, et la droite $y = \\frac2\\pi x$ est la corde entre $(0, 0)$ et $\\left(\\frac\\pi2, 1\\right)$."
+      },
+      {
+        "titre": "Étudier les variations de $x \\mapsto \\frac{\\sin x}{x}$",
+        "info": "Une fonction dérivable sur un intervalle, de dérivée négative, est décroissante.",
+        "verdict": "possible",
+        "retour": "La dérivée est du signe de $x\\cos x - \\sin x$, qu'il faut à son tour étudier. Ça aboutit, mais en deux étapes."
+      },
+      {
+        "titre": "Minoration de Taylor : $\\sin x \\ge x - \\frac{x^3}{6}$",
+        "info": "Pour $x \\ge 0$, en intégrant trois fois l'inégalité $\\cos t \\le 1$ sur $[0, x]$, on obtient $\\sin x \\ge x - \\frac{x^3}{6}$.",
+        "verdict": "impasse",
+        "retour": "La minoration est trop faible près de $\\frac\\pi2$ : $\\frac\\pi2 - \\frac{\\pi^3}{48} \\approx 0{,}92 < 1$."
+      },
+      {
+        "titre": "Inégalité des accroissements finis",
+        "info": "Si $|f'| \\le M$ sur un intervalle, alors $|f(x) - f(y)| \\le M|x - y|$.",
+        "verdict": "impasse",
+        "retour": "Avec $|\\cos| \\le 1$, on obtient $\\sin x \\le x$ : une majoration, pas la minoration voulue."
+      }
+    ],
+    "direction": "$\\sin$ est concave sur $\\left[0, \\frac\\pi2\\right]$ car $\\sin'' = -\\sin \\le 0$. Sa courbe est donc au-dessus de la corde joignant $(0, 0)$ à $\\left(\\frac\\pi2, 1\\right)$, d'équation $y = \\frac2\\pi x$. C'est l'inégalité de Jordan."
+  },
+  {
+    "id": "fonctions-piste-06", "ch": "fonctions", "type": "piste",
+    "enonce": "Déterminer $\\displaystyle\\lim_{x \\to 0} \\left(\\frac{1}{\\sin^2 x} - \\frac{1}{x^2}\\right)$.",
+    "choix": [
+      {
+        "titre": "Réduire au même dénominateur et développer",
+        "info": "On écrit l'expression comme un quotient, on cherche un équivalent du dénominateur, puis on développe le numérateur jusqu'au premier terme non nul.",
+        "verdict": "bon",
+        "retour": "Le dénominateur $x^2\\sin^2 x$ est équivalent à $x^4$ : il faut développer $x^2 - \\sin^2 x$ à l'ordre $4$."
+      },
+      {
+        "titre": "Factoriser $\\sin x = x\\left(1 - \\frac{x^2}{6} + o(x^2)\\right)$",
+        "info": "$(1 + u)^\\alpha = 1 + \\alpha u + o(u)$ quand $u \\to 0$. Factoriser le terme dominant permet de développer un inverse ou une puissance.",
+        "verdict": "bon",
+        "retour": "On obtient $\\frac{1}{\\sin^2 x} = \\frac{1}{x^2}\\left(1 + \\frac{x^2}{3} + o(x^2)\\right)$ : la limite se lit directement."
+      },
+      {
+        "titre": "Équivalents : $\\sin^2 x \\sim x^2$",
+        "info": "Les équivalents se multiplient et se divisent, mais ne s'additionnent pas en général.",
+        "verdict": "impasse",
+        "retour": "On obtiendrait la forme « $\\frac1{x^2} - \\frac1{x^2}$ », qui ne dit rien : les termes principaux se compensent."
+      },
+      {
+        "titre": "Règle de L'Hospital",
+        "info": "Hors programme, à redémontrer avant usage. Si $f$ et $g$ sont continues en $a$, dérivables près de $a$ sauf peut-être en $a$, avec $f(a) = g(a) = 0$, $g' \\ne 0$ près de $a$ sauf en $a$ et $\\frac{f'}{g'} \\to \\ell$ en $a$, alors $\\frac fg \\to \\ell$ en $a$.",
+        "verdict": "possible",
+        "retour": "Sur $\\frac{x^2 - \\sin^2 x}{x^2 \\sin^2 x}$, il faut l'appliquer quatre fois : lourd, source d'erreurs, et hors programme, donc à redémontrer sur la copie."
+      }
+    ],
+    "direction": "$\\sin^2 x = x^2 - \\frac{x^4}{3} + o(x^4)$, donc $x^2 - \\sin^2 x = \\frac{x^4}{3} + o(x^4)$ et $x^2\\sin^2 x \\sim x^4$. La limite vaut $\\frac13$."
+  },
+  {
+    "id": "fonctions-piste-07", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $f$ continue sur $[a, b]$. Montrer que $\\displaystyle\\int_a^b f(t)\\sin(nt)\\,\\mathrm dt \\to 0$ quand $n \\to +\\infty$.",
+    "choix": [
+      {
+        "titre": "Approximation uniforme par des fonctions en escalier",
+        "info": "Pour toute $f$ continue sur $[a, b]$ et tout $\\varepsilon > 0$, il existe une fonction en escalier $\\varphi$ telle que $\\sup_{[a, b]}|f - \\varphi| \\le \\varepsilon$.",
+        "verdict": "bon",
+        "retour": "Sur un intervalle où $\\varphi$ vaut $c$, l'intégrale de $c\\sin(nt)$ se calcule et est en $O\\!\\left(\\frac1n\\right)$."
+      },
+      {
+        "titre": "Intégration par parties",
+        "info": "Si $u$ et $v$ sont de classe $\\mathcal C^1$ sur $[a, b]$, $\\int_a^b u v' = [uv]_a^b - \\int_a^b u' v$.",
+        "verdict": "possible",
+        "retour": "Elle règle le cas où $f$ est de classe $\\mathcal C^1$ (le crochet et l'intégrale sont en $O\\!\\left(\\frac1n\\right)$), mais $f$ est seulement continue."
+      },
+      {
+        "titre": "Théorème de Weierstrass, puis intégration par parties",
+        "info": "Toute fonction continue sur un segment est limite uniforme sur ce segment d'une suite de polynômes.",
+        "verdict": "bon",
+        "retour": "On approche $f$ à $\\varepsilon$ près par un polynôme $P$, pour lequel l'intégration par parties fonctionne."
+      },
+      {
+        "titre": "Convergence dominée",
+        "info": "Si $g_n \\to g$ simplement et $|g_n| \\le h$ intégrable, alors $\\int g_n \\to \\int g$.",
+        "verdict": "impasse",
+        "retour": "La domination $|f(t)\\sin(nt)| \\le |f(t)|$ est là, mais $\\sin(nt)$ ne converge pas simplement : le théorème ne s'applique pas."
+      }
+    ],
+    "direction": "Soit $\\varepsilon > 0$ et $\\varphi$ en escalier avec $|f - \\varphi| \\le \\varepsilon$. Alors $\\left|\\int_a^b (f - \\varphi)(t)\\sin(nt)\\,\\mathrm dt\\right| \\le (b - a)\\varepsilon$, et $\\int_a^b \\varphi(t)\\sin(nt)\\,\\mathrm dt$ est une somme finie de termes $\\frac{c_k}{n}\\left(\\cos(n a_k) - \\cos(n a_{k+1})\\right)$, qui tend vers $0$."
+  },
+  {
+    "id": "fonctions-piste-08", "ch": "fonctions", "type": "piste",
+    "enonce": "Déterminer les fonctions $f : \\mathbb R \\to \\mathbb R$ continues telles que $f(x + y) = f(x) + f(y)$ pour tous réels $x, y$.",
+    "choix": [
+      {
+        "titre": "Passer par $\\mathbb N$, $\\mathbb Z$, $\\mathbb Q$, puis densité",
+        "info": "Deux fonctions continues sur $\\mathbb R$ qui coïncident sur une partie dense de $\\mathbb R$ sont égales.",
+        "verdict": "bon",
+        "retour": "L'équation donne $f(r) = r f(1)$ pour tout rationnel $r$ ; la continuité étend l'égalité à $\\mathbb R$."
+      },
+      {
+        "titre": "Régulariser par intégration",
+        "info": "Si $f$ est continue, $F : x \\mapsto \\int_0^x f(t)\\,\\mathrm dt$ est de classe $\\mathcal C^1$ et $F' = f$.",
+        "verdict": "bon",
+        "retour": "En intégrant l'équation en $y$ sur $[0, 1]$, on obtient $f(x) = F(x + 1) - F(x) - F(1)$ : $f$ est $\\mathcal C^1$, et on peut alors dériver en $y$."
+      },
+      {
+        "titre": "Dériver l'équation par rapport à $y$",
+        "info": "Si $f$ est dérivable, dériver $f(x + y) = f(x) + f(y)$ par rapport à $y$ donne $f'(x + y) = f'(y)$.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement supposée continue : dériver n'est pas permis sans régularisation préalable."
+      },
+      {
+        "titre": "Chercher $f$ sous forme polynomiale",
+        "info": "On pose $f(x) = \\sum_k a_k x^k$ et on identifie les coefficients dans l'équation.",
+        "verdict": "impasse",
+        "retour": "On trouve que les solutions polynomiales sont les $x \\mapsto ax$, mais rien ne dit qu'il n'y en a pas d'autres."
+      }
+    ],
+    "direction": "$f(0) = 0$, puis $f(nx) = n f(x)$ pour $n \\in \\mathbb N$, $f(-x) = -f(x)$, et $f\\!\\left(\\frac pq\\right) = \\frac pq f(1)$. Les fonctions continues $f$ et $x \\mapsto f(1)x$ coïncident sur $\\mathbb Q$, dense, donc partout. Réciproquement, les $x \\mapsto ax$ conviennent."
+  },
+  {
+    "id": "fonctions-piste-09", "ch": "fonctions", "type": "piste",
+    "enonce": "Montrer que pour tout réel $x$, $\\mathrm{Arctan}(\\mathrm{sh}\\, x) = \\mathrm{Arcsin}(\\mathrm{th}\\, x)$.",
+    "choix": [
+      {
+        "titre": "Dériver la différence",
+        "info": "Une fonction dérivable de dérivée nulle sur un **intervalle** y est constante.",
+        "verdict": "bon",
+        "retour": "Les deux membres ont pour dérivée $\\frac{1}{\\mathrm{ch}\\, x}$ sur l'intervalle $\\mathbb R$, et ils sont égaux en $0$."
+      },
+      {
+        "titre": "Composer par $\\sin$ en contrôlant les intervalles",
+        "info": "$\\sin$ réalise une bijection de $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$ sur $[-1, 1]$, de réciproque $\\mathrm{Arcsin}$. Et $\\sin(\\mathrm{Arctan}\\, u) = \\frac{u}{\\sqrt{1 + u^2}}$.",
+        "verdict": "bon",
+        "retour": "$y = \\mathrm{Arctan}(\\mathrm{sh}\\, x)$ est dans $\\left]-\\frac\\pi2, \\frac\\pi2\\right[$ et $\\sin y = \\frac{\\mathrm{sh}\\, x}{\\mathrm{ch}\\, x} = \\mathrm{th}\\, x$, donc $y = \\mathrm{Arcsin}(\\mathrm{th}\\, x)$."
+      },
+      {
+        "titre": "Développements limités en $0$",
+        "info": "Deux fonctions qui ont le même développement limité en $0$ à l'ordre $n$ coïncident à $o(x^n)$ près au voisinage de $0$.",
+        "verdict": "impasse",
+        "retour": "Une information locale, même à tout ordre, ne prouve pas une égalité sur $\\mathbb R$."
+      },
+      {
+        "titre": "Formule d'addition des arctangentes",
+        "info": "Si $ab < 1$, $\\mathrm{Arctan}\\, a + \\mathrm{Arctan}\\, b = \\mathrm{Arctan}\\frac{a + b}{1 - ab}$.",
+        "verdict": "impasse",
+        "retour": "Il n'y a pas de somme d'arctangentes ici, et le membre de droite fait intervenir $\\mathrm{Arcsin}$."
+      }
+    ],
+    "direction": "$\\frac{\\mathrm d}{\\mathrm dx}\\mathrm{Arctan}(\\mathrm{sh}\\, x) = \\frac{\\mathrm{ch}\\, x}{1 + \\mathrm{sh}^2 x} = \\frac{1}{\\mathrm{ch}\\, x}$, et $\\frac{\\mathrm d}{\\mathrm dx}\\mathrm{Arcsin}(\\mathrm{th}\\, x) = \\frac{1/\\mathrm{ch}^2 x}{\\sqrt{1 - \\mathrm{th}^2 x}} = \\frac{1}{\\mathrm{ch}\\, x}$. La différence est constante sur $\\mathbb R$ et nulle en $0$."
+  },
+  {
+    "id": "fonctions-piste-10", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $n \\ge 1$ et $L_n$ la dérivée $n$-ième du polynôme $(X^2 - 1)^n$. Montrer que $L_n$ a $n$ racines réelles distinctes, toutes dans $]-1, 1[$.",
+    "choix": [
+      {
+        "titre": "Théorème de Rolle itéré",
+        "info": "Si une fonction dérivable s'annule en $p$ points distincts, sa dérivée s'annule en au moins $p - 1$ points distincts, un dans chaque intervalle ouvert entre deux zéros consécutifs.",
+        "verdict": "bon",
+        "retour": "Comme $\\pm 1$ sont racines d'ordre $n$ de $(X^2 - 1)^n$, ses dérivées d'ordre $k < n$ s'annulent encore en $\\pm 1$ : on garde des zéros aux bords à chaque étape."
+      },
+      {
+        "titre": "Orthogonalité",
+        "info": "Par $n$ intégrations par parties, $\\int_{-1}^1 L_n(t) Q(t)\\,\\mathrm dt = 0$ pour tout polynôme $Q$ de degré $< n$.",
+        "verdict": "possible",
+        "retour": "En prenant pour $Q$ le produit des $(X - x_i)$ sur les racines où $L_n$ change de signe, on conclut. Ça marche, mais c'est plus long."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Une fonction continue qui change de signe sur un intervalle s'y annule.",
+        "verdict": "impasse",
+        "retour": "Il faudrait connaître $n + 1$ points où le signe de $L_n$ alterne, ce qu'on ignore."
+      },
+      {
+        "titre": "Développer par la formule du binôme",
+        "info": "$(X^2 - 1)^n = \\sum_{k=0}^n \\binom nk (-1)^{n-k} X^{2k}$, qu'on peut dériver $n$ fois terme à terme.",
+        "verdict": "impasse",
+        "retour": "On obtient les coefficients de $L_n$, mais ils ne disent rien de visible sur ses racines."
+      }
+    ],
+    "direction": "Par récurrence sur $k \\in [\\![0, n-1]\\!]$ : $P^{(k)}$ s'annule en $-1$, en $1$ (formule de Leibniz) et en $k$ points distincts de $]-1, 1[$. Rolle donne $k + 1$ zéros distincts de $P^{(k+1)}$ dans $]-1, 1[$. Pour $k + 1 = n$, $L_n$ est de degré $n$ : ce sont toutes ses racines."
+  },
+  {
+    "id": "fonctions-piste-11", "ch": "fonctions", "type": "piste",
+    "enonce": "Soit $f$ définie sur $\\mathbb R$ par $f(x) = e^{-1/x^2}$ si $x \\ne 0$ et $f(0) = 0$. Montrer que $f$ est de classe $\\mathcal C^\\infty$ sur $\\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Forme des dérivées et théorème de la limite de la dérivée",
+        "info": "Si $g$ est continue sur un intervalle $I$, dérivable sur $I \\setminus \\{a\\}$, et si $g'(x) \\to \\ell$ quand $x \\to a$, alors $g$ est dérivable en $a$ et $g'(a) = \\ell$.",
+        "verdict": "bon",
+        "retour": "Pour $x \\ne 0$, $f^{(n)}(x) = P_n\\!\\left(\\frac1x\\right)e^{-1/x^2}$ avec $P_n$ polynôme, et cela tend vers $0$ en $0$ par croissances comparées."
+      },
+      {
+        "titre": "Récurrence avec le taux d'accroissement en $0$",
+        "info": "$g$ est dérivable en $a$ si et seulement si $\\frac{g(x) - g(a)}{x - a}$ admet une limite finie quand $x \\to a$.",
+        "verdict": "bon",
+        "retour": "Si $f^{(n)}(0) = 0$, le taux vaut $\\frac1x P_n\\!\\left(\\frac1x\\right)e^{-1/x^2} \\to 0$ : même calcul de croissances comparées."
+      },
+      {
+        "titre": "Composition de fonctions de classe $\\mathcal C^\\infty$",
+        "info": "La composée de deux fonctions de classe $\\mathcal C^k$ est de classe $\\mathcal C^k$.",
+        "verdict": "impasse",
+        "retour": "$x \\mapsto -\\frac1{x^2}$ n'est pas définie en $0$ : le théorème ne donne la régularité que sur $\\mathbb R^*$, et tout se joue en $0$."
+      },
+      {
+        "titre": "Développements limités en $0$",
+        "info": "Pour tout $n$, $f(x) = o(x^n)$ quand $x \\to 0$ : $f$ admet en $0$ un développement limité nul à tout ordre.",
+        "verdict": "impasse",
+        "retour": "Un DL d'ordre $n \\ge 2$ n'entraîne pas la dérivabilité $n$ fois : il ne prouve rien sur $f^{(n)}$."
+      }
+    ],
+    "direction": "Sur $\\mathbb R^*$, $f$ est $\\mathcal C^\\infty$ et une récurrence donne $f^{(n)}(x) = P_n\\!\\left(\\frac1x\\right)e^{-1/x^2}$. Par croissances comparées, $f^{(n)}(x) \\to 0$ en $0$. Le théorème de la limite de la dérivée, appliqué de proche en proche, donne $f^{(n)}(0) = 0$ et la continuité de chaque $f^{(n)}$ en $0$."
+  },
+  {
+    "id": "fonctions-piste-12", "ch": "fonctions", "type": "piste",
+    "enonce": "Soient $n \\ge 2$ et $x_1, \\dots, x_n > 0$. Montrer que $(x_1 x_2 \\cdots x_n)^{1/n} \\le \\frac{x_1 + \\cdots + x_n}{n}$.",
+    "choix": [
+      {
+        "titre": "Concavité du logarithme",
+        "info": "Si $f$ est concave sur $I$, alors pour $x_i \\in I$ et des poids $\\lambda_i \\ge 0$ de somme $1$, $f\\!\\left(\\sum \\lambda_i x_i\\right) \\ge \\sum \\lambda_i f(x_i)$ (inégalité de Jensen, par récurrence sur $n$).",
+        "verdict": "bon",
+        "retour": "Avec $f = \\ln$, concave car $\\ln'' < 0$, et les poids $\\lambda_i = \\frac1n$, on obtient l'inégalité en passant à l'exponentielle."
+      },
+      {
+        "titre": "Récurrence « à la Cauchy »",
+        "info": "On prouve le cas $n = 2$, puis tous les $n = 2^p$, puis on redescend vers un $n$ quelconque en complétant la liste par la moyenne.",
+        "verdict": "possible",
+        "retour": "Démonstration classique et élémentaire, mais nettement plus longue."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$\\left(\\sum a_i b_i\\right)^2 \\le \\sum a_i^2 \\sum b_i^2$.",
+        "verdict": "impasse",
+        "retour": "Elle traite le cas $n = 2$ ($\\sqrt{x_1x_2} \\le \\frac{x_1 + x_2}2$) mais ne produit pas de produit de $n$ termes."
+      },
+      {
+        "titre": "Inégalité des accroissements finis",
+        "info": "Si $|f'| \\le M$ sur un intervalle, alors $|f(x) - f(y)| \\le M|x - y|$.",
+        "verdict": "impasse",
+        "retour": "Appliquée à $\\ln$ entre chaque $x_i$ et la moyenne $m$, elle ne majore que les écarts $|\\ln x_i - \\ln m|$ : le signe est perdu et la somme ne se compare plus à $0$. Il faudrait l'inégalité $\\ln t \\le t - 1$, qui relève de la concavité."
+      }
+    ],
+    "direction": "$\\ln$ est concave sur $]0, +\\infty[$. Jensen avec les poids $\\frac1n$ donne $\\frac1n \\sum \\ln x_i \\le \\ln\\!\\left(\\frac1n \\sum x_i\\right)$. On compose par $\\exp$, croissante. Il faut vérifier que les poids sont positifs de somme $1$ : le jury le rappelle."
+  }
+]

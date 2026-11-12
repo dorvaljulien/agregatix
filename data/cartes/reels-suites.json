@@ -1,0 +1,624 @@
+[
+  {
+    "id": "reels-suites-vf-01", "ch": "reels-suites", "type": "vf",
+    "enonce": "Soient $A$ et $B$ deux parties non vides et majorées de $\\mathbb R$, et $A + B = \\{a + b : a \\in A,\\ b \\in B\\}$. Alors $\\sup(A + B) = \\sup A + \\sup B$.",
+    "reponse": true,
+    "explication": "$\\sup A + \\sup B$ majore $A + B$. Pour $\\varepsilon > 0$, il existe $a \\in A$ et $b \\in B$ avec $a > \\sup A - \\frac\\varepsilon2$ et $b > \\sup B - \\frac\\varepsilon2$, donc $a + b > \\sup A + \\sup B - \\varepsilon$ : c'est le plus petit majorant."
+  },
+  {
+    "id": "reels-suites-vf-02", "ch": "reels-suites", "type": "vf",
+    "enonce": "Soit $A$ une partie non vide et majorée de $\\mathbb R$ et $M = \\sup A$. Alors il existe une suite d'éléments de $A$ qui converge vers $M$.",
+    "reponse": true,
+    "explication": "Pour tout $n \\ge 1$, $M - \\frac1n$ n'est pas un majorant de $A$ : il existe $a_n \\in A$ avec $M - \\frac1n < a_n \\le M$. C'est la caractérisation séquentielle de la borne supérieure."
+  },
+  {
+    "id": "reels-suites-vf-03", "ch": "reels-suites", "type": "vf",
+    "enonce": "Si deux suites réelles $(u_n)$ et $(v_n)$ convergent vers la même limite $\\ell \\in \\mathbb R$, alors $u_n \\sim v_n$.",
+    "reponse": false,
+    "explication": "Faux pour $\\ell = 0$ : $\\frac1n$ et $\\frac1{n^2}$ tendent vers $0$, mais leur quotient $n$ ne tend pas vers $1$. C'est vrai si $\\ell \\ne 0$, car alors $\\frac{u_n}{v_n} \\to \\frac\\ell\\ell = 1$."
+  },
+  {
+    "id": "reels-suites-vf-04", "ch": "reels-suites", "type": "vf",
+    "enonce": "Si $u_n \\sim v_n$, alors $u_n - v_n \\to 0$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $u_n = n^2 + n$ et $v_n = n^2$ sont équivalentes, mais $u_n - v_n = n \\to +\\infty$. Ce qui est vrai : $u_n - v_n = o(v_n)$, ce qui ne dit rien de la différence elle-même quand $v_n$ est grand."
+  },
+  {
+    "id": "reels-suites-vf-05", "ch": "reels-suites", "type": "vf",
+    "enonce": "Soient $(u_n)$ et $(v_n)$ deux suites strictement positives telles que $u_n \\sim v_n$ et $v_n \\to +\\infty$. Alors $\\ln u_n \\sim \\ln v_n$.",
+    "reponse": true,
+    "explication": "$\\ln u_n = \\ln v_n + \\ln\\frac{u_n}{v_n}$ et $\\ln\\frac{u_n}{v_n} \\to 0$. Comme $\\ln v_n \\to +\\infty$, ce terme est $o(\\ln v_n)$. L'hypothèse $v_n \\to +\\infty$ compte : $1 + \\frac1n \\sim 1 + \\frac1{n^2}$, mais leurs logarithmes ne sont pas équivalents."
+  },
+  {
+    "id": "reels-suites-vf-06", "ch": "reels-suites", "type": "vf",
+    "enonce": "Si $u_n \\sim v_n$, alors $e^{u_n} \\sim e^{v_n}$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $u_n = n + 1$ et $v_n = n$. Alors $\\frac{e^{u_n}}{e^{v_n}} = e$ ne tend pas vers $1$. En fait $e^{u_n} \\sim e^{v_n}$ si et seulement si $u_n - v_n \\to 0$. On ne compose pas les équivalents par une fonction quelconque."
+  },
+  {
+    "id": "reels-suites-vf-07", "ch": "reels-suites", "type": "vf",
+    "enonce": "Toute suite réelle $(u_n)$ telle que $u_{n+1} - u_n \\to 0$ est convergente.",
+    "reponse": false,
+    "explication": "Contre-exemple : $u_n = \\ln n$, pour laquelle $u_{n+1} - u_n = \\ln\\left(1 + \\frac1n\\right) \\to 0$ alors que $u_n \\to +\\infty$. Il faut contrôler $u_p - u_q$ pour **tous** $p, q \\ge N$ (critère de Cauchy), par exemple via $|u_{n+1} - u_n| \\le k^n$ avec $0 < k < 1$."
+  },
+  {
+    "id": "reels-suites-vf-08", "ch": "reels-suites", "type": "vf",
+    "enonce": "Si les suites $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite $\\ell$, alors $(u_n)$ converge vers $\\ell$.",
+    "reponse": true,
+    "explication": "Pour $\\varepsilon > 0$, il existe $N_1$ et $N_2$ tels que $|u_{2n} - \\ell| \\le \\varepsilon$ pour $n \\ge N_1$ et $|u_{2n+1} - \\ell| \\le \\varepsilon$ pour $n \\ge N_2$. Alors $|u_m - \\ell| \\le \\varepsilon$ dès que $m \\ge \\max(2N_1, 2N_2 + 1)$."
+  },
+  {
+    "id": "reels-suites-vf-09", "ch": "reels-suites", "type": "vf",
+    "enonce": "Si les suites $(u_{2n})$ et $(u_{3n})$ convergent, alors $(u_n)$ converge.",
+    "reponse": false,
+    "explication": "Contre-exemple : $u_n = 1$ si $n$ est premier, $u_n = 0$ sinon. Pour $n \\ge 2$, $2n$ et $3n$ ne sont pas premiers, donc $(u_{2n})$ et $(u_{3n})$ tendent vers $0$, mais $u_p = 1$ pour une infinité de $p$. C'est vrai si $(u_{2n})$, $(u_{2n+1})$ et $(u_{3n})$ convergent : $(u_{6n})$ et $(u_{6n+3})$ forcent l'égalité des limites."
+  },
+  {
+    "id": "reels-suites-vf-10", "ch": "reels-suites", "type": "vf",
+    "enonce": "Une suite réelle **bornée** qui admet une unique valeur d'adhérence est convergente.",
+    "reponse": true,
+    "explication": "Soit $\\ell$ cette valeur. Si $u_n \\not\\to \\ell$, il existe $\\varepsilon > 0$ et une suite extraite vérifiant $|u_{\\varphi(n)} - \\ell| \\ge \\varepsilon$. Elle est bornée : par Bolzano-Weierstrass, elle a une valeur d'adhérence, distincte de $\\ell$, qui en est aussi une de $(u_n)$. Contradiction."
+  },
+  {
+    "id": "reels-suites-vf-11", "ch": "reels-suites", "type": "vf",
+    "enonce": "Une suite réelle qui admet une unique valeur d'adhérence réelle est convergente.",
+    "reponse": false,
+    "explication": "Contre-exemple : $u_n = n$ si $n$ est impair, $u_n = 0$ si $n$ est pair. Une suite extraite convergente est bornée, donc ne contient qu'un nombre fini de termes d'indice impair : $0$ est la seule valeur d'adhérence réelle. La suite n'est pas bornée, donc ne converge pas. L'hypothèse « bornée » rend l'énoncé vrai."
+  },
+  {
+    "id": "reels-suites-vf-12", "ch": "reels-suites", "type": "vf",
+    "enonce": "Tout réel $x \\in [0, 1[$ s'écrit de façon unique $x = \\displaystyle\\sum_{k=1}^{+\\infty} a_k 10^{-k}$ avec $a_k \\in \\{0, \\dots, 9\\}$ pour tout $k$.",
+    "reponse": false,
+    "explication": "$\\frac1{10} = 0{,}1000\\ldots = 0{,}0999\\ldots$, car $\\sum_{k \\ge 2} 9 \\cdot 10^{-k} = \\frac1{10}$. L'unicité vaut si l'on impose que $(a_k)$ ne soit pas stationnaire à $9$ (développement propre). Seuls les nombres décimaux ont deux écritures."
+  },
+  {
+    "id": "reels-suites-vf-13", "ch": "reels-suites", "type": "vf",
+    "enonce": "Soit $I$ un intervalle, $f : I \\to I$ croissante, $u_0 \\in I$ et $u_{n+1} = f(u_n)$. Alors la suite $(u_n)$ est monotone.",
+    "reponse": true,
+    "explication": "Si $u_1 \\ge u_0$, la croissance de $f$ donne $u_2 = f(u_1) \\ge f(u_0) = u_1$, et par récurrence $u_{n+1} \\ge u_n$ pour tout $n$. Même raisonnement si $u_1 \\le u_0$. Le sens de monotonie se lit sur le signe de $u_1 - u_0$."
+  },
+  {
+    "id": "reels-suites-vf-14", "ch": "reels-suites", "type": "vf",
+    "enonce": "Soit $I$ un intervalle, $f : I \\to I$ décroissante, $u_0 \\in I$ et $u_{n+1} = f(u_n)$. Alors la suite $(u_n)$ est monotone.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = 1 - x$ sur $[0, 1]$ et $u_0 = 0$ donnent $0, 1, 0, 1, \\ldots$. Ce qui est vrai : $f \\circ f$ est croissante, donc $(u_{2n})$ et $(u_{2n+1})$ sont monotones, de sens contraires."
+  },
+  {
+    "id": "reels-suites-qcm-01", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Théorème des segments emboîtés.\nSoit $([a_n, b_n])_{n \\in \\mathbb N}$ une suite de segments de $\\mathbb R$ telle que $[a_{n+1}, b_{n+1}] \\subset [a_n, b_n]$ pour tout $n$, et **[ ? ]**. Alors $\\bigcap_{n} [a_n, b_n]$ est un singleton.",
+    "choix": [
+      "$b_n - a_n \\to 0$",
+      "$b_{n+1} - a_{n+1} < b_n - a_n$ pour tout $n$",
+      "$(a_n)$ est croissante et $(b_n)$ décroissante",
+      "$a_n < b_n$ pour tout $n$"
+    ],
+    "bonne": 0,
+    "explication": "L'intersection est toujours le segment non vide $[\\sup a_n, \\inf b_n]$ ; c'est un singleton si et seulement si la longueur tend vers $0$. Une longueur strictement décroissante ne suffit pas : $[0, 1 + \\frac1{n+1}]$ a pour intersection $[0, 1]$. La monotonie de $(a_n)$ et $(b_n)$ découle de l'emboîtement."
+  },
+  {
+    "id": "reels-suites-qcm-02", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Théorème de Bolzano-Weierstrass.\nDe toute suite réelle **[ ? ]**, on peut extraire une sous-suite convergente.",
+    "choix": [
+      "bornée",
+      "minorée",
+      "monotone",
+      "telle que $u_{n+1} - u_n \\to 0$"
+    ],
+    "bonne": 0,
+    "explication": "La suite $u_n = n$ est minorée et monotone, et la suite $u_n = \\sqrt n$ vérifie $u_{n+1} - u_n \\to 0$ : aucune n'a de sous-suite convergente, car toutes leurs suites extraites tendent vers $+\\infty$."
+  },
+  {
+    "id": "reels-suites-qcm-03", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Suites adjacentes.\nSoient $(a_n)$ croissante et $(b_n)$ décroissante telles que **[ ? ]**. Alors $(a_n)$ et $(b_n)$ convergent vers une même limite.",
+    "choix": [
+      "$b_n - a_n \\to 0$",
+      "$a_n \\le b_n$ pour tout $n$",
+      "$(b_n - a_n)$ est positive et décroissante",
+      "$(a_n)$ et $(b_n)$ sont bornées"
+    ],
+    "bonne": 0,
+    "explication": "Avec $a_n \\le b_n$, les deux suites convergent (monotones bornées), mais pas forcément vers la même limite : $a_n = 0$ et $b_n = 1 + \\frac1{n+1}$ vérifient les trois leurres, et leurs limites sont $0$ et $1$."
+  },
+  {
+    "id": "reels-suites-qcm-04", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Quand $n \\to +\\infty$, laquelle de ces relations est vraie ?",
+    "choix": [
+      "$n^{100} = o\\left((1{,}01)^n\\right)$",
+      "$\\ln(n!) = o(n \\ln n)$",
+      "$e^{\\sqrt n} = O(n^5)$",
+      "$(n+1)! \\sim n!$"
+    ],
+    "bonne": 0,
+    "explication": "Croissances comparées : toute puissance de $n$ est négligeable devant $q^n$ dès que $q > 1$. En revanche $\\ln(n!) \\sim n \\ln n$, $\\frac{e^{\\sqrt n}}{n^5} = e^{\\sqrt n - 5 \\ln n} \\to +\\infty$, et $\\frac{(n+1)!}{n!} = n + 1 \\to +\\infty$."
+  },
+  {
+    "id": "reels-suites-qcm-05", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Les suites réelles vérifiant $u_{n+2} = 4u_{n+1} - 4u_n$ pour tout $n$ sont exactement les suites de terme général ($\\lambda, \\mu$ réels quelconques) :",
+    "choix": [
+      "$(\\lambda + \\mu n)\\, 2^n$",
+      "$\\lambda\\, 2^n + \\mu\\, (-2)^n$",
+      "$\\lambda\\, 2^n$",
+      "$(\\lambda + \\mu n)\\, 4^n$"
+    ],
+    "bonne": 0,
+    "explication": "L'équation caractéristique $r^2 - 4r + 4 = (r - 2)^2 = 0$ a une racine double $2$ : on obtient $(\\lambda + \\mu n)2^n$. L'espace des solutions est de dimension $2$, donc $\\lambda 2^n$ seul ne peut pas suffire, et $-2$ n'est pas racine."
+  },
+  {
+    "id": "reels-suites-qcm-06", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Soit $(u_n)$ une suite réelle telle que $u_{n+2} = u_{n+1} - u_n$ pour tout $n$. Alors, quels que soient $u_0$ et $u_1$, la suite $(u_n)$ :",
+    "choix": [
+      "vérifie $u_{n+6} = u_n$ pour tout $n$",
+      "vérifie $u_{n+3} = u_n$ pour tout $n$",
+      "converge vers $0$",
+      "n'est pas bornée"
+    ],
+    "bonne": 0,
+    "explication": "Les racines de $r^2 - r + 1$ sont $e^{\\pm i\\pi/3}$, racines sixièmes de l'unité. Directement : $u_{n+3} = u_{n+2} - u_{n+1} = -u_n$, donc $u_{n+6} = u_n$. Avec $u_0 = u_1 = 1$ on obtient $1, 1, 0, -1, -1, 0, 1, \\ldots$ : $u_3 \\ne u_0$, et pas de limite nulle."
+  },
+  {
+    "id": "reels-suites-qcm-07", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Soit $u_{n+1} = \\dfrac{a u_n + b}{c u_n + d}$ avec $c \\ne 0$ et $ad - bc \\ne 0$. On suppose que l'équation $x = \\frac{ax + b}{cx + d}$ a deux solutions réelles distinctes $\\alpha$ et $\\beta$. Pour tout $u_0 \\ne \\beta$ tel que la suite soit bien définie, la suite **[ ? ]** est géométrique.",
+    "choix": [
+      "$\\left(\\dfrac{u_n - \\alpha}{u_n - \\beta}\\right)$",
+      "$(u_n - \\alpha)$",
+      "$\\left(\\dfrac{1}{u_n - \\alpha}\\right)$",
+      "$\\big((u_n - \\alpha)(u_n - \\beta)\\big)$"
+    ],
+    "bonne": 0,
+    "explication": "On calcule $u_{n+1} - \\alpha = \\frac{(ad - bc)(u_n - \\alpha)}{(cu_n + d)(c\\alpha + d)}$, et de même pour $\\beta$ ; le quotient élimine le facteur $cu_n + d$. La suite $\\left(\\frac1{u_n - \\alpha}\\right)$ est arithmético-géométrique ici ; elle n'est arithmétique que dans le cas d'un point fixe double."
+  },
+  {
+    "id": "reels-suites-qcm-08", "ch": "reels-suites", "type": "qcm",
+    "enonce": "Une suite réelle $(u_n)$ est de Cauchy si et seulement si :",
+    "choix": [
+      "$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall p, q \\ge N,\\ |u_p - u_q| \\le \\varepsilon$",
+      "$\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall n \\ge N,\\ |u_{n+1} - u_n| \\le \\varepsilon$",
+      "pour tout entier $p$ fixé, $u_{n+p} - u_n \\to 0$ quand $n \\to +\\infty$",
+      "$\\exists N,\\ \\forall \\varepsilon > 0,\\ \\forall p, q \\ge N,\\ |u_p - u_q| \\le \\varepsilon$"
+    ],
+    "bonne": 0,
+    "explication": "Les conditions portant sur $u_{n+1} - u_n$ et sur $u_{n+p} - u_n$ à $p$ fixé sont vérifiées par $u_n = \\ln n$, qui n'est pas de Cauchy : l'écart entre les indices doit pouvoir dépendre de $n$. La condition où $N$ ne dépend pas de $\\varepsilon$ caractérise les suites stationnaires : $\\left(\\frac1n\\right)$ est de Cauchy sans l'être."
+  },
+  {
+    "id": "reels-suites-err-01", "ch": "reels-suites", "type": "erreur",
+    "enonce": "On cherche la limite de $u_n = \\left(1 + \\frac1n\\right)^n$. Voici une copie.",
+    "lignes": [
+      "Comme $1 + \\frac1n \\to 1$, on a $1 + \\frac1n \\sim 1$.",
+      "Si $a_n \\sim b_n$, alors $a_n^k \\sim b_n^k$ pour tout entier $k$ fixé.",
+      "Donc $\\left(1 + \\frac1n\\right)^n \\sim 1^n = 1$, et $u_n \\to 1$."
+    ],
+    "fausse": 2,
+    "explication": "L'exposant $n$ n'est pas fixé : il varie avec $n$, et le résultat de la ligne précédente ne s'applique pas. On écrit $u_n = \\exp\\left(n \\ln\\left(1 + \\frac1n\\right)\\right) = \\exp\\left(1 + O\\left(\\frac1n\\right)\\right)$, donc $u_n \\to e$."
+  },
+  {
+    "id": "reels-suites-err-02", "ch": "reels-suites", "type": "erreur",
+    "enonce": "On cherche un équivalent de $u_n = \\frac1n - \\sin\\frac1n$. Voici une copie.",
+    "lignes": [
+      "Quand $n \\to +\\infty$, $\\sin\\frac1n \\sim \\frac1n$.",
+      "Donc $\\frac1n - \\sin\\frac1n = o\\left(\\frac1n\\right)$.",
+      "En soustrayant les équivalents, $u_n \\sim \\frac1n - \\frac1n = 0$."
+    ],
+    "fausse": 2,
+    "explication": "On ne soustrait pas des équivalents, et une suite n'est équivalente à $0$ que si elle est nulle à partir d'un certain rang. Il faut un développement limité : $\\sin x = x - \\frac{x^3}6 + o(x^3)$ donne $u_n \\sim \\frac1{6n^3}$. L'affirmation $u_n = o\\left(\\frac1n\\right)$, elle, est juste mais insuffisante."
+  },
+  {
+    "id": "reels-suites-err-03", "ch": "reels-suites", "type": "erreur",
+    "enonce": "Soit $u_0 = 2$ et $u_{n+1} = u_n^2$. On étudie la suite $(u_n)$. Voici une copie.",
+    "lignes": [
+      "La fonction $f : x \\mapsto x^2$ est continue sur $\\mathbb R$.",
+      "Une récurrence immédiate montre que $u_n > 0$ pour tout $n$.",
+      "Si $(u_n)$ converge vers un réel $\\ell$, alors par continuité $\\ell = \\ell^2$, donc $\\ell \\in \\{0, 1\\}$.",
+      "Donc la suite $(u_n)$ converge, vers $0$ ou vers $1$."
+    ],
+    "fausse": 3,
+    "explication": "L'équation $\\ell = f(\\ell)$ donne les seules limites **possibles**, pas la convergence. Ici $u_n = 2^{2^n} \\to +\\infty$. Il faut d'abord prouver la convergence (monotonie et borne, contraction…), ou l'exclure : la suite est croissante et $u_n \\ge 2$, donc elle ne peut tendre ni vers $0$ ni vers $1$."
+  },
+  {
+    "id": "reels-suites-err-04", "ch": "reels-suites", "type": "erreur",
+    "enonce": "Soit $(u_n)$ une suite réelle bornée telle que $u_{n+1} - u_n \\to 0$. Une copie prétend montrer que $(u_n)$ converge.",
+    "lignes": [
+      "La suite est bornée : par Bolzano-Weierstrass, il existe une extraction $\\varphi$ et un réel $\\ell$ tels que $u_{\\varphi(n)} \\to \\ell$.",
+      "Comme $u_{\\varphi(n)+1} - u_{\\varphi(n)} \\to 0$, on a aussi $u_{\\varphi(n)+1} \\to \\ell$.",
+      "De proche en proche, pour tout entier $k$ fixé, $u_{\\varphi(n)+k} \\to \\ell$.",
+      "Donc $u_n \\to \\ell$."
+    ],
+    "fausse": 3,
+    "explication": "Le rang à partir duquel $u_{\\varphi(n)+k}$ est proche de $\\ell$ dépend de $k$ : on ne peut pas en déduire la convergence de toute la suite. Contre-exemple : $u_n = \\cos(\\ln n)$ est bornée, $|u_{n+1} - u_n| \\le \\ln\\left(1 + \\frac1n\\right) \\to 0$, et elle prend des valeurs proches de $1$ et de $-1$ pour une infinité de $n$."
+  },
+  {
+    "id": "reels-suites-err-05", "ch": "reels-suites", "type": "erreur",
+    "enonce": "Soit $u_0 = 0$ et $u_{n+1} = \\sqrt{2 + u_n}$. Voici une copie.",
+    "lignes": [
+      "La fonction $x \\mapsto \\sqrt{2 + x}$ est croissante sur $[-2, +\\infty[$ et $u_1 = \\sqrt 2 \\ge u_0$, donc $(u_n)$ est croissante.",
+      "Par récurrence, $0 \\le u_n < 2$ pour tout $n$.",
+      "Croissante et majorée, la suite converge vers une limite $\\ell$.",
+      "Comme $u_n < 2$ pour tout $n$, on obtient par passage à la limite $\\ell < 2$."
+    ],
+    "fausse": 3,
+    "explication": "Le passage à la limite ne conserve que les inégalités **larges** : $\\ell \\le 2$. Exemple : $1 - \\frac1n < 1$ et la limite vaut $1$. Ici, $\\ell = \\sqrt{2 + \\ell}$ et $\\ell \\ge 0$ donnent $\\ell = 2$."
+  },
+  {
+    "id": "reels-suites-err-06", "ch": "reels-suites", "type": "erreur",
+    "enonce": "Soit $A = \\left\\{1 - \\frac1n : n \\in \\mathbb N^*\\right\\}$. Voici une copie.",
+    "lignes": [
+      "$A$ est non vide et majorée par $1$, donc admet une borne supérieure.",
+      "Pour tout $\\varepsilon > 0$, il existe $n \\ge 1$ tel que $1 - \\frac1n > 1 - \\varepsilon$.",
+      "Donc $\\sup A = 1$.",
+      "Donc $1$ est le plus grand élément de $A$."
+    ],
+    "fausse": 3,
+    "explication": "Confusion entre borne supérieure et maximum, que le jury relève souvent. $1 \\notin A$ puisque $1 - \\frac1n < 1$ : la borne supérieure n'est pas atteinte et $A$ n'a pas de plus grand élément. Le maximum existe exactement quand $\\sup A \\in A$."
+  },
+  {
+    "id": "reels-suites-piste-01", "ch": "reels-suites", "type": "piste",
+    "enonce": "Montrer que $\\mathbb R$ n'est pas dénombrable : pour toute suite réelle $(x_n)$, il existe un réel qui n'est égal à aucun des $x_n$.",
+    "choix": [
+      {
+        "titre": "Théorème des segments emboîtés",
+        "info": "Si $([a_n, b_n])$ est une suite décroissante de segments dont la longueur tend vers $0$, leur intersection est un singleton.",
+        "verdict": "bon",
+        "retour": "On construit les segments un par un, en écartant $x_n$ à l'étape $n$ ; le point commun ne peut être aucun des $x_n$."
+      },
+      {
+        "titre": "Argument diagonal sur les développements décimaux",
+        "info": "Tout réel de $[0, 1[$ a un unique développement décimal propre, c'est-à-dire non stationnaire à $9$.",
+        "verdict": "bon",
+        "retour": "On fabrique un réel dont la $n$-ième décimale diffère de celle de $x_n$, en prenant ses chiffres dans $\\{4, 5\\}$ pour que le développement soit propre."
+      },
+      {
+        "titre": "Théorème de Bolzano-Weierstrass",
+        "info": "De toute suite réelle bornée, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "Il parle des limites de sous-suites de $(x_n)$, pas des réels que la suite évite."
+      },
+      {
+        "titre": "Densité de $\\mathbb Q$ dans $\\mathbb R$",
+        "info": "Tout intervalle ouvert non vide de $\\mathbb R$ contient un rationnel.",
+        "verdict": "impasse",
+        "retour": "$\\mathbb Q$ est dense et pourtant dénombrable : la densité ne dit rien sur la taille de l'ensemble."
+      }
+    ],
+    "direction": "On part d'un segment $I_0$ de longueur $1$ ne contenant pas $x_0$. On le coupe en trois segments de même longueur : l'un d'eux, $I_1$, évite $x_1$. On itère : $I_n$ est de longueur $3^{-n}$ et évite $x_n$. L'unique point de $\\bigcap I_n$ est différent de tous les $x_n$."
+  },
+  {
+    "id": "reels-suites-piste-02", "ch": "reels-suites", "type": "piste",
+    "enonce": "Pour $n \\ge 1$, on pose $u_n = \\displaystyle\\sum_{k=0}^n \\frac1{k!}$ et $v_n = u_n + \\frac1{n \\cdot n!}$. On admet que ces suites convergent vers $e$. Montrer que $e$ est irrationnel.",
+    "choix": [
+      {
+        "titre": "Encadrement strict par les suites adjacentes",
+        "info": "Si $(u_n)$ est strictement croissante, $(v_n)$ strictement décroissante et $v_n - u_n \\to 0$, leur limite commune $\\ell$ vérifie $u_n < \\ell < v_n$ pour tout $n$.",
+        "verdict": "bon",
+        "retour": "L'encadrement strict au rang $n = q$, multiplié par $q!$, coince un entier strictement entre deux entiers consécutifs."
+      },
+      {
+        "titre": "Caractérisation des rationnels par le développement décimal",
+        "info": "Un réel est rationnel si et seulement si son développement décimal propre est périodique à partir d'un certain rang.",
+        "verdict": "impasse",
+        "retour": "On ne connaît pas les décimales de $e$ : impossible de contrôler leur périodicité."
+      },
+      {
+        "titre": "Passage à la limite",
+        "info": "Si $u_n \\to \\ell$ et $u_n \\in F$ pour tout $n$, avec $F$ fermé, alors $\\ell \\in F$.",
+        "verdict": "impasse",
+        "retour": "Les $u_n$ sont rationnels, mais $\\mathbb Q$ n'est pas fermé : une limite de rationnels peut être irrationnelle, ou rationnelle."
+      },
+      {
+        "titre": "Théorème de Bolzano-Weierstrass",
+        "info": "De toute suite réelle bornée, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "Les suites convergent déjà : extraire n'apporte rien sur la nature de la limite."
+      }
+    ],
+    "direction": "$v_{n+1} - v_n = -\\frac{1}{n(n+1)(n+1)!} < 0$, donc $u_n < e < v_n$. Si $e = \\frac pq$, on multiplie l'encadrement au rang $q$ par $q!$ : $N < p\\,(q-1)! < N + \\frac1q$ où $N = q!\\,u_q$ est entier. Un entier strictement entre $N$ et $N + 1$ : contradiction."
+  },
+  {
+    "id": "reels-suites-piste-03", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $k \\in \\,]0, 1[$ et $(u_n)$ une suite réelle telle que $|u_{n+1} - u_n| \\le k^n$ pour tout $n$. Montrer que $(u_n)$ converge.",
+    "choix": [
+      {
+        "titre": "Critère de Cauchy",
+        "info": "Une suite réelle converge si et seulement si $\\forall \\varepsilon > 0,\\ \\exists N,\\ \\forall p, q \\ge N,\\ |u_p - u_q| \\le \\varepsilon$.",
+        "verdict": "bon",
+        "retour": "L'inégalité triangulaire sur la somme télescopique majore $|u_p - u_n|$ par un reste de série géométrique."
+      },
+      {
+        "titre": "Lien suite-série",
+        "info": "$(u_n)$ converge si et seulement si la série $\\sum (u_{n+1} - u_n)$ converge ; une série absolument convergente converge.",
+        "verdict": "bon",
+        "retour": "La série $\\sum (u_{n+1} - u_n)$ est absolument convergente par comparaison à $\\sum k^n$. C'est la même idée, déjà empaquetée."
+      },
+      {
+        "titre": "Théorème de la limite monotone",
+        "info": "Toute suite croissante et majorée converge ; toute suite décroissante et minorée converge.",
+        "verdict": "impasse",
+        "retour": "Rien n'indique que $(u_n)$ est monotone : les différences peuvent changer de signe."
+      },
+      {
+        "titre": "Différences consécutives tendant vers 0",
+        "info": "L'hypothèse donne $u_{n+1} - u_n \\to 0$.",
+        "verdict": "impasse",
+        "retour": "C'est insuffisant : $\\ln n$ vérifie aussi $u_{n+1} - u_n \\to 0$ et diverge. Il faut utiliser la vitesse géométrique."
+      }
+    ],
+    "direction": "Pour $p > n$, $|u_p - u_n| \\le \\sum_{j=n}^{p-1} k^j \\le \\frac{k^n}{1 - k}$, qui tend vers $0$ quand $n \\to +\\infty$. La suite est de Cauchy, donc converge par complétude de $\\mathbb R$."
+  },
+  {
+    "id": "reels-suites-piste-04", "ch": "reels-suites", "type": "piste",
+    "enonce": "Montrer que la suite $(\\cos n)_{n \\in \\mathbb N}$ diverge.",
+    "choix": [
+      {
+        "titre": "Raisonner par l'absurde avec les formules de trigonométrie",
+        "info": "Si $u_n \\to \\ell$, toute suite extraite et toute suite décalée $(u_{n+1})$ tendent aussi vers $\\ell$. On combine avec des identités comme $\\cos(n+1) + \\cos(n-1) = 2 \\cos n \\cos 1$.",
+        "verdict": "bon",
+        "retour": "Deux identités suffisent : l'une force $\\ell = 0$, l'autre force $\\ell = -1$ sur une suite extraite."
+      },
+      {
+        "titre": "Densité de $\\{n + 2k\\pi : n, k \\in \\mathbb Z\\}$",
+        "info": "Un sous-groupe de $(\\mathbb R, +)$ est soit de la forme $a\\mathbb Z$, soit dense dans $\\mathbb R$.",
+        "verdict": "possible",
+        "retour": "Cela donne bien plus (toutes les valeurs de $[-1, 1]$ sont valeurs d'adhérence), mais demande l'irrationalité de $\\pi$ et un vrai travail."
+      },
+      {
+        "titre": "Théorème de Bolzano-Weierstrass",
+        "info": "De toute suite réelle bornée, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "Il fournit une sous-suite convergente, ce qui va plutôt dans le sens de la convergence : il ne prouve rien ici."
+      },
+      {
+        "titre": "Absence de monotonie",
+        "info": "Une suite monotone converge si et seulement si elle est bornée.",
+        "verdict": "impasse",
+        "retour": "$(\\cos n)$ n'est pas monotone, mais une suite non monotone peut très bien converger (penser à $\\frac{(-1)^n}{n}$)."
+      }
+    ],
+    "direction": "Si $\\cos n \\to \\ell$, alors $2\\ell = 2\\ell \\cos 1$, et $\\cos 1 \\ne 1$ donne $\\ell = 0$. Mais $\\cos(2n) = 2\\cos^2 n - 1 \\to -1$, alors que $(\\cos 2n)$ est extraite de $(\\cos n)$ et devrait tendre vers $0$. Contradiction."
+  },
+  {
+    "id": "reels-suites-piste-05", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $u_0 \\in \\,]0, \\frac\\pi2]$ et $u_{n+1} = \\sin u_n$. Montrer que $(u_n)$ converge et déterminer sa limite.",
+    "choix": [
+      {
+        "titre": "Suite monotone bornée",
+        "info": "Toute suite décroissante et minorée converge. Pour $u_{n+1} = f(u_n)$, le signe de $f(x) - x$ sur un intervalle stable donne le sens de variation.",
+        "verdict": "bon",
+        "retour": "$]0, \\frac\\pi2]$ est stable par $\\sin$ et $\\sin x < x$ pour $x > 0$ : la suite est décroissante et positive."
+      },
+      {
+        "titre": "Point fixe d'une fonction contractante",
+        "info": "Si $f$ envoie un segment $I$ dans lui-même et vérifie $|f(x) - f(y)| \\le k|x - y|$ avec $k < 1$, alors $u_n$ converge vers l'unique point fixe de $f$ dans $I$.",
+        "verdict": "impasse",
+        "retour": "$\\sin$ n'est pas contractante sur un voisinage de $0$ : $\\sup |\\cos| = 1$ sur $[0, \\frac\\pi2]$. La convergence est d'ailleurs lente."
+      },
+      {
+        "titre": "Passage à la limite dans la relation",
+        "info": "Si $u_n \\to \\ell$ et si $f$ est continue en $\\ell$, alors $\\ell = f(\\ell)$.",
+        "verdict": "possible",
+        "retour": "Indispensable pour identifier la limite $0$, mais il ne prouve pas la convergence : il ne traite que la moitié de la question."
+      },
+      {
+        "titre": "Théorème de Bolzano-Weierstrass",
+        "info": "De toute suite réelle bornée, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "On obtient seulement une sous-suite convergente, pas la convergence de la suite."
+      }
+    ],
+    "direction": "Par récurrence, $u_n \\in \\,]0, \\frac\\pi2]$ ; comme $\\sin x < x$ pour $x > 0$, la suite est décroissante. Minorée par $0$, elle converge vers $\\ell \\in [0, \\frac\\pi2]$, et la continuité de $\\sin$ donne $\\sin \\ell = \\ell$, donc $\\ell = 0$."
+  },
+  {
+    "id": "reels-suites-piste-06", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $u_0 \\in \\,]0, \\frac\\pi2]$ et $u_{n+1} = \\sin u_n$. On admet que $u_n > 0$ et $u_n \\to 0$. Trouver un équivalent de $u_n$.",
+    "choix": [
+      {
+        "titre": "Méthode de la puissance et lemme de Cesàro",
+        "info": "Lemme de Cesàro : si $a_n \\to \\ell$, alors $\\frac1n \\sum_{k=0}^{n-1} a_k \\to \\ell$. Avec $a_k = u_{k+1}^\\alpha - u_k^\\alpha$, la somme télescope : si $\\ell \\ne 0$, on obtient $u_n^\\alpha \\sim \\ell n$.",
+        "verdict": "bon",
+        "retour": "Avec $\\alpha = -2$, le développement limité de $\\sin$ donne une limite non nulle."
+      },
+      {
+        "titre": "Équivalent direct de la relation",
+        "info": "$\\sin x \\sim x$ quand $x \\to 0$.",
+        "verdict": "impasse",
+        "retour": "On obtient $u_{n+1} \\sim u_n$, qui ne dit rien sur la vitesse de convergence."
+      },
+      {
+        "titre": "Comparaison à une suite géométrique",
+        "info": "Si $u_n > 0$ et $\\frac{u_{n+1}}{u_n} \\to q < 1$, alors $u_n = O(r^n)$ pour tout $r \\in \\,]q, 1[$.",
+        "verdict": "impasse",
+        "retour": "Ici $\\frac{u_{n+1}}{u_n} = \\frac{\\sin u_n}{u_n} \\to 1$ : aucune information, la décroissance n'est pas géométrique."
+      },
+      {
+        "titre": "Calcul explicite de $u_n$",
+        "info": "Pour certaines récurrences (arithmétiques, géométriques, linéaires, homographiques), on dispose d'une formule close pour $u_n$.",
+        "verdict": "impasse",
+        "retour": "On ne dispose d'aucune formule close pour les itérées de $\\sin$."
+      }
+    ],
+    "direction": "$\\frac1{\\sin^2 x} = \\frac1{x^2}\\left(1 - \\frac{x^2}{6} + o(x^2)\\right)^{-2} = \\frac1{x^2} + \\frac13 + o(1)$. Donc $\\frac1{u_{n+1}^2} - \\frac1{u_n^2} \\to \\frac13$, Cesàro donne $\\frac1{u_n^2} \\sim \\frac n3$, et $u_n \\sim \\sqrt{\\frac3n}$."
+  },
+  {
+    "id": "reels-suites-piste-07", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $u_0 = 1$ et $u_{n+1} = \\dfrac{1}{1 + u_n}$. Montrer que $(u_n)$ converge et déterminer sa limite.",
+    "choix": [
+      {
+        "titre": "Inégalité des accroissements finis sur un intervalle stable",
+        "info": "Si $I$ est stable par $f$, $\\alpha \\in I$ est un point fixe et $|f'| \\le k < 1$ sur $I$, alors $|u_{n+1} - \\alpha| \\le k\\,|u_n - \\alpha|$, donc $|u_n - \\alpha| \\le k^n |u_0 - \\alpha|$.",
+        "verdict": "bon",
+        "retour": "$[\\frac12, 1]$ est stable et $|f'(x)| = \\frac1{(1+x)^2} \\le \\frac49$ sur cet intervalle."
+      },
+      {
+        "titre": "Méthode homographique",
+        "info": "Si $x = f(x)$ a deux solutions distinctes $\\alpha$ et $\\beta$, la suite $\\left(\\frac{u_n - \\alpha}{u_n - \\beta}\\right)$ est géométrique.",
+        "verdict": "bon",
+        "retour": "Les points fixes sont $\\frac{-1 \\pm \\sqrt5}{2}$ et la raison, de valeur absolue $< 1$, se calcule explicitement."
+      },
+      {
+        "titre": "Étudier $(u_{2n})$ et $(u_{2n+1})$ avec $f \\circ f$",
+        "info": "Si $f$ est décroissante sur un intervalle stable, $f \\circ f$ est croissante, et les suites $(u_{2n})$ et $(u_{2n+1})$ sont monotones.",
+        "verdict": "possible",
+        "retour": "Ça aboutit : les deux sous-suites convergent vers des points fixes de $f \\circ f$, qui n'en a qu'un sur $[0, +\\infty[$. Mais c'est plus long."
+      },
+      {
+        "titre": "Théorème de la limite monotone",
+        "info": "Toute suite croissante et majorée converge ; toute suite décroissante et minorée converge.",
+        "verdict": "impasse",
+        "retour": "$u_0 = 1$, $u_1 = \\frac12$, $u_2 = \\frac23$ : la suite n'est pas monotone, car $f$ est décroissante."
+      }
+    ],
+    "direction": "$f(x) = \\frac1{1+x}$ envoie $[\\frac12, 1]$ dans $[\\frac12, \\frac23]$ et $|f'| \\le \\frac49$ sur ce segment. Le point fixe $\\alpha = \\frac{\\sqrt5 - 1}{2}$ y appartient, d'où $|u_n - \\alpha| \\le \\left(\\frac49\\right)^n |u_0 - \\alpha| \\to 0$."
+  },
+  {
+    "id": "reels-suites-piste-08", "ch": "reels-suites", "type": "piste",
+    "enonce": "Déterminer les suites réelles $(u_n)$ **bornées** telles que $u_{n+2} = u_{n+1} + u_n$ pour tout $n$.",
+    "choix": [
+      {
+        "titre": "Équation caractéristique",
+        "info": "Si $r^2 = ar + b$ a deux racines réelles distinctes $r_1, r_2$, les solutions de $u_{n+2} = a u_{n+1} + b u_n$ sont les suites $\\lambda r_1^n + \\mu r_2^n$, $(\\lambda, \\mu) \\in \\mathbb R^2$.",
+        "verdict": "bon",
+        "retour": "Les racines sont $\\varphi = \\frac{1 + \\sqrt5}2 > 1$ et $\\psi = \\frac{1 - \\sqrt5}2 \\in \\,]-1, 0[$ : tout se joue sur le coefficient de $\\varphi^n$."
+      },
+      {
+        "titre": "Écriture matricielle $X_{n+1} = AX_n$",
+        "info": "Avec $X_n = (u_n, u_{n+1})^{\\mathsf T}$, on a $X_n = A^n X_0$ ; on calcule $A^n$ en diagonalisant $A$.",
+        "verdict": "possible",
+        "retour": "On retrouve le même résultat, avec un détour par la réduction de $A$."
+      },
+      {
+        "titre": "Passage à la limite dans la relation",
+        "info": "Si $u_n \\to \\ell \\in \\mathbb R$, alors $\\ell = \\ell + \\ell$, donc $\\ell = 0$.",
+        "verdict": "impasse",
+        "retour": "Bornée ne veut pas dire convergente : on ne peut pas supposer l'existence d'une limite."
+      },
+      {
+        "titre": "Théorème de Bolzano-Weierstrass",
+        "info": "De toute suite réelle bornée, on peut extraire une sous-suite convergente.",
+        "verdict": "impasse",
+        "retour": "Une sous-suite convergente ne se combine pas avec la récurrence, qui relie des termes consécutifs."
+      }
+    ],
+    "direction": "$u_n = \\lambda \\varphi^n + \\mu \\psi^n$. Si $\\lambda \\ne 0$, $|u_n| \\ge |\\lambda| \\varphi^n - |\\mu| \\to +\\infty$. Les solutions bornées sont donc les suites $\\mu \\psi^n$, c'est-à-dire celles avec $u_1 = \\psi u_0$ ; elles tendent vers $0$."
+  },
+  {
+    "id": "reels-suites-piste-09", "ch": "reels-suites", "type": "piste",
+    "enonce": "Pour $n \\ge 1$, on note $x_n$ l'unique solution de $\\tan x = x$ dans $]n\\pi - \\frac\\pi2, n\\pi + \\frac\\pi2[$. Obtenir un développement asymptotique de $x_n$ à la précision $o\\left(\\frac1n\\right)$.",
+    "choix": [
+      {
+        "titre": "Réécrire avec $\\arctan$ et réinjecter",
+        "info": "Pour $x \\in \\,]k\\pi - \\frac\\pi2, k\\pi + \\frac\\pi2[$, $\\tan x = y$ équivaut à $x = k\\pi + \\arctan y$. Pour $y > 0$, $\\arctan y = \\frac\\pi2 - \\arctan\\frac1y$.",
+        "verdict": "bon",
+        "retour": "On obtient $x_n = n\\pi + \\arctan x_n$, qu'on réinjecte dans lui-même pour gagner un terme à chaque étape."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Une fonction continue sur un intervalle qui change de signe s'y annule ; strictement monotone, elle s'annule une seule fois.",
+        "verdict": "possible",
+        "retour": "Il justifie l'existence de $x_n$ et l'encadre, ce qui donne $x_n \\sim n\\pi$, mais pas les termes suivants."
+      },
+      {
+        "titre": "Développement limité de $\\tan$ au voisinage de $n\\pi + \\frac\\pi2$",
+        "info": "Une fonction de classe $\\mathcal C^p$ au voisinage de $a$ admet un développement limité d'ordre $p$ en $a$.",
+        "verdict": "impasse",
+        "retour": "$\\tan$ n'est pas définie en $n\\pi + \\frac\\pi2$ : elle y a une asymptote, pas de développement limité."
+      },
+      {
+        "titre": "S'arrêter à l'équivalent $x_n \\sim n\\pi$",
+        "info": "Un équivalent donne seulement le premier terme du comportement asymptotique.",
+        "verdict": "impasse",
+        "retour": "La question demande une précision $o\\left(\\frac1n\\right)$ : il manque deux termes."
+      }
+    ],
+    "direction": "$\\tan x_n = x_n > 0$ donne $x_n \\in \\,]n\\pi, n\\pi + \\frac\\pi2[$ et $x_n = n\\pi + \\arctan x_n$. Comme $x_n \\to +\\infty$, $x_n = n\\pi + \\frac\\pi2 + o(1)$, puis $\\arctan x_n = \\frac\\pi2 - \\frac1{x_n} + O\\left(\\frac1{x_n^3}\\right)$ donne $x_n = n\\pi + \\frac\\pi2 - \\frac1{n\\pi} + o\\left(\\frac1n\\right)$."
+  },
+  {
+    "id": "reels-suites-piste-10", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $x = 0{,}1010010001\\ldots$ le réel dont la $k$-ième décimale vaut $1$ si $k$ est de la forme $\\frac{m(m+1)}2$ ($m \\ge 1$), et $0$ sinon. Montrer que $x$ est irrationnel.",
+    "choix": [
+      {
+        "titre": "Caractérisation des rationnels par la périodicité",
+        "info": "Un réel est rationnel si et seulement si son développement décimal propre est périodique à partir d'un certain rang.",
+        "verdict": "bon",
+        "retour": "Le développement est propre (aucun $9$) et les écarts entre deux $1$ consécutifs tendent vers l'infini : incompatible avec une période."
+      },
+      {
+        "titre": "Montrer que $x$ n'est pas décimal",
+        "info": "Un réel est décimal si et seulement si son développement décimal propre est fini.",
+        "verdict": "impasse",
+        "retour": "C'est vrai ici, mais beaucoup de rationnels, comme $\\frac13$, ne sont pas décimaux."
+      },
+      {
+        "titre": "Densité de $\\mathbb R \\setminus \\mathbb Q$",
+        "info": "Tout intervalle ouvert non vide de $\\mathbb R$ contient un irrationnel.",
+        "verdict": "impasse",
+        "retour": "La densité dit qu'il y a des irrationnels partout, pas que ce réel-là en est un."
+      },
+      {
+        "titre": "Suites adjacentes",
+        "info": "Une suite croissante et une suite décroissante dont la différence tend vers $0$ convergent vers la même limite.",
+        "verdict": "impasse",
+        "retour": "Les approximations décimales par défaut et par excès de $x$ sont adjacentes, mais cela montre seulement que $x$ existe."
+      }
+    ],
+    "direction": "Si le développement était périodique de période $P$ à partir du rang $Q$, un $1$ en position $k \\ge Q$ entraînerait un $1$ en position $k + P$ : deux $1$ consécutifs seraient séparés d'au plus $P$ positions. Or l'écart entre $\\frac{m(m+1)}2$ et $\\frac{(m+1)(m+2)}2$ vaut $m + 1 \\to +\\infty$."
+  },
+  {
+    "id": "reels-suites-piste-11", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $A = \\left\\{\\frac1n - \\frac1p : n, p \\in \\mathbb N^*\\right\\}$. Déterminer $\\sup A$.",
+    "choix": [
+      {
+        "titre": "Majorant et caractérisation séquentielle",
+        "info": "$M = \\sup A$ si et seulement si $M$ majore $A$ et s'il existe une suite d'éléments de $A$ qui converge vers $M$.",
+        "verdict": "bon",
+        "retour": "On devine le candidat $1$ en prenant $n = 1$ et $p$ grand, puis on vérifie les deux conditions."
+      },
+      {
+        "titre": "Propriété de la borne supérieure",
+        "info": "Toute partie non vide et majorée de $\\mathbb R$ admet une borne supérieure.",
+        "verdict": "possible",
+        "retour": "Elle garantit l'existence de $\\sup A$, mais ne donne pas sa valeur."
+      },
+      {
+        "titre": "Chercher le plus grand élément de $A$",
+        "info": "Si $A$ a un plus grand élément, c'est sa borne supérieure.",
+        "verdict": "impasse",
+        "retour": "$A$ n'a pas de plus grand élément : la borne supérieure n'est pas atteinte."
+      },
+      {
+        "titre": "Étudier les dérivées partielles de $(x, y) \\mapsto \\frac1x - \\frac1y$",
+        "info": "En un point intérieur où une fonction différentiable atteint un extremum, ses dérivées partielles s'annulent.",
+        "verdict": "impasse",
+        "retour": "Les dérivées partielles ne s'annulent jamais, et la borne supérieure n'est atteinte en aucun point : le calcul différentiel ne dit rien."
+      }
+    ],
+    "direction": "Pour tous $n, p \\ge 1$, $\\frac1n - \\frac1p < \\frac1n \\le 1$ : $1$ majore $A$. La suite $1 - \\frac1p$, d'éléments de $A$, tend vers $1$. Donc $\\sup A = 1$, non atteinte. De même, $\\inf A = -1$."
+  },
+  {
+    "id": "reels-suites-piste-12", "ch": "reels-suites", "type": "piste",
+    "enonce": "Soit $(z_n)$ une suite bornée de nombres complexes. Montrer qu'on peut en extraire une sous-suite convergente.",
+    "choix": [
+      {
+        "titre": "Double extraction sur les parties réelle et imaginaire",
+        "info": "Bolzano-Weierstrass dans $\\mathbb R$ ; une suite extraite d'une suite extraite est une suite extraite ; une suite extraite d'une suite convergente converge vers la même limite.",
+        "verdict": "bon",
+        "retour": "On extrait d'abord sur $\\mathrm{Re}(z_n)$, puis on extrait à nouveau sur la partie imaginaire de la sous-suite obtenue."
+      },
+      {
+        "titre": "Extraire séparément sur $\\mathrm{Re}(z_n)$ et sur $\\mathrm{Im}(z_n)$",
+        "info": "$(\\mathrm{Re}\\, z_n)$ et $(\\mathrm{Im}\\, z_n)$ sont des suites réelles bornées, à chacune desquelles s'applique Bolzano-Weierstrass.",
+        "verdict": "impasse",
+        "retour": "Les deux extractions $\\varphi$ et $\\psi$ n'ont aucune raison d'être compatibles : il faut une seule extraction qui marche pour les deux."
+      },
+      {
+        "titre": "Appliquer Bolzano-Weierstrass au module $|z_n|$",
+        "info": "$(|z_n|)$ est une suite réelle bornée.",
+        "verdict": "impasse",
+        "retour": "La convergence du module ne donne pas celle de $z_n$ : $(e^{in})$ a un module constant."
+      },
+      {
+        "titre": "Forme trigonométrique $z_n = r_n e^{i\\theta_n}$",
+        "info": "On peut choisir $\\theta_n \\in [0, 2\\pi[$ ; l'application $(r, \\theta) \\mapsto r e^{i\\theta}$ est continue.",
+        "verdict": "possible",
+        "retour": "Une double extraction sur $(r_n)$ puis $(\\theta_n)$ aboutit aussi, mais c'est plus lourd que les coordonnées cartésiennes."
+      }
+    ],
+    "direction": "$(\\mathrm{Re}\\, z_n)$ est bornée : il existe $\\varphi$ avec $\\mathrm{Re}\\, z_{\\varphi(n)} \\to a$. Puis $(\\mathrm{Im}\\, z_{\\varphi(n)})$ est bornée : il existe $\\psi$ avec $\\mathrm{Im}\\, z_{\\varphi(\\psi(n))} \\to b$. La suite $(z_{\\varphi \\circ \\psi(n)})$ converge vers $a + ib$."
+  }
+]

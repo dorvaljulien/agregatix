@@ -1,0 +1,685 @@
+[
+  {
+    "id": "topologie-vf-01", "ch": "topologie", "type": "vf",
+    "enonce": "Dans un espace métrique, une réunion quelconque de parties fermées est fermée.",
+    "reponse": false,
+    "explication": "C'est vrai pour une réunion **finie**, faux en général. Contre-exemple dans $\\mathbb R$ : $\\bigcup_{n \\ge 1} \\left[\\frac1n, 1\\right] = \\left]0, 1\\right]$, qui n'est pas fermé. C'est l'intersection quelconque de fermés qui est toujours fermée."
+  },
+  {
+    "id": "topologie-vf-02", "ch": "topologie", "type": "vf",
+    "enonce": "Soient $f, g : \\mathbb R \\to \\mathbb R$ deux fonctions continues telles que $f(r) = g(r)$ pour tout $r \\in \\mathbb Q$. Alors $f = g$.",
+    "reponse": true,
+    "explication": "Tout réel $x$ est limite d'une suite $(r_n)$ de rationnels (densité de $\\mathbb Q$). Par continuité, $f(x) = \\lim f(r_n) = \\lim g(r_n) = g(x)$. Deux applications continues qui coïncident sur une partie dense sont égales."
+  },
+  {
+    "id": "topologie-vf-03", "ch": "topologie", "type": "vf",
+    "enonce": "Dans un espace vectoriel normé $E$, pour tout $a \\in E$ et tout $r > 0$, l'adhérence de la boule ouverte $B(a, r)$ est la boule fermée $B_f(a, r)$.",
+    "reponse": true,
+    "explication": "La boule fermée est un fermé contenant $B(a,r)$, d'où une inclusion. Inversement, si $\\|x - a\\| = r$, les points $x_n = a + \\left(1 - \\frac1n\\right)(x - a)$ sont dans $B(a, r)$ et tendent vers $x$. C'est la structure vectorielle qui fournit ce segment."
+  },
+  {
+    "id": "topologie-vf-04", "ch": "topologie", "type": "vf",
+    "enonce": "Dans tout espace métrique $(X, d)$, l'adhérence de la boule ouverte $B(a, r)$ est la boule fermée $B_f(a, r)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $\\mathbb R$ muni de la distance discrète ($d(x,y) = 1$ si $x \\ne y$). Toute partie y est fermée, donc l'adhérence de $B(a, 1) = \\{a\\}$ est $\\{a\\}$, alors que $B_f(a, 1) = \\mathbb R$. L'égalité est vraie dans un espace vectoriel normé."
+  },
+  {
+    "id": "topologie-vf-05", "ch": "topologie", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R^n \\to \\mathbb R^p$ continue et $K$ un compact de $\\mathbb R^p$. Alors $f^{-1}(K)$ est compact.",
+    "reponse": false,
+    "explication": "L'image réciproque d'un compact est fermée, mais pas forcément bornée. Contre-exemple : $f = 0$ et $K = \\{0\\}$, avec $f^{-1}(K) = \\mathbb R^n$. C'est l'image **directe** d'un compact par une application continue qui est compacte."
+  },
+  {
+    "id": "topologie-vf-06", "ch": "topologie", "type": "vf",
+    "enonce": "Toute fonction continue et bornée de $\\mathbb R$ dans $\\mathbb R$ est uniformément continue.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = \\sin(x^2)$. Avec $x_n = \\sqrt{n\\pi}$ et $y_n = \\sqrt{n\\pi + \\pi/2}$, on a $y_n - x_n = \\frac{\\pi/2}{x_n + y_n} \\to 0$ mais $|f(y_n) - f(x_n)| = 1$. C'est vrai sur un segment (Heine), ou pour une fonction lipschitzienne."
+  },
+  {
+    "id": "topologie-vf-07", "ch": "topologie", "type": "vf",
+    "enonce": "Toute fonction continue $f : [0, +\\infty[ \\to \\mathbb R$ qui admet une limite finie en $+\\infty$ est uniformément continue.",
+    "reponse": true,
+    "explication": "Soit $\\varepsilon > 0$ et $A$ tel que $|f(x) - \\ell| \\le \\varepsilon/2$ pour $x \\ge A$. Par Heine, $f$ est uniformément continue sur $[0, A+1]$, d'où un $\\delta \\le 1$. Si $|x - y| \\le \\delta$, soit $x, y \\ge A$ et $|f(x) - f(y)| \\le \\varepsilon$, soit $x, y \\in [0, A+1]$."
+  },
+  {
+    "id": "topologie-vf-08", "ch": "topologie", "type": "vf",
+    "enonce": "Dans un espace vectoriel normé de dimension finie, tout sous-espace vectoriel est fermé.",
+    "reponse": true,
+    "explication": "Un sous-espace $F$ est de dimension finie, donc complet. Si $x_n \\in F$ et $x_n \\to x$, la suite est de Cauchy dans $F$, donc converge dans $F$ ; par unicité de la limite, $x \\in F$."
+  },
+  {
+    "id": "topologie-vf-09", "ch": "topologie", "type": "vf",
+    "enonce": "Dans tout espace vectoriel normé, tout sous-espace vectoriel est fermé.",
+    "reponse": false,
+    "explication": "Dans l'espace des suites réelles bornées muni de $\\|\\cdot\\|_\\infty$, le sous-espace $F$ des suites nulles à partir d'un certain rang n'est pas fermé : les tronquées de $u = \\left(\\frac1{n+1}\\right)$ sont dans $F$ et tendent vers $u$ (écart $\\le \\frac1{N+1}$), mais $u \\notin F$. C'est vrai pour un sous-espace de dimension finie."
+  },
+  {
+    "id": "topologie-vf-10", "ch": "topologie", "type": "vf",
+    "enonce": "Si $f : \\mathbb R \\to \\mathbb R$ est continue, son graphe $\\{(x, f(x)),\\ x \\in \\mathbb R\\}$ est une partie fermée de $\\mathbb R^2$.",
+    "reponse": true,
+    "explication": "Le graphe est l'image réciproque du fermé $\\{0\\}$ par l'application continue $(x, y) \\mapsto y - f(x)$."
+  },
+  {
+    "id": "topologie-vf-11", "ch": "topologie", "type": "vf",
+    "enonce": "Si le graphe d'une fonction $f : \\mathbb R \\to \\mathbb R$ est une partie fermée de $\\mathbb R^2$, alors $f$ est continue.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = \\frac1x$ pour $x \\ne 0$ et $f(0) = 0$. Le graphe est $\\{xy = 1\\} \\cup \\{(0,0)\\}$, réunion de deux fermés, et $f$ n'est pas continue en $0$. La réciproque devient vraie si $f$ est de plus bornée (argument de valeurs d'adhérence)."
+  },
+  {
+    "id": "topologie-vf-12", "ch": "topologie", "type": "vf",
+    "enonce": "Si $A$ et $B$ sont deux parties connexes **disjointes** et non vides de $\\mathbb R$, alors $A \\cup B$ n'est pas connexe.",
+    "reponse": false,
+    "explication": "Contre-exemple : $A = [0, 1[$ et $B = [1, 2]$ sont disjoints, et $A \\cup B = [0, 2]$ est un intervalle, donc connexe. Ce qui est vrai : une réunion de connexes d'intersection non vide est connexe."
+  },
+  {
+    "id": "topologie-vf-13", "ch": "topologie", "type": "vf",
+    "enonce": "Toute partie convexe d'un espace vectoriel normé est connexe par arcs.",
+    "reponse": true,
+    "explication": "Deux points $a, b$ sont reliés par le chemin continu $t \\mapsto (1-t)a + tb$, $t \\in [0,1]$, qui reste dans la partie par convexité. La réciproque est fausse : un cercle est connexe par arcs sans être convexe."
+  },
+  {
+    "id": "topologie-vf-14", "ch": "topologie", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ telle que $|f(x) - f(y)| < |x - y|$ pour tous $x \\ne y$. Alors $f$ admet un point fixe.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(x) = \\sqrt{1 + x^2}$. On a $|f(x) - f(y)| = \\frac{|x+y|}{f(x) + f(y)}|x - y| < |x - y|$, et $f(x) > |x| \\ge x$. Il faut une constante $k < 1$ (point fixe sur un complet), ou bien travailler sur un compact."
+  },
+  {
+    "id": "topologie-vf-15", "ch": "topologie", "type": "vf",
+    "enonce": "Soit $(e_n)_{n \\in \\mathbb N}$ une famille orthonormale d'un espace préhilbertien réel $E$. Pour tout $x \\in E$, la série $\\sum \\langle x, e_n\\rangle^2$ converge et sa somme est au plus $\\|x\\|^2$.",
+    "reponse": true,
+    "explication": "C'est l'inégalité de Bessel. Pour tout $N$, $\\sum_{k=0}^N \\langle x, e_k\\rangle^2 = \\|p_N(x)\\|^2 \\le \\|x\\|^2$, où $p_N$ est la projection orthogonale sur $\\mathrm{Vect}(e_0, \\dots, e_N)$ (Pythagore). Série à termes positifs aux sommes partielles majorées."
+  },
+  {
+    "id": "topologie-qcm-01", "ch": "topologie", "type": "qcm",
+    "enonce": "Théorème de Heine.\nSoit $A \\subset \\mathbb R$ une partie **[ ? ]** et $f : A \\to \\mathbb R$ continue. Alors $f$ est uniformément continue sur $A$.",
+    "choix": [
+      "compacte",
+      "fermée",
+      "bornée",
+      "connexe"
+    ],
+    "bonne": 0,
+    "explication": "Il faut fermé **et** borné. Fermée seule ou connexe : $x \\mapsto x^2$ sur $\\mathbb R$ n'est pas uniformément continue. Bornée seule : $x \\mapsto \\frac1x$ sur $]0, 1]$ ne l'est pas non plus."
+  },
+  {
+    "id": "topologie-qcm-02", "ch": "topologie", "type": "qcm",
+    "enonce": "Théorème du point fixe.\nSoit $(E, d)$ un espace métrique non vide **[ ? ]** et $f : E \\to E$ $k$-lipschitzienne avec $k < 1$. Alors $f$ admet un unique point fixe.",
+    "choix": [
+      "complet",
+      "borné",
+      "connexe",
+      "ouvert dans $\\mathbb R$"
+    ],
+    "bonne": 0,
+    "explication": "La complétude assure la convergence de la suite des itérés, qui est de Cauchy. Contre-exemple aux trois leurres : $E = ]0, 1[$ (borné, connexe, ouvert) et $f(x) = \\frac x2$, qui envoie $E$ dans $E$ sans point fixe."
+  },
+  {
+    "id": "topologie-qcm-03", "ch": "topologie", "type": "qcm",
+    "enonce": "On munit $\\mathbb R^2$ de $\\|\\cdot\\|_\\infty$ et on note $u$ l'endomorphisme de matrice $\\begin{pmatrix} 1 & -3 \\\\ 2 & 0 \\end{pmatrix}$. Que vaut la norme subordonnée $\\|u\\|_{\\mathrm{op}} = \\sup_{\\|x\\|_\\infty \\le 1} \\|u(x)\\|_\\infty$ ?",
+    "choix": [
+      "$4$",
+      "$3$",
+      "$6$",
+      "$\\sqrt{14}$"
+    ],
+    "bonne": 0,
+    "explication": "Pour $\\|\\cdot\\|_\\infty$, c'est le maximum des sommes des modules **par ligne** : $\\max(1 + 3, 2 + 0) = 4$, atteint en $x = (1, -1)$ qui donne $u(x) = (4, 2)$. Le $3$ est le maximum par colonne (norme subordonnée à $\\|\\cdot\\|_1$), $\\sqrt{14}$ la norme de Frobenius."
+  },
+  {
+    "id": "topologie-qcm-04", "ch": "topologie", "type": "qcm",
+    "enonce": "Soit $E$ un espace vectoriel normé réel. **[ ? ]**, les parties compactes de $E$ sont exactement ses parties fermées et bornées.",
+    "choix": [
+      "Si $E$ est de dimension finie",
+      "Si $E$ est complet",
+      "Si la norme de $E$ provient d'un produit scalaire",
+      "Quel que soit $E$"
+    ],
+    "bonne": 0,
+    "explication": "En dimension infinie, la boule unité fermée n'est jamais compacte. Dans l'espace complet des suites bornées muni de $\\|\\cdot\\|_\\infty$, les suites $e_n$ (un $1$ en position $n$) sont à distance $1$ deux à deux. Dans $\\mathbb R[X]$ muni de $\\langle P, Q\\rangle = \\sum a_k b_k$, les $X^n$ sont à distance $\\sqrt 2$ deux à deux : aucune sous-suite convergente."
+  },
+  {
+    "id": "topologie-qcm-05", "ch": "topologie", "type": "qcm",
+    "enonce": "Soit $A$ une partie d'un espace métrique $E$ et $x \\in E$. Alors $x \\in \\overline A$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "il existe une suite d'éléments de $A$ qui converge vers $x$",
+      "il existe $r > 0$ tel que $B(x, r) \\subset A$",
+      "$x$ est un point d'accumulation de $A$",
+      "il existe une suite d'éléments de $E \\setminus A$ qui converge vers $x$"
+    ],
+    "bonne": 0,
+    "explication": "Caractérisation séquentielle de l'adhérence. Le deuxième choix caractérise l'intérieur. Un point isolé de $A$ (par exemple $2$ pour $A = [0,1] \\cup \\{2\\}$) est adhérent sans être d'accumulation. Le dernier caractérise l'adhérence du complémentaire."
+  },
+  {
+    "id": "topologie-qcm-06", "ch": "topologie", "type": "qcm",
+    "enonce": "Soit $n \\ge 2$. Quelle est la plus petite constante $C$ telle que $\\|x\\|_1 \\le C\\,\\|x\\|_2$ pour tout $x \\in \\mathbb R^n$ ?",
+    "choix": [
+      "$\\sqrt n$",
+      "$n$",
+      "$1$",
+      "$n^2$"
+    ],
+    "bonne": 0,
+    "explication": "Par Cauchy-Schwarz, $\\sum |x_i| \\cdot 1 \\le \\|x\\|_2 \\sqrt n$, avec égalité pour $x = (1, \\dots, 1)$ : $\\|x\\|_1 = n$ et $\\|x\\|_2 = \\sqrt n$. L'autre inégalité, $\\|x\\|_2 \\le \\|x\\|_1$, a pour meilleure constante $1$."
+  },
+  {
+    "id": "topologie-qcm-07", "ch": "topologie", "type": "qcm",
+    "enonce": "Soit $X$ une partie **[ ? ]** de $\\mathbb R^n$ et $f : X \\to \\mathbb R$ continue. Si $f$ prend les valeurs $a$ et $b$, alors $f$ prend toutes les valeurs comprises entre $a$ et $b$.",
+    "choix": [
+      "connexe",
+      "compacte",
+      "fermée",
+      "ouverte"
+    ],
+    "bonne": 0,
+    "explication": "L'image continue d'un connexe est un connexe de $\\mathbb R$, donc un intervalle. Compacte ou fermée : $X = \\{0, 1\\}$ et $f(x) = x$ ne prend pas la valeur $\\frac12$. Ouverte : $X = ]0,1[ \\cup ]2,3[$ et $f$ valant $0$ puis $1$."
+  },
+  {
+    "id": "topologie-qcm-08", "ch": "topologie", "type": "qcm",
+    "enonce": "Soit $F$ un sous-espace de dimension finie d'un espace préhilbertien réel $E$, $(e_1, \\dots, e_p)$ une base orthonormée de $F$ et $x \\in E$. Alors $d(x, F)^2$ vaut :",
+    "choix": [
+      "$\\|x\\|^2 - \\sum_{k=1}^p \\langle x, e_k\\rangle^2$",
+      "$\\sum_{k=1}^p \\langle x, e_k\\rangle^2$",
+      "$\\|x\\|^2 + \\sum_{k=1}^p \\langle x, e_k\\rangle^2$",
+      "$\\left(\\|x\\| - \\left(\\sum_{k=1}^p \\langle x, e_k\\rangle^2\\right)^{1/2}\\right)^2$"
+    ],
+    "bonne": 0,
+    "explication": "$d(x, F) = \\|x - p_F(x)\\|$ avec $p_F(x) = \\sum \\langle x, e_k\\rangle e_k$, et Pythagore donne $\\|x\\|^2 = \\|p_F(x)\\|^2 + \\|x - p_F(x)\\|^2$. Le deuxième choix est $\\|p_F(x)\\|^2$. Le dernier soustrait les normes au lieu de leurs carrés : pour $x = (1,1)$ et $F = \\mathbb R e_1$, il donne $(\\sqrt 2 - 1)^2 \\ne 1$."
+  },
+  {
+    "id": "topologie-qcm-09", "ch": "topologie", "type": "qcm",
+    "enonce": "On munit $\\mathbb R[X]$ du produit scalaire $\\langle P, Q\\rangle = \\int_{-1}^1 P(t)Q(t)\\,\\mathrm dt$. Quel est le polynôme unitaire de degré $2$ orthogonal à $\\mathbb R_1[X]$ ?",
+    "choix": [
+      "$X^2 - \\frac13$",
+      "$X^2 - \\frac12$",
+      "$X^2 - 1$",
+      "$X^2 - X$"
+    ],
+    "bonne": 0,
+    "explication": "On cherche $X^2 + aX + b$. L'orthogonalité à $X$ donne $a = 0$ (parité), puis l'orthogonalité à $1$ donne $\\frac23 + 2b = 0$, soit $b = -\\frac13$. C'est, à un facteur près, le polynôme de Legendre de degré $2$."
+  },
+  {
+    "id": "topologie-err-01", "ch": "topologie", "type": "erreur",
+    "enonce": "On veut montrer que le groupe orthogonal $O_n(\\mathbb R)$ est une partie compacte de $M_n(\\mathbb R)$. Voici une copie.",
+    "lignes": [
+      "L'application $\\varphi : M \\mapsto M^{\\mathsf T}M$ est continue sur $M_n(\\mathbb R)$, car ses coordonnées sont polynomiales en les coefficients de $M$.",
+      "$O_n(\\mathbb R) = \\varphi^{-1}(\\{I_n\\})$ est fermé, comme image réciproque d'un fermé par une application continue.",
+      "Les colonnes d'une matrice orthogonale sont unitaires, donc ses coefficients sont dans $[-1, 1]$ : $O_n(\\mathbb R)$ est borné.",
+      "Dans un espace vectoriel normé, toute partie fermée et bornée est compacte. Donc $O_n(\\mathbb R)$ est compact."
+    ],
+    "fausse": 3,
+    "explication": "Le résultat « fermé borné implique compact » n'est vrai qu'en **dimension finie** ; ici $M_n(\\mathbb R)$ est de dimension $n^2$, et c'est cet argument que le jury attend. En dimension infinie, la boule unité fermée n'est jamais compacte."
+  },
+  {
+    "id": "topologie-err-02", "ch": "topologie", "type": "erreur",
+    "enonce": "Soit $A$ un fermé non vide de $\\mathbb R^n$ et $x \\in \\mathbb R^n$. On veut montrer qu'il existe $a_0 \\in A$ tel que $\\|x - a_0\\| = d(x, A)$. Voici une copie.",
+    "lignes": [
+      "$d(x, A) = \\inf_{a \\in A} \\|x - a\\|$ existe, car cet ensemble de réels est non vide et minoré par $0$.",
+      "L'application $a \\mapsto \\|x - a\\|$ est continue sur $A$.",
+      "Une fonction continue sur un fermé de $\\mathbb R^n$ atteint sa borne inférieure, d'où l'existence de $a_0$."
+    ],
+    "fausse": 2,
+    "explication": "C'est sur un **compact** qu'une fonction continue atteint ses bornes ; $x \\mapsto e^x$ sur le fermé $\\mathbb R$ n'atteint pas son infimum. Correction : on fixe $a_1 \\in A$, $r = \\|x - a_1\\|$, et on minimise sur $A \\cap B_f(x, r)$, fermé borné de $\\mathbb R^n$ donc compact."
+  },
+  {
+    "id": "topologie-err-03", "ch": "topologie", "type": "erreur",
+    "enonce": "Soit $T > 0$ et $f : \\mathbb R \\to \\mathbb R$ continue et $T$-périodique. On veut montrer que $f$ est uniformément continue. Voici une copie.",
+    "lignes": [
+      "Par Heine, $f$ est uniformément continue sur $[0, T]$ : pour $\\varepsilon > 0$, il existe $\\delta > 0$ tel que $|f(x) - f(y)| \\le \\varepsilon$ pour tous $x, y \\in [0, T]$ avec $|x - y| \\le \\delta$.",
+      "Soient $x, y \\in \\mathbb R$ avec $|x - y| \\le \\delta$. On pose $k = \\lfloor x/T \\rfloor$, $x' = x - kT \\in [0, T[$ et $y' = y - kT$.",
+      "Par périodicité, $f(x) - f(y) = f(x') - f(y')$, et $|x' - y'| \\le \\delta$.",
+      "Donc $|f(x) - f(y)| \\le \\varepsilon$ : $f$ est uniformément continue sur $\\mathbb R$."
+    ],
+    "fausse": 3,
+    "explication": "Rien ne garantit que $y'$ soit dans $[0, T]$ : si $x'$ est proche de $T$, $y'$ peut le dépasser. Correction : appliquer Heine sur $[-T, 2T]$ et prendre $\\delta \\le T$, de sorte que $x'$ et $y'$ sont tous deux dans ce segment."
+  },
+  {
+    "id": "topologie-err-04", "ch": "topologie", "type": "erreur",
+    "enonce": "On pose $f(x) = x + \\frac1x$ sur $[1, +\\infty[$. Une copie affirme que $f$ admet un point fixe.",
+    "lignes": [
+      "$[1, +\\infty[$ est un fermé de $\\mathbb R$, donc il est complet.",
+      "Pour $x \\ge 1$, $f(x) \\ge 1$ : l'intervalle $[1, +\\infty[$ est stable par $f$.",
+      "Pour $x > 1$, on a $0 < f'(x) = 1 - \\frac1{x^2} < 1$.",
+      "Par l'inégalité des accroissements finis, $f$ est contractante, donc elle admet un unique point fixe."
+    ],
+    "fausse": 3,
+    "explication": "Il faut une constante $k < 1$ **uniforme** : ici $\\sup f' = 1$, donc on a seulement $|f(x) - f(y)| < |x - y|$. Et la conclusion est fausse : $f(x) - x = \\frac1x > 0$, il n'y a aucun point fixe."
+  },
+  {
+    "id": "topologie-err-05", "ch": "topologie", "type": "erreur",
+    "enonce": "On munit $E = \\mathcal C([0,1], \\mathbb R)$ de $\\|\\cdot\\|_\\infty$ et on pose $\\varphi(f) = \\int_0^1 (1 - 2t) f(t)\\,\\mathrm dt$. On cherche la norme subordonnée de la forme linéaire $\\varphi$. Voici une copie.",
+    "lignes": [
+      "Pour tout $f \\in E$, $|\\varphi(f)| \\le \\|f\\|_\\infty \\int_0^1 |1 - 2t|\\,\\mathrm dt = \\frac12\\|f\\|_\\infty$.",
+      "Donc $\\varphi$ est continue et $\\|\\varphi\\|_{\\mathrm{op}} \\le \\frac12$.",
+      "Si $\\|f\\|_\\infty \\le 1$ et $|\\varphi(f)| = \\frac12$, alors $f = 1$ sur $[0, \\frac12[$ et $f = -1$ sur $]\\frac12, 1]$, ou l'inverse : c'est impossible pour $f$ continue.",
+      "La borne $\\frac12$ n'est donc pas atteinte, et $\\|\\varphi\\|_{\\mathrm{op}} < \\frac12$."
+    ],
+    "fausse": 3,
+    "explication": "La norme est une borne supérieure, pas forcément un maximum. Des fonctions continues $f_n$ affines par morceaux, égales à $1$ sur $[0, \\frac12 - \\frac1n]$ et à $-1$ sur $[\\frac12 + \\frac1n, 1]$, vérifient $\\|f_n\\|_\\infty = 1$ et $\\varphi(f_n) \\to \\frac12$. Donc $\\|\\varphi\\|_{\\mathrm{op}} = \\frac12$, borne non atteinte."
+  },
+  {
+    "id": "topologie-err-06", "ch": "topologie", "type": "erreur",
+    "enonce": "On se demande si $GL_n(\\mathbb R)$, $n \\ge 1$, est connexe par arcs. Voici une copie.",
+    "lignes": [
+      "Le déterminant est continu sur $M_n(\\mathbb R)$, car polynomial en les coefficients.",
+      "$GL_n(\\mathbb R) = \\det^{-1}(\\mathbb R^*)$ est donc un ouvert de $M_n(\\mathbb R)$.",
+      "Il est dense : pour $A \\in M_n(\\mathbb R)$, $A - \\frac1p I_n$ est inversible pour $p$ assez grand et tend vers $A$.",
+      "Un ouvert dense d'un espace connexe par arcs est connexe par arcs, donc $GL_n(\\mathbb R)$ est connexe par arcs."
+    ],
+    "fausse": 3,
+    "explication": "Contre-exemple à la règle invoquée : $\\mathbb R^*$ est un ouvert dense de $\\mathbb R$, non connexe. Et la conclusion est fausse : l'image continue d'un connexe est connexe, or $\\det(GL_n(\\mathbb R)) = \\mathbb R^*$ ne l'est pas. En revanche $GL_n(\\mathbb C)$ est connexe par arcs."
+  },
+  {
+    "id": "topologie-err-07", "ch": "topologie", "type": "erreur",
+    "enonce": "Dans $\\mathbb R^3$ euclidien usuel, on cherche le projeté orthogonal de $x = (1, 0, 0)$ sur $F = \\mathrm{Vect}(u, v)$, avec $u = (1, 1, 0)$ et $v = (0, 1, 1)$. Voici une copie.",
+    "lignes": [
+      "$e_1 = \\frac{u}{\\sqrt 2}$ et $e_2 = \\frac{v}{\\sqrt 2}$ sont unitaires et forment une base de $F$.",
+      "$\\langle x, e_1\\rangle = \\frac1{\\sqrt 2}$ et $\\langle x, e_2\\rangle = 0$.",
+      "Le projeté orthogonal de $x$ sur $F$ est donc $\\langle x, e_1\\rangle e_1 + \\langle x, e_2\\rangle e_2 = \\left(\\frac12, \\frac12, 0\\right)$."
+    ],
+    "fausse": 2,
+    "explication": "La formule $\\sum \\langle x, e_k\\rangle e_k$ exige une base **orthonormée** ; ici $\\langle e_1, e_2\\rangle = \\frac12$. Il faut d'abord appliquer Gram-Schmidt. On trouve $p_F(x) = \\left(\\frac23, \\frac13, -\\frac13\\right)$ : $x - p_F(x) = \\frac13(1, -1, 1)$ est bien orthogonal à $u$ et à $v$."
+  },
+  {
+    "id": "topologie-piste-01", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $f : \\mathbb R^n \\to \\mathbb R$ continue telle que $f(x) \\to +\\infty$ quand $\\|x\\| \\to +\\infty$. Montrer que $f$ admet un minimum sur $\\mathbb R^n$.",
+    "choix": [
+      {
+        "titre": "Se ramener à une boule fermée",
+        "info": "Une fonction continue sur un compact non vide est bornée et atteint ses bornes. En dimension finie, les compacts sont les fermés bornés.",
+        "verdict": "bon",
+        "retour": "Hors d'une grande boule, $f$ dépasse $f(0)$ : le minimum sur la boule est le minimum global."
+      },
+      {
+        "titre": "Suite minimisante et Bolzano-Weierstrass",
+        "info": "On prend $(x_k)$ telle que $f(x_k) \\to \\inf f$. De toute suite bornée de $\\mathbb R^n$, on peut extraire une sous-suite convergente.",
+        "verdict": "bon",
+        "retour": "L'hypothèse en $+\\infty$ force la suite minimisante à rester bornée ; la limite d'une sous-suite réalise le minimum par continuité."
+      },
+      {
+        "titre": "Image d'un connexe",
+        "info": "L'image d'une partie connexe par une application continue est connexe ; les connexes de $\\mathbb R$ sont les intervalles.",
+        "verdict": "impasse",
+        "retour": "$f(\\mathbb R^n)$ est un intervalle non majoré, mais rien ne dit qu'il contient sa borne inférieure : a priori il pourrait être de la forme $]m, +\\infty[$."
+      },
+      {
+        "titre": "Annulation du gradient",
+        "info": "En un minimum local intérieur d'une fonction différentiable, le gradient est nul.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement continue, et une condition nécessaire ne prouve de toute façon pas l'existence d'un minimum."
+      }
+    ],
+    "direction": "Il existe $R > 0$ tel que $f(x) > f(0)$ pour $\\|x\\| > R$. La boule $B_f(0, R)$ est fermée bornée en dimension finie, donc compacte : $f$ y atteint un minimum en $x_0$, avec $f(x_0) \\le f(0) < f(x)$ pour $\\|x\\| > R$. C'est le minimum global."
+  },
+  {
+    "id": "topologie-piste-02", "ch": "topologie", "type": "piste",
+    "enonce": "On munit $\\mathbb R[X]$ de la norme $N\\left(\\sum a_k X^k\\right) = \\max_k |a_k|$. Montrer que l'application linéaire $D : P \\mapsto P'$ n'est pas continue.",
+    "choix": [
+      {
+        "titre": "Caractérisation des applications linéaires continues",
+        "info": "Une application linéaire $u$ entre espaces normés est continue si et seulement s'il existe $C \\ge 0$ tel que $\\|u(x)\\| \\le C\\|x\\|$ pour tout $x$.",
+        "verdict": "bon",
+        "retour": "Il suffit d'exhiber une famille de polynômes de norme $1$ dont les dérivées ont des normes non bornées."
+      },
+      {
+        "titre": "Caractérisation séquentielle en $0$",
+        "info": "Une application linéaire est continue si et seulement si elle est continue en $0$, c'est-à-dire si $x_n \\to 0$ implique $u(x_n) \\to 0$.",
+        "verdict": "bon",
+        "retour": "Avec $P_n = \\frac{X^n}{n}$ : $N(P_n) \\to 0$ mais $N(P_n') = 1$."
+      },
+      {
+        "titre": "Continuité des applications linéaires en dimension finie",
+        "info": "Si $E$ est de dimension finie, toute application linéaire de $E$ dans un espace normé est continue.",
+        "verdict": "impasse",
+        "retour": "$\\mathbb R[X]$ est de dimension infinie : le théorème ne s'applique pas, et la conclusion attendue est d'ailleurs inverse."
+      },
+      {
+        "titre": "Changer de norme",
+        "info": "En dimension finie, toutes les normes sont équivalentes, et la continuité ne dépend pas de la norme choisie.",
+        "verdict": "impasse",
+        "retour": "En dimension infinie, les normes ne sont pas toutes équivalentes : la continuité dépend de la norme, on ne peut pas en changer."
+      }
+    ],
+    "direction": "$N(X^n) = 1$ et $N(D(X^n)) = N(nX^{n-1}) = n$. Aucune constante $C$ ne vérifie $N(D(P)) \\le C\\,N(P)$ pour tout $P$ : $D$ n'est pas continue."
+  },
+  {
+    "id": "topologie-piste-03", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $u_0 \\in \\mathbb R$ et $u_{n+1} = \\cos(u_n)$ pour tout $n$. Montrer que la suite $(u_n)$ converge.",
+    "choix": [
+      {
+        "titre": "Point fixe sur un intervalle stable",
+        "info": "Si $I$ est un fermé de $\\mathbb R$ stable par $f$ et si $f$ est $k$-lipschitzienne sur $I$ avec $k < 1$, alors pour tout $x_0 \\in I$ la suite $x_{n+1} = f(x_n)$ converge vers l'unique point fixe de $f$ dans $I$.",
+        "verdict": "bon",
+        "retour": "Sur $[-1, 1]$, intervalle stable par $\\cos$ et atteint dès $u_1$, $|\\cos'| = |\\sin| \\le \\sin 1 < 1$."
+      },
+      {
+        "titre": "Point fixe sur $\\mathbb R$ tout entier",
+        "info": "Une application $k$-lipschitzienne avec $k < 1$ d'un espace complet dans lui-même a un unique point fixe, limite de toute suite des itérés.",
+        "verdict": "impasse",
+        "retour": "Sur $\\mathbb R$, la meilleure constante de Lipschitz de $\\cos$ est $\\sup |\\sin| = 1$ : pas de contraction."
+      },
+      {
+        "titre": "Suites extraites des rangs pairs et impairs",
+        "info": "Si $f$ est décroissante, $f \\circ f$ est croissante, donc $(u_{2n})$ et $(u_{2n+1})$ sont monotones.",
+        "verdict": "possible",
+        "retour": "On obtient la convergence des deux suites extraites, mais il faut encore montrer qu'elles ont la même limite, via les points fixes de $\\cos \\circ \\cos$ : c'est lourd."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Une fonction continue sur un intervalle qui prend deux valeurs prend toutes les valeurs intermédiaires.",
+        "verdict": "possible",
+        "retour": "Appliqué à $x \\mapsto \\cos x - x$, il donne un point fixe, mais rien sur la convergence de la suite."
+      }
+    ],
+    "direction": "Pour $n \\ge 1$, $u_n \\in [-1, 1]$. Cet intervalle est fermé, stable par $\\cos$, et $\\cos$ y est $(\\sin 1)$-lipschitzienne. Par le théorème du point fixe, $(u_n)$ converge vers l'unique solution de $\\cos \\ell = \\ell$ dans $[-1, 1]$."
+  },
+  {
+    "id": "topologie-piste-04", "ch": "topologie", "type": "piste",
+    "enonce": "Montrer que $\\mathbb R$ et $\\mathbb R^2$ ne sont pas homéomorphes.",
+    "choix": [
+      {
+        "titre": "Retirer un point et comparer la connexité",
+        "info": "Un homéomorphisme $h : X \\to Y$ induit un homéomorphisme de $X \\setminus \\{a\\}$ sur $Y \\setminus \\{h(a)\\}$. L'image continue d'un connexe est connexe.",
+        "verdict": "bon",
+        "retour": "$\\mathbb R$ privé d'un point n'est pas connexe, $\\mathbb R^2$ privé d'un point l'est (par arcs)."
+      },
+      {
+        "titre": "Compacité",
+        "info": "L'image d'un compact par une application continue est compacte ; un homéomorphisme préserve donc la compacité.",
+        "verdict": "impasse",
+        "retour": "Ni $\\mathbb R$ ni $\\mathbb R^2$ n'est compact : aucune distinction possible par ce biais."
+      },
+      {
+        "titre": "Comparer les dimensions",
+        "info": "Deux espaces vectoriels de dimension finie sont isomorphes si et seulement s'ils ont la même dimension.",
+        "verdict": "impasse",
+        "retour": "Un homéomorphisme n'a aucune raison d'être linéaire : la dimension algébrique ne dit rien ici."
+      },
+      {
+        "titre": "Complétude",
+        "info": "Une partie fermée d'un espace complet est complète ; $\\mathbb R$ et $\\mathbb R^2$ sont complets.",
+        "verdict": "impasse",
+        "retour": "Les deux sont complets, et la complétude n'est de toute façon pas préservée par homéomorphisme."
+      }
+    ],
+    "direction": "Si $h : \\mathbb R^2 \\to \\mathbb R$ était un homéomorphisme, $h$ enverrait $\\mathbb R^2 \\setminus \\{0\\}$, connexe par arcs donc connexe, sur $\\mathbb R \\setminus \\{h(0)\\}$, qui n'est pas un intervalle donc pas connexe. Contradiction."
+  },
+  {
+    "id": "topologie-piste-05", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ continue telle que $f(x + y) = f(x) + f(y)$ pour tous réels $x, y$. Montrer qu'il existe $a \\in \\mathbb R$ tel que $f(x) = ax$ pour tout $x$.",
+    "choix": [
+      {
+        "titre": "Calcul sur $\\mathbb Q$ puis densité",
+        "info": "Deux fonctions continues sur $\\mathbb R$ qui coïncident sur une partie dense de $\\mathbb R$ sont égales.",
+        "verdict": "bon",
+        "retour": "La relation donne $f(r) = r f(1)$ pour tout rationnel $r$ ; la densité de $\\mathbb Q$ et la continuité font le reste."
+      },
+      {
+        "titre": "Intégrer la relation en $y$ sur $[0, 1]$",
+        "info": "Si $f$ est continue, $x \\mapsto \\int_x^{x+1} f(t)\\,\\mathrm dt$ est de classe $\\mathcal C^1$ (théorème fondamental de l'analyse).",
+        "verdict": "bon",
+        "retour": "On obtient $f(x) = \\int_x^{x+1} f - \\int_0^1 f$, donc $f$ est $\\mathcal C^1$ ; en dérivant la relation, $f'$ est constante."
+      },
+      {
+        "titre": "Dériver la relation par rapport à $y$",
+        "info": "Si $f$ est dérivable, $\\frac{\\partial}{\\partial y} f(x + y) = f'(x + y)$.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $f$ est dérivable : on ne peut pas dériver sans l'avoir établi."
+      },
+      {
+        "titre": "Récurrence sur $n$",
+        "info": "On montre $P(0)$, puis $P(n) \\Rightarrow P(n+1)$ pour tout $n \\in \\mathbb N$.",
+        "verdict": "possible",
+        "retour": "Donne $f(n) = n f(1)$ pour $n$ entier, ce qui n'est qu'une première étape."
+      }
+    ],
+    "direction": "$f(0) = 0$, $f(n) = nf(1)$ par récurrence, $f(-x) = -f(x)$, puis $q f\\!\\left(\\frac pq\\right) = f(p)$ donne $f(r) = r f(1)$ sur $\\mathbb Q$. Les fonctions continues $f$ et $x \\mapsto f(1)x$ coïncident sur $\\mathbb Q$, dense dans $\\mathbb R$ : elles sont égales."
+  },
+  {
+    "id": "topologie-piste-06", "ch": "topologie", "type": "piste",
+    "enonce": "Calculer $\\displaystyle \\min_{(a, b) \\in \\mathbb R^2} \\int_0^1 \\left(t^2 - at - b\\right)^2 \\mathrm dt$.",
+    "choix": [
+      {
+        "titre": "Distance à un sous-espace de dimension finie",
+        "info": "Dans un espace préhilbertien, si $F$ est de dimension finie, $\\min_{y \\in F} \\|x - y\\|$ est atteint en un unique point, le projeté orthogonal $p_F(x)$, caractérisé par $x - p_F(x) \\perp F$.",
+        "verdict": "bon",
+        "retour": "Avec $\\langle f, g\\rangle = \\int_0^1 fg$, on cherche le carré de la distance de $t^2$ à $\\mathbb R_1[t]$."
+      },
+      {
+        "titre": "Fonction de deux variables : points critiques",
+        "info": "En un extremum d'une fonction différentiable sur un ouvert, les dérivées partielles s'annulent.",
+        "verdict": "possible",
+        "retour": "On aboutit, car la fonction de $(a,b)$ est un polynôme de degré 2, mais il faut justifier séparément que le point critique est un minimum global."
+      },
+      {
+        "titre": "Inégalité de Cauchy-Schwarz",
+        "info": "$\\left(\\int_0^1 fg\\right)^2 \\le \\int_0^1 f^2 \\int_0^1 g^2$, avec égalité si et seulement si $f$ et $g$ sont colinéaires.",
+        "verdict": "impasse",
+        "retour": "Elle fournit des majorations, pas la valeur d'un minimum de distance."
+      },
+      {
+        "titre": "Continuité sur un compact",
+        "info": "Une fonction continue sur un compact non vide atteint ses bornes.",
+        "verdict": "impasse",
+        "retour": "$\\mathbb R^2$ n'est pas compact, et l'argument ne donnerait au mieux que l'existence, pas la valeur."
+      }
+    ],
+    "direction": "Les conditions $t^2 - at - b \\perp 1$ et $\\perp t$ donnent $\\frac13 - \\frac a2 - b = 0$ et $\\frac14 - \\frac a3 - \\frac b2 = 0$, d'où $a = 1$, $b = -\\frac16$. Le minimum vaut $\\langle t^2 - p, t^2\\rangle = \\frac15 - \\frac14 + \\frac1{18} = \\frac1{180}$."
+  },
+  {
+    "id": "topologie-piste-07", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $w$ continue et strictement positive sur $[a, b]$, et $(P_n)$ une suite de polynômes réels, $\\deg P_n = n$, orthogonaux deux à deux pour $\\langle P, Q\\rangle = \\int_a^b P(t)Q(t)w(t)\\,\\mathrm dt$. Montrer que, pour $n \\ge 1$, $P_n$ a $n$ racines simples dans $]a, b[$.",
+    "choix": [
+      {
+        "titre": "Produit par les racines de multiplicité impaire",
+        "info": "$P_n$ est orthogonal à $\\mathbb R_{n-1}[X]$, engendré par $P_0, \\dots, P_{n-1}$. Un polynôme change de signe exactement en ses racines de multiplicité impaire.",
+        "verdict": "bon",
+        "retour": "Si $x_1, \\dots, x_k$ sont ces racines dans $]a, b[$, le produit de $P_n$ par $Q = \\prod (X - x_i)$ est de signe constant : $\\langle P_n, Q\\rangle \\ne 0$, donc $k \\ge n$."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Une fonction continue qui prend des valeurs de signes contraires sur un intervalle s'y annule.",
+        "verdict": "possible",
+        "retour": "Comme $\\langle P_n, 1\\rangle = 0$, $P_n$ change de signe dans $]a, b[$ : on obtient une racine, pas $n$."
+      },
+      {
+        "titre": "Théorème de Rolle",
+        "info": "Si $f$ est dérivable sur $[c, d]$ et $f(c) = f(d)$, $f'$ s'annule sur $]c, d[$.",
+        "verdict": "impasse",
+        "retour": "Rolle transmet des racines de $f$ à $f'$ ; on ne connaît au départ aucune racine de $P_n$ ni de ses primitives."
+      },
+      {
+        "titre": "Théorème de d'Alembert-Gauss",
+        "info": "Tout polynôme complexe non constant de degré $n$ a $n$ racines complexes comptées avec multiplicité.",
+        "verdict": "impasse",
+        "retour": "Il ne dit rien sur le caractère réel, simple ou localisé dans $]a, b[$ des racines."
+      }
+    ],
+    "direction": "Soient $x_1, \\dots, x_k$ les racines de multiplicité impaire de $P_n$ dans $]a, b[$ et $Q = \\prod (X - x_i)$. Alors $P_n Q w$ est continue, de signe constant et non nulle, donc $\\langle P_n, Q\\rangle \\ne 0$, ce qui impose $\\deg Q = k \\ge n$. Comme $\\deg P_n = n$, on a $k = n$ racines simples."
+  },
+  {
+    "id": "topologie-piste-08", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $K$ un compact non vide d'un espace vectoriel normé et $f : K \\to K$ telle que $\\|f(x) - f(y)\\| < \\|x - y\\|$ pour tous $x \\ne y$ de $K$. Montrer que $f$ admet un unique point fixe.",
+    "choix": [
+      {
+        "titre": "Minimiser $x \\mapsto \\|x - f(x)\\|$",
+        "info": "Une fonction continue sur un compact non vide atteint son minimum.",
+        "verdict": "bon",
+        "retour": "$f$ est 1-lipschitzienne, donc $g(x) = \\|x - f(x)\\|$ est continue sur $K$. En son point de minimum, $g$ est nulle, sinon $g(f(x_0)) < g(x_0)$."
+      },
+      {
+        "titre": "Théorème du point fixe de Picard",
+        "info": "Une application $k$-lipschitzienne avec $k < 1$ d'un espace complet non vide dans lui-même a un unique point fixe.",
+        "verdict": "impasse",
+        "retour": "L'hypothèse ne fournit aucune constante $k < 1$ uniforme. Sur $\\mathbb R$, $x \\mapsto \\sqrt{1 + x^2}$ vérifie l'inégalité stricte sans avoir de point fixe."
+      },
+      {
+        "titre": "Étudier la suite des itérés $x_{n+1} = f(x_n)$",
+        "info": "Dans un compact, toute suite admet une sous-suite convergente.",
+        "verdict": "possible",
+        "retour": "Pas de majoration géométrique, mais ça aboutit : $\\|x_n - f(x_n)\\|$ décroît vers $d$, une valeur d'adhérence $y$ vérifie $\\|y - f(y)\\| = \\|f(y) - f(f(y))\\| = d$, d'où $d = 0$. Plus délicat."
+      },
+      {
+        "titre": "Théorème des valeurs intermédiaires",
+        "info": "Si $h$ est continue sur un intervalle de $\\mathbb R$ et change de signe, elle s'annule.",
+        "verdict": "impasse",
+        "retour": "$K$ n'est pas un intervalle de $\\mathbb R$ et $x - f(x)$ est un vecteur : la notion de signe n'a pas de sens."
+      }
+    ],
+    "direction": "$g(x) = \\|x - f(x)\\|$ est continue sur le compact $K$, minimale en $x_0$. Si $f(x_0) \\ne x_0$, alors $g(f(x_0)) = \\|f(x_0) - f(f(x_0))\\| < \\|x_0 - f(x_0)\\| = g(x_0)$, contradiction. L'unicité vient de l'inégalité stricte appliquée à deux points fixes."
+  },
+  {
+    "id": "topologie-piste-09", "ch": "topologie", "type": "piste",
+    "enonce": "Sur $\\mathbb R[X]$, on pose $N_1(P) = \\sup_{[0,1]} |P|$ et $N_2(P) = \\sup_{[0,2]} |P|$. Ce sont des normes. Montrer qu'elles ne sont pas équivalentes.",
+    "choix": [
+      {
+        "titre": "Exhiber une suite qui sépare les deux normes",
+        "info": "$N_1$ et $N_2$ sont équivalentes si et seulement s'il existe $\\alpha, \\beta > 0$ tels que $\\alpha N_1 \\le N_2 \\le \\beta N_1$. Il suffit donc de trouver $(P_n)$ avec $\\frac{N_2(P_n)}{N_1(P_n)} \\to +\\infty$.",
+        "verdict": "bon",
+        "retour": "Les monômes $X^n$ conviennent."
+      },
+      {
+        "titre": "Comparer les normes grâce à $[0,1] \\subset [0,2]$",
+        "info": "Pour tout $P \\in \\mathbb R[X]$, $N_1(P) \\le N_2(P)$.",
+        "verdict": "impasse",
+        "retour": "Cette inégalité est vraie mais va dans le sens où une constante existe. Il faut au contraire montrer qu'aucun $\\beta$ ne vérifie $N_2 \\le \\beta N_1$."
+      },
+      {
+        "titre": "Théorème d'équivalence des normes",
+        "info": "Sur un espace vectoriel de dimension finie, toutes les normes sont équivalentes.",
+        "verdict": "impasse",
+        "retour": "$\\mathbb R[X]$ est de dimension infinie : le théorème ne s'applique pas."
+      },
+      {
+        "titre": "Restreindre à $\\mathbb R_n[X]$",
+        "info": "$\\mathbb R_n[X]$ est de dimension finie $n + 1$.",
+        "verdict": "impasse",
+        "retour": "Sur chaque $\\mathbb R_n[X]$, les deux normes sont équivalentes : c'est la dépendance en $n$ des constantes qui compte, et cette restriction ne la montre pas."
+      }
+    ],
+    "direction": "$N_1(X^n) = 1$ et $N_2(X^n) = 2^n$. Aucune constante $\\beta$ ne vérifie $N_2 \\le \\beta N_1$ : les normes ne sont pas équivalentes (on a seulement $N_1 \\le N_2$)."
+  },
+  {
+    "id": "topologie-piste-10", "ch": "topologie", "type": "piste",
+    "enonce": "Montrer que l'ensemble des matrices diagonalisables est dense dans $M_n(\\mathbb C)$.",
+    "choix": [
+      {
+        "titre": "Trigonaliser puis perturber la diagonale",
+        "info": "Toute matrice de $M_n(\\mathbb C)$ est semblable à une matrice triangulaire. Une matrice dont les $n$ valeurs propres sont distinctes est diagonalisable.",
+        "verdict": "bon",
+        "retour": "On rend les coefficients diagonaux deux à deux distincts par une perturbation qui tend vers $0$."
+      },
+      {
+        "titre": "Perturbation $A - \\frac1p I_n$",
+        "info": "Pour $p$ assez grand, $\\frac1p$ n'est pas valeur propre de $A$, donc $A - \\frac1p I_n$ est inversible.",
+        "verdict": "impasse",
+        "retour": "Cela donne la densité de $GL_n(\\mathbb C)$. Mais $A - \\frac1p I_n$ est diagonalisable si et seulement si $A$ l'est."
+      },
+      {
+        "titre": "Décomposition de Dunford",
+        "info": "$A = D + N$ avec $D$ diagonalisable, $N$ nilpotente et $DN = ND$, ce couple étant unique.",
+        "verdict": "impasse",
+        "retour": "$D$ ne tend vers rien, et $D + \\frac1p N$ n'est pas diagonalisable si $N \\ne 0$ (c'est sa propre décomposition de Dunford)."
+      },
+      {
+        "titre": "Polynôme annulateur scindé à racines simples",
+        "info": "Une matrice est diagonalisable si et seulement si elle admet un polynôme annulateur scindé à racines simples.",
+        "verdict": "impasse",
+        "retour": "$A$ quelconque n'en a pas ; ce critère ne fabrique pas de matrices voisines."
+      }
+    ],
+    "direction": "$A = PTP^{-1}$ avec $T$ triangulaire. Pour $p$ assez grand, $T_p = T + \\frac1p\\,\\mathrm{diag}(1, 2, \\dots, n)$ a des coefficients diagonaux deux à deux distincts, donc $A_p = PT_pP^{-1}$ est diagonalisable, et $A_p \\to A$."
+  },
+  {
+    "id": "topologie-piste-11", "ch": "topologie", "type": "piste",
+    "enonce": "On munit $\\mathbb R^n$ de $\\|x\\|_1 = \\sum |x_i|$. Soit $A = (a_{ij}) \\in M_n(\\mathbb R)$. Calculer $\\|A\\|_{\\mathrm{op}} = \\sup_{\\|x\\|_1 \\le 1} \\|Ax\\|_1$.",
+    "choix": [
+      {
+        "titre": "Majorer, puis trouver un vecteur qui réalise l'égalité",
+        "info": "Si $\\|Ax\\| \\le C\\|x\\|$ pour tout $x$ et s'il existe $x_0 \\ne 0$ avec $\\|Ax_0\\| = C\\|x_0\\|$, alors $\\|A\\|_{\\mathrm{op}} = C$.",
+        "verdict": "bon",
+        "retour": "Inégalité triangulaire puis interversion des sommes ; un vecteur de la base canonique réalise l'égalité."
+      },
+      {
+        "titre": "Rayon spectral",
+        "info": "$\\rho(A) = \\max |\\lambda|$, pour $\\lambda$ valeur propre complexe de $A$, vérifie $\\rho(A) \\le \\|A\\|_{\\mathrm{op}}$ pour toute norme subordonnée.",
+        "verdict": "impasse",
+        "retour": "Ce n'est qu'une minoration, en général stricte : pour une matrice nilpotente non nulle, $\\rho(A) = 0$."
+      },
+      {
+        "titre": "Passer par la norme euclidienne",
+        "info": "Sur $\\mathbb R^n$, $\\|x\\|_2 \\le \\|x\\|_1 \\le \\sqrt n\\,\\|x\\|_2$.",
+        "verdict": "impasse",
+        "retour": "Des normes équivalentes ne définissent pas la même norme subordonnée : on n'obtiendrait qu'un encadrement."
+      },
+      {
+        "titre": "Valeurs propres de $A^{\\mathsf T}A$",
+        "info": "La norme subordonnée à $\\|\\cdot\\|_2$ vaut $\\sqrt{\\rho(A^{\\mathsf T}A)}$.",
+        "verdict": "impasse",
+        "retour": "Ce résultat concerne $\\|\\cdot\\|_2$, pas $\\|\\cdot\\|_1$."
+      }
+    ],
+    "direction": "$\\|Ax\\|_1 \\le \\sum_i \\sum_j |a_{ij}||x_j| = \\sum_j |x_j| c_j \\le \\left(\\max_j c_j\\right)\\|x\\|_1$, avec $c_j = \\sum_i |a_{ij}|$. Pour $x = e_{j_0}$ où $c_{j_0}$ est maximal, il y a égalité. Donc $\\|A\\|_{\\mathrm{op}} = \\max_j \\sum_i |a_{ij}|$, le maximum des sommes par colonne."
+  },
+  {
+    "id": "topologie-piste-12", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $f : ]0, 1] \\to \\mathbb R$ uniformément continue. Montrer que $f$ admet une limite finie en $0$.",
+    "choix": [
+      {
+        "titre": "Critère de Cauchy pour une limite en un point",
+        "info": "Si $F$ est complet, $f$ à valeurs dans $F$ a une limite en $a$ si et seulement si : pour tout $\\varepsilon > 0$, il existe $\\eta > 0$ tel que $d(f(x), f(y)) \\le \\varepsilon$ pour tous $x, y$ du domaine à distance $< \\eta$ de $a$.",
+        "verdict": "bon",
+        "retour": "La continuité uniforme fournit exactement ce $\\eta$, et $\\mathbb R$ est complet."
+      },
+      {
+        "titre": "Suites de Cauchy",
+        "info": "Dans $\\mathbb R$, toute suite de Cauchy converge. Une fonction uniformément continue transforme une suite de Cauchy en suite de Cauchy.",
+        "verdict": "bon",
+        "retour": "Pour $x_n \\to 0$, $(f(x_n))$ converge ; il reste à vérifier que la limite ne dépend pas de la suite (entrelacer deux suites)."
+      },
+      {
+        "titre": "Théorème de Heine",
+        "info": "Une fonction continue sur un compact y est uniformément continue.",
+        "verdict": "impasse",
+        "retour": "C'est l'implication inverse, et $]0, 1]$ n'est pas compact."
+      },
+      {
+        "titre": "Théorème de la limite monotone",
+        "info": "Une fonction monotone sur $]0, 1]$ admet une limite en $0$, finie si elle est bornée.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $f$ est monotone."
+      }
+    ],
+    "direction": "Pour $\\varepsilon > 0$, la continuité uniforme donne $\\delta$ tel que $|x - y| < \\delta \\Rightarrow |f(x) - f(y)| \\le \\varepsilon$. En particulier, pour $x, y \\in ]0, \\delta/2[$, $|f(x) - f(y)| \\le \\varepsilon$. Le critère de Cauchy, valable car $\\mathbb R$ est complet, donne la limite."
+  },
+  {
+    "id": "topologie-piste-13", "ch": "topologie", "type": "piste",
+    "enonce": "Soit $I$ un intervalle de $\\mathbb R$ et $f : I \\to \\mathbb R$ continue et injective. Montrer que $f$ est strictement monotone.",
+    "choix": [
+      {
+        "titre": "Connexité du triangle $\\{(x, y) \\in I^2 : x < y\\}$",
+        "info": "L'image continue d'une partie connexe est connexe ; les connexes de $\\mathbb R$ sont les intervalles. Un convexe est connexe par arcs.",
+        "verdict": "bon",
+        "retour": "$\\varphi(x, y) = f(y) - f(x)$ est continue sur ce convexe et ne s'annule pas : son image est un intervalle de $\\mathbb R^*$."
+      },
+      {
+        "titre": "Raisonnement par l'absurde avec trois points",
+        "info": "Une fonction continue sur un intervalle prend toutes les valeurs comprises entre deux de ses valeurs (TVI).",
+        "verdict": "bon",
+        "retour": "Si $f$ n'est pas monotone, il existe $a < b < c$ avec $f(b)$ hors de l'intervalle entre $f(a)$ et $f(c)$ ; le TVI fournit alors deux antécédents d'une même valeur. Plus long à rédiger proprement."
+      },
+      {
+        "titre": "Signe de la dérivée",
+        "info": "Une fonction dérivable sur un intervalle, de dérivée strictement positive, est strictement croissante.",
+        "verdict": "impasse",
+        "retour": "$f$ est seulement continue, pas dérivable."
+      },
+      {
+        "titre": "Théorème de la bijection",
+        "info": "Une fonction continue et strictement monotone sur un intervalle réalise une bijection sur un intervalle, de réciproque continue.",
+        "verdict": "impasse",
+        "retour": "Il suppose la stricte monotonie, c'est-à-dire ce qu'on veut démontrer."
+      }
+    ],
+    "direction": "$T = \\{(x, y) \\in I^2 : x < y\\}$ est convexe, donc connexe. $\\varphi(x, y) = f(y) - f(x)$ est continue sur $T$ et ne s'annule pas (injectivité). Donc $\\varphi(T)$ est un intervalle inclus dans $\\mathbb R^*$ : $\\varphi$ est de signe constant, et $f$ est strictement monotone."
+  }
+]

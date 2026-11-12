@@ -1,0 +1,623 @@
+[
+  {
+    "id": "espaces-vectoriels-vf-01", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soient $F$, $G$, $H$ trois sous-espaces d'un $K$-espace vectoriel $E$ tels que $F \\cap G = F \\cap H = G \\cap H = \\{0\\}$. Alors la somme $F + G + H$ est directe.",
+    "reponse": false,
+    "explication": "Contre-exemple : dans $\\mathbb R^2$, les droites $\\mathrm{Vect}(e_1)$, $\\mathrm{Vect}(e_2)$, $\\mathrm{Vect}(e_1 + e_2)$ se coupent deux à deux en $\\{0\\}$, mais $e_1 + e_2 - (e_1 + e_2) = 0$. Le bon critère : $F \\cap G = \\{0\\}$ **et** $(F + G) \\cap H = \\{0\\}$."
+  },
+  {
+    "id": "espaces-vectoriels-vf-02", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soient $F$, $G$, $H$ trois sous-espaces d'un espace $E$ de dimension finie. La somme $F + G + H$ est directe si et seulement si $\\dim(F + G + H) = \\dim F + \\dim G + \\dim H$.",
+    "reponse": true,
+    "explication": "L'application $(x, y, z) \\mapsto x + y + z$ de $F \\times G \\times H$ sur $F + G + H$ est linéaire et surjective. La somme est directe si et seulement si elle est injective, c'est-à-dire, par le théorème du rang, si et seulement si les deux espaces ont la même dimension."
+  },
+  {
+    "id": "espaces-vectoriels-vf-03", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Pour tout endomorphisme $u$ d'un espace $E$ de dimension finie, $E = \\ker u \\oplus \\mathrm{Im}\\, u$.",
+    "reponse": false,
+    "explication": "Le théorème du rang donne la bonne somme des dimensions, pas l'intersection nulle. Contre-exemple : $u$ de matrice $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ dans $\\mathbb R^2$ vérifie $\\ker u = \\mathrm{Im}\\, u = \\mathrm{Vect}(e_1)$. C'est vrai si $\\ker u \\cap \\mathrm{Im}\\, u = \\{0\\}$, par exemple pour un projecteur."
+  },
+  {
+    "id": "espaces-vectoriels-vf-04", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $u$ un endomorphisme d'un espace $E$ de dimension finie tel que $\\ker u \\cap \\mathrm{Im}\\, u = \\{0\\}$. Alors $E = \\ker u \\oplus \\mathrm{Im}\\, u$.",
+    "reponse": true,
+    "explication": "La somme $\\ker u + \\mathrm{Im}\\, u$ est directe, de dimension $\\dim \\ker u + \\mathrm{rg}\\, u = \\dim E$ par le théorème du rang. C'est donc $E$ tout entier."
+  },
+  {
+    "id": "espaces-vectoriels-vf-05", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soient $F$, $G$, $H$ trois sous-espaces d'un $K$-espace vectoriel $E$ tels que $E = F \\oplus H = G \\oplus H$. Alors $F = G$.",
+    "reponse": false,
+    "explication": "Un sous-espace a en général une infinité de supplémentaires. Contre-exemple : dans $\\mathbb R^2$, $H = \\mathrm{Vect}(e_1)$ admet pour supplémentaires $F = \\mathrm{Vect}(e_2)$ et $G = \\mathrm{Vect}(e_1 + e_2)$. On peut seulement conclure que $F$ et $G$ sont isomorphes."
+  },
+  {
+    "id": "espaces-vectoriels-vf-06", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $H$ un sous-espace d'un $K$-espace vectoriel $E$, de dimension quelconque. Deux supplémentaires de $H$ dans $E$ sont toujours isomorphes.",
+    "reponse": true,
+    "explication": "Si $E = S \\oplus H$, la restriction à $S$ de la surjection canonique $E \\to E/H$ est injective (noyau $S \\cap H = \\{0\\}$) et surjective (si $x = s + h$, alors $\\bar x = \\bar s$). Tout supplémentaire de $H$ est donc isomorphe à $E/H$, sans hypothèse de dimension."
+  },
+  {
+    "id": "espaces-vectoriels-vf-07", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $E$ un $K$-espace vectoriel et $u \\in \\mathcal L(E)$ injectif. Alors $u$ est surjectif.",
+    "reponse": false,
+    "explication": "Faux en dimension infinie. Contre-exemple : sur $E = K[X]$, $u : P \\mapsto XP$ est injectif, mais le polynôme constant $1$ n'a pas d'antécédent. C'est vrai si $E$ est de dimension finie, par le théorème du rang."
+  },
+  {
+    "id": "espaces-vectoriels-vf-08", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Un système linéaire de $n$ équations à $p$ inconnues réelles, avec $n < p$, admet une infinité de solutions.",
+    "reponse": false,
+    "explication": "Il peut être incompatible : $x + y + z = 0$ et $x + y + z = 1$. S'il est compatible, l'ensemble des solutions est un sous-espace affine dirigé par le noyau, de dimension au moins $p - n \\ge 1$ : il y a alors une infinité de solutions. C'est le cas en particulier d'un système homogène."
+  },
+  {
+    "id": "espaces-vectoriels-vf-09", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Pour tout $n \\ge 1$ et toutes matrices $A, B \\in M_n(\\mathbb R)$, on a $AB - BA \\neq I_n$.",
+    "reponse": true,
+    "explication": "$\\mathrm{tr}(AB - BA) = \\mathrm{tr}(AB) - \\mathrm{tr}(BA) = 0$, alors que $\\mathrm{tr}(I_n) = n \\neq 0$. Attention : sur un corps de caractéristique $p$ divisant $n$, l'argument tombe et le résultat devient faux."
+  },
+  {
+    "id": "espaces-vectoriels-vf-10", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $p$ un projecteur d'un $\\mathbb R$-espace vectoriel $E$ de dimension finie. Alors $\\mathrm{tr}\\, p = \\mathrm{rg}\\, p$.",
+    "reponse": true,
+    "explication": "On a $E = \\mathrm{Im}\\, p \\oplus \\ker p$. Dans une base adaptée à cette décomposition, la matrice de $p$ est diagonale par blocs $\\mathrm{diag}(I_r, 0)$ avec $r = \\mathrm{rg}\\, p$, de trace $r$."
+  },
+  {
+    "id": "espaces-vectoriels-vf-11", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $s$ un endomorphisme d'un $\\mathbb R$-espace vectoriel $E$, de dimension quelconque, tel que $s \\circ s = \\mathrm{id}_E$. Alors $E = \\ker(s - \\mathrm{id}_E) \\oplus \\ker(s + \\mathrm{id}_E)$.",
+    "reponse": true,
+    "explication": "Tout $x$ s'écrit $x = \\frac12(x + s(x)) + \\frac12(x - s(x))$, le premier terme étant invariant par $s$ et le second changé en son opposé. L'intersection est nulle : $s(x) = x = -x$ impose $x = 0$. Aucune hypothèse de dimension, mais il faut pouvoir diviser par $2$."
+  },
+  {
+    "id": "espaces-vectoriels-vf-12", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $F$ un sous-espace d'un espace $E$ de dimension finie. De toute base de $E$, on peut extraire une base de $F$.",
+    "reponse": false,
+    "explication": "Contre-exemple : dans $\\mathbb R^2$ muni de la base canonique, $F = \\mathrm{Vect}(e_1 + e_2)$ ne contient ni $e_1$ ni $e_2$. Le résultat correct va dans l'autre sens : toute base de $F$ se complète en une base de $E$ (théorème de la base incomplète)."
+  },
+  {
+    "id": "espaces-vectoriels-vf-13", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Le rang d'une matrice non nulle $A \\in M_{n,p}(K)$ est égal à la taille maximale des sous-matrices carrées inversibles extraites de $A$.",
+    "reponse": true,
+    "explication": "Si $r = \\mathrm{rg}\\, A$, on choisit $r$ colonnes indépendantes de $A$, puis $r$ lignes indépendantes de la matrice $n \\times r$ obtenue : la sous-matrice $r \\times r$ est inversible. Réciproquement, une sous-matrice $s \\times s$ inversible fournit $s$ colonnes indépendantes de $A$."
+  },
+  {
+    "id": "espaces-vectoriels-vf-14", "ch": "espaces-vectoriels", "type": "vf",
+    "enonce": "Soit $n \\ge 2$. Toute matrice de $GL_n(\\mathbb R)$ est un produit de matrices de transvection.",
+    "reponse": false,
+    "explication": "Une transvection est de déterminant $1$, donc tout produit de transvections aussi : $\\mathrm{diag}(2, 1, \\dots, 1)$ n'en est pas un. Les transvections engendrent $SL_n(\\mathbb R)$ ; il faut leur adjoindre les dilatations pour engendrer $GL_n(\\mathbb R)$."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-01", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soient $F_1, \\dots, F_p$ des sous-espaces d'un $K$-espace vectoriel $E$, avec $p \\ge 2$. La somme $F_1 + \\dots + F_p$ est directe si et seulement si **[ ? ]**.",
+    "choix": [
+      "$(F_1 + \\dots + F_{k-1}) \\cap F_k = \\{0\\}$ pour tout $k$ tel que $2 \\le k \\le p$",
+      "$F_i \\cap F_j = \\{0\\}$ pour tous $i \\neq j$",
+      "$F_1 \\cap F_2 \\cap \\dots \\cap F_p = \\{0\\}$",
+      "$F_1 + \\dots + F_p = E$"
+    ],
+    "bonne": 0,
+    "explication": "Les intersections deux à deux ne suffisent pas dès $p = 3$ : trois droites distinctes de $\\mathbb R^2$ se coupent deux à deux en $\\{0\\}$ sans être en somme directe. L'intersection globale est encore plus faible, et le fait que la somme vaille $E$ n'a rien à voir avec son caractère direct."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-02", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Théorème du rang.\nSoient $E$ un espace de dimension finie, $F$ un $K$-espace vectoriel quelconque et $u \\in \\mathcal L(E, F)$. Alors **[ ? ]**.",
+    "choix": [
+      "$\\dim E = \\mathrm{rg}\\, u + \\dim \\ker u$",
+      "$\\dim F = \\mathrm{rg}\\, u + \\dim \\ker u$",
+      "$E = \\ker u \\oplus \\mathrm{Im}\\, u$",
+      "$\\mathrm{rg}\\, u = \\dim F - \\dim \\ker u$"
+    ],
+    "bonne": 0,
+    "explication": "Le théorème porte sur l'espace de **départ**. Avec $u : x \\mapsto (x, 0)$ de $\\mathbb R$ dans $\\mathbb R^2$, on a $\\mathrm{rg}\\, u = 1$, $\\ker u = \\{0\\}$ et $\\dim F = 2$. Quant à $E = \\ker u \\oplus \\mathrm{Im}\\, u$, cela n'a de sens que si $F = E$, et c'est faux même dans ce cas."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-03", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soit $E$ un espace de dimension finie $n \\ge 2$ et $u \\in \\mathcal L(E)$. Alors $u$ est un automorphisme si et seulement si **[ ? ]**.",
+    "choix": [
+      "$\\ker u = \\{0\\}$",
+      "$u \\circ u = \\mathrm{id}_E$",
+      "$\\mathrm{Im}\\, u \\neq \\{0\\}$",
+      "$\\mathrm{tr}\\, u \\neq 0$"
+    ],
+    "bonne": 0,
+    "explication": "En dimension finie, injectif équivaut à bijectif pour un endomorphisme. $u \\circ u = \\mathrm{id}_E$ est suffisant mais pas nécessaire ($u = 2\\,\\mathrm{id}_E$). Un projecteur de rang $1$ a une image non nulle et une trace égale à $1$ sans être inversible."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-04", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soient $A, B \\in M_n(K)$ deux matrices semblables. Laquelle de ces affirmations **peut être fausse** ?",
+    "choix": [
+      "$A$ et $B$ ont les mêmes coefficients diagonaux, à l'ordre près",
+      "$\\mathrm{rg}\\, A = \\mathrm{rg}\\, B$",
+      "$\\mathrm{tr}\\, A = \\mathrm{tr}\\, B$",
+      "$A^k$ et $B^k$ sont semblables pour tout $k \\in \\mathbb N$"
+    ],
+    "bonne": 0,
+    "explication": "$\\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}$ est de carré nul et de rang $1$, donc semblable à $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$, mais leurs diagonales diffèrent. Le rang et la trace sont des invariants de similitude, et si $B = P^{-1}AP$ alors $B^k = P^{-1}A^kP$."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-05", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soient $E$, $F$ deux $K$-espaces vectoriels de dimensions quelconques et $u \\in \\mathcal L(E, F)$. L'application $\\bar x \\mapsto u(x)$ est bien définie sur $E / \\ker u$ et réalise un isomorphisme de $E / \\ker u$ sur **[ ? ]**.",
+    "choix": [
+      "$\\mathrm{Im}\\, u$",
+      "$F$",
+      "$\\ker u$",
+      "$F / \\mathrm{Im}\\, u$"
+    ],
+    "bonne": 0,
+    "explication": "Elle est bien définie car $u$ est nulle sur $\\ker u$, injective par construction, et son image est $\\mathrm{Im}\\, u$. Elle n'atteint $F$ que si $u$ est surjective. En dimension finie, on retrouve le théorème du rang : $\\dim E - \\dim \\ker u = \\mathrm{rg}\\, u$."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-06", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soient $A \\in M_{n,p}(K)$, $i \\neq j$ deux indices de $\\{1, \\dots, n\\}$, $\\lambda \\in K$ non nul et $T = I_n + \\lambda E_{ij}$. La matrice $TA$ s'obtient à partir de $A$ par l'opération :",
+    "choix": [
+      "$L_i \\leftarrow L_i + \\lambda L_j$",
+      "$L_j \\leftarrow L_j + \\lambda L_i$",
+      "$C_j \\leftarrow C_j + \\lambda C_i$",
+      "$C_i \\leftarrow C_i + \\lambda C_j$"
+    ],
+    "bonne": 0,
+    "explication": "La matrice $E_{ij}A$ a pour $i$-ième ligne la $j$-ième ligne de $A$, et des zéros ailleurs. Multiplier à gauche agit sur les lignes ; multiplier à droite par $I_p + \\lambda E_{ij}$ (si $i, j \\le p$) réaliserait $C_j \\leftarrow C_j + \\lambda C_i$."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-07", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soit $n \\ge 2$. Le groupe $SL_n(K)$ est engendré par **[ ? ]**.",
+    "choix": [
+      "les matrices de transvection",
+      "les matrices de dilatation",
+      "les matrices de permutation",
+      "les matrices diagonales de déterminant $1$"
+    ],
+    "bonne": 0,
+    "explication": "Le pivot de Gauss mené avec des transvections seules ramène toute $A \\in GL_n(K)$ à $\\mathrm{diag}(1, \\dots, 1, \\det A)$. Les dilatations, de déterminant différent de $1$, ne sont pas dans $SL_n(K)$ ; les matrices diagonales de déterminant $1$ forment un sous-groupe commutatif ; les matrices de permutation, un sous-groupe à $n!$ éléments qui ne contient aucune transvection."
+  },
+  {
+    "id": "espaces-vectoriels-qcm-08", "ch": "espaces-vectoriels", "type": "qcm",
+    "enonce": "Soient $\\mathcal B$, $\\mathcal B'$ deux bases de $E$ et $P$ la matrice de passage de $\\mathcal B$ à $\\mathcal B'$ (ses colonnes sont les coordonnées des vecteurs de $\\mathcal B'$ dans $\\mathcal B$). Si $X$ et $X'$ sont les coordonnées d'un vecteur $x$ dans $\\mathcal B$ et $\\mathcal B'$, alors **[ ? ]**.",
+    "choix": [
+      "$X = PX'$",
+      "$X' = PX$",
+      "$X = P^{\\mathsf T} X'$",
+      "$X = P^{-1} X'$"
+    ],
+    "bonne": 0,
+    "explication": "$P$ est la matrice de $\\mathrm{id}_E$ de la base $\\mathcal B'$ vers la base $\\mathcal B$ : elle convertit les « nouvelles » coordonnées en « anciennes ». On en déduit la formule de changement de base d'un endomorphisme : $A' = P^{-1}AP$."
+  },
+  {
+    "id": "espaces-vectoriels-err-01", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "Soient $F$, $G$, $H$ trois sous-espaces de $E$ tels que $F \\cap G = F \\cap H = G \\cap H = \\{0\\}$. Une copie veut montrer que la somme $F + G + H$ est directe.",
+    "lignes": [
+      "Soient $x \\in F$, $y \\in G$, $z \\in H$ tels que $x + y + z = 0$.",
+      "Alors $z = -(x + y)$ appartient à $H \\cap (F + G)$.",
+      "Or $H \\cap (F + G) = (H \\cap F) + (H \\cap G) = \\{0\\}$, donc $z = 0$.",
+      "Si $z = 0$, alors $x = -y \\in F \\cap G = \\{0\\}$, donc $x = y = 0$."
+    ],
+    "fausse": 2,
+    "explication": "L'intersection ne se distribue pas sur la somme : on a seulement $(H \\cap F) + (H \\cap G) \\subset H \\cap (F + G)$. Avec trois droites distinctes de $\\mathbb R^2$, $H \\cap (F + G) = H$. D'ailleurs le résultat visé est faux : il faut supposer $(F + G) \\cap H = \\{0\\}$."
+  },
+  {
+    "id": "espaces-vectoriels-err-02", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "Soit $u : \\mathbb R_2[X] \\to \\mathbb R^4$, $P \\mapsto (P(0), P(1), P(2), P(3))$. Une copie veut montrer que $u$ est un isomorphisme.",
+    "lignes": [
+      "$u$ est linéaire, à valeurs dans $\\mathbb R^4$.",
+      "Si $u(P) = 0$, alors $P$, de degré au plus $2$, a au moins quatre racines, donc $P = 0$ : $u$ est injective.",
+      "Par le théorème du rang, $\\mathrm{rg}\\, u = \\dim \\mathbb R_2[X] - \\dim \\ker u = 3$.",
+      "Une application linéaire injective entre espaces de dimension finie est bijective, donc $u$ est un isomorphisme."
+    ],
+    "fausse": 3,
+    "explication": "Injectif équivaut à bijectif seulement entre espaces de **même** dimension finie. Ici $\\mathrm{rg}\\, u = 3 < 4 = \\dim \\mathbb R^4$ : $u$ n'est pas surjective, et ne peut pas l'être."
+  },
+  {
+    "id": "espaces-vectoriels-err-03", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "On se demande si $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ et $I_2$ sont semblables dans $M_2(\\mathbb R)$. Voici une copie.",
+    "lignes": [
+      "$A$ est triangulaire à coefficients diagonaux non nuls, donc inversible : $\\mathrm{rg}\\, A = 2 = \\mathrm{rg}\\, I_2$.",
+      "Deux matrices de $M_2(\\mathbb R)$ de même rang sont équivalentes : il existe $P, Q \\in GL_2(\\mathbb R)$ telles que $A = P I_2 Q$.",
+      "Deux matrices équivalentes sont semblables, donc $A$ est semblable à $I_2$."
+    ],
+    "fausse": 2,
+    "explication": "Semblables impose $Q = P^{-1}$, bien plus fort. Pour toute $P$ inversible, $P I_2 P^{-1} = I_2$ : la seule matrice semblable à $I_2$ est $I_2$, donc $A$ ne l'est pas. Le rang caractérise l'équivalence, pas la similitude."
+  },
+  {
+    "id": "espaces-vectoriels-err-04", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "Une copie veut montrer que $\\mathrm{tr}(ABC) = \\mathrm{tr}(CBA)$ pour toutes $A, B, C \\in M_n(K)$.",
+    "lignes": [
+      "Pour toutes $M, N \\in M_n(K)$, $\\mathrm{tr}(MN) = \\mathrm{tr}(NM)$.",
+      "Avec $M = AB$ et $N = C$, on obtient $\\mathrm{tr}(ABC) = \\mathrm{tr}(CAB)$.",
+      "Comme $\\mathrm{tr}(AB) = \\mathrm{tr}(BA)$, on peut remplacer $AB$ par $BA$ dans la trace : $\\mathrm{tr}(CAB) = \\mathrm{tr}(CBA)$."
+    ],
+    "fausse": 2,
+    "explication": "On ne peut permuter que **circulairement**. Contre-exemple : $A = E_{11}$, $B = E_{12}$, $C = E_{21}$ donnent $ABC = E_{11}$, de trace $1$, et $CBA = E_{22}E_{11} = 0$. La trace ne voit que le produit $C(AB)$, pas le facteur $AB$ isolé."
+  },
+  {
+    "id": "espaces-vectoriels-err-05", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "Soient $p$ et $q$ deux projecteurs d'un $\\mathbb R$-espace vectoriel $E$. Une copie veut montrer : si $p + q$ est un projecteur, alors $p \\circ q = q \\circ p = 0$.",
+    "lignes": [
+      "$(p + q)^2 = p^2 + p \\circ q + q \\circ p + q^2 = p + q + p \\circ q + q \\circ p$.",
+      "Comme $(p + q)^2 = p + q$, on obtient $p \\circ q + q \\circ p = 0$.",
+      "Une somme de deux endomorphismes n'est nulle que si chacun est nul, donc $p \\circ q = q \\circ p = 0$."
+    ],
+    "fausse": 2,
+    "explication": "Évidemment faux ($u + (-u) = 0$). Correction : on compose $p \\circ q + q \\circ p = 0$ par $p$ à gauche, puis à droite. On obtient $p \\circ q + p \\circ q \\circ p = 0$ et $p \\circ q \\circ p + q \\circ p = 0$, d'où $p \\circ q = q \\circ p$, puis $2\\, p \\circ q = 0$."
+  },
+  {
+    "id": "espaces-vectoriels-err-06", "ch": "espaces-vectoriels", "type": "erreur",
+    "enonce": "Soit $A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$. Une copie détermine le rang, le noyau et l'image de $A$.",
+    "lignes": [
+      "Les opérations élémentaires sur les lignes ne changent pas le rang.",
+      "L'opération $L_2 \\leftarrow L_2 - L_1$ transforme $A$ en $\\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$.",
+      "Donc $\\mathrm{rg}\\, A = 1$ et $\\ker A = \\mathrm{Vect}\\big((1, -1)^{\\mathsf T}\\big)$.",
+      "$\\mathrm{Im}\\, A$ est engendrée par les colonnes de la matrice obtenue : $\\mathrm{Im}\\, A = \\mathrm{Vect}\\big((1, 0)^{\\mathsf T}\\big)$."
+    ],
+    "fausse": 3,
+    "explication": "Les opérations sur les lignes reviennent à multiplier à gauche par une matrice inversible : elles conservent le rang et le noyau, pas l'image. Ici $\\mathrm{Im}\\, A = \\mathrm{Vect}\\big((1, 1)^{\\mathsf T}\\big)$. Pour lire l'image, il faut opérer sur les colonnes."
+  },
+  {
+    "id": "espaces-vectoriels-piste-01", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $n \\ge 1$, $F = \\{P \\in \\mathbb R_n[X] : P(1) = 0\\}$ et $G$ le sous-espace des polynômes constants. Montrer que $\\mathbb R_n[X] = F \\oplus G$.",
+    "choix": [
+      {
+        "titre": "Dimensions et intersection",
+        "info": "En dimension finie, $E = F \\oplus G$ si et seulement si $F \\cap G = \\{0\\}$ et $\\dim F + \\dim G = \\dim E$.",
+        "verdict": "bon",
+        "retour": "$F$ est le noyau de la forme linéaire non nulle $P \\mapsto P(1)$, donc de dimension $n$ par le théorème du rang ; $G$ est de dimension $1$."
+      },
+      {
+        "titre": "Décomposition explicite (analyse-synthèse)",
+        "info": "On cherche, pour tout $x \\in E$, une écriture $x = y + z$ avec $y \\in F$, $z \\in G$, et on montre qu'elle est unique.",
+        "verdict": "bon",
+        "retour": "Si $P = Q + c$ avec $Q(1) = 0$, alors forcément $c = P(1)$ : existence et unicité d'un coup."
+      },
+      {
+        "titre": "Théorème de la base incomplète",
+        "info": "Toute famille libre d'un espace de dimension finie se complète en une base ; les vecteurs ajoutés engendrent un supplémentaire du sous-espace engendré par la famille.",
+        "verdict": "impasse",
+        "retour": "Il fournit **un** supplémentaire de $F$, pas nécessairement $G$. La question porte sur un supplémentaire imposé."
+      },
+      {
+        "titre": "Vérifier que $F \\cap G = \\{0\\}$",
+        "info": "Deux sous-espaces sont en somme directe si et seulement si leur intersection est réduite à $\\{0\\}$.",
+        "verdict": "possible",
+        "retour": "Une constante qui s'annule en $1$ est nulle. Mais cela ne prouve que le caractère direct : il manque $F + G = \\mathbb R_n[X]$."
+      }
+    ],
+    "direction": "$\\dim F = n$ (noyau d'une forme linéaire non nulle), $\\dim G = 1$, et $F \\cap G = \\{0\\}$ : la somme est directe et vaut $\\mathbb R_n[X]$ par les dimensions. Ou directement : $P = (P - P(1)) + P(1)$, décomposition unique."
+  },
+  {
+    "id": "espaces-vectoriels-piste-02", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $E$ un $\\mathbb R$-espace vectoriel, de dimension quelconque, et $p \\in \\mathcal L(E)$ tel que $p \\circ p = p$. Montrer que $E = \\ker p \\oplus \\mathrm{Im}\\, p$.",
+    "choix": [
+      {
+        "titre": "Écrire $x = (x - p(x)) + p(x)$",
+        "info": "Analyse-synthèse : on exhibe une décomposition de tout vecteur, puis on vérifie que l'intersection des deux sous-espaces est nulle.",
+        "verdict": "bon",
+        "retour": "$p(x - p(x)) = p(x) - p^2(x) = 0$, et si $y = p(z) \\in \\ker p$, alors $y = p(z) = p^2(z) = p(y) = 0$."
+      },
+      {
+        "titre": "Théorème du rang",
+        "info": "Si $E$ est de dimension finie et $u \\in \\mathcal L(E)$, alors $\\dim E = \\dim \\ker u + \\mathrm{rg}\\, u$.",
+        "verdict": "impasse",
+        "retour": "$E$ n'est pas supposé de dimension finie. Et même en dimension finie, il faudrait encore prouver que l'intersection est nulle."
+      },
+      {
+        "titre": "Lemme des noyaux avec $X(X - 1)$",
+        "info": "Si $P$ et $Q$ sont premiers entre eux et $(PQ)(u) = 0$, alors $E = \\ker P(u) \\oplus \\ker Q(u)$, en dimension quelconque.",
+        "verdict": "possible",
+        "retour": "On obtient $E = \\ker p \\oplus \\ker(p - \\mathrm{id})$, puis il faut montrer que $\\ker(p - \\mathrm{id}) = \\mathrm{Im}\\, p$. C'est juste mais c'est un détour."
+      },
+      {
+        "titre": "Matrice de $p$ dans une base adaptée",
+        "info": "Dans une base adaptée à $E = \\ker p \\oplus \\mathrm{Im}\\, p$, la matrice d'un projecteur est $\\mathrm{diag}(0, I_r)$.",
+        "verdict": "impasse",
+        "retour": "Raisonnement circulaire : la base adaptée suppose acquise la décomposition qu'on veut montrer, et la dimension finie."
+      }
+    ],
+    "direction": "Pour $x \\in E$, $p(x) \\in \\mathrm{Im}\\, p$ et $x - p(x) \\in \\ker p$ car $p^2 = p$ : la somme vaut $E$. Si $y \\in \\ker p \\cap \\mathrm{Im}\\, p$, $y = p(z)$ donne $y = p(y) = 0$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-03", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Dans $\\mathbb R^3$, on pose $u_1 = (1, 1, 0)$, $u_2 = (0, 1, 1)$, $u_3 = (1, 0, 1)$ et $D_k = \\mathrm{Vect}(u_k)$. Montrer que $\\mathbb R^3 = D_1 \\oplus D_2 \\oplus D_3$.",
+    "choix": [
+      {
+        "titre": "Concaténation de bases",
+        "info": "Des sous-espaces $F_1, \\dots, F_p$ sont en somme directe si et seulement si la famille obtenue en concaténant des bases de chacun est libre.",
+        "verdict": "bon",
+        "retour": "Il suffit de montrer que $(u_1, u_2, u_3)$ est une base de $\\mathbb R^3$, par exemple par le pivot de Gauss."
+      },
+      {
+        "titre": "Critère $D_1 \\cap D_2 = \\{0\\}$ et $(D_1 + D_2) \\cap D_3 = \\{0\\}$",
+        "info": "$F_1 + \\dots + F_p$ est directe si et seulement si $(F_1 + \\dots + F_{k-1}) \\cap F_k = \\{0\\}$ pour $2 \\le k \\le p$.",
+        "verdict": "bon",
+        "retour": "$D_1 + D_2$ est le plan d'équation $x - y + z = 0$, qui ne contient pas $u_3$. Les dimensions concluent."
+      },
+      {
+        "titre": "Intersections deux à deux",
+        "info": "Deux sous-espaces $F$ et $G$ sont en somme directe si et seulement si $F \\cap G = \\{0\\}$.",
+        "verdict": "impasse",
+        "retour": "Trois droites distinctes se coupent toujours deux à deux en $\\{0\\}$, même si elles sont coplanaires : cela ne prouve rien."
+      },
+      {
+        "titre": "Inclusion-exclusion sur les dimensions",
+        "info": "Pour deux sous-espaces de dimension finie : $\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G)$.",
+        "verdict": "impasse",
+        "retour": "Elle ne s'étend pas à trois sous-espaces par inclusion-exclusion : avec trois droites coplanaires, la formule « à la Poincaré » donnerait $3$ au lieu de $2$."
+      }
+    ],
+    "direction": "La matrice de colonnes $u_1, u_2, u_3$ est de rang $3$ (pivot, ou déterminant égal à $2$). La famille est donc une base, la concaténation des bases des $D_k$ est libre et génératrice : $\\mathbb R^3 = D_1 \\oplus D_2 \\oplus D_3$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-04", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Déterminer, selon $a \\in \\mathbb R$, le rang de $A = \\begin{pmatrix} 1 & 1 & a \\\\ 1 & a & 1 \\\\ a & 1 & 1 \\end{pmatrix}$.",
+    "choix": [
+      {
+        "titre": "Pivot de Gauss",
+        "info": "Les opérations élémentaires sur les lignes et les colonnes conservent le rang ; on se ramène à une matrice échelonnée dont le rang se lit.",
+        "verdict": "bon",
+        "retour": "On fait apparaître les facteurs $a - 1$ et $a + 2$ en cours de route ; il faut distinguer les cas où l'on divise par un pivot nul."
+      },
+      {
+        "titre": "Déterminant",
+        "info": "$A \\in M_n(K)$ est de rang $n$ si et seulement si $\\det A \\neq 0$.",
+        "verdict": "possible",
+        "retour": "On trouve $\\det A = -(a - 1)^2(a + 2)$ : rang $3$ hors de $\\{1, -2\\}$. Il reste à traiter à part les deux valeurs critiques."
+      },
+      {
+        "titre": "Trace",
+        "info": "$\\mathrm{tr}\\, A$ est la somme des coefficients diagonaux ; c'est un invariant de similitude.",
+        "verdict": "impasse",
+        "retour": "La trace ne contrôle pas le rang : une matrice de trace nulle peut être inversible."
+      },
+      {
+        "titre": "Compter les coefficients diagonaux non nuls",
+        "info": "Le rang d'une matrice **diagonale** est le nombre de ses coefficients diagonaux non nuls.",
+        "verdict": "impasse",
+        "retour": "$A$ n'est pas diagonale ; ce décompte ne s'applique qu'après réduction à une forme diagonale ou échelonnée."
+      }
+    ],
+    "direction": "$\\det A = -(a - 1)^2(a + 2)$, donc $\\mathrm{rg}\\, A = 3$ si $a \\notin \\{1, -2\\}$. Pour $a = 1$, toutes les lignes sont égales : rang $1$. Pour $a = -2$, les lignes ont une somme nulle et les deux premières sont indépendantes : rang $2$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-05", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $A \\in M_n(K)$ de rang $1$. Montrer que $A^2 = \\mathrm{tr}(A)\\, A$.",
+    "choix": [
+      {
+        "titre": "Écrire $A = XY^{\\mathsf T}$",
+        "info": "Une matrice est de rang $1$ si et seulement si elle s'écrit $XY^{\\mathsf T}$ avec $X, Y \\in M_{n,1}(K)$ non nulles : ses colonnes sont toutes proportionnelles à une même colonne $X$.",
+        "verdict": "bon",
+        "retour": "$A^2 = X(Y^{\\mathsf T}X)Y^{\\mathsf T}$, où $Y^{\\mathsf T}X$ est un scalaire qu'on identifie à $\\mathrm{tr}(XY^{\\mathsf T})$."
+      },
+      {
+        "titre": "Base adaptée au noyau",
+        "info": "Si $u \\in \\mathcal L(E)$ est de rang $r$, on peut compléter une base de $\\ker u$ en une base de $E$ ; la matrice de $u$ y a $n - r$ colonnes nulles.",
+        "verdict": "bon",
+        "retour": "Avec $e_2, \\dots, e_n \\in \\ker u$, seule la première colonne est non nulle ; le carré se calcule à la main, et trace et carré se conservent par similitude."
+      },
+      {
+        "titre": "Théorème de Cayley-Hamilton",
+        "info": "Le polynôme caractéristique de $A$ annule $A$.",
+        "verdict": "impasse",
+        "retour": "Il fournit un annulateur de degré $n$, pas la relation de degré $2$ cherchée ; et il faudrait d'abord calculer $\\chi_A$."
+      },
+      {
+        "titre": "Théorème du rang",
+        "info": "$\\mathrm{rg}\\, A + \\dim \\ker A = n$.",
+        "verdict": "impasse",
+        "retour": "Il donne $\\dim \\ker A = n - 1$, mais rien sur $A^2$ ni sur la trace."
+      }
+    ],
+    "direction": "Toutes les colonnes de $A$ sont multiples d'une colonne $X \\neq 0$ : $A = XY^{\\mathsf T}$. Alors $A^2 = X(Y^{\\mathsf T}X)Y^{\\mathsf T} = (Y^{\\mathsf T}X)\\, A$ et $Y^{\\mathsf T}X = \\sum_i x_iy_i = \\mathrm{tr}\\, A$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-06", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $E$ un espace de dimension $n \\ge 1$ et $u \\in \\mathcal L(E)$ tel que $u^n = 0$ et $u^{n-1} \\neq 0$. Montrer qu'il existe une base de $E$ dans laquelle la matrice de $u$ a des $1$ juste sous la diagonale et des $0$ partout ailleurs.",
+    "choix": [
+      {
+        "titre": "Montrer que $(x, u(x), \\dots, u^{n-1}(x))$ est libre",
+        "info": "Une famille libre de $n$ vecteurs dans un espace de dimension $n$ est une base.",
+        "verdict": "bon",
+        "retour": "On choisit $x$ avec $u^{n-1}(x) \\neq 0$, et on applique $u^{n-1}$, puis $u^{n-2}$, etc. à une combinaison nulle."
+      },
+      {
+        "titre": "Montrer que $(x, u(x), \\dots, u^{n-1}(x))$ est génératrice",
+        "info": "Une famille génératrice de $n$ vecteurs dans un espace de dimension $n$ est une base.",
+        "verdict": "impasse",
+        "retour": "Juste en théorie, mais on ne sait pas exprimer un vecteur quelconque en fonction des $u^k(x)$ : la liberté est bien plus accessible."
+      },
+      {
+        "titre": "Théorème de la base incomplète",
+        "info": "Toute famille libre se complète en une base de $E$ à l'aide de vecteurs d'une famille génératrice donnée.",
+        "verdict": "impasse",
+        "retour": "Les vecteurs ajoutés sont quelconques : rien ne garantit la forme de la matrice."
+      },
+      {
+        "titre": "Trigonaliser $u$",
+        "info": "Un endomorphisme dont le polynôme caractéristique est scindé est trigonalisable.",
+        "verdict": "impasse",
+        "retour": "On obtient une matrice triangulaire stricte, mais sans contrôle sur ses coefficients."
+      }
+    ],
+    "direction": "Soit $x$ tel que $u^{n-1}(x) \\neq 0$. Si $\\sum_{k=0}^{n-1} \\lambda_k u^k(x) = 0$, appliquer $u^{n-1}$ donne $\\lambda_0 = 0$, puis $u^{n-2}$ donne $\\lambda_1 = 0$, etc. La famille est libre de cardinal $n$, donc une base, et $u$ envoie chaque vecteur sur le suivant et le dernier sur $0$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-07", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soient $E$, $F$ deux $K$-espaces vectoriels de dimensions quelconques, $u \\in \\mathcal L(E, F)$ surjective et $S$ un supplémentaire de $\\ker u$ dans $E$. Montrer que $S$ et $F$ sont isomorphes.",
+    "choix": [
+      {
+        "titre": "Restreindre $u$ à $S$",
+        "info": "Une application linéaire est un isomorphisme si et seulement si elle est injective et surjective ; le noyau de la restriction $u_{|S}$ est $S \\cap \\ker u$.",
+        "verdict": "bon",
+        "retour": "Injective car $S \\cap \\ker u = \\{0\\}$ ; surjective car si $x = k + s$ avec $k \\in \\ker u$, alors $u(x) = u(s)$."
+      },
+      {
+        "titre": "Passer au quotient",
+        "info": "$u$ induit un isomorphisme de $E / \\ker u$ sur $\\mathrm{Im}\\, u$, et tout supplémentaire de $\\ker u$ est isomorphe à $E / \\ker u$.",
+        "verdict": "bon",
+        "retour": "Ici $\\mathrm{Im}\\, u = F$ : on compose les deux isomorphismes."
+      },
+      {
+        "titre": "Théorème du rang",
+        "info": "Si $E$ est de dimension finie, $\\dim E = \\dim \\ker u + \\mathrm{rg}\\, u$, et deux espaces de même dimension finie sont isomorphes.",
+        "verdict": "impasse",
+        "retour": "Aucune hypothèse de dimension finie : comparer des dimensions ne mène à rien ici."
+      },
+      {
+        "titre": "Représenter $u$ par une matrice",
+        "info": "Une application linéaire entre espaces munis de bases finies est représentée par une matrice, et son rang est celui de la matrice.",
+        "verdict": "impasse",
+        "retour": "Suppose des bases finies, que l'énoncé ne donne pas."
+      }
+    ],
+    "direction": "On montre que $u_{|S} : S \\to F$ est un isomorphisme. Noyau : $S \\cap \\ker u = \\{0\\}$. Surjectivité : tout $y \\in F$ s'écrit $u(x)$, et en décomposant $x = k + s$ on a $y = u(s)$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-08", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $n \\ge 2$ et $f$ une forme linéaire sur $M_n(K)$ telle que $f(AB) = f(BA)$ pour toutes $A, B \\in M_n(K)$. Montrer qu'il existe $\\lambda \\in K$ tel que $f = \\lambda\\, \\mathrm{tr}$.",
+    "choix": [
+      {
+        "titre": "Évaluer $f$ sur la base canonique $(E_{ij})$",
+        "info": "Une forme linéaire est déterminée par ses valeurs sur une base. On a $E_{ij}E_{kl} = E_{il}$ si $j = k$, et $0$ sinon.",
+        "verdict": "bon",
+        "retour": "Des produits bien choisis montrent que $f(E_{ij}) = 0$ pour $i \\neq j$ et que les $f(E_{ii})$ sont tous égaux."
+      },
+      {
+        "titre": "Invariance par similitude",
+        "info": "Avec $A = P^{-1}M$ et $B = P$, l'hypothèse donne $f(P^{-1}MP) = f(M)$ pour toute $P$ inversible.",
+        "verdict": "possible",
+        "retour": "Juste, mais il reste du chemin : écrire $f = \\mathrm{tr}(C\\, \\cdot)$, en déduire que $C$ commute avec toutes les transvections, donc avec les $E_{ij}$ ($i \\neq j$), donc est scalaire. Plus long que le calcul direct."
+      },
+      {
+        "titre": "Théorème du rang appliqué à $f$",
+        "info": "Une forme linéaire non nulle sur un espace de dimension $N$ a un noyau de dimension $N - 1$.",
+        "verdict": "impasse",
+        "retour": "On sait que $\\ker f$ est un hyperplan, mais pas lequel : il faut montrer que c'est celui des matrices de trace nulle."
+      },
+      {
+        "titre": "Calculer $f(I_n)$",
+        "info": "$I_n$ commute avec toute matrice : $AI_n = I_nA$.",
+        "verdict": "impasse",
+        "retour": "On pose bien $\\lambda = f(I_n)/n$ si $n$ est inversible dans $K$, mais une seule valeur ne détermine pas la forme linéaire."
+      }
+    ],
+    "direction": "Pour $i \\neq j$ : $f(E_{ij}) = f(E_{ii}E_{ij}) = f(E_{ij}E_{ii}) = f(0) = 0$. Pour tous $i, j$ : $f(E_{ii}) = f(E_{ij}E_{ji}) = f(E_{ji}E_{ij}) = f(E_{jj})$. En notant $\\lambda$ cette valeur commune, $f$ et $\\lambda\\, \\mathrm{tr}$ coïncident sur la base canonique."
+  },
+  {
+    "id": "espaces-vectoriels-piste-09", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $A \\in M_n(\\mathbb R)$ la matrice triangulaire supérieure dont tous les coefficients situés sur ou au-dessus de la diagonale valent $1$. Montrer que $A$ est inversible et calculer $A^{-1}$.",
+    "choix": [
+      {
+        "titre": "Pivot de Gauss sur $(A \\mid I_n)$",
+        "info": "Les opérations élémentaires sur les lignes qui transforment $A$ en $I_n$ transforment $I_n$ en $A^{-1}$.",
+        "verdict": "bon",
+        "retour": "Les opérations $L_i \\leftarrow L_i - L_{i+1}$ pour $i = 1, \\dots, n-1$ suffisent."
+      },
+      {
+        "titre": "Écrire $A = I_n + N + \\dots + N^{n-1}$",
+        "info": "Avec $N = \\sum_{i=1}^{n-1} E_{i,i+1}$, la matrice $N^k$ a des $1$ sur la $k$-ième sur-diagonale, et $N^n = 0$.",
+        "verdict": "bon",
+        "retour": "Somme télescopique : $(I_n - N)A = I_n - N^n = I_n$."
+      },
+      {
+        "titre": "Comatrice",
+        "info": "Si $\\det A \\neq 0$, alors $A^{-1} = \\frac{1}{\\det A}\\, \\mathrm{Com}(A)^{\\mathsf T}$.",
+        "verdict": "possible",
+        "retour": "Aboutit, mais il faut calculer $n^2$ cofacteurs : lourd pour une matrice de taille $n$."
+      },
+      {
+        "titre": "Diagonaliser $A$",
+        "info": "Si $A = PDP^{-1}$ avec $D$ diagonale inversible, alors $A^{-1} = PD^{-1}P^{-1}$.",
+        "verdict": "impasse",
+        "retour": "La seule valeur propre est $1$ et $A \\neq I_n$ pour $n \\ge 2$ : $A$ n'est pas diagonalisable."
+      }
+    ],
+    "direction": "Avec $N = \\sum E_{i,i+1}$ nilpotente, $A = \\sum_{k=0}^{n-1} N^k$ et $(I_n - N)A = I_n - N^n = I_n$. Donc $A$ est inversible et $A^{-1} = I_n - N$ : des $1$ sur la diagonale, des $-1$ juste au-dessus, des $0$ ailleurs."
+  },
+  {
+    "id": "espaces-vectoriels-piste-10", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $n \\ge 2$. Montrer que toute matrice $A \\in GL_n(K)$ s'écrit $A = T_1 \\cdots T_k\\, D$, où les $T_i$ sont des matrices de transvection et $D = \\mathrm{diag}(1, \\dots, 1, \\det A)$.",
+    "choix": [
+      {
+        "titre": "Pivot de Gauss avec des transvections seulement",
+        "info": "L'opération $L_i \\leftarrow L_i + \\lambda L_j$ ($i \\neq j$) revient à multiplier à gauche par la transvection $I_n + \\lambda E_{ij}$, et $C_j \\leftarrow C_j + \\lambda C_i$ à multiplier à droite par la même matrice.",
+        "verdict": "bon",
+        "retour": "On fait apparaître un $1$ en position $(1,1)$ sans échanger de lignes, on nettoie la première ligne et la première colonne, et on recommence sur le bloc restant."
+      },
+      {
+        "titre": "Pivot de Gauss classique avec échanges de lignes",
+        "info": "Toute matrice inversible se ramène à $I_n$ par des échanges de lignes, des dilatations $L_i \\leftarrow \\alpha L_i$ et des transvections.",
+        "verdict": "possible",
+        "retour": "Il faut ensuite réécrire chaque échange et chaque dilatation intermédiaire : un échange s'écrit avec trois transvections et une dilatation de rapport $-1$. Faisable mais pénible."
+      },
+      {
+        "titre": "Multiplicativité du déterminant",
+        "info": "$\\det(AB) = \\det A \\det B$, et une transvection est de déterminant $1$.",
+        "verdict": "impasse",
+        "retour": "Montre seulement que le dernier facteur doit être de déterminant $\\det A$ : condition nécessaire, pas l'existence de l'écriture."
+      },
+      {
+        "titre": "Réduire $A$",
+        "info": "Une matrice diagonalisable s'écrit $PDP^{-1}$ avec $D$ diagonale.",
+        "verdict": "impasse",
+        "retour": "$A$ n'a aucune raison d'être diagonalisable, et $P$ et $P^{-1}$ resteraient à décomposer."
+      }
+    ],
+    "direction": "Par transvections sur les lignes, on obtient un coefficient non nul puis égal à $1$ en position $(1,1)$ ; d'autres transvections annulent le reste de la première colonne puis de la première ligne. Par récurrence, on arrive à $\\mathrm{diag}(1, \\dots, 1, d)$, et $d = \\det A$ car les transvections sont de déterminant $1$. On a ainsi $PAQ = D$ avec $P$, $Q$ produits de transvections ; comme $DTD^{-1}$ est une transvection pour toute transvection $T$, on fait passer $D$ à droite dans $A = P^{-1}DQ^{-1}$."
+  },
+  {
+    "id": "espaces-vectoriels-piste-11", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soient $E$ un espace de dimension finie et $u, v \\in \\mathcal L(E)$. Montrer que $\\mathrm{rg}(u + v) \\le \\mathrm{rg}\\, u + \\mathrm{rg}\\, v$.",
+    "choix": [
+      {
+        "titre": "Inclusion des images et formule de Grassmann",
+        "info": "$\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G) \\le \\dim F + \\dim G$.",
+        "verdict": "bon",
+        "retour": "$\\mathrm{Im}(u + v) \\subset \\mathrm{Im}\\, u + \\mathrm{Im}\\, v$, et la dimension d'une somme est au plus la somme des dimensions."
+      },
+      {
+        "titre": "Inclusion des noyaux et théorème du rang",
+        "info": "$\\ker u \\cap \\ker v \\subset \\ker(u + v)$, et $\\dim E = \\dim \\ker w + \\mathrm{rg}\\, w$ pour tout $w \\in \\mathcal L(E)$.",
+        "verdict": "possible",
+        "retour": "Ça marche, avec Grassmann pour minorer $\\dim(\\ker u \\cap \\ker v)$, mais c'est un détour par rapport aux images."
+      },
+      {
+        "titre": "Matrices équivalentes à $J_r$",
+        "info": "Une matrice de rang $r$ est équivalente à $J_r = \\begin{pmatrix} I_r & 0 \\\\ 0 & 0 \\end{pmatrix}$.",
+        "verdict": "impasse",
+        "retour": "Les matrices de passage diffèrent pour $u$ et pour $v$ : on ne peut pas réduire les deux simultanément."
+      },
+      {
+        "titre": "Rang d'une composée",
+        "info": "$\\mathrm{rg}(u \\circ v) \\le \\min(\\mathrm{rg}\\, u, \\mathrm{rg}\\, v)$.",
+        "verdict": "impasse",
+        "retour": "Il s'agit d'une somme, pas d'une composée."
+      }
+    ],
+    "direction": "Pour tout $x$, $(u + v)(x) = u(x) + v(x) \\in \\mathrm{Im}\\, u + \\mathrm{Im}\\, v$. Donc $\\mathrm{rg}(u + v) \\le \\dim(\\mathrm{Im}\\, u + \\mathrm{Im}\\, v) \\le \\mathrm{rg}\\, u + \\mathrm{rg}\\, v$ par la formule de Grassmann."
+  },
+  {
+    "id": "espaces-vectoriels-piste-12", "ch": "espaces-vectoriels", "type": "piste",
+    "enonce": "Soit $E$ un espace de dimension finie et $u \\in \\mathcal L(E)$ tel que $\\mathrm{rg}(u^2) = \\mathrm{rg}\\, u$. Montrer que $E = \\ker u \\oplus \\mathrm{Im}\\, u$.",
+    "choix": [
+      {
+        "titre": "Comparer $\\ker u$ et $\\ker u^2$",
+        "info": "On a toujours $\\ker u \\subset \\ker u^2$ ; un sous-espace inclus dans un autre de même dimension finie lui est égal.",
+        "verdict": "bon",
+        "retour": "Par le théorème du rang, $\\dim \\ker u^2 = \\dim \\ker u$, d'où $\\ker u^2 = \\ker u$ ; il reste à montrer $\\ker u \\cap \\mathrm{Im}\\, u = \\{0\\}$."
+      },
+      {
+        "titre": "Montrer que $u$ est un projecteur",
+        "info": "Si $p \\circ p = p$, alors $E = \\ker p \\oplus \\mathrm{Im}\\, p$.",
+        "verdict": "impasse",
+        "retour": "$u$ n'a aucune raison d'être un projecteur : $u = 2\\,\\mathrm{id}_E$ vérifie l'hypothèse."
+      },
+      {
+        "titre": "Lemme des noyaux",
+        "info": "Si $P$ et $Q$ sont premiers entre eux et $(PQ)(u) = 0$, alors $E = \\ker P(u) \\oplus \\ker Q(u)$.",
+        "verdict": "possible",
+        "retour": "Avec $\\chi_u = X^kQ$, $Q(0) \\neq 0$, on obtient $E = \\ker u^k \\oplus \\ker Q(u)$ ; il reste à montrer $\\ker u^k = \\ker u$ et $\\ker Q(u) = \\mathrm{Im}\\, u$. Long détour."
+      },
+      {
+        "titre": "Matrice dans une base adaptée à $\\ker u \\oplus \\mathrm{Im}\\, u$",
+        "info": "Dans une base adaptée à une somme directe de sous-espaces stables, la matrice est diagonale par blocs.",
+        "verdict": "impasse",
+        "retour": "Circulaire : la base adaptée présuppose la somme directe qu'on veut établir."
+      }
+    ],
+    "direction": "Le théorème du rang donne $\\dim \\ker u^2 = \\dim \\ker u$, et $\\ker u \\subset \\ker u^2$, donc égalité. Si $y = u(x) \\in \\ker u$, alors $u^2(x) = 0$, donc $x \\in \\ker u$ et $y = 0$. Intersection nulle et théorème du rang : $E = \\ker u \\oplus \\mathrm{Im}\\, u$."
+  }
+]
