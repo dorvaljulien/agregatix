@@ -1,0 +1,510 @@
+[
+  {
+    "id": "analyse-numerique-vf-01", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "La méthode du point milieu, $\\int_a^b f \\approx (b-a)\\,f\\!\\left(\\frac{a+b}2\\right)$, est exacte pour tout polynôme de degré au plus $2$.",
+    "reponse": false,
+    "explication": "Elle est exacte seulement jusqu'au degré $1$. Contre-exemple : sur $[0, 1]$, $\\int_0^1 x^2\\,\\mathrm dx = \\frac13$ alors que la formule donne $\\frac14$."
+  },
+  {
+    "id": "analyse-numerique-vf-02", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "La méthode de Simpson, $\\int_a^b f \\approx \\frac{b-a}6\\left(f(a) + 4f\\!\\left(\\frac{a+b}2\\right) + f(b)\\right)$, est exacte pour tout polynôme de degré au plus $3$.",
+    "reponse": true,
+    "explication": "Elle est construite pour être exacte sur $1, X, X^2$. Pour $(X - m)^3$ avec $m = \\frac{a+b}2$, les deux membres sont nuls par imparité autour de $m$. Elle n'est pas exacte pour $(X-m)^4$."
+  },
+  {
+    "id": "analyse-numerique-vf-03", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $f$ convexe et continue sur $[a, b]$, $M$ et $T$ les valeurs données par les méthodes du point milieu et des trapèzes (simples) sur $[a, b]$. Alors $M \\le \\int_a^b f \\le T$.",
+    "reponse": true,
+    "explication": "La corde est au-dessus du graphe, d'où $\\int_a^b f \\le T$. Pour le point milieu, $f(m - t) + f(m + t) \\ge 2f(m)$ par convexité ; on intègre en $t$ sur $[0, \\frac{b-a}2]$."
+  },
+  {
+    "id": "analyse-numerique-vf-04", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $f$ continue sur $[a, b]$ avec $f(a) < 0 < f(b)$, admettant un unique zéro $\\ell$. Si $c_n$ désigne le milieu de l'intervalle obtenu à l'étape $n$ de la dichotomie, alors $|c_{n+1} - \\ell| \\le \\frac12 |c_n - \\ell|$ pour tout $n$.",
+    "reponse": false,
+    "explication": "C'est la **longueur** de l'intervalle qui est divisée par $2$, pas l'erreur. Contre-exemple : $f(x) = x - \\ell$ sur $[0, 1]$ avec $\\ell = 0{,}501$. On a $c_0 = 0{,}5$, erreur $0{,}001$, puis $c_1 = 0{,}75$, erreur $0{,}249$. Ce qui est vrai : $|c_n - \\ell| \\le \\frac{b-a}{2^{n+1}}$."
+  },
+  {
+    "id": "analyse-numerique-vf-05", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $f$ de classe $\\mathcal C^2$ sur un intervalle ouvert contenant $\\ell$, avec $f(\\ell) = 0$ et $f'(\\ell) \\ne 0$. Il existe $\\delta > 0$ et $C > 0$ tels que, pour tout $x_0 \\in [\\ell - \\delta, \\ell + \\delta]$, la suite de Newton issue de $x_0$ est bien définie, converge vers $\\ell$ et vérifie $|x_{n+1} - \\ell| \\le C|x_n - \\ell|^2$.",
+    "reponse": true,
+    "explication": "Taylor-Lagrange en $x_n$ donne $0 = f(x_n) + (\\ell - x_n)f'(x_n) + \\frac12(\\ell - x_n)^2 f''(c_n)$, d'où $x_{n+1} - \\ell = \\frac{f''(c_n)}{2f'(x_n)}(x_n - \\ell)^2$. On prend $\\delta$ tel que $f'$ ne s'annule pas et $C\\delta < 1$, avec $C = \\frac{\\max |f''|}{2\\min |f'|}$ sur $[\\ell - \\delta, \\ell + \\delta]$."
+  },
+  {
+    "id": "analyse-numerique-vf-06", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ de classe $\\mathcal C^\\infty$, strictement croissante, s'annulant en un unique point $\\ell$. Alors pour tout $x_0 \\in \\mathbb R$, la suite de Newton issue de $x_0$ converge vers $\\ell$.",
+    "reponse": false,
+    "explication": "La convergence de Newton n'est que locale. Contre-exemple : $f = \\arctan$ et $x_0 = 2$. On trouve $x_1 \\approx -3{,}54$, $x_2 \\approx 13{,}95$, $x_3 \\approx -279$ : la suite diverge. La convergence est globale si, par exemple, $f$ est convexe sur $[\\ell, x_0]$ avec $f(x_0) > 0$."
+  },
+  {
+    "id": "analyse-numerique-vf-07", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Pour $f(x) = x^2$, la suite de Newton issue de $x_0 \\ne 0$ converge vers $0$ de façon quadratique.",
+    "reponse": false,
+    "explication": "Ici $x_{n+1} = x_n - \\frac{x_n^2}{2x_n} = \\frac{x_n}2$ : convergence seulement linéaire, de rapport $\\frac12$. La racine est double ($f'(0) = 0$), et la convergence quadratique exige une racine simple."
+  },
+  {
+    "id": "analyse-numerique-vf-08", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $g$ de classe $\\mathcal C^1$ sur un segment $[a, b]$, avec $g([a, b]) \\subset [a, b]$ et $|g'(x)| < 1$ pour tout $x \\in [a, b]$. Alors pour tout $x_0 \\in [a, b]$, la suite définie par $x_{n+1} = g(x_n)$ converge vers l'unique point fixe de $g$.",
+    "reponse": true,
+    "explication": "$|g'|$ est continue sur le segment, donc atteint son maximum $k < 1$. Par l'inégalité des accroissements finis, $g$ est $k$-lipschitzienne : c'est une contraction de l'intervalle fermé $[a, b]$, et $|x_n - \\ell| \\le k^n |x_0 - \\ell|$."
+  },
+  {
+    "id": "analyse-numerique-vf-09", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $g$ de classe $\\mathcal C^1$ sur $[0, +\\infty[$, avec $g([0, +\\infty[) \\subset [0, +\\infty[$ et $|g'(x)| < 1$ pour tout $x \\ge 0$. Alors $g$ admet un point fixe.",
+    "reponse": false,
+    "explication": "Sans segment, $\\sup |g'|$ peut valoir $1$. Contre-exemple : $g(x) = x + e^{-x}$. On a $g' (x) = 1 - e^{-x} \\in [0, 1[$, mais $g(x) - x = e^{-x} > 0$ : aucun point fixe, et les itérées tendent vers $+\\infty$. Il faut une constante $k < 1$ uniforme."
+  },
+  {
+    "id": "analyse-numerique-vf-10", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Soit $\\lambda > 0$. La méthode d'Euler explicite de pas $h > \\frac2\\lambda$, appliquée à $x' = -\\lambda x$ avec $x(0) = 1$, produit une suite $(x_k)$ non bornée, alors que la solution exacte tend vers $0$.",
+    "reponse": true,
+    "explication": "Le schéma donne $x_{k+1} = x_k - h\\lambda x_k$, donc $x_k = (1 - \\lambda h)^k$. Si $h > \\frac2\\lambda$, alors $1 - \\lambda h < -1$ et $|x_k| \\to +\\infty$. La convergence de la méthode est un résultat quand $h \\to 0$, pas pour un pas fixé."
+  },
+  {
+    "id": "analyse-numerique-vf-11", "ch": "analyse-numerique", "type": "vf",
+    "enonce": "Si $u_n = \\ell + \\frac an + O\\!\\left(\\frac1{n^2}\\right)$, alors la suite $v_n = 2u_{2n} - u_n$ vérifie $v_n = \\ell + O\\!\\left(\\frac1{n^2}\\right)$.",
+    "reponse": true,
+    "explication": "C'est l'idée de Richardson : $2\\left(\\ell + \\frac a{2n}\\right) - \\left(\\ell + \\frac an\\right) = \\ell$, le terme en $\\frac1n$ disparaît, et il reste $2\\,O\\!\\left(\\frac1{4n^2}\\right) + O\\!\\left(\\frac1{n^2}\\right) = O\\!\\left(\\frac1{n^2}\\right)$."
+  },
+  {
+    "id": "analyse-numerique-qcm-01", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "Méthode des trapèzes composée.\nSoit $f$ de classe $\\mathcal C^2$ sur $[a, b]$, $M_2 = \\sup |f''|$, $h = \\frac{b-a}n$ et $T_n$ la valeur donnée par la méthode des trapèzes sur $n$ sous-intervalles de longueur $h$. Alors $\\left|\\int_a^b f - T_n\\right| \\le$ **[ ? ]**.",
+    "choix": [
+      "$\\frac{(b-a)h^2}{12} M_2$",
+      "$\\frac{(b-a)h^2}{24} M_2$",
+      "$\\frac{h^3}{12} M_2$",
+      "$\\frac{(b-a)h^4}{2880} M_4$"
+    ],
+    "bonne": 0,
+    "explication": "Sur un sous-intervalle, l'erreur est majorée par $\\frac{h^3}{12}M_2$ ; on somme $n$ fois, et $nh = b - a$. Le $\\frac1{24}$ est la constante du point milieu. Pour $f(x) = x^2$ sur $[0, 1]$ et $n = 2$, l'erreur vaut exactement $\\frac1{24}$, ce qui réfute $\\frac{(b-a)h^2}{24} M_2$ et $\\frac{h^3}{12} M_2$, qui valent $\\frac1{48}$ ; le leurre en $M_4$ est réfuté par $f(x) = x^2$ dès $n = 1$, puisque $M_4 = 0$."
+  },
+  {
+    "id": "analyse-numerique-qcm-02", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "Soit $f$ de classe $\\mathcal C^3$, $\\ell$ un zéro de $f$ avec $f'(\\ell) \\ne 0$ et $f''(\\ell) \\ne 0$, et $(x_n)$ une suite de Newton qui converge vers $\\ell$ sans l'atteindre. Quel est l'ordre de convergence ?",
+    "choix": [
+      "exactement $2$",
+      "$1$, avec un rapport $\\frac12$",
+      "au moins $3$",
+      "$\\frac{1 + \\sqrt5}2$"
+    ],
+    "bonne": 0,
+    "explication": "On a $x_{n+1} - \\ell \\sim \\frac{f''(\\ell)}{2f'(\\ell)}(x_n - \\ell)^2$, de coefficient non nul. L'ordre $1$ de rapport $\\frac12$ est celui d'une racine double ; l'ordre $3$ n'apparaît que si $f''(\\ell) = 0$ ; le nombre d'or est l'ordre de la méthode de la sécante."
+  },
+  {
+    "id": "analyse-numerique-qcm-03", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "Point fixe attractif.\nSoit $g$ de classe $\\mathcal C^1$ sur un intervalle ouvert contenant $\\ell$, avec $g(\\ell) = \\ell$. Si **[ ? ]**, alors il existe $\\delta > 0$ tel que pour tout $x_0 \\in [\\ell - \\delta, \\ell + \\delta]$, la suite $x_{n+1} = g(x_n)$ converge vers $\\ell$.",
+    "choix": [
+      "$|g'(\\ell)| < 1$",
+      "$g'(\\ell) < 1$",
+      "$|g'(\\ell)| \\le 1$",
+      "$g'(\\ell) \\ne 1$"
+    ],
+    "bonne": 0,
+    "explication": "Par continuité, $|g'| \\le k < 1$ près de $\\ell$, et $g$ y est contractante. Les leurres : $g(x) = -2x$ ($g'(0) = -2$) réfute « $g'(\\ell) < 1$ » et « $g'(\\ell) \\ne 1$ » ; $g(x) = x + x^3$ ($g'(0) = 1$) réfute « $|g'(\\ell)| \\le 1$ », car pour $x_0 > 0$ la suite croît."
+  },
+  {
+    "id": "analyse-numerique-qcm-04", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "Soit $f$ de classe $\\mathcal C^4$ sur $[a, b]$, avec $f'''(b) \\ne f'''(a)$. Quand on divise par $2$ le pas de la méthode de Simpson composée, l'erreur est divisée, asymptotiquement, par :",
+    "choix": [
+      "$16$",
+      "$4$",
+      "$8$",
+      "$32$"
+    ],
+    "bonne": 0,
+    "explication": "L'erreur de Simpson composée est équivalente à $C h^4 \\left(f'''(b) - f'''(a)\\right)$, avec $C$ constante non nulle : elle est d'ordre $h^4$, d'où le rapport $2^4 = 16$. Le rapport $4$ est celui des trapèzes et du point milieu (ordre $h^2$)."
+  },
+  {
+    "id": "analyse-numerique-qcm-05", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "Richardson-Romberg.\nOn suppose $T(h) = I + c_1 h^2 + c_2 h^4 + O(h^6)$ quand $h \\to 0$, avec $c_1 \\ne 0$. Quelle combinaison vaut $I + O(h^4)$ ?",
+    "choix": [
+      "$\\frac{4T(h/2) - T(h)}3$",
+      "$2T(h/2) - T(h)$",
+      "$\\frac{T(h) + T(h/2)}2$",
+      "$\\frac{16T(h/2) - T(h)}{15}$"
+    ],
+    "bonne": 0,
+    "explication": "$T(h/2) = I + \\frac{c_1h^2}4 + O(h^4)$, donc $4T(h/2) - T(h) = 3I + O(h^4)$. La combinaison $2T(h/2) - T(h)$ élimine un terme en $h$, pas en $h^2$ ; celle en $16$ et $15$ élimine le terme en $h^4$ et sert à l'étape suivante de Romberg. Appliquée aux trapèzes, la bonne combinaison redonne Simpson."
+  },
+  {
+    "id": "analyse-numerique-qcm-06", "ch": "analyse-numerique", "type": "qcm",
+    "enonce": "On applique la méthode d'Euler explicite à $x' = x$, $x(0) = 1$, sur $[0, 1]$ avec le pas $h = \\frac1N$. On obtient $x_N = \\left(1 + \\frac1N\\right)^N$. L'erreur $e - x_N$ est équivalente à :",
+    "choix": [
+      "$\\frac{e}{2N}$",
+      "$\\frac{e}{N}$",
+      "$\\frac{e}{2N^2}$",
+      "$\\frac{1}{2N}$"
+    ],
+    "bonne": 0,
+    "explication": "$N \\ln\\!\\left(1 + \\frac1N\\right) = 1 - \\frac1{2N} + O\\!\\left(\\frac1{N^2}\\right)$, donc $x_N = e\\left(1 - \\frac1{2N} + O\\!\\left(\\frac1{N^2}\\right)\\right)$. L'erreur globale est d'ordre $h$ : la méthode d'Euler est d'ordre $1$. Le $h^2$ est l'ordre de l'erreur locale, commise sur un seul pas."
+  },
+  {
+    "id": "analyse-numerique-err-01", "ch": "analyse-numerique", "type": "erreur",
+    "enonce": "Soit $g(x) = x + e^{-x}$ et $(x_n)$ définie par $x_0 \\ge 0$ et $x_{n+1} = g(x_n)$. On veut étudier la convergence de $(x_n)$. Voici une copie.",
+    "lignes": [
+      "$g$ est de classe $\\mathcal C^1$ sur $[0, +\\infty[$ et $g([0, +\\infty[) \\subset [0, +\\infty[$.",
+      "Pour tout $x \\ge 0$, $0 \\le g'(x) = 1 - e^{-x} < 1$.",
+      "Par le théorème des accroissements finis, $|g(x) - g(y)| < |x - y|$ pour tous $x \\ne y$ positifs.",
+      "Donc $g$ est contractante sur le fermé $[0, +\\infty[$, et le théorème du point fixe assure la convergence de $(x_n)$."
+    ],
+    "fausse": 3,
+    "explication": "Contractante signifie $k$-lipschitzienne avec une constante $k < 1$ fixe. Ici $\\sup g' = 1$ : aucune telle constante. D'ailleurs $(x_n)$ est croissante et ne peut converger, car une limite $\\ell$ vérifierait $e^{-\\ell} = 0$ : $x_n \\to +\\infty$."
+  },
+  {
+    "id": "analyse-numerique-err-02", "ch": "analyse-numerique", "type": "erreur",
+    "enonce": "Soit $f$ continue sur $[a, b]$ avec $f(a) < 0 < f(b)$. On étudie la méthode de dichotomie. Voici une copie.",
+    "lignes": [
+      "On construit $a_0 = a$, $b_0 = b$ puis, avec $m = \\frac{a_n + b_n}2$ : si $f(m) \\le 0$, $(a_{n+1}, b_{n+1}) = (m, b_n)$, sinon $(a_{n+1}, b_{n+1}) = (a_n, m)$.",
+      "Pour tout $n$, $f(a_n) \\le 0 < f(b_n)$ et $b_n - a_n = \\frac{b-a}{2^n}$.",
+      "Les suites $(a_n)$ et $(b_n)$ sont adjacentes ; leur limite commune $\\ell$ vérifie $f(\\ell) \\le 0 \\le f(\\ell)$ par continuité, donc $f(\\ell) = 0$.",
+      "Ainsi la dichotomie approche l'unique zéro de $f$ sur $[a, b]$, à $\\frac{b-a}{2^n}$ près à l'étape $n$."
+    ],
+    "fausse": 3,
+    "explication": "Rien n'assure l'unicité du zéro : il faudrait par exemple $f$ strictement monotone. Avec $f(x) = (x - \\frac14)(x - \\frac12)(x - \\frac34)$ sur $[0, 1]$, on a $f(0) < 0 < f(1)$ et trois zéros. La méthode converge vers **un** zéro de $f$, et l'encadrement $a_n \\le \\ell \\le b_n$ reste correct pour ce zéro-là."
+  },
+  {
+    "id": "analyse-numerique-err-03", "ch": "analyse-numerique", "type": "erreur",
+    "enonce": "Soit $I = \\int_0^1 e^{-x^2}\\,\\mathrm dx$. On note $R_n = \\frac1n\\sum_{k=0}^{n-1} f\\!\\left(\\frac kn\\right)$ et $T_n$ les valeurs données par les rectangles à gauche et les trapèzes, pour $f(x) = e^{-x^2}$. Voici une copie.",
+    "lignes": [
+      "La fonction $f$ est décroissante sur $[0, 1]$.",
+      "Donc, pour tout $n \\ge 1$, $R_n \\ge I$ : les rectangles à gauche donnent une valeur par excès.",
+      "De même, pour tout $n \\ge 1$, $T_n \\ge I$ : les trapèzes donnent une valeur par excès.",
+      "Comme $|f''(x)| = |4x^2 - 2|\\,e^{-x^2} \\le 2$ sur $[0, 1]$, on a $|I - T_n| \\le \\frac{1}{6n^2}$."
+    ],
+    "fausse": 2,
+    "explication": "Le signe de l'erreur des trapèzes dépend de la **convexité** de $f$, pas de sa monotonie. Ici $f''$ change de signe en $\\frac1{\\sqrt2}$, et l'on a en fait $T_n < I$ : par exemple $T_1 = \\frac{1 + e^{-1}}2 \\approx 0{,}684$ alors que $I \\approx 0{,}747$."
+  },
+  {
+    "id": "analyse-numerique-err-04", "ch": "analyse-numerique", "type": "erreur",
+    "enonce": "On applique la méthode de Newton à $f(x) = x^3 - 3x + 2$. Voici une copie.",
+    "lignes": [
+      "On a $f(x) = (x - 1)^2(x + 2)$ et $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$, avec $f'(x) = 3x^2 - 3$.",
+      "La fonction $f$ est de classe $\\mathcal C^\\infty$ et $f(1) = 0$.",
+      "Donc, pour $x_0$ assez proche de $1$, $x_0 \\ne 1$, la suite $(x_n)$ converge vers $1$ de façon quadratique.",
+      "Comme $f'(-2) = 9 \\ne 0$, pour $x_0$ assez proche de $-2$, la suite converge vers $-2$ de façon quadratique."
+    ],
+    "fausse": 2,
+    "explication": "Le théorème de convergence quadratique exige une racine simple. Or $f'(1) = 0$ : $1$ est racine double. La suite converge encore vers $1$, mais linéairement : $x_{n+1} - 1 \\sim \\frac12 (x_n - 1)$."
+  },
+  {
+    "id": "analyse-numerique-err-05", "ch": "analyse-numerique", "type": "erreur",
+    "enonce": "On veut approcher $S = \\displaystyle\\sum_{k=1}^{+\\infty} \\frac1{k^2}$ par $S_n = \\displaystyle\\sum_{k=1}^{n} \\frac1{k^2}$ à $10^{-3}$ près. Voici une copie.",
+    "lignes": [
+      "La fonction $t \\mapsto \\frac1{t^2}$ est positive et décroissante sur $[1, +\\infty[$.",
+      "Pour $k \\ge 2$, $\\frac1{k^2} \\le \\displaystyle\\int_{k-1}^k \\frac{\\mathrm dt}{t^2}$.",
+      "Donc le reste vérifie $S - S_n \\le \\displaystyle\\int_n^{+\\infty} \\frac{\\mathrm dt}{t^2} = \\frac1n$.",
+      "Mais le reste est aussi majoré par son premier terme $\\frac1{(n+1)^2}$, donc $n = 31$ suffit."
+    ],
+    "fausse": 3,
+    "explication": "La majoration du reste par son premier terme vaut pour une série alternée vérifiant le critère spécial, pas pour une série à termes positifs. Ici $S - S_n \\ge \\int_{n+1}^{+\\infty} \\frac{\\mathrm dt}{t^2} = \\frac1{n+1}$ : il faut au moins $n \\ge 999$, et $n = 1000$ suffit par la ligne précédente. On peut aussi accélérer en ajoutant à $S_n$ un équivalent du reste."
+  },
+  {
+    "id": "analyse-numerique-piste-01", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $x_0 \\in \\mathbb R$ et $x_{n+1} = \\cos x_n$. Montrer que $(x_n)$ converge et donner une majoration explicite de l'erreur $|x_n - \\ell|$.",
+    "choix": [
+      {
+        "titre": "Contraction sur un segment stable",
+        "info": "Si $g$ envoie un segment $J$ dans lui-même et y est $k$-lipschitzienne avec $k < 1$, alors $g$ a un unique point fixe $\\ell$ dans $J$ et, pour $x_0 \\in J$, $|x_n - \\ell| \\le k^n |x_0 - \\ell|$.",
+        "verdict": "bon",
+        "retour": "Il faut d'abord se ramener à un segment stable où $|\\cos'| = |\\sin|$ est majoré par une constante $< 1$ : $[0, 1]$ convient, et on y entre en deux itérations."
+      },
+      {
+        "titre": "Théorème de la limite monotone",
+        "info": "Toute suite réelle croissante et majorée converge ; toute suite décroissante et minorée converge.",
+        "verdict": "impasse",
+        "retour": "$\\cos$ est décroissante sur $[0, 1]$ : les itérés oscillent de part et d'autre de $\\ell$, la suite n'est pas monotone."
+      },
+      {
+        "titre": "Sous-suites $(x_{2n})$ et $(x_{2n+1})$",
+        "info": "Si $g$ est décroissante sur un intervalle stable, $g \\circ g$ est croissante, et les suites $(x_{2n})$ et $(x_{2n+1})$ sont monotones.",
+        "verdict": "possible",
+        "retour": "On obtient la convergence, mais il faut encore montrer que les deux limites coïncident, et l'on n'a aucune vitesse."
+      },
+      {
+        "titre": "Dichotomie sur $x \\mapsto x - \\cos x$",
+        "info": "Si $f$ est continue sur $[a, b]$ et $f(a)f(b) < 0$, les dichotomies successives encadrent un zéro de $f$ dans un intervalle de longueur $\\frac{b-a}{2^n}$.",
+        "verdict": "impasse",
+        "retour": "Elle approche bien $\\ell$, mais par une autre suite : elle ne dit rien de $(x_n)$."
+      }
+    ],
+    "direction": "$x_1 \\in [-1, 1]$, donc $x_2 \\in [\\cos 1, 1] \\subset [0, 1]$. Le segment $[0, 1]$ est stable par $\\cos$ et $|\\cos'| \\le \\sin 1 < 1$ sur ce segment. D'où un unique point fixe $\\ell$ et $|x_n - \\ell| \\le (\\sin 1)^{n-2}$ pour $n \\ge 2$."
+  },
+  {
+    "id": "analyse-numerique-piste-02", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $u_0 = 2$ et $u_{n+1} = \\frac12\\left(u_n + \\frac2{u_n}\\right)$. Montrer que, pour tout $n$, $0 \\le u_n - \\sqrt2 \\le 2\\sqrt2\\, q^{2^n}$ avec $q = \\frac{\\sqrt2 - 1}2$.",
+    "choix": [
+      {
+        "titre": "Identité exacte sur l'erreur",
+        "info": "Pour une méthode de Newton, on cherche à écrire $u_{n+1} - \\ell$ en fonction de $u_n - \\ell$, puis on itère la majoration obtenue.",
+        "verdict": "bon",
+        "retour": "Le calcul est immédiat ici : $u_{n+1} - \\sqrt2 = \\frac{(u_n - \\sqrt2)^2}{2u_n}$, d'où le signe et une majoration quadratique."
+      },
+      {
+        "titre": "Suite décroissante minorée",
+        "info": "Toute suite réelle décroissante et minorée converge ; sa limite est un point fixe de la fonction d'itération si celle-ci est continue.",
+        "verdict": "possible",
+        "retour": "Elle donne la convergence vers $\\sqrt2$, mais pas la majoration demandée."
+      },
+      {
+        "titre": "Contraction de $g(x) = \\frac12\\left(x + \\frac2x\\right)$",
+        "info": "Si $g$ stabilise un segment $J$ et y vérifie $|g'| \\le k < 1$, alors $|u_n - \\ell| \\le k^n |u_0 - \\ell|$.",
+        "verdict": "impasse",
+        "retour": "Sur $[\\sqrt2, 2]$, on a $|g'| \\le \\frac14$ : on obtient une erreur en $4^{-n}$, géométrique. Elle ne peut pas fournir une majoration en $q^{2^n}$."
+      },
+      {
+        "titre": "Dichotomie sur $x \\mapsto x^2 - 2$",
+        "info": "Si $f$ est continue sur $[a, b]$ et $f(a)f(b) < 0$, la dichotomie encadre un zéro de $f$ à $\\frac{b-a}{2^n}$ près.",
+        "verdict": "impasse",
+        "retour": "C'est une autre suite, et une vitesse bien plus lente : rien sur $(u_n)$."
+      }
+    ],
+    "direction": "On montre par récurrence $u_n > 0$, puis $u_{n+1} - \\sqrt2 = \\frac{(u_n - \\sqrt2)^2}{2u_n} \\ge 0$, donc $u_n \\ge \\sqrt2$ et $e_{n+1} \\le \\frac{e_n^2}{2\\sqrt2}$ avec $e_n = u_n - \\sqrt2$. En posant $\\varepsilon_n = \\frac{e_n}{2\\sqrt2}$, on a $\\varepsilon_{n+1} \\le \\varepsilon_n^2$, donc $\\varepsilon_n \\le \\varepsilon_0^{2^n}$ et $\\varepsilon_0 = q$."
+  },
+  {
+    "id": "analyse-numerique-piste-03", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $u_n = n \\sin\\frac\\pi n$ pour $n \\ge 1$. À partir de $u_n$ et $u_{2n}$ seulement, construire une suite $(v_n)$ telle que $v_n - \\pi = O\\!\\left(\\frac1{n^4}\\right)$.",
+    "choix": [
+      {
+        "titre": "Extrapolation de Richardson",
+        "info": "Si $u_n = \\ell + \\frac{a}{n^p} + O\\!\\left(\\frac1{n^q}\\right)$ avec $q > p$, la combinaison $\\frac{2^p u_{2n} - u_n}{2^p - 1}$ élimine le terme en $\\frac1{n^p}$.",
+        "verdict": "bon",
+        "retour": "Il suffit de connaître la forme du développement de $u_n$ : erreur en $\\frac1{n^2}$, puis en $\\frac1{n^4}$."
+      },
+      {
+        "titre": "Développement limité de $\\sin$ en $0$",
+        "info": "$\\sin x = x - \\frac{x^3}6 + \\frac{x^5}{120} + O(x^7)$.",
+        "verdict": "possible",
+        "retour": "Indispensable pour obtenir $u_n = \\pi - \\frac{\\pi^3}{6n^2} + O\\!\\left(\\frac1{n^4}\\right)$, mais il ne construit pas la suite à lui seul."
+      },
+      {
+        "titre": "Moyenne $\\frac{u_n + u_{2n}}2$",
+        "info": "Si deux suites convergent vers $\\ell$, toute moyenne pondérée à poids positifs fixes converge vers $\\ell$.",
+        "verdict": "impasse",
+        "retour": "Les deux erreurs sont de même signe : la moyenne garde un terme en $-\\frac{5\\pi^3}{48n^2}$."
+      },
+      {
+        "titre": "Passer à la suite extraite $(u_{2n})$",
+        "info": "Une suite extraite d'une suite convergente converge vers la même limite.",
+        "verdict": "impasse",
+        "retour": "L'erreur est seulement divisée par $4$ : elle reste d'ordre $\\frac1{n^2}$."
+      }
+    ],
+    "direction": "Le développement limité donne $u_n = \\pi - \\frac{\\pi^3}{6n^2} + O\\!\\left(\\frac1{n^4}\\right)$. Avec $p = 2$, on pose $v_n = \\frac{4u_{2n} - u_n}3$ : les termes en $\\frac1{n^2}$ s'annulent et $v_n = \\pi + O\\!\\left(\\frac1{n^4}\\right)$."
+  },
+  {
+    "id": "analyse-numerique-piste-04", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $I = \\displaystyle\\int_0^1 \\frac{\\mathrm dx}{1 + x^2}$. Déterminer un entier $n$ tel que la méthode des trapèzes à $n$ sous-intervalles égaux donne $I$ à $10^{-4}$ près.",
+    "choix": [
+      {
+        "titre": "Majoration d'erreur des trapèzes",
+        "info": "Si $f$ est de classe $\\mathcal C^2$ sur $[a, b]$ et $M_2 = \\sup |f''|$, alors $|I - T_n| \\le \\frac{(b-a)^3}{12n^2} M_2$.",
+        "verdict": "bon",
+        "retour": "Il reste à majorer $|f''|$ sur $[0, 1]$, ce qui se fait en étudiant $\\frac{6x^2 - 2}{(1+x^2)^3}$."
+      },
+      {
+        "titre": "Encadrement par convexité",
+        "info": "Si $f$ est convexe sur $[a, b]$, le point milieu donne une valeur par défaut et les trapèzes une valeur par excès.",
+        "verdict": "impasse",
+        "retour": "$f''$ change de signe en $\\frac1{\\sqrt3}$ : $f$ n'est ni convexe ni concave sur $[0, 1]$."
+      },
+      {
+        "titre": "Majoration d'ordre 1, avec $M_1 = \\sup |f'|$",
+        "info": "Si $f$ est de classe $\\mathcal C^1$, l'erreur des trapèzes, comme celle des rectangles, est majorée par $\\frac{(b-a)^2}{2n} M_1$.",
+        "verdict": "possible",
+        "retour": "La majoration est juste, mais en $\\frac1n$ : elle impose un $n$ de l'ordre de quelques milliers, très pessimiste."
+      },
+      {
+        "titre": "Calcul exact de $I$",
+        "info": "$\\int_0^1 \\frac{\\mathrm dx}{1+x^2} = \\arctan 1 = \\frac\\pi4$.",
+        "verdict": "possible",
+        "retour": "Avec une calculatrice, on peut calculer $T_n$ pour un $n$ candidat et le comparer à $\\frac\\pi4$ : cela vérifie ce $n$ par tâtonnement numérique, sans dire a priori lequel choisir."
+      }
+    ],
+    "direction": "$f''(x) = \\frac{6x^2 - 2}{(1+x^2)^3}$ et $|f''| \\le 2$ sur $[0, 1]$ (maximum en $0$). Donc $|I - T_n| \\le \\frac{1}{6n^2}$, et $n \\ge 41$ suffit puisque $6 \\times 41^2 > 10^4$."
+  },
+  {
+    "id": "analyse-numerique-piste-05", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $S = \\displaystyle\\sum_{k=1}^{+\\infty} \\frac1{k^3}$ et $S_n = \\displaystyle\\sum_{k=1}^{n} \\frac1{k^3}$. Déterminer un entier $n$ tel que $0 \\le S - S_n \\le 10^{-3}$.",
+    "choix": [
+      {
+        "titre": "Comparaison série-intégrale",
+        "info": "Si $f$ est positive et décroissante sur $[1, +\\infty[$, alors pour $k \\ge 2$, $f(k) \\le \\int_{k-1}^k f$. En sommant, $\\sum_{k > n} f(k) \\le \\int_n^{+\\infty} f$.",
+        "verdict": "bon",
+        "retour": "Avec $f(t) = \\frac1{t^3}$, le reste est majoré par $\\frac1{2n^2}$."
+      },
+      {
+        "titre": "Comparaison à une série télescopique",
+        "info": "Pour $k \\ge 2$, $\\frac1{k^3} \\le \\frac1{(k-1)k(k+1)} = \\frac12\\left(\\frac1{(k-1)k} - \\frac1{k(k+1)}\\right)$.",
+        "verdict": "bon",
+        "retour": "La somme se télescope : le reste est majoré par $\\frac1{2n(n+1)}$, un peu mieux que l'intégrale."
+      },
+      {
+        "titre": "Majorer le reste par son premier terme",
+        "info": "Si $(a_k)$ décroît vers $0$, le reste de la série alternée $\\sum (-1)^k a_k$ est majoré en valeur absolue par son premier terme.",
+        "verdict": "impasse",
+        "retour": "La série est à termes positifs : ce résultat ne s'applique pas, et le reste est bien plus grand que $\\frac1{(n+1)^3}$."
+      },
+      {
+        "titre": "Règle de d'Alembert",
+        "info": "Si $u_n > 0$ et $\\frac{u_{n+1}}{u_n} \\to \\ell < 1$, alors $\\sum u_n$ converge, et le reste est dominé par une série géométrique.",
+        "verdict": "impasse",
+        "retour": "Ici le quotient tend vers $1$ : aucune majoration géométrique n'est possible."
+      }
+    ],
+    "direction": "Par le télescopage, $S - S_n \\le \\frac1{2n(n+1)} \\le 10^{-3}$ dès que $n(n+1) \\ge 500$, donc $n = 22$ convient. Par l'intégrale, $\\frac1{2n^2} \\le 10^{-3}$ donne $n = 23$."
+  },
+  {
+    "id": "analyse-numerique-piste-06", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $R_n = \\displaystyle\\sum_{k=n+1}^{+\\infty} \\frac{(-1)^k}{k}$. Trouver un équivalent de $R_n$ quand $n \\to +\\infty$.",
+    "choix": [
+      {
+        "titre": "Représentation intégrale du reste",
+        "info": "Pour $k \\ge 1$, $\\frac1k = \\int_0^1 x^{k-1}\\,\\mathrm dx$. On somme une série géométrique sous l'intégrale, en travaillant sur une somme finie pour justifier le passage à la limite.",
+        "verdict": "bon",
+        "retour": "On obtient $R_n = (-1)^{n+1} \\int_0^1 \\frac{x^n}{1+x}\\,\\mathrm dx$, intégrale dont on trouve l'équivalent par intégration par parties."
+      },
+      {
+        "titre": "Relation $|R_n| + |R_{n+1}| = \\frac1{n+1}$",
+        "info": "On a $R_n = \\frac{(-1)^{n+1}}{n+1} + R_{n+1}$, et le critère spécial donne le signe de chaque reste : celui de son premier terme.",
+        "verdict": "bon",
+        "retour": "Avec la décroissance de $(|R_n|)$, qui s'obtient en regroupant les termes deux par deux, on encadre $\\frac1{2(n+1)} \\le |R_n| \\le \\frac1{2n}$, d'où l'équivalent."
+      },
+      {
+        "titre": "Inégalité de Taylor-Lagrange pour $\\ln(1 + x)$ en $x = 1$",
+        "info": "Si $f$ est de classe $\\mathcal C^{n+1}$ sur $[0, 1]$, alors $\\left|f(1) - \\sum_{k=0}^n \\frac{f^{(k)}(0)}{k!}\\right| \\le \\frac{\\sup |f^{(n+1)}|}{(n+1)!}$.",
+        "verdict": "impasse",
+        "retour": "Avec $f(x) = \\ln(1+x)$, le membre de gauche vaut $|R_n|$ et $\\sup |f^{(n+1)}| = n!$ : on obtient seulement $|R_n| \\le \\frac1{n+1}$. Une majoration n'est pas un équivalent."
+      },
+      {
+        "titre": "Sommation des équivalents sur les restes",
+        "info": "Si $u_k \\sim v_k$ avec $v_k > 0$ et $\\sum v_k$ convergente, alors $\\sum_{k > n} u_k \\sim \\sum_{k > n} v_k$.",
+        "verdict": "possible",
+        "retour": "Inapplicable tel quel, le terme général alterne. En regroupant les termes deux par deux, $|R_{2m}| = \\sum_{i > m} \\frac1{(2i-1)2i}$ avec $\\frac1{(2i-1)2i} \\sim \\frac1{4i^2}$ : cela aboutit, mais il faut traiter à part $n$ pair et $n$ impair."
+      }
+    ],
+    "direction": "$R_n = (-1)^{n+1} J_n$ avec $J_n = \\int_0^1 \\frac{x^n}{1+x}\\,\\mathrm dx$. Une intégration par parties donne $J_n = \\frac1{2(n+1)} + \\frac1{n+1}\\int_0^1 \\frac{x^{n+1}}{(1+x)^2}\\,\\mathrm dx = \\frac1{2n} + o\\!\\left(\\frac1n\\right)$. Donc $R_n \\sim \\frac{(-1)^{n+1}}{2n}$. Variante : $|R_n| + |R_{n+1}| = \\frac1{n+1}$ et la décroissance de $(|R_n|)$ donnent le même résultat par encadrement."
+  },
+  {
+    "id": "analyse-numerique-piste-07", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $f$ de classe $\\mathcal C^2$ sur $[a, b]$ avec $f(a) < 0 < f(b)$, $f' > 0$ et $f'' > 0$ sur $[a, b]$, et $\\ell$ son unique zéro. Montrer que la suite de Newton issue de $x_0 = b$ converge vers $\\ell$.",
+    "choix": [
+      {
+        "titre": "Monotonie et convexité",
+        "info": "Une fonction convexe dérivable est au-dessus de chacune de ses tangentes. Toute suite décroissante minorée converge.",
+        "verdict": "bon",
+        "retour": "La convexité garantit que chaque itéré reste à droite de $\\ell$, et la positivité de $f$ et $f'$ en ces points donne la décroissance."
+      },
+      {
+        "titre": "Théorème de convergence locale de Newton",
+        "info": "Si $f$ est de classe $\\mathcal C^2$, $f(\\ell) = 0$ et $f'(\\ell) \\ne 0$, la suite de Newton converge quadratiquement vers $\\ell$ pour $x_0$ assez proche de $\\ell$.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $b$ est « assez proche » de $\\ell$ : le résultat local ne s'applique pas à un point de départ imposé."
+      },
+      {
+        "titre": "Contraction de $N(x) = x - \\frac{f(x)}{f'(x)}$ sur $[\\ell, b]$",
+        "info": "Si $N$ stabilise un segment et y vérifie $|N'| \\le k < 1$, ses itérées convergent vers son unique point fixe. Ici $N' = \\frac{f f''}{f'^2}$.",
+        "verdict": "impasse",
+        "retour": "Les hypothèses ne bornent pas $\\frac{ff''}{f'^2}$ par une constante $< 1$ loin de $\\ell$ : pour $f(x) = e^{x^2} - 2$ sur $[\\frac12, 3]$, on a $N'(3) > 1$."
+      },
+      {
+        "titre": "Dichotomie",
+        "info": "Si $f$ est continue sur $[a, b]$ et $f(a)f(b) < 0$, la dichotomie encadre un zéro de $f$ à $\\frac{b-a}{2^n}$ près.",
+        "verdict": "impasse",
+        "retour": "Elle approche $\\ell$ par une autre suite : la question porte sur la suite de Newton."
+      }
+    ],
+    "direction": "Par récurrence, $x_n \\in [\\ell, b]$ : si $x_n > \\ell$, alors $f(x_n) > 0$ et $f'(x_n) > 0$, donc $x_{n+1} < x_n$ ; la tangente en $x_n$ est sous le graphe et s'annule en $x_{n+1}$, donc $f(x_{n+1}) \\ge 0$, soit $x_{n+1} \\ge \\ell$. La suite décroît et est minorée par $\\ell$ ; sa limite $L$ vérifie $f(L) = 0$ par continuité, donc $L = \\ell$."
+  },
+  {
+    "id": "analyse-numerique-piste-08", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $f : [0, T] \\times \\mathbb R \\to \\mathbb R$ continue et $L$-lipschitzienne en $x$ avec $L > 0$, et $x$ une solution de classe $\\mathcal C^2$ de $x' = f(t, x)$ avec $|x''| \\le M$. On pose $h = \\frac TN$, $t_k = kh$, $x_0 = x(0)$, $x_{k+1} = x_k + h f(t_k, x_k)$. Montrer que $|x(t_k) - x_k| \\le \\frac{Mh}{2L}\\left(e^{LT} - 1\\right)$ pour tout $k \\le N$.",
+    "choix": [
+      {
+        "titre": "Récurrence sur l'erreur $e_k = |x(t_k) - x_k|$",
+        "info": "Si $e_0 = 0$ et $e_{k+1} \\le (1 + \\alpha)e_k + \\beta$ avec $\\alpha > 0$, $\\beta \\ge 0$, alors $e_k \\le \\frac{\\beta}{\\alpha}\\left((1+\\alpha)^k - 1\\right)$. De plus $1 + \\alpha \\le e^\\alpha$.",
+        "verdict": "bon",
+        "retour": "Taylor-Lagrange fournit l'erreur commise sur un pas, la lipschitzianité contrôle la propagation : on obtient l'inégalité de récurrence."
+      },
+      {
+        "titre": "Sommer les erreurs locales",
+        "info": "Sur un pas, si l'on part de la valeur exacte $x(t_k)$, l'erreur commise est au plus $\\frac{Mh^2}2$ (Taylor-Lagrange).",
+        "verdict": "impasse",
+        "retour": "Additionner $N$ erreurs locales oublie qu'on repart à chaque pas d'une valeur déjà fausse : c'est la propagation, contrôlée par $L$, qui crée le facteur $e^{LT}$."
+      },
+      {
+        "titre": "Théorème de Cauchy-Lipschitz",
+        "info": "Si $f$ est continue et localement lipschitzienne en $x$, le problème de Cauchy admet une unique solution maximale.",
+        "verdict": "impasse",
+        "retour": "Il garantit l'existence et l'unicité de $x$, déjà supposées ici, mais ne dit rien de la suite $(x_k)$."
+      },
+      {
+        "titre": "Lemme de Grönwall continu",
+        "info": "Hors programme, à redémontrer. Si $\\varphi$ est continue, positive, et si $\\varphi(t) \\le c + L\\int_0^t \\varphi$ pour tout $t$, avec $c, L \\ge 0$, alors $\\varphi(t) \\le c\\,e^{Lt}$.",
+        "verdict": "possible",
+        "retour": "On peut l'utiliser en interpolant le schéma par une fonction affine par morceaux, mais c'est plus lourd que la version discrète, directe ici."
+      }
+    ],
+    "direction": "Taylor-Lagrange donne $x(t_{k+1}) = x(t_k) + h f(t_k, x(t_k)) + \\tau_k$ avec $|\\tau_k| \\le \\frac{Mh^2}2$. En soustrayant le schéma, $e_{k+1} \\le (1 + hL)e_k + \\frac{Mh^2}2$. D'où $e_k \\le \\frac{Mh}{2L}\\left((1+hL)^k - 1\\right) \\le \\frac{Mh}{2L}\\left(e^{LT} - 1\\right)$ : la méthode est d'ordre $1$."
+  },
+  {
+    "id": "analyse-numerique-piste-09", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Soit $x_0 \\in \\left]0, \\frac\\pi2\\right]$ et $x_{n+1} = \\sin x_n$. On admet que $(x_n)$ décroît vers $0$. Trouver un équivalent de $x_n$.",
+    "choix": [
+      {
+        "titre": "Télescoper $x_{k+1}^{\\alpha} - x_k^{\\alpha}$ et sommer les équivalents",
+        "info": "Si $w_k \\sim c$ avec $c > 0$, la série $\\sum w_k$ diverge et ses sommes partielles vérifient $\\sum_{k=0}^{n-1} w_k \\sim nc$. On choisit $\\alpha$ pour que $w_k = x_{k+1}^\\alpha - x_k^\\alpha$ ait une limite finie non nulle.",
+        "verdict": "bon",
+        "retour": "Avec $\\alpha = -2$, un développement limité donne $\\frac1{\\sin^2 x} - \\frac1{x^2} \\to \\frac13$ quand $x \\to 0$."
+      },
+      {
+        "titre": "Point fixe contractant",
+        "info": "Si $g$ est de classe $\\mathcal C^1$ et $|g'(\\ell)| < 1$, le point fixe $\\ell$ est attractif : pour $x_0$ assez proche de $\\ell$, $|x_n - \\ell| = O(k^n)$ pour tout $k \\in \\left]|g'(\\ell)|, 1\\right[$.",
+        "verdict": "impasse",
+        "retour": "Ici $\\sin'(0) = 1$ : le point fixe n'est pas contractant, la convergence est lente, et aucune majoration géométrique n'est possible."
+      },
+      {
+        "titre": "Comparer $\\frac{x_{n+1}}{x_n}$ à une constante",
+        "info": "Si $\\frac{x_{n+1}}{x_n} \\to q \\in ]0, 1[$, alors $x_n$ tend vers $0$ à vitesse géométrique.",
+        "verdict": "impasse",
+        "retour": "Le quotient $\\frac{\\sin x_n}{x_n}$ tend vers $1$ : il ne fournit aucun équivalent."
+      },
+      {
+        "titre": "Développement limité de $\\sin$ en $0$",
+        "info": "$\\sin x = x - \\frac{x^3}6 + O(x^5)$.",
+        "verdict": "possible",
+        "retour": "Il donne $x_{n+1} - x_n \\sim -\\frac{x_n^3}{6}$, information indispensable mais qui ne suffit pas seule à conclure."
+      }
+    ],
+    "direction": "$\\frac1{x_{n+1}^2} - \\frac1{x_n^2} = \\frac{x_n^2 - \\sin^2 x_n}{x_n^2 \\sin^2 x_n} \\to \\frac13$. En sommant ces équivalents (cas divergent), $\\frac1{x_n^2} - \\frac1{x_0^2} \\sim \\frac n3$, donc $x_n \\sim \\sqrt{\\frac3n}$ : convergence lente, en $n^{-1/2}$."
+  },
+  {
+    "id": "analyse-numerique-piste-10", "ch": "analyse-numerique", "type": "piste",
+    "enonce": "Déterminer $\\alpha, \\beta, \\gamma \\in \\mathbb R$ tels que $\\int_{-1}^1 P = \\alpha P(-1) + \\beta P(0) + \\gamma P(1)$ pour tout $P \\in \\mathbb R_2[X]$, puis montrer que cette formule reste exacte sur $\\mathbb R_3[X]$.",
+    "choix": [
+      {
+        "titre": "Tester sur la base $1, X, X^2$",
+        "info": "Les deux membres sont des formes linéaires sur $\\mathbb R_n[X]$ : elles coïncident si et seulement si elles coïncident sur une base.",
+        "verdict": "bon",
+        "retour": "On obtient un système $3 \\times 3$ immédiat ; pour $\\mathbb R_3[X]$, il suffit de tester en plus $X^3$."
+      },
+      {
+        "titre": "Combinaison du point milieu et des trapèzes",
+        "info": "Sur $[-1, 1]$, le point milieu donne $2P(0)$ et les trapèzes $P(-1) + P(1)$. Tous deux sont exacts sur $\\mathbb R_1[X]$.",
+        "verdict": "bon",
+        "retour": "Sur $X^2$, les erreurs valent $\\frac23$ et $-\\frac43$ : la combinaison $\\frac{2M + T}3$ les annule, ce qui donne directement la formule."
+      },
+      {
+        "titre": "Trapèzes composés sur $[-1, 0]$ et $[0, 1]$",
+        "info": "La méthode des trapèzes à deux sous-intervalles donne $\\frac12 P(-1) + P(0) + \\frac12 P(1)$.",
+        "verdict": "impasse",
+        "retour": "Elle utilise les bons points mais n'est exacte que sur $\\mathbb R_1[X]$ : pour $X^2$, elle donne $1$ au lieu de $\\frac23$."
+      },
+      {
+        "titre": "Majoration d'erreur par Taylor-Lagrange",
+        "info": "Si $f$ est de classe $\\mathcal C^{k}$, le reste de Taylor-Lagrange à l'ordre $k - 1$ est majoré par $\\frac{|x - a|^k}{k!}\\sup |f^{(k)}|$.",
+        "verdict": "impasse",
+        "retour": "Elle sert à majorer l'erreur une fois la formule connue, pas à déterminer les coefficients."
+      }
+    ],
+    "direction": "Avec $1$, $X$, $X^2$ : $\\alpha + \\beta + \\gamma = 2$, $\\gamma - \\alpha = 0$, $\\alpha + \\gamma = \\frac23$, d'où $\\alpha = \\gamma = \\frac13$ et $\\beta = \\frac43$. Pour $X^3$, les deux membres sont nuls par imparité. La formule n'est pas exacte pour $X^4$ : $\\frac25 \\ne \\frac23$."
+  }
+]
