@@ -1,0 +1,508 @@
+[
+  {
+    "id": "courbes-vf-01", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R^2$ de classe $\\mathcal C^\\infty$ et $t_0 \\in \\mathbb R$. Si $f'(t_0) = 0$, la courbe n'admet pas de tangente au point $M(t_0)$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(t) = (t^2, t^3)$ en $t_0 = 0$. La direction de la sécante $(M(0)M(t))$ est celle de $\\frac{f(t)}{t^2} = (1, t) \\to (1, 0)$ : la tangente existe, c'est l'axe $(Ox)$. En général, si $p$ est le plus petit entier tel que $f^{(p)}(t_0) \\ne 0$, la tangente est dirigée par $f^{(p)}(t_0)$."
+  },
+  {
+    "id": "courbes-vf-02", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R^2$ de classe $\\mathcal C^\\infty$ et $t_0$ tel que $f(t) \\ne f(t_0)$ pour $t \\ne t_0$. Alors la droite $(M(t_0)M(t))$ admet une position limite quand $t \\to t_0$.",
+    "reponse": false,
+    "explication": "Soit $g(t) = e^{-1/t^2}$ pour $t \\ne 0$, $g(0) = 0$, fonction de classe $\\mathcal C^\\infty$ dont toutes les dérivées sont nulles en $0$. L'arc $f(t) = (g(t), g(t))$ pour $t \\ge 0$, $f(t) = (-g(t), g(t))$ pour $t < 0$ est de classe $\\mathcal C^\\infty$. Son support est le graphe de $x \\mapsto |x|$ près de $O$ : la sécante a pour pente $1$ à droite, $-1$ à gauche. Le résultat devient vrai s'il existe $p$ tel que $f^{(p)}(t_0) \\ne 0$."
+  },
+  {
+    "id": "courbes-vf-03", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $f : I \\to \\mathbb R^2$ de classe $\\mathcal C^1$ et $\\varphi : J \\to I$ un $\\mathcal C^1$-difféomorphisme (changement de paramètre birégulier). Le point de paramètre $u$ est régulier pour $f \\circ \\varphi$ si et seulement si le point de paramètre $\\varphi(u)$ est régulier pour $f$, et les tangentes coïncident.",
+    "reponse": true,
+    "explication": "$(f \\circ \\varphi)'(u) = \\varphi'(u)\\, f'(\\varphi(u))$ avec $\\varphi'(u) \\ne 0$ : les deux vecteurs dérivés sont nuls en même temps et, sinon, colinéaires."
+  },
+  {
+    "id": "courbes-vf-04", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R^2$ de classe $\\mathcal C^\\infty$ et $M(t_0)$ un point régulier tel que $f''(t_0)$ est colinéaire à $f'(t_0)$. Alors $M(t_0)$ est un point d'inflexion.",
+    "reponse": false,
+    "explication": "Contre-exemple : $f(t) = (t, t^4)$ en $0$. On a $f'(0) = (1, 0)$ et $f''(0) = 0$, colinéaires, mais la courbe $y = x^4$ reste au-dessus de sa tangente. Ici $p = 1$ et le premier vecteur dérivé non colinéaire est $f^{(4)}(0)$ : $q = 4$ est pair, le point est d'allure ordinaire. Il y a inflexion quand $q$ est impair."
+  },
+  {
+    "id": "courbes-vf-05", "ch": "courbes", "type": "vf",
+    "enonce": "La longueur de l'astroïde $f(t) = (\\cos^3 t, \\sin^3 t)$, $t \\in [0, 2\\pi]$, vaut $6$.",
+    "reponse": true,
+    "explication": "$f'(t) = 3\\sin t\\cos t\\,(-\\cos t, \\sin t)$, donc $\\|f'(t)\\| = 3|\\sin t\\cos t|$. Par symétrie, $L = 4\\displaystyle\\int_0^{\\pi/2} 3\\sin t\\cos t\\,\\mathrm dt = 4 \\cdot \\frac32 = 6$. Attention à la valeur absolue : sans elle, l'intégrale sur $[0, 2\\pi]$ est nulle."
+  },
+  {
+    "id": "courbes-vf-06", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $f$ un arc plan régulier de classe $\\mathcal C^2$ et $\\gamma$ sa courbure signée (relative au repère de Frenet orienté par le sens de parcours). Pour tout changement de paramètre birégulier $\\varphi$ de classe $\\mathcal C^2$, la courbure de $f \\circ \\varphi$ au paramètre $u$ vaut $\\gamma(\\varphi(u))$.",
+    "reponse": false,
+    "explication": "C'est vrai si $\\varphi$ est croissante. Si $\\varphi$ est décroissante, le sens de parcours change et la courbure change de signe. Exemple : $(\\cos t, \\sin t)$ a pour courbure $1$, alors que $(\\cos u, -\\sin u)$, obtenu avec $\\varphi(u) = -u$, a pour courbure $-1$. La valeur absolue de la courbure, elle, est invariante."
+  },
+  {
+    "id": "courbes-vf-07", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $I$ un intervalle et $f : I \\to \\mathbb R^2$ un arc régulier de classe $\\mathcal C^2$ dont la courbure est nulle en tout point. Alors le support de $f$ est contenu dans une droite.",
+    "reponse": true,
+    "explication": "Avec un paramétrage par abscisse curviligne, $\\frac{\\mathrm dT}{\\mathrm ds} = \\gamma N = 0$ : $T$ est constant sur l'intervalle, donc $M(s) = M(s_0) + (s - s_0)\\,T$. L'hypothèse « intervalle » est indispensable."
+  },
+  {
+    "id": "courbes-vf-08", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $\\rho$ de classe $\\mathcal C^1$ et la courbe polaire $M(\\theta) = O + \\rho(\\theta)\\,\\vec u(\\theta)$, où $\\vec u(\\theta) = (\\cos\\theta, \\sin\\theta)$. Si $\\rho(\\theta_0) = 0$, alors $M(\\theta_0)$ est un point singulier.",
+    "reponse": false,
+    "explication": "Avec $\\vec v(\\theta) = \\vec u(\\theta + \\frac\\pi2)$, on a $\\frac{\\mathrm dM}{\\mathrm d\\theta} = \\rho'\\vec u + \\rho\\,\\vec v$, nul seulement si $\\rho = \\rho' = 0$. Contre-exemple : le cercle $\\rho = \\cos\\theta$ en $\\theta_0 = \\frac\\pi2$, où $\\rho' = -1$ : le point $O$ est régulier, de tangente dirigée par $\\vec u(\\theta_0)$. En revanche le pôle de la cardioïde $\\rho = 1 + \\cos\\theta$ ($\\theta_0 = \\pi$) est singulier."
+  },
+  {
+    "id": "courbes-vf-09", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $n \\ge 1$ et $B_{k,n}(t) = \\binom nk t^k (1-t)^{n-k}$. Toute courbe de Bézier $t \\mapsto \\sum_{k=0}^n B_{k,n}(t)\\,P_k$, $t \\in [0, 1]$, est contenue dans l'enveloppe convexe de ses points de contrôle $P_0, \\dots, P_n$.",
+    "reponse": true,
+    "explication": "Pour $t \\in [0, 1]$, les $B_{k,n}(t) = \\binom nk t^k (1-t)^{n-k}$ sont positifs et de somme $(t + 1 - t)^n = 1$ : chaque point de la courbe est un barycentre à coefficients positifs des $P_k$."
+  },
+  {
+    "id": "courbes-vf-10", "ch": "courbes", "type": "vf",
+    "enonce": "Toute courbe de Bézier passe par chacun de ses points de contrôle.",
+    "reponse": false,
+    "explication": "Elle passe par $P_0$ ($t = 0$) et $P_n$ ($t = 1$), pas par les autres en général. Avec $P_0 = (0,0)$, $P_1 = (1,1)$, $P_2 = (2,0)$ : $B(t) = (2t, 2t(1-t))$, dont l'ordonnée ne dépasse pas $\\frac12$. La courbe n'atteint jamais $P_1$."
+  },
+  {
+    "id": "courbes-vf-11", "ch": "courbes", "type": "vf",
+    "enonce": "Soit $a > 0$, $b \\ne 0$ et l'hélice $f(t) = (a\\cos t, a\\sin t, bt)$. Pour tout $t$, le plan osculateur en $M(t)$ contient le point $H(t) = (0, 0, bt)$ de l'axe $(Oz)$.",
+    "reponse": true,
+    "explication": "$f''(t) = (-a\\cos t, -a\\sin t, 0) = \\overrightarrow{M(t)H(t)}$. Comme $f'(t)$ et $f''(t)$ sont libres, le plan osculateur est $M(t) + \\mathrm{Vect}(f'(t), f''(t))$, et il contient $H(t)$."
+  },
+  {
+    "id": "courbes-qcm-01", "ch": "courbes", "type": "qcm",
+    "enonce": "Soit $f$ de classe $\\mathcal C^\\infty$, $p$ le plus petit entier tel que $f^{(p)}(t_0) \\ne 0$, $q$ le plus petit entier $> p$ tel que $f^{(q)}(t_0)$ ne soit pas colinéaire à $f^{(p)}(t_0)$. Si $p$ est pair et $q$ impair, $M(t_0)$ est **[ ? ]**.",
+    "choix": [
+      "un point de rebroussement de première espèce",
+      "un point de rebroussement de seconde espèce",
+      "un point d'inflexion",
+      "un point d'allure ordinaire"
+    ],
+    "bonne": 0,
+    "explication": "Dans le repère $(M(t_0), f^{(p)}, f^{(q)})$, les coordonnées sont équivalentes à $\\frac{t^p}{p!}$ et $\\frac{t^q}{q!}$. $p$ pair : la courbe revient en arrière (rebroussement). $q$ impair : elle traverse sa tangente (première espèce). Seconde espèce : $p$ et $q$ pairs. Inflexion : $p$ et $q$ impairs."
+  },
+  {
+    "id": "courbes-qcm-02", "ch": "courbes", "type": "qcm",
+    "enonce": "Formules de Frenet.\nSoit $s \\mapsto M(s)$ un arc plan de classe $\\mathcal C^2$ paramétré par abscisse curviligne, de repère de Frenet $(T, N)$ et de courbure $\\gamma$. On a $\\frac{\\mathrm dT}{\\mathrm ds} = \\gamma N$ et $\\frac{\\mathrm dN}{\\mathrm ds} =$ **[ ? ]**.",
+    "choix": [
+      "$-\\gamma T$",
+      "$\\gamma T$",
+      "$-\\gamma N$",
+      "$0$"
+    ],
+    "bonne": 0,
+    "explication": "$N$ est la rotation d'angle $+\\frac\\pi2$ de $T$, rotation linéaire qui commute avec la dérivation : $N' = \\mathrm{rot}(\\gamma N) = -\\gamma T$. Autre argument : $N$ unitaire donne $N' \\perp N$, et dériver $\\langle T, N\\rangle = 0$ donne $\\langle T, N'\\rangle = -\\gamma$."
+  },
+  {
+    "id": "courbes-qcm-03", "ch": "courbes", "type": "qcm",
+    "enonce": "Soit $f = (x, y)$ un arc plan régulier de classe $\\mathcal C^2$. La courbure signée en $M(t)$, relative au repère de Frenet orienté par le sens de parcours, vaut **[ ? ]**.",
+    "choix": [
+      "$\\dfrac{x'y'' - x''y'}{(x'^2 + y'^2)^{3/2}}$",
+      "$\\dfrac{x'y'' - x''y'}{x'^2 + y'^2}$",
+      "$\\dfrac{\\sqrt{x''^2 + y''^2}}{x'^2 + y'^2}$",
+      "$\\dfrac{x'x'' + y'y''}{(x'^2 + y'^2)^{3/2}}$"
+    ],
+    "bonne": 0,
+    "explication": "$\\gamma = \\frac{\\det(f', f'')}{\\|f'\\|^3}$. Contrôle sur le cercle $(R\\cos t, R\\sin t)$ : $\\det(f', f'') = R^2$ et $\\|f'\\|^3 = R^3$, d'où $\\frac1R$. Le deuxième choix donne $1$, le troisième $\\frac1R$ seulement parce que la vitesse est constante, le quatrième ($\\langle f', f''\\rangle$) mesure la variation de la vitesse et vaut $0$."
+  },
+  {
+    "id": "courbes-qcm-04", "ch": "courbes", "type": "qcm",
+    "enonce": "Soit $a > 0$. La longueur totale de la cardioïde d'équation polaire $\\rho = a(1 + \\cos\\theta)$, $\\theta \\in [-\\pi, \\pi]$, vaut :",
+    "choix": [
+      "$8a$",
+      "$4a$",
+      "$2\\pi a$",
+      "$16a$"
+    ],
+    "bonne": 0,
+    "explication": "$\\rho^2 + \\rho'^2 = 2a^2(1 + \\cos\\theta) = 4a^2\\cos^2\\frac\\theta2$, et $\\cos\\frac\\theta2 \\ge 0$ sur $[-\\pi, \\pi]$. Donc $L = \\displaystyle\\int_{-\\pi}^{\\pi} 2a\\cos\\frac\\theta2\\,\\mathrm d\\theta = 8a$."
+  },
+  {
+    "id": "courbes-qcm-05", "ch": "courbes", "type": "qcm",
+    "enonce": "Soit $R > 0$ et la cycloïde $x = R(t - \\sin t)$, $y = R(1 - \\cos t)$. Le rayon de courbure au sommet de l'arche ($t = \\pi$) vaut :",
+    "choix": [
+      "$4R$",
+      "$2R$",
+      "$R$",
+      "$8R$"
+    ],
+    "bonne": 0,
+    "explication": "$\\|f'(t)\\| = 2R\\sin\\frac t2$ sur $]0, 2\\pi[$ et $\\det(f', f'') = R^2(\\cos t - 1) = -2R^2\\sin^2\\frac t2$. Donc $|\\gamma| = \\frac{1}{4R\\sin(t/2)}$ et le rayon de courbure vaut $4R\\sin\\frac t2$, soit $4R$ au sommet. Ce n'est pas le rayon $R$ du cercle qui roule."
+  },
+  {
+    "id": "courbes-qcm-06", "ch": "courbes", "type": "qcm",
+    "enonce": "Soit la courbe de Bézier de points de contrôle $P_0 = (0,0)$, $P_1 = (0,1)$, $P_2 = (1,1)$, $P_3 = (1,0)$. Le point de paramètre $t = \\frac12$, obtenu par l'algorithme de De Casteljau, est :",
+    "choix": [
+      "$\\left(\\frac12, \\frac34\\right)$",
+      "$\\left(\\frac12, 1\\right)$",
+      "$\\left(\\frac12, \\frac12\\right)$",
+      "$\\left(\\frac12, \\frac23\\right)$"
+    ],
+    "bonne": 0,
+    "explication": "Milieux successifs : $(0, \\frac12)$, $(\\frac12, 1)$, $(1, \\frac12)$, puis $(\\frac14, \\frac34)$, $(\\frac34, \\frac34)$, enfin $(\\frac12, \\frac34)$. Contrôle par les polynômes de Bernstein : $\\frac18(P_0 + 3P_1 + 3P_2 + P_3) = (\\frac12, \\frac34)$."
+  },
+  {
+    "id": "courbes-err-01", "ch": "courbes", "type": "erreur",
+    "enonce": "On étudie la branche infinie de $f(t) = (t^2, t^2 + t)$ quand $t \\to +\\infty$. Voici une copie.",
+    "lignes": [
+      "Quand $t \\to +\\infty$, $x(t) \\to +\\infty$ et $y(t) \\to +\\infty$.",
+      "$\\dfrac{y(t)}{x(t)} = 1 + \\dfrac1t \\to 1$.",
+      "La courbe admet donc une direction asymptotique, celle de la droite $y = x$.",
+      "Donc la droite d'équation $y = x$ est asymptote à la courbe."
+    ],
+    "fausse": 3,
+    "explication": "Une direction asymptotique ne suffit pas : il faut encore que $y - x$ ait une limite finie $b$, et l'asymptote est alors $y = x + b$. Ici $y(t) - x(t) = t \\to +\\infty$ : c'est une branche parabolique de direction $y = x$."
+  },
+  {
+    "id": "courbes-err-02", "ch": "courbes", "type": "erreur",
+    "enonce": "On étudie l'arc $f(t) = (t^3, t^6)$ au voisinage de $t = 0$. Voici une copie.",
+    "lignes": [
+      "$f'(0) = f''(0) = 0$ et $f'''(0) = (6, 0)$ : le point $M(0)$ est stationnaire et $p = 3$.",
+      "La tangente en $M(0)$ est dirigée par $f'''(0)$ : c'est l'axe $(Ox)$.",
+      "$f^{(4)}(0) = f^{(5)}(0) = 0$ et $f^{(6)}(0) = (0, 720)$, non colinéaire à $f'''(0)$ : $q = 6$.",
+      "Un point stationnaire est un point de rebroussement : la courbe rebrousse chemin en $M(0)$."
+    ],
+    "fausse": 3,
+    "explication": "Stationnaire ne veut pas dire rebroussement. Avec $p = 3$ impair et $q = 6$ pair, le point est d'allure ordinaire. D'ailleurs le support est la parabole $y = x^2$, parcourue sans retour en arrière : seul le paramétrage est singulier."
+  },
+  {
+    "id": "courbes-err-03", "ch": "courbes", "type": "erreur",
+    "enonce": "Soit $a > 0$. On calcule la longueur de la cardioïde $\\rho = a(1 + \\cos\\theta)$, $\\theta \\in [0, 2\\pi]$. Voici une copie.",
+    "lignes": [
+      "En polaires, $L = \\displaystyle\\int_0^{2\\pi} \\sqrt{\\rho^2 + \\rho'^2}\\,\\mathrm d\\theta$.",
+      "$\\rho^2 + \\rho'^2 = a^2(2 + 2\\cos\\theta) = 4a^2\\cos^2\\frac\\theta2$.",
+      "Donc $L = \\displaystyle\\int_0^{2\\pi} 2a\\cos\\frac\\theta2\\,\\mathrm d\\theta$."
+    ],
+    "fausse": 2,
+    "explication": "$\\sqrt{\\cos^2 u} = |\\cos u|$, et $\\cos\\frac\\theta2 < 0$ sur $]\\pi, 2\\pi]$. L'intégrale écrite vaut d'ailleurs $0$, absurde pour une longueur. Par symétrie, $L = 2\\displaystyle\\int_0^{\\pi} 2a\\cos\\frac\\theta2\\,\\mathrm d\\theta = 8a$."
+  },
+  {
+    "id": "courbes-err-04", "ch": "courbes", "type": "erreur",
+    "enonce": "Soient $0 < b < a$. On cherche la courbure de l'ellipse $f(t) = (a\\cos t, b\\sin t)$ en $M(t)$. Voici une copie.",
+    "lignes": [
+      "$f'(t) = (-a\\sin t, b\\cos t)$ et $f''(t) = (-a\\cos t, -b\\sin t)$.",
+      "Pour un arc $s \\mapsto g(s)$ paramétré par abscisse curviligne, de courbure $\\gamma$, on a $\\|g''(s)\\| = |\\gamma(s)|$.",
+      "Donc la courbure en $M(t)$ vaut, en valeur absolue, $\\|f''(t)\\| = \\sqrt{a^2\\cos^2 t + b^2\\sin^2 t}$."
+    ],
+    "fausse": 2,
+    "explication": "$t$ n'est pas une abscisse curviligne : $\\|f'(t)\\|$ n'est pas constant. Il faut $|\\gamma| = \\frac{|\\det(f', f'')|}{\\|f'\\|^3} = \\frac{ab}{(a^2\\sin^2 t + b^2\\cos^2 t)^{3/2}}$. Test rapide : pour $a = b = R$, la copie donnerait $R$ au lieu de $\\frac1R$."
+  },
+  {
+    "id": "courbes-err-05", "ch": "courbes", "type": "erreur",
+    "enonce": "Soit $n \\ge 1$ et $B_{k,n} = \\binom nk X^k (1 - X)^{n-k}$ pour $0 \\le k \\le n$. On veut montrer que les polynômes de Bernstein forment une base de $\\mathbb R_n[X]$. Voici une copie.",
+    "lignes": [
+      "La famille $(B_{0,n}, \\dots, B_{n,n})$ compte $n+1$ éléments de $\\mathbb R_n[X]$, espace de dimension $n+1$.",
+      "Pour tout $k$, $B_{k,n}$ est de degré exactement $n$, de coefficient dominant $(-1)^{n-k}\\binom nk$.",
+      "Une famille de polynômes non nuls ayant tous le même degré $n$ est libre.",
+      "Donc $(B_{0,n}, \\dots, B_{n,n})$ est une base de $\\mathbb R_n[X]$."
+    ],
+    "fausse": 2,
+    "explication": "Ce sont des degrés **distincts** qui donnent une famille libre (famille échelonnée). Contre-exemple : $(X, 2X)$. Il faut utiliser la valuation : $B_{k,n} = \\binom nk X^k + (\\text{termes de degré} > k)$, les valuations $0, 1, \\dots, n$ sont distinctes, donc la famille est libre. La conclusion est juste."
+  },
+  {
+    "id": "courbes-piste-01", "ch": "courbes", "type": "piste",
+    "enonce": "Soit $f(t) = (t^2, t^4 + t^5)$. Déterminer l'allure de la courbe au voisinage du point $M(0)$.",
+    "choix": [
+      {
+        "titre": "Premiers vecteurs dérivés non nuls et non colinéaires",
+        "info": "Si $p$ est le plus petit entier tel que $f^{(p)}(t_0) \\ne 0$ et $q$ le plus petit entier $> p$ tel que $f^{(q)}(t_0)$ ne soit pas colinéaire à $f^{(p)}(t_0)$, les parités de $p$ et $q$ donnent l'allure : ordinaire ($p$ impair, $q$ pair), inflexion (impair, impair), rebroussement de première espèce (pair, impair), de seconde espèce (pair, pair).",
+        "verdict": "bon",
+        "retour": "C'est la méthode générale : quelques dérivées en $0$ suffisent."
+      },
+      {
+        "titre": "Exprimer $y$ en fonction de $x$",
+        "info": "Si $x(t)$ s'inverse localement, on obtient une ou plusieurs fonctions $y = g(x)$ dont on étudie le signe par rapport à la tangente.",
+        "verdict": "possible",
+        "retour": "Ici $t = \\pm\\sqrt x$ donne deux branches $y = x^2 \\pm x^{5/2}$ pour $x \\ge 0$. Ça aboutit, mais c'est propre à la forme $x = t^2$."
+      },
+      {
+        "titre": "Tangente dirigée par $f'(0)$",
+        "info": "En un point régulier $M(t_0)$, la tangente est la droite passant par $M(t_0)$ dirigée par $f'(t_0)$.",
+        "verdict": "impasse",
+        "retour": "$f'(0) = 0$ : le point est stationnaire, cette règle ne s'applique pas."
+      },
+      {
+        "titre": "Chercher où la dérivée seconde $y''(x)$ s'annule",
+        "info": "Pour le graphe d'une fonction $g$ de classe $\\mathcal C^2$, un point d'inflexion est un point où $g''$ s'annule en changeant de signe.",
+        "verdict": "impasse",
+        "retour": "Au voisinage de $M(0)$, la courbe n'est pas un graphe au-dessus de l'axe $(Ox)$ : à chaque $x > 0$ correspondent deux points."
+      }
+    ],
+    "direction": "$f''(0) = (2, 0)$, $f'''(0) = (0, 0)$, $f^{(4)}(0) = (0, 24)$ : $p = 2$, $q = 4$. Les deux sont pairs : rebroussement de seconde espèce, de tangente $(Ox)$. Les deux branches $y = x^2 \\pm x^{5/2}$ sont du même côté de la tangente."
+  },
+  {
+    "id": "courbes-piste-02", "ch": "courbes", "type": "piste",
+    "enonce": "Soit $R > 0$. Calculer la longueur d'une arche de cycloïde : $x = R(t - \\sin t)$, $y = R(1 - \\cos t)$, $t \\in [0, 2\\pi]$.",
+    "choix": [
+      {
+        "titre": "Intégrer la norme de la vitesse",
+        "info": "La longueur d'un arc $f$ de classe $\\mathcal C^1$ sur $[a, b]$ vaut $\\displaystyle\\int_a^b \\|f'(t)\\|\\,\\mathrm dt$.",
+        "verdict": "bon",
+        "retour": "Le calcul est direct après une formule de trigonométrie."
+      },
+      {
+        "titre": "Longueur d'un graphe",
+        "info": "Si $g$ est de classe $\\mathcal C^1$ sur $[\\alpha, \\beta]$, la longueur de son graphe vaut $\\displaystyle\\int_\\alpha^\\beta \\sqrt{1 + g'(x)^2}\\,\\mathrm dx$.",
+        "verdict": "possible",
+        "retour": "L'arche est bien un graphe ($x$ croît strictement), mais $y$ n'est pas explicite en $x$ et $g'$ est infinie aux bords. Le changement de variable $x = R(t - \\sin t)$ ramène au premier choix."
+      },
+      {
+        "titre": "Formule de longueur en polaires",
+        "info": "Pour $\\rho$ de classe $\\mathcal C^1$, la longueur de la courbe $\\rho = \\rho(\\theta)$ sur $[\\alpha, \\beta]$ vaut $\\displaystyle\\int_\\alpha^\\beta \\sqrt{\\rho^2 + \\rho'^2}\\,\\mathrm d\\theta$.",
+        "verdict": "impasse",
+        "retour": "La cycloïde n'a pas d'équation polaire maniable."
+      },
+      {
+        "titre": "Inégalité corde-arc",
+        "info": "La longueur d'un arc est supérieure ou égale à la distance entre ses extrémités.",
+        "verdict": "impasse",
+        "retour": "Elle donne seulement $L \\ge 2\\pi R$, pas la valeur exacte."
+      }
+    ],
+    "direction": "$\\|f'(t)\\|^2 = R^2\\left((1 - \\cos t)^2 + \\sin^2 t\\right) = 2R^2(1 - \\cos t) = 4R^2\\sin^2\\frac t2$. Sur $[0, 2\\pi]$, $\\sin\\frac t2 \\ge 0$, donc $L = \\displaystyle\\int_0^{2\\pi} 2R\\sin\\frac t2\\,\\mathrm dt = 8R$."
+  },
+  {
+    "id": "courbes-piste-03", "ch": "courbes", "type": "piste",
+    "enonce": "Soient $a, b > 0$ et l'ellipse $f(t) = (a\\cos t, b\\sin t)$. Déterminer le cercle osculateur au sommet $A = f(0) = (a, 0)$.",
+    "choix": [
+      {
+        "titre": "Formule de la courbure",
+        "info": "Pour un arc plan régulier de classe $\\mathcal C^2$, $\\gamma = \\frac{\\det(f', f'')}{\\|f'\\|^3}$. Le cercle osculateur a pour centre $M + \\frac1\\gamma N$ et pour rayon $\\frac1{|\\gamma|}$.",
+        "verdict": "bon",
+        "retour": "En $t = 0$ : $f'(0) = (0, b)$, $f''(0) = (-a, 0)$, le calcul est immédiat."
+      },
+      {
+        "titre": "Comparer des développements limités",
+        "info": "Le cercle osculateur est le cercle tangent qui approche la courbe à l'ordre $2$. Un cercle de rayon $r$ tangent à la droite $x = a$ en $A$, situé du côté $x < a$, a pour équation locale $x = a - \\frac{y^2}{2r} + o(y^2)$.",
+        "verdict": "bon",
+        "retour": "Près de $A$, l'ellipse s'écrit $x = a\\sqrt{1 - y^2/b^2}$ : on identifie le terme en $y^2$."
+      },
+      {
+        "titre": "Rayon $1/\\|f''(0)\\|$",
+        "info": "Pour un arc $s \\mapsto g(s)$ paramétré par abscisse curviligne, $|\\gamma(s)| = \\|g''(s)\\|$.",
+        "verdict": "impasse",
+        "retour": "$t$ n'est pas une abscisse curviligne ($\\|f'\\|$ n'est pas constante) : on trouverait $\\frac1a$, ce qui est faux."
+      },
+      {
+        "titre": "Cercle principal $x^2 + y^2 = a^2$",
+        "info": "Le cercle de centre $O$ et de rayon $a$ passe par $A$ et y est tangent à l'ellipse.",
+        "verdict": "impasse",
+        "retour": "Tangent ne veut pas dire osculateur : ce cercle n'a pas la bonne courbure si $a \\ne b$."
+      }
+    ],
+    "direction": "$\\gamma(0) = \\frac{ab}{b^3} = \\frac{a}{b^2}$, et en $A$ le vecteur $N$ vaut $(-1, 0)$. Le cercle osculateur a pour rayon $\\frac{b^2}{a}$ et pour centre $\\left(a - \\frac{b^2}{a}, 0\\right)$. Le développement $x = a - \\frac{a}{2b^2}y^2 + o(y^2)$ donne le même rayon."
+  },
+  {
+    "id": "courbes-piste-04", "ch": "courbes", "type": "piste",
+    "enonce": "Soit la cardioïde $\\rho = 1 + \\cos\\theta$, $\\theta \\in ]-\\pi, \\pi[$. Montrer que la tangente en $M(\\theta)$ fait avec l'axe $(Ox)$ un angle égal à $\\frac{3\\theta}{2} + \\frac\\pi2$ modulo $\\pi$.",
+    "choix": [
+      {
+        "titre": "Repère polaire et angle $V$",
+        "info": "Avec $\\vec u = (\\cos\\theta, \\sin\\theta)$ et $\\vec v = \\vec u(\\theta + \\frac\\pi2)$, $\\frac{\\mathrm dM}{\\mathrm d\\theta} = \\rho'\\vec u + \\rho\\,\\vec v$. Si $V$ est l'angle de $\\vec u$ à la tangente, $\\tan V = \\frac{\\rho}{\\rho'}$ lorsque $\\rho' \\ne 0$, et la tangente fait l'angle $\\theta + V$ avec $(Ox)$.",
+        "verdict": "bon",
+        "retour": "$\\frac{\\rho}{\\rho'}$ se simplifie avec les formules de l'angle moitié."
+      },
+      {
+        "titre": "Coordonnées cartésiennes",
+        "info": "$x = \\rho\\cos\\theta$, $y = \\rho\\sin\\theta$ ; en un point régulier où $x' \\ne 0$, la pente de la tangente est $\\frac{y'}{x'}$.",
+        "verdict": "possible",
+        "retour": "On trouve $\\frac{y'}{x'} = -\\frac{\\cos\\theta + \\cos 2\\theta}{\\sin\\theta + \\sin 2\\theta}$, qui se factorise en $-\\cot\\frac{3\\theta}{2}$. Ça aboutit, au prix de plus de trigonométrie."
+      },
+      {
+        "titre": "Tangente au pôle",
+        "info": "Si $\\rho(\\theta_0) = 0$ et $\\rho'(\\theta_0) \\ne 0$, la tangente en $M(\\theta_0) = O$ est dirigée par $\\vec u(\\theta_0)$.",
+        "verdict": "impasse",
+        "retour": "Sur $]-\\pi, \\pi[$, $\\rho > 0$ : la courbe ne passe jamais par le pôle."
+      },
+      {
+        "titre": "Tangente orthogonale au rayon",
+        "info": "Pour un cercle de centre $O$, la tangente en $M$ est orthogonale à $(OM)$.",
+        "verdict": "impasse",
+        "retour": "Ce n'est vrai que si $\\rho$ est constant, ce qui n'est pas le cas ici."
+      }
+    ],
+    "direction": "$\\tan V = \\frac{1 + \\cos\\theta}{-\\sin\\theta} = -\\cot\\frac\\theta2 = \\tan\\left(\\frac\\theta2 + \\frac\\pi2\\right)$, donc $V \\equiv \\frac\\theta2 + \\frac\\pi2 \\pmod \\pi$ (en $\\theta = 0$, $\\rho' = 0$ et $V = \\frac\\pi2$ directement). L'angle avec $(Ox)$ est $\\theta + V \\equiv \\frac{3\\theta}{2} + \\frac\\pi2 \\pmod\\pi$."
+  },
+  {
+    "id": "courbes-piste-05", "ch": "courbes", "type": "piste",
+    "enonce": "Soit le folium de Descartes $x(t) = \\dfrac{3t}{1 + t^3}$, $y(t) = \\dfrac{3t^2}{1 + t^3}$, $t \\ne -1$. Étudier la branche infinie quand $t \\to -1$.",
+    "choix": [
+      {
+        "titre": "Limite de $y/x$, puis de $y - ax$",
+        "info": "Si $x, y \\to \\pm\\infty$ et $\\frac yx \\to a$, puis $y - ax \\to b$ fini, la droite $y = ax + b$ est asymptote. Le signe de $y - ax - b$ donne la position relative.",
+        "verdict": "bon",
+        "retour": "Ici $\\frac yx = t$ : les deux limites se calculent en une ligne."
+      },
+      {
+        "titre": "Équation cartésienne",
+        "info": "En éliminant $t$, on obtient une équation $F(x, y) = 0$ du support. Pour une équation polynomiale, la partie homogène de plus haut degré donne les directions asymptotiques.",
+        "verdict": "possible",
+        "retour": "On trouve $x^3 + y^3 = 3xy$, puis la direction $x + y = 0$. Chercher ensuite l'asymptote sur l'équation implicite est plus long."
+      },
+      {
+        "titre": "Limite de la pente de la tangente",
+        "info": "En un point régulier où $x'(t) \\ne 0$, la pente de la tangente vaut $\\frac{y'(t)}{x'(t)}$.",
+        "verdict": "impasse",
+        "retour": "Même quand elle a une limite, elle ne renseigne au mieux que sur la direction : elle ne donne pas l'ordonnée à l'origine de l'asymptote."
+      },
+      {
+        "titre": "Asymptote verticale ou horizontale",
+        "info": "Si $y \\to \\pm\\infty$ et $x \\to x_0$ fini, la droite $x = x_0$ est asymptote ; de même pour une asymptote horizontale.",
+        "verdict": "impasse",
+        "retour": "Ici les deux coordonnées tendent vers l'infini."
+      }
+    ],
+    "direction": "$\\frac yx = t \\to -1$, puis $x + y + 1 = \\frac{(t+1)^2}{t^2 - t + 1}$, qui tend vers $0$. La droite $x + y + 1 = 0$ est asymptote, et la courbe est du côté $x + y + 1 > 0$."
+  },
+  {
+    "id": "courbes-piste-06", "ch": "courbes", "type": "piste",
+    "enonce": "Soient $A \\ne B$ deux points du plan, $n \\ge 1$, $P_k = A + \\frac kn(B - A)$ et $B_{k,n}(t) = \\binom nk t^k(1-t)^{n-k}$ pour $0 \\le k \\le n$. Montrer que la courbe de Bézier $C(t) = \\sum_{k=0}^n B_{k,n}(t)\\,P_k$ vérifie $C(t) = A + t(B - A)$ pour $t \\in [0, 1]$.",
+    "choix": [
+      {
+        "titre": "Binôme de Newton et $k\\binom nk = n\\binom{n-1}{k-1}$",
+        "info": "$\\sum_{k=0}^n \\binom nk t^k(1-t)^{n-k} = 1$, et la relation $k\\binom nk = n\\binom{n-1}{k-1}$ permet de décaler l'indice dans une somme pondérée par $k$.",
+        "verdict": "bon",
+        "retour": "Les deux sommes à calculer sont $\\sum B_{k,n}(t)$ et $\\sum k\\,B_{k,n}(t)$."
+      },
+      {
+        "titre": "Espérance d'une loi binomiale",
+        "info": "Si $X$ suit la loi $\\mathcal B(n, t)$, alors $P(X = k) = \\binom nk t^k(1-t)^{n-k}$ et $E(X) = nt$.",
+        "verdict": "bon",
+        "retour": "$\\sum k\\,B_{k,n}(t)$ est exactement $E(X)$."
+      },
+      {
+        "titre": "Enveloppe convexe",
+        "info": "Une courbe de Bézier est contenue dans l'enveloppe convexe de ses points de contrôle.",
+        "verdict": "impasse",
+        "retour": "On obtient que la courbe est dans le segment $[A, B]$, mais pas le paramétrage $A + t(B - A)$."
+      },
+      {
+        "titre": "Extrémités et tangentes",
+        "info": "$C(0) = P_0$, $C(1) = P_n$, $C'(0) = n(P_1 - P_0)$, $C'(1) = n(P_n - P_{n-1})$.",
+        "verdict": "possible",
+        "retour": "Ici $C$ et $t \\mapsto A + t(B - A)$ ont mêmes valeurs et mêmes dérivées en $0$ et $1$. Pour $n \\le 3$, leur différence est polynomiale de degré $\\le 3$, avec $0$ et $1$ racines doubles, donc nulle : ça conclut. Dès $n \\ge 4$, ces quatre données ne suffisent plus : la méthode ne traite qu'une partie des cas."
+      }
+    ],
+    "direction": "$\\sum_k B_{k,n}(t)\\,P_k = \\left(\\sum_k B_{k,n}(t)\\right)A + \\frac1n\\left(\\sum_k k\\,B_{k,n}(t)\\right)(B - A)$. La première somme vaut $1$, la seconde $nt$ (binôme ou espérance de $\\mathcal B(n,t)$). D'où $A + t(B - A)$."
+  },
+  {
+    "id": "courbes-piste-07", "ch": "courbes", "type": "piste",
+    "enonce": "Soit la spirale logarithmique $f(t) = (e^t\\cos t, e^t\\sin t)$, $t \\in ]-\\infty, 0]$. Montrer que cet arc est de longueur finie et la calculer.",
+    "choix": [
+      {
+        "titre": "Intégrale généralisée de la vitesse",
+        "info": "La longueur sur $[a, 0]$ vaut $\\int_a^0 \\|f'(t)\\|\\,\\mathrm dt$ ; la longueur sur $]-\\infty, 0]$ est sa limite quand $a \\to -\\infty$.",
+        "verdict": "bon",
+        "retour": "La vitesse se calcule très bien ici."
+      },
+      {
+        "titre": "Une infinité de tours donne une longueur infinie",
+        "info": "Quand $t \\to -\\infty$, l'arc tourne une infinité de fois autour de $O$. Un tour complet effectué à distance au moins $r$ de $O$ a une longueur au moins $2\\pi r$.",
+        "verdict": "impasse",
+        "retour": "Le $k$-ième tour se fait à distance de l'ordre de $e^{-2\\pi k}$ : les minorants forment une série convergente, on ne peut rien conclure."
+      },
+      {
+        "titre": "Le support est borné",
+        "info": "Pour $t \\le 0$, $\\|f(t)\\| = e^t \\le 1$ : le support est dans le disque unité fermé.",
+        "verdict": "impasse",
+        "retour": "Un arc borné peut être de longueur infinie : la spirale $\\rho = \\frac1\\theta$, $\\theta \\ge 1$, est bornée et de longueur infinie."
+      },
+      {
+        "titre": "Inégalité corde-arc",
+        "info": "La longueur d'un arc est supérieure ou égale à la distance entre ses extrémités.",
+        "verdict": "impasse",
+        "retour": "C'est une minoration : elle ne prouve pas la finitude."
+      }
+    ],
+    "direction": "$f'(t) = e^t(\\cos t - \\sin t, \\sin t + \\cos t)$, donc $\\|f'(t)\\| = \\sqrt2\\,e^t$. Alors $\\int_a^0 \\sqrt2\\,e^t\\,\\mathrm dt = \\sqrt2(1 - e^a) \\to \\sqrt2$ : la longueur vaut $\\sqrt2$."
+  },
+  {
+    "id": "courbes-piste-08", "ch": "courbes", "type": "piste",
+    "enonce": "Soit $a > 0$, $b \\ne 0$ et l'hélice $f(t) = (a\\cos t, a\\sin t, bt)$. Déterminer une équation du plan osculateur en $M(t)$.",
+    "choix": [
+      {
+        "titre": "Plan dirigé par $f'$ et $f''$",
+        "info": "Si $f'(t)$ et $f''(t)$ sont libres, le plan osculateur en $M(t)$ est $M(t) + \\mathrm{Vect}(f'(t), f''(t))$ ; un vecteur normal est $f'(t) \\wedge f''(t)$.",
+        "verdict": "bon",
+        "retour": "Un produit vectoriel et une équation de plan."
+      },
+      {
+        "titre": "Limite du plan passant par trois points voisins",
+        "info": "Le plan osculateur est la position limite du plan passant par $M(t - h)$, $M(t)$, $M(t + h)$ quand $h \\to 0$.",
+        "verdict": "possible",
+        "retour": "Ça aboutit, mais il faut des développements limités : c'est refaire la preuve du cas général."
+      },
+      {
+        "titre": "Plan normal",
+        "info": "Le plan normal en un point régulier $M(t)$ est le plan passant par $M(t)$ et orthogonal à $f'(t)$.",
+        "verdict": "impasse",
+        "retour": "C'est un autre plan : il ne contient pas la tangente, alors que le plan osculateur la contient."
+      },
+      {
+        "titre": "Plan tangent au cylindre",
+        "info": "L'hélice est tracée sur le cylindre $x^2 + y^2 = a^2$, dont le plan tangent en $M(t)$ contient $f'(t)$ et la direction de $(Oz)$.",
+        "verdict": "impasse",
+        "retour": "Ce plan contient la tangente mais pas $f''(t)$, qui est horizontal et pointe vers l'axe : ce n'est pas le plan osculateur."
+      }
+    ],
+    "direction": "$f'(t) = (-a\\sin t, a\\cos t, b)$, $f''(t) = (-a\\cos t, -a\\sin t, 0)$, et $f' \\wedge f'' = a\\,(b\\sin t, -b\\cos t, a)$. Plan osculateur : $b(x\\sin t - y\\cos t) + a(z - bt) = 0$."
+  },
+  {
+    "id": "courbes-piste-09", "ch": "courbes", "type": "piste",
+    "enonce": "Soit $I$ un intervalle, $f : I \\to \\mathbb R^2$ un arc régulier de classe $\\mathcal C^1$ et $\\Omega$ un point tel que, pour tout $t$, la normale en $M(t)$ passe par $\\Omega$. Montrer que le support de $f$ est contenu dans un cercle de centre $\\Omega$.",
+    "choix": [
+      {
+        "titre": "Dériver $\\|f(t) - \\Omega\\|^2$",
+        "info": "Si $f$ est de classe $\\mathcal C^1$, $\\frac{\\mathrm d}{\\mathrm dt}\\|f(t) - \\Omega\\|^2 = 2\\langle f'(t), f(t) - \\Omega\\rangle$. Une fonction de dérivée nulle sur un intervalle est constante.",
+        "verdict": "bon",
+        "retour": "L'hypothèse dit exactement que $f(t) - \\Omega$ est orthogonal à $f'(t)$."
+      },
+      {
+        "titre": "Formules de Frenet",
+        "info": "Pour un arc de classe $\\mathcal C^2$ paramétré par abscisse curviligne, $T' = \\gamma N$ et $N' = -\\gamma T$.",
+        "verdict": "possible",
+        "retour": "En écrivant $M(s) - \\Omega = \\lambda(s)N(s)$ et en dérivant, on obtient $\\lambda' = 0$. Mais il faut supposer $f$ de classe $\\mathcal C^2$, et justifier la dérivabilité de $\\lambda$."
+      },
+      {
+        "titre": "Courbure constante",
+        "info": "Un arc plan de classe $\\mathcal C^2$, défini sur un intervalle, de courbure constante non nulle est contenu dans un cercle.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit a priori que la courbure est constante : c'est une conséquence du résultat, pas un point de départ."
+      },
+      {
+        "titre": "$\\Omega$ est le centre de courbure",
+        "info": "Le centre de courbure en $M$ est sur la normale en $M$, à distance $\\frac1{|\\gamma|}$ de $M$.",
+        "verdict": "impasse",
+        "retour": "Être sur la normale ne suffit pas à être le centre de courbure : l'affirmation n'est pas justifiée."
+      }
+    ],
+    "direction": "La normale en $M(t)$ est orthogonale à $f'(t)$ et contient $M(t)$ et $\\Omega$, donc $\\langle f'(t), f(t) - \\Omega\\rangle = 0$. La dérivée de $\\|f(t) - \\Omega\\|^2$ est nulle sur l'intervalle $I$ : cette distance est constante."
+  },
+  {
+    "id": "courbes-piste-10", "ch": "courbes", "type": "piste",
+    "enonce": "Déterminer les points d'inflexion de la courbe $f(t) = (t^2, t^3 + t)$, $t \\in \\mathbb R$.",
+    "choix": [
+      {
+        "titre": "Signe de $\\det(f', f'')$",
+        "info": "En un point régulier, la concavité est donnée par le signe de $\\det(f'(t), f''(t))$. Si ce déterminant s'annule en changeant de signe en $t_0$, avec $M(t_0)$ régulier, $M(t_0)$ est un point d'inflexion.",
+        "verdict": "bon",
+        "retour": "Le déterminant est ici un polynôme de degré $2$."
+      },
+      {
+        "titre": "Écrire $y$ en fonction de $x$ sur chaque branche",
+        "info": "Là où $x'(t) \\ne 0$, $t \\mapsto x(t)$ s'inverse localement et $\\frac{\\mathrm d^2y}{\\mathrm dx^2} = \\frac{\\det(f', f'')}{x'^3}$.",
+        "verdict": "possible",
+        "retour": "$x = t^2$ n'est pas injective : il faut traiter $t > 0$ et $t < 0$ à part, puis on retombe sur le même déterminant."
+      },
+      {
+        "titre": "Annuler $f''(t)$",
+        "info": "Pour une fonction numérique $g$ de classe $\\mathcal C^2$, un point d'inflexion du graphe annule $g''$.",
+        "verdict": "impasse",
+        "retour": "$f''(t) = (2, 6t)$ ne s'annule jamais : ce critère, valable pour un graphe, ne se transpose pas tel quel aux courbes paramétrées."
+      },
+      {
+        "titre": "Chercher les points stationnaires",
+        "info": "$M(t_0)$ est stationnaire si $f'(t_0) = 0$ ; on y étudie les premiers vecteurs dérivés non nuls.",
+        "verdict": "impasse",
+        "retour": "$y'(t) = 3t^2 + 1 > 0$ : il n'y a aucun point stationnaire, et les inflexions cherchées sont en des points réguliers."
+      }
+    ],
+    "direction": "$\\det(f', f'') = 2t \\cdot 6t - 2(3t^2 + 1) = 6t^2 - 2$, qui s'annule en changeant de signe en $t = \\pm\\frac1{\\sqrt3}$, points réguliers. Les points d'inflexion sont $\\left(\\frac13, \\pm\\frac{4\\sqrt3}{9}\\right)$."
+  }
+]
