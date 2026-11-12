@@ -1,0 +1,491 @@
+[
+  {
+    "id": "logique-ensembles-vf-01", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Soient $f : E \\to F$ et $g : F \\to G$ deux applications. Si $g \\circ f$ est injective, alors $g$ est injective.",
+    "reponse": false,
+    "explication": "Contre-exemple : $E = G = \\{0\\}$, $F = \\{0, 1\\}$, $f(0) = 0$ et $g$ constante. $g \\circ f$ est injective (son ensemble de départ a un seul élément), mais $g(0) = g(1)$. Ce qui est vrai : $f$ est injective."
+  },
+  {
+    "id": "logique-ensembles-vf-02", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Soient $f : E \\to F$ et $g : F \\to G$ deux applications. Si $g \\circ f$ est injective, alors $f$ est injective.",
+    "reponse": true,
+    "explication": "Si $f(x) = f(y)$, alors $g(f(x)) = g(f(y))$, donc $x = y$ par injectivité de $g \\circ f$. De même, si $g \\circ f$ est surjective, c'est $g$ qui est surjective."
+  },
+  {
+    "id": "logique-ensembles-vf-03", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Soit $f : E \\to F$ une application. Pour toutes parties $A$ et $B$ de $E$, on a $f(A \\cap B) = f(A) \\cap f(B)$.",
+    "reponse": false,
+    "explication": "Seule l'inclusion $f(A \\cap B) \\subset f(A) \\cap f(B)$ est toujours vraie. Contre-exemple : $f$ constante sur $E = \\{0, 1\\}$, $A = \\{0\\}$, $B = \\{1\\}$ : $f(A \\cap B) = \\emptyset$ alors que $f(A) \\cap f(B)$ est non vide. L'égalité vaut pour tous $A, B$ si $f$ est injective. Pour l'image réciproque, en revanche, pour $C, D \\subset F$, $f^{-1}(C \\cap D) = f^{-1}(C) \\cap f^{-1}(D)$ toujours."
+  },
+  {
+    "id": "logique-ensembles-vf-04", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Soit $P(n)$ une propriété de l'entier naturel $n$. Si $P(0)$ est vraie et si, pour tout $n \\in \\mathbb N$, $P(n) \\Rightarrow P(n+2)$, alors $P(n)$ est vraie pour tout $n \\in \\mathbb N$.",
+    "reponse": false,
+    "explication": "Contre-exemple : $P(n)$ = « $n$ est pair ». $P(0)$ est vraie, $P(n) \\Rightarrow P(n+2)$ pour tout $n$, mais $P(1)$ est fausse. Il faut initialiser aussi en $n = 1$ : avec $P(0)$ et $P(1)$, la conclusion devient vraie."
+  },
+  {
+    "id": "logique-ensembles-vf-05", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Dans un ensemble totalement ordonné, toute partie non vide et majorée admet une borne supérieure.",
+    "reponse": false,
+    "explication": "Contre-exemple dans $\\mathbb Q$ : $A = \\{x \\in \\mathbb Q : x^2 < 2\\}$ est non vide et majorée par $2$. Un majorant rationnel $M$ de $A$ vérifie $M > \\sqrt 2$ (sinon un rationnel de $]M, \\sqrt 2[$ serait dans $A$), et un rationnel de $]\\sqrt 2, M[$ est un majorant plus petit : il n'y a pas de plus petit majorant. C'est vrai dans $\\mathbb R$ : c'est la propriété de la borne supérieure."
+  },
+  {
+    "id": "logique-ensembles-vf-06", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Dans un ensemble ordonné, si une partie $A$ admet un plus grand élément $a$, alors $A$ admet une borne supérieure, et $\\sup A = a$.",
+    "reponse": true,
+    "explication": "$a$ majore $A$. Tout majorant $M$ de $A$ majore en particulier $a \\in A$, donc $a \\le M$. Ainsi $a$ est le plus petit des majorants. La réciproque est fausse : $\\sup\\,[0, 1[ = 1$ et $[0, 1[$ n'a pas de plus grand élément."
+  },
+  {
+    "id": "logique-ensembles-vf-07", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "On ordonne $\\mathbb N^*$ par la divisibilité. La partie $\\{2, 3\\}$ admet une borne supérieure mais pas de plus grand élément.",
+    "reponse": true,
+    "explication": "Pas de plus grand élément : $2$ ne divise pas $3$ et $3$ ne divise pas $2$ (l'ordre est partiel). Les majorants de $\\{2, 3\\}$ sont les multiples communs de $2$ et $3$, c'est-à-dire les multiples de $6$ ; le plus petit d'entre eux pour la divisibilité est $6$. Donc $\\sup\\{2, 3\\} = 6$ : c'est le ppcm."
+  },
+  {
+    "id": "logique-ensembles-vf-08", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "L'ensemble des parties **finies** de $\\mathbb N$ est dénombrable.",
+    "reponse": true,
+    "explication": "L'application $A \\mapsto \\sum_{k \\in A} 2^k$ est une bijection de l'ensemble des parties finies de $\\mathbb N$ sur $\\mathbb N$ : c'est l'unicité de l'écriture en base $2$. On peut aussi écrire cet ensemble comme réunion, indexée par $n$, des ensembles finis $\\mathcal P(\\{0, \\dots, n\\})$."
+  },
+  {
+    "id": "logique-ensembles-vf-09", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "L'ensemble $\\mathcal P(\\mathbb N)$ de toutes les parties de $\\mathbb N$ est dénombrable.",
+    "reponse": false,
+    "explication": "Il n'existe aucune surjection $\\varphi : \\mathbb N \\to \\mathcal P(\\mathbb N)$ (Cantor) : la partie $B = \\{n \\in \\mathbb N : n \\notin \\varphi(n)\\}$ n'est pas atteinte, car si $B = \\varphi(m)$, alors $m \\in B \\iff m \\notin B$. Ce sont les parties **finies** qui forment un ensemble dénombrable."
+  },
+  {
+    "id": "logique-ensembles-vf-10", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Soit $(u_n)$ une suite réelle. La négation de « $\\forall \\varepsilon > 0,\\ \\exists N \\in \\mathbb N,\\ \\forall n \\ge N,\\ |u_n| \\le \\varepsilon$ » est « $\\exists \\varepsilon > 0,\\ \\forall N \\in \\mathbb N,\\ \\exists n \\ge N,\\ |u_n| > \\varepsilon$ ».",
+    "reponse": true,
+    "explication": "On échange chaque $\\forall$ et $\\exists$, sans toucher aux domaines ($\\varepsilon > 0$ et $n \\ge N$ restent tels quels), et on nie la dernière assertion. Lecture : $(u_n)$ ne tend pas vers $0$ s'il existe $\\varepsilon > 0$ tel que $|u_n| > \\varepsilon$ pour une infinité d'indices $n$."
+  },
+  {
+    "id": "logique-ensembles-vf-11", "ch": "logique-ensembles", "type": "vf",
+    "enonce": "Pour toute propriété $P(x, y)$ portant sur $x \\in E$ et $y \\in F$, l'assertion « $\\forall x \\in E,\\ \\exists y \\in F,\\ P(x, y)$ » implique « $\\exists y \\in F,\\ \\forall x \\in E,\\ P(x, y)$ ».",
+    "reponse": false,
+    "explication": "Contre-exemple : $E = F = \\mathbb R$ et $P(x, y)$ : « $y > x$ ». Tout réel est dépassé par un autre réel, mais aucun réel $y$ ne dépasse tous les réels (prendre $x = y$). Dans la première assertion, $y$ peut dépendre de $x$ ; dans la seconde, non. C'est l'implication inverse qui est toujours vraie."
+  },
+  {
+    "id": "logique-ensembles-qcm-01", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ et $a \\in \\mathbb R$. Quelle est la **contraposée** de l'implication « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ » ?",
+    "choix": [
+      "Si $f$ n'est pas continue en $a$, alors $f$ n'est pas dérivable en $a$.",
+      "Si $f$ est continue en $a$, alors $f$ est dérivable en $a$.",
+      "Si $f$ n'est pas dérivable en $a$, alors $f$ n'est pas continue en $a$.",
+      "$f$ est dérivable en $a$ et $f$ n'est pas continue en $a$."
+    ],
+    "bonne": 0,
+    "explication": "La contraposée de $A \\Rightarrow B$ est $\\text{non } B \\Rightarrow \\text{non } A$, qui lui est équivalente. « Si continue, alors dérivable » est la réciproque, « si non dérivable, alors non continue » la contraposée de la réciproque : toutes deux sont fausses en général ($x \\mapsto |x|$ en $0$). « Dérivable et non continue » est la négation."
+  },
+  {
+    "id": "logique-ensembles-qcm-02", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$. Quelle est la négation de « $f$ est croissante sur $\\mathbb R$ » ?",
+    "choix": [
+      "$\\exists (x, y) \\in \\mathbb R^2,\\ x \\le y$ et $f(x) > f(y)$",
+      "$f$ est strictement décroissante sur $\\mathbb R$",
+      "$\\forall (x, y) \\in \\mathbb R^2,\\ x \\le y \\Rightarrow f(x) > f(y)$",
+      "$\\exists (x, y) \\in \\mathbb R^2,\\ x \\le y \\Rightarrow f(x) > f(y)$"
+    ],
+    "bonne": 0,
+    "explication": "La négation de $\\forall (x, y),\\ (x \\le y \\Rightarrow f(x) \\le f(y))$ est $\\exists (x, y),\\ (x \\le y \\text{ et } f(x) > f(y))$ : la négation d'une implication est une conjonction. « Non croissante » ne veut pas dire « décroissante » : $\\sin$ n'est ni l'une ni l'autre. L'assertion « $\\exists (x, y),\\ x \\le y \\Rightarrow f(x) > f(y)$ » est toujours vraie (prendre $x > y$), et la version avec $\\forall$ est toujours fausse (prendre $x = y$)."
+  },
+  {
+    "id": "logique-ensembles-qcm-03", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Soit $A$ une partie non vide de $\\mathbb R$ et $M$ un majorant de $A$. Alors $M = \\sup A$ si et seulement si **[ ? ]**.",
+    "choix": [
+      "$\\forall \\varepsilon > 0,\\ \\exists a \\in A,\\ a > M - \\varepsilon$",
+      "$\\exists a \\in A,\\ \\forall \\varepsilon > 0,\\ a > M - \\varepsilon$",
+      "$\\forall \\varepsilon > 0,\\ \\forall a \\in A,\\ a > M - \\varepsilon$",
+      "$\\forall \\varepsilon > 0,\\ \\exists a \\in A,\\ a < M + \\varepsilon$"
+    ],
+    "bonne": 0,
+    "explication": "Aucun nombre $M - \\varepsilon$ ne majore $A$ : c'est dire que $M$ est le plus petit majorant. En inversant l'ordre des quantificateurs, on obtient $M \\in A$ (plus grand élément), trop fort : $A = [0, 1[$, $M = 1$. « $\\forall a \\in A,\\ a > M - \\varepsilon$ » pour tout $\\varepsilon$ force $A = \\{M\\}$. « $\\exists a \\in A,\\ a < M + \\varepsilon$ » est vrai pour tout majorant : $A = [0, 1]$, $M = 2$."
+  },
+  {
+    "id": "logique-ensembles-qcm-04", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Soit $A$ une partie non vide de $\\mathbb N$. Alors $A$ admet un plus grand élément si et seulement si **[ ? ]**.",
+    "choix": [
+      "$A$ est majorée",
+      "$A$ est minorée",
+      "$A$ admet un plus petit élément",
+      "$A$ est infinie"
+    ],
+    "bonne": 0,
+    "explication": "Si $A$ est majorée par $m$, l'ensemble des majorants de $A$ est une partie non vide de $\\mathbb N$, qui a un plus petit élément ; celui-ci appartient à $A$ (sinon, il est non nul et son prédécesseur serait encore un majorant). « Minorée » et « admet un plus petit élément » sont toujours vrais (toute partie non vide de $\\mathbb N$ a un plus petit élément), y compris pour $A = \\mathbb N$, qui n'a pas de plus grand élément. Une partie infinie de $\\mathbb N$ n'est jamais majorée."
+  },
+  {
+    "id": "logique-ensembles-qcm-05", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Laquelle de ces relations, définie sur $\\mathbb Z$, est une relation d'équivalence ?",
+    "choix": [
+      "$x \\mathrel{\\mathcal R} y \\iff x - y$ est pair",
+      "$x \\mathrel{\\mathcal R} y \\iff x - y$ est impair",
+      "$x \\mathrel{\\mathcal R} y \\iff x \\le y$",
+      "$x \\mathrel{\\mathcal R} y \\iff |x - y| \\le 1$"
+    ],
+    "bonne": 0,
+    "explication": "« $x - y$ pair » est la congruence modulo $2$ : réflexive, symétrique, transitive, deux classes. « Impair » n'est pas réflexive ($0$ est pair). $\\le$ n'est pas symétrique (c'est une relation d'ordre). $|x - y| \\le 1$ n'est pas transitive : $0 \\mathrel{\\mathcal R} 1$, $1 \\mathrel{\\mathcal R} 2$, mais pas $0 \\mathrel{\\mathcal R} 2$."
+  },
+  {
+    "id": "logique-ensembles-qcm-06", "ch": "logique-ensembles", "type": "qcm",
+    "enonce": "Soit $f : \\mathbb R \\to \\mathbb R$ dérivable et $a \\in \\mathbb R$. Pour que $f$ admette un extremum local en $a$, la condition « $f'(a) = 0$ » est :",
+    "choix": [
+      "nécessaire mais pas suffisante",
+      "suffisante mais pas nécessaire",
+      "nécessaire et suffisante",
+      "ni nécessaire ni suffisante"
+    ],
+    "bonne": 0,
+    "explication": "Nécessaire : en un extremum local d'une fonction dérivable sur un intervalle **ouvert**, la dérivée s'annule. Pas suffisante : $x \\mapsto x^3$ a une dérivée nulle en $0$ sans extremum. Aux bornes d'un segment, elle n'est plus nécessaire : $x \\mapsto x$ sur $[0, 1]$ atteint son maximum en $1$, où sa dérivée vaut $1$."
+  },
+  {
+    "id": "logique-ensembles-err-01", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "On veut montrer que la suite définie par $u_n = n^2 - n$ est croissante. Voici une copie.",
+    "lignes": [
+      "Supposons par l'absurde que $(u_n)$ n'est pas croissante.",
+      "Alors $(u_n)$ est strictement décroissante ; en particulier $u_1 < u_0$.",
+      "Or $u_0 = u_1 = 0$ : c'est une contradiction.",
+      "Donc $(u_n)$ est croissante."
+    ],
+    "fausse": 1,
+    "explication": "Erreur relevée par le jury : la négation de « croissante » n'est pas « décroissante ». Ne pas être croissante, c'est : $\\exists n \\in \\mathbb N,\\ u_{n+1} < u_n$. Ici l'absurde est inutile : $u_{n+1} - u_n = 2n \\ge 0$ pour tout $n$."
+  },
+  {
+    "id": "logique-ensembles-err-02", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "On veut montrer que $\\displaystyle\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$ pour tout $n \\ge 1$. Voici une copie.",
+    "lignes": [
+      "Pour $n \\ge 1$, notons $P(n)$ l'assertion « $\\sum_{k=1}^n k = \\frac{n(n+1)}{2}$ ».",
+      "Initialisation : $P(1)$ est vraie car $1 = \\frac{1 \\times 2}{2}$.",
+      "Hérédité : supposons $P(n)$ vraie pour tout $n \\ge 1$.",
+      "Alors $\\sum_{k=1}^{n+1} k = \\frac{n(n+1)}{2} + (n + 1) = \\frac{(n+1)(n+2)}{2}$, donc $P(n+1)$ est vraie.",
+      "Par récurrence, $P(n)$ est vraie pour tout $n \\ge 1$."
+    ],
+    "fausse": 2,
+    "explication": "Supposer $P(n)$ vraie **pour tout** $n$, c'est supposer ce qu'on veut démontrer. L'hérédité porte sur un entier fixé : « Soit $n \\ge 1$ tel que $P(n)$ est vraie ; montrons $P(n+1)$. » Le jury relève régulièrement des hypothèses de récurrence mal quantifiées."
+  },
+  {
+    "id": "logique-ensembles-err-03", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "Pour $n \\ge 1$, soit $P(n)$ : « pour tous réels $x_1, \\dots, x_n$, on a $x_1 = x_2 = \\dots = x_n$ ». Une copie « démontre » $P(n)$ pour tout $n \\ge 1$.",
+    "lignes": [
+      "$P(1)$ est vraie : un seul réel est égal à lui-même.",
+      "Soit $n \\ge 1$ tel que $P(n)$ est vraie, et soient $x_1, \\dots, x_{n+1}$ des réels.",
+      "En appliquant $P(n)$ à $x_1, \\dots, x_n$ puis à $x_2, \\dots, x_{n+1}$, on obtient $x_1 = \\dots = x_n$ et $x_2 = \\dots = x_{n+1}$.",
+      "Les deux listes ont en commun $x_2$, donc tous les $x_i$ sont égaux à $x_2$ : $P(n+1)$ est vraie."
+    ],
+    "fausse": 3,
+    "explication": "Pour $n = 1$, les deux listes sont $(x_1)$ et $(x_2)$ : elles n'ont aucun terme commun. L'hérédité est correcte pour $n \\ge 2$, mais le passage de $P(1)$ à $P(2)$ échoue, et $P(2)$ est fausse. Une hérédité doit valoir pour **tout** $n$ à partir du rang d'initialisation."
+  },
+  {
+    "id": "logique-ensembles-err-04", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "On veut résoudre dans $\\mathbb R$ l'équation $\\sqrt{x + 2} = x$. Voici une copie.",
+    "lignes": [
+      "Soit $x \\ge -2$ tel que $\\sqrt{x + 2} = x$.",
+      "En élevant au carré, $x + 2 = x^2$, c'est-à-dire $x^2 - x - 2 = 0$.",
+      "Donc $x = -1$ ou $x = 2$.",
+      "L'ensemble des solutions est donc $\\{-1, 2\\}$."
+    ],
+    "fausse": 3,
+    "explication": "Les trois premières lignes sont une analyse : elles prouvent seulement que l'ensemble des solutions est **inclus** dans $\\{-1, 2\\}$, car l'élévation au carré n'est pas une équivalence. Il manque la synthèse : $\\sqrt 4 = 2$ convient, mais $\\sqrt 1 = 1 \\ne -1$. L'ensemble des solutions est $\\{2\\}$."
+  },
+  {
+    "id": "logique-ensembles-err-05", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "On note $\\bar k$ la classe de l'entier $k$ modulo $3$ et $\\widehat k$ sa classe modulo $6$. Une copie veut définir $\\varphi : \\mathbb Z/3\\mathbb Z \\to \\mathbb Z/6\\mathbb Z$ par $\\varphi(\\bar k) = \\widehat k$.",
+    "lignes": [
+      "Il faut vérifier que $\\widehat k$ ne dépend pas du représentant $k$ choisi dans la classe $\\bar k$.",
+      "Soient $k, k' \\in \\mathbb Z$ tels que $\\bar k = \\bar{k'}$. Alors $3$ divise $k' - k$.",
+      "Or $3$ divise $6$, donc $6$ divise $k' - k$, c'est-à-dire $\\widehat k = \\widehat{k'}$ : $\\varphi$ est bien définie."
+    ],
+    "fausse": 2,
+    "explication": "Le sens de la divisibilité est inversé : $3 \\mid m$ et $3 \\mid 6$ n'entraînent pas $6 \\mid m$. Contre-exemple : $\\bar 0 = \\bar 3$ mais $\\widehat 0 \\ne \\widehat 3$, donc $\\varphi$ n'est pas définie. Dans l'autre sens, $\\widehat k \\mapsto \\bar k$ est bien définie, et $\\bar k \\mapsto \\widehat{2k}$ aussi."
+  },
+  {
+    "id": "logique-ensembles-err-06", "ch": "logique-ensembles", "type": "erreur",
+    "enonce": "On étudie l'injectivité de $f : \\mathbb R \\to \\mathbb R$, $x \\mapsto x^3 - x$. Voici une copie.",
+    "lignes": [
+      "Soient $x, y \\in \\mathbb R$.",
+      "On a $f(x) - f(y) = (x - y)(x^2 + xy + y^2 - 1)$.",
+      "Si $x = y$, alors $f(x) - f(y) = 0$, c'est-à-dire $f(x) = f(y)$.",
+      "Donc $f$ est injective."
+    ],
+    "fausse": 3,
+    "explication": "La copie démontre $x = y \\Rightarrow f(x) = f(y)$, vrai pour toute application. L'injectivité est la réciproque : $f(x) = f(y) \\Rightarrow x = y$. Ici elle est fausse : $f(0) = f(1) = 0$. La factorisation est juste ; elle montre que $f(x) = f(y)$ avec $x \\ne y$ équivaut à $x^2 + xy + y^2 = 1$."
+  },
+  {
+    "id": "logique-ensembles-piste-01", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Montrer que toute fonction $f : \\mathbb R \\to \\mathbb R$ s'écrit de manière unique $f = p + i$, avec $p$ paire et $i$ impaire.",
+    "choix": [
+      {
+        "titre": "Analyse-synthèse",
+        "info": "Analyse : on suppose qu'une solution existe et on en déduit sa forme, ce qui prouve l'unicité. Synthèse : on vérifie que la forme obtenue convient, ce qui prouve l'existence.",
+        "verdict": "bon",
+        "retour": "Si $f = p + i$, alors $f(-x) = p(x) - i(x)$ : deux équations, deux inconnues $p(x)$ et $i(x)$."
+      },
+      {
+        "titre": "Supplémentaires par la dimension",
+        "info": "En dimension finie, deux sous-espaces $F$ et $G$ de $E$ sont supplémentaires si et seulement si $F \\cap G = \\{0\\}$ et $\\dim F + \\dim G = \\dim E$.",
+        "verdict": "impasse",
+        "retour": "L'espace des fonctions de $\\mathbb R$ dans $\\mathbb R$ est de dimension infinie : l'argument de dimension ne s'applique pas."
+      },
+      {
+        "titre": "Unicité par différence",
+        "info": "Si $p + i = p' + i'$, alors $p - p' = i' - i$ est à la fois paire et impaire, donc nulle.",
+        "verdict": "possible",
+        "retour": "Juste, mais ne donne que l'unicité : l'existence reste à établir."
+      },
+      {
+        "titre": "Séparer les termes pairs et impairs d'une série entière",
+        "info": "Si $f(x) = \\sum a_n x^n$ sur $]-R, R[$, la somme des termes d'indice pair est paire et celle des termes d'indice impair est impaire.",
+        "verdict": "impasse",
+        "retour": "$f$ est quelconque, pas même continue : elle n'a aucune raison d'être développable en série entière."
+      }
+    ],
+    "direction": "Analyse : $f(x) = p(x) + i(x)$ et $f(-x) = p(x) - i(x)$ imposent $p(x) = \\frac{f(x) + f(-x)}{2}$ et $i(x) = \\frac{f(x) - f(-x)}{2}$, d'où l'unicité. Synthèse : ces deux fonctions sont respectivement paire et impaire, et leur somme vaut $f$."
+  },
+  {
+    "id": "logique-ensembles-piste-02", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Soit $E$ un ensemble fini et $f : E \\to E$ une application injective. Montrer que $f$ est surjective.",
+    "choix": [
+      {
+        "titre": "Cardinal de l'image",
+        "info": "Une injection $f : E \\to F$ induit une bijection de $E$ sur $f(E)$. Si $B \\subset A$, avec $A$ fini et $\\mathrm{card}\\,B = \\mathrm{card}\\,A$, alors $B = A$.",
+        "verdict": "bon",
+        "retour": "On compare $f(E)$ et $E$ : même cardinal, et l'un est inclus dans l'autre."
+      },
+      {
+        "titre": "Théorème du rang",
+        "info": "Pour $u \\in \\mathcal L(E, F)$ avec $E$ de dimension finie : $\\dim E = \\mathrm{rg}\\,u + \\dim \\ker u$. En particulier, un endomorphisme injectif d'un espace de dimension finie est surjectif.",
+        "verdict": "impasse",
+        "retour": "La conclusion est analogue, mais $E$ n'est qu'un ensemble et $f$ n'est pas linéaire : l'outil ne s'applique pas."
+      },
+      {
+        "titre": "Récurrence sur le cardinal de $E$",
+        "info": "On démontre, pour tout $n$, l'assertion « pour tout ensemble $E$ de cardinal $n$ et toute injection $f : E \\to E$, $f$ est surjective » par récurrence sur $n$.",
+        "verdict": "possible",
+        "retour": "Faisable en retirant un élément de $E$, mais il faut traiter à part le cas où $f$ ne le fixe pas : nettement plus lourd."
+      },
+      {
+        "titre": "Construire un inverse à gauche",
+        "info": "Si $E \\ne \\emptyset$, $f : E \\to F$ est injective si et seulement s'il existe $g : F \\to E$ telle que $g \\circ f = \\mathrm{id}_E$.",
+        "verdict": "impasse",
+        "retour": "On obtient que $g$ est surjective, ce qui ne dit rien de la surjectivité de $f$."
+      }
+    ],
+    "direction": "$f$ réalise une bijection de $E$ sur $f(E)$, donc $\\mathrm{card}\\, f(E) = \\mathrm{card}\\, E$. Comme $f(E) \\subset E$ et $E$ est fini, $f(E) = E$. La finitude est indispensable : $n \\mapsto n + 1$ est injective et non surjective sur $\\mathbb N$."
+  },
+  {
+    "id": "logique-ensembles-piste-03", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Montrer que $\\mathbb N \\times \\mathbb N$ est dénombrable.",
+    "choix": [
+      {
+        "titre": "Injection dans $\\mathbb N$",
+        "info": "Toute partie infinie de $\\mathbb N$ est en bijection avec $\\mathbb N$. Donc un ensemble infini qui s'injecte dans $\\mathbb N$ est dénombrable.",
+        "verdict": "bon",
+        "retour": "$(p, q) \\mapsto 2^p 3^q$ est injective par unicité de la décomposition en facteurs premiers."
+      },
+      {
+        "titre": "Numérotation par diagonales",
+        "info": "On range les couples par valeur croissante de $p + q$, puis par $q$ croissant : cela donne $(p, q) \\mapsto \\frac{(p+q)(p+q+1)}{2} + q$.",
+        "verdict": "bon",
+        "retour": "Il faut justifier la bijectivité : les couples de la diagonale $p + q = s$ reçoivent exactement les numéros de $\\frac{s(s+1)}{2}$ à $\\frac{s(s+1)}{2} + s$."
+      },
+      {
+        "titre": "Réunion d'une suite d'ensembles dénombrables",
+        "info": "Une réunion d'une suite d'ensembles dénombrables est dénombrable. Ici $\\mathbb N \\times \\mathbb N = \\bigcup_{p \\in \\mathbb N} \\{p\\} \\times \\mathbb N$.",
+        "verdict": "impasse",
+        "retour": "Raisonnement circulaire : ce théorème se démontre avec des bijections $\\varphi_p : \\mathbb N \\to A_p$, en envoyant $(p, q)$ sur $\\varphi_p(q)$ pour couvrir $\\bigcup_p A_p$ : il repose donc sur la dénombrabilité de $\\mathbb N \\times \\mathbb N$."
+      },
+      {
+        "titre": "Argument diagonal de Cantor",
+        "info": "Pour toute suite $(s_n)$ de suites à valeurs dans $\\{0, 1\\}$, la suite $(1 - s_n(n))_{n}$ n'est égale à aucune des $s_n$.",
+        "verdict": "impasse",
+        "retour": "Cet argument prouve qu'un ensemble n'est **pas** dénombrable : c'est l'inverse de ce qu'on cherche."
+      }
+    ],
+    "direction": "Le plus court : $(p, q) \\mapsto 2^p 3^q$ injecte $\\mathbb N^2$ dans $\\mathbb N$ ; son image est une partie infinie de $\\mathbb N$, donc en bijection avec $\\mathbb N$. Sinon, on vérifie que la numérotation de Cantor est bijective."
+  },
+  {
+    "id": "logique-ensembles-piste-04", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Soit $E$ un ensemble et $f : E \\to E$ telle que $f \\circ f \\circ f = \\mathrm{id}_E$. Montrer que $f$ est bijective et déterminer $f^{-1}$.",
+    "choix": [
+      {
+        "titre": "Exhiber une application réciproque",
+        "info": "$f : E \\to F$ est bijective si et seulement s'il existe $g : F \\to E$ telle que $g \\circ f = \\mathrm{id}_E$ et $f \\circ g = \\mathrm{id}_F$ ; on a alors $g = f^{-1}$.",
+        "verdict": "bon",
+        "retour": "Le candidat naturel se lit dans l'hypothèse : $g = f \\circ f$."
+      },
+      {
+        "titre": "Injectivité et surjectivité par composition",
+        "info": "Si $g \\circ f$ est injective, alors $f$ est injective. Si $f \\circ g$ est surjective, alors $f$ est surjective.",
+        "verdict": "bon",
+        "retour": "Avec $g = f \\circ f$, les deux composées valent $\\mathrm{id}_E$. Il reste à composer $f \\circ f \\circ f = \\mathrm{id}_E$ par $f^{-1}$ pour identifier la réciproque."
+      },
+      {
+        "titre": "Injective équivaut à surjective",
+        "info": "Si $E$ est un ensemble fini, une application $f : E \\to E$ est injective si et seulement si elle est surjective.",
+        "verdict": "impasse",
+        "retour": "$E$ n'est pas supposé fini."
+      },
+      {
+        "titre": "Simplifier pour obtenir $f = \\mathrm{id}_E$",
+        "info": "On ne peut simplifier $f \\circ g = f \\circ h$ en $g = h$ que si $f$ est injective.",
+        "verdict": "impasse",
+        "retour": "$f$ n'est pas forcément l'identité : la permutation circulaire $a \\mapsto b \\mapsto c \\mapsto a$ de $\\{a, b, c\\}$ vérifie l'hypothèse."
+      }
+    ],
+    "direction": "Posons $g = f \\circ f$. Par associativité de la composition, $g \\circ f = f \\circ g = f \\circ f \\circ f = \\mathrm{id}_E$. Donc $f$ est bijective et $f^{-1} = f \\circ f$."
+  },
+  {
+    "id": "logique-ensembles-piste-05", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Montrer que l'ensemble $\\{0, 1\\}^{\\mathbb N}$ des suites à valeurs dans $\\{0, 1\\}$ n'est pas dénombrable.",
+    "choix": [
+      {
+        "titre": "Argument diagonal de Cantor",
+        "info": "À une suite $(s_n)_{n \\in \\mathbb N}$ d'éléments de $\\{0, 1\\}^{\\mathbb N}$, on associe la suite $t$ définie par $t(n) = 1 - s_n(n)$ pour tout $n$.",
+        "verdict": "bon",
+        "retour": "$t$ diffère de chaque $s_n$ au moins en position $n$ : aucune suite $(s_n)$ n'épuise $\\{0, 1\\}^{\\mathbb N}$."
+      },
+      {
+        "titre": "Surjection sur $[0, 1]$",
+        "info": "$\\mathbb R$ n'est pas dénombrable (programme), donc $[0, 1]$ non plus. L'image d'un ensemble dénombrable par une application est finie ou dénombrable.",
+        "verdict": "bon",
+        "retour": "Le développement dyadique montre que $s \\mapsto \\sum_{n \\ge 0} s(n)\\, 2^{-n-1}$ est surjective de $\\{0, 1\\}^{\\mathbb N}$ sur $[0, 1]$."
+      },
+      {
+        "titre": "Réunion d'une suite d'ensembles finis",
+        "info": "Une réunion d'une suite d'ensembles finis ou dénombrables est finie ou dénombrable.",
+        "verdict": "impasse",
+        "retour": "Ce théorème prouve des dénombrabilités, pas l'inverse. Et $\\bigcup_n \\{0, 1\\}^n$ est l'ensemble des suites **finies**, qui est dénombrable."
+      },
+      {
+        "titre": "Récurrence sur $n$",
+        "info": "Pour tout $n \\in \\mathbb N$, l'ensemble $\\{0, 1\\}^n$ est fini, de cardinal $2^n$.",
+        "verdict": "impasse",
+        "retour": "Une propriété établie pour chaque $n$ fini ne dit rien des suites infinies."
+      }
+    ],
+    "direction": "Par l'absurde, soit $n \\mapsto s_n$ une bijection de $\\mathbb N$ sur $\\{0, 1\\}^{\\mathbb N}$. La suite $t$ définie par $t(n) = 1 - s_n(n)$ vérifie $t(n) \\ne s_n(n)$, donc $t \\ne s_n$ pour tout $n$ : $t$ n'est pas atteinte, contradiction."
+  },
+  {
+    "id": "logique-ensembles-piste-06", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Soient $A$ et $B$ deux parties non vides et majorées de $\\mathbb R$, et $A + B = \\{a + b : a \\in A,\\ b \\in B\\}$. Montrer que $\\sup(A + B) = \\sup A + \\sup B$.",
+    "choix": [
+      {
+        "titre": "Majorant, puis caractérisation par $\\varepsilon$",
+        "info": "Pour $X \\subset \\mathbb R$ non vide et majorée, $M = \\sup X$ si et seulement si $M$ majore $X$ et $\\forall \\varepsilon > 0,\\ \\exists x \\in X,\\ x > M - \\varepsilon$.",
+        "verdict": "bon",
+        "retour": "On vérifie les deux conditions pour $M = \\sup A + \\sup B$ et $X = A + B$."
+      },
+      {
+        "titre": "Passer à la borne supérieure en deux temps",
+        "info": "Si $X \\subset \\mathbb R$ est non vide et si tout élément de $X$ est inférieur ou égal à $c$, alors $\\sup X$ existe et $\\sup X \\le c$ : la borne supérieure est le plus petit des majorants.",
+        "verdict": "bon",
+        "retour": "À $b$ fixé, $a \\le \\sup(A + B) - b$ pour tout $a \\in A$, donc $\\sup A \\le \\sup(A + B) - b$. On recommence ensuite avec $b$."
+      },
+      {
+        "titre": "Utiliser que $\\sup A \\in A$",
+        "info": "Une partie $X$ admet un plus grand élément si et seulement si $\\sup X$ existe et appartient à $X$.",
+        "verdict": "impasse",
+        "retour": "Les bornes ne sont pas forcément atteintes : $A = B = [0, 1[$."
+      },
+      {
+        "titre": "Majorer $A + B$ par $\\sup A + \\sup B$",
+        "info": "Pour tous $a \\in A$ et $b \\in B$, on a $a + b \\le \\sup A + \\sup B$.",
+        "verdict": "possible",
+        "retour": "Juste et nécessaire, mais cela ne donne que $\\sup(A + B) \\le \\sup A + \\sup B$ : il manque l'autre inégalité."
+      }
+    ],
+    "direction": "$A + B$ est non vide et majorée par $\\sup A + \\sup B$, d'où l'existence de $\\sup(A+B)$ et l'inégalité $\\le$. Pour $\\varepsilon > 0$, on choisit $a > \\sup A - \\varepsilon$ et $b > \\sup B - \\varepsilon$ : alors $\\sup(A + B) \\ge a + b > \\sup A + \\sup B - 2\\varepsilon$, pour tout $\\varepsilon$."
+  },
+  {
+    "id": "logique-ensembles-piste-07", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Soit $f : E \\to F$ une application. Sur $E$, on pose $x \\sim y \\iff f(x) = f(y)$, et on admet que c'est une relation d'équivalence. Montrer que $f$ induit une bijection de $E/\\!\\sim$ sur $f(E)$.",
+    "choix": [
+      {
+        "titre": "Passage au quotient",
+        "info": "Une application $g : E \\to G$ constante sur chaque classe définit une application $\\bar g : E/\\!\\sim\\; \\to G$ par $\\bar g(\\bar x) = g(x)$ : la valeur ne dépend pas du représentant choisi.",
+        "verdict": "bon",
+        "retour": "On définit $\\bar f(\\bar x) = f(x)$, puis on vérifie l'injectivité et la surjectivité sur $f(E)$."
+      },
+      {
+        "titre": "Réciproque explicite par les fibres",
+        "info": "Pour $z \\in f(E)$, l'image réciproque $f^{-1}(\\{z\\})$ est une partie non vide de $E$.",
+        "verdict": "bon",
+        "retour": "Chaque $f^{-1}(\\{z\\})$ est exactement une classe d'équivalence : $z \\mapsto f^{-1}(\\{z\\})$ est la réciproque cherchée."
+      },
+      {
+        "titre": "Théorème d'isomorphisme",
+        "info": "Pour un morphisme d'anneaux $f : A \\to A'$, l'image $\\mathrm{Im}(f)$ est isomorphe à l'anneau quotient $A/\\ker f$.",
+        "verdict": "impasse",
+        "retour": "$E$ et $F$ sont de simples ensembles, sans structure : il n'y a ni morphisme ni noyau. C'est au contraire l'énoncé ensembliste qui sert dans la preuve de ce théorème."
+      },
+      {
+        "titre": "Comparer les cardinaux",
+        "info": "Deux ensembles finis sont en bijection si et seulement s'ils ont le même cardinal.",
+        "verdict": "impasse",
+        "retour": "$E$ peut être infini, et l'égalité des cardinaux ne dirait pas que c'est $f$ qui induit la bijection."
+      }
+    ],
+    "direction": "Bonne définition : si $\\bar x = \\bar y$, alors $f(x) = f(y)$ par définition de $\\sim$. Injectivité : $\\bar f(\\bar x) = \\bar f(\\bar y)$ signifie $f(x) = f(y)$, donc $x \\sim y$, soit $\\bar x = \\bar y$. Surjectivité sur $f(E)$ : $f(x) = \\bar f(\\bar x)$."
+  },
+  {
+    "id": "logique-ensembles-piste-08", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Montrer que tout entier $n \\ge 2$ est un produit de nombres premiers.",
+    "choix": [
+      {
+        "titre": "Récurrence forte",
+        "info": "Si, pour tout $n \\ge 2$, l'hypothèse « $P(k)$ est vraie pour tout $k$ tel que $2 \\le k < n$ » entraîne $P(n)$, alors $P(n)$ est vraie pour tout $n \\ge 2$.",
+        "verdict": "bon",
+        "retour": "Un entier non premier se factorise en deux entiers strictement plus petits, auxquels on applique l'hypothèse."
+      },
+      {
+        "titre": "Récurrence simple",
+        "info": "Si $P(2)$ est vraie et si $P(n) \\Rightarrow P(n+1)$ pour tout $n \\ge 2$, alors $P(n)$ est vraie pour tout $n \\ge 2$.",
+        "verdict": "impasse",
+        "retour": "Connaître la décomposition de $n$ ne dit rien sur celle de $n + 1$."
+      },
+      {
+        "titre": "Lemme d'Euclide",
+        "info": "Si un nombre premier $p$ divise un produit $ab$, alors $p$ divise $a$ ou $p$ divise $b$.",
+        "verdict": "impasse",
+        "retour": "Il sert à l'**unicité** de la décomposition, pas à son existence."
+      },
+      {
+        "titre": "Plus petit diviseur",
+        "info": "Pour $n \\ge 2$, le plus petit diviseur $d \\ge 2$ de $n$ est un nombre premier.",
+        "verdict": "possible",
+        "retour": "On obtient $n = p\\,m$ avec $p$ premier et $m < n$. Il faut ensuite itérer sur $m$, ce qui revient à une récurrence forte."
+      }
+    ],
+    "direction": "Soit $n \\ge 2$ ; on suppose le résultat vrai pour tous les entiers de $\\{2, \\dots, n-1\\}$. Si $n$ est premier, il est son propre produit. Sinon $n = ab$ avec $2 \\le a, b \\le n - 1$ : on décompose $a$ et $b$ par hypothèse et on juxtapose les deux produits."
+  },
+  {
+    "id": "logique-ensembles-piste-09", "ch": "logique-ensembles", "type": "piste",
+    "enonce": "Déterminer toutes les fonctions $f : \\mathbb R \\to \\mathbb R$ telles que, pour tous réels $x$ et $y$, $f(x) f(y) - f(xy) = x + y$.",
+    "choix": [
+      {
+        "titre": "Analyse-synthèse avec des valeurs particulières",
+        "info": "Analyse : on spécialise l'identité en des valeurs bien choisies de $x$ et $y$ pour obtenir des conditions nécessaires sur $f$. Synthèse : on vérifie que les fonctions obtenues conviennent.",
+        "verdict": "bon",
+        "retour": "Les choix $x = y = 0$, puis $y = 0$ seul, suffisent à déterminer $f$."
+      },
+      {
+        "titre": "Dériver par rapport à $x$",
+        "info": "Si $f$ est dérivable, on peut dériver l'identité par rapport à $x$, à $y$ fixé, et obtenir une équation différentielle.",
+        "verdict": "impasse",
+        "retour": "Rien ne dit que $f$ est dérivable, ni même continue : l'hypothèse manque."
+      },
+      {
+        "titre": "Chercher $f$ affine",
+        "info": "On pose $f(x) = ax + b$ et on identifie les coefficients dans l'identité.",
+        "verdict": "possible",
+        "retour": "On trouve bien une solution, mais rien ne prouve qu'il n'y en a pas d'autres, non affines."
+      },
+      {
+        "titre": "Récurrence sur les entiers",
+        "info": "On calcule $f(n)$ pour $n \\in \\mathbb N$ par récurrence, à l'aide de l'identité.",
+        "verdict": "impasse",
+        "retour": "Au mieux on obtient les valeurs de $f$ aux entiers, rien sur les autres réels."
+      }
+    ],
+    "direction": "Analyse : $x = y = 0$ donne $f(0)^2 = f(0)$. Avec $y = 0$ : $f(0)\\,(f(x) - 1) = x$ pour tout $x$, ce qui exclut $f(0) = 0$ ; donc $f(0) = 1$ et $f(x) = x + 1$. Synthèse : $(x+1)(y+1) - (xy + 1) = x + y$. Une seule solution, $x \\mapsto x + 1$."
+  }
+]

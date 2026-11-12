@@ -25,8 +25,17 @@ const melanger = t => { const a = t.slice(); for (let i = a.length - 1; i > 0; i
 const vibrer = motif => { try { navigator.vibrate && navigator.vibrate(motif); } catch (e) { /* sans vibreur */ } };
 
 /* Texte de carte -> HTML : $...$ et $$...$$ rendus par KaTeX, **gras**, retours à la ligne. */
+/* Code : ```bloc``` (police fixe, indentation conservée) et `en ligne`. Ni LaTeX ni gras à l'intérieur. */
+const CODE = /(```\n?[\s\S]+?```|`[^`\n]+`)/g;
 function fmt(texte) {
-  return String(texte).split(/(\$\$[\s\S]+?\$\$|\$[^$]+?\$)/g).map(bout => {
+  return String(texte).split(CODE).map(bout => {
+    if (bout.startsWith('```')) return `<pre class="code">${echapper(bout.slice(3, -3).replace(/^\n|\n$/g, ''))}</pre>`;
+    if (bout.startsWith('`') && bout.length > 2) return `<code>${echapper(bout.slice(1, -1))}</code>`;
+    return fmtTexte(bout);
+  }).join('');
+}
+function fmtTexte(texte) {
+  return texte.split(/(\$\$[\s\S]+?\$\$|\$[^$]+?\$)/g).map(bout => {
     const bloc = bout.startsWith('$$');
     if (bout.startsWith('$') && bout.length > 2) {
       const tex = bloc ? bout.slice(2, -2) : bout.slice(1, -1);

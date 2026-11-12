@@ -57,7 +57,7 @@
       "nom": "Transversal",
       "couleur": "#b0b6c8",
       "chapitres": [
-        { "id": "logique-ensembles", "nom": "Ensembles et logique", "ref": "1" },
+        { "id": "logique-ensembles", "nom": "Ensembles et logique", "ref": "1", "cartes": true },
         { "id": "algorithmique", "nom": "Algorithmique", "ref": "2" }
       ]
     }
