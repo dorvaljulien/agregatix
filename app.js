@@ -7,6 +7,9 @@ const INTERVALLES = [0, 1, 3, 7, 16, 35];          // jours avant de revoir, par
 const BOITE_MAX = INTERVALLES.length - 1;
 const MODES = { vf: 'Vrai ou faux ?', qcm: 'Le bon énoncé', erreur: "Traque à l'erreur", piste: 'Par où partir ?' };
 const TITRES = ['Bizuth', 'Candidat', 'Préparationnaire', 'Admissible', 'Admis', 'Agrégé', 'Major'];
+/* Maîtrise (0-1) à atteindre pour chaque titre : le niveau suit ce que tu sais vraiment, pas le temps passé. */
+const SEUILS = [0, 0.05, 0.15, 0.35, 0.55, 0.75, 0.90];
+const CLE_SESSION = 'agregatix.session.v1';
 
 const $app = document.getElementById('app');
 const $voile = document.getElementById('voile');
@@ -54,6 +57,32 @@ function charger() {
 }
 function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { /* stockage indisponible */ } }
 
+/* Session en cours : gardée à part pour qu'on la retrouve si l'appli est rechargée ou fermée par le système. */
+function sauverSession() {
+  try {
+    if (!session) { localStorage.removeItem(CLE_SESSION); return; }
+    const v = session.vue;
+    localStorage.setItem(CLE_SESSION, JSON.stringify({
+      file: session.file.map(c => c.id), i: session.i, total: session.total, faits: session.faits, bons: session.bons,
+      xp: session.xp, combo: session.combo, libre: session.libre, revues: [...session.revues],
+      vue: v && { id: v.carte.id, repondu: v.repondu, choisi: v.choisi, ordre: v.ordre, revue: v.revue, verdict: v.verdict }
+    }));
+  } catch (e) { /* stockage indisponible */ }
+}
+function reprendreSession() {
+  try {
+    const o = JSON.parse(localStorage.getItem(CLE_SESSION));
+    if (!o || !o.vue) return false;
+    const parId = Object.fromEntries(cartes.map(c => [c.id, c]));
+    const file = o.file.map(id => parId[id]);
+    if (file.some(c => !c) || !file[o.i] || file[o.i].id !== o.vue.id) return false;
+    session = { file, i: o.i, total: o.total, faits: o.faits, bons: o.bons, xp: o.xp, combo: o.combo, libre: o.libre, revues: new Set(o.revues), vue: null };
+    session.vue = { carte: file[o.i], repondu: o.vue.repondu, choisi: o.vue.choisi, ordre: o.vue.ordre, revue: o.vue.revue, verdict: o.vue.verdict };
+    dessiner();
+    return true;
+  } catch (e) { session = null; return false; }
+}
+
 /* ---------- Progression ---------- */
 const suivi = id => etat.cartes[id];
 const estDue = c => { const s = suivi(c.id); return s && s.d <= aujourdhui(); };
@@ -62,9 +91,10 @@ function maitrise(liste) {
   if (!liste.length) return 0;
   return liste.reduce((t, c) => t + (suivi(c.id) ? suivi(c.id).b : 0), 0) / (BOITE_MAX * liste.length);
 }
-function niveau(xp) {
-  const n = Math.floor(Math.sqrt(xp / 60));
-  return { n: n + 1, titre: TITRES[Math.min(n, TITRES.length - 1)], bas: 60 * n * n, haut: 60 * (n + 1) * (n + 1) };
+function niveau(m) {
+  let n = 0;
+  while (n + 1 < SEUILS.length && m >= SEUILS[n + 1]) n++;
+  return { n: n + 1, titre: TITRES[n], bas: SEUILS[n], haut: n + 1 < SEUILS.length ? SEUILS[n + 1] : 1 };
 }
 function noter(carte, verdict) {
   const j = aujourdhui();
@@ -102,8 +132,9 @@ function lancer(idChapitre) {
 
 /* ---------- Écran d'accueil ---------- */
 function accueil() {
-  session = null;
-  const nv = niveau(etat.xp);
+  session = null; sauverSession();
+  const mg = maitrise(cartes);
+  const nv = niveau(mg);
   const dues = cartes.filter(estDue).length;
   const neuves = cartes.filter(estNeuve).length;
   const serieVivante = etat.dernierJour !== null && etat.dernierJour >= aujourdhui() - 1 ? etat.serie : 0;
@@ -112,11 +143,11 @@ function accueil() {
     <div class="stats">
       <div class="stat"><b>🔥 ${serieVivante}</b><small>jour${serieVivante > 1 ? 's' : ''} de suite</small></div>
       <div class="stat"><b>${etat.xp}</b><small>XP</small></div>
-      <div class="stat"><b>${Math.round(100 * maitrise(cartes))} %</b><small>maîtrise</small></div>
+      <div class="stat"><b>${Math.round(100 * mg)} %</b><small>maîtrise</small></div>
     </div>
     <div class="niveau">
-      <div class="ligne"><span>Niveau ${nv.n} · <b>${nv.titre}</b></span><span>${etat.xp - nv.bas} / ${nv.haut - nv.bas}</span></div>
-      <div class="barre"><i style="width:${100 * (etat.xp - nv.bas) / (nv.haut - nv.bas)}%"></i></div>
+      <div class="ligne"><span>Niveau ${nv.n} · <b>${nv.titre}</b></span><span>${Math.round(100 * mg)} % → ${Math.round(100 * nv.haut)} %</span></div>
+      <div class="barre"><i style="width:${100 * (mg - nv.bas) / (nv.haut - nv.bas)}%"></i></div>
     </div>
     <button class="gros" data-a="lancer" data-ch="">Session du jour</button>
     <p class="sous-gros">${dues} à revoir · ${neuves} nouvelles · ${cartes.length} cartes en tout</p>`;
@@ -149,7 +180,7 @@ function afficherCarte() {
   const v = s.vue = { carte: c, repondu: false, choisi: null, ordre: null, revue: s.revues.has(c.id) };
   if (c.type === 'qcm' || c.type === 'piste') v.ordre = melanger(c.choix.map((_, k) => k));
   if (c.type === 'erreur') v.ordre = c.lignes.map((_, k) => k);
-  dessiner();
+  sauverSession(); dessiner();
   window.scrollTo(0, 0);
 }
 
@@ -220,12 +251,13 @@ function repondre(verdict) {
     const gain = revue ? 3 : (verdict === 'bon' ? 10 + Math.min(10, 2 * (s.combo - 1)) : 5);
     s.xp += gain; etat.xp += gain; vibrer(20);
   }
-  marquerJour(); sauver(); dessiner();
+  marquerJour(); sauver(); sauverSession(); dessiner();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function fin() {
   const s = session;
+  try { localStorage.removeItem(CLE_SESSION); } catch (e) { /* sans stockage */ }
   const pc = Math.round(100 * s.bons / s.total);
   const emoji = pc === 100 ? '🏆' : pc >= 70 ? '🎯' : pc >= 40 ? '💪' : '🌱';
   const mot = pc === 100 ? 'Sans faute !' : pc >= 70 ? 'Belle session' : pc >= 40 ? 'Ça rentre' : 'On reprend demain';
@@ -276,7 +308,7 @@ document.addEventListener('click', ev => {
     case 'accueil': accueil(); break;
     case 'quitter': if (!session.faits || confirm('Quitter la session ? Les réponses déjà données sont gardées.')) accueil(); break;
     case 'vf': repondre((b.dataset.r === '1') === v.carte.reponse ? 'bon' : 'faux'); break;
-    case 'choisir': if (!v.repondu) { v.choisi = Number(b.dataset.k); dessiner(); } break;
+    case 'choisir': if (!v.repondu) { v.choisi = Number(b.dataset.k); sauverSession(); dessiner(); } break;
     case 'valider': {
       if (v.choisi === null) break;
       const c = v.carte;
@@ -304,7 +336,7 @@ document.addEventListener('click', ev => {
       catch (e) { alert('Sauvegarde illisible.'); }
       break;
     }
-    case 'effacer': if (confirm('Effacer toute la progression ? Action définitive.')) { localStorage.removeItem(CLE); etat = charger(); fermer(); accueil(); } break;
+    case 'effacer': if (confirm('Effacer toute la progression ? Action définitive.')) { localStorage.removeItem(CLE); localStorage.removeItem(CLE_SESSION); etat = charger(); fermer(); accueil(); } break;
   }
 });
 
@@ -316,7 +348,7 @@ async function demarrer() {
     const lots = await Promise.all(ids.map(id => fetch(`data/cartes/${id}.json`).then(r => r.json())));
     cartes = lots.flat();
     for (const c of cartes) (parChapitre[c.ch] = parChapitre[c.ch] || []).push(c);
-    accueil();
+    if (!reprendreSession()) accueil();
   } catch (e) {
     $app.innerHTML = '<p class="chargement">Impossible de charger les cartes. Vérifie la connexion puis recharge la page.</p>';
   }
