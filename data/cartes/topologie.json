@@ -681,5 +681,32 @@
       }
     ],
     "direction": "$T = \\{(x, y) \\in I^2 : x < y\\}$ est convexe, donc connexe. $\\varphi(x, y) = f(y) - f(x)$ est continue sur $T$ et ne s'annule pas (injectivité). Donc $\\varphi(T)$ est un intervalle inclus dans $\\mathbb R^*$ : $\\varphi$ est de signe constant, et $f$ est strictement monotone."
+  },
+  {
+    "id": "topologie-cours-01", "ch": "topologie", "type": "cours",
+    "titre": "Compacité",
+    "enonce": "En dimension finie, les compacts sont les fermés bornés ; c'est faux en dimension infinie. Une fonction continue sur un compact est bornée, atteint ses bornes et est uniformément continue (Heine). **Méthode** pour un extremum sur un fermé non borné : utiliser le comportement à l'infini pour se ramener à un compact.",
+    "question": "Soit $f : \\mathbb R^n \\to \\mathbb R$ continue telle que $f(x) \\to +\\infty$ quand $\\|x\\| \\to +\\infty$. Alors $f$ :",
+    "choix": ["admet un minimum global","admet un maximum global","est uniformément continue","est bornée"],
+    "bonne": 0,
+    "explication": "Il existe $r$ tel que $f(x) > f(0)$ dès que $\\|x\\| > r$. Sur la boule fermée de rayon $r$, compacte, $f$ atteint un minimum, qui est $\\le f(0)$ donc global. Contre-exemple aux autres choix : $f(x) = \\|x\\|^2$."
+  },
+  {
+    "id": "topologie-cours-02", "ch": "topologie", "type": "cours",
+    "titre": "Applications linéaires continues, normes équivalentes",
+    "enonce": "Une application linéaire $u$ est continue si et seulement s'il existe $C$ tel que $\\|u(x)\\| \\le C\\|x\\|$ pour tout $x$. En dimension finie, toutes les normes sont équivalentes et toute application linéaire est continue. En dimension infinie, non. **Méthode** pour nier : exhiber une suite $(x_n)$ telle que $\\frac{\\|u(x_n)\\|}{\\|x_n\\|} \\to +\\infty$.",
+    "question": "Sur $E = \\mathcal C([0, 1], \\mathbb R)$, les normes $\\|f\\|_\\infty$ et $\\|f\\|_1 = \\displaystyle\\int_0^1|f|$ :",
+    "choix": ["vérifient $\\|f\\|_1 \\le \\|f\\|_\\infty$ mais ne sont pas équivalentes","sont équivalentes","vérifient $\\|f\\|_\\infty \\le \\|f\\|_1$","ne se comparent dans aucun sens"],
+    "bonne": 0,
+    "explication": "$\\|f\\|_1 \\le \\|f\\|_\\infty$ est immédiat. Mais $f_n(x) = x^n$ vérifie $\\|f_n\\|_\\infty = 1$ et $\\|f_n\\|_1 = \\frac{1}{n+1} \\to 0$ : aucune constante $C$ ne donne $\\|f\\|_\\infty \\le C\\|f\\|_1$."
+  },
+  {
+    "id": "topologie-cours-03", "ch": "topologie", "type": "cours",
+    "titre": "Théorème du point fixe",
+    "enonce": "Dans un espace complet (par exemple un fermé d'un espace de dimension finie), toute application **contractante**, c'est-à-dire $k$-lipschitzienne avec $k < 1$, d'un fermé dans lui-même admet un unique point fixe, limite de toute suite $x_{n+1} = f(x_n)$. L'hypothèse $\\|f(x) - f(y)\\| < \\|x - y\\|$ pour $x \\neq y$ est **insuffisante**.",
+    "question": "La fonction $f : x \\mapsto \\sqrt{1 + x^2}$ vérifie $|f(x) - f(y)| < |x - y|$ pour tous réels $x \\neq y$. Alors $f$ :",
+    "choix": ["n'a aucun point fixe : elle n'est pas contractante","a un unique point fixe, par le théorème du point fixe","a un point fixe, car $\\mathbb R$ est complet","a une infinité de points fixes"],
+    "bonne": 0,
+    "explication": "$\\sqrt{1 + x^2} > |x| \\ge x$ : pas de point fixe. Ici $|f'(x)| = \\frac{|x|}{\\sqrt{1 + x^2}} < 1$, mais la borne supérieure vaut $1$ : il n'existe aucun $k < 1$ uniforme."
   }
 ]

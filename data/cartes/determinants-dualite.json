@@ -620,5 +620,32 @@
       }
     ],
     "direction": "Sens direct : $\\det A \\cdot \\det A^{-1} = 1$ avec deux entiers, donc $\\det A = \\pm 1$. Réciproque : $A^{-1} = \\pm\\, \\mathrm{com}(A)^{\\mathsf T}$, à coefficients entiers."
+  },
+  {
+    "id": "determinants-dualite-cours-01", "ch": "determinants-dualite", "type": "cours",
+    "titre": "Règles de calcul du déterminant",
+    "enonce": "Le déterminant est multilinéaire et alterné par rapport aux colonnes (et aux lignes) : $C_i \\leftarrow C_i + \\lambda C_j$ ne le change pas, un échange de colonnes le multiplie par $-1$, et $\\det(\\lambda A) = \\lambda^n\\det A$. On a $\\det(AB) = \\det A\\,\\det B$ et, par blocs, $\\det\\begin{pmatrix} A & B \\\\ 0 & D \\end{pmatrix} = \\det A\\,\\det D$.",
+    "question": "Soit $A \\in M_3(\\mathbb R)$ avec $\\det A = 2$. Alors $\\det(-2A^{-1})$ vaut :",
+    "choix": ["$-4$","$-1$","$4$","$-16$"],
+    "bonne": 0,
+    "explication": "$\\det(-2A^{-1}) = (-2)^3\\det(A^{-1}) = -8 \\times \\frac12 = -4$. Le piège est d'oublier la puissance $n = 3$ sur le scalaire."
+  },
+  {
+    "id": "determinants-dualite-cours-02", "ch": "determinants-dualite", "type": "cours",
+    "titre": "Déterminant de Vandermonde",
+    "enonce": "$V(a_1, \\dots, a_n) = \\det\\left(a_i^{\\,j-1}\\right) = \\displaystyle\\prod_{i < j}(a_j - a_i)$. Il est non nul si et seulement si les $a_i$ sont deux à deux distincts. **Usages types** : existence et unicité du polynôme d'interpolation, liberté de la famille $(x \\mapsto e^{a_ix})$, liberté de vecteurs propres associés à des valeurs propres distinctes.",
+    "question": "Le déterminant $\\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 4 \\\\ 1 & 3 & 9 \\end{vmatrix}$ vaut :",
+    "choix": ["$2$","$6$","$0$","$-2$"],
+    "bonne": 0,
+    "explication": "C'est $V(1, 2, 3) = (2 - 1)(3 - 1)(3 - 2) = 2$."
+  },
+  {
+    "id": "determinants-dualite-cours-03", "ch": "determinants-dualite", "type": "cours",
+    "titre": "Formes linéaires et hyperplans",
+    "enonce": "En dimension finie $n$, le noyau d'une forme linéaire non nulle est un hyperplan, et deux formes linéaires ont le même noyau si et seulement si elles sont proportionnelles. Pour des formes $\\varphi_1, \\dots, \\varphi_p$ : $\\dim\\bigcap\\ker\\varphi_i = n - \\mathrm{rg}(\\varphi_1, \\dots, \\varphi_p)$. Un système de $p$ équations ne retire donc $p$ dimensions que si elles sont indépendantes.",
+    "question": "Dans $\\mathbb R^4$, soit $F$ l'ensemble des $(x, y, z, t)$ tels que $x + y + z + t = 0$, $x - y + z - t = 0$ et $x + z = 0$. La dimension de $F$ est :",
+    "choix": ["$2$","$1$","$3$","$0$"],
+    "bonne": 0,
+    "explication": "La troisième équation est la demi-somme des deux premières, qui sont indépendantes : le rang du système est $2$, donc $\\dim F = 4 - 2 = 2$."
   }
 ]

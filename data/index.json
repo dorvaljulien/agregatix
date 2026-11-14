@@ -1,17 +1,18 @@
 {
+  "ecrits": { "sujetsLus": 30, "periode": "2009-2026" },
   "domaines": [
     {
       "id": "algebre",
       "nom": "Algèbre",
       "couleur": "#7c9cff",
       "chapitres": [
-        { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1", "cartes": true },
-        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4", "cartes": true },
-        { "id": "groupes", "nom": "Groupes", "ref": "4", "cartes": true },
-        { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "cartes": true },
-        { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6", "cartes": true },
-        { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "cartes": true },
-        { "id": "quadratique-euclidien", "nom": "Formes quadratiques, espaces euclidiens", "ref": "5.9, 6", "cartes": true }
+        { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1", "sujets": 6, "poids": 2, "cartes": true },
+        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4", "sujets": 12, "poids": 3, "cartes": true },
+        { "id": "groupes", "nom": "Groupes", "ref": "4", "sujets": 9, "poids": 2, "cartes": true },
+        { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "sujets": 20, "poids": 3, "cartes": true },
+        { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6", "sujets": 7, "poids": 2, "cartes": true },
+        { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "sujets": 17, "poids": 3, "cartes": true },
+        { "id": "quadratique-euclidien", "nom": "Formes quadratiques, espaces euclidiens", "ref": "5.9, 6", "sujets": 9, "poids": 2, "cartes": true }
       ]
     },
     {
@@ -19,17 +20,17 @@
       "nom": "Analyse",
       "couleur": "#ffb454",
       "chapitres": [
-        { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1", "cartes": true },
-        { "id": "series", "nom": "Séries numériques", "ref": "9.2", "cartes": true },
-        { "id": "fonctions", "nom": "Continuité, dérivabilité, fonctions usuelles", "ref": "9.3 – 9.5", "cartes": true },
-        { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10", "cartes": true },
-        { "id": "analyse-numerique", "nom": "Analyse numérique", "ref": "9.11", "cartes": true },
-        { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12", "cartes": true },
-        { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "cartes": true },
-        { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7", "cartes": true },
-        { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9", "cartes": true },
-        { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1", "cartes": true },
-        { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2", "cartes": true }
+        { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1", "sujets": 13, "poids": 3, "cartes": true },
+        { "id": "series", "nom": "Séries numériques", "ref": "9.2", "sujets": 5, "poids": 2, "cartes": true },
+        { "id": "fonctions", "nom": "Continuité, dérivabilité, fonctions usuelles", "ref": "9.3 – 9.5", "sujets": 10, "poids": 2, "cartes": true },
+        { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10", "sujets": 6, "poids": 3, "cartes": true },
+        { "id": "analyse-numerique", "nom": "Analyse numérique", "ref": "9.11", "sujets": 0, "poids": 1, "cartes": true },
+        { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12", "sujets": 4, "poids": 1, "cartes": true },
+        { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "sujets": 13, "poids": 3, "cartes": true },
+        { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7", "sujets": 5, "poids": 2, "cartes": true },
+        { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9", "sujets": 6, "poids": 2, "cartes": true },
+        { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1", "sujets": 1, "poids": 1, "cartes": true },
+        { "id": "equations-differentielles", "nom": "Équations différentielles", "ref": "12.2", "sujets": 3, "poids": 1, "cartes": true }
       ]
     },
     {
@@ -37,9 +38,9 @@
       "nom": "Géométrie",
       "couleur": "#5fd3a6",
       "chapitres": [
-        { "id": "geometrie-affine-euclidienne", "nom": "Géométrie affine et euclidienne", "ref": "7, 8.1 – 8.3" },
-        { "id": "coniques", "nom": "Coniques", "ref": "8.4", "cartes": true },
-        { "id": "courbes", "nom": "Courbes et géométrie différentielle", "ref": "11", "cartes": true }
+        { "id": "geometrie-affine-euclidienne", "nom": "Géométrie affine et euclidienne", "ref": "7, 8.1 – 8.3", "sujets": 2, "poids": 1 },
+        { "id": "coniques", "nom": "Coniques", "ref": "8.4", "sujets": 1, "poids": 1, "cartes": true },
+        { "id": "courbes", "nom": "Courbes et géométrie différentielle", "ref": "11", "sujets": 1, "poids": 1, "cartes": true }
       ]
     },
     {
@@ -47,9 +48,9 @@
       "nom": "Probabilités et calcul intégral",
       "couleur": "#e88bd0",
       "chapitres": [
-        { "id": "integrales-multiples", "nom": "Intégrales multiples", "ref": "13.1", "cartes": true },
-        { "id": "probabilites", "nom": "Probabilités et variables aléatoires", "ref": "13.2 – 13.5", "cartes": true },
-        { "id": "theoremes-limites", "nom": "Théorèmes limites et estimation", "ref": "13.6 – 13.7", "cartes": true }
+        { "id": "integrales-multiples", "nom": "Intégrales multiples", "ref": "13.1", "sujets": 1, "poids": 1, "cartes": true },
+        { "id": "probabilites", "nom": "Probabilités et variables aléatoires", "ref": "13.2 – 13.5", "sujets": 4, "poids": 1, "cartes": true },
+        { "id": "theoremes-limites", "nom": "Théorèmes limites et estimation", "ref": "13.6 – 13.7", "sujets": 2, "poids": 1, "cartes": true }
       ]
     },
     {
@@ -57,8 +58,8 @@
       "nom": "Transversal",
       "couleur": "#b0b6c8",
       "chapitres": [
-        { "id": "logique-ensembles", "nom": "Ensembles et logique", "ref": "1", "cartes": true },
-        { "id": "algorithmique", "nom": "Algorithmique", "ref": "2" }
+        { "id": "logique-ensembles", "nom": "Ensembles et logique", "ref": "1", "sujets": 9, "poids": 2, "cartes": true },
+        { "id": "algorithmique", "nom": "Algorithmique", "ref": "2", "sujets": 2, "poids": 1 }
       ]
     }
   ]

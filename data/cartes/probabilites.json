@@ -678,5 +678,32 @@
       }
     ],
     "direction": "$P(\\sigma(i) = i) = \\frac1n$ donne $E(X) = 1$. Pour $i \\ne j$, $P(\\sigma(i) = i, \\sigma(j) = j) = \\frac{1}{n(n-1)}$, d'où $\\mathrm{Cov}(X_i, X_j) = \\frac{1}{n^2(n-1)}$. Alors $V(X) = n \\cdot \\frac1n\\left(1 - \\frac1n\\right) + n(n-1) \\cdot \\frac{1}{n^2(n-1)} = 1$."
+  },
+  {
+    "id": "probabilites-cours-01", "ch": "probabilites", "type": "cours",
+    "titre": "Espérance et variance",
+    "enonce": "L'espérance est linéaire, **sans hypothèse d'indépendance**. $V(X) = E(X^2) - E(X)^2$ et $V(aX + b) = a^2V(X)$. $V(X + Y) = V(X) + V(Y) + 2\\,\\mathrm{Cov}(X, Y)$ ; si $X$ et $Y$ sont indépendantes, $E(XY) = E(X)E(Y)$ et les variances s'ajoutent. Une covariance nulle n'implique pas l'indépendance. **Méthode** : écrire un comptage comme somme d'indicatrices.",
+    "question": "On glisse au hasard $n$ lettres dans $n$ enveloppes déjà adressées, une par enveloppe. Le nombre moyen de lettres dans la bonne enveloppe est :",
+    "choix": ["$1$","$\\frac1n$","$\\frac n2$","$1 - \\frac1e$"],
+    "bonne": 0,
+    "explication": "Soit $X_i$ l'indicatrice de « la lettre $i$ est bien placée » : $E(X_i) = \\frac1n$, donc $E\\left(\\sum X_i\\right) = n \\times \\frac1n = 1$, sans avoir besoin de l'indépendance (qui est fausse). La valeur $1 - \\frac1e$ est la limite de la probabilité d'avoir au moins une lettre bien placée."
+  },
+  {
+    "id": "probabilites-cours-02", "ch": "probabilites", "type": "cours",
+    "titre": "Lois usuelles",
+    "enonce": "Binomiale $\\mathcal B(n, p)$ : $E = np$, $V = np(1 - p)$. Géométrique $\\mathcal G(p)$ sur $\\mathbb N^*$ : $P(X = k) = p(1 - p)^{k-1}$, $E = \\frac1p$, $V = \\frac{1 - p}{p^2}$, loi sans mémoire. Poisson $\\mathcal P(\\lambda)$ : $E = V = \\lambda$. Fonction génératrice $G_X(t) = E(t^X)$ : $G_{X+Y} = G_XG_Y$ si $X$ et $Y$ sont indépendantes ; ainsi $\\mathcal P(\\lambda) + \\mathcal P(\\mu) = \\mathcal P(\\lambda + \\mu)$.",
+    "question": "Soient $X \\sim \\mathcal P(\\lambda)$ et $Y \\sim \\mathcal P(\\mu)$ indépendantes. La loi de $X$ sachant $X + Y = n$ est :",
+    "choix": ["$\\mathcal B\\left(n, \\frac{\\lambda}{\\lambda + \\mu}\\right)$","$\\mathcal P(\\lambda)$","la loi uniforme sur $\\{0, \\dots, n\\}$","$\\mathcal B\\left(n, \\frac{\\mu}{\\lambda + \\mu}\\right)$"],
+    "bonne": 0,
+    "explication": "$P(X = k \\mid X + Y = n) = \\frac{P(X = k)P(Y = n - k)}{P(X + Y = n)}$ avec $X + Y \\sim \\mathcal P(\\lambda + \\mu)$ : après simplification, $\\binom nk\\left(\\frac{\\lambda}{\\lambda+\\mu}\\right)^k\\left(\\frac{\\mu}{\\lambda+\\mu}\\right)^{n-k}$."
+  },
+  {
+    "id": "probabilites-cours-03", "ch": "probabilites", "type": "cours",
+    "titre": "Probabilités totales et formule de Bayes",
+    "enonce": "Pour un système complet d'événements $(A_i)$ de probabilités non nulles : $P(B) = \\sum P(B \\mid A_i)P(A_i)$, et $P(A_i \\mid B) = \\dfrac{P(B \\mid A_i)P(A_i)}{P(B)}$. Ne pas confondre $P(A \\mid B)$ et $P(B \\mid A)$. Indépendance mutuelle $\\Rightarrow$ indépendance deux à deux, sans réciproque.",
+    "question": "Une maladie touche $1\\,\\%$ d'une population. Un test est positif chez $99\\,\\%$ des malades et chez $5\\,\\%$ des non-malades. La probabilité d'être malade sachant que le test est positif est proche de :",
+    "choix": ["$17\\,\\%$","$99\\,\\%$","$95\\,\\%$","$50\\,\\%$"],
+    "bonne": 0,
+    "explication": "$P(T) = 0{,}01 \\times 0{,}99 + 0{,}99 \\times 0{,}05 = 0{,}0594$, donc $P(M \\mid T) = \\frac{0{,}0099}{0{,}0594} = \\frac16$. Les faux positifs, issus d'une population saine très nombreuse, dominent."
   }
 ]

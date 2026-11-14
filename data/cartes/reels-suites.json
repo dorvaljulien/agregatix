@@ -620,5 +620,33 @@
       }
     ],
     "direction": "$(\\mathrm{Re}\\, z_n)$ est bornée : il existe $\\varphi$ avec $\\mathrm{Re}\\, z_{\\varphi(n)} \\to a$. Puis $(\\mathrm{Im}\\, z_{\\varphi(n)})$ est bornée : il existe $\\psi$ avec $\\mathrm{Im}\\, z_{\\varphi(\\psi(n))} \\to b$. La suite $(z_{\\varphi \\circ \\psi(n)})$ converge vers $a + ib$."
+  },
+  {
+    "id": "reels-suites-cours-01", "ch": "reels-suites", "type": "cours",
+    "titre": "Borne supérieure, suites monotones",
+    "enonce": "Toute partie non vide et majorée de $\\mathbb R$ admet une borne supérieure. $M = \\sup A$ si et seulement si $M$ majore $A$ et il existe une suite d'éléments de $A$ qui converge vers $M$. Toute suite croissante majorée converge vers sa borne supérieure. Bolzano-Weierstrass : toute suite réelle bornée admet une sous-suite convergente.",
+    "question": "Soit $A = \\left\\{\\frac{n}{n+1} - \\frac1m\\ :\\ n, m \\in \\mathbb N^*\\right\\}$. Alors :",
+    "choix": ["$\\sup A = 1$ n'est pas atteint, et $\\min A = -\\frac12$","$\\max A = 1$ et $\\min A = -\\frac12$","$\\sup A = 1$ et $\\inf A = -1$, aucun des deux n'étant atteint","$\\sup A = 1$ n'est pas atteint, et $\\inf A = 0$"],
+    "bonne": 0,
+    "explication": "Chaque élément est $< 1$, et $\\frac{n}{n+1} - \\frac1n \\to 1$ : $\\sup A = 1$, non atteint. À l'inverse $\\frac{n}{n+1} \\ge \\frac12$ et $\\frac1m \\le 1$ : le minimum $-\\frac12$ est atteint pour $n = m = 1$."
+  },
+  {
+    "id": "reels-suites-cours-02", "ch": "reels-suites", "type": "cours",
+    "titre": "Suites récurrentes $u_{n+1} = f(u_n)$",
+    "enonce": "**Méthode** : trouver un intervalle $I$ stable par $f$ contenant $u_0$. Si $f$ est croissante sur $I$, $(u_n)$ est monotone, de sens donné par le signe de $u_1 - u_0$. Si $f$ est décroissante, $(u_{2n})$ et $(u_{2n+1})$ sont monotones de sens contraires. Si $(u_n)$ converge vers $\\ell \\in I$ et si $f$ est continue en $\\ell$, alors $f(\\ell) = \\ell$.",
+    "figure": {"x":[-0.3,3],"y":[-0.3,3],"unites":false,"legende":"L'escalier entre la courbe de $f$ et la droite $y = x$.","el":[{"t":"f","e":"x","c":"d","tirets":true},{"t":"f","e":"sqrt(2+x)","de":-0.3},{"t":"seg","a":[1,0],"b":[1,1.732],"c":"m"},{"t":"seg","a":[1,1.732],"b":[1.732,1.732],"c":"m"},{"t":"seg","a":[1.732,1.732],"b":[1.732,1.932],"c":"m"},{"t":"seg","a":[1.732,1.932],"b":[1.932,1.932],"c":"m"},{"t":"pt","p":[1,0],"n":"u₀","pos":"se","c":"m"},{"t":"pt","p":[2,2],"n":"ℓ","pos":"se","c":"b"}]},
+    "question": "Soit $u_0 = 1$ et $u_{n+1} = \\sqrt{2 + u_n}$. La suite $(u_n)$ :",
+    "choix": ["est croissante et converge vers $2$","est croissante et tend vers $+\\infty$","est décroissante et converge vers $2$","n'est pas monotone, mais converge vers $2$"],
+    "bonne": 0,
+    "explication": "$[0, 2]$ est stable par $f : x \\mapsto \\sqrt{2 + x}$, qui est croissante, et $u_1 = \\sqrt3 > u_0$ : la suite croît, majorée par $2$. Sa limite vérifie $\\ell^2 = 2 + \\ell$ avec $\\ell \\ge 0$, donc $\\ell = 2$."
+  },
+  {
+    "id": "reels-suites-cours-03", "ch": "reels-suites", "type": "cours",
+    "titre": "Équivalents et croissances comparées",
+    "enonce": "$u_n \\sim v_n$ signifie $u_n - v_n = o(v_n)$. On multiplie et on divise des équivalents, mais on **ne les ajoute pas** et on ne les compose pas par $\\exp$ ; pour une puissance variable, passer au logarithme avec un développement limité. Croissances comparées : $(\\ln n)^a \\ll n^b \\ll c^n \\ll n! \\ll n^n$ pour $b > 0$, $c > 1$. Stirling : $n! \\sim \\sqrt{2\\pi n}\\left(\\frac ne\\right)^n$.",
+    "question": "La suite $u_n = \\left(1 + \\frac1n\\right)^{n^2} e^{-n}$ a pour limite :",
+    "choix": ["$e^{-1/2}$","$1$","$0$","$e^{1/2}$"],
+    "bonne": 0,
+    "explication": "$\\ln u_n = n^2\\ln\\left(1 + \\frac1n\\right) - n = n^2\\left(\\frac1n - \\frac1{2n^2} + o\\left(\\frac1{n^2}\\right)\\right) - n \\to -\\frac12$. Répondre $1$, c'est composer l'équivalent $\\left(1 + \\frac1n\\right)^n \\sim e$ par la puissance $n$."
   }
 ]

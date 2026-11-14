@@ -620,5 +620,32 @@
       }
     ],
     "direction": "$\\Phi$ est $\\mathcal C^1$, de jacobien $r > 0$. Tout point de $\\Omega$ s'écrit de façon unique $(r\\cos\\theta, r\\sin\\theta)$ avec $r > 0$ et $\\theta \\in \\, ]-\\pi, \\pi[$ : $\\Phi$ est injective d'image $\\Omega$. La caractérisation des difféomorphismes conclut."
+  },
+  {
+    "id": "calcul-differentiel-cours-01", "ch": "calcul-differentiel", "type": "cours",
+    "titre": "Différentiabilité : la chaîne des implications",
+    "enonce": "$f$ est différentiable en $a$ si $f(a + h) = f(a) + \\mathrm df_a(h) + o(\\|h\\|)$ avec $\\mathrm df_a$ linéaire. Classe $\\mathcal C^1$ (dérivées partielles continues) $\\Rightarrow$ différentiable $\\Rightarrow$ continue et dérivable selon tout vecteur. **Aucune réciproque.** Méthode en un point délicat : majorer avec $|x|, |y| \\le \\|(x, y)\\|$, ou tester des chemins $y = \\lambda x$ pour nier la continuité.",
+    "question": "Soit $f(x, y) = \\frac{xy}{x^2 + y^2}$ si $(x, y) \\neq (0, 0)$ et $f(0, 0) = 0$. En $(0, 0)$, la fonction $f$ :",
+    "choix": ["admet des dérivées partielles, mais n'est pas continue","est continue, mais n'est pas différentiable","est différentiable","n'admet pas de dérivées partielles"],
+    "bonne": 0,
+    "explication": "$f(x, 0) = f(0, y) = 0$ : les deux dérivées partielles en $(0, 0)$ existent et sont nulles. Mais $f(x, x) = \\frac12$ ne tend pas vers $f(0, 0) = 0$ : $f$ n'est pas continue, donc pas différentiable."
+  },
+  {
+    "id": "calcul-differentiel-cours-02", "ch": "calcul-differentiel", "type": "cours",
+    "titre": "Règle de la chaîne",
+    "enonce": "$\\mathrm d(g \\circ f)_a = \\mathrm dg_{f(a)} \\circ \\mathrm df_a$ : les matrices jacobiennes se multiplient. Cas courant : pour $\\varphi(t) = f(x(t), y(t))$, $\\varphi'(t) = \\frac{\\partial f}{\\partial x}x'(t) + \\frac{\\partial f}{\\partial y}y'(t) = \\langle\\nabla f(\\gamma(t)), \\gamma'(t)\\rangle$. Conséquence : le gradient est orthogonal aux lignes de niveau.",
+    "question": "Soit $f$ de classe $\\mathcal C^1$ sur $\\mathbb R^2$ et $g(r, \\theta) = f(r\\cos\\theta, r\\sin\\theta)$. Alors $\\frac{\\partial g}{\\partial\\theta}$ vaut (dérivées de $f$ prises en $(r\\cos\\theta, r\\sin\\theta)$) :",
+    "choix": ["$-r\\sin\\theta\\,\\frac{\\partial f}{\\partial x} + r\\cos\\theta\\,\\frac{\\partial f}{\\partial y}$","$\\cos\\theta\\,\\frac{\\partial f}{\\partial x} + \\sin\\theta\\,\\frac{\\partial f}{\\partial y}$","$r\\sin\\theta\\,\\frac{\\partial f}{\\partial x} - r\\cos\\theta\\,\\frac{\\partial f}{\\partial y}$","$-\\sin\\theta\\,\\frac{\\partial f}{\\partial x} + \\cos\\theta\\,\\frac{\\partial f}{\\partial y}$"],
+    "bonne": 0,
+    "explication": "On dérive $x = r\\cos\\theta$ et $y = r\\sin\\theta$ par rapport à $\\theta$ : $-r\\sin\\theta$ et $r\\cos\\theta$. Le deuxième choix est $\\frac{\\partial g}{\\partial r}$ ; le dernier oublie le facteur $r$."
+  },
+  {
+    "id": "calcul-differentiel-cours-03", "ch": "calcul-differentiel", "type": "cours",
+    "titre": "Extrema : points critiques et dérivées secondes",
+    "enonce": "Sur un **ouvert**, un extremum local d'une fonction différentiable est un point critique. Pour $f$ de classe $\\mathcal C^2$ sur un ouvert de $\\mathbb R^2$, avec $r, s, t$ les dérivées secondes au point critique : si $rt - s^2 > 0$, extremum local (minimum si $r > 0$, maximum si $r < 0$) ; si $rt - s^2 < 0$, point col ; si $rt - s^2 = 0$, on ne peut pas conclure. Sur un compact, étudier aussi le bord.",
+    "question": "Soit $f(x, y) = x^3 + y^3 - 3xy$. Le point critique $(1, 1)$ est :",
+    "choix": ["un minimum local, qui n'est pas global","un minimum global","un point col","un maximum local"],
+    "bonne": 0,
+    "explication": "En $(1, 1)$ : $r = t = 6$ et $s = -3$, donc $rt - s^2 = 27 > 0$ avec $r > 0$ : minimum local. Il n'est pas global puisque $f(x, 0) = x^3 \\to -\\infty$. L'autre point critique, $(0, 0)$, est un col."
   }
 ]

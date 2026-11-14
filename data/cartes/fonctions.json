@@ -620,5 +620,33 @@
       }
     ],
     "direction": "$\\ln$ est concave sur $]0, +\\infty[$. Jensen avec les poids $\\frac1n$ donne $\\frac1n \\sum \\ln x_i \\le \\ln\\!\\left(\\frac1n \\sum x_i\\right)$. On compose par $\\exp$, croissante. Il faut vérifier que les poids sont positifs de somme $1$ : le jury le rappelle."
+  },
+  {
+    "id": "fonctions-cours-01", "ch": "fonctions", "type": "cours",
+    "titre": "Accroissements finis",
+    "enonce": "Égalité (fonction à valeurs **réelles**, continue sur $[a, b]$, dérivable sur $]a, b[$) : il existe $c \\in ]a, b[$ tel que $f(b) - f(a) = f'(c)(b - a)$. Inégalité (valable aussi à valeurs vectorielles) : si $\\|f'\\| \\le M$, alors $\\|f(b) - f(a)\\| \\le M|b - a|$. Limite de la dérivée : si $f$ est continue sur $I$, dérivable sur $I \\setminus \\{a\\}$ et si $f'(x) \\to \\ell$ en $a$, alors $f$ est dérivable en $a$ et $f'(a) = \\ell$.",
+    "question": "La plus petite constante $k$ telle que $|\\arctan x - \\arctan y| \\le k|x - y|$ pour tous réels $x, y$ est :",
+    "choix": ["$k = 1$","$k = \\frac\\pi2$","$k = \\frac12$","il n'existe pas de telle constante"],
+    "bonne": 0,
+    "explication": "$|\\arctan'(t)| = \\frac{1}{1 + t^2} \\le 1$, donc $k = 1$ convient par l'inégalité des accroissements finis. On ne peut pas faire mieux : $\\frac{\\arctan x}{x} \\to 1$ quand $x \\to 0$."
+  },
+  {
+    "id": "fonctions-cours-02", "ch": "fonctions", "type": "cours",
+    "titre": "Les trois formules de Taylor",
+    "enonce": "**Taylor-Young** ($f$ $n$ fois dérivable en $a$) : résultat local, pour les limites et les développements limités. **Reste intégral** ($f$ de classe $\\mathcal C^{n+1}$) : $f(b) = \\displaystyle\\sum_{k=0}^n\\frac{f^{(k)}(a)}{k!}(b-a)^k + \\int_a^b\\frac{(b-t)^n}{n!}f^{(n+1)}(t)\\,\\mathrm dt$, résultat global et exact. **Taylor-Lagrange** : le reste est majoré par $\\frac{M|b-a|^{n+1}}{(n+1)!}$. Pour une inégalité valable sur tout un intervalle, jamais Taylor-Young.",
+    "question": "Quel encadrement est vrai pour tout $x \\ge 0$ ?",
+    "choix": ["$x - \\frac{x^3}{6} \\le \\sin x \\le x$","$x \\le \\sin x \\le x + \\frac{x^3}{6}$","$x - \\frac{x^2}{2} \\le \\sin x \\le x - \\frac{x^3}{6}$","$1 - \\frac{x^2}{2} \\le \\sin x \\le x$"],
+    "bonne": 0,
+    "explication": "Taylor-Lagrange à l'ordre $2$ en $0$ : $|\\sin x - x| \\le \\frac{x^3}{6}$ pour $x \\ge 0$, d'où la minoration ; et $\\sin x \\le x$ s'obtient en intégrant $\\cos t \\le 1$ sur $[0, x]$. Le deuxième choix inverse l'inégalité, le troisième a une majoration fausse près de $0$ (le terme suivant est $+\\frac{x^5}{120}$), le dernier est faux en $x = 0$."
+  },
+  {
+    "id": "fonctions-cours-03", "ch": "fonctions", "type": "cours",
+    "titre": "Convexité",
+    "enonce": "Une fonction convexe sur un intervalle a son graphe **sous ses cordes** et, si elle est dérivable, **au-dessus de ses tangentes**. Dérivable : convexe si et seulement si $f'$ est croissante ; deux fois dérivable : si et seulement si $f'' \\ge 0$. Jensen : $f\\left(\\sum\\lambda_ix_i\\right) \\le \\sum\\lambda_if(x_i)$ pour des $\\lambda_i \\ge 0$ de somme $1$. Beaucoup d'inégalités classiques sont une tangente ou une corde.",
+    "figure": {"x":[-2.2,1.7],"y":[-0.6,3.9],"h":0.8,"legende":"$\\exp$ est convexe : sous sa corde, au-dessus de sa tangente.","el":[{"t":"f","e":"exp(x)"},{"t":"droite","a":[0,1],"b":[1,2],"c":"m","tirets":true},{"t":"seg","a":[-1.5,0.2231],"b":[1.2,3.3201],"c":"b"},{"t":"pt","p":[0,1],"c":"m"},{"t":"pt","p":[-1.5,0.2231],"c":"b"},{"t":"pt","p":[1.2,3.3201],"c":"b"}]},
+    "question": "Quel encadrement est vrai pour tout $x \\in \\left[0, \\frac\\pi2\\right]$ ?",
+    "choix": ["$\\frac2\\pi x \\le \\sin x \\le x$","$\\sin x \\le \\frac2\\pi x \\le x$","$\\frac x2 \\le \\sin x \\le \\frac2\\pi x$","$x \\le \\sin x \\le \\frac\\pi2 x$"],
+    "bonne": 0,
+    "explication": "Sur $\\left[0, \\frac\\pi2\\right]$, $\\sin'' = -\\sin \\le 0$ : le sinus est concave, donc au-dessus de sa corde entre $0$ et $\\frac\\pi2$ (la droite $y = \\frac2\\pi x$) et sous sa tangente en $0$ (la droite $y = x$)."
   }
 ]

@@ -679,5 +679,32 @@
       }
     ],
     "direction": "$f(x) = f(0) + \\int_0^x f'$ et $f'$ est intégrable : $f$ a des limites finies en $\\pm\\infty$, nécessairement nulles puisque $f$ est intégrable. Sur $[-A, A]$, $\\int_{-A}^{A} f'(t)e^{-i\\xi t}\\,\\mathrm dt = \\left[f(t)e^{-i\\xi t}\\right]_{-A}^{A} + i\\xi\\int_{-A}^{A} f(t)e^{-i\\xi t}\\,\\mathrm dt$, et on fait tendre $A$ vers $+\\infty$."
+  },
+  {
+    "id": "integration-cours-01", "ch": "integration", "type": "cours",
+    "titre": "Intégrales de référence",
+    "enonce": "$\\displaystyle\\int_1^{+\\infty}\\frac{\\mathrm dt}{t^\\alpha}$ converge si et seulement si $\\alpha > 1$ ; $\\displaystyle\\int_0^1\\frac{\\mathrm dt}{t^\\alpha}$ si et seulement si $\\alpha < 1$. Pour une fonction **positive**, on conclut par comparaison ($\\le$, $O$, $\\sim$) avec ces références. **Méthode** : étudier chaque borne impropre séparément ; l'intégrale converge quand elle converge en chacune.",
+    "question": "L'intégrale $\\displaystyle\\int_0^{+\\infty}\\frac{\\mathrm dt}{t^\\alpha(1 + t)}$ converge si et seulement si :",
+    "choix": ["$0 < \\alpha < 1$","$\\alpha < 1$","$\\alpha > 0$","$\\alpha > 1$"],
+    "bonne": 0,
+    "explication": "En $0$, la fonction est équivalente à $\\frac1{t^\\alpha}$ : il faut $\\alpha < 1$. En $+\\infty$, à $\\frac{1}{t^{\\alpha + 1}}$ : il faut $\\alpha + 1 > 1$. Les deux conditions ensemble donnent $0 < \\alpha < 1$."
+  },
+  {
+    "id": "integration-cours-02", "ch": "integration", "type": "cours",
+    "titre": "Convergence dominée",
+    "enonce": "Si $(f_n)$ converge simplement vers $f$ sur $I$ (fonctions continues par morceaux) et s'il existe $\\varphi$ intégrable sur $I$, **indépendante de $n$**, telle que $|f_n| \\le \\varphi$ pour tout $n$, alors $\\displaystyle\\int_I f_n \\to \\int_I f$. La convergence uniforme n'est pas nécessaire ; sur un intervalle non borné, elle ne suffit d'ailleurs pas.",
+    "question": "La limite de $I_n = \\displaystyle\\int_0^n\\left(1 - \\frac tn\\right)^n e^{t/2}\\,\\mathrm dt$ est :",
+    "choix": ["$2$","$1$","$+\\infty$","$\\frac12$"],
+    "bonne": 0,
+    "explication": "On pose $f_n(t) = \\left(1 - \\frac tn\\right)^n e^{t/2}$ sur $[0, n]$ et $0$ au-delà. Alors $f_n(t) \\to e^{-t/2}$, et $\\ln(1 - u) \\le -u$ donne $0 \\le f_n(t) \\le e^{-t}e^{t/2} = e^{-t/2}$, intégrable sur $[0, +\\infty[$. Donc $I_n \\to \\int_0^{+\\infty}e^{-t/2}\\,\\mathrm dt = 2$."
+  },
+  {
+    "id": "integration-cours-03", "ch": "integration", "type": "cours",
+    "titre": "Dériver une intégrale à paramètre",
+    "enonce": "Soit $F(x) = \\displaystyle\\int_I f(x, t)\\,\\mathrm dt$. Si $f(x, \\cdot)$ est intégrable pour tout $x$, si $f(\\cdot, t)$ est de classe $\\mathcal C^1$ sur $J$ et si $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| \\le \\varphi(t)$ avec $\\varphi$ intégrable, alors $F$ est $\\mathcal C^1$ et $F'(x) = \\displaystyle\\int_I\\frac{\\partial f}{\\partial x}(x, t)\\,\\mathrm dt$. La **domination sur tout segment** de $J$ suffit : la dérivabilité est une propriété locale.",
+    "question": "Pour montrer que $F(x) = \\displaystyle\\int_0^{+\\infty}\\frac{e^{-xt}}{1 + t^2}\\,\\mathrm dt$ est $\\mathcal C^1$ sur $]0, +\\infty[$, on domine $\\left|\\frac{\\partial f}{\\partial x}(x, t)\\right| = \\frac{t\\,e^{-xt}}{1 + t^2}$ par :",
+    "choix": ["$\\frac{t\\,e^{-at}}{1 + t^2}$ pour $x \\ge a$, où $a > 0$ est quelconque","$\\frac{t}{1 + t^2}$ pour tout $x > 0$","$\\frac{1}{1 + t^2}$ pour tout $x > 0$","$t\\,e^{-xt}$, qui est intégrable pour chaque $x > 0$"],
+    "bonne": 0,
+    "explication": "Sur $[a, +\\infty[$, $e^{-xt} \\le e^{-at}$ et le majorant est intégrable ; tout $x > 0$ est dans un tel intervalle. $\\frac{t}{1 + t^2}$ n'est pas intégrable, $\\frac1{1 + t^2}$ ne majore pas pour $x$ petit, et $t\\,e^{-xt}$ dépend de $x$."
   }
 ]

@@ -487,5 +487,32 @@
       }
     ],
     "direction": "Analyse : $x = y = 0$ donne $f(0)^2 = f(0)$. Avec $y = 0$ : $f(0)\\,(f(x) - 1) = x$ pour tout $x$, ce qui exclut $f(0) = 0$ ; donc $f(0) = 1$ et $f(x) = x + 1$. Synthèse : $(x+1)(y+1) - (xy + 1) = x + y$. Une seule solution, $x \\mapsto x + 1$."
+  },
+  {
+    "id": "logique-ensembles-cours-01", "ch": "logique-ensembles", "type": "cours",
+    "titre": "Quantificateurs et négation",
+    "enonce": "Nier une phrase quantifiée : échanger $\\forall$ et $\\exists$, puis nier la propriété finale. La négation de $P \\Rightarrow Q$ est « $P$ et non $Q$ ». L'ordre de deux quantificateurs différents compte : dans $\\forall x\\ \\exists y$, le $y$ dépend de $x$. La contraposée « non $Q \\Rightarrow$ non $P$ » équivaut à $P \\Rightarrow Q$ ; la réciproque $Q \\Rightarrow P$, non.",
+    "question": "La négation de « $f$ est uniformément continue sur $I$ » s'écrit :",
+    "choix": ["$\\exists\\varepsilon > 0$, $\\forall\\eta > 0$, $\\exists(x, y) \\in I^2$ : $|x - y| \\le \\eta$ et $|f(x) - f(y)| > \\varepsilon$","$\\forall\\varepsilon > 0$, $\\exists\\eta > 0$, $\\exists(x, y) \\in I^2$ : $|x - y| \\le \\eta$ et $|f(x) - f(y)| > \\varepsilon$","$\\exists\\varepsilon > 0$, $\\forall\\eta > 0$, $\\exists(x, y) \\in I^2$ : $|x - y| \\le \\eta \\Rightarrow |f(x) - f(y)| > \\varepsilon$","$\\exists\\varepsilon > 0$, $\\forall\\eta > 0$, $\\forall(x, y) \\in I^2$ : $|x - y| \\le \\eta$ et $|f(x) - f(y)| > \\varepsilon$"],
+    "bonne": 0,
+    "explication": "On part de $\\forall\\varepsilon\\ \\exists\\eta\\ \\forall(x, y)$ : $|x - y| \\le \\eta \\Rightarrow |f(x) - f(y)| \\le \\varepsilon$. Les trois quantificateurs s'échangent et l'implication devient un « et ». En pratique : deux suites $(x_n)$, $(y_n)$ avec $x_n - y_n \\to 0$ et $|f(x_n) - f(y_n)| > \\varepsilon$."
+  },
+  {
+    "id": "logique-ensembles-cours-02", "ch": "logique-ensembles", "type": "cours",
+    "titre": "Injections, surjections, dénombrement",
+    "enonce": "Entre deux ensembles finis de même cardinal : injective $\\iff$ surjective $\\iff$ bijective. Si $g \\circ f$ est injective, $f$ l'est ; si $g \\circ f$ est surjective, $g$ l'est. D'un ensemble à $p$ éléments vers un ensemble à $n$ éléments : $n^p$ applications, $\\frac{n!}{(n-p)!}$ injections. Un ensemble à $n$ éléments a $2^n$ parties, dont $\\binom np$ à $p$ éléments.",
+    "question": "Le nombre de surjections d'un ensemble à $4$ éléments sur un ensemble à $3$ éléments est :",
+    "choix": ["$36$","$24$","$81$","$64$"],
+    "bonne": 0,
+    "explication": "Une telle surjection envoie exactement deux éléments sur une même image : $\\binom42 = 6$ choix de la paire, puis $3! = 6$ façons d'attribuer les images, soit $36$. Par le crible : $3^4 - 3 \\times 2^4 + 3 = 36$."
+  },
+  {
+    "id": "logique-ensembles-cours-03", "ch": "logique-ensembles", "type": "cours",
+    "titre": "Relations d'équivalence et lemme des bergers",
+    "enonce": "Une relation d'équivalence est réflexive, symétrique et transitive ; ses classes forment une partition. **Lemme des bergers** : si toutes les classes ont le même cardinal $k$, il y a $\\frac{|E|}{k}$ classes. Méthode de dénombrement : compter des objets ordonnés, puis diviser par le nombre d'ordres qui donnent le même objet.",
+    "question": "Le nombre de façons de répartir $6$ personnes en $3$ équipes de $2$, les équipes n'étant pas numérotées, est :",
+    "choix": ["$15$","$90$","$45$","$20$"],
+    "bonne": 0,
+    "explication": "On range les $6$ personnes en ligne ($6!$ façons) et on groupe par deux : chaque répartition est obtenue $2!^3 \\times 3!$ fois (ordre dans chaque équipe, ordre des équipes). D'où $\\frac{720}{48} = 15$. La valeur $90$ correspond à des équipes numérotées."
   }
 ]

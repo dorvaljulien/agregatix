@@ -562,5 +562,34 @@
       }
     ],
     "direction": "Par le lemme de Cesàro, $\\sigma_n(f)(x_0) \\to s$. Par Fejér, $\\sigma_n(f)(x_0) \\to f(x_0)$. Par unicité de la limite, $s = f(x_0)$."
+  },
+  {
+    "id": "fourier-cours-01", "ch": "fourier", "type": "cours",
+    "titre": "Coefficients et formule de Parseval",
+    "enonce": "Pour $f$ $2\\pi$-périodique continue par morceaux : $c_n(f) = \\frac{1}{2\\pi}\\displaystyle\\int_0^{2\\pi}f(t)e^{-int}\\,\\mathrm dt$. Parseval : $\\displaystyle\\sum_{n \\in \\mathbb Z}|c_n|^2 = \\frac{1}{2\\pi}\\int_0^{2\\pi}|f|^2$. Avec $a_n = \\frac1\\pi\\int_0^{2\\pi}f(t)\\cos(nt)\\,\\mathrm dt$ et $b_n = \\frac1\\pi\\int_0^{2\\pi}f(t)\\sin(nt)\\,\\mathrm dt$, pour $f$ réelle : $\\frac{a_0^2}{4} + \\frac12\\displaystyle\\sum_{n \\ge 1}(a_n^2 + b_n^2) = \\frac{1}{2\\pi}\\int_0^{2\\pi}f^2$.",
+    "figure": {"x":[-7,7],"y":[-4,4],"unites":false,"legende":"La fonction $f$ : des dents de scie, discontinues en $\\pi + 2k\\pi$.","el":[{"t":"seg","a":[-3.1416,-3.1416],"b":[3.1416,3.1416]},{"t":"seg","a":[3.1416,-3.1416],"b":[9.4248,3.1416]},{"t":"seg","a":[-9.4248,-3.1416],"b":[-3.1416,3.1416]},{"t":"seg","a":[3.1416,-3.1416],"b":[3.1416,3.1416],"c":"d","tirets":true},{"t":"seg","a":[-3.1416,-3.1416],"b":[-3.1416,3.1416],"c":"d","tirets":true},{"t":"txt","p":[3.1416,0],"s":"π","pos":"se"},{"t":"txt","p":[-3.1416,0],"s":"−π","pos":"so"}]},
+    "question": "Soit $f$ $2\\pi$-périodique telle que $f(t) = t$ sur $]-\\pi, \\pi[$ : on a $a_n = 0$ et $b_n = \\frac{2(-1)^{n+1}}{n}$. La formule de Parseval donne :",
+    "choix": ["$\\displaystyle\\sum_{n \\ge 1}\\frac1{n^2} = \\frac{\\pi^2}{6}$","$\\displaystyle\\sum_{n \\ge 1}\\frac1{n^2} = \\frac{\\pi^2}{3}$","$\\displaystyle\\sum_{n \\ge 1}\\frac1{n^2} = \\frac{\\pi^2}{12}$","$\\displaystyle\\sum_{n \\ge 1}\\frac1{n^4} = \\frac{\\pi^4}{90}$"],
+    "bonne": 0,
+    "explication": "$\\frac12\\sum\\frac{4}{n^2} = \\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}t^2\\,\\mathrm dt = \\frac{\\pi^2}{3}$, d'où $\\sum\\frac{1}{n^2} = \\frac{\\pi^2}{6}$. Pour $\\sum\\frac1{n^4}$, il faudrait des coefficients en $\\frac1{n^2}$, par exemple ceux de $t^2$."
+  },
+  {
+    "id": "fourier-cours-02", "ch": "fourier", "type": "cours",
+    "titre": "Théorème de Dirichlet",
+    "enonce": "Si $f$ est $2\\pi$-périodique et de classe $\\mathcal C^1$ **par morceaux**, sa série de Fourier converge en tout point $x$ vers $\\frac{f(x^+) + f(x^-)}{2}$. Si de plus $f$ est continue, la série de Fourier converge normalement vers $f$ sur $\\mathbb R$.",
+    "figure": {"x":[-0.5,6.8],"y":[-0.35,1.45],"h":0.5,"unites":false,"legende":"Un créneau et une somme partielle de sa série de Fourier : au saut, elle passe par la demi-somme.","el":[{"t":"seg","a":[0,1],"b":[3.1416,1],"c":"d"},{"t":"seg","a":[3.1416,0],"b":[6.2832,0],"c":"d"},{"t":"seg","a":[3.1416,0],"b":[3.1416,1],"c":"d","tirets":true},{"t":"f","e":"0.5+2/PI*(sin(x)+sin(3*x)/3+sin(5*x)/5+sin(7*x)/7+sin(9*x)/9)","de":0,"a":6.2832},{"t":"pt","p":[3.1416,0.5],"c":"m"},{"t":"txt","p":[3.1416,0],"s":"π","pos":"s"}]},
+    "question": "Soit $f$ $2\\pi$-périodique telle que $f(t) = e^t$ pour $t \\in [0, 2\\pi[$. En $x = 0$, sa série de Fourier converge vers :",
+    "choix": ["$\\dfrac{1 + e^{2\\pi}}{2}$","$1$","$e^{2\\pi}$","elle diverge en $0$"],
+    "bonne": 0,
+    "explication": "$f$ est $\\mathcal C^1$ par morceaux, avec $f(0^+) = 1$ et, par périodicité, $f(0^-) = \\lim_{t \\to 2\\pi^-}e^t = e^{2\\pi}$. La série converge vers la demi-somme, qui n'est pas $f(0)$."
+  },
+  {
+    "id": "fourier-cours-03", "ch": "fourier", "type": "cours",
+    "titre": "Régularité et décroissance des coefficients",
+    "enonce": "Si $f$ est continue et $\\mathcal C^1$ par morceaux : $c_n(f') = in\\,c_n(f)$. Par récurrence, si $f$ est de classe $\\mathcal C^k$, alors $c_n(f) = o\\left(\\frac{1}{|n|^k}\\right)$. Riemann-Lebesgue : $c_n(f) \\to 0$ pour toute $f$ continue par morceaux. Deux fonctions continues qui ont les mêmes coefficients de Fourier sont égales.",
+    "question": "Soit $f$ $2\\pi$-périodique, continue, $\\mathcal C^1$ par morceaux, d'intégrale nulle sur une période. Alors :",
+    "choix": ["$\\displaystyle\\int_0^{2\\pi}|f|^2 \\le \\int_0^{2\\pi}|f'|^2$","$\\displaystyle\\int_0^{2\\pi}|f'|^2 \\le \\int_0^{2\\pi}|f|^2$","$\\displaystyle\\int_0^{2\\pi}|f|^2 = \\int_0^{2\\pi}|f'|^2$","$\\displaystyle\\int_0^{2\\pi}|f|^2 \\le \\frac12\\int_0^{2\\pi}|f'|^2$"],
+    "bonne": 0,
+    "explication": "Par Parseval, $\\frac1{2\\pi}\\int|f|^2 = \\sum_{n \\neq 0}|c_n|^2$ (car $c_0 = 0$) et $\\frac1{2\\pi}\\int|f'|^2 = \\sum n^2|c_n|^2$. Comme $n^2 \\ge 1$ pour $n \\neq 0$, on obtient l'inégalité de Wirtinger ; il y a égalité pour $f = \\sin$, ce qui exclut le facteur $\\frac12$."
   }
 ]

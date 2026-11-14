@@ -1,6 +1,6 @@
 /* Hors ligne : on sert le cache tout de suite et on le rafraîchit en arrière-plan.
    Une mise à jour publiée apparaît donc au deuxième lancement de l'appli. */
-const CACHE = 'agregatix-v1';
+const CACHE = 'agregatix-v2';
 const SOCLE = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
   'vendor/katex/katex.min.js', 'vendor/katex/katex.min.css', 'data/index.json', 'icons/icon-192.png'];
 

@@ -618,5 +618,33 @@
       }
     ],
     "direction": "Pour $x \\ge 2$, $\\frac1{n^x} \\le \\frac1{n^2}$ : convergence normale sur $[2, +\\infty[$. La double limite donne $\\lim_{x \\to +\\infty} \\zeta(x) = 1 + 0 + 0 + \\cdots = 1$. Ou plus directement, $1 \\le \\zeta(x) \\le 1 + \\frac{1}{x-1}$."
+  },
+  {
+    "id": "suites-series-fonctions-cours-01", "ch": "suites-series-fonctions", "type": "cours",
+    "titre": "Convergence uniforme",
+    "enonce": "$(f_n)$ converge uniformément vers $f$ sur $A$ si et seulement si $\\sup_A|f_n - f| \\to 0$. **Méthode** : calculer ou majorer ce sup (étude de fonction, majoration indépendante de $x$). Pour nier : trouver $(x_n)$ telle que $f_n(x_n) - f(x_n)$ ne tend pas vers $0$. Une limite uniforme de fonctions continues est continue.",
+    "figure": {"x":[-0.12,1.2],"y":[-0.12,1.2],"legende":"$x^n$ pour $n = 1, 2, 5, 20$ : limite simple discontinue en $1$, donc pas de convergence uniforme.","el":[{"t":"f","e":"x","de":0,"a":1,"c":"d"},{"t":"f","e":"pow(x,2)","de":0,"a":1,"c":"b"},{"t":"f","e":"pow(x,5)","de":0,"a":1,"c":"m"},{"t":"f","e":"pow(x,20)","de":0,"a":1},{"t":"pt","p":[1,1]}]},
+    "question": "Sur $[0, 1]$, la suite de fonctions $f_n(x) = x^n(1 - x)$ :",
+    "choix": ["converge uniformément vers $0$, car $\\|f_n\\|_\\infty \\le \\frac{1}{n+1}$","converge simplement vers $0$, mais pas uniformément","ne converge pas simplement en $x = 1$","converge uniformément vers une fonction discontinue"],
+    "bonne": 0,
+    "explication": "$f_n$ est maximale en $\\frac{n}{n+1}$, où elle vaut $\\left(\\frac{n}{n+1}\\right)^n\\frac{1}{n+1} \\le \\frac{1}{n+1}$. Le facteur $(1 - x)$ écrase la bosse près de $1$, là où $x^n$ seul pose problème."
+  },
+  {
+    "id": "suites-series-fonctions-cours-02", "ch": "suites-series-fonctions", "type": "cours",
+    "titre": "Convergence normale",
+    "enonce": "$\\sum f_n$ converge normalement sur $A$ si la série numérique $\\sum\\|f_n\\|_{\\infty, A}$ converge. Normale $\\Rightarrow$ uniforme $\\Rightarrow$ simple, et normale $\\Rightarrow$ absolue en tout point ; aucune réciproque. Sans convergence normale, pour une série alternée : majorer le reste uniformément grâce à $|R_n(x)| \\le |f_{n+1}(x)|$.",
+    "question": "Sur $[0, +\\infty[$, la série de fonctions $\\displaystyle\\sum_{n \\ge 1}\\frac{(-1)^n}{n + x}$ :",
+    "choix": ["converge uniformément, mais pas normalement","converge normalement","converge simplement, mais pas uniformément","diverge en $x = 0$"],
+    "bonne": 0,
+    "explication": "$\\sup_{x \\ge 0}\\frac{1}{n + x} = \\frac1n$ : pas de convergence normale. Mais à $x$ fixé la série est alternée, de terme décroissant vers $0$, donc $|R_n(x)| \\le \\frac{1}{n + 1 + x} \\le \\frac{1}{n+1}$ : le reste tend vers $0$ uniformément."
+  },
+  {
+    "id": "suites-series-fonctions-cours-03", "ch": "suites-series-fonctions", "type": "cours",
+    "titre": "Intégrer et dériver terme à terme",
+    "enonce": "**Intégration sur un segment** : si les $f_n$ sont continues et si $\\sum f_n$ converge uniformément sur $[a, b]$, alors $\\displaystyle\\int_a^b\\sum f_n = \\sum\\int_a^bf_n$. **Dérivation** : si les $f_n$ sont $\\mathcal C^1$, si $\\sum f_n$ converge simplement et si $\\sum f_n'$ converge uniformément sur tout segment, la somme est $\\mathcal C^1$ et se dérive terme à terme. **Intervalle quelconque** : intégration terme à terme si $\\sum\\int_I|f_n| < +\\infty$.",
+    "question": "Pour dériver terme à terme $S(x) = \\displaystyle\\sum_{n \\ge 1}\\frac{\\sin(nx)}{n^3}$ sur $\\mathbb R$, l'hypothèse décisive est :",
+    "choix": ["la convergence normale de $\\sum\\frac{\\cos(nx)}{n^2}$ sur $\\mathbb R$","la convergence normale de $\\sum\\frac{\\sin(nx)}{n^3}$ sur $\\mathbb R$","la continuité de chaque terme","la convergence simple de $\\sum\\frac{\\cos(nx)}{n^2}$"],
+    "bonne": 0,
+    "explication": "C'est la série **des dérivées** qui doit converger uniformément : ici $\\left|\\frac{\\cos(nx)}{n^2}\\right| \\le \\frac{1}{n^2}$. Pour la série elle-même, la convergence simple suffit."
   }
 ]

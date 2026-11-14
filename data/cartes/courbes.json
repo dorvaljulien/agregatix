@@ -24,7 +24,7 @@
     "explication": "Contre-exemple : $f(t) = (t, t^4)$ en $0$. On a $f'(0) = (1, 0)$ et $f''(0) = 0$, colinéaires, mais la courbe $y = x^4$ reste au-dessus de sa tangente. Ici $p = 1$ et le premier vecteur dérivé non colinéaire est $f^{(4)}(0)$ : $q = 4$ est pair, le point est d'allure ordinaire. Il y a inflexion quand $q$ est impair."
   },
   {
-    "id": "courbes-vf-05", "ch": "courbes", "type": "vf",
+    "id": "courbes-vf-05", "figure": {"x":[-1.35,1.35],"y":[-1.35,1.35],"el":[{"t":"param","x":"pow(cos(t),3)","y":"pow(sin(t),3)","de":0,"a":6.2832}]}, "ch": "courbes", "type": "vf",
     "enonce": "La longueur de l'astroïde $f(t) = (\\cos^3 t, \\sin^3 t)$, $t \\in [0, 2\\pi]$, vaut $6$.",
     "reponse": true,
     "explication": "$f'(t) = 3\\sin t\\cos t\\,(-\\cos t, \\sin t)$, donc $\\|f'(t)\\| = 3|\\sin t\\cos t|$. Par symétrie, $L = 4\\displaystyle\\int_0^{\\pi/2} 3\\sin t\\cos t\\,\\mathrm dt = 4 \\cdot \\frac32 = 6$. Attention à la valeur absolue : sans elle, l'intégrale sur $[0, 2\\pi]$ est nulle."
@@ -102,7 +102,7 @@
     "explication": "$\\gamma = \\frac{\\det(f', f'')}{\\|f'\\|^3}$. Contrôle sur le cercle $(R\\cos t, R\\sin t)$ : $\\det(f', f'') = R^2$ et $\\|f'\\|^3 = R^3$, d'où $\\frac1R$. Le deuxième choix donne $1$, le troisième $\\frac1R$ seulement parce que la vitesse est constante, le quatrième ($\\langle f', f''\\rangle$) mesure la variation de la vitesse et vaut $0$."
   },
   {
-    "id": "courbes-qcm-04", "ch": "courbes", "type": "qcm",
+    "id": "courbes-qcm-04", "figure": {"x":[-0.9,2.5],"y":[-1.7,1.7],"legende":"La cardioïde, pour $a = 1$.","el":[{"t":"polaire","r":"1+cos(t)","de":-3.1416,"a":3.1416}]}, "ch": "courbes", "type": "qcm",
     "enonce": "Soit $a > 0$. La longueur totale de la cardioïde d'équation polaire $\\rho = a(1 + \\cos\\theta)$, $\\theta \\in [-\\pi, \\pi]$, vaut :",
     "choix": [
       "$8a$",
@@ -114,7 +114,7 @@
     "explication": "$\\rho^2 + \\rho'^2 = 2a^2(1 + \\cos\\theta) = 4a^2\\cos^2\\frac\\theta2$, et $\\cos\\frac\\theta2 \\ge 0$ sur $[-\\pi, \\pi]$. Donc $L = \\displaystyle\\int_{-\\pi}^{\\pi} 2a\\cos\\frac\\theta2\\,\\mathrm d\\theta = 8a$."
   },
   {
-    "id": "courbes-qcm-05", "ch": "courbes", "type": "qcm",
+    "id": "courbes-qcm-05", "figure": {"x":[-0.5,6.8],"y":[-0.5,2.6],"unites":false,"legende":"Une arche de cycloïde, pour $R = 1$.","el":[{"t":"param","x":"t-sin(t)","y":"1-cos(t)","de":0,"a":6.2832}]}, "ch": "courbes", "type": "qcm",
     "enonce": "Soit $R > 0$ et la cycloïde $x = R(t - \\sin t)$, $y = R(1 - \\cos t)$. Le rayon de courbure au sommet de l'arche ($t = \\pi$) vaut :",
     "choix": [
       "$4R$",
@@ -126,7 +126,7 @@
     "explication": "$\\|f'(t)\\| = 2R\\sin\\frac t2$ sur $]0, 2\\pi[$ et $\\det(f', f'') = R^2(\\cos t - 1) = -2R^2\\sin^2\\frac t2$. Donc $|\\gamma| = \\frac{1}{4R\\sin(t/2)}$ et le rayon de courbure vaut $4R\\sin\\frac t2$, soit $4R$ au sommet. Ce n'est pas le rayon $R$ du cercle qui roule."
   },
   {
-    "id": "courbes-qcm-06", "ch": "courbes", "type": "qcm",
+    "id": "courbes-qcm-06", "figure": {"x":[-0.5,1.5],"y":[-0.35,1.4],"axes":false,"legende":"Le polygone de contrôle.","el":[{"t":"seg","a":[0,0],"b":[0,1],"c":"d","tirets":true},{"t":"seg","a":[0,1],"b":[1,1],"c":"d","tirets":true},{"t":"seg","a":[1,1],"b":[1,0],"c":"d","tirets":true},{"t":"pt","p":[0,0],"n":"P₀","pos":"so"},{"t":"pt","p":[0,1],"n":"P₁","pos":"no"},{"t":"pt","p":[1,1],"n":"P₂","pos":"ne"},{"t":"pt","p":[1,0],"n":"P₃","pos":"se"}]}, "ch": "courbes", "type": "qcm",
     "enonce": "Soit la courbe de Bézier de points de contrôle $P_0 = (0,0)$, $P_1 = (0,1)$, $P_2 = (1,1)$, $P_3 = (1,0)$. Le point de paramètre $t = \\frac12$, obtenu par l'algorithme de De Casteljau, est :",
     "choix": [
       "$\\left(\\frac12, \\frac34\\right)$",
@@ -196,7 +196,7 @@
     "explication": "Ce sont des degrés **distincts** qui donnent une famille libre (famille échelonnée). Contre-exemple : $(X, 2X)$. Il faut utiliser la valuation : $B_{k,n} = \\binom nk X^k + (\\text{termes de degré} > k)$, les valuations $0, 1, \\dots, n$ sont distinctes, donc la famille est libre. La conclusion est juste."
   },
   {
-    "id": "courbes-piste-01", "ch": "courbes", "type": "piste",
+    "id": "courbes-piste-01", "figure": {"quand":"apres","x":[-0.12,0.8],"y":[-0.12,0.8],"unites":false,"legende":"Les deux branches sont du même côté de la tangente $(Ox)$.","el":[{"t":"param","x":"t*t","y":"pow(t,4)+pow(t,5)","de":-0.88,"a":0},{"t":"param","x":"t*t","y":"pow(t,4)+pow(t,5)","de":0,"a":0.8,"c":"m"},{"t":"pt","p":[0,0],"c":"t"}]}, "ch": "courbes", "type": "piste",
     "enonce": "Soit $f(t) = (t^2, t^4 + t^5)$. Déterminer l'allure de la courbe au voisinage du point $M(0)$.",
     "choix": [
       {
@@ -227,7 +227,7 @@
     "direction": "$f''(0) = (2, 0)$, $f'''(0) = (0, 0)$, $f^{(4)}(0) = (0, 24)$ : $p = 2$, $q = 4$. Les deux sont pairs : rebroussement de seconde espèce, de tangente $(Ox)$. Les deux branches $y = x^2 \\pm x^{5/2}$ sont du même côté de la tangente."
   },
   {
-    "id": "courbes-piste-02", "ch": "courbes", "type": "piste",
+    "id": "courbes-piste-02", "figure": {"x":[-0.5,6.8],"y":[-0.5,2.6],"unites":false,"legende":"Une arche de cycloïde, pour $R = 1$.","el":[{"t":"param","x":"t-sin(t)","y":"1-cos(t)","de":0,"a":6.2832}]}, "ch": "courbes", "type": "piste",
     "enonce": "Soit $R > 0$. Calculer la longueur d'une arche de cycloïde : $x = R(t - \\sin t)$, $y = R(1 - \\cos t)$, $t \\in [0, 2\\pi]$.",
     "choix": [
       {
@@ -320,7 +320,7 @@
     "direction": "$\\tan V = \\frac{1 + \\cos\\theta}{-\\sin\\theta} = -\\cot\\frac\\theta2 = \\tan\\left(\\frac\\theta2 + \\frac\\pi2\\right)$, donc $V \\equiv \\frac\\theta2 + \\frac\\pi2 \\pmod \\pi$ (en $\\theta = 0$, $\\rho' = 0$ et $V = \\frac\\pi2$ directement). L'angle avec $(Ox)$ est $\\theta + V \\equiv \\frac{3\\theta}{2} + \\frac\\pi2 \\pmod\\pi$."
   },
   {
-    "id": "courbes-piste-05", "ch": "courbes", "type": "piste",
+    "id": "courbes-piste-05", "figure": {"quand":"apres","x":[-3,3],"y":[-3,3],"legende":"Le folium et son asymptote $x + y + 1 = 0$.","el":[{"t":"droite","a":[0,-1],"b":[-1,0],"c":"m","tirets":true},{"t":"param","x":"3*t/(1+t*t*t)","y":"3*t*t/(1+t*t*t)","de":-0.985,"a":12},{"t":"param","x":"3*t/(1+t*t*t)","y":"3*t*t/(1+t*t*t)","de":-40,"a":-1.015}]}, "ch": "courbes", "type": "piste",
     "enonce": "Soit le folium de Descartes $x(t) = \\dfrac{3t}{1 + t^3}$, $y(t) = \\dfrac{3t^2}{1 + t^3}$, $t \\ne -1$. Étudier la branche infinie quand $t \\to -1$.",
     "choix": [
       {
@@ -504,5 +504,34 @@
       }
     ],
     "direction": "$\\det(f', f'') = 2t \\cdot 6t - 2(3t^2 + 1) = 6t^2 - 2$, qui s'annule en changeant de signe en $t = \\pm\\frac1{\\sqrt3}$, points réguliers. Les points d'inflexion sont $\\left(\\frac13, \\pm\\frac{4\\sqrt3}{9}\\right)$."
+  },
+  {
+    "id": "courbes-cours-01", "ch": "courbes", "type": "cours",
+    "titre": "Tangente et points singuliers",
+    "enonce": "En un point régulier ($f'(t_0) \\neq 0$), la tangente est dirigée par $f'(t_0)$. En général, elle est dirigée par le premier vecteur dérivé non nul $f^{(p)}(t_0)$. Avec $q$ le premier ordre $> p$ tel que $f^{(q)}(t_0)$ ne soit pas colinéaire à $f^{(p)}(t_0)$ : $p$ impair, $q$ pair : point ordinaire ; $p$ impair, $q$ impair : inflexion ; $p$ pair, $q$ impair : rebroussement de première espèce ; $p$ pair, $q$ pair : de seconde espèce.",
+    "figure": {"x":[-0.9,1.9],"y":[-1.4,1.4],"legende":"$(t^2, t^3)$ : $p = 2$, $q = 3$, rebroussement de première espèce.","el":[{"t":"param","x":"t*t","y":"t*t*t","de":-1.15,"a":1.15},{"t":"pt","p":[0,0],"c":"m"}]},
+    "question": "L'arc $f(t) = (t^2 + t^3,\\ t^4)$ présente en $t = 0$ :",
+    "choix": ["un rebroussement de seconde espèce","un rebroussement de première espèce","un point d'inflexion","un point ordinaire"],
+    "bonne": 0,
+    "explication": "$f'(0) = 0$, $f''(0) = (2, 0)$ donc $p = 2$. Puis $f'''(0) = (6, 0)$ est colinéaire, et $f^{(4)}(0) = (0, 24)$ ne l'est pas : $q = 4$. Les deux sont pairs : les deux branches arrivent du même côté de la tangente."
+  },
+  {
+    "id": "courbes-cours-02", "ch": "courbes", "type": "cours",
+    "titre": "Longueur d'un arc",
+    "enonce": "La longueur d'un arc de classe $\\mathcal C^1$ est $L = \\displaystyle\\int_a^b\\|f'(t)\\|\\,\\mathrm dt$ ; elle ne dépend pas du paramétrage. En polaires, $\\|f'(\\theta)\\| = \\sqrt{\\rho^2 + \\rho'^2}$. L'abscisse curviligne vérifie $s' = \\|f'\\|$. **Piège** : $\\sqrt{u^2} = |u|$, garder la valeur absolue.",
+    "question": "La longueur de la spirale d'équation polaire $\\rho = e^\\theta$, $\\theta \\in [0, 2\\pi]$, vaut :",
+    "choix": ["$\\sqrt2\\,(e^{2\\pi} - 1)$","$e^{2\\pi} - 1$","$2(e^{2\\pi} - 1)$","$\\sqrt2\\,e^{2\\pi}$"],
+    "bonne": 0,
+    "explication": "$\\rho' = \\rho = e^\\theta$, donc $\\sqrt{\\rho^2 + \\rho'^2} = \\sqrt2\\,e^\\theta$ et $L = \\sqrt2\\int_0^{2\\pi}e^\\theta\\,\\mathrm d\\theta = \\sqrt2\\,(e^{2\\pi} - 1)$. Oublier $\\rho'^2$ donne $e^{2\\pi} - 1$."
+  },
+  {
+    "id": "courbes-cours-03", "ch": "courbes", "type": "cours",
+    "titre": "Courbure",
+    "enonce": "Pour un arc plan birégulier : $\\gamma = \\dfrac{\\det(f', f'')}{\\|f'\\|^3} = \\dfrac{x'y'' - y'x''}{(x'^2 + y'^2)^{3/2}}$, et le rayon de courbure est $R = \\frac1\\gamma$. Formules de Frenet : $\\frac{\\mathrm dT}{\\mathrm ds} = \\gamma N$, $\\frac{\\mathrm dN}{\\mathrm ds} = -\\gamma T$. Pour un graphe $y = g(x)$ : $\\gamma = \\frac{g''}{(1 + g'^2)^{3/2}}$. Un cercle de rayon $R$ a une courbure constante $\\pm\\frac1R$.",
+    "figure": {"x":[-2.3,2.3],"y":[-0.5,2.7],"unites":false,"legende":"La parabole $y = \\frac{x^2}{2}$ et son cercle osculateur au sommet.","el":[{"t":"f","e":"x*x/2"},{"t":"cercle","o":[0,1],"r":1,"c":"m"},{"t":"pt","p":[0,1],"c":"m"}]},
+    "question": "Le rayon de courbure de la parabole $y = x^2$ en son sommet vaut :",
+    "choix": ["$\\frac12$","$2$","$1$","$\\frac14$"],
+    "bonne": 0,
+    "explication": "$g'(0) = 0$ et $g''(0) = 2$, donc $\\gamma = 2$ et $R = \\frac12$. Le centre de courbure est $\\left(0, \\frac12\\right)$, à ne pas confondre avec le foyer $\\left(0, \\frac14\\right)$."
   }
 ]

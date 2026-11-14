@@ -607,5 +607,32 @@
       }
     ],
     "direction": "Année ordinaire : les décalages des 13 depuis janvier sont, modulo $7$, $0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5$, qui prennent les sept valeurs. Année bissextile : $0, 3, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6$, idem. Un des 13 tombe donc un vendredi."
+  },
+  {
+    "id": "arithmetique-cours-01", "ch": "arithmetique", "type": "cours",
+    "titre": "Bézout et Gauss",
+    "enonce": "$a \\wedge b = 1$ si et seulement s'il existe $(u, v) \\in \\mathbb Z^2$ tel que $au + bv = 1$. Lemme de Gauss : si $a \\mid bc$ et $a \\wedge b = 1$, alors $a \\mid c$. **Méthode** pour $ax + by = c$ : vérifier que $a \\wedge b$ divise $c$, trouver une solution particulière (Euclide étendu), puis obtenir toutes les autres par Gauss.",
+    "question": "L'ensemble des solutions $(x, y) \\in \\mathbb Z^2$ de $5x + 3y = 1$ est :",
+    "choix": ["$\\{(2 + 3k,\\ -3 - 5k),\\ k \\in \\mathbb Z\\}$","$\\{(2 + 5k,\\ -3 - 3k),\\ k \\in \\mathbb Z\\}$","$\\{(2 + 3k,\\ -3 + 5k),\\ k \\in \\mathbb Z\\}$","$\\{(2k,\\ -3k),\\ k \\in \\mathbb Z\\}$"],
+    "bonne": 0,
+    "explication": "$(2, -3)$ est solution. Si $(x, y)$ en est une autre, $5(x - 2) = -3(y + 3)$ ; comme $3 \\wedge 5 = 1$, Gauss donne $3 \\mid x - 2$, d'où $x = 2 + 3k$ puis $y = -3 - 5k$. On ajoute à $x$ un multiple du coefficient de $y$, et inversement, avec des signes opposés."
+  },
+  {
+    "id": "arithmetique-cours-02", "ch": "arithmetique", "type": "cours",
+    "titre": "Fermat et Euler",
+    "enonce": "Si $p$ est premier et ne divise pas $a$ : $a^{p-1} \\equiv 1 \\pmod p$. Plus généralement, si $a \\wedge n = 1$ : $a^{\\varphi(n)} \\equiv 1 \\pmod n$. **Méthode** : pour calculer $a^k$ modulo $p$, réduire l'exposant modulo $p - 1$.",
+    "question": "Le reste de la division de $3^{100}$ par $7$ est :",
+    "choix": ["$4$","$2$","$1$","$3$"],
+    "bonne": 0,
+    "explication": "$3^6 \\equiv 1 \\pmod 7$ et $100 = 6 \\times 16 + 4$, donc $3^{100} \\equiv 3^4 = 81 = 77 + 4 \\equiv 4 \\pmod 7$."
+  },
+  {
+    "id": "arithmetique-cours-03", "ch": "arithmetique", "type": "cours",
+    "titre": "Théorème chinois",
+    "enonce": "Si $m \\wedge n = 1$, l'application $x \\mapsto (x \\bmod m,\\ x \\bmod n)$ est un isomorphisme d'anneaux de $\\mathbb Z/mn\\mathbb Z$ sur $\\mathbb Z/m\\mathbb Z \\times \\mathbb Z/n\\mathbb Z$. Le système $x \\equiv a \\pmod m$, $x \\equiv b \\pmod n$ a donc une solution, unique modulo $mn$. **Méthode** : avec $mu + nv = 1$, $x_0 = a\\,nv + b\\,mu$ convient.",
+    "question": "Les entiers $x$ tels que $x \\equiv 2 \\pmod 3$ et $x \\equiv 3 \\pmod 5$ sont exactement ceux qui vérifient :",
+    "choix": ["$x \\equiv 8 \\pmod{15}$","$x \\equiv 13 \\pmod{15}$","$x \\equiv 11 \\pmod{15}$","$x \\equiv 8 \\pmod{30}$"],
+    "bonne": 0,
+    "explication": "$3 \\times 2 - 5 \\times 1 = 1$, donc $x_0 = 2 \\times (-5) + 3 \\times 6 = 8$ convient, et la solution est unique modulo $15$. Modulo $30$ on oublierait $23$, qui est aussi solution."
   }
 ]

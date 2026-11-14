@@ -42,7 +42,7 @@
     "explication": "Dans un repère orthonormé réduit, l'ellipse a pour équation $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ : c'est l'image du cercle $x^2 + y^2 = 1$ par $(x, y) \\mapsto (ax, by)$. C'est la base de la classification affine : deux ellipses sont toujours affinement équivalentes."
   },
   {
-    "id": "coniques-vf-08", "ch": "coniques", "type": "vf",
+    "id": "coniques-vf-08", "figure": {"x":[-2.7,2.7],"y":[-1.7,2.3],"axes":false,"el":[{"t":"param","x":"2*cos(t)","y":"1.2*sin(t)","de":0,"a":6.2832},{"t":"seg","a":[1.081,1.01],"b":[1.6,0],"c":"d","tirets":true},{"t":"seg","a":[1.081,1.01],"b":[-1.6,0],"c":"d","tirets":true},{"t":"droite","a":[1.081,1.01],"b":[-0.602,1.658],"c":"m"},{"t":"pt","p":[1.6,0],"n":"F","pos":"s","c":"t"},{"t":"pt","p":[-1.6,0],"n":"F'","pos":"s","c":"t"},{"t":"pt","p":[1.081,1.01],"n":"M","pos":"ne"}]}, "ch": "coniques", "type": "vf",
     "enonce": "Soit $E$ une ellipse de foyers $F \\neq F'$ et $M$ un point de $E$ hors de la droite $(FF')$. La tangente à $E$ en $M$ est la bissectrice extérieure de l'angle $\\widehat{FMF'}$.",
     "reponse": true,
     "explication": "$E$ est une ligne de niveau de $g(M) = MF + MF'$, dont le gradient $\\vec u + \\vec u'$ (somme des vecteurs unitaires dirigés de $F$ et $F'$ vers $M$) est non nul et dirige la bissectrice intérieure : c'est la normale. La tangente est donc la bissectrice extérieure (propriété de réflexion)."
@@ -198,7 +198,7 @@
     "explication": "Le résultat $\\alpha = \\frac\\pi4$ vaut pour un point d'impact au niveau du lancer. Avec l'impact à l'altitude $-h$, on résout $y = -h$ et l'optimum est $\\tan\\alpha = \\frac{v_0}{\\sqrt{v_0^2 + 2gh}} < 1$, soit $\\alpha < \\frac\\pi4$."
   },
   {
-    "id": "coniques-piste-01", "ch": "coniques", "type": "piste",
+    "id": "coniques-piste-01", "figure": {"quand":"apres","x":[-2.2,2.2],"y":[-2.2,2.2],"legende":"Grand axe sur $y = x$ (demi-axe $2$), petit axe sur $y = -x$ (demi-axe $1$).","el":[{"t":"f","e":"x","c":"d","tirets":true},{"t":"f","e":"-x","c":"d","tirets":true},{"t":"param","x":"1.4142*cos(t)-0.7071*sin(t)","y":"1.4142*cos(t)+0.7071*sin(t)","de":0,"a":6.2832}]}, "ch": "coniques", "type": "piste",
     "enonce": "Dans un repère orthonormé, soit $\\Gamma$ d'équation $5x^2 - 6xy + 5y^2 = 8$. Déterminer la nature de $\\Gamma$, ses axes et ses demi-axes.",
     "choix": [
       {
@@ -260,7 +260,7 @@
     "direction": "Avec $x = \\frac{X + Y}{\\sqrt2}$, $y = \\frac{X - Y}{\\sqrt2}$ (repère orthonormé), $(x + y)^2 = 2X^2$ et l'équation devient $2X^2 - 4X - 4Y = 0$, soit $(X - 1)^2 = 2\\left(Y + \\frac12\\right)$. Parabole de paramètre $p = 1$."
   },
   {
-    "id": "coniques-piste-03", "ch": "coniques", "type": "piste",
+    "id": "coniques-piste-03", "figure": {"x":[-1.3,3.6],"y":[-2.2,3.1],"axes":false,"el":[{"t":"param","x":"t*t/2","y":"t","de":-2.7,"a":2.7},{"t":"droite","a":[-0.5,0],"b":[-0.5,1],"c":"d"},{"t":"seg","a":[2,2],"b":[0.5,0],"c":"d","tirets":true},{"t":"seg","a":[2,2],"b":[-0.5,2],"c":"d","tirets":true},{"t":"seg","a":[0.5,0],"b":[-0.5,2],"c":"d","tirets":true},{"t":"droite","a":[2,2],"b":[0,1],"c":"m"},{"t":"pt","p":[0.5,0],"n":"F","pos":"se","c":"t"},{"t":"pt","p":[2,2],"n":"M","pos":"no"},{"t":"pt","p":[-0.5,2],"n":"H","pos":"no","c":"t"},{"t":"txt","p":[-0.5,-1.8],"s":"D","pos":"o"}]}, "ch": "coniques", "type": "piste",
     "enonce": "Soit $\\mathcal P$ une parabole de foyer $F$ et de directrice $D$, $M$ un point de $\\mathcal P$ et $H$ le projeté orthogonal de $M$ sur $D$. Montrer que la tangente à $\\mathcal P$ en $M$ est la médiatrice de $[FH]$.",
     "choix": [
       {
@@ -384,7 +384,7 @@
     "direction": "Pour $x > 0$, avec $k = \\frac{gx^2}{2v_0^2}$, le trinôme $kT^2 - xT + k + y$ a une racine réelle si et seulement si $y \\le \\frac{v_0^2}{2g} - \\frac{gx^2}{2v_0^2}$ ; le cas $x < 0$ est symétrique, $x = 0$ correspond au tir vertical. Zone atteignable : sous la « parabole de sûreté », de foyer $O$."
   },
   {
-    "id": "coniques-piste-07", "ch": "coniques", "type": "piste",
+    "id": "coniques-piste-07", "figure": {"quand":"apres","x":[-4,4],"y":[-4,4],"legende":"Axe focal $y = x$, foyers $(\\pm\\sqrt2, \\pm\\sqrt2)$, asymptotes : les axes.","el":[{"t":"f","e":"x","c":"d","tirets":true},{"t":"f","e":"1/x","de":0.2,"a":4},{"t":"f","e":"1/x","de":-4,"a":-0.2},{"t":"pt","p":[1.4142,1.4142],"n":"F","pos":"se","c":"m"},{"t":"pt","p":[-1.4142,-1.4142],"n":"F'","pos":"no","c":"m"}]}, "ch": "coniques", "type": "piste",
     "enonce": "Dans un repère orthonormé, montrer que la courbe $\\Gamma$ d'équation $xy = 1$ est une hyperbole ; déterminer son excentricité et ses foyers.",
     "choix": [
       {
@@ -446,7 +446,7 @@
     "direction": "$x^2 + y^2 = 1 + x + \\frac{x^2}4$ équivaut à $\\frac34\\left(x - \\frac23\\right)^2 + y^2 = \\frac43$ : ellipse. La section est donc une ellipse, ce que confirme le critère angulaire $\\beta > \\frac\\pi4$."
   },
   {
-    "id": "coniques-piste-09", "ch": "coniques", "type": "piste",
+    "id": "coniques-piste-09", "figure": {"x":[-2.7,2.9],"y":[-1.7,2.3],"axes":false,"el":[{"t":"param","x":"2*cos(t)","y":"1.2*sin(t)","de":0,"a":6.2832},{"t":"droite","a":[1.081,1.01],"b":[-0.602,1.658],"c":"d"},{"t":"seg","a":[1.6,0],"b":[1.872,0.705],"c":"d","tirets":true},{"t":"seg","a":[0,0],"b":[1.872,0.705],"c":"m"},{"t":"pt","p":[1.6,0],"n":"F","pos":"s","c":"t"},{"t":"pt","p":[-1.6,0],"n":"F'","pos":"s","c":"t"},{"t":"pt","p":[0,0],"n":"O","pos":"s","c":"t"},{"t":"pt","p":[1.081,1.01],"n":"M","pos":"n"},{"t":"pt","p":[1.872,0.705],"n":"H","pos":"e","c":"m"}]}, "ch": "coniques", "type": "piste",
     "enonce": "Soit $E$ une ellipse de foyers $F, F'$, de centre $O$ et de demi-grand axe $a$. Pour $M \\in E$, soit $H$ le projeté orthogonal de $F$ sur la tangente en $M$. Montrer que $OH = a$.",
     "choix": [
       {
@@ -506,5 +506,34 @@
       }
     ],
     "direction": "Ellipse si $|\\lambda| < 1$ (cercle pour $\\lambda = 0$) ; si $|\\lambda| = 1$, réunion des deux droites parallèles $x + \\lambda y = 1$ et $x + \\lambda y = -1$ ; hyperbole si $|\\lambda| > 1$. Jamais de parabole : sans terme du premier degré, $\\Gamma_\\lambda$ est symétrique par rapport à $O$, ce qu'une parabole n'est pas."
+  },
+  {
+    "id": "coniques-cours-01", "ch": "coniques", "type": "cours",
+    "titre": "Foyer, directrice, excentricité",
+    "enonce": "Pour un point $F$, une droite $D$ ne contenant pas $F$ et $e > 0$, l'ensemble des $M$ tels que $MF = e\\,d(M, D)$ est une ellipse si $e < 1$, une parabole si $e = 1$, une hyperbole si $e > 1$. Ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ avec $a > b$ : $c = \\sqrt{a^2 - b^2}$, $e = \\frac ca$, foyers $(\\pm c, 0)$, directrices $x = \\pm\\frac{a^2}{c}$.",
+    "figure": {"x":[-1.3,3.6],"y":[-2.4,2.9],"axes":false,"legende":"Parabole ($e = 1$) : $MF = MH$.","el":[{"t":"param","x":"t*t/2","y":"t","de":-2.7,"a":2.7},{"t":"droite","a":[-0.5,0],"b":[-0.5,1],"c":"d"},{"t":"seg","a":[2,2],"b":[0.5,0],"c":"m"},{"t":"seg","a":[2,2],"b":[-0.5,2],"c":"m"},{"t":"pt","p":[0.5,0],"n":"F","pos":"se","c":"t"},{"t":"pt","p":[2,2],"n":"M","pos":"no"},{"t":"pt","p":[-0.5,2],"n":"H","pos":"no","c":"t"},{"t":"txt","p":[-0.5,-2],"s":"D","pos":"o"}]},
+    "question": "L'excentricité de l'ellipse d'équation $\\frac{x^2}{25} + \\frac{y^2}{9} = 1$ est :",
+    "choix": ["$\\frac45$","$\\frac35$","$\\frac{16}{25}$","$\\frac54$"],
+    "bonne": 0,
+    "explication": "$a = 5$, $b = 3$, donc $c = \\sqrt{25 - 9} = 4$ et $e = \\frac ca = \\frac45$. La valeur $\\frac35$ est $\\frac ba$, et $\\frac54 > 1$ serait une hyperbole."
+  },
+  {
+    "id": "coniques-cours-02", "ch": "coniques", "type": "cours",
+    "titre": "Définition bifocale",
+    "enonce": "Ellipse de foyers $F, F'$ : $MF + MF' = 2a$, avec $2a > FF' = 2c$, et $b^2 = a^2 - c^2$. Hyperbole : $|MF - MF'| = 2a$, avec $0 < 2a < FF' = 2c$, et $b^2 = c^2 - a^2$ ; équation réduite $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$, asymptotes $y = \\pm\\frac bax$.",
+    "figure": {"x":[-2.7,2.7],"y":[-1.7,1.9],"axes":false,"legende":"Ellipse : $MF + MF' = 2a$.","el":[{"t":"param","x":"2*cos(t)","y":"1.2*sin(t)","de":0,"a":6.2832},{"t":"seg","a":[1.081,1.01],"b":[1.6,0],"c":"m"},{"t":"seg","a":[1.081,1.01],"b":[-1.6,0],"c":"m"},{"t":"pt","p":[1.6,0],"n":"F","pos":"s","c":"t"},{"t":"pt","p":[-1.6,0],"n":"F'","pos":"s","c":"t"},{"t":"pt","p":[1.081,1.01],"n":"M","pos":"ne"}]},
+    "question": "L'hyperbole de foyers $(\\pm 5, 0)$ formée des points $M$ tels que $|MF - MF'| = 6$ a pour équation :",
+    "choix": ["$\\frac{x^2}{9} - \\frac{y^2}{16} = 1$","$\\frac{x^2}{9} - \\frac{y^2}{25} = 1$","$\\frac{x^2}{16} - \\frac{y^2}{9} = 1$","$\\frac{x^2}{36} - \\frac{y^2}{25} = 1$"],
+    "bonne": 0,
+    "explication": "$2a = 6$ donne $a = 3$, et $c = 5$, donc $b^2 = c^2 - a^2 = 16$. Pour l'hyperbole, c'est $c$ le plus grand : $c^2 = a^2 + b^2$."
+  },
+  {
+    "id": "coniques-cours-03", "ch": "coniques", "type": "cours",
+    "titre": "Réduire une équation du second degré",
+    "enonce": "Pour $ax^2 + 2bxy + cy^2 + \\dots = 0$ en repère orthonormé, le signe de $ac - b^2$ donne le genre : $> 0$ ellipse, $= 0$ parabole, $< 0$ hyperbole, **sous réserve de non-dégénérescence** (vide, point, droites). Les axes sont dirigés par les vecteurs propres de $\\begin{pmatrix} a & b \\\\ b & c \\end{pmatrix}$ ; dans une base orthonormée propre, une conique à centre s'écrit $\\lambda X^2 + \\mu Y^2 = k$.",
+    "question": "Dans un repère orthonormé, la courbe d'équation $3x^2 + 2xy + 3y^2 = 8$ est une ellipse de demi-axes :",
+    "choix": ["$2$ et $\\sqrt2$","$4$ et $2$","$\\frac12$ et $\\frac14$","$2\\sqrt2$ et $2$"],
+    "bonne": 0,
+    "explication": "La matrice $\\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}$ a pour valeurs propres $2$ et $4$ : l'équation devient $2X^2 + 4Y^2 = 8$, soit $\\frac{X^2}{4} + \\frac{Y^2}{2} = 1$. Le grand axe correspond à la **petite** valeur propre."
   }
 ]

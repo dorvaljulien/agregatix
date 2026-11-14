@@ -680,5 +680,32 @@
       }
     ],
     "direction": "On applique Schmidt aux colonnes $C_1, \\dots, C_n$ de $A$ (base de $\\mathbb R^n$). Chaque $C_k$ est combinaison de $\\varepsilon_1, \\dots, \\varepsilon_k$, avec coefficient $\\langle \\varepsilon_k, C_k \\rangle > 0$ sur $\\varepsilon_k$. Donc $A = QR$, où $Q$ a pour colonnes les $\\varepsilon_k$."
+  },
+  {
+    "id": "quadratique-euclidien-cours-01", "ch": "quadratique-euclidien", "type": "cours",
+    "titre": "Théorème spectral",
+    "enonce": "Toute matrice symétrique **réelle** est diagonalisable dans une base orthonormée : $A = PDP^{\\mathsf T}$ avec $P$ orthogonale ; ses sous-espaces propres sont deux à deux orthogonaux. C'est faux pour une matrice symétrique complexe. Conséquence : si $\\lambda_{\\min}$ et $\\lambda_{\\max}$ sont les valeurs propres extrêmes, $\\lambda_{\\min}\\|X\\|^2 \\le X^{\\mathsf T}AX \\le \\lambda_{\\max}\\|X\\|^2$.",
+    "question": "Soit $q(x, y) = 2x^2 + 2xy + 2y^2$. Pour tout $(x, y) \\in \\mathbb R^2$ :",
+    "choix": ["$x^2 + y^2 \\le q(x, y) \\le 3(x^2 + y^2)$","$2(x^2 + y^2) \\le q(x, y) \\le 3(x^2 + y^2)$","$0 \\le q(x, y) \\le 2(x^2 + y^2)$","$q(x, y) \\ge 3(x^2 + y^2)$"],
+    "bonne": 0,
+    "explication": "La matrice de $q$ est $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, de valeurs propres $1$ et $3$. Les bornes sont atteintes : $q(1, -1) = 2 = 1 \\times 2$ et $q(1, 1) = 6 = 3 \\times 2$."
+  },
+  {
+    "id": "quadratique-euclidien-cours-02", "ch": "quadratique-euclidien", "type": "cours",
+    "titre": "Projection orthogonale et distance",
+    "enonce": "Si $F$ est un sous-espace de dimension finie, de base orthonormée $(e_1, \\dots, e_p)$ : $p_F(x) = \\sum \\langle x, e_i\\rangle e_i$ et $d(x, F) = \\|x - p_F(x)\\|$, avec $d(x, F)^2 = \\|x\\|^2 - \\|p_F(x)\\|^2$. Pour un hyperplan $F = a^\\perp$ : $d(x, F) = \\frac{|\\langle x, a\\rangle|}{\\|a\\|}$. **Réflexe** : un $\\inf_{a, b}\\int (f(t) - a - bt)^2\\,\\mathrm dt$ est le carré d'une distance à un sous-espace.",
+    "question": "Dans $\\mathbb R^3$ euclidien usuel, la distance de $(1, 2, 3)$ au plan d'équation $x + y + z = 0$ vaut :",
+    "choix": ["$2\\sqrt3$","$6$","$\\sqrt3$","$\\sqrt{14}$"],
+    "bonne": 0,
+    "explication": "Le plan est l'orthogonal de $a = (1, 1, 1)$ : la distance vaut $\\frac{|1 + 2 + 3|}{\\sqrt3} = \\frac{6}{\\sqrt3} = 2\\sqrt3$. La valeur $\\sqrt{14}$ est la norme du vecteur, c'est-à-dire sa distance à l'origine."
+  },
+  {
+    "id": "quadratique-euclidien-cours-03", "ch": "quadratique-euclidien", "type": "cours",
+    "titre": "Réduction de Gauss et signature",
+    "enonce": "Toute forme quadratique réelle s'écrit comme combinaison linéaire de carrés de formes linéaires **indépendantes** (réduction de Gauss). Le nombre $p$ de coefficients $> 0$ et le nombre $q$ de coefficients $< 0$ ne dépendent pas de la décomposition (loi d'inertie de Sylvester) : $(p, q)$ est la signature, $p + q$ le rang. Pour un terme rectangle seul : $ab = \\frac14\\left[(a + b)^2 - (a - b)^2\\right]$.",
+    "question": "La signature de la forme quadratique $q(x, y, z) = xy + yz$ sur $\\mathbb R^3$ est :",
+    "choix": ["$(1, 1)$","$(2, 0)$","$(2, 1)$","$(1, 2)$"],
+    "bonne": 0,
+    "explication": "$q = y(x + z) = \\frac14\\left[(x + y + z)^2 - (x - y + z)^2\\right]$, et les deux formes linéaires sont indépendantes : signature $(1, 1)$, rang $2$. La forme est dégénérée : son noyau est la droite dirigée par $(1, 0, -1)$."
   }
 ]

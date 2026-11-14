@@ -622,5 +622,32 @@
       }
     ],
     "direction": "$C'(t) = e^{-tA}B(t)$ et $C(0) = X_0$, d'où $X(t) = e^{tA}X_0 + \\int_0^t e^{(t-s)A}B(s)\\,\\mathrm ds$. On utilise $e^{tA}e^{-sA} = e^{(t-s)A}$, valable car $tA$ et $-sA$ commutent."
+  },
+  {
+    "id": "equations-differentielles-cours-01", "ch": "equations-differentielles", "type": "cours",
+    "titre": "Équation linéaire d'ordre 1",
+    "enonce": "Pour $y' = a(x)y + b(x)$ avec $a, b$ continues sur un **intervalle** $I$ : les solutions sont $y = \\lambda e^{A(x)} + y_p$, où $A$ est une primitive de $a$ et $y_p$ une solution particulière (variation de la constante). Par chaque condition initiale passe une unique solution, définie sur $I$ entier. Conséquence : une solution de l'équation homogène qui s'annule en un point est nulle.",
+    "question": "Sur $]0, +\\infty[$, les solutions de $xy' - y = x^2$ sont les fonctions :",
+    "choix": ["$x \\mapsto x^2 + \\lambda x$","$x \\mapsto x^2 + \\lambda$","$x \\mapsto \\lambda x^2$","$x \\mapsto x^2 + \\frac\\lambda x$"],
+    "bonne": 0,
+    "explication": "L'équation homogène $y' = \\frac yx$ a pour solutions $\\lambda x$, et $y_p = x^2$ convient : $x \\cdot 2x - x^2 = x^2$. On divise par $x$, d'où l'importance de travailler sur un intervalle où $x \\neq 0$."
+  },
+  {
+    "id": "equations-differentielles-cours-02", "ch": "equations-differentielles", "type": "cours",
+    "titre": "Ordre 2 à coefficients constants",
+    "enonce": "Pour $ay'' + by' + cy = 0$, on résout $ar^2 + br + c = 0$. Deux racines réelles : $\\lambda e^{r_1x} + \\mu e^{r_2x}$ ; racine double : $(\\lambda + \\mu x)e^{rx}$ ; racines $\\alpha \\pm i\\beta$ : $e^{\\alpha x}(\\lambda\\cos\\beta x + \\mu\\sin\\beta x)$. Second membre $P(x)e^{mx}$ : chercher une solution $Q(x)e^{mx}$ avec $\\deg Q = \\deg P + $ la multiplicité de $m$ comme racine de l'équation caractéristique.",
+    "question": "On cherche une solution particulière de $y'' - 2y' + y = e^x$ sous la forme :",
+    "choix": ["$ax^2e^x$","$ae^x$","$axe^x$","$(ax + b)e^x$"],
+    "bonne": 0,
+    "explication": "$1$ est racine **double** de $r^2 - 2r + 1$ : il faut monter de deux degrés. Les fonctions $(ax + b)e^x$ sont les solutions de l'équation homogène, elles donnent $0$. On trouve $y_p = \\frac{x^2}{2}e^x$."
+  },
+  {
+    "id": "equations-differentielles-cours-03", "ch": "equations-differentielles", "type": "cours",
+    "titre": "Cauchy-Lipschitz : linéaire et non linéaire",
+    "enonce": "**Linéaire** ($X' = A(t)X + B(t)$, $A$ et $B$ continues sur $I$) : par chaque condition initiale, une unique solution, définie sur $I$ entier ; les solutions du système homogène forment un espace de dimension $n$. **Non linéaire** ($y' = f(t, y)$, $f$ de classe $\\mathcal C^1$) : existence et unicité d'une solution **maximale**, dont l'intervalle peut être plus petit ; deux courbes intégrales distinctes ne se coupent pas.",
+    "question": "La solution maximale du problème $y' = y^2$, $y(0) = 1$ est :",
+    "choix": ["$x \\mapsto \\frac{1}{1 - x}$ sur $]-\\infty, 1[$","$x \\mapsto \\frac{1}{1 - x}$ sur $\\mathbb R \\setminus \\{1\\}$","$x \\mapsto \\frac{1}{1 + x}$ sur $]-1, +\\infty[$","$x \\mapsto \\tan\\left(x + \\frac\\pi4\\right)$ sur $\\left]-\\frac{3\\pi}4, \\frac\\pi4\\right[$"],
+    "bonne": 0,
+    "explication": "$y$ ne s'annule pas (sinon elle coïnciderait avec la solution nulle), donc $\\left(\\frac1y\\right)' = -1$ et $y = \\frac{1}{1 - x}$. Une solution est définie sur un **intervalle** : la solution explose en $1$ et s'arrête là. La tangente résout $y' = 1 + y^2$."
   }
 ]

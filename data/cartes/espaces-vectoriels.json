@@ -619,5 +619,32 @@
       }
     ],
     "direction": "Le théorème du rang donne $\\dim \\ker u^2 = \\dim \\ker u$, et $\\ker u \\subset \\ker u^2$, donc égalité. Si $y = u(x) \\in \\ker u$, alors $u^2(x) = 0$, donc $x \\in \\ker u$ et $y = 0$. Intersection nulle et théorème du rang : $E = \\ker u \\oplus \\mathrm{Im}\\, u$."
+  },
+  {
+    "id": "espaces-vectoriels-cours-01", "ch": "espaces-vectoriels", "type": "cours",
+    "titre": "Théorème du rang",
+    "enonce": "Si $u \\in \\mathcal L(E, F)$ avec $E$ de dimension finie : $\\dim E = \\dim\\ker u + \\mathrm{rg}\\,u$. Conséquence : si $\\dim E = \\dim F$ est finie, $u$ injective $\\iff$ $u$ surjective $\\iff$ $u$ bijective. C'est faux en dimension infinie (dérivation sur $\\mathbb R[X]$ : surjective, non injective).",
+    "question": "Soit $u : \\mathbb R_3[X] \\to \\mathbb R_3[X]$, $P \\mapsto P - XP'$. Le rang de $u$ est :",
+    "choix": ["$3$","$4$","$2$","$1$"],
+    "bonne": 0,
+    "explication": "Pour $P = a + bX + cX^2 + dX^3$, $u(P) = a - cX^2 - 2dX^3$. Le noyau est $\\mathrm{Vect}(X)$, de dimension $1$, donc $\\mathrm{rg}\\,u = 4 - 1 = 3$."
+  },
+  {
+    "id": "espaces-vectoriels-cours-02", "ch": "espaces-vectoriels", "type": "cours",
+    "titre": "Sommes directes et formule de Grassmann",
+    "enonce": "$\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G)$. En dimension finie, $E = F \\oplus G$ dès que deux des trois conditions suivantes sont vraies : $F \\cap G = \\{0\\}$, $F + G = E$, $\\dim F + \\dim G = \\dim E$. Pour trois sous-espaces ou plus, des intersections deux à deux nulles **ne suffisent pas** à avoir une somme directe.",
+    "question": "Dans $\\mathbb R^4$, soient $F \\neq G$ deux sous-espaces de dimension $3$. Alors $\\dim(F \\cap G)$ vaut :",
+    "choix": ["$2$","$1$","$1$ ou $2$ selon les cas","$3$"],
+    "bonne": 0,
+    "explication": "$F + G$ contient strictement $F$ (sinon $G \\subset F$ et, par égalité des dimensions, $G = F$), donc $\\dim(F + G) = 4$. Grassmann donne $\\dim(F \\cap G) = 3 + 3 - 4 = 2$."
+  },
+  {
+    "id": "espaces-vectoriels-cours-03", "ch": "espaces-vectoriels", "type": "cours",
+    "titre": "Changement de base et matrices semblables",
+    "enonce": "Si $P$ est la matrice de passage de $\\mathcal B$ à $\\mathcal B'$ (ses colonnes sont les vecteurs de $\\mathcal B'$ écrits dans $\\mathcal B$), alors $X = PX'$ et, pour un endomorphisme, $A' = P^{-1}AP$. Deux matrices semblables ont même rang, même trace, même déterminant, même polynôme caractéristique. **La réciproque est fausse.**",
+    "question": "Les matrices $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ et $I_2$ :",
+    "choix": ["ont le même polynôme caractéristique mais ne sont pas semblables","sont semblables, car elles ont même trace et même déterminant","sont semblables, car elles ont le même polynôme caractéristique","n'ont pas le même rang"],
+    "bonne": 0,
+    "explication": "Les deux ont pour polynôme caractéristique $(X - 1)^2$ et sont de rang $2$. Mais la seule matrice semblable à $I_2$ est $P^{-1}I_2P = I_2$. Ce qui les distingue : $\\dim\\ker(A - I_2) = 1$."
   }
 ]

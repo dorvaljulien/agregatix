@@ -308,5 +308,32 @@
       }
     ],
     "direction": "$X^3 - 2X^2 - X + 2 = (X-1)(X+1)(X-2)$. Donc $u_n = a + b(-1)^n + c\\,2^n$, où $a, b, c$ se calculent en résolvant le système donné par $u_0, u_1, u_2$."
+  },
+  {
+    "id": "reduction-cours-01", "ch": "reduction", "type": "cours",
+    "titre": "Critères de diagonalisabilité",
+    "enonce": "$u$ est diagonalisable si et seulement si $\\chi_u$ est scindé et, pour chaque valeur propre $\\lambda$, $\\dim E_\\lambda$ égale la multiplicité $m(\\lambda)$ ; si et seulement si $u$ annule un polynôme scindé à racines simples. Condition suffisante : $n$ valeurs propres distinctes. On a toujours $1 \\le \\dim E_\\lambda \\le m(\\lambda)$.",
+    "question": "La matrice $A = \\begin{pmatrix} 2 & 1 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{pmatrix}$ :",
+    "choix": ["n'est pas diagonalisable : $\\dim E_2 = 1$ alors que $2$ est valeur propre double","est diagonalisable, car $\\chi_A$ est scindé","est diagonalisable, car elle est triangulaire","est diagonalisable sur $\\mathbb C$ mais pas sur $\\mathbb R$"],
+    "bonne": 0,
+    "explication": "$\\chi_A = (X - 2)^2(X - 3)$ est scindé, mais $A - 2I_3$ est de rang $2$, donc $\\dim E_2 = 1 < 2$. Scindé donne seulement trigonalisable. Passer à $\\mathbb C$ ne change rien : les dimensions des sous-espaces propres sont les mêmes."
+  },
+  {
+    "id": "reduction-cours-02", "ch": "reduction", "type": "cours",
+    "titre": "Polynômes annulateurs",
+    "enonce": "Si $P(u) = 0$, toute valeur propre de $u$ est racine de $P$ (l'inclusion peut être stricte). Le polynôme minimal divise tout polynôme annulateur, et ses racines sont exactement les valeurs propres. Cayley-Hamilton : $\\chi_u(u) = 0$. Lemme des noyaux : si $P = P_1P_2$ avec $P_1 \\wedge P_2 = 1$, alors $\\ker P(u) = \\ker P_1(u) \\oplus \\ker P_2(u)$.",
+    "question": "Soit $A \\in M_n(\\mathbb R)$ telle que $A^3 = A$. Alors :",
+    "choix": ["$A$ est diagonalisable et $\\mathrm{Sp}(A) \\subset \\{-1, 0, 1\\}$","$\\mathrm{Sp}(A) = \\{-1, 0, 1\\}$","$A$ est inversible","$A$ est la matrice d'une projection"],
+    "bonne": 0,
+    "explication": "$X^3 - X = X(X - 1)(X + 1)$ est annulateur, scindé à racines simples : $A$ est diagonalisable et son spectre est inclus dans $\\{-1, 0, 1\\}$. L'inclusion peut être stricte ($A = I_n$), $A$ peut être nulle, et $A = -I_n$ n'est pas une projection."
+  },
+  {
+    "id": "reduction-cours-03", "ch": "reduction", "type": "cours",
+    "titre": "Trace, déterminant et valeurs propres",
+    "enonce": "$u$ est trigonalisable si et seulement si $\\chi_u$ est scindé, ce qui est toujours vrai sur $\\mathbb C$. Alors $\\mathrm{tr}\\,u$ est la somme et $\\det u$ le produit des valeurs propres comptées avec multiplicité, et les valeurs propres de $P(u)$ sont les $P(\\lambda)$. **Méthode** pour $A^k$ : diagonaliser, ou diviser $X^k$ par un polynôme annulateur.",
+    "question": "Soit $A \\in M_2(\\mathbb R)$ avec $\\mathrm{tr}\\,A = 5$ et $\\det A = 6$. Alors $\\mathrm{tr}(A^2)$ vaut :",
+    "choix": ["$13$","$25$","$36$","$11$"],
+    "bonne": 0,
+    "explication": "$\\chi_A = X^2 - 5X + 6$ a pour racines $2$ et $3$ : les valeurs propres de $A^2$ sont $4$ et $9$, de somme $13$. Ou bien, par Cayley-Hamilton, $A^2 = 5A - 6I_2$ donc $\\mathrm{tr}(A^2) = 25 - 12$."
   }
 ]

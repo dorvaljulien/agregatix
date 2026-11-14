@@ -284,5 +284,33 @@
       }
     ],
     "direction": "On borne $B_n = \\sum_{k=0}^n \\sin k = \\mathrm{Im}\\,\\frac{1 - e^{i(n+1)}}{1 - e^{i}}$ par $\\frac{1}{\\sin(1/2)}$. Après transformation d'Abel, il reste $\\frac{B_n}{n} \\to 0$ et une série de terme général $O\\!\\left(\\frac1{k} - \\frac1{k+1}\\right)$, absolument convergente."
+  },
+  {
+    "id": "series-cours-01", "ch": "series", "type": "cours",
+    "titre": "Comparaison des séries à termes positifs",
+    "enonce": "Pour des séries **à termes positifs** : si $u_n \\sim v_n$, les séries $\\sum u_n$ et $\\sum v_n$ sont de même nature ; si $u_n = O(v_n)$ et $\\sum v_n$ converge, alors $\\sum u_n$ converge. Référence : $\\sum\\frac1{n^\\alpha}$ converge si et seulement si $\\alpha > 1$. Avec des termes de signe variable, un équivalent ne suffit plus.",
+    "question": "Soit $u_n = \\frac1n - \\ln\\left(1 + \\frac1n\\right)$ pour $n \\ge 1$. Alors :",
+    "choix": ["$u_n \\sim \\frac{1}{2n^2}$ et la série $\\sum u_n$ converge","$u_n \\sim \\frac1n$ et la série $\\sum u_n$ diverge","$u_n \\sim \\frac{1}{n^2}$ et la série $\\sum u_n$ converge","$u_n \\sim -\\frac{1}{2n^2}$ et la série $\\sum u_n$ converge"],
+    "bonne": 0,
+    "explication": "$\\ln(1 + x) = x - \\frac{x^2}2 + o(x^2)$ donne $u_n \\sim \\frac1{2n^2} > 0$ : la série converge par comparaison à une série de Riemann. Sa somme est la constante d'Euler $\\gamma$."
+  },
+  {
+    "id": "series-cours-02", "ch": "series", "type": "cours",
+    "titre": "Séries alternées",
+    "enonce": "Si $(a_n)$ **décroît** vers $0$, la série $\\sum(-1)^na_n$ converge, son reste $R_n$ est du signe de son premier terme et $|R_n| \\le a_{n+1}$. La décroissance est indispensable. **Méthode** quand elle manque : faire un développement asymptotique du terme général et étudier chaque morceau.",
+    "question": "Pour $n \\ge 2$, soit $u_n = \\dfrac{(-1)^n}{\\sqrt n + (-1)^n}$. La série $\\sum u_n$ :",
+    "choix": ["diverge, car $u_n = \\frac{(-1)^n}{\\sqrt n} - \\frac1n + O\\left(n^{-3/2}\\right)$","converge par le critère des séries alternées","converge, car $u_n \\sim \\frac{(-1)^n}{\\sqrt n}$ dont la série converge","converge absolument"],
+    "bonne": 0,
+    "explication": "$u_n = \\frac{(-1)^n}{\\sqrt n}\\left(1 + \\frac{(-1)^n}{\\sqrt n}\\right)^{-1}$ se développe en une série alternée convergente, moins $\\frac1n$ (divergente), plus un terme absolument sommable : la série diverge. Le critère des séries alternées ne s'applique pas ($|u_n|$ ne décroît pas), et l'équivalent ne prouve rien pour un signe variable."
+  },
+  {
+    "id": "series-cours-03", "ch": "series", "type": "cours",
+    "titre": "Comparaison série-intégrale",
+    "enonce": "Si $f$ est continue, positive et décroissante sur $[1, +\\infty[$ : $\\displaystyle\\int_k^{k+1} f \\le f(k) \\le \\int_{k-1}^k f$. Donc $\\sum f(n)$ et $\\int_1^{+\\infty} f$ sont de même nature. En sommant l'encadrement, on obtient un équivalent des sommes partielles (cas divergent) ou des restes (cas convergent).",
+    "figure": {"x":[-0.4,5.6],"y":[-0.15,1.25],"h":0.55,"unites":false,"legende":"Le rectangle de base $[k-1, k]$ et de hauteur $f(k)$ tient sous la courbe.","el":[{"t":"poly","pts":[[1,0],[1,0.5],[2,0.5],[2,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[2,0],[2,0.3333],[3,0.3333],[3,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[3,0],[3,0.25],[4,0.25],[4,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[4,0],[4,0.2],[5,0.2],[5,0]],"plein":true,"c":"m"},{"t":"f","e":"1/x","de":0.8,"a":5.6},{"t":"txt","p":[1.5,0.5],"s":"f(2)","pos":"n"},{"t":"txt","p":[2.5,0.3333],"s":"f(3)","pos":"n"}]},
+    "question": "Un équivalent du reste $R_n = \\displaystyle\\sum_{k=n+1}^{+\\infty}\\frac1{k^2}$ est :",
+    "choix": ["$\\dfrac1n$","$\\dfrac1{n^2}$","$\\dfrac1{2n}$","$\\dfrac{\\pi^2}{6n}$"],
+    "bonne": 0,
+    "explication": "En sommant l'encadrement pour $k \\ge n + 1$ : $\\frac{1}{n+1} = \\int_{n+1}^{+\\infty}\\frac{\\mathrm dt}{t^2} \\le R_n \\le \\int_n^{+\\infty}\\frac{\\mathrm dt}{t^2} = \\frac1n$, donc $R_n \\sim \\frac1n$. Le reste est bien plus gros que son premier terme $\\frac{1}{(n+1)^2}$."
   }
 ]

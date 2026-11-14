@@ -618,5 +618,33 @@
       }
     ],
     "direction": "$P(X_n = k) = \\frac{n(n-1)\\cdots(n-k+1)}{n^k} \\cdot \\frac{\\lambda^k}{k!} \\cdot \\left(1 - \\frac\\lambda n\\right)^{n-k}$. Le premier facteur tend vers $1$ et le dernier vers $e^{-\\lambda}$. On conclut en sommant sur $k \\le \\lfloor x \\rfloor$."
+  },
+  {
+    "id": "theoremes-limites-cours-01", "ch": "theoremes-limites", "type": "cours",
+    "titre": "Markov, Bienaymé-Tchebychev, loi faible",
+    "enonce": "Markov : si $X \\ge 0$ et $a > 0$, $P(X \\ge a) \\le \\frac{E(X)}{a}$. Bienaymé-Tchebychev : $P(|X - E(X)| \\ge \\varepsilon) \\le \\frac{V(X)}{\\varepsilon^2}$. Loi faible des grands nombres : pour des $X_i$ indépendantes de même loi, d'espérance $m$ et de variance $\\sigma^2$, $P\\left(\\left|\\overline{X_n} - m\\right| \\ge \\varepsilon\\right) \\le \\frac{\\sigma^2}{n\\varepsilon^2} \\to 0$.",
+    "question": "On lance $n$ fois une pièce équilibrée ; $F_n$ est la fréquence des piles. Le plus petit $n$ pour lequel Bienaymé-Tchebychev garantit $P\\left(\\left|F_n - \\frac12\\right| \\ge 0{,}05\\right) \\le 0{,}01$ est :",
+    "choix": ["$10\\,000$","$1\\,000$","$400$","$40\\,000$"],
+    "bonne": 0,
+    "explication": "$V(F_n) = \\frac{1}{4n}$, donc la majoration vaut $\\frac{1}{4n \\times 0{,}0025} = \\frac{100}{n}$, inférieure à $0{,}01$ dès que $n \\ge 10\\,000$. L'inégalité est très prudente : l'approximation normale donnerait un $n$ bien plus petit."
+  },
+  {
+    "id": "theoremes-limites-cours-02", "ch": "theoremes-limites", "type": "cours",
+    "titre": "Théorème central limite",
+    "enonce": "Pour des $X_i$ indépendantes de même loi, d'espérance $m$ et d'écart-type $\\sigma > 0$, avec $S_n = X_1 + \\dots + X_n$ : $\\dfrac{S_n - nm}{\\sigma\\sqrt n}$ converge en loi vers $\\mathcal N(0, 1)$. **Usage** : approcher $P(a \\le S_n \\le b)$, construire des intervalles de confiance asymptotiques. Repère : si $Z \\sim \\mathcal N(0, 1)$, $P(|Z| \\le 1{,}96) \\approx 0{,}95$.",
+    "figure": {"x":[-3.6,3.6],"y":[-0.07,0.47],"h":0.5,"unites":false,"legende":"Densité de $\\mathcal N(0, 1)$ : $95\\,\\%$ de l'aire entre $-1{,}96$ et $1{,}96$.","el":[{"t":"zone","e":"exp(-x*x/2)/sqrt(2*PI)","de":-1.96,"a":1.96},{"t":"f","e":"exp(-x*x/2)/sqrt(2*PI)"},{"t":"txt","p":[-1.96,0],"s":"−1,96","pos":"s"},{"t":"txt","p":[1.96,0],"s":"1,96","pos":"s"}]},
+    "question": "On lance $400$ fois une pièce équilibrée. D'après l'approximation normale, le nombre de piles est, avec une probabilité d'environ $0{,}95$, dans l'intervalle :",
+    "choix": ["$[180, 220]$","$[190, 210]$","$[160, 240]$","$[196, 204]$"],
+    "bonne": 0,
+    "explication": "$S_{400}$ a pour espérance $200$ et pour écart-type $\\sqrt{400 \\times \\frac14} = 10$. L'intervalle est $200 \\pm 1{,}96 \\times 10$, soit environ $[180, 220]$. L'écart-type croît comme $\\sqrt n$, pas comme $n$."
+  },
+  {
+    "id": "theoremes-limites-cours-03", "ch": "theoremes-limites", "type": "cours",
+    "titre": "Estimateurs",
+    "enonce": "Un estimateur $T_n$ de $\\theta$ est **sans biais** si $E(T_n) = \\theta$, **convergent** si $T_n \\to \\theta$ en probabilité. Il suffit pour cela que le risque quadratique $E\\left((T_n - \\theta)^2\\right) = V(T_n) + (E(T_n) - \\theta)^2$ tende vers $0$. La moyenne empirique $\\overline{X_n}$ est un estimateur sans biais et convergent de l'espérance.",
+    "question": "Soient $X_1, \\dots, X_n$ indépendantes de même loi, de variance $\\sigma^2$. L'estimateur $\\frac1n\\displaystyle\\sum_{i=1}^n\\left(X_i - \\overline{X_n}\\right)^2$ de $\\sigma^2$ :",
+    "choix": ["est biaisé : son espérance vaut $\\frac{n-1}{n}\\sigma^2$","est sans biais","est biaisé : son espérance vaut $\\frac{n}{n-1}\\sigma^2$","est sans biais dès que les $X_i$ sont centrées"],
+    "bonne": 0,
+    "explication": "$\\sum(X_i - \\overline{X_n})^2 = \\sum(X_i - m)^2 - n(\\overline{X_n} - m)^2$, d'espérance $n\\sigma^2 - n \\times \\frac{\\sigma^2}{n} = (n - 1)\\sigma^2$. D'où la division par $n - 1$ dans la variance empirique corrigée. Le biais ne dépend pas de la valeur de $m$."
   }
 ]

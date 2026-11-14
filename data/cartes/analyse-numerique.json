@@ -506,5 +506,34 @@
       }
     ],
     "direction": "Avec $1$, $X$, $X^2$ : $\\alpha + \\beta + \\gamma = 2$, $\\gamma - \\alpha = 0$, $\\alpha + \\gamma = \\frac23$, d'où $\\alpha = \\gamma = \\frac13$ et $\\beta = \\frac43$. Pour $X^3$, les deux membres sont nuls par imparité. La formule n'est pas exacte pour $X^4$ : $\\frac25 \\ne \\frac23$."
+  },
+  {
+    "id": "analyse-numerique-cours-01", "ch": "analyse-numerique", "type": "cours",
+    "titre": "Point fixe et méthode de Newton",
+    "enonce": "Si $g$ envoie un intervalle fermé $I$ dans lui-même et est $k$-lipschitzienne avec $k < 1$, elle a un unique point fixe $\\ell$ et $|u_n - \\ell| \\le k^n|u_0 - \\ell|$. **Newton** pour résoudre $f(x) = 0$ : $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$, abscisse où la tangente en $x_n$ coupe l'axe. Si $f$ est $\\mathcal C^2$ et $f'(\\ell) \\neq 0$, la convergence est quadratique près de $\\ell$ : $|x_{n+1} - \\ell| \\le C|x_n - \\ell|^2$.",
+    "figure": {"x":[-0.3,2.8],"y":[-2.4,4.2],"h":0.85,"unites":false,"legende":"Chaque tangente donne l'itéré suivant.","el":[{"t":"f","e":"x*x-2","de":0.2,"a":2.6},{"t":"seg","a":[2.4,0],"b":[2.4,3.76],"c":"d","tirets":true},{"t":"seg","a":[2.4,3.76],"b":[1.6167,0],"c":"m"},{"t":"seg","a":[1.6167,0],"b":[1.6167,0.6136],"c":"d","tirets":true},{"t":"seg","a":[1.6167,0.6136],"b":[1.4269,0],"c":"m"},{"t":"pt","p":[2.4,0],"n":"x₀","pos":"s","c":"m"},{"t":"pt","p":[1.6167,0],"n":"x₁","pos":"se","c":"m"},{"t":"pt","p":[1.4269,0],"n":"x₂","pos":"so","c":"m"}]},
+    "question": "Appliquée à $f(x) = x^2 - 2$, la méthode de Newton donne la récurrence :",
+    "choix": ["$x_{n+1} = \\frac12\\left(x_n + \\frac{2}{x_n}\\right)$","$x_{n+1} = x_n - \\frac{x_n^2 - 2}{2}$","$x_{n+1} = \\frac{2}{x_n}$","$x_{n+1} = x_n + \\frac{x_n^2 - 2}{2x_n}$"],
+    "bonne": 0,
+    "explication": "$x_n - \\frac{x_n^2 - 2}{2x_n} = \\frac{x_n}2 + \\frac1{x_n}$ : c'est l'algorithme de Héron pour $\\sqrt2$. À chaque étape le nombre de décimales exactes double à peu près."
+  },
+  {
+    "id": "analyse-numerique-cours-02", "ch": "analyse-numerique", "type": "cours",
+    "titre": "Interpolation de Lagrange",
+    "enonce": "Pour $x_0, \\dots, x_n$ deux à deux distincts, il existe un unique $P \\in \\mathbb R_n[X]$ tel que $P(x_i) = f(x_i)$ pour tout $i$. Si $f$ est de classe $\\mathcal C^{n+1}$ : $f(x) - P(x) = \\frac{f^{(n+1)}(\\xi)}{(n+1)!}\\displaystyle\\prod_{i=0}^n(x - x_i)$. Augmenter le nombre de points équirépartis ne garantit pas la convergence (phénomène de Runge).",
+    "question": "Le polynôme de degré $\\le 2$ qui prend les valeurs $1$, $0$, $1$ en $-1$, $0$, $1$ est :",
+    "choix": ["$X^2$","$1 - X^2$","$\\frac{X^2 + X}{2}$","$2X^2 - 1$"],
+    "bonne": 0,
+    "explication": "$X^2$ convient et l'interpolant est unique dans $\\mathbb R_2[X]$ : inutile de calculer les polynômes de Lagrange. C'est aussi l'interpolant de $|x|$ en ces trois points."
+  },
+  {
+    "id": "analyse-numerique-cours-03", "ch": "analyse-numerique", "type": "cours",
+    "titre": "Calcul approché d'intégrales",
+    "enonce": "Sur $[a, b]$ découpé en $n$ pas, avec $M_k = \\sup|f^{(k)}|$ : rectangles à gauche, erreur $\\le \\frac{M_1(b-a)^2}{2n}$ ; trapèzes, $\\le \\frac{M_2(b-a)^3}{12n^2}$ ; point milieu, $\\le \\frac{M_2(b-a)^3}{24n^2}$ ; Simpson, en $O\\left(\\frac1{n^4}\\right)$. Une méthode est d'ordre $p$ si elle est exacte sur $\\mathbb R_p[X]$.",
+    "figure": {"x":[-0.4,4.5],"y":[-0.3,2.2],"unites":false,"legende":"Méthode des trapèzes : la courbe est remplacée par ses cordes.","el":[{"t":"poly","pts":[[0,0],[0,1.2],[1,1.778],[1,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[1,0],[1,1.778],[2,1.509],[2,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[2,0],[2,1.509],[3,0.787],[3,0]],"plein":true,"c":"m"},{"t":"poly","pts":[[3,0],[3,0.787],[4,0.67],[4,0]],"plein":true,"c":"m"},{"t":"f","e":"1.2+0.6*sin(1.3*x)","de":0,"a":4}]},
+    "question": "Pour une fonction **convexe** sur $[a, b]$, la méthode des trapèzes donne une valeur :",
+    "choix": ["supérieure ou égale à l'intégrale","inférieure ou égale à l'intégrale","toujours égale à l'intégrale","dont on ne peut pas prévoir la position par rapport à l'intégrale"],
+    "bonne": 0,
+    "explication": "Sur chaque pas, le trapèze est limité par une corde, et une fonction convexe est sous ses cordes : les trapèzes surestiment. À l'inverse, le point milieu sous-estime (tangente au milieu)."
   }
 ]

@@ -5,7 +5,12 @@ const CLE = 'agregatix.v1';
 const TAILLE_SESSION = 10;
 const INTERVALLES = [0, 1, 3, 7, 16, 35];          // jours avant de revoir, par boîte
 const BOITE_MAX = INTERVALLES.length - 1;
-const MODES = { vf: 'Vrai ou faux ?', qcm: 'Le bon énoncé', erreur: "Traque à l'erreur", piste: 'Par où partir ?' };
+const MODES = { vf: 'Vrai ou faux ?', qcm: 'Le bon énoncé', erreur: "Traque à l'erreur", piste: 'Par où partir ?', cours: 'Rappel de cours' };
+const FREQ = { 3: 'Très fréquent', 2: 'Régulier', 1: 'Occasionnel' };   // présence du chapitre aux écrits (index.json, champ poids)
+const TIRAGE = { 3: 4, 2: 2, 1: 1 };                // chances relatives d'une carte neuve en session du jour
+const MEMOIRE = 8;                                  // dernières réponses retenues par chapitre
+const ECHECS_ALERTE = 3;                            // échecs parmi elles à partir desquels les rappels de cours passent devant
+const RAPPELS_MAX = 3;                              // rappels prioritaires par session
 const TITRES = ['Bizuth', 'Candidat', 'Préparationnaire', 'Admissible', 'Admis', 'Agrégé', 'Major'];
 /* Maîtrise (0-1) à atteindre pour chaque titre : le niveau suit ce que tu sais vraiment, pas le temps passé. */
 const SEUILS = [0, 0.05, 0.15, 0.35, 0.55, 0.75, 0.90];
@@ -18,6 +23,7 @@ const $feuille = document.getElementById('feuille');
 let programme = null;          // data/index.json
 let cartes = [];               // toutes les cartes
 let parChapitre = {};          // id chapitre -> cartes
+let chapitres = {};            // id chapitre -> chapitre (avec couleur du domaine)
 let etat = charger();
 let session = null;
 
@@ -49,9 +55,74 @@ function fmtTexte(texte) {
   }).join('');
 }
 
+/* ---------- Figures ----------
+   Une carte peut porter un champ "figure" : { x: [min, max], y: [min, max], el: [...] }, dessiné en SVG dans un repère
+   orthonormé (ou de hauteur h × largeur si "h" est donné). Le format des éléments est décrit dans tools/GUIDE_CARTES.md. */
+let numFigure = 0;
+const expr = (e, v) => new Function(v, 'with (Math) { return (' + e + '); }');
+function figure(f) {
+  const L = 300, [x0, x1] = f.x, [y0, y1] = f.y;
+  const H = Math.round(L * (f.h || (y1 - y0) / (x1 - x0)));
+  const X = x => (x - x0) / (x1 - x0) * L, Y = y => H - (y - y0) / (y1 - y0) * H;
+  const n = v => Math.round(v * 10) / 10;
+  const P = p => `${n(X(p[0]))},${n(Y(p[1]))}`;
+  const marge = 3 * (y1 - y0);
+  const trace = pts => {                               // ligne brisée, coupée là où la courbe sort franchement du cadre
+    let d = '', leve = true;
+    for (const p of pts) {
+      if (!isFinite(p[0]) || !isFinite(p[1]) || p[1] > y1 + marge || p[1] < y0 - marge) { leve = true; continue; }
+      d += (leve ? 'M' : 'L') + P(p); leve = false;
+    }
+    return d;
+  };
+  const pas = (de, a, g) => Array.from({ length: 241 }, (_, i) => g(de + (a - de) * i / 240));
+  const cls = (e, base) => `class="${base} c-${e.c || 'a'}${e.tirets ? ' tirets' : ''}"`;
+  const ancre = { n: [0, -8, 'middle'], s: [0, 16, 'middle'], e: [8, 4, 'start'], o: [-8, 4, 'end'],
+    ne: [6, -6, 'start'], no: [-6, -6, 'end'], se: [6, 14, 'start'], so: [-6, 14, 'end'] };
+  const texte = (p, s, pos) => { const [dx, dy, a] = ancre[pos || 'ne']; return `<text x="${n(X(p[0]) + dx)}" y="${n(Y(p[1]) + dy)}" text-anchor="${a}">${echapper(String(s))}</text>`; };
+  let fond = '', devant = '';
+  if (f.axes !== false) {
+    const axeX = y0 < 0 && y1 > 0, axeY = x0 < 0 && x1 > 0;
+    if (axeX) fond += `<path class="axe" d="M0,${n(Y(0))}H${L}"/><path class="pointe" d="M${L},${n(Y(0))}l-7,-3.5v7z"/>`;
+    if (axeY) fond += `<path class="axe" d="M${n(X(0))},${H}V0"/><path class="pointe" d="M${n(X(0))},0l-3.5,7h7z"/>`;
+    if (x1 - x0 <= 14 && y1 - y0 <= 14) {
+      for (let k = Math.ceil(x0); k <= x1; k++) if (k && axeX && X(k) < L - 8) fond += `<path class="axe" d="M${n(X(k))},${n(Y(0) - 3)}v6"/>`;
+      for (let k = Math.ceil(y0); k <= y1; k++) if (k && axeY && Y(k) > 8) fond += `<path class="axe" d="M${n(X(0) - 3)},${n(Y(k))}h6"/>`;
+      if (f.unites !== false && axeX && axeY && x1 > 1 && y1 > 1) fond += `<text class="unite" x="${n(X(1))}" y="${n(Y(0) + 14)}" text-anchor="middle">1</text><text class="unite" x="${n(X(0) - 6)}" y="${n(Y(1) + 4)}" text-anchor="end">1</text>`;
+    }
+  }
+  for (const e of f.el || []) {
+    if (e.t === 'f') { const g = expr(e.e, 'x'); fond += `<path ${cls(e, 'trait')} d="${trace(pas(e.de ?? x0, e.a ?? x1, x => [x, g(x)]))}"/>`; }
+    else if (e.t === 'param') { const gx = expr(e.x, 't'), gy = expr(e.y, 't'); fond += `<path ${cls(e, 'trait')} d="${trace(pas(e.de, e.a, t => [gx(t), gy(t)]))}"/>`; }
+    else if (e.t === 'polaire') { const g = expr(e.r, 't'); fond += `<path ${cls(e, 'trait')} d="${trace(pas(e.de, e.a, t => [g(t) * Math.cos(t), g(t) * Math.sin(t)]))}"/>`; }
+    else if (e.t === 'zone') {
+      const haut = expr(e.e, 'x'), bas = expr(e.e2 || '0', 'x'), de = e.de ?? x0, a = e.a ?? x1;
+      const bord = pas(de, a, x => [x, haut(x)]).concat(pas(a, de, x => [x, bas(x)]));
+      fond += `<polygon ${cls(e, 'zone')} points="${bord.map(P).join(' ')}"/>`;
+    }
+    else if (e.t === 'poly') fond += `<polygon ${cls(e, e.plein ? 'zone bord' : 'trait')} points="${e.pts.map(P).join(' ')}"/>`;
+    else if (e.t === 'cercle') fond += `<ellipse ${cls(e, e.plein ? 'zone bord' : 'trait')} cx="${n(X(e.o[0]))}" cy="${n(Y(e.o[1]))}" rx="${n(e.r * L / (x1 - x0))}" ry="${n(e.r * H / (y1 - y0))}"/>`;
+    else if (e.t === 'seg' || e.t === 'droite') {
+      let a = e.a, b = e.b;
+      if (e.t === 'droite') { const k = 50 * (x1 - x0 + y1 - y0) / (Math.hypot(b[0] - a[0], b[1] - a[1]) || 1), u = [(b[0] - a[0]) * k, (b[1] - a[1]) * k]; b = [a[0] + u[0], a[1] + u[1]]; a = [a[0] - u[0], a[1] - u[1]]; }
+      fond += `<path ${cls(e, 'trait')} d="M${P(a)}L${P(b)}"/>`;
+      if (e.fleche) {
+        const ax = X(a[0]), ay = Y(a[1]), bx = X(b[0]), by = Y(b[1]), l = Math.hypot(bx - ax, by - ay) || 1, ux = (bx - ax) / l, uy = (by - ay) / l;
+        fond += `<polygon ${cls(e, 'plein')} points="${n(bx)},${n(by)} ${n(bx - 9 * ux + 4 * uy)},${n(by - 9 * uy - 4 * ux)} ${n(bx - 9 * ux - 4 * uy)},${n(by - 9 * uy + 4 * ux)}"/>`;
+      }
+    }
+    else if (e.t === 'pt') devant += `<circle ${cls(e, 'plein')} cx="${n(X(e.p[0]))}" cy="${n(Y(e.p[1]))}" r="3.2"/>` + (e.n ? texte(e.p, e.n, e.pos) : '');
+    else if (e.t === 'txt') devant += texte(e.p, e.s, e.pos || 'n');
+  }
+  const id = 'cadre' + (++numFigure);
+  return `<figure class="figure"><svg viewBox="0 0 ${L} ${H}" role="img" aria-label="${echapper(f.legende || 'Figure')}">
+    <clipPath id="${id}"><rect width="${L}" height="${H}"/></clipPath><g clip-path="url(#${id})">${fond}${devant}</g></svg>
+    ${f.legende ? `<figcaption>${fmt(f.legende)}</figcaption>` : ''}</figure>`;
+}
+
 /* ---------- Sauvegarde ---------- */
 function charger() {
-  const vide = { xp: 0, serie: 0, dernierJour: null, cartes: {}, signalements: [] };
+  const vide = { xp: 0, serie: 0, dernierJour: null, cartes: {}, signalements: [], chap: {}, tri: 'programme' };
   try { return Object.assign(vide, JSON.parse(localStorage.getItem(CLE)) || {}); }
   catch (e) { return vide; }
 }
@@ -64,7 +135,7 @@ function sauverSession() {
     const v = session.vue;
     localStorage.setItem(CLE_SESSION, JSON.stringify({
       file: session.file.map(c => c.id), i: session.i, total: session.total, faits: session.faits, bons: session.bons,
-      xp: session.xp, combo: session.combo, libre: session.libre, revues: [...session.revues],
+      xp: session.xp, combo: session.combo, libre: session.libre, revues: [...session.revues], rappels: [...session.rappels], echecs: session.echecs,
       vue: v && { id: v.carte.id, repondu: v.repondu, choisi: v.choisi, ordre: v.ordre, revue: v.revue, verdict: v.verdict }
     }));
   } catch (e) { /* stockage indisponible */ }
@@ -76,7 +147,7 @@ function reprendreSession() {
     const parId = Object.fromEntries(cartes.map(c => [c.id, c]));
     const file = o.file.map(id => parId[id]);
     if (file.some(c => !c) || !file[o.i] || file[o.i].id !== o.vue.id) return false;
-    session = { file, i: o.i, total: o.total, faits: o.faits, bons: o.bons, xp: o.xp, combo: o.combo, libre: o.libre, revues: new Set(o.revues), vue: null };
+    session = { file, i: o.i, total: o.total, faits: o.faits, bons: o.bons, xp: o.xp, combo: o.combo, libre: o.libre, revues: new Set(o.revues), vue: null, rappels: new Set(o.rappels || []), echecs: o.echecs || {} };
     session.vue = { carte: file[o.i], repondu: o.vue.repondu, choisi: o.vue.choisi, ordre: o.vue.ordre, revue: o.vue.revue, verdict: o.vue.verdict };
     dessiner();
     return true;
@@ -103,7 +174,25 @@ function noter(carte, verdict) {
   else if (verdict === 'faux') s.b = Math.max(0, Math.min(s.b - 2, 1));
   s.d = j + (verdict === 'bon' ? INTERVALLES[s.b] : 1);
   s.n++;
+  s.v = j;                                          // dernier jour où la carte a été vue
   etat.cartes[carte.id] = s;
+}
+/* Mémoire courte par chapitre : 1 = réussi, 0 = raté. Les rappels de cours n'y comptent pas. */
+function retenir(carte, verdict) {
+  if (carte.type === 'cours') return;
+  etat.chap[carte.ch] = (etat.chap[carte.ch] || []).concat(verdict === 'faux' ? 0 : 1).slice(-MEMOIRE);
+}
+const enDifficulte = ch => (etat.chap[ch] || []).filter(x => !x).length >= ECHECS_ALERTE;
+const estCours = c => c.type === 'cours';
+const vueAujourdhui = c => { const s = suivi(c.id); return s && s.v === aujourdhui(); };
+const rang = c => suivi(c.id) ? suivi(c.id).b : -1;
+/* Rappels de cours des chapitres où ça coince, pas déjà vus aujourd'hui : les moins bien sus d'abord. */
+function rappelsPrioritaires(liste) {
+  const parCh = {};
+  for (const c of liste) if (estCours(c) && enDifficulte(c.ch) && !vueAujourdhui(c)) (parCh[c.ch] = parCh[c.ch] || []).push(c);
+  const lots = Object.values(parCh).map(l => l.sort((a, b) => rang(a) - rang(b)).slice(0, 2));
+  lots.sort((a, b) => (chapitres[b[0].ch].poids || 1) - (chapitres[a[0].ch].poids || 1));
+  return lots.flat().slice(0, RAPPELS_MAX);
 }
 function marquerJour() {
   const j = aujourdhui();
@@ -113,20 +202,26 @@ function marquerJour() {
 }
 
 /* ---------- Construction d'une session ---------- */
-function composer(liste) {
-  const dues = melanger(liste.filter(estDue)).sort((a, b) => suivi(a.id).d - suivi(b.id).d);
-  const neuves = melanger(liste.filter(estNeuve));
-  let choix = dues.slice(0, TAILLE_SESSION);
-  choix = choix.concat(neuves.slice(0, TAILLE_SESSION - choix.length));
+function composer(liste, pondere) {
+  const rappels = rappelsPrioritaires(liste);
+  const reste = liste.filter(c => !rappels.includes(c));
+  const place = TAILLE_SESSION - rappels.length;
+  const dues = melanger(reste.filter(estDue)).sort((a, b) => suivi(a.id).d - suivi(b.id).d);
+  // Session du jour : les cartes neuves des chapitres fréquents aux écrits sortent plus souvent.
+  const cle = c => pondere ? Math.random() ** (1 / TIRAGE[chapitres[c.ch].poids || 1]) : Math.random();
+  const neuves = reste.filter(estNeuve).map(c => [cle(c), c]).sort((a, b) => b[0] - a[0]).map(x => x[1]);
+  let choix = dues.slice(0, place);
+  choix = choix.concat(neuves.slice(0, place - choix.length));
   let libre = false;
-  if (!choix.length) { libre = true; choix = melanger(liste).slice(0, TAILLE_SESSION); }
-  return { file: melanger(choix), libre };
+  if (!choix.length && !rappels.length) { libre = true; choix = melanger(liste).slice(0, TAILLE_SESSION); }
+  return { file: rappels.concat(melanger(choix)), libre, rappels: new Set(rappels.map(c => c.id)) };
 }
-function lancer(idChapitre) {
+function lancer(idChapitre, seulementCours) {
   const liste = idChapitre ? (parChapitre[idChapitre] || []) : cartes;
   if (!liste.length) return;
-  const { file, libre } = composer(liste);
-  session = { file, i: 0, total: file.length, faits: 0, bons: 0, xp: 0, combo: 0, libre, revues: new Set(), vue: null };
+  let { file, libre, rappels } = composer(liste, !idChapitre);
+  if (seulementCours) { file = liste.filter(estCours); libre = false; rappels = new Set(); if (!file.length) return; }
+  session = { file, i: 0, total: file.length, faits: 0, bons: 0, xp: 0, combo: 0, libre, revues: new Set(), vue: null, rappels, echecs: {} };
   afficherCarte();
 }
 
@@ -151,25 +246,40 @@ function accueil() {
     </div>
     <button class="gros" data-a="lancer" data-ch="">Session du jour</button>
     <p class="sous-gros">${dues} à revoir · ${neuves} nouvelles · ${cartes.length} cartes en tout</p>`;
-  for (const d of programme.domaines) {
-    h += `<section class="domaine"><h2 style="color:${d.couleur}">${d.nom}</h2>`;
-    for (const ch of d.chapitres) {
-      const liste = parChapitre[ch.id] || [];
-      if (!liste.length) {
-        h += `<div class="tuile vide"><div class="txt"><b>${ch.nom}</b><small>§ ${ch.ref} · bientôt</small></div></div>`;
-        continue;
-      }
-      const m = Math.round(100 * maitrise(liste));
-      const aRevoir = liste.filter(estDue).length;
-      h += `<button class="tuile" style="--c:${d.couleur}" data-a="lancer" data-ch="${ch.id}">
-        <div class="txt"><b>${ch.nom}${aRevoir ? `<span class="pastille">${aRevoir}</span>` : ''}</b>
-        <small>§ ${ch.ref} · ${liste.length} cartes</small><div class="barre"><i style="width:${m}%"></i></div></div>
-        <span class="pc">${m} %</span></button>`;
+  const parPriorite = etat.tri === 'priorite';
+  h += `<div class="tri"><button class="${parPriorite ? '' : 'actif'}" data-a="tri" data-t="programme">Par domaine</button>
+    <button class="${parPriorite ? 'actif' : ''}" data-a="tri" data-t="priorite">Par priorité</button>
+    <button class="aide" data-a="aide-priorites" aria-label="Comment la priorité est calculée">?</button></div>`;
+  if (parPriorite) {
+    const tous = Object.values(chapitres);
+    for (const p of [3, 2, 1]) {
+      const lot = tous.filter(ch => (ch.poids || 1) === p)
+        .sort((a, b) => (b.sujets || 0) - (a.sujets || 0) || maitrise(parChapitre[a.id] || []) - maitrise(parChapitre[b.id] || []));
+      if (!lot.length) continue;
+      h += `<section class="domaine"><h2>${pips(p)} ${FREQ[p]} aux écrits</h2>${lot.map(tuile).join('')}</section>`;
     }
-    h += '</section>';
+  } else {
+    for (const d of programme.domaines)
+      h += `<section class="domaine"><h2 style="color:${d.couleur}">${d.nom}</h2>${d.chapitres.map(tuile).join('')}</section>`;
   }
   $app.innerHTML = h;
   window.scrollTo(0, 0);
+}
+const pips = p => `<span class="pips p${p || 1}" aria-hidden="true"><i></i><i></i><i></i></span>`;
+function tuile(ch) {
+  const liste = parChapitre[ch.id] || [];
+  if (!liste.length) return `<div class="tuile vide"><div class="txt"><b>${ch.nom}</b><small>§ ${ch.ref} · bientôt</small></div></div>`;
+  const m = Math.round(100 * maitrise(liste));
+  const aRevoir = liste.filter(estDue).length;
+  const dur = enDifficulte(ch.id), aDesRappels = liste.some(estCours);
+  return `<div class="tuile" style="--c:${ch.couleur}">
+    <button class="corps" data-a="lancer" data-ch="${ch.id}">
+      <div class="txt"><b>${ch.nom}${aRevoir ? `<span class="pastille">${aRevoir}</span>` : ''}</b>
+      <small>§ ${ch.ref} · ${liste.length} cartes</small>
+      <small class="freq">${pips(ch.poids)} ${FREQ[ch.poids || 1]} aux écrits${dur && aDesRappels ? ' · <em>rappels en tête</em>' : ''}</small>
+      <div class="barre"><i style="width:${m}%"></i></div></div>
+      <span class="pc">${m} %</span></button>
+    ${aDesRappels ? `<button class="livre${dur ? ' alerte' : ''}" data-a="rappels" data-ch="${ch.id}" aria-label="Rappels de cours : ${ch.nom}">📖</button>` : ''}</div>`;
 }
 
 /* ---------- Écran de carte ---------- */
@@ -178,7 +288,7 @@ function afficherCarte() {
   if (s.i >= s.file.length) return fin();
   const c = s.file[s.i];
   const v = s.vue = { carte: c, repondu: false, choisi: null, ordre: null, revue: s.revues.has(c.id) };
-  if (c.type === 'qcm' || c.type === 'piste') v.ordre = melanger(c.choix.map((_, k) => k));
+  if (c.type === 'qcm' || c.type === 'piste' || c.type === 'cours') v.ordre = melanger(c.choix.map((_, k) => k));
   if (c.type === 'erreur') v.ordre = c.lignes.map((_, k) => k);
   sauverSession(); dessiner();
   window.scrollTo(0, 0);
@@ -197,13 +307,18 @@ function dessiner() {
     <div class="haut"><button class="fermer" data-a="quitter" aria-label="Quitter">✕</button>
       <div class="barre"><i style="width:${100 * s.faits / s.total}%"></i></div>
       <span class="combo">${s.combo >= 2 ? '×' + s.combo : ''}</span></div>
-    <span class="mode">${MODES[c.type]}</span>${revue ? '<span class="mode revoir">À revoir</span>' : ''}
-    <div class="enonce">${fmt(c.enonce)}</div>${verdict}`;
+    <span class="mode">${MODES[c.type]}</span>${revue ? '<span class="mode revoir">À revoir</span>' : s.rappels.has(c.id) ? '<span class="mode revoir">Prioritaire</span>' : ''}`;
+  const fig = c.figure ? figure(c.figure) : '';
+  const apres = c.figure && c.figure.quand === 'apres';
+  if (c.type === 'cours') h += `<div class="cours"><h3>${fmt(c.titre)}</h3>${fmt(c.enonce)}${fig}</div>
+    <div class="enonce"><b class="appli">Application</b>${fmt(c.question)}</div>`;
+  else h += `<div class="enonce">${fmt(c.enonce)}${apres ? '' : fig}</div>`;
+  h += verdict + (apres && v.repondu && c.type !== 'cours' ? `<div class="enonce">${fig}</div>` : '');
 
   if (c.type === 'vf') {
     if (!v.repondu) h += `<div class="vf"><button class="v" data-a="vf" data-r="1">Vrai</button><button class="f" data-a="vf" data-r="0">Faux</button></div>`;
   } else {
-    const consignes = { qcm: 'Choisis la bonne proposition.', erreur: 'Touche la ligne qui contient l\'erreur.', piste: 'Quelle piste suivrais-tu ? Le bouton i rappelle l\'outil, sans dire s\'il convient.' };
+    const consignes = { cours: 'Lis le rappel, puis réponds.', qcm: 'Choisis la bonne proposition.', erreur: 'Touche la ligne qui contient l\'erreur.', piste: 'Quelle piste suivrais-tu ? Le bouton i rappelle l\'outil, sans dire s\'il convient.' };
     if (!v.repondu) h += `<p class="consigne">${consignes[c.type]}</p>`;
     v.ordre.forEach((k, pos) => {
       let classe = 'choix', etiquette = '', retour = '';
@@ -214,10 +329,10 @@ function dessiner() {
         etiquette = `<span class="etiquette">${{ bon: 'Bonne piste', possible: 'Jouable', impasse: 'Impasse' }[ver]}${v.choisi === k ? ' · ton choix' : ''}</span><br>`;
         retour = `<span class="retour">${fmt(c.choix[k].retour)}</span>`;
       } else {
-        const bonne = c.type === 'qcm' ? c.bonne : c.fausse;
+        const bonne = c.type === 'erreur' ? c.fausse : c.bonne;
         if (k === bonne) classe += ' bon'; else if (k === v.choisi) classe += ' faux'; else classe += ' eteint';
       }
-      const texte = c.type === 'piste' ? c.choix[k].titre : c.type === 'qcm' ? c.choix[k] : c.lignes[k];
+      const texte = c.type === 'piste' ? c.choix[k].titre : c.type === 'erreur' ? c.lignes[k] : c.choix[k];
       const num = c.type === 'erreur' ? `<span class="num">${pos + 1}.</span>` : '';
       const info = c.type === 'piste' ? `<button class="i" data-a="info" data-k="${k}" aria-label="Rappel">i</button>` : '';
       h += `<div class="${classe}"><button class="corps" data-a="choisir" data-k="${k}">${etiquette}${num}${fmt(texte)}${retour}</button>${info}</div>`;
@@ -241,18 +356,29 @@ function repondre(verdict) {
   if (!revue) {
     s.faits++;
     if (!s.libre) noter(c, verdict);
+    retenir(c, verdict);
     if (verdict === 'bon') s.bons++;
   }
   if (verdict === 'faux') {
     s.combo = 0; vibrer([40, 60, 40]);
-    if (!revue) { s.revues.add(c.id); s.file.push(c); }   // reviendra une fois en fin de session
+    if (!revue) {
+      s.revues.add(c.id); s.file.push(c);                 // reviendra une fois en fin de session
+      // Deuxième échec de la session sur un même chapitre : un rappel de cours arrive juste après.
+      if (!estCours(c) && (s.echecs[c.ch] = (s.echecs[c.ch] || 0) + 1) === 2) {
+        const rappel = (parChapitre[c.ch] || []).filter(x => estCours(x) && !s.file.includes(x) && !vueAujourdhui(x))
+          .sort((a, b) => rang(a) - rang(b))[0];
+        if (rappel) { s.file.splice(s.i + 1, 0, rappel); s.total++; s.rappels.add(rappel.id); }
+      }
+    }
   } else {
     s.combo = verdict === 'bon' ? s.combo + 1 : s.combo;
     const gain = revue ? 3 : (verdict === 'bon' ? 10 + Math.min(10, 2 * (s.combo - 1)) : 5);
     s.xp += gain; etat.xp += gain; vibrer(20);
   }
   marquerJour(); sauver(); sauverSession(); dessiner();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const cible = c.type === 'cours' && document.querySelector('.verdict');
+  if (cible) cible.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function fin() {
@@ -276,6 +402,16 @@ $voile.addEventListener('click', fermer);
 function feuilleInfo(k) {
   const ch = session.vue.carte.choix[k];
   ouvrir(`<h3>${fmt(ch.titre)}</h3><p>${fmt(ch.info)}</p><button class="gros calme" data-a="fermer">Fermer</button>`);
+}
+function feuillePriorites() {
+  const e = programme.ecrits || {};
+  const rangs = Object.values(chapitres).sort((a, b) => (b.poids || 1) - (a.poids || 1) || (b.sujets || 0) - (a.sujets || 0));
+  ouvrir(`<h3>Présence aux écrits</h3>
+    <small>Estimation par mots-clés sur ${e.sujetsLus || '?'} sujets (${e.periode || ''}) : le nombre de sujets où le vocabulaire du chapitre apparaît nettement.
+    Ce n'est pas un étiquetage question par question, et les notions écrites en symboles (intégrales, séries) sont sous-comptées : leur niveau a été relevé à la main.
+    En session du jour, les cartes neuves des chapitres fréquents sortent plus souvent.</small>
+    <table class="rangs">${rangs.map(ch => `<tr><td>${pips(ch.poids)}</td><td>${ch.nom}</td><td>${ch.sujets || 0}/${e.sujetsLus || '?'}</td></tr>`).join('')}</table>
+    <button class="gros" data-a="fermer">Fermer</button>`);
 }
 function feuilleSignaler() {
   const c = session.vue.carte;
@@ -305,6 +441,9 @@ document.addEventListener('click', ev => {
   const a = b.dataset.a, v = session && session.vue;
   switch (a) {
     case 'lancer': lancer(b.dataset.ch || null); break;
+    case 'rappels': lancer(b.dataset.ch, true); break;
+    case 'tri': { etat.tri = b.dataset.t; sauver(); const y = window.scrollY; accueil(); window.scrollTo(0, y); break; }
+    case 'aide-priorites': feuillePriorites(); break;
     case 'accueil': accueil(); break;
     case 'quitter': if (!session.faits || confirm('Quitter la session ? Les réponses déjà données sont gardées.')) accueil(); break;
     case 'vf': repondre((b.dataset.r === '1') === v.carte.reponse ? 'bon' : 'faux'); break;
@@ -313,7 +452,7 @@ document.addEventListener('click', ev => {
       if (v.choisi === null) break;
       const c = v.carte;
       if (c.type === 'piste') { const ver = c.choix[v.choisi].verdict; repondre(ver === 'impasse' ? 'faux' : ver); }
-      else repondre(v.choisi === (c.type === 'qcm' ? c.bonne : c.fausse) ? 'bon' : 'faux');
+      else repondre(v.choisi === (c.type === 'erreur' ? c.fausse : c.bonne) ? 'bon' : 'faux');
       break;
     }
     case 'suivante': session.i++; afficherCarte(); break;
@@ -347,6 +486,7 @@ async function demarrer() {
     const ids = programme.domaines.flatMap(d => d.chapitres).filter(ch => ch.cartes).map(ch => ch.id);
     const lots = await Promise.all(ids.map(id => fetch(`data/cartes/${id}.json`).then(r => r.json())));
     cartes = lots.flat();
+    for (const d of programme.domaines) for (const ch of d.chapitres) chapitres[ch.id] = Object.assign(ch, { couleur: d.couleur });
     for (const c of cartes) (parChapitre[c.ch] = parChapitre[c.ch] || []).push(c);
     if (!reprendreSession()) accueil();
   } catch (e) {

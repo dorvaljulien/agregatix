@@ -620,5 +620,32 @@
       }
     ],
     "direction": "On trouve $a_1 = 0$ et $(m+1)^2 a_{m+1} = -a_{m-1}$, donc les coefficients impairs sont nuls et $a_{2p} = \\frac{(-1)^p a_0}{4^p (p!)^2}$. Le rayon est infini : les solutions cherchées sont les $a_0 \\sum_p \\frac{(-1)^p x^{2p}}{4^p (p!)^2}$."
+  },
+  {
+    "id": "series-entieres-cours-01", "ch": "series-entieres", "type": "cours",
+    "titre": "Rayon de convergence",
+    "enonce": "$R = \\sup\\{r \\ge 0 : (a_nr^n) \\text{ est bornée}\\}$. La série converge absolument pour $|z| < R$, diverge grossièrement pour $|z| > R$ ; sur le cercle, tout peut arriver. D'Alembert : si $\\left|\\frac{a_{n+1}}{a_n}\\right| \\to \\ell$, alors $R = \\frac1\\ell$. Si $a_n \\sim b_n$, les rayons sont égaux ; $\\sum a_nz^n$ et $\\sum na_nz^n$ ont le même rayon.",
+    "question": "Le rayon de convergence de $\\displaystyle\\sum\\binom{2n}{n}z^n$ est :",
+    "choix": ["$\\frac14$","$4$","$\\frac12$","$1$"],
+    "bonne": 0,
+    "explication": "$\\binom{2n+2}{n+1}\\Big/\\binom{2n}{n} = \\frac{(2n+2)(2n+1)}{(n+1)^2} \\to 4$, donc $R = \\frac14$. Pour $|x| < \\frac14$, la somme vaut $\\frac{1}{\\sqrt{1 - 4x}}$."
+  },
+  {
+    "id": "series-entieres-cours-02", "ch": "series-entieres", "type": "cours",
+    "titre": "Régularité de la somme",
+    "enonce": "Sur $]-R, R[$, la somme $f$ d'une série entière est de classe $\\mathcal C^\\infty$, se dérive et s'intègre **terme à terme** avec le même rayon, et $a_n = \\frac{f^{(n)}(0)}{n!}$ : le développement est unique. La convergence est normale sur tout segment de $]-R, R[$, en général pas sur $]-R, R[$ entier.",
+    "question": "Pour $|x| < 1$, la somme $\\displaystyle\\sum_{n=1}^{+\\infty}nx^n$ vaut :",
+    "choix": ["$\\dfrac{x}{(1 - x)^2}$","$\\dfrac{1}{(1 - x)^2}$","$\\dfrac{x}{1 - x}$","$\\dfrac{x}{(1 + x)^2}$"],
+    "bonne": 0,
+    "explication": "On dérive $\\frac{1}{1 - x} = \\sum_{n \\ge 0}x^n$ terme à terme : $\\frac{1}{(1 - x)^2} = \\sum_{n \\ge 1}nx^{n-1}$, puis on multiplie par $x$."
+  },
+  {
+    "id": "series-entieres-cours-03", "ch": "series-entieres", "type": "cours",
+    "titre": "Développements usuels et méthodes",
+    "enonce": "$e^x = \\sum\\frac{x^n}{n!}$ ($R = +\\infty$) ; $\\frac{1}{1 - x} = \\sum x^n$, $\\ln(1 + x) = \\sum_{n \\ge 1}\\frac{(-1)^{n-1}x^n}{n}$ et $(1 + x)^\\alpha = \\sum\\binom\\alpha nx^n$ ($R = 1$). **Méthodes** pour développer : dériver ou intégrer un développement connu, produit de Cauchy, équation différentielle. Une fonction $\\mathcal C^\\infty$ n'est pas toujours développable ($x \\mapsto e^{-1/x^2}$ prolongée par $0$).",
+    "question": "Sur $]-1, 1[$, le développement en série entière de $\\arctan x$ est :",
+    "choix": ["$\\displaystyle\\sum_{n \\ge 0}\\frac{(-1)^nx^{2n+1}}{2n+1}$","$\\displaystyle\\sum_{n \\ge 0}\\frac{(-1)^nx^{2n+1}}{(2n+1)!}$","$\\displaystyle\\sum_{n \\ge 0}\\frac{x^{2n+1}}{2n+1}$","$\\displaystyle\\sum_{n \\ge 0}(-1)^nx^{2n}$"],
+    "bonne": 0,
+    "explication": "On intègre terme à terme $\\arctan'(x) = \\frac{1}{1 + x^2} = \\sum(-1)^nx^{2n}$, avec $\\arctan 0 = 0$. Avec des factorielles, on obtient $\\sin x$ ; sans les signes, $\\frac12\\ln\\frac{1+x}{1-x}$."
   }
 ]

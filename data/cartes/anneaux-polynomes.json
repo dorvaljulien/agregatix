@@ -682,5 +682,32 @@
       }
     ],
     "direction": "Le cas $P = 0$ est clair. Sinon, le coefficient dominant $c$ est $> 0$ et chaque racine réelle est de multiplicité paire (sinon $P$ change de signe). Donc $P = c\\prod_j (X - a_j)^{2m_j} \\prod_k (X - z_k)(X - \\bar z_k)$. Avec $Q = \\sqrt c \\prod_j (X - a_j)^{m_j} \\prod_k (X - z_k)$, on a $P = Q\\bar Q$, et $Q = A + iB$ donne $P = A^2 + B^2$."
+  },
+  {
+    "id": "anneaux-polynomes-cours-01", "ch": "anneaux-polynomes", "type": "cours",
+    "titre": "Racines et multiplicité",
+    "enonce": "Sur un corps de caractéristique nulle, $a$ est racine de $P$ de multiplicité exactement $m$ si et seulement si $P(a) = P'(a) = \\dots = P^{(m-1)}(a) = 0$ et $P^{(m)}(a) \\neq 0$. Un polynôme non nul de degré $n$ a au plus $n$ racines comptées avec multiplicité : un polynôme de degré $\\le n$ qui a $n + 1$ racines est nul.",
+    "question": "La multiplicité de $1$ comme racine de $P = X^4 - 4X + 3$ est :",
+    "choix": ["$2$","$1$","$3$","$4$"],
+    "bonne": 0,
+    "explication": "$P(1) = 0$, $P' = 4X^3 - 4$ donc $P'(1) = 0$, et $P'' = 12X^2$ donne $P''(1) = 12 \\neq 0$. La multiplicité est $2$ : $P = (X - 1)^2(X^2 + 2X + 3)$."
+  },
+  {
+    "id": "anneaux-polynomes-cours-02", "ch": "anneaux-polynomes", "type": "cours",
+    "titre": "Polynômes irréductibles",
+    "enonce": "Dans $\\mathbb C[X]$ : les polynômes de degré $1$. Dans $\\mathbb R[X]$ : ceux de degré $1$ et ceux de degré $2$ à discriminant $< 0$. Dans $K[X]$, un polynôme de degré $2$ ou $3$ est irréductible si et seulement s'il n'a pas de racine dans $K$ ; c'est **faux dès le degré $4$**. Racine rationnelle $\\frac pq$ (irréductible) d'un polynôme à coefficients entiers : $p$ divise le coefficient constant, $q$ le coefficient dominant.",
+    "question": "Lequel de ces polynômes est irréductible dans $\\mathbb Q[X]$ ?",
+    "choix": ["$X^3 - 2$","$X^4 + 4$","$X^4 + 2X^2 + 1$","$X^3 - 3X + 2$"],
+    "bonne": 0,
+    "explication": "$X^3 - 2$ est de degré $3$ sans racine rationnelle ($\\pm 1, \\pm 2$ ne conviennent pas). En revanche $X^4 + 4 = (X^2 + 2X + 2)(X^2 - 2X + 2)$ est réductible sans avoir de racine, $X^4 + 2X^2 + 1 = (X^2 + 1)^2$, et $1$ est racine de $X^3 - 3X + 2$."
+  },
+  {
+    "id": "anneaux-polynomes-cours-03", "ch": "anneaux-polynomes", "type": "cours",
+    "titre": "Relations coefficients-racines",
+    "enonce": "Si $P = a_n\\prod_{i=1}^n (X - x_i)$, les fonctions symétriques élémentaires des racines valent $\\sigma_k = (-1)^k \\frac{a_{n-k}}{a_n}$ : en particulier $\\sum x_i = -\\frac{a_{n-1}}{a_n}$ et $\\prod x_i = (-1)^n\\frac{a_0}{a_n}$. **Méthode** : $\\sum x_i^2 = \\sigma_1^2 - 2\\sigma_2$.",
+    "question": "Soient $x_1, x_2, x_3$ les racines complexes de $X^3 - 2X^2 + 5X - 1$. Alors $x_1^2 + x_2^2 + x_3^2$ vaut :",
+    "choix": ["$-6$","$14$","$4$","$-1$"],
+    "bonne": 0,
+    "explication": "$\\sigma_1 = 2$ et $\\sigma_2 = 5$, donc la somme des carrés vaut $2^2 - 2 \\times 5 = -6$. Une somme de carrés négative : les trois racines ne sont pas toutes réelles."
   }
 ]

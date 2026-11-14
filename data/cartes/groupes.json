@@ -618,5 +618,32 @@
       }
     ],
     "direction": "$grg^{-1}(g(u)) = g(r(u)) = g(u)$. Pour $(u, v, w)$ orthonormée directe, $(g(u), g(v), g(w))$ l'est aussi, et $grg^{-1}(g(x)) = g(r(x))$ montre que la matrice de $grg^{-1}$ dans cette base est celle de $r$ dans $(u, v, w)$."
+  },
+  {
+    "id": "groupes-cours-01", "ch": "groupes", "type": "cours",
+    "titre": "Théorème de Lagrange",
+    "enonce": "Dans un groupe fini $G$, l'ordre de tout sous-groupe, donc de tout élément, divise $|G|$ ; en particulier $g^{|G|} = e$. Un groupe d'ordre premier est cyclique. La réciproque est fausse : un diviseur de $|G|$ n'est pas toujours l'ordre d'un sous-groupe ($\\mathfrak A_4$, d'ordre $12$, n'a pas de sous-groupe d'ordre $6$).",
+    "question": "Soit $G$ un groupe d'ordre $35$, et $H$, $K$ deux sous-groupes d'ordres $5$ et $7$. Alors $H \\cap K$ :",
+    "choix": ["est réduit à l'élément neutre","est d'ordre $5$","est d'ordre $7$","est réduit au neutre seulement si $G$ est abélien"],
+    "bonne": 0,
+    "explication": "$H \\cap K$ est un sous-groupe de $H$ et de $K$ : son ordre divise $5$ et $7$, donc vaut $1$. Aucune hypothèse de commutativité n'est nécessaire."
+  },
+  {
+    "id": "groupes-cours-02", "ch": "groupes", "type": "cours",
+    "titre": "Groupes cycliques",
+    "enonce": "Dans $\\mathbb Z/n\\mathbb Z$, la classe de $k$ est d'ordre $\\frac{n}{n \\wedge k}$ : elle engendre le groupe si et seulement si $k \\wedge n = 1$. Un groupe cyclique d'ordre $n$ possède, pour chaque diviseur $d$ de $n$, un unique sous-groupe d'ordre $d$ et exactement $\\varphi(d)$ éléments d'ordre $d$.",
+    "question": "Dans $\\mathbb Z/12\\mathbb Z$, le nombre d'éléments d'ordre $6$ est :",
+    "choix": ["$2$","$6$","$1$","$4$"],
+    "bonne": 0,
+    "explication": "Il y en a $\\varphi(6) = 2$. Directement : l'ordre de $\\bar k$ vaut $6$ quand $12 \\wedge k = 2$, soit $k = 2$ ou $k = 10$."
+  },
+  {
+    "id": "groupes-cours-03", "ch": "groupes", "type": "cours",
+    "titre": "Permutations : cycles, ordre, signature",
+    "enonce": "Toute permutation se décompose, de façon unique à l'ordre près, en produit de cycles à supports disjoints, qui commutent. Son ordre est le ppcm des longueurs des cycles. La signature est un morphisme vers $\\{\\pm 1\\}$ ; un cycle de longueur $\\ell$ a pour signature $(-1)^{\\ell - 1}$.",
+    "question": "Dans $\\mathfrak S_7$, la permutation $\\sigma = (1\\ 2\\ 3)(4\\ 5)(6\\ 7)$ a pour ordre et pour signature :",
+    "choix": ["ordre $6$, signature $+1$","ordre $6$, signature $-1$","ordre $12$, signature $+1$","ordre $7$, signature $-1$"],
+    "bonne": 0,
+    "explication": "L'ordre est $\\mathrm{ppcm}(3, 2, 2) = 6$. La signature vaut $(+1)(-1)(-1) = +1$ : un $3$-cycle est pair, et les deux transpositions se compensent."
   }
 ]
