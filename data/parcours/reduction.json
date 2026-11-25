@@ -1,0 +1,731 @@
+{
+ "ch": "reduction",
+ "intro": "Réduire un endomorphisme, c'est trouver une base dans laquelle sa matrice est la plus simple possible : diagonale si on peut, triangulaire sinon. Avec les espaces vectoriels, c'est le chapitre le plus présent aux écrits : presque chaque sujet d'algèbre contient un « montrer que $A$ est diagonalisable » ou un « calculer $A^n$ ». On repart de la définition d'une valeur propre.",
+ "niveaux": [
+  {
+   "id": "reduction-n1",
+   "titre": "Valeurs propres et vecteurs propres",
+   "objectif": "Savoir ce qu'est un vecteur propre, le reconnaître sur un dessin ou une matrice simple, et trouver les valeurs propres d'une petite matrice.",
+   "etapes": [
+    {
+     "titre": "L'idée : des directions qui ne tournent pas",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Une application linéaire $u$ envoie en général un vecteur sur un vecteur qui pointe dans une autre direction. Mais certaines directions sont privilégiées : un vecteur pris dans l'une d'elles est seulement étiré, rétréci ou retourné. Il reste sur sa droite. Ce sont les vecteurs propres, et le facteur d'étirement est la valeur propre."
+      },
+      {
+       "k": "def",
+       "titre": "Vecteur propre, valeur propre",
+       "t": "Soit $E$ un espace vectoriel sur $K$ ($\\mathbb R$ ou $\\mathbb C$) et $u$ un endomorphisme de $E$, c'est-à-dire une application linéaire de $E$ dans $E$. Un vecteur $x$ est un **vecteur propre** de $u$ si $x \\neq 0$ et s'il existe un scalaire $\\lambda$ tel que $u(x) = \\lambda x$. On dit alors que $\\lambda$ est une **valeur propre** de $u$, et que $x$ est un vecteur propre associé à $\\lambda$.\n\nPour une matrice $A \\in M_n(K)$, c'est la même définition avec une colonne $X$ non nulle telle que $AX = \\lambda X$."
+      },
+      {
+       "k": "att",
+       "t": "La condition $x \\neq 0$ est essentielle : on a toujours $u(0) = \\lambda \\cdot 0$, quel que soit $\\lambda$, donc sans elle tout scalaire serait valeur propre. En revanche, la valeur propre $\\lambda = 0$ est permise : elle signifie qu'il existe $x \\neq 0$ avec $u(x) = 0$, autrement dit que $u$ n'est pas injective."
+      },
+      {
+       "k": "ex",
+       "t": "Trois transformations du plan :\n- la projection orthogonale $p$ sur l'axe des abscisses : un vecteur de l'axe ne bouge pas ($p(x) = x$, valeur propre $1$), un vecteur vertical est écrasé sur $0$ (valeur propre $0$) ;\n- la symétrie $s$ par rapport à l'axe des abscisses : l'axe est fixé (valeur propre $1$), un vecteur vertical est retourné ($s(x) = -x$, valeur propre $-1$) ;\n- la rotation d'angle $\\frac\\pi2$ : aucun vecteur non nul ne reste sur sa droite. Elle n'a **aucune valeur propre réelle**."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Pour l'homothétie $u = 3\\,\\mathrm{id}_E$, tout vecteur non nul est un vecteur propre.",
+       "reponse": true,
+       "explication": "On a $u(x) = 3x$ pour tout $x$ : tout vecteur non nul est propre, associé à l'unique valeur propre $3$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Soit $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$ et $X = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$. Que peut-on dire de $X$ ?",
+       "choix": [
+        "C'est un vecteur propre, associé à $5$",
+        "C'est un vecteur propre, associé à $2$",
+        "C'est un vecteur propre, associé à $1$",
+        "Ce n'est pas un vecteur propre"
+       ],
+       "bonne": 0,
+       "explication": "$AX$ est la deuxième colonne de $A$, soit $\\begin{pmatrix} 0 \\\\ 5 \\end{pmatrix} = 5X$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$0$ peut être une valeur propre.",
+       "reponse": true,
+       "explication": "$0$ est valeur propre si et seulement s'il existe $x \\neq 0$ avec $u(x) = 0$, c'est-à-dire si $u$ n'est pas injective. C'est le **vecteur** nul qui est interdit, pas la **valeur propre** nulle."
+      }
+     ]
+    },
+    {
+     "titre": "Trouver les valeurs propres",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Comment trouver les $\\lambda$ ? On réécrit $u(x) = \\lambda x$ sous la forme $(u - \\lambda\\,\\mathrm{id})(x) = 0$. Dire que $\\lambda$ est valeur propre, c'est dire que cette équation a une solution non nulle, donc que $u - \\lambda\\,\\mathrm{id}$ n'est pas injective. En dimension finie, cela se teste avec un déterminant."
+      },
+      {
+       "k": "thm",
+       "titre": "Caractérisation",
+       "t": "Pour $A \\in M_n(K)$ et $\\lambda \\in K$, les propriétés suivantes sont équivalentes :\n- $\\lambda$ est valeur propre de $A$ ;\n- $\\ker(A - \\lambda I_n) \\neq \\{0\\}$ ;\n- $A - \\lambda I_n$ n'est pas inversible ;\n- $\\det(A - \\lambda I_n) = 0$.\n\nL'ensemble des valeurs propres de $A$ s'appelle son **spectre**, noté $\\mathrm{Sp}(A)$."
+      },
+      {
+       "k": "p",
+       "t": "La dernière condition donne une méthode : on cherche les $\\lambda$ qui annulent $\\det(A - \\lambda I_n)$. Pour une matrice $2 \\times 2$, cela donne une équation du second degré."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ : $\\det(A - \\lambda I_2) = (1 - \\lambda)^2 - 4$. Il s'annule quand $1 - \\lambda = \\pm 2$, soit $\\lambda = -1$ ou $\\lambda = 3$. Donc $\\mathrm{Sp}(A) = \\{-1, 3\\}$."
+      },
+      {
+       "k": "met",
+       "titre": "Lecture directe sur une matrice triangulaire",
+       "t": "Si $A$ est triangulaire, $A - \\lambda I_n$ l'est aussi, et son déterminant est le produit des termes diagonaux : $(a_{11} - \\lambda)\\cdots(a_{nn} - \\lambda)$. Les valeurs propres d'une matrice triangulaire sont donc **ses coefficients diagonaux**. Rien à calculer."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Les valeurs propres de $\\begin{pmatrix} 4 & 7 \\\\ 0 & -1 \\end{pmatrix}$ sont :",
+       "choix": [
+        "$4$ et $-1$",
+        "$4$ et $7$",
+        "$7$ et $-1$",
+        "$3$ et $0$"
+       ],
+       "bonne": 0,
+       "explication": "La matrice est triangulaire : ses valeurs propres sont ses coefficients diagonaux. Le $7$ hors de la diagonale ne joue aucun rôle."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A$ n'est pas inversible, alors $0$ est valeur propre de $A$.",
+       "reponse": true,
+       "explication": "$A - 0 \\cdot I_n = A$ n'est pas inversible : c'est exactement la caractérisation avec $\\lambda = 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Les valeurs propres de $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ sont :",
+       "choix": [
+        "$1$ et $-1$",
+        "$0$ seulement",
+        "$0$ et $1$",
+        "il n'y en a pas"
+       ],
+       "bonne": 0,
+       "explication": "$\\det(A - \\lambda I_2) = \\lambda^2 - 1$. Géométriquement, $A$ échange les deux coordonnées : c'est une symétrie, qui fixe $(1, 1)$ et retourne $(1, -1)$."
+      }
+     ]
+    },
+    {
+     "titre": "Sous-espaces propres",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Une fois une valeur propre $\\lambda$ trouvée, on cherche tous ses vecteurs propres : ce sont les solutions non nulles du système $(A - \\lambda I_n)X = 0$. On les regroupe, avec le vecteur nul, dans un sous-espace."
+      },
+      {
+       "k": "def",
+       "titre": "Sous-espace propre",
+       "t": "Pour une valeur propre $\\lambda$ de $u$, le **sous-espace propre** associé est $E_\\lambda(u) = \\ker(u - \\lambda\\,\\mathrm{id}_E)$. C'est un sous-espace vectoriel (c'est un noyau) ; il contient $0$ et tous les vecteurs propres associés à $\\lambda$. Sa dimension vaut au moins $1$."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ et $\\lambda = 3$ : $A - 3I_2 = \\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix}$, dont le noyau est la droite d'équation $x = y$. Donc $E_3 = \\mathrm{Vect}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$. De même, $E_{-1}$ est la droite $x + y = 0$, soit $E_{-1} = \\mathrm{Vect}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$."
+      },
+      {
+       "k": "met",
+       "titre": "Raccourci par le rang",
+       "t": "D'après le théorème du rang, $\\dim E_\\lambda = n - \\mathrm{rg}(A - \\lambda I_n)$. Souvent le rang se voit à l'œil : colonnes proportionnelles, colonne nulle, lignes égales."
+      },
+      {
+       "k": "thm",
+       "titre": "Valeurs propres distinctes",
+       "t": "Des vecteurs propres associés à des valeurs propres **deux à deux distinctes** forment une famille libre. Conséquence : en dimension $n$, il y a au plus $n$ valeurs propres distinctes."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Soit $A = \\begin{pmatrix} 2 & 2 & 2 \\\\ 2 & 2 & 2 \\\\ 2 & 2 & 2 \\end{pmatrix}$. La dimension de $E_0 = \\ker A$ est :",
+       "choix": [
+        "$2$",
+        "$1$",
+        "$0$",
+        "$3$"
+       ],
+       "bonne": 0,
+       "explication": "Les trois colonnes sont égales : $\\mathrm{rg}\\,A = 1$, donc $\\dim \\ker A = 3 - 1 = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une matrice de $M_3(\\mathbb R)$ peut avoir $4$ valeurs propres distinctes.",
+       "reponse": false,
+       "explication": "Quatre vecteurs propres associés à quatre valeurs propres distinctes formeraient une famille libre de $4$ vecteurs dans $\\mathbb R^3$ : impossible."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $x$ et $y$ sont deux vecteurs propres de $u$, alors $x + y$ est un vecteur propre de $u$.",
+       "reponse": false,
+       "explication": "C'est vrai seulement s'ils sont associés à la même valeur propre (et si $x + y \\neq 0$). Avec $A = \\mathrm{diag}(1, 2)$, $e_1$ et $e_2$ sont propres, mais $A(e_1 + e_2) = e_1 + 2e_2$ n'est pas colinéaire à $e_1 + e_2$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reduction-n2",
+   "titre": "Le polynôme caractéristique",
+   "objectif": "Savoir calculer le polynôme caractéristique, y lire la trace, le déterminant et les multiplicités, et connaître l'encadrement $1 \\le \\dim E_\\lambda \\le m(\\lambda)$.",
+   "etapes": [
+    {
+     "titre": "Définition et calcul rapide",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Au niveau précédent, on a cherché les $\\lambda$ qui annulent $\\det(A - \\lambda I_n)$. En développant ce déterminant, on obtient un polynôme en $\\lambda$ : c'est lui qu'on étudie maintenant."
+      },
+      {
+       "k": "def",
+       "titre": "Polynôme caractéristique",
+       "t": "Pour $A \\in M_n(K)$, on pose $\\chi_A(X) = \\det(XI_n - A)$. C'est un polynôme **unitaire** (coefficient dominant $1$) de degré $n$. Ses racines dans $K$ sont exactement les valeurs propres de $A$."
+      },
+      {
+       "k": "att",
+       "t": "Certains livres utilisent $\\det(A - XI_n)$, qui vaut $(-1)^n\\chi_A$. Les racines sont les mêmes, seul le signe change. Le programme utilise $\\det(XI_n - A)$, qui est unitaire."
+      },
+      {
+       "k": "thm",
+       "titre": "Le cas $2 \\times 2$, à connaître par cœur",
+       "t": "Pour $A \\in M_2(K)$ : $\\chi_A = X^2 - \\mathrm{tr}(A)\\,X + \\det A$. Les deux valeurs propres (dans $\\mathbb C$) ont donc pour somme la trace et pour produit le déterminant."
+      },
+      {
+       "k": "ex",
+       "t": "$A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ : $\\mathrm{tr}\\,A = 2$ et $\\det A = -3$, donc $\\chi_A = X^2 - 2X - 3 = (X - 3)(X + 1)$. On retrouve $\\mathrm{Sp}(A) = \\{-1, 3\\}$ en deux secondes."
+      },
+      {
+       "k": "thm",
+       "titre": "Invariance par changement de base",
+       "t": "Deux matrices semblables ($B = P^{-1}AP$) ont le même polynôme caractéristique, donc les mêmes valeurs propres, la même trace et le même déterminant. On peut donc parler du polynôme caractéristique $\\chi_u$ d'un endomorphisme en dimension finie : c'est celui de sa matrice dans n'importe quelle base."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Pour $A = \\begin{pmatrix} 3 & 1 \\\\ 2 & 2 \\end{pmatrix}$, le polynôme $\\chi_A$ vaut :",
+       "choix": [
+        "$X^2 - 5X + 4$",
+        "$X^2 + 5X + 4$",
+        "$X^2 - 5X + 6$",
+        "$X^2 - 4X + 5$"
+       ],
+       "bonne": 0,
+       "explication": "$\\mathrm{tr}\\,A = 5$ et $\\det A = 6 - 2 = 4$. Les valeurs propres sont $1$ et $4$. Le leurre $X^2 - 5X + 6$ oublie les coefficients hors diagonale dans le déterminant."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_2(\\mathbb R)$ a pour trace $0$ et pour déterminant $-4$. Ses valeurs propres sont :",
+       "choix": [
+        "$2$ et $-2$",
+        "$4$ et $-4$",
+        "$2i$ et $-2i$",
+        "$0$ et $-4$"
+       ],
+       "bonne": 0,
+       "explication": "$\\chi_A = X^2 - 4$. Somme $0$, produit $-4$ : c'est bien $2$ et $-2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Deux matrices de $M_2(\\mathbb R)$ qui ont la même trace et le même déterminant sont semblables.",
+       "reponse": false,
+       "explication": "Elles ont le même polynôme caractéristique, mais cela ne suffit pas. $I_2$ et $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ ont toutes deux trace $2$ et déterminant $1$, mais la seule matrice semblable à $I_2$ est $P^{-1}I_2P = I_2$."
+      }
+     ]
+    },
+    {
+     "titre": "Multiplicité et dimension des sous-espaces propres",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Une valeur propre peut être racine simple ou multiple de $\\chi_A$. Cette multiplicité dit « combien de fois » elle compte dans le polynôme. Mais le nombre de vecteurs propres indépendants qu'elle fournit est mesuré par une autre grandeur : la dimension du sous-espace propre. Les deux ne coïncident pas toujours, et c'est tout l'enjeu de la diagonalisation."
+      },
+      {
+       "k": "def",
+       "titre": "Multiplicité",
+       "t": "La **multiplicité** $m(\\lambda)$ d'une valeur propre $\\lambda$ est sa multiplicité comme racine de $\\chi_A$ : le plus grand entier $m$ tel que $(X - \\lambda)^m$ divise $\\chi_A$."
+      },
+      {
+       "k": "thm",
+       "titre": "Encadrement fondamental",
+       "t": "Pour toute valeur propre $\\lambda$ : $$1 \\le \\dim E_\\lambda \\le m(\\lambda).$$ En particulier, une valeur propre **simple** ($m = 1$) a toujours un sous-espace propre de dimension exactement $1$."
+      },
+      {
+       "k": "ex",
+       "t": "$J = \\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$ est triangulaire : $\\chi_J = (X - 2)^2$, donc $2$ est valeur propre double, $m(2) = 2$. Mais $J - 2I_2 = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ est de rang $1$, donc $\\dim E_2 = 1 < 2$. Il « manque » un vecteur propre : on verra que $J$ n'est pas diagonalisable.",
+       "titre": "Le contre-exemple à retenir"
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Pour $A = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$, que valent $m(5)$ et $\\dim E_5$ ?",
+       "choix": [
+        "$m(5) = 2$ et $\\dim E_5 = 2$",
+        "$m(5) = 2$ et $\\dim E_5 = 1$",
+        "$m(5) = 1$ et $\\dim E_5 = 1$",
+        "$m(5) = 2$ et $\\dim E_5 = 3$"
+       ],
+       "bonne": 0,
+       "explication": "$\\chi_A = (X - 5)^2(X - 1)$. Et $A - 5I_3 = \\mathrm{diag}(0, 0, -4)$ est de rang $1$, donc $\\dim E_5 = 3 - 1 = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $\\lambda$ est une valeur propre simple de $A$, alors $\\dim E_\\lambda = 1$.",
+       "reponse": true,
+       "explication": "L'encadrement $1 \\le \\dim E_\\lambda \\le m(\\lambda) = 1$ ne laisse pas le choix."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_4(\\mathbb R)$ vérifie $\\chi_A = (X - 1)^3(X + 2)$. Quelles valeurs peut prendre $\\dim E_1$ ?",
+       "choix": [
+        "$1$, $2$ ou $3$",
+        "$3$ seulement",
+        "$0$, $1$, $2$ ou $3$",
+        "$1$ seulement"
+       ],
+       "bonne": 0,
+       "explication": "$1 \\le \\dim E_1 \\le m(1) = 3$. Jamais $0$ : une valeur propre a toujours au moins un vecteur propre."
+      }
+     ]
+    },
+    {
+     "titre": "Trace, déterminant et valeurs propres",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "On dit que $\\chi_A$ est **scindé** s'il s'écrit comme produit de facteurs de degré $1$ : $\\chi_A = (X - \\lambda_1)\\cdots(X - \\lambda_n)$, où chaque valeur propre est répétée autant de fois que sa multiplicité. Sur $\\mathbb C$, c'est toujours le cas (théorème de d'Alembert-Gauss) ; pour une matrice réelle, on peut donc toujours raisonner dans $\\mathbb C$."
+      },
+      {
+       "k": "thm",
+       "titre": "Trace et déterminant",
+       "t": "Si $\\chi_A$ est scindé, de valeurs propres $\\lambda_1, \\dots, \\lambda_n$ répétées selon leur multiplicité : $$\\mathrm{tr}\\,A = \\lambda_1 + \\dots + \\lambda_n, \\qquad \\det A = \\lambda_1 \\cdots \\lambda_n.$$"
+      },
+      {
+       "k": "thm",
+       "titre": "Valeurs propres d'un polynôme en $A$",
+       "t": "Si $AX = \\lambda X$, alors $A^2X = A(\\lambda X) = \\lambda^2X$, et plus généralement $P(A)X = P(\\lambda)X$ pour tout polynôme $P$. Donc si $\\lambda$ est valeur propre de $A$, alors $P(\\lambda)$ est valeur propre de $P(A)$. Quand $\\chi_A$ est scindé, les valeurs propres de $P(A)$, comptées avec multiplicité, sont exactement les $P(\\lambda_i)$."
+      },
+      {
+       "k": "ex",
+       "t": "Si $A \\in M_3(\\mathbb R)$ a pour valeurs propres $1$, $2$ et $3$, alors $\\mathrm{tr}\\,A = 6$, $\\det A = 6$, et $A^2 + A$ a pour valeurs propres $2$, $6$ et $12$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_3(\\mathbb R)$ a pour valeurs propres $2$ (double) et $-1$ (simple). Que vaut $\\det A$ ?",
+       "choix": [
+        "$-4$",
+        "$-2$",
+        "$4$",
+        "$3$"
+       ],
+       "bonne": 0,
+       "explication": "$\\det A = 2 \\times 2 \\times (-1) = -4$. Le leurre $-2$ oublie de compter $2$ deux fois."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_3(\\mathbb R)$ a pour valeurs propres $2$ (double) et $-1$ (simple). Que vaut $\\mathrm{tr}(A^2)$ ?",
+       "choix": [
+        "$9$",
+        "$5$",
+        "$3$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "Les valeurs propres de $A^2$ sont $4$, $4$ et $1$ : leur somme vaut $9$. Le leurre $5$ oublie la multiplicité."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une matrice de $M_3(\\mathbb R)$ de trace nulle a forcément $0$ pour valeur propre.",
+       "reponse": false,
+       "explication": "$\\mathrm{diag}(1, 1, -2)$ est de trace nulle et n'a pas $0$ pour valeur propre. C'est un **déterminant** nul qui force la valeur propre $0$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reduction-n3",
+   "titre": "Diagonaliser",
+   "objectif": "Savoir ce que veut dire « diagonalisable », appliquer les critères usuels, et s'en servir pour calculer $A^k$.",
+   "etapes": [
+    {
+     "titre": "Ce que diagonaliser veut dire",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Une matrice diagonale est la plus simple qui soit : elle multiplie chaque coordonnée par un nombre, indépendamment des autres. Diagonaliser $u$, c'est trouver une base dans laquelle $u$ agit ainsi. Or « $u(e_i) = \\lambda_i e_i$ » dit exactement que $e_i$ est un vecteur propre. Une base qui diagonalise $u$ est donc une **base de vecteurs propres**."
+      },
+      {
+       "k": "def",
+       "titre": "Diagonalisable",
+       "t": "Un endomorphisme $u$ d'un espace $E$ de dimension finie est **diagonalisable** s'il existe une base de $E$ formée de vecteurs propres de $u$. Une matrice $A \\in M_n(K)$ est diagonalisable s'il existe $P$ inversible et $D$ diagonale telles que $A = PDP^{-1}$."
+      },
+      {
+       "k": "p",
+       "t": "Le lien entre les deux : les colonnes de $P$ sont des vecteurs propres, et les coefficients diagonaux de $D$ sont les valeurs propres correspondantes, **dans le même ordre**."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ : $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ est associé à $3$ et $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$ à $-1$. Avec $P = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}$ et $D = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$, on a $A = PDP^{-1}$."
+      },
+      {
+       "k": "att",
+       "t": "Toutes les matrices ne sont pas diagonalisables. La rotation d'angle $\\frac\\pi2$ n'a aucun vecteur propre réel. La matrice $J = \\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$ en a, mais pas assez : une seule droite propre dans un plan."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Une matrice diagonale est diagonalisable.",
+       "reponse": true,
+       "explication": "On prend $P = I_n$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "On sait que $A = PDP^{-1}$ avec $D = \\mathrm{diag}(4, 7)$. Que représente la deuxième colonne de $P$ ?",
+       "choix": [
+        "Un vecteur propre de $A$ associé à $7$",
+        "Un vecteur propre de $A$ associé à $4$",
+        "La deuxième colonne de $A$, divisée par $7$",
+        "Un vecteur du noyau de $A$"
+       ],
+       "bonne": 0,
+       "explication": "$AP = PD$ : la deuxième colonne de $AP$ est $A$ fois la deuxième colonne de $P$, et celle de $PD$ est $7$ fois la deuxième colonne de $P$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A$ est diagonalisable et n'a qu'une seule valeur propre $\\lambda$, alors $A = \\lambda I_n$.",
+       "reponse": true,
+       "explication": "Alors $D = \\lambda I_n$ et $A = P(\\lambda I_n)P^{-1} = \\lambda I_n$. C'est pour cela que $J = \\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$, de seule valeur propre $2$ mais différente de $2I_2$, ne peut pas être diagonalisable."
+      }
+     ]
+    },
+    {
+     "titre": "Les critères",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Pour diagonaliser, il faut trouver $n$ vecteurs propres indépendants. Chaque valeur propre $\\lambda$ en fournit au plus $\\dim E_\\lambda$, et des vecteurs pris dans des sous-espaces propres différents restent indépendants. D'où le critère : on fait le compte."
+      },
+      {
+       "k": "thm",
+       "titre": "Critère de diagonalisabilité",
+       "t": "$u$ est diagonalisable si et seulement si la somme des dimensions de ses sous-espaces propres vaut $n = \\dim E$.\n\nDe façon équivalente : $\\chi_u$ est scindé **et** $\\dim E_\\lambda = m(\\lambda)$ pour chaque valeur propre $\\lambda$."
+      },
+      {
+       "k": "thm",
+       "titre": "Condition suffisante",
+       "t": "Si $A \\in M_n(K)$ a $n$ valeurs propres **distinctes**, elle est diagonalisable : chaque sous-espace propre est une droite, et il y en a $n$."
+      },
+      {
+       "k": "att",
+       "t": "La réciproque est fausse : $I_n$ est diagonale avec une seule valeur propre. Une valeur propre multiple ne permet pas de conclure à elle seule : il faut calculer $\\dim E_\\lambda$."
+      },
+      {
+       "k": "met",
+       "titre": "En pratique",
+       "t": "- Calculer $\\chi_A$ et ses racines. S'il n'est pas scindé sur $K$ : $A$ n'est pas diagonalisable sur $K$.\n- Les valeurs propres simples ne demandent aucune vérification : chacune donne une droite.\n- Pour chaque valeur propre multiple, vérifier que $n - \\mathrm{rg}(A - \\lambda I_n) = m(\\lambda)$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La matrice $\\begin{pmatrix} 1 & 5 & 8 \\\\ 0 & 2 & 9 \\\\ 0 & 0 & 3 \\end{pmatrix}$ :",
+       "choix": [
+        "est diagonalisable, car elle a trois valeurs propres distinctes",
+        "n'est pas diagonalisable, car elle est triangulaire sans être diagonale",
+        "n'est diagonalisable que sur $\\mathbb C$",
+        "ne peut pas être étudiée sans calculer ses sous-espaces propres"
+       ],
+       "bonne": 0,
+       "explication": "Triangulaire : ses valeurs propres sont $1$, $2$, $3$, distinctes. La condition suffisante s'applique, quels que soient les coefficients au-dessus de la diagonale."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La matrice $\\begin{pmatrix} 3 & 1 \\\\ 0 & 3 \\end{pmatrix}$ :",
+       "choix": [
+        "n'est pas diagonalisable",
+        "est diagonalisable, car $\\chi_A$ est scindé",
+        "est diagonalisable, car elle est triangulaire",
+        "est diagonalisable sur $\\mathbb C$ seulement"
+       ],
+       "bonne": 0,
+       "explication": "$3$ est valeur propre double, mais $A - 3I_2$ est de rang $1$ : $\\dim E_3 = 1 < 2$. Passer à $\\mathbb C$ ne change pas ce rang."
+      },
+      {
+       "type": "vf",
+       "enonce": "La matrice $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ est diagonalisable dans $M_2(\\mathbb C)$.",
+       "reponse": true,
+       "explication": "$\\chi_A = X^2 + 1$ a deux racines distinctes $i$ et $-i$ dans $\\mathbb C$. Elle n'est pas diagonalisable sur $\\mathbb R$ (pas de valeur propre réelle), mais elle l'est sur $\\mathbb C$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_3(\\mathbb R)$ vérifie $\\chi_A = (X - 1)^2(X - 4)$ et $\\mathrm{rg}(A - I_3) = 1$. Alors :",
+       "choix": [
+        "$A$ est diagonalisable",
+        "$A$ n'est pas diagonalisable",
+        "on ne peut pas conclure",
+        "$A = I_3$"
+       ],
+       "bonne": 0,
+       "explication": "$\\dim E_1 = 3 - 1 = 2 = m(1)$, et $4$ est valeur propre simple. Le critère est rempli."
+      }
+     ]
+    },
+    {
+     "titre": "À quoi ça sert : les puissances",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "L'intérêt principal aux écrits : calculer $A^k$, étudier une suite récurrente linéaire, résoudre un système différentiel. Tout repose sur une identité très simple."
+      },
+      {
+       "k": "thm",
+       "titre": "Puissances d'une matrice diagonalisable",
+       "t": "Si $A = PDP^{-1}$, alors $A^k = PD^kP^{-1}$ pour tout $k \\in \\mathbb N$, et $D^k$ s'obtient en élevant chaque coefficient diagonal à la puissance $k$."
+      },
+      {
+       "k": "p",
+       "t": "Pourquoi : $A^2 = PDP^{-1}PDP^{-1} = PD^2P^{-1}$, car le $P^{-1}P$ du milieu vaut $I_n$. Par récurrence, cela marche pour tout $k$."
+      },
+      {
+       "k": "ex",
+       "t": "Avec $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ : $A^k = P\\begin{pmatrix} 3^k & 0 \\\\ 0 & (-1)^k \\end{pmatrix}P^{-1}$. Sans aucun calcul de plus, on sait déjà que $\\mathrm{tr}(A^k) = 3^k + (-1)^k$ et $\\det(A^k) = (-3)^k$."
+      },
+      {
+       "k": "met",
+       "titre": "Application aux suites",
+       "t": "Une suite de vecteurs $X_{k+1} = AX_k$ vérifie $X_k = A^kX_0$. En posant $Y_k = P^{-1}X_k$ (les coordonnées dans la base de vecteurs propres), on obtient $Y_{k+1} = DY_k$ : chaque coordonnée est une suite géométrique, indépendante des autres. On dit que le système est **découplé**."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$A = PDP^{-1}$ avec $D = \\mathrm{diag}(1, -1)$. Que vaut $A^{2026}$ ?",
+       "choix": [
+        "$I_2$",
+        "$A$",
+        "$-I_2$",
+        "$D$"
+       ],
+       "bonne": 0,
+       "explication": "$D^{2026} = \\mathrm{diag}(1, 1) = I_2$, donc $A^{2026} = PI_2P^{-1} = I_2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A = PDP^{-1}$ avec $D = \\mathrm{diag}\\left(\\frac12, \\frac13\\right)$, alors $A^k$ tend vers la matrice nulle quand $k \\to +\\infty$.",
+       "reponse": true,
+       "explication": "$D^k = \\mathrm{diag}(2^{-k}, 3^{-k}) \\to 0$, et multiplier à gauche et à droite par les matrices fixes $P$ et $P^{-1}$ conserve cette limite."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_2(\\mathbb R)$ est diagonalisable, de valeurs propres $2$ et $-2$. Que vaut $A^2$ ?",
+       "choix": [
+        "$4I_2$",
+        "$-4I_2$",
+        "$2A$",
+        "on ne peut pas le savoir sans $P$"
+       ],
+       "bonne": 0,
+       "explication": "$D^2 = \\mathrm{diag}(4, 4) = 4I_2$, donc $A^2 = P(4I_2)P^{-1} = 4I_2$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reduction-n4",
+   "titre": "Polynômes annulateurs",
+   "objectif": "Savoir exploiter une relation comme $A^2 = A$ ou $A^3 = A$ pour trouver le spectre et prouver la diagonalisabilité, sans calculer $\\chi_A$.",
+   "etapes": [
+    {
+     "titre": "Polynôme en une matrice",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Si $P = a_0 + a_1X + \\dots + a_dX^d$, on pose $P(A) = a_0I_n + a_1A + \\dots + a_dA^d$ : le terme constant devient $a_0I_n$. Par exemple, pour $P = X^2 - 3X + 2$, on a $P(A) = A^2 - 3A + 2I_n$. On dit que $P$ est un **polynôme annulateur** de $A$ si $P(A) = 0$."
+      },
+      {
+       "k": "thm",
+       "titre": "Valeurs propres et polynôme annulateur",
+       "t": "Si $P(A) = 0$ et si $AX = \\lambda X$ avec $X \\neq 0$, alors $0 = P(A)X = P(\\lambda)X$, donc $P(\\lambda) = 0$. Autrement dit : **toute valeur propre de $A$ est racine de tout polynôme annulateur**."
+      },
+      {
+       "k": "att",
+       "t": "C'est une inclusion, pas une égalité. $I_n$ annule $X^2 - 1$, mais $-1$ n'est pas valeur propre de $I_n$. Un polynôme annulateur fournit des **candidats** valeurs propres, pas les valeurs propres elles-mêmes."
+      },
+      {
+       "k": "ex",
+       "t": "Un projecteur vérifie $p^2 = p$, donc $X^2 - X = X(X - 1)$ l'annule : ses valeurs propres sont parmi $0$ et $1$. Une symétrie vérifie $s^2 = \\mathrm{id}$ : ses valeurs propres sont parmi $1$ et $-1$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Si $A^2 = 4I_n$, les valeurs propres de $A$ sont :",
+       "choix": [
+        "parmi $2$ et $-2$",
+        "exactement $2$ et $-2$",
+        "parmi $4$ et $-4$",
+        "$4$ seulement"
+       ],
+       "bonne": 0,
+       "explication": "$X^2 - 4 = (X - 2)(X + 2)$ annule $A$. Seulement « parmi » : $A = 2I_n$ convient et n'a pas $-2$ pour valeur propre."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A^3 = 0$, alors $0$ est la seule valeur propre possible de $A$.",
+       "reponse": true,
+       "explication": "$X^3$ annule $A$ et sa seule racine est $0$. D'ailleurs $0$ est bien valeur propre : $(\\det A)^3 = \\det(A^3) = 0$, donc $A$ n'est pas inversible."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Pour $P = X^2 + 1$ et $A \\in M_n(\\mathbb R)$, l'expression $P(A)$ désigne :",
+       "choix": [
+        "$A^2 + I_n$",
+        "$A^2 + 1$",
+        "$A^2 + A$",
+        "$(A + I_n)^2$"
+       ],
+       "bonne": 0,
+       "explication": "Le terme constant $1$ devient $1 \\cdot I_n$. L'écriture $A^2 + 1$ n'a pas de sens : on n'ajoute pas un nombre à une matrice."
+      }
+     ]
+    },
+    {
+     "titre": "Le critère des racines simples",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Voici l'outil le plus efficace du chapitre aux écrits : il évite de calculer $\\chi_A$ et les sous-espaces propres."
+      },
+      {
+       "k": "thm",
+       "titre": "Diagonalisabilité par polynôme annulateur",
+       "t": "$A \\in M_n(K)$ est diagonalisable si et seulement si elle annule un polynôme **scindé à racines simples** sur $K$, c'est-à-dire de la forme $(X - \\alpha_1)\\cdots(X - \\alpha_r)$ avec des $\\alpha_i$ deux à deux distincts dans $K$."
+      },
+      {
+       "k": "p",
+       "t": "L'idée de la preuve, dans le sens utile : si $(A - \\alpha_1I_n)\\cdots(A - \\alpha_rI_n) = 0$ avec des $\\alpha_i$ distincts, le **lemme des noyaux** découpe $K^n$ en somme directe des $\\ker(A - \\alpha_iI_n)$. Ce sont des sous-espaces propres (ou $\\{0\\}$). En recollant une base de chacun, on obtient une base de vecteurs propres."
+      },
+      {
+       "k": "ex",
+       "t": "Si $A^2 = A$, le polynôme $X(X - 1)$ est scindé à racines simples : tout projecteur est diagonalisable, semblable à $\\mathrm{diag}(1, \\dots, 1, 0, \\dots, 0)$. De même, si $A^2 = I_n$, on utilise $(X - 1)(X + 1)$ : toute symétrie est diagonalisable."
+      },
+      {
+       "k": "att",
+       "t": "Les racines doivent être simples **et dans $K$**.\n- Si $A \\in M_n(\\mathbb R)$ vérifie $A^2 = -I_n$, le polynôme $X^2 + 1$ a des racines simples, mais pas réelles : $A$ n'est pas diagonalisable sur $\\mathbb R$ (elle l'est sur $\\mathbb C$).\n- Si $A^2 = 0$, le polynôme $X^2$ a une racine double : on ne peut rien conclure par ce critère, et en fait une telle $A$ non nulle n'est jamais diagonalisable."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_n(\\mathbb R)$ vérifie $A^3 = A$. Alors :",
+       "choix": [
+        "$A$ est diagonalisable",
+        "$A$ est inversible",
+        "$\\mathrm{Sp}(A) = \\{-1, 0, 1\\}$",
+        "$A$ n'est diagonalisable que sur $\\mathbb C$"
+       ],
+       "bonne": 0,
+       "explication": "$X^3 - X = X(X - 1)(X + 1)$ est scindé sur $\\mathbb R$ à racines simples. Le spectre est seulement **inclus** dans $\\{-1, 0, 1\\}$ ($A = 0$ convient), et $A = 0$ n'est pas inversible."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A \\in M_n(\\mathbb R)$ vérifie $A^2 = 0$ et $A \\neq 0$, alors $A$ est diagonalisable.",
+       "reponse": false,
+       "explication": "Sa seule valeur propre possible est $0$. Si elle était diagonalisable, elle serait semblable à la matrice nulle, donc nulle."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A \\in M_n(\\mathbb R)$ vérifie $(A - I_n)(A - 2I_n) = 0$, alors $A$ est diagonalisable.",
+       "reponse": true,
+       "explication": "$(X - 1)(X - 2)$ est scindé sur $\\mathbb R$, à racines simples."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_n(\\mathbb R)$ vérifie $A^2 - 2A + I_n = 0$ et $A \\neq I_n$. Alors :",
+       "choix": [
+        "$A$ n'est pas diagonalisable",
+        "$A$ est diagonalisable",
+        "$A$ a deux valeurs propres distinctes",
+        "$A$ n'a aucune valeur propre réelle"
+       ],
+       "bonne": 0,
+       "explication": "$(X - 1)^2$ annule $A$ : sa seule valeur propre est $1$. Diagonalisable, elle serait égale à $I_n$, ce qui est exclu."
+      }
+     ]
+    },
+    {
+     "titre": "Cayley-Hamilton et polynôme minimal",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Cayley-Hamilton",
+       "t": "Pour toute $A \\in M_n(K)$, on a $\\chi_A(A) = 0$ : le polynôme caractéristique est toujours annulateur."
+      },
+      {
+       "k": "ex",
+       "t": "En taille $2$ : $A^2 - \\mathrm{tr}(A)\\,A + \\det(A)\\,I_2 = 0$. Par exemple, si $\\mathrm{tr}\\,A = 3$ et $\\det A = 2$, alors $A^2 = 3A - 2I_2$ : toute puissance de $A$ s'exprime à l'aide de $A$ et $I_2$ seulement."
+      },
+      {
+       "k": "met",
+       "titre": "Calculer un inverse",
+       "t": "Si $\\det A \\neq 0$, on isole $I_n$ dans la relation de Cayley-Hamilton. En taille $2$ : $A\\big(\\mathrm{tr}(A)\\,I_2 - A\\big) = \\det(A)\\,I_2$, donc $$A^{-1} = \\frac{1}{\\det A}\\big(\\mathrm{tr}(A)\\,I_2 - A\\big).$$"
+      },
+      {
+       "k": "def",
+       "titre": "Polynôme minimal",
+       "t": "Les polynômes annulateurs de $A$ sont exactement les multiples d'un unique polynôme unitaire de plus petit degré : le **polynôme minimal** $\\pi_A$. Il divise $\\chi_A$, ses racines sont exactement les valeurs propres de $A$, et $A$ est diagonalisable si et seulement si $\\pi_A$ est scindé à racines simples."
+      },
+      {
+       "k": "ex",
+       "t": "$\\pi_{I_n} = X - 1$. Pour $J = \\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$ : $J - 2I_2 \\neq 0$ mais $(J - 2I_2)^2 = 0$, donc $\\pi_J = (X - 2)^2$, racine double. On retrouve que $J$ n'est pas diagonalisable."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_2(\\mathbb R)$ a pour trace $1$ et pour déterminant $-1$. Alors $A^2$ vaut :",
+       "choix": [
+        "$A + I_2$",
+        "$A - I_2$",
+        "$I_2 - A$",
+        "$I_2$"
+       ],
+       "bonne": 0,
+       "explication": "Cayley-Hamilton : $A^2 - A - I_2 = 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$A \\in M_2(\\mathbb R)$ a pour trace $4$ et pour déterminant $2$. Alors $A^{-1}$ vaut :",
+       "choix": [
+        "$\\frac12(4I_2 - A)$",
+        "$\\frac12(A - 4I_2)$",
+        "$\\frac14(2I_2 - A)$",
+        "$2(4I_2 - A)$"
+       ],
+       "bonne": 0,
+       "explication": "$A^2 - 4A + 2I_2 = 0$ donne $A(4I_2 - A) = 2I_2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A \\in M_3(\\mathbb R)$ est diagonalisable avec $\\chi_A = (X - 1)^2(X - 3)$, son polynôme minimal est $(X - 1)(X - 3)$.",
+       "reponse": true,
+       "explication": "$A$ est semblable à $D = \\mathrm{diag}(1, 1, 3)$, et $(D - I_3)(D - 3I_3) = 0$. Le polynôme minimal doit avoir $1$ et $3$ pour racines : c'est donc bien $(X - 1)(X - 3)$."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

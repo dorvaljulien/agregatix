@@ -122,7 +122,7 @@ function figure(f) {
 
 /* ---------- Sauvegarde ---------- */
 function charger() {
-  const vide = { xp: 0, serie: 0, dernierJour: null, cartes: {}, signalements: [], chap: {}, tri: 'programme' };
+  const vide = { xp: 0, serie: 0, dernierJour: null, cartes: {}, signalements: [], chap: {}, tri: 'programme', parcours: {} };
   try { return Object.assign(vide, JSON.parse(localStorage.getItem(CLE)) || {}); }
   catch (e) { return vide; }
 }
@@ -135,7 +135,7 @@ function sauverSession() {
     const v = session.vue;
     localStorage.setItem(CLE_SESSION, JSON.stringify({
       file: session.file.map(c => c.id), i: session.i, total: session.total, faits: session.faits, bons: session.bons,
-      xp: session.xp, combo: session.combo, libre: session.libre, revues: [...session.revues], rappels: [...session.rappels], echecs: session.echecs,
+      xp: session.xp, combo: session.combo, libre: session.libre, ch: session.ch, revues: [...session.revues], rappels: [...session.rappels], echecs: session.echecs,
       vue: v && { id: v.carte.id, repondu: v.repondu, choisi: v.choisi, ordre: v.ordre, revue: v.revue, verdict: v.verdict }
     }));
   } catch (e) { /* stockage indisponible */ }
@@ -147,7 +147,7 @@ function reprendreSession() {
     const parId = Object.fromEntries(cartes.map(c => [c.id, c]));
     const file = o.file.map(id => parId[id]);
     if (file.some(c => !c) || !file[o.i] || file[o.i].id !== o.vue.id) return false;
-    session = { file, i: o.i, total: o.total, faits: o.faits, bons: o.bons, xp: o.xp, combo: o.combo, libre: o.libre, revues: new Set(o.revues), vue: null, rappels: new Set(o.rappels || []), echecs: o.echecs || {} };
+    session = { file, i: o.i, total: o.total, faits: o.faits, bons: o.bons, xp: o.xp, combo: o.combo, libre: o.libre, ch: o.ch || null, revues: new Set(o.revues), vue: null, rappels: new Set(o.rappels || []), echecs: o.echecs || {} };
     session.vue = { carte: file[o.i], repondu: o.vue.repondu, choisi: o.vue.choisi, ordre: o.vue.ordre, revue: o.vue.revue, verdict: o.vue.verdict };
     dessiner();
     return true;
@@ -221,13 +221,14 @@ function lancer(idChapitre, seulementCours) {
   if (!liste.length) return;
   let { file, libre, rappels } = composer(liste, !idChapitre);
   if (seulementCours) { file = liste.filter(estCours); libre = false; rappels = new Set(); if (!file.length) return; }
-  session = { file, i: 0, total: file.length, faits: 0, bons: 0, xp: 0, combo: 0, libre, revues: new Set(), vue: null, rappels, echecs: {} };
+  session = { file, i: 0, total: file.length, faits: 0, bons: 0, xp: 0, combo: 0, libre, revues: new Set(), vue: null, rappels, echecs: {}, ch: idChapitre || null };
   afficherCarte();
 }
 
 /* ---------- Écran d'accueil ---------- */
 function accueil() {
-  session = null; sauverSession();
+  const revenir = !!lecon || document.querySelector('.haut-ch');
+  session = null; lecon = null; sauverSession();
   const mg = maitrise(cartes);
   const nv = niveau(mg);
   const dues = cartes.filter(estDue).length;
@@ -263,7 +264,7 @@ function accueil() {
       h += `<section class="domaine"><h2 style="color:${d.couleur}">${d.nom}</h2>${d.chapitres.map(tuile).join('')}</section>`;
   }
   $app.innerHTML = h;
-  window.scrollTo(0, 0);
+  window.scrollTo(0, revenir ? accueilY : 0);
 }
 const pips = p => `<span class="pips p${p || 1}" aria-hidden="true"><i></i><i></i><i></i></span>`;
 function tuile(ch) {
@@ -271,15 +272,156 @@ function tuile(ch) {
   if (!liste.length) return `<div class="tuile vide"><div class="txt"><b>${ch.nom}</b><small>§ ${ch.ref} · bientôt</small></div></div>`;
   const m = Math.round(100 * maitrise(liste));
   const aRevoir = liste.filter(estDue).length;
-  const dur = enDifficulte(ch.id), aDesRappels = liste.some(estCours);
+  const dur = enDifficulte(ch.id);
+  const cours = ch.parcours ? `<small class="cours-pc">📘 Cours ${niveauxFaits(ch)}/${ch.parcours} niveaux</small>` : '';
   return `<div class="tuile" style="--c:${ch.couleur}">
-    <button class="corps" data-a="lancer" data-ch="${ch.id}">
+    <button class="corps" data-a="chapitre" data-ch="${ch.id}">
       <div class="txt"><b>${ch.nom}${aRevoir ? `<span class="pastille">${aRevoir}</span>` : ''}</b>
       <small>§ ${ch.ref} · ${liste.length} cartes</small>
-      <small class="freq">${pips(ch.poids)} ${FREQ[ch.poids || 1]} aux écrits${dur && aDesRappels ? ' · <em>rappels en tête</em>' : ''}</small>
+      <small class="freq">${pips(ch.poids)} ${FREQ[ch.poids || 1]} aux écrits${dur ? ' · <em>à retravailler</em>' : ''}</small>
+      ${cours}
       <div class="barre"><i style="width:${m}%"></i></div></div>
-      <span class="pc">${m} %</span></button>
-    ${aDesRappels ? `<button class="livre${dur ? ' alerte' : ''}" data-a="rappels" data-ch="${ch.id}" aria-label="Rappels de cours : ${ch.nom}">📖</button>` : ''}</div>`;
+      <span class="pc">${m} %</span></button></div>`;
+}
+
+/* ---------- Partie 1 : le cours en niveaux ----------
+   data/parcours/<chapitre>.json : { intro, niveaux: [{ id, titre, objectif, etapes: [{ titre, blocs, quiz }] }] }.
+   Progression dans etat.parcours[id du niveau] = { q: { "étape-question": { ok, c } }, e: meilleur nombre d'étoiles }. */
+const parcours = {};                                  // id chapitre -> contenu, chargé à la première ouverture
+let lecon = null;                                     // niveau affiché : { ch, k, ordres }
+let accueilY = 0;
+async function chargerParcours(ch) {
+  if (!parcours[ch]) parcours[ch] = await (await fetch(`data/parcours/${ch}.json`)).json();
+  return parcours[ch];
+}
+const suiviNiveau = id => etat.parcours[id] || (etat.parcours[id] = { q: {} });
+const nbQuestions = niv => niv.etapes.reduce((t, e) => t + e.quiz.length, 0);
+const niveauxFaits = ch => Array.from({ length: ch.parcours || 0 }, (_, i) => etat.parcours[`${ch.id}-n${i + 1}`]).filter(s => s && s.e).length;
+const etoiles = (e, total = 3) => `<span class="etoiles" aria-label="${e} étoile${e > 1 ? 's' : ''} sur ${total}">${'★'.repeat(e)}<i>${'★'.repeat(total - e)}</i></span>`;
+const ETIQUETTES = { def: 'Définition', thm: 'À retenir', ex: 'Exemple', att: 'Piège', met: 'Méthode' };
+
+/* Texte de cours : ligne vide = nouveau paragraphe, lignes « - » = liste. */
+function fmtLecon(t) {
+  const out = []; let para = [], liste = [];
+  const fermerPara = () => { if (para.length) out.push(`<p>${fmt(para.join(' '))}</p>`); para = []; };
+  const fermerListe = () => { if (liste.length) out.push(`<ul>${liste.map(x => `<li>${fmt(x)}</li>`).join('')}</ul>`); liste = []; };
+  for (const brut of String(t).split('\n')) {
+    const l = brut.trim();
+    if (!l) { fermerPara(); fermerListe(); }
+    else if (l.startsWith('- ')) { fermerPara(); liste.push(l.slice(2)); }
+    else { fermerListe(); para.push(l); }
+  }
+  fermerPara(); fermerListe();
+  return out.join('');
+}
+function bloc(b) {
+  if (b.k === 'fig') return figure(b.figure);
+  if (b.k === 'p') return `<div class="b-p">${fmtLecon(b.t)}</div>`;
+  return `<div class="bloc b-${b.k}"><span class="etq">${ETIQUETTES[b.k]}</span>${b.titre ? `<b class="titre">${fmt(b.titre)}</b>` : ''}${fmtLecon(b.t)}</div>`;
+}
+
+async function ecranChapitre(id) {
+  if (!lecon && !session) accueilY = window.scrollY;
+  session = null; lecon = null; sauverSession();
+  const ch = chapitres[id], liste = parChapitre[id] || [];
+  const p = ch.parcours ? await chargerParcours(id) : null;
+  const m = Math.round(100 * maitrise(liste)), dues = liste.filter(estDue).length, neuves = liste.filter(estNeuve).length;
+  let h = `<div class="haut-ch"><button class="retour" data-a="accueil" aria-label="Retour">←</button>
+    <div><h1>${ch.nom}</h1><small>§ ${ch.ref} · ${pips(ch.poids)} ${FREQ[ch.poids || 1]} aux écrits</small></div></div>`;
+  h += `<section class="partie"><h2><span>Partie 1</span> Reprendre le cours</h2>`;
+  if (p) {
+    const faits = niveauxFaits(ch);
+    const prochain = p.niveaux.findIndex(n => !(etat.parcours[n.id] && etat.parcours[n.id].e));
+    h += `<p class="intro">${fmt(p.intro)}</p>
+      <div class="ligne-pc"><span>${faits}/${p.niveaux.length} niveaux terminés</span></div>
+      <div class="barre"><i style="width:${100 * faits / p.niveaux.length}%"></i></div>
+      <ol class="niveaux">${p.niveaux.map((n, k) => {
+        const s = etat.parcours[n.id], rep = s ? Object.keys(s.q).length : 0, tot = nbQuestions(n);
+        const etat_ = s && s.e ? etoiles(s.e) : rep ? `<span class="encours">${rep}/${tot}</span>` : `<span class="encours">${tot} questions</span>`;
+        return `<li><button class="niv${k === prochain ? ' prochain' : ''}${s && s.e ? ' fait' : ''}" data-a="niveau" data-ch="${id}" data-k="${k}">
+          <span class="rond">${s && s.e ? '✓' : k + 1}</span>
+          <span class="txt"><b>${fmt(n.titre)}</b><small>${fmt(n.objectif)}</small></span>${etat_}</button></li>`;
+      }).join('')}</ol>`;
+  } else h += `<p class="intro">Le cours progressif de ce chapitre n'est pas encore écrit. En attendant, les rappels express de la partie 2 résument l'essentiel.</p>`;
+  h += `</section><section class="partie"><h2><span>Partie 2</span> S'entraîner sur les questions d'écrit</h2>
+    <p class="intro">Vrai ou faux, bon énoncé, traque à l'erreur et « par où partir ? », avec répétition espacée.${enDifficulte(id) && p ? ' <b>Plusieurs erreurs récentes ici : un détour par la partie 1 peut aider.</b>' : ''}</p>
+    <div class="ligne-pc"><span>Maîtrise ${m} %</span><span>${dues} à revoir · ${neuves} nouvelles</span></div>
+    <div class="barre"><i style="width:${m}%"></i></div>
+    <button class="gros" data-a="lancer" data-ch="${id}">Lancer une session</button>
+    ${liste.some(estCours) ? `<button class="gros calme" data-a="rappels" data-ch="${id}">📖 Rappels express</button>` : ''}</section>`;
+  $app.innerHTML = h;
+  window.scrollTo(0, 0);
+}
+
+async function ecranNiveau(id, k) {
+  const p = await chargerParcours(id), niv = p.niveaux[k];
+  lecon = { ch: id, k, ordres: {} };
+  const tot = nbQuestions(niv);
+  let h = `<div class="haut-ch collant"><button class="retour" data-a="chapitre" data-ch="${id}" aria-label="Retour au chapitre">←</button>
+    <div class="avance"><small>${chapitres[id].nom} · niveau ${k + 1}/${p.niveaux.length}</small>
+    <div class="barre"><i id="avance" style="width:0"></i></div></div><span class="compte" id="compte"></span></div>
+    <h1 class="titre-niv">${fmt(niv.titre)}</h1><p class="objectif"><b>Objectif.</b> ${fmt(niv.objectif)}</p>
+    <nav class="sommaire">${niv.etapes.map((e, j) => `<button data-a="relire" data-e="${j}">${j + 1}. ${fmt(e.titre)}</button>`).join('')}</nav>`;
+  niv.etapes.forEach((e, j) => {
+    h += `<section class="etape" id="etape-${j}"><h2><span>${j + 1}</span>${fmt(e.titre)}</h2>${e.blocs.map(bloc).join('')}
+      <div class="quiz"><h3>Vérifie que c'est clair</h3>${e.quiz.map((q, m) => question(niv, j, m)).join('')}</div></section>`;
+  });
+  h += `<div id="bilan"></div>`;
+  $app.innerHTML = h;
+  majAvance(niv, tot);
+  window.scrollTo(0, 0);
+}
+function question(niv, j, m) {
+  const q = niv.etapes[j].quiz[m], cle = `${j}-${m}`, st = suiviNiveau(niv.id).q[cle];
+  let h = `<div class="qq${st ? (st.ok ? ' ok' : ' ko') : ''}" id="q-${cle}"><div class="q-enonce">${fmt(q.enonce)}</div>`;
+  if (q.type === 'vf') {
+    if (!st) h += `<div class="vf petit"><button class="v" data-a="q-vf" data-q="${cle}" data-r="1">Vrai</button><button class="f" data-a="q-vf" data-q="${cle}" data-r="0">Faux</button></div>`;
+    else h += `<div class="vf petit fige"><span class="${q.reponse ? 'bon' : st.c === 1 ? 'faux' : ''}">Vrai</span><span class="${!q.reponse ? 'bon' : st.c === 0 ? 'faux' : ''}">Faux</span></div>`;
+  } else {
+    const ordre = lecon.ordres[cle] || (lecon.ordres[cle] = melanger(q.choix.map((_, i) => i)));
+    for (const i of ordre) {
+      const cl = !st ? '' : i === q.bonne ? ' bon' : i === st.c ? ' faux' : ' eteint';
+      h += `<div class="choix${cl}"><button class="corps" data-a="q-choix" data-q="${cle}" data-k="${i}"${st ? ' disabled' : ''}>${fmt(q.choix[i])}</button></div>`;
+    }
+  }
+  if (st) h += `<div class="q-expl"><b>${st.ok ? 'Exact.' : 'Pas tout à fait.'}</b> ${fmt(q.explication)}
+    ${st.ok ? '' : `<button class="relire" data-a="relire" data-e="${j}">↑ Relire « ${fmt(niv.etapes[j].titre)} »</button>`}</div>`;
+  return h + '</div>';
+}
+function majAvance(niv, tot) {
+  const s = suiviNiveau(niv.id), rep = Object.keys(s.q).length;
+  document.getElementById('avance').style.width = `${100 * rep / tot}%`;
+  document.getElementById('compte').textContent = `${rep}/${tot}`;
+  if (rep < tot) return;
+  const bons = Object.values(s.q).filter(x => x.ok).length;
+  const e = bons === tot ? 3 : bons >= 0.7 * tot ? 2 : 1;
+  const p = parcours[lecon.ch], suivant = lecon.k + 1 < p.niveaux.length;
+  document.getElementById('bilan').innerHTML = `<div class="bilan"><div class="grand">${etoiles(e)}</div>
+    <h2>${e === 3 ? 'Sans faute !' : e === 2 ? 'Niveau validé' : 'Niveau terminé'}</h2>
+    <p>${bons}/${tot} réponses justes du premier coup.${e < 3 ? ' Relis les passages des questions ratées, puis refais le quiz quand tu veux.' : ''}</p>
+    ${suivant ? `<button class="gros" data-a="niveau" data-ch="${lecon.ch}" data-k="${lecon.k + 1}">Niveau suivant</button>` : ''}
+    <button class="gros calme" data-a="chapitre" data-ch="${lecon.ch}">Retour au chapitre</button>
+    <button class="gros calme" data-a="refaire">Refaire le quiz de ce niveau</button></div>`;
+}
+function repondreQuiz(cle, choix) {
+  const niv = parcours[lecon.ch].niveaux[lecon.k], s = suiviNiveau(niv.id);
+  if (s.q[cle]) return;
+  const [j, m] = cle.split('-').map(Number), q = niv.etapes[j].quiz[m];
+  const ok = q.type === 'vf' ? (choix === 1) === q.reponse : choix === q.bonne;
+  s.q[cle] = { ok, c: choix };
+  const tot = nbQuestions(niv), fini = Object.keys(s.q).length === tot;
+  if (ok) { etat.xp += s.e ? 2 : 5; vibrer(20); } else vibrer([40, 60, 40]);
+  if (fini) {
+    const bons = Object.values(s.q).filter(x => x.ok).length;
+    const e = bons === tot ? 3 : bons >= 0.7 * tot ? 2 : 1;
+    if (!s.e) etat.xp += 20;
+    s.e = Math.max(s.e || 0, e);
+  }
+  marquerJour(); sauver();
+  const ancien = document.getElementById('q-' + cle);
+  ancien.outerHTML = question(niv, j, m);
+  majAvance(niv, tot);
+  if (fini) document.getElementById('bilan').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* ---------- Écran de carte ---------- */
@@ -391,7 +533,8 @@ function fin() {
     <p>${s.libre ? 'Entraînement libre : tout était déjà à jour.' : 'Les cartes ratées reviendront demain.'}</p>
     <div class="stats"><div class="stat"><b>${s.bons}/${s.total}</b><small>du premier coup</small></div>
     <div class="stat"><b>+${s.xp}</b><small>XP</small></div><div class="stat"><b>🔥 ${etat.serie}</b><small>série</small></div></div>
-    <button class="gros" data-a="accueil">Retour à la carte</button></div>`;
+    ${s.ch ? `<button class="gros" data-a="chapitre" data-ch="${s.ch}">Retour au chapitre</button>` : ''}
+    <button class="gros${s.ch ? ' calme' : ''}" data-a="accueil">Retour à l'accueil</button></div>`;
 }
 
 /* ---------- Feuille du bas ---------- */
@@ -445,7 +588,13 @@ document.addEventListener('click', ev => {
     case 'tri': { etat.tri = b.dataset.t; sauver(); const y = window.scrollY; accueil(); window.scrollTo(0, y); break; }
     case 'aide-priorites': feuillePriorites(); break;
     case 'accueil': accueil(); break;
-    case 'quitter': if (!session.faits || confirm('Quitter la session ? Les réponses déjà données sont gardées.')) accueil(); break;
+    case 'quitter': if (!session.faits || confirm('Quitter la session ? Les réponses déjà données sont gardées.')) { if (session.ch) ecranChapitre(session.ch); else accueil(); } break;
+    case 'chapitre': ecranChapitre(b.dataset.ch); break;
+    case 'niveau': ecranNiveau(b.dataset.ch, Number(b.dataset.k)); break;
+    case 'q-vf': repondreQuiz(b.dataset.q, Number(b.dataset.r)); break;
+    case 'q-choix': repondreQuiz(b.dataset.q, Number(b.dataset.k)); break;
+    case 'relire': document.getElementById('etape-' + b.dataset.e).scrollIntoView({ behavior: 'smooth', block: 'start' }); break;
+    case 'refaire': { const niv = parcours[lecon.ch].niveaux[lecon.k]; suiviNiveau(niv.id).q = {}; sauver(); ecranNiveau(lecon.ch, lecon.k); break; }
     case 'vf': repondre((b.dataset.r === '1') === v.carte.reponse ? 'bon' : 'faux'); break;
     case 'choisir': if (!v.repondu) { v.choisi = Number(b.dataset.k); sauverSession(); dessiner(); } break;
     case 'valider': {

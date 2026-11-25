@@ -1,0 +1,510 @@
+{
+ "ch": "espaces-vectoriels",
+ "intro": "C'est le chapitre le plus présent aux écrits : il sert dans presque toutes les questions d'algèbre, et souvent en analyse (espaces de fonctions, de suites, de polynômes). On reprend les bases dans l'ordre : familles et dimension, applications linéaires et théorème du rang, puis matrices et changement de base.",
+ "niveaux": [
+  {
+   "id": "espaces-vectoriels-n1",
+   "titre": "Familles, bases et dimension",
+   "objectif": "Savoir dire si une famille est libre, génératrice ou une base, et utiliser la dimension pour conclure sans calcul.",
+   "etapes": [
+    {
+     "titre": "Combinaisons linéaires et sous-espaces",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Un espace vectoriel sur $K$ ($\\mathbb R$ ou $\\mathbb C$) est un ensemble où l'on sait additionner deux éléments et les multiplier par un scalaire, avec les règles de calcul habituelles. Les exemples à avoir en tête : $\\mathbb R^n$, les polynômes $K[X]$, les matrices $M_{n,p}(K)$, les fonctions de $\\mathbb R$ dans $\\mathbb R$, les suites réelles."
+      },
+      {
+       "k": "def",
+       "titre": "Combinaison linéaire, sous-espace engendré",
+       "t": "Une **combinaison linéaire** de $x_1, \\dots, x_p$ est un vecteur de la forme $\\lambda_1x_1 + \\dots + \\lambda_px_p$, où les $\\lambda_i$ sont des scalaires. L'ensemble de toutes ces combinaisons est le **sous-espace engendré** $\\mathrm{Vect}(x_1, \\dots, x_p)$ : c'est le plus petit sous-espace vectoriel qui contient tous les $x_i$."
+      },
+      {
+       "k": "met",
+       "titre": "Montrer qu'une partie $F$ est un sous-espace vectoriel",
+       "t": "Vérifier que $0 \\in F$ et que $\\lambda x + y \\in F$ pour tous $x, y \\in F$ et tout scalaire $\\lambda$. Souvent plus rapide : écrire $F$ comme un noyau (ensemble des solutions d'équations linéaires sans second membre) ou comme un $\\mathrm{Vect}$."
+      },
+      {
+       "k": "ex",
+       "t": "Le plan $\\{(x, y, z) \\in \\mathbb R^3 : x + y + z = 0\\}$ est un sous-espace vectoriel : c'est le noyau de $(x, y, z) \\mapsto x + y + z$. Le plan $x + y + z = 1$ n'en est pas un : il ne contient pas $0$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "L'ensemble des suites réelles convergentes est un sous-espace vectoriel de l'espace des suites réelles.",
+       "reponse": true,
+       "explication": "La suite nulle converge, et si $u_n \\to \\ell$ et $v_n \\to \\ell'$, alors $\\lambda u_n + v_n \\to \\lambda\\ell + \\ell'$."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'ensemble des polynômes de degré exactement $3$ est un sous-espace vectoriel de $\\mathbb R[X]$.",
+       "reponse": false,
+       "explication": "Il ne contient pas le polynôme nul, et il n'est pas stable par somme : $X^3 + (X - X^3) = X$ est de degré $1$. En revanche, les polynômes de degré **au plus** $3$ forment un sous-espace, $\\mathbb R_3[X]$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R^3$, $\\mathrm{Vect}\\big((1, 0, 0), (0, 1, 0)\\big)$ est :",
+       "choix": [
+        "le plan d'équation $z = 0$",
+        "la droite dirigée par $(1, 1, 0)$",
+        "le plan d'équation $x + y = 0$",
+        "l'ensemble à deux éléments $\\{(1, 0, 0), (0, 1, 0)\\}$"
+       ],
+       "bonne": 0,
+       "explication": "Les combinaisons $a(1, 0, 0) + b(0, 1, 0) = (a, b, 0)$ décrivent tous les vecteurs de troisième coordonnée nulle."
+      }
+     ]
+    },
+    {
+     "titre": "Libre, génératrice, base",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Famille libre",
+       "t": "La famille $(x_1, \\dots, x_p)$ est **libre** si la seule combinaison linéaire nulle est la combinaison triviale : $$\\lambda_1x_1 + \\dots + \\lambda_px_p = 0 \\implies \\lambda_1 = \\dots = \\lambda_p = 0.$$ Sinon, elle est **liée** : l'un des vecteurs est combinaison linéaire des autres."
+      },
+      {
+       "k": "def",
+       "titre": "Famille génératrice, base",
+       "t": "La famille $(x_1, \\dots, x_p)$ est **génératrice** de $E$ si $\\mathrm{Vect}(x_1, \\dots, x_p) = E$ : tout vecteur de $E$ est une combinaison des $x_i$. Une **base** est une famille libre et génératrice. Tout vecteur s'écrit alors de façon **unique** $\\lambda_1x_1 + \\dots + \\lambda_nx_n$, et les $\\lambda_i$ sont ses coordonnées dans cette base."
+      },
+      {
+       "k": "met",
+       "titre": "Reconnaître vite",
+       "t": "- Deux vecteurs sont liés si et seulement s'ils sont colinéaires.\n- Une famille qui contient le vecteur nul, ou deux fois le même vecteur, est liée.\n- Des polynômes non nuls de degrés deux à deux distincts forment une famille libre (regarder le terme de plus haut degré dans une combinaison nulle)."
+      },
+      {
+       "k": "ex",
+       "t": "Dans $\\mathbb R_2[X]$, $(1, X, X^2)$ est la base canonique. La famille $(1,\\ 1 + X,\\ 1 + X + X^2)$ est libre, car les degrés $0$, $1$, $2$ sont distincts ; on verra à l'étape suivante que c'est automatiquement une base."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "La famille $\\big((1, 2), (2, 4)\\big)$ est libre dans $\\mathbb R^2$.",
+       "reponse": false,
+       "explication": "$(2, 4) = 2(1, 2)$ : les deux vecteurs sont colinéaires."
+      },
+      {
+       "type": "vf",
+       "enonce": "La famille $(X^3,\\ X^3 + X,\\ 2)$ est libre dans $\\mathbb R[X]$.",
+       "reponse": true,
+       "explication": "Les degrés ($3$, $3$, $0$) ne sont pas distincts, donc la règle rapide ne s'applique pas : il faut revenir à la définition. Si $aX^3 + b(X^3 + X) + 2c = 0$, alors $(a + b)X^3 + bX + 2c = 0$, d'où $b = 0$, $c = 0$, puis $a = 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R^3$, la famille $\\big((1, 0, 0), (0, 1, 0), (1, 1, 0)\\big)$ est :",
+       "choix": [
+        "liée, et elle engendre un plan",
+        "libre",
+        "une base de $\\mathbb R^3$",
+        "liée, et elle engendre une droite"
+       ],
+       "bonne": 0,
+       "explication": "Le troisième vecteur est la somme des deux premiers : la famille est liée. Les deux premiers, non colinéaires, engendrent le plan $z = 0$."
+      }
+     ]
+    },
+    {
+     "titre": "La dimension",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Dimension",
+       "t": "Si $E$ possède une famille génératrice finie, toutes ses bases ont le même nombre d'éléments : c'est la **dimension** de $E$. Repères : $\\dim K^n = n$, $\\dim K_n[X] = n + 1$, $\\dim M_{n,p}(K) = np$."
+      },
+      {
+       "k": "thm",
+       "titre": "Le compte suffit",
+       "t": "Dans un espace de dimension $n$ :\n- une famille libre a au plus $n$ vecteurs, une famille génératrice en a au moins $n$ ;\n- une famille d'**exactement $n$ vecteurs** est une base dès qu'elle est libre, **ou** dès qu'elle est génératrice : une seule des deux vérifications suffit ;\n- si $F$ est un sous-espace de $E$, alors $\\dim F \\le \\dim E$, avec égalité si et seulement si $F = E$."
+      },
+      {
+       "k": "p",
+       "t": "Ce dernier point est très utilisé aux écrits pour montrer que deux espaces sont égaux : on montre une inclusion, puis l'égalité des dimensions."
+      },
+      {
+       "k": "ex",
+       "t": "$\\big(1,\\ X - 1,\\ (X - 1)^2\\big)$ est une famille libre (degrés distincts) de $3$ vecteurs dans $\\mathbb R_2[X]$, qui est de dimension $3$. C'est donc une base, sans rien vérifier d'autre."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La dimension de $\\mathbb R_4[X]$, l'espace des polynômes de degré au plus $4$, est :",
+       "choix": [
+        "$5$",
+        "$4$",
+        "$3$",
+        "infinie"
+       ],
+       "bonne": 0,
+       "explication": "Une base est $(1, X, X^2, X^3, X^4)$ : cinq vecteurs. Ne pas oublier la constante."
+      },
+      {
+       "type": "vf",
+       "enonce": "Dans $\\mathbb R^3$, toute famille de $4$ vecteurs est liée.",
+       "reponse": true,
+       "explication": "Une famille libre de $\\mathbb R^3$ a au plus $3$ vecteurs."
+      },
+      {
+       "type": "vf",
+       "enonce": "Dans $\\mathbb R^3$, toute famille de $3$ vecteurs est une base.",
+       "reponse": false,
+       "explication": "Il faut en plus qu'elle soit libre (ou génératrice). $\\big((1, 0, 0), (2, 0, 0), (0, 1, 0)\\big)$ a trois vecteurs mais n'engendre qu'un plan."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$F$ et $G$ sont deux sous-espaces de $\\mathbb R^5$, avec $F \\subset G$ et $\\dim F = \\dim G = 3$. Alors :",
+       "choix": [
+        "$F = G$",
+        "$F \\neq G$ en général",
+        "$G = \\mathbb R^5$",
+        "$F \\cap G = \\{0\\}$"
+       ],
+       "bonne": 0,
+       "explication": "$F$ est un sous-espace de $G$ de même dimension finie : $F = G$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "espaces-vectoriels-n2",
+   "titre": "Applications linéaires, noyau, image",
+   "objectif": "Calculer un noyau et une image, utiliser le théorème du rang, et savoir qu'en dimension finie un endomorphisme injectif est bijectif.",
+   "etapes": [
+    {
+     "titre": "Applications linéaires",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Application linéaire",
+       "t": "$f : E \\to F$ est **linéaire** si $f(\\lambda x + y) = \\lambda f(x) + f(y)$ pour tous $x, y \\in E$ et tout scalaire $\\lambda$. Conséquence immédiate : $f(0) = 0$. Quand $F = E$, on parle d'**endomorphisme**."
+      },
+      {
+       "k": "ex",
+       "t": "Exemples :\n- $(x, y) \\mapsto (2x + y,\\ x - y)$ sur $\\mathbb R^2$ ;\n- la dérivation $P \\mapsto P'$ sur $K[X]$ ;\n- la trace $M \\mapsto \\mathrm{tr}\\,M$, de $M_n(K)$ dans $K$ ;\n- $f \\mapsto \\int_0^1 f(t)\\,\\mathrm dt$ sur les fonctions continues.\n\nContre-exemples : $x \\mapsto x + 1$ (elle n'envoie pas $0$ sur $0$), $x \\mapsto x^2$, et $M \\mapsto \\det M$ (car $\\det(2M) = 2^n\\det M$).",
+       "titre": "Exemples à avoir en tête"
+      },
+      {
+       "k": "thm",
+       "titre": "L'image d'une base suffit",
+       "t": "Si $(e_1, \\dots, e_n)$ est une base de $E$, connaître $f(e_1), \\dots, f(e_n)$ suffit à connaître $f$ partout : $f\\left(\\sum \\lambda_ie_i\\right) = \\sum \\lambda_if(e_i)$. Inversement, on peut choisir librement ces images : il existe toujours une unique application linéaire qui les réalise."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "L'application $M \\mapsto M^{\\mathsf T}$ (transposée) est linéaire sur $M_n(\\mathbb R)$.",
+       "reponse": true,
+       "explication": "$(\\lambda M + N)^{\\mathsf T} = \\lambda M^{\\mathsf T} + N^{\\mathsf T}$."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'application $(x, y) \\mapsto xy$, de $\\mathbb R^2$ dans $\\mathbb R$, est linéaire.",
+       "reponse": false,
+       "explication": "$f(1, 1) = 1$, mais $f(2, 2) = 4 \\neq 2f(1, 1)$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$f : \\mathbb R^2 \\to \\mathbb R^2$ est linéaire, avec $f(1, 0) = (1, 1)$ et $f(0, 1) = (2, -1)$. Alors $f(3, 1)$ vaut :",
+       "choix": [
+        "$(5, 2)$",
+        "$(3, -1)$",
+        "$(5, 0)$",
+        "$(6, 2)$"
+       ],
+       "bonne": 0,
+       "explication": "$(3, 1) = 3(1, 0) + (0, 1)$, donc $f(3, 1) = 3(1, 1) + (2, -1) = (5, 2)$."
+      }
+     ]
+    },
+    {
+     "titre": "Noyau et image",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Noyau, image, rang",
+       "t": "Pour $f : E \\to F$ linéaire : $\\ker f = \\{x \\in E : f(x) = 0\\}$ est un sous-espace de $E$, et $\\mathrm{Im}\\,f = \\{f(x) : x \\in E\\}$ est un sous-espace de $F$. Le **rang** de $f$ est $\\mathrm{rg}\\,f = \\dim \\mathrm{Im}\\,f$."
+      },
+      {
+       "k": "thm",
+       "titre": "Injectivité, surjectivité",
+       "t": "$f$ est injective si et seulement si $\\ker f = \\{0\\}$. $f$ est surjective si et seulement si $\\mathrm{Im}\\,f = F$."
+      },
+      {
+       "k": "p",
+       "t": "Pourquoi le noyau suffit pour l'injectivité : $f(x) = f(y)$ équivaut à $f(x - y) = 0$, c'est-à-dire à $x - y \\in \\ker f$. Si le noyau est réduit à $\\{0\\}$, cela force $x = y$."
+      },
+      {
+       "k": "met",
+       "titre": "Calculer une image",
+       "t": "Si $(e_1, \\dots, e_n)$ est une base de $E$, alors $\\mathrm{Im}\\,f = \\mathrm{Vect}\\big(f(e_1), \\dots, f(e_n)\\big)$. Pour une matrice, l'image est engendrée par ses colonnes."
+      },
+      {
+       "k": "ex",
+       "t": "La dérivation $D : P \\mapsto P'$ sur $\\mathbb R_n[X]$ : $\\ker D$ est formé des constantes (dimension $1$), et $\\mathrm{Im}\\,D = \\mathbb R_{n-1}[X]$ (dimension $n$). $D$ n'est ni injective ni surjective."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Le noyau de $f : (x, y, z) \\mapsto x + y + z$, de $\\mathbb R^3$ dans $\\mathbb R$, est :",
+       "choix": [
+        "un plan",
+        "une droite",
+        "$\\{0\\}$",
+        "$\\mathbb R^3$"
+       ],
+       "bonne": 0,
+       "explication": "C'est le plan d'équation $x + y + z = 0$. Le théorème du rang de l'étape suivante le confirme : $3 = \\dim\\ker f + 1$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "L'image de $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ est :",
+       "choix": [
+        "la droite dirigée par $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$",
+        "la droite dirigée par $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$",
+        "$\\mathbb R^2$",
+        "$\\{0\\}$"
+       ],
+       "bonne": 0,
+       "explication": "L'image est engendrée par les colonnes, qui sont toutes deux multiples de $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$. La droite dirigée par $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$ est le **noyau**."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathbb R[X]$, l'application $P \\mapsto XP$ est injective.",
+       "reponse": true,
+       "explication": "Si $XP = 0$, alors $P = 0$ : le noyau est réduit à $\\{0\\}$."
+      }
+     ]
+    },
+    {
+     "titre": "Le théorème du rang",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Théorème du rang",
+       "t": "Si $E$ est de dimension finie et $f : E \\to F$ linéaire : $$\\dim E = \\dim \\ker f + \\mathrm{rg}\\,f.$$"
+      },
+      {
+       "k": "p",
+       "t": "Lecture intuitive : la dimension de départ se partage entre ce qui est écrasé (le noyau) et ce qui survit (l'image)."
+      },
+      {
+       "k": "thm",
+       "titre": "Conséquence capitale",
+       "t": "Si $\\dim E = \\dim F$ est finie (en particulier pour un endomorphisme en dimension finie) : $$f \\text{ injective} \\iff f \\text{ surjective} \\iff f \\text{ bijective}.$$ Pour une matrice carrée : $A$ inversible $\\iff$ $\\ker A = \\{0\\}$ $\\iff$ $\\mathrm{rg}\\,A = n$."
+      },
+      {
+       "k": "att",
+       "t": "C'est faux en dimension infinie. Sur $\\mathbb R[X]$, $P \\mapsto XP$ est injective sans être surjective (les constantes non nulles ne sont pas atteintes), et la dérivation est surjective sans être injective."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$f : \\mathbb R^5 \\to \\mathbb R^3$ est linéaire et surjective. Alors $\\dim \\ker f$ vaut :",
+       "choix": [
+        "$2$",
+        "$3$",
+        "$0$",
+        "$5$"
+       ],
+       "bonne": 0,
+       "explication": "$\\mathrm{rg}\\,f = 3$, donc $\\dim \\ker f = 5 - 3 = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Il existe une application linéaire injective de $\\mathbb R^4$ dans $\\mathbb R^3$.",
+       "reponse": false,
+       "explication": "Le rang vaut au plus $3$, donc $\\dim \\ker f \\ge 4 - 3 = 1$ : le noyau n'est jamais réduit à $\\{0\\}$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A \\in M_n(\\mathbb R)$ et si le système $AX = 0$ n'a que la solution $X = 0$, alors $A$ est inversible.",
+       "reponse": true,
+       "explication": "$\\ker A = \\{0\\}$ : $A$ est injective, donc bijective puisqu'elle est carrée."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "espaces-vectoriels-n3",
+   "titre": "Matrices et changement de base",
+   "objectif": "Écrire la matrice d'une application linéaire, comprendre la formule $P^{-1}AP$, et connaître ce qui ne change pas d'une base à l'autre.",
+   "etapes": [
+    {
+     "titre": "Matrice d'une application linéaire",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Matrice dans des bases",
+       "t": "Soit $f : E \\to F$ linéaire, $\\mathcal B = (e_1, \\dots, e_p)$ une base de $E$ et $\\mathcal C$ une base de $F$. La matrice de $f$ dans ces bases a pour $j$-ième colonne **les coordonnées de $f(e_j)$ dans $\\mathcal C$**.\n\nRègle à retenir : **les colonnes sont les images des vecteurs de base**."
+      },
+      {
+       "k": "ex",
+       "t": "La dérivation sur $\\mathbb R_2[X]$, dans la base $(1, X, X^2)$ : $D(1) = 0$, $D(X) = 1$, $D(X^2) = 2X$. Sa matrice est $\\begin{pmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 2 \\\\ 0 & 0 & 0 \\end{pmatrix}$."
+      },
+      {
+       "k": "thm",
+       "titre": "Calculs",
+       "t": "Si $X$ est la colonne des coordonnées de $x$, celle de $f(x)$ est $AX$. La matrice de $g \\circ f$ est le produit $BA$, dans cet ordre : on applique $f$ d'abord, et sa matrice est à droite. $f$ est bijective si et seulement si sa matrice (carrée) est inversible."
+      },
+      {
+       "k": "att",
+       "t": "Le produit matriciel n'est pas commutatif, et $AB = 0$ n'entraîne pas $A = 0$ ou $B = 0$. Par exemple, $A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ vérifie $A^2 = 0$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Dans la base $(e_1, e_2)$, l'endomorphisme $f$ vérifie $f(e_1) = e_1 + e_2$ et $f(e_2) = 2e_2$. Sa matrice est :",
+       "choix": [
+        "$\\begin{pmatrix} 1 & 0 \\\\ 1 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 0 & 1 \\end{pmatrix}$"
+       ],
+       "bonne": 0,
+       "explication": "Première colonne : les coordonnées de $f(e_1)$, soit $(1, 1)$. Deuxième colonne : celles de $f(e_2)$, soit $(0, 2)$. Le piège est d'écrire les images en lignes."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A, B \\in M_n(\\mathbb R)$ vérifient $AB = 0$, alors $A = 0$ ou $B = 0$.",
+       "reponse": false,
+       "explication": "$A = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ vérifie $A \\times A = 0$ sans être nulle."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le rang de la dérivation $P \\mapsto P'$ sur $\\mathbb R_2[X]$ est :",
+       "choix": [
+        "$2$",
+        "$3$",
+        "$1$",
+        "$0$"
+       ],
+       "bonne": 0,
+       "explication": "Son image est $\\mathbb R_1[X]$, de dimension $2$. Sur la matrice : deux colonnes non nulles et non colinéaires."
+      }
+     ]
+    },
+    {
+     "titre": "Changement de base",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Un même endomorphisme a une matrice différente dans chaque base. Le changement de base permet de passer de l'une à l'autre, et surtout de choisir la base où la matrice est la plus simple : c'est tout le but de la réduction."
+      },
+      {
+       "k": "def",
+       "titre": "Matrice de passage",
+       "t": "La matrice de passage $P$ d'une base $\\mathcal B$ (l'ancienne) à une base $\\mathcal B'$ (la nouvelle) a pour colonnes **les coordonnées des nouveaux vecteurs dans l'ancienne base**. Elle est inversible."
+      },
+      {
+       "k": "thm",
+       "titre": "Formules de changement de base",
+       "t": "Si $X$ et $X'$ sont les coordonnées d'un même vecteur dans $\\mathcal B$ et dans $\\mathcal B'$, alors $X = PX'$. Si $A$ et $A'$ sont les matrices d'un même endomorphisme dans $\\mathcal B$ et dans $\\mathcal B'$, alors $$A' = P^{-1}AP.$$"
+      },
+      {
+       "k": "p",
+       "t": "Pour retenir $A' = P^{-1}AP$, lire de droite à gauche : $P$ convertit des coordonnées nouvelles en anciennes, $A$ applique $f$ en anciennes coordonnées, et $P^{-1}$ reconvertit le résultat en nouvelles coordonnées."
+      },
+      {
+       "k": "ex",
+       "t": "$f$ a pour matrice $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ dans la base canonique. Dans la base $\\big((1, 1), (1, -1)\\big)$ : $f(1, 1) = (3, 3) = 3\\,(1, 1)$ et $f(1, -1) = (-1, 1) = -(1, -1)$. La nouvelle matrice est $\\mathrm{diag}(3, -1)$, obtenue sans calculer $P^{-1}$ : on a lu directement les images des nouveaux vecteurs."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R^2$, la matrice de passage de la base canonique à la base $\\big((1, 2), (3, 4)\\big)$ est :",
+       "choix": [
+        "$\\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$",
+        "l'inverse de $\\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 & 3 \\\\ 2 & 1 \\end{pmatrix}$"
+       ],
+       "bonne": 0,
+       "explication": "Les nouveaux vecteurs, écrits dans l'ancienne base, se placent **en colonnes**."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $f(e_1) = 2e_1$ et $f(e_2) = 5e_2$, la matrice de $f$ dans la base $(e_1, e_2)$ est diagonale.",
+       "reponse": true,
+       "explication": "Colonnes $(2, 0)$ et $(0, 5)$ : c'est $\\mathrm{diag}(2, 5)$. Une base de vecteurs propres donne une matrice diagonale."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Dans la base $(e_1, e_2, e_3)$, $f$ vérifie $f(e_1) = 0$, $f(e_2) = e_1$ et $f(e_3) = e_2$. La matrice de $f \\circ f$ est :",
+       "choix": [
+        "$\\begin{pmatrix} 0 & 0 & 1 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 1 & 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 0 & 0 & 0 \\end{pmatrix}$",
+        "la matrice nulle"
+       ],
+       "bonne": 0,
+       "explication": "$f^2(e_1) = 0$, $f^2(e_2) = f(e_1) = 0$, $f^2(e_3) = f(e_2) = e_1$. Seule la troisième colonne est non nulle, et elle vaut $(1, 0, 0)$."
+      }
+     ]
+    },
+    {
+     "titre": "Ce qui ne dépend pas de la base",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Matrices semblables",
+       "t": "$A$ et $B$ sont **semblables** s'il existe $P$ inversible telle que $B = P^{-1}AP$. Autrement dit, ce sont les matrices d'un même endomorphisme dans deux bases."
+      },
+      {
+       "k": "thm",
+       "titre": "Invariants de similitude",
+       "t": "Deux matrices semblables ont même rang, même trace, même déterminant et même polynôme caractéristique, donc mêmes valeurs propres."
+      },
+      {
+       "k": "p",
+       "t": "Pour la trace, on utilise $\\mathrm{tr}(MN) = \\mathrm{tr}(NM)$ : $\\mathrm{tr}(P^{-1}AP) = \\mathrm{tr}(APP^{-1}) = \\mathrm{tr}\\,A$. Pour le déterminant : $\\det(P^{-1}AP) = \\det(P)^{-1}\\det(A)\\det(P) = \\det A$."
+      },
+      {
+       "k": "att",
+       "t": "La réciproque est fausse : avoir mêmes trace, déterminant et rang ne suffit pas. $I_2$ et $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ ont trace $2$, déterminant $1$, rang $2$, mais ne sont pas semblables : la seule matrice semblable à $I_2$ est $P^{-1}I_2P = I_2$."
+      },
+      {
+       "k": "met",
+       "titre": "Montrer que deux matrices ne sont pas semblables",
+       "t": "Trouver un invariant qui diffère : rang, trace, déterminant, valeurs propres, ou encore le rang de $A - \\lambda I_n$ pour une valeur propre $\\lambda$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$ et $\\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix}$ sont semblables.",
+       "reponse": true,
+       "explication": "Ce sont les matrices du même endomorphisme dans les bases $(e_1, e_2)$ et $(e_2, e_1)$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Pourquoi $A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix}$ et $B = \\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$ ne sont-elles pas semblables ?",
+       "choix": [
+        "Elles n'ont pas le même déterminant",
+        "Elles n'ont pas la même trace",
+        "Elles n'ont pas le même rang",
+        "$A$ n'est pas diagonale"
+       ],
+       "bonne": 0,
+       "explication": "$\\det A = 3$ et $\\det B = 4$. Les traces sont égales ($4$), les rangs aussi ($2$). Et une matrice non diagonale peut très bien être semblable à une matrice diagonale."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $A$ est semblable à $B$, alors $A^2$ est semblable à $B^2$.",
+       "reponse": true,
+       "explication": "Si $B = P^{-1}AP$, alors $B^2 = P^{-1}APP^{-1}AP = P^{-1}A^2P$."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

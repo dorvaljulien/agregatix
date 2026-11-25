@@ -1,0 +1,759 @@
+{
+ "ch": "topologie",
+ "intro": "La topologie des espaces normés est présente dans un sujet d'analyse sur deux, souvent en toile de fond : montrer qu'un ensemble est fermé, qu'une application est continue, qu'un minimum est atteint. On commence par mesurer la taille d'un vecteur, puis on définit ouverts, fermés, continuité et compacité, et on finit par ce qui rend la dimension finie si confortable.",
+ "niveaux": [
+  {
+   "id": "topologie-n1",
+   "titre": "Normes et boules",
+   "objectif": "Savoir ce qu'est une norme, calculer les normes usuelles, dessiner les boules du plan, et connaître les normes sur les espaces de fonctions.",
+   "etapes": [
+    {
+     "titre": "Mesurer la taille d'un vecteur",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Dans $\\mathbb R$, la valeur absolue mesure la taille d'un nombre, et $|x - y|$ la distance entre deux nombres. Dans $\\mathbb R^2$ ou dans un espace de fonctions, il y a plusieurs façons raisonnables de mesurer une taille. Plutôt que d'en choisir une, on retient les trois propriétés dont on a besoin : c'est la notion de norme."
+      },
+      {
+       "k": "def",
+       "titre": "Norme",
+       "t": "Une **norme** sur un espace vectoriel $E$ est une application $N : E \\to [0, +\\infty[$ telle que, pour tous $x, y \\in E$ et tout scalaire $\\lambda$ :\n- **séparation** : $N(x) = 0 \\implies x = 0$ ;\n- **homogénéité** : $N(\\lambda x) = |\\lambda|\\,N(x)$ ;\n- **inégalité triangulaire** : $N(x + y) \\le N(x) + N(y)$.\n\nOn note souvent $\\|x\\|$. La **distance** associée est $d(x, y) = \\|x - y\\|$."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $x = (x_1, \\dots, x_n) \\in \\mathbb R^n$ :\n- $\\|x\\|_1 = |x_1| + \\dots + |x_n|$ ;\n- $\\|x\\|_2 = \\sqrt{x_1^2 + \\dots + x_n^2}$, la norme euclidienne ;\n- $\\|x\\|_\\infty = \\max(|x_1|, \\dots, |x_n|)$.\n\nPour $x = (3, -4)$ : $\\|x\\|_1 = 7$, $\\|x\\|_2 = 5$, $\\|x\\|_\\infty = 4$.",
+       "titre": "Les trois normes usuelles"
+      },
+      {
+       "k": "thm",
+       "titre": "Inégalité triangulaire renversée",
+       "t": "$\\big|\\,\\|x\\| - \\|y\\|\\,\\big| \\le \\|x - y\\|$. Elle sert à montrer que la norme est continue, et à minorer une norme."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Pour $x = (1, -2, 2) \\in \\mathbb R^3$, les normes $\\|x\\|_1$, $\\|x\\|_2$ et $\\|x\\|_\\infty$ valent :",
+       "choix": [
+        "$5$, $3$ et $2$",
+        "$5$, $9$ et $2$",
+        "$1$, $3$ et $2$",
+        "$5$, $3$ et $-2$"
+       ],
+       "bonne": 0,
+       "explication": "$1 + 2 + 2 = 5$, $\\sqrt{1 + 4 + 4} = 3$ (le leurre $9$ oublie la racine), et le plus grand $|x_i|$ vaut $2$ : une norme n'est jamais négative."
+      },
+      {
+       "type": "vf",
+       "enonce": "$N(x, y) = |x|$ est une norme sur $\\mathbb R^2$.",
+       "reponse": false,
+       "explication": "La séparation échoue : $N(0, 1) = 0$ alors que $(0, 1) \\neq 0$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $\\|\\cdot\\|$ est une norme, alors $N(x) = 2\\|x\\|$ en est une aussi.",
+       "reponse": true,
+       "explication": "Les trois propriétés se conservent quand on multiplie par une constante strictement positive."
+      }
+     ]
+    },
+    {
+     "titre": "Boules et dessins",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Boules",
+       "t": "La **boule ouverte** de centre $a$ et de rayon $r > 0$ est $B(a, r) = \\{x : \\|x - a\\| < r\\}$ ; la **boule fermée** est $B_f(a, r) = \\{x : \\|x - a\\| \\le r\\}$. Leur forme dépend de la norme."
+      },
+      {
+       "k": "fig",
+       "figure": {
+        "x": [
+         -1.6,
+         1.6
+        ],
+        "y": [
+         -1.4,
+         1.4
+        ],
+        "unites": false,
+        "legende": "Boules unité fermées de $\\mathbb R^2$ : le losange pour $\\|\\cdot\\|_1$, le disque pour $\\|\\cdot\\|_2$, le carré pour $\\|\\cdot\\|_\\infty$.",
+        "el": [
+         {
+          "t": "poly",
+          "pts": [
+           [
+            -1,
+            -1
+           ],
+           [
+            1,
+            -1
+           ],
+           [
+            1,
+            1
+           ],
+           [
+            -1,
+            1
+           ]
+          ],
+          "c": "m"
+         },
+         {
+          "t": "cercle",
+          "o": [
+           0,
+           0
+          ],
+          "r": 1,
+          "c": "a"
+         },
+         {
+          "t": "poly",
+          "pts": [
+           [
+            1,
+            0
+           ],
+           [
+            0,
+            1
+           ],
+           [
+            -1,
+            0
+           ],
+           [
+            0,
+            -1
+           ]
+          ],
+          "c": "b"
+         },
+         {
+          "t": "txt",
+          "p": [
+           1,
+           1
+          ],
+          "s": "‖·‖∞",
+          "pos": "ne"
+         },
+         {
+          "t": "txt",
+          "p": [
+           -0.71,
+           0.71
+          ],
+          "s": "‖·‖₂",
+          "pos": "no"
+         },
+         {
+          "t": "txt",
+          "p": [
+           -0.3,
+           -0.3
+          ],
+          "s": "‖·‖₁",
+          "pos": "n"
+         },
+         {
+          "t": "pt",
+          "p": [
+           1,
+           0
+          ],
+          "n": "1",
+          "pos": "se",
+          "c": "d"
+         }
+        ]
+       }
+      },
+      {
+       "k": "p",
+       "t": "Pour $\\|\\cdot\\|_2$, la boule unité est le disque habituel. Pour $\\|\\cdot\\|_\\infty$, la condition $\\max(|x|, |y|) \\le 1$ donne le carré $[-1, 1]^2$. Pour $\\|\\cdot\\|_1$, la condition $|x| + |y| \\le 1$ donne un losange."
+      },
+      {
+       "k": "thm",
+       "titre": "Comparaison des trois normes",
+       "t": "Pour tout $x \\in \\mathbb R^n$ : $$\\|x\\|_\\infty \\le \\|x\\|_2 \\le \\|x\\|_1 \\le n\\,\\|x\\|_\\infty.$$"
+      },
+      {
+       "k": "att",
+       "t": "Une norme plus **petite** donne une boule plus **grande** : comme $\\|x\\|_\\infty \\le \\|x\\|_1$, être de norme $\\le 1$ pour $\\|\\cdot\\|_1$ est plus exigeant. C'est pourquoi le losange ($\\|\\cdot\\|_1$) est à l'intérieur du carré ($\\|\\cdot\\|_\\infty$)."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La boule unité fermée de $\\|\\cdot\\|_\\infty$ dans $\\mathbb R^2$ est :",
+       "choix": [
+        "le carré $[-1, 1]^2$",
+        "le disque de centre $0$ et de rayon $1$",
+        "le losange $|x| + |y| \\le 1$",
+        "le carré $[0, 1]^2$"
+       ],
+       "bonne": 0,
+       "explication": "$\\max(|x|, |y|) \\le 1$ signifie $-1 \\le x \\le 1$ et $-1 \\le y \\le 1$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le point $(0{,}6 ;\\ 0{,}6)$ appartient à la boule unité fermée :",
+       "choix": [
+        "de $\\|\\cdot\\|_\\infty$ et de $\\|\\cdot\\|_2$, mais pas de $\\|\\cdot\\|_1$",
+        "des trois normes",
+        "de $\\|\\cdot\\|_\\infty$ seulement",
+        "d'aucune des trois normes"
+       ],
+       "bonne": 0,
+       "explication": "$\\|\\cdot\\|_\\infty = 0{,}6$ ; $\\|\\cdot\\|_2 = 0{,}6\\sqrt2 \\approx 0{,}85$ ; $\\|\\cdot\\|_1 = 1{,}2 > 1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Pour tout $x \\in \\mathbb R^3$, $\\|x\\|_1 \\le 3\\|x\\|_\\infty$.",
+       "reponse": true,
+       "explication": "Chacun des trois termes $|x_i|$ est au plus $\\|x\\|_\\infty$."
+      }
+     ]
+    },
+    {
+     "titre": "Normes sur des espaces de fonctions",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "En analyse, les vecteurs sont souvent des fonctions. Sur l'espace $\\mathcal C([a, b])$ des fonctions continues sur $[a, b]$, les trois normes usuelles ont des analogues : on remplace la somme par une intégrale et le maximum par une borne supérieure."
+      },
+      {
+       "k": "def",
+       "titre": "Normes usuelles sur $\\mathcal C([a, b])$",
+       "t": "$$\\|f\\|_\\infty = \\sup_{[a, b]} |f|, \\qquad \\|f\\|_1 = \\int_a^b |f|, \\qquad \\|f\\|_2 = \\sqrt{\\int_a^b f^2}.$$ La norme $\\|\\cdot\\|_\\infty$ s'appelle la norme de la convergence uniforme."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $f(x) = x$ sur $[0, 1]$ : $\\|f\\|_\\infty = 1$, $\\|f\\|_1 = \\frac12$, $\\|f\\|_2 = \\sqrt{\\frac13}$."
+      },
+      {
+       "k": "att",
+       "t": "Pour $\\|\\cdot\\|_1$, la séparation repose sur la **continuité** : une fonction continue positive d'intégrale nulle est nulle. Sur les fonctions continues par morceaux, ce n'est plus une norme (une fonction nulle sauf en un point a une intégrale nulle)."
+      },
+      {
+       "k": "thm",
+       "titre": "Une norme en contrôle une autre",
+       "t": "$\\|f\\|_1 \\le (b - a)\\,\\|f\\|_\\infty$ : la norme infinie contrôle la norme $1$. L'inverse est faux : sur $[0, 1]$, $f_n(x) = x^n$ vérifie $\\|f_n\\|_\\infty = 1$ mais $\\|f_n\\|_1 = \\frac{1}{n + 1} \\to 0$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Sur $\\mathcal C([0, 1])$, pour $f(x) = x^2$, la norme $\\|f\\|_1$ vaut :",
+       "choix": [
+        "$\\frac13$",
+        "$1$",
+        "$\\frac12$",
+        "$\\frac15$"
+       ],
+       "bonne": 0,
+       "explication": "$\\int_0^1 x^2\\,\\mathrm dx = \\frac13$. Le leurre $1$ est $\\|f\\|_\\infty$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathcal C([0, 1])$, si $\\|f_n\\|_\\infty \\to 0$, alors $\\|f_n\\|_1 \\to 0$.",
+       "reponse": true,
+       "explication": "$\\|f_n\\|_1 \\le \\|f_n\\|_\\infty$ sur un intervalle de longueur $1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathcal C([0, 1])$, si $\\|f_n\\|_1 \\to 0$, alors $\\|f_n\\|_\\infty \\to 0$.",
+       "reponse": false,
+       "explication": "$f_n(x) = x^n$ : l'aire sous la courbe tend vers $0$, mais le maximum reste égal à $1$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "topologie-n2",
+   "titre": "Suites, ouverts et fermés",
+   "objectif": "Savoir ce que veut dire converger dans un espace normé, reconnaître un ouvert ou un fermé, et utiliser la caractérisation des fermés par les suites.",
+   "etapes": [
+    {
+     "titre": "Converger dans un espace normé",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Suite convergente",
+       "t": "Une suite $(x_n)$ d'un espace normé converge vers $\\ell$ si $\\|x_n - \\ell\\| \\to 0$. C'est la définition des suites réelles, avec la norme à la place de la valeur absolue. Une suite convergente est bornée, et sa limite est unique."
+      },
+      {
+       "k": "thm",
+       "titre": "Dans $\\mathbb R^n$",
+       "t": "Une suite de $\\mathbb R^n$ converge si et seulement si chacune de ses coordonnées converge (pour $\\|\\cdot\\|_\\infty$, et en fait pour toute norme, voir le niveau 4)."
+      },
+      {
+       "k": "ex",
+       "t": "Dans $\\mathbb R^2$, $x_n = \\left(\\frac1n,\\ 2 + \\frac{1}{n^2}\\right)$ converge vers $(0, 2)$."
+      },
+      {
+       "k": "att",
+       "t": "En dimension infinie, la convergence **dépend de la norme**. Sur $\\mathcal C([0, 1])$, $f_n(x) = x^n$ tend vers $0$ pour $\\|\\cdot\\|_1$ (car $\\|f_n\\|_1 = \\frac{1}{n+1}$), mais pas pour $\\|\\cdot\\|_\\infty$ (car $\\|f_n\\|_\\infty = 1$)."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R^2$, la suite $x_n = \\left(\\frac{(-1)^n}{n},\\ 1 - \\frac1n\\right)$ :",
+       "choix": [
+        "converge vers $(0, 1)$",
+        "diverge, car $(-1)^n$ n'a pas de limite",
+        "converge vers $(1, 1)$",
+        "converge vers $(0, 0)$"
+       ],
+       "bonne": 0,
+       "explication": "On regarde chaque coordonnée : $\\frac{(-1)^n}{n} \\to 0$ (bornée fois tend vers $0$) et $1 - \\frac1n \\to 1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathcal C([0, 1])$, la suite $f_n(x) = x^n$ converge vers $0$ pour la norme $\\|\\cdot\\|_\\infty$.",
+       "reponse": false,
+       "explication": "$\\|f_n - 0\\|_\\infty = \\sup_{[0,1]} x^n = 1$ ne tend pas vers $0$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une suite convergente d'un espace normé est bornée.",
+       "reponse": true,
+       "explication": "À partir d'un rang $N$, $\\|x_n\\| \\le \\|\\ell\\| + 1$ ; les premiers termes sont en nombre fini."
+      }
+     ]
+    },
+    {
+     "titre": "Les ouverts",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Ouvert",
+       "t": "Une partie $U$ de $E$ est **ouverte** si, autour de chacun de ses points, elle contient une petite boule : $$\\forall a \\in U,\\ \\exists r > 0,\\ B(a, r) \\subset U.$$ Intuitivement : $U$ ne contient aucun point de son « bord », on peut toujours bouger un peu sans sortir."
+      },
+      {
+       "k": "ex",
+       "t": "- $]0, 1[$ est ouvert dans $\\mathbb R$ ; $[0, 1[$ ne l'est pas : aucune boule centrée en $0$ n'est contenue dans $[0, 1[$.\n- Le demi-plan $\\{(x, y) : y > 0\\}$ est ouvert ; une boule ouverte est ouverte.\n- $E$ tout entier et $\\emptyset$ sont ouverts."
+      },
+      {
+       "k": "thm",
+       "titre": "Opérations",
+       "t": "Une réunion **quelconque** d'ouverts est ouverte. Une intersection **finie** d'ouverts est ouverte."
+      },
+      {
+       "k": "att",
+       "t": "Une intersection infinie d'ouverts peut ne pas être ouverte : $\\bigcap_{n \\ge 1} \\left]-\\frac1n, \\frac1n\\right[ = \\{0\\}$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "$[0, 1[$ est un ouvert de $\\mathbb R$.",
+       "reponse": false,
+       "explication": "Le point $0$ est dans l'ensemble, mais tout intervalle $]-r, r[$ contient des nombres négatifs."
+      },
+      {
+       "type": "vf",
+       "enonce": "$\\mathbb R$ tout entier est un ouvert de $\\mathbb R$.",
+       "reponse": true,
+       "explication": "Toute boule autour de n'importe quel point est contenue dans $\\mathbb R$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "L'intersection des ouverts $\\left]-\\frac1n,\\ 1 + \\frac1n\\right[$, pour $n \\ge 1$, est :",
+       "choix": [
+        "$[0, 1]$, qui n'est pas ouvert",
+        "$]0, 1[$",
+        "$\\emptyset$",
+        "$]-1, 2[$"
+       ],
+       "bonne": 0,
+       "explication": "Un réel est dans tous ces intervalles si et seulement si $-\\frac1n < x < 1 + \\frac1n$ pour tout $n$, c'est-à-dire $0 \\le x \\le 1$."
+      }
+     ]
+    },
+    {
+     "titre": "Les fermés et les suites",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Fermé",
+       "t": "Une partie $F$ est **fermée** si son complémentaire est ouvert."
+      },
+      {
+       "k": "thm",
+       "titre": "Caractérisation séquentielle",
+       "t": "$F$ est fermé si et seulement si, pour toute suite d'éléments de $F$ qui converge dans $E$, la limite est encore dans $F$. On dit que $F$ est **stable par passage à la limite**. C'est la caractérisation qu'on utilise en pratique."
+      },
+      {
+       "k": "att",
+       "t": "« Fermé » n'est pas le contraire d'« ouvert ». $[0, 1[$ n'est ni l'un ni l'autre ; $\\mathbb R$ et $\\emptyset$ sont les deux à la fois."
+      },
+      {
+       "k": "met",
+       "titre": "Inégalités larges et égalités",
+       "t": "Si $f$ est continue, $\\{x : f(x) \\le 0\\}$ et $\\{x : f(x) = 0\\}$ sont fermés : si $x_n \\to x$ avec $f(x_n) \\le 0$, alors $f(x_n) \\to f(x)$ et $f(x) \\le 0$. Une inégalité **stricte** donne au contraire un ouvert. Exemple : les matrices de déterminant nul forment un fermé de $M_n(\\mathbb R)$."
+      },
+      {
+       "k": "def",
+       "titre": "Adhérence, densité",
+       "t": "L'**adhérence** $\\overline A$ est l'ensemble des limites des suites d'éléments de $A$ : c'est le plus petit fermé qui contient $A$. $A$ est **dense** si $\\overline A = E$. Exemples : $\\overline{]0, 1[} = [0, 1]$, et $\\mathbb Q$ est dense dans $\\mathbb R$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R$, l'ensemble $A = \\left\\{\\frac1n : n \\ge 1\\right\\}$ :",
+       "choix": [
+        "n'est pas fermé, car $\\frac1n \\to 0$ et $0 \\notin A$",
+        "est fermé",
+        "est ouvert",
+        "est à la fois ouvert et fermé"
+       ],
+       "bonne": 0,
+       "explication": "La suite $\\left(\\frac1n\\right)$ est dans $A$ et sa limite n'y est pas. Il n'est pas ouvert non plus : aucune boule autour de $1$ n'est contenue dans $A$."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'ensemble des matrices de $M_n(\\mathbb R)$ de trace nulle est fermé.",
+       "reponse": true,
+       "explication": "La trace est continue (linéaire en dimension finie), et l'ensemble est défini par une égalité."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une partie qui n'est pas ouverte est fermée.",
+       "reponse": false,
+       "explication": "$[0, 1[$ n'est ni ouvert ni fermé."
+      },
+      {
+       "type": "qcm",
+       "enonce": "L'adhérence de $\\mathbb Q$ dans $\\mathbb R$ est :",
+       "choix": [
+        "$\\mathbb R$",
+        "$\\mathbb Q$",
+        "$\\mathbb R \\setminus \\mathbb Q$",
+        "$\\emptyset$"
+       ],
+       "bonne": 0,
+       "explication": "Tout réel est limite d'une suite de rationnels (ses approximations décimales) : $\\mathbb Q$ est dense dans $\\mathbb R$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "topologie-n3",
+   "titre": "Continuité et applications linéaires continues",
+   "objectif": "Prouver ou réfuter une continuité, utiliser les images réciproques, et savoir quand une application linéaire est continue.",
+   "etapes": [
+    {
+     "titre": "Continuité",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Continuité en un point",
+       "t": "$f$ est continue en $a$ si $\\forall \\varepsilon > 0,\\ \\exists \\delta > 0,\\ \\|x - a\\| \\le \\delta \\implies \\|f(x) - f(a)\\| \\le \\varepsilon$. Caractérisation par les suites, la plus pratique : pour toute suite $x_n \\to a$, on a $f(x_n) \\to f(a)$."
+      },
+      {
+       "k": "thm",
+       "titre": "Ce qui est continu sans calcul",
+       "t": "Sommes, produits et composées de fonctions continues sont continues. Toute fonction polynomiale des coordonnées est continue : le déterminant, le produit de matrices, $(x, y) \\mapsto x^2y - 3y$. La norme est continue."
+      },
+      {
+       "k": "def",
+       "titre": "Fonction lipschitzienne",
+       "t": "$f$ est $k$-**lipschitzienne** si $\\|f(x) - f(y)\\| \\le k\\|x - y\\|$ pour tous $x, y$. Une fonction lipschitzienne est continue. Exemple : la norme est $1$-lipschitzienne, par l'inégalité triangulaire renversée."
+      },
+      {
+       "k": "met",
+       "titre": "Montrer qu'une fonction n'est pas continue en $a$",
+       "t": "Trouver une suite $x_n \\to a$ telle que $f(x_n)$ ne tende pas vers $f(a)$. Exemple : $f(x, y) = \\frac{xy}{x^2 + y^2}$, prolongée par $f(0, 0) = 0$. Le long de $\\left(\\frac1n, \\frac1n\\right)$, $f$ vaut toujours $\\frac12$ : elle n'est pas continue en $(0, 0)$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Pour la fonction $f(x, y) = \\frac{xy}{x^2 + y^2}$ prolongée par $f(0, 0) = 0$, le long de la suite $\\left(\\frac1n, 0\\right)$, $f$ vaut :",
+       "choix": [
+        "$0$ pour tout $n$",
+        "$\\frac12$ pour tout $n$",
+        "$\\frac1n$",
+        "$n$"
+       ],
+       "bonne": 0,
+       "explication": "$y = 0$ donne $f = 0$. Ce chemin-là ne détecte pas la discontinuité : il faut en essayer un autre, comme $\\left(\\frac1n, \\frac1n\\right)$."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'application $\\det : M_n(\\mathbb R) \\to \\mathbb R$ est continue.",
+       "reponse": true,
+       "explication": "C'est une fonction polynomiale des coefficients."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur tout espace normé, $x \\mapsto \\|x\\|$ est continue.",
+       "reponse": true,
+       "explication": "$\\big|\\,\\|x\\| - \\|y\\|\\,\\big| \\le \\|x - y\\|$ : elle est $1$-lipschitzienne."
+      }
+     ]
+    },
+    {
+     "titre": "Images réciproques",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Continuité et ouverts, fermés",
+       "t": "Si $f : E \\to F$ est continue, l'image réciproque d'un ouvert est ouverte, et l'image réciproque d'un fermé est fermée. En particulier, pour $f$ continue à valeurs réelles : $\\{f < c\\}$ est ouvert, $\\{f \\le c\\}$ et $\\{f = c\\}$ sont fermés."
+      },
+      {
+       "k": "ex",
+       "t": "- $GL_n(\\mathbb R) = \\det^{-1}(\\mathbb R^*)$ est ouvert dans $M_n(\\mathbb R)$, car $\\mathbb R^*$ est ouvert.\n- $O_n(\\mathbb R) = \\{M : M^{\\mathsf T}M = I_n\\}$ est fermé, comme image réciproque du point $I_n$ par l'application continue $M \\mapsto M^{\\mathsf T}M$."
+      },
+      {
+       "k": "att",
+       "t": "C'est faux pour les images **directes** : $\\exp$ est continue et $\\mathbb R$ est fermé, mais $\\exp(\\mathbb R) = ]0, +\\infty[$ n'est pas fermé. Une fonction constante envoie l'ouvert $\\mathbb R$ sur un point, qui n'est pas ouvert."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "$GL_n(\\mathbb R)$ est un ouvert de $M_n(\\mathbb R)$.",
+       "reponse": true,
+       "explication": "C'est l'ensemble où le déterminant, continu, est non nul : image réciproque de l'ouvert $\\mathbb R^*$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "L'ensemble $\\{(x, y) \\in \\mathbb R^2 : x^2 + y^2 < 1 \\text{ et } y > 0\\}$ est :",
+       "choix": [
+        "ouvert",
+        "fermé",
+        "ni ouvert ni fermé",
+        "à la fois ouvert et fermé"
+       ],
+       "bonne": 0,
+       "explication": "Intersection de deux ouverts, chacun défini par une inégalité stricte sur une fonction continue."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'image d'un fermé par une application continue est fermée.",
+       "reponse": false,
+       "explication": "$\\exp(\\mathbb R) = ]0, +\\infty[$. Seules les images **réciproques** se comportent bien."
+      }
+     ]
+    },
+    {
+     "titre": "Applications linéaires continues",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Caractérisation",
+       "t": "Une application **linéaire** $u : E \\to F$ est continue si et seulement s'il existe une constante $C \\ge 0$ telle que $$\\forall x \\in E, \\quad \\|u(x)\\| \\le C\\,\\|x\\|.$$ Elle est alors $C$-lipschitzienne, car $\\|u(x) - u(y)\\| = \\|u(x - y)\\|$."
+      },
+      {
+       "k": "p",
+       "t": "L'idée : la continuité en $0$ contrôle $u$ sur une petite boule, et l'homogénéité ($u(\\lambda x) = \\lambda u(x)$) propage ce contrôle à tout l'espace."
+      },
+      {
+       "k": "def",
+       "titre": "Norme subordonnée",
+       "t": "La plus petite constante $C$ possible est $|||u||| = \\sup_{x \\neq 0} \\frac{\\|u(x)\\|}{\\|x\\|}$. Elle vérifie $|||u \\circ v||| \\le |||u|||\\ |||v|||$."
+      },
+      {
+       "k": "ex",
+       "t": "Sur $\\mathcal C([0, 1])$ muni de $\\|\\cdot\\|_\\infty$, $u(f) = \\int_0^1 f$ vérifie $|u(f)| \\le \\|f\\|_\\infty$ : elle est continue, et $|||u||| = 1$ (atteint pour $f = 1$)."
+      },
+      {
+       "k": "att",
+       "t": "En dimension infinie, une application linéaire peut ne pas être continue. Sur $\\mathbb R[X]$ muni de $\\|P\\| = \\sup_{[0, 1]} |P|$, la dérivation $D$ envoie $X^n$, de norme $1$, sur $nX^{n-1}$, de norme $n$. Aucune constante $C$ ne convient : $D$ n'est pas continue."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Sur $\\mathcal C([0, 1])$ muni de $\\|\\cdot\\|_\\infty$, on pose $u(f) = f(0)$. Alors :",
+       "choix": [
+        "$u$ est continue et $|||u||| = 1$",
+        "$u$ n'est pas continue",
+        "$u$ est continue et $|||u||| = 0$",
+        "$u$ n'est pas linéaire"
+       ],
+       "bonne": 0,
+       "explication": "$|f(0)| \\le \\|f\\|_\\infty$, avec égalité pour $f = 1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $u$ est linéaire et vérifie $\\|u(x)\\| \\le 3\\|x\\|$ pour tout $x$, alors $u$ est $3$-lipschitzienne.",
+       "reponse": true,
+       "explication": "$\\|u(x) - u(y)\\| = \\|u(x - y)\\| \\le 3\\|x - y\\|$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathbb R[X]$ muni de $\\|P\\| = \\sup_{[0, 1]} |P|$, la dérivation est continue.",
+       "reponse": false,
+       "explication": "$\\|X^n\\| = 1$ mais $\\|(X^n)'\\| = n$ : le rapport n'est pas borné."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "topologie-n4",
+   "titre": "Compacité et dimension finie",
+   "objectif": "Reconnaître un compact, utiliser le théorème des bornes atteintes, et savoir ce que la dimension finie apporte.",
+   "etapes": [
+    {
+     "titre": "Les compacts",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Compact",
+       "t": "Une partie $K$ est **compacte** si toute suite d'éléments de $K$ admet une sous-suite qui converge **dans $K$**. C'est la propriété de Bolzano-Weierstrass, avec en plus la limite dans $K$."
+      },
+      {
+       "k": "thm",
+       "titre": "En dimension finie",
+       "t": "Dans $\\mathbb R$, ou plus généralement dans un espace de dimension finie : $K$ est compact si et seulement s'il est **fermé et borné**. Exemples : $[a, b]$, les sphères et boules fermées de $\\mathbb R^n$, $O_n(\\mathbb R)$."
+      },
+      {
+       "k": "att",
+       "t": "Les deux conditions sont nécessaires. $[0, +\\infty[$ est fermé non borné : la suite $(n)$ n'a aucune sous-suite convergente. $]0, 1]$ est borné non fermé : la suite $\\left(\\frac1n\\right)$ n'a pas de sous-suite qui converge **dans** $]0, 1]$. En dimension infinie, fermé et borné ne suffit plus (la boule unité fermée de $\\mathcal C([0,1])$ n'est pas compacte)."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Lequel de ces ensembles est compact ?",
+       "choix": [
+        "$[0, 1] \\times [-2, 2]$ dans $\\mathbb R^2$",
+        "$[0, +\\infty[$",
+        "$]0, 1]$",
+        "$\\mathbb Q \\cap [0, 1]$"
+       ],
+       "bonne": 0,
+       "explication": "C'est un fermé borné de $\\mathbb R^2$. $\\mathbb Q \\cap [0, 1]$ n'est pas fermé : des rationnels peuvent tendre vers $\\frac{\\sqrt2}{2}$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Le cercle unité $\\{(x, y) : x^2 + y^2 = 1\\}$ est compact.",
+       "reponse": true,
+       "explication": "Fermé (défini par une égalité sur une fonction continue) et borné, en dimension finie."
+      },
+      {
+       "type": "vf",
+       "enonce": "Toute partie bornée de $\\mathbb R^2$ est compacte.",
+       "reponse": false,
+       "explication": "Le disque ouvert est borné mais pas fermé."
+      }
+     ]
+    },
+    {
+     "titre": "Le théorème des bornes atteintes",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Bornes atteintes",
+       "t": "Une fonction **continue** sur un **compact non vide**, à valeurs réelles, est bornée et atteint ses bornes : elle a un maximum et un minimum. (Plus généralement, l'image d'un compact par une application continue est compacte.)"
+      },
+      {
+       "k": "p",
+       "t": "C'est la vraie raison pour laquelle une fonction continue sur $[a, b]$ a un maximum. Aux écrits, ce théorème sert à justifier l'existence d'un minimum (« il existe $x_0$ en lequel … est minimal »), avant même de le chercher."
+      },
+      {
+       "k": "att",
+       "t": "Les deux hypothèses comptent :\n- $x \\mapsto \\frac1x$ est continue sur $]0, 1]$ mais pas bornée ;\n- $x \\mapsto x$ est bornée sur $[0, 1[$ mais n'a pas de maximum ;\n- une fonction discontinue sur $[0, 1]$ peut ne pas atteindre sa borne supérieure."
+      },
+      {
+       "k": "ex",
+       "t": "$f(x, y) = x + y$ est continue sur le cercle unité, qui est compact : elle a un maximum, avant même qu'on le calcule. (Il vaut $\\sqrt2$, atteint en $\\left(\\frac{\\sqrt2}{2}, \\frac{\\sqrt2}{2}\\right)$.)"
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "La fonction $x \\mapsto e^{-x}$ atteint sa borne inférieure sur $[0, +\\infty[$.",
+       "reponse": false,
+       "explication": "Sa borne inférieure est $0$, jamais atteinte. $[0, +\\infty[$ n'est pas compact."
+      },
+      {
+       "type": "vf",
+       "enonce": "Toute fonction continue de $[0, 1]^2$ dans $\\mathbb R$ admet un maximum.",
+       "reponse": true,
+       "explication": "$[0, 1]^2$ est un fermé borné de $\\mathbb R^2$, donc compact."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Pourquoi $f(x) = x^2$ n'a-t-elle pas de maximum sur $]-1, 1[$ ?",
+       "choix": [
+        "Parce que $]-1, 1[$ n'est pas fermé, donc pas compact",
+        "Parce que $f$ n'est pas continue",
+        "Parce que $]-1, 1[$ n'est pas borné",
+        "Parce que $f$ n'est pas injective"
+       ],
+       "bonne": 0,
+       "explication": "La borne supérieure $1$ serait atteinte en $\\pm 1$, points exclus de l'intervalle."
+      }
+     ]
+    },
+    {
+     "titre": "En dimension finie, tout est plus simple",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Équivalence des normes",
+       "t": "En dimension finie, deux normes $N$ et $N'$ sont toujours **équivalentes** : il existe $a, b > 0$ tels que $aN \\le N' \\le bN$. Conséquence : convergence des suites, ouverts, fermés, compacts, continuité **ne dépendent pas** de la norme choisie."
+      },
+      {
+       "k": "ex",
+       "t": "Dans $\\mathbb R^n$, $\\|x\\|_\\infty \\le \\|x\\|_2 \\le \\sqrt n\\,\\|x\\|_\\infty$ : on voit directement les constantes."
+      },
+      {
+       "k": "thm",
+       "titre": "Linéaire implique continue",
+       "t": "Si $E$ est de dimension finie, toute application linéaire de $E$ dans un espace normé est continue."
+      },
+      {
+       "k": "att",
+       "t": "Rien de cela n'est vrai en dimension infinie : $\\|\\cdot\\|_1$ et $\\|\\cdot\\|_\\infty$ ne sont pas équivalentes sur $\\mathcal C([0, 1])$ (voir $x^n$), et la dérivation n'est pas continue sur $\\mathbb R[X]$ pour la norme $\\sup_{[0,1]}|P|$."
+      },
+      {
+       "k": "met",
+       "titre": "Choisir la norme qui arrange",
+       "t": "Dans $M_n(\\mathbb R)$, toutes les normes se valent pour les questions de convergence : on prend la plus pratique. Par exemple, si $|||A||| < 1$ pour une norme subordonnée, alors $|||A^k||| \\le |||A|||^k \\to 0$, donc $A^k \\to 0$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Sur $M_n(\\mathbb R)$, toute application linéaire à valeurs dans $\\mathbb R$ est continue.",
+       "reponse": true,
+       "explication": "$M_n(\\mathbb R)$ est de dimension finie $n^2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Sur $\\mathcal C([0, 1])$, les normes $\\|\\cdot\\|_1$ et $\\|\\cdot\\|_\\infty$ sont équivalentes.",
+       "reponse": false,
+       "explication": "Pour $f_n(x) = x^n$, $\\frac{\\|f_n\\|_\\infty}{\\|f_n\\|_1} = n + 1$ n'est pas borné."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Dans $\\mathbb R^n$, une suite qui converge pour la norme $\\|\\cdot\\|_1$ :",
+       "choix": [
+        "converge pour toute norme, vers la même limite",
+        "peut diverger pour $\\|\\cdot\\|_\\infty$",
+        "converge pour $\\|\\cdot\\|_2$ vers une autre limite",
+        "est constante à partir d'un certain rang"
+       ],
+       "bonne": 0,
+       "explication": "Toutes les normes sont équivalentes en dimension finie : $\\|x_n - \\ell\\|' \\le b\\,\\|x_n - \\ell\\|_1 \\to 0$."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

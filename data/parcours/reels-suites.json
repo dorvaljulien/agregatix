@@ -1,0 +1,870 @@
+{
+ "ch": "reels-suites",
+ "intro": "Les suites sont partout aux écrits d'analyse : suites récurrentes, encadrements, équivalents. Elles servent aussi d'outil dans les séries, l'intégration ou les probabilités. On repart de la définition de la limite, puis on monte jusqu'aux suites récurrentes et aux équivalents.",
+ "niveaux": [
+  {
+   "id": "reels-suites-n1",
+   "titre": "Limite d'une suite",
+   "objectif": "Comprendre la définition de la limite, connaître les limites de référence, et savoir lever les formes indéterminées simples.",
+   "etapes": [
+    {
+     "titre": "La définition, en mots puis en symboles",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Dire que $(u_n)$ tend vers $\\ell$, c'est dire que $u_n$ finit par être aussi proche de $\\ell$ qu'on veut. « Aussi proche qu'on veut » : on se donne une tolérance $\\varepsilon > 0$, aussi petite qu'on veut. « Finit par » : à partir d'un certain rang $N$, qui a le droit de dépendre de $\\varepsilon$."
+      },
+      {
+       "k": "def",
+       "titre": "Suite convergente",
+       "t": "$(u_n)$ converge vers $\\ell \\in \\mathbb R$ si $$\\forall \\varepsilon > 0,\\ \\exists N \\in \\mathbb N,\\ \\forall n \\ge N,\\ |u_n - \\ell| \\le \\varepsilon.$$ La limite, quand elle existe, est unique. Une suite qui ne converge pas est dite divergente."
+      },
+      {
+       "k": "def",
+       "titre": "Limite infinie",
+       "t": "$u_n \\to +\\infty$ si $\\forall A \\in \\mathbb R,\\ \\exists N,\\ \\forall n \\ge N,\\ u_n \\ge A$ : la suite finit par dépasser définitivement n'importe quel seuil."
+      },
+      {
+       "k": "att",
+       "t": "L'ordre des quantificateurs compte : $N$ vient **après** $\\varepsilon$. Et « tendre vers $+\\infty$ » n'est pas « ne pas être majorée » : la suite $0, 1, 0, 2, 0, 3, \\dots$ n'est pas majorée, mais ne tend pas vers $+\\infty$, car elle revient sans cesse à $0$."
+      },
+      {
+       "k": "thm",
+       "titre": "Premières conséquences",
+       "t": "- Une suite convergente est bornée.\n- Si $u_n \\to \\ell > 0$, alors $u_n > 0$ à partir d'un certain rang.\n- Passage à la limite dans les inégalités **larges** : si $u_n \\le v_n$ pour tout $n$ et si les deux suites convergent, alors $\\lim u_n \\le \\lim v_n$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Une suite bornée est convergente.",
+       "reponse": false,
+       "explication": "$(-1)^n$ est bornée et diverge. C'est la réciproque qui est vraie : convergente entraîne bornée."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $u_n < 1$ pour tout $n$ et si $u_n \\to \\ell$, alors $\\ell < 1$.",
+       "reponse": false,
+       "explication": "$u_n = 1 - \\frac1n$ vérifie $u_n < 1$ et tend vers $1$. Les inégalités strictes deviennent larges à la limite : on peut seulement dire $\\ell \\le 1$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La suite $u_n = (-1)^n + \\frac1n$ :",
+       "choix": [
+        "est bornée et diverge",
+        "converge vers $0$",
+        "converge vers $1$",
+        "tend vers $+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "Elle reste entre $-1$ et $2$. Ses termes pairs tendent vers $1$ et ses termes impairs vers $-1$ : pas de limite."
+      }
+     ]
+    },
+    {
+     "titre": "Limites de référence et opérations",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Suites de référence",
+       "t": "- $q^n \\to 0$ si $|q| < 1$ ; $q^n \\to +\\infty$ si $q > 1$ ; $q^n$ n'a pas de limite si $q \\le -1$.\n- $n^\\alpha \\to +\\infty$ si $\\alpha > 0$, et $n^\\alpha \\to 0$ si $\\alpha < 0$.\n- Croissances comparées : pour $\\alpha > 0$ et $q > 1$, $$\\ln n \\ll n^\\alpha \\ll q^n \\ll n!$$ où $a_n \\ll b_n$ signifie $\\frac{a_n}{b_n} \\to 0$."
+      },
+      {
+       "k": "thm",
+       "titre": "Opérations",
+       "t": "Somme, produit et quotient (si la limite du dénominateur n'est pas nulle) de suites convergentes convergent vers la somme, le produit, le quotient des limites. Les cas où l'on ne peut pas conclure directement sont les **formes indéterminées** : $\\infty - \\infty$, $0 \\times \\infty$, $\\frac\\infty\\infty$, $\\frac00$, et aussi $1^\\infty$."
+      },
+      {
+       "k": "met",
+       "titre": "Lever une indétermination",
+       "t": "Mettre en facteur le terme dominant. Par exemple : $$\\frac{3n^2 + n}{2n^2 - 5} = \\frac{n^2(3 + 1/n)}{n^2(2 - 5/n^2)} \\to \\frac32.$$"
+      },
+      {
+       "k": "att",
+       "t": "La forme $1^\\infty$ est un piège classique : $\\left(1 + \\frac1n\\right)^n \\to e$, et non $1$. On l'écrit $\\exp\\left(n\\ln\\left(1 + \\frac1n\\right)\\right)$, et on utilise $\\ln(1 + x) \\sim x$ quand $x \\to 0$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La limite de $\\dfrac{2^n + n^{10}}{3^n}$ est :",
+       "choix": [
+        "$0$",
+        "$+\\infty$",
+        "$\\frac23$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "$\\frac{2^n}{3^n} = \\left(\\frac23\\right)^n \\to 0$, et $\\frac{n^{10}}{3^n} \\to 0$ par croissances comparées."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La limite de $\\dfrac{n^2 + \\ln n}{2n^2 + 1}$ est :",
+       "choix": [
+        "$\\frac12$",
+        "$0$",
+        "$1$",
+        "$+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "On factorise par $n^2$ en haut et en bas : $\\frac{1 + \\ln(n)/n^2}{2 + 1/n^2} \\to \\frac12$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$\\left(1 + \\frac1n\\right)^n \\to 1$, puisque $1 + \\frac1n \\to 1$.",
+       "reponse": false,
+       "explication": "C'est la forme indéterminée $1^\\infty$. $n\\ln\\left(1 + \\frac1n\\right) \\to 1$, donc la limite est $e^1 = e$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La suite $n^3 \\times (0{,}9)^n$ tend vers :",
+       "choix": [
+        "$0$",
+        "$+\\infty$",
+        "$1$",
+        "elle n'a pas de limite"
+       ],
+       "bonne": 0,
+       "explication": "Une suite géométrique de raison $0{,}9 < 1$ l'emporte sur toute puissance de $n$."
+      }
+     ]
+    },
+    {
+     "titre": "Gendarmes et comparaison",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Théorème des gendarmes",
+       "t": "Si $v_n \\le u_n \\le w_n$ à partir d'un certain rang, et si $(v_n)$ et $(w_n)$ convergent vers la **même** limite $\\ell$, alors $(u_n)$ converge vers $\\ell$."
+      },
+      {
+       "k": "thm",
+       "titre": "Comparaison avec l'infini",
+       "t": "Si $u_n \\ge v_n$ à partir d'un certain rang et si $v_n \\to +\\infty$, alors $u_n \\to +\\infty$."
+      },
+      {
+       "k": "met",
+       "titre": "Le réflexe « bornée fois tend vers $0$ »",
+       "t": "Si $(a_n)$ est bornée et si $b_n \\to 0$, alors $a_nb_n \\to 0$ : on encadre $|a_nb_n| \\le M|b_n|$. Par exemple, $\\frac{\\sin n}{n} \\to 0$, sans avoir à chercher la limite de $\\sin n$ (qui n'existe pas)."
+      },
+      {
+       "k": "ex",
+       "t": "$u_n = \\frac{n + \\cos n}{n}$ : on a $\\frac{n - 1}{n} \\le u_n \\le \\frac{n + 1}{n}$, et les deux bornes tendent vers $1$, donc $u_n \\to 1$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La suite $\\dfrac{(-1)^n}{\\sqrt n}$ :",
+       "choix": [
+        "converge vers $0$",
+        "n'a pas de limite, car $(-1)^n$ n'en a pas",
+        "tend vers $+\\infty$",
+        "converge vers $1$"
+       ],
+       "bonne": 0,
+       "explication": "$(-1)^n$ est bornée et $\\frac{1}{\\sqrt n} \\to 0$ : le produit tend vers $0$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $0 \\le u_n \\le 1$ pour tout $n$, alors $(u_n)$ converge.",
+       "reponse": false,
+       "explication": "La suite $0, 1, 0, 1, \\dots$ est encadrée mais diverge. Pour les gendarmes, il faut que les deux bornes aient la **même** limite."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $u_n \\ge \\sqrt n$ pour tout $n \\ge 1$, alors $u_n \\to +\\infty$.",
+       "reponse": true,
+       "explication": "$\\sqrt n \\to +\\infty$, et $u_n$ reste au-dessus."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reels-suites-n2",
+   "titre": "Monotonie, borne supérieure, sous-suites",
+   "objectif": "Savoir prouver qu'une suite converge sans connaître sa limite : monotonie, suites adjacentes, et le théorème de Bolzano-Weierstrass.",
+   "etapes": [
+    {
+     "titre": "La borne supérieure",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Une partie de $\\mathbb R$ majorée n'a pas toujours de plus grand élément : $[0, 1[$ n'en a pas. Mais elle a toujours un « plafond optimal » : le plus petit de ses majorants."
+      },
+      {
+       "k": "thm",
+       "titre": "Propriété de la borne supérieure",
+       "t": "Toute partie $A$ de $\\mathbb R$ **non vide et majorée** admet une borne supérieure $\\sup A$ : c'est le plus petit des majorants de $A$. C'est la propriété qui distingue $\\mathbb R$ de $\\mathbb Q$."
+      },
+      {
+       "k": "met",
+       "titre": "Caractérisation à savoir manier",
+       "t": "$M = \\sup A$ si et seulement si :\n- $M$ majore $A$ ;\n- pour tout $\\varepsilon > 0$, il existe $a \\in A$ tel que $a > M - \\varepsilon$ : on ne peut pas abaisser le plafond.\n\nVersion avec les suites : $M$ majore $A$, et il existe une suite d'éléments de $A$ qui tend vers $M$."
+      },
+      {
+       "k": "ex",
+       "t": "$\\sup\\,[0, 1[ = 1$, qui n'appartient pas à l'ensemble : ce n'est pas un maximum. De même $\\sup\\left\\{1 - \\frac1n : n \\ge 1\\right\\} = 1$. Quand $\\sup A$ appartient à $A$, c'est le plus grand élément de $A$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La borne supérieure de $\\left\\{\\frac{n}{n + 1} : n \\in \\mathbb N\\right\\}$ est :",
+       "choix": [
+        "$1$, et ce n'est pas un maximum",
+        "$1$, et c'est un maximum",
+        "$\\frac12$",
+        "elle n'existe pas"
+       ],
+       "bonne": 0,
+       "explication": "$\\frac{n}{n + 1} < 1$ pour tout $n$, et $\\frac{n}{n + 1} \\to 1$ : $1$ est le plus petit majorant, sans être atteint."
+      },
+      {
+       "type": "vf",
+       "enonce": "Toute partie non vide et majorée de $\\mathbb R$ admet un plus grand élément.",
+       "reponse": false,
+       "explication": "$[0, 1[$ n'a pas de plus grand élément. Elle a une borne supérieure, $1$, qui n'est pas dans l'ensemble."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La borne inférieure de $\\left\\{\\frac1n : n \\ge 1\\right\\}$ est :",
+       "choix": [
+        "$0$",
+        "$1$",
+        "elle n'existe pas",
+        "$\\frac12$"
+       ],
+       "bonne": 0,
+       "explication": "$0$ minore l'ensemble, et $\\frac1n \\to 0$ : on ne peut pas trouver de minorant plus grand. $0$ n'est pas atteint."
+      }
+     ]
+    },
+    {
+     "titre": "Suites monotones et suites adjacentes",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Théorème de la limite monotone",
+       "t": "Une suite croissante et majorée converge (vers la borne supérieure de ses termes). Une suite croissante non majorée tend vers $+\\infty$. Mêmes énoncés pour une suite décroissante et minorée."
+      },
+      {
+       "k": "p",
+       "t": "C'est l'outil principal pour prouver une convergence **sans connaître la limite**. On identifie la limite ensuite, souvent en passant à la limite dans une relation que vérifie la suite."
+      },
+      {
+       "k": "def",
+       "titre": "Suites adjacentes",
+       "t": "$(u_n)$ et $(v_n)$ sont adjacentes si l'une est croissante, l'autre décroissante, et si $v_n - u_n \\to 0$."
+      },
+      {
+       "k": "thm",
+       "titre": "Théorème des suites adjacentes",
+       "t": "Deux suites adjacentes convergent vers la même limite $\\ell$. Si $(u_n)$ croît et $(v_n)$ décroît, on a de plus $u_n \\le \\ell \\le v_n$ pour tout $n$."
+      },
+      {
+       "k": "ex",
+       "t": "$u_n = \\sum_{k=0}^n \\frac{1}{k!}$ et $v_n = u_n + \\frac{1}{n \\cdot n!}$ sont adjacentes, de limite commune $e$. Le théorème fournit l'encadrement $u_n \\le e \\le v_n$, très utile pour une valeur approchée."
+      },
+      {
+       "k": "att",
+       "t": "Majorée ne suffit pas sans monotonie, et monotone ne suffit pas sans borne. Et une suite croissante majorée par $2$ ne tend pas forcément vers $2$ : seulement vers un nombre inférieur ou égal à $2$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Une suite croissante et majorée par $5$ converge vers $5$.",
+       "reponse": false,
+       "explication": "Elle converge, mais vers un réel $\\le 5$. Exemple : $1 - \\frac1n$ est croissante, majorée par $5$, et tend vers $1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une suite décroissante de réels positifs converge.",
+       "reponse": true,
+       "explication": "Elle est décroissante et minorée par $0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$(u_n)$ est croissante, $(v_n)$ est décroissante, et $v_n - u_n = \\frac1n$ pour tout $n \\ge 1$. Alors :",
+       "choix": [
+        "elles convergent vers la même limite",
+        "elles convergent, vers des limites qui peuvent être différentes",
+        "on ne peut rien dire sans savoir si elles sont bornées",
+        "$(u_n)$ tend vers $+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "Ce sont exactement des suites adjacentes. Le théorème donne la convergence et la limite commune, sans hypothèse de borne : elle découle de $u_0 \\le u_n \\le v_n \\le v_1$."
+      }
+     ]
+    },
+    {
+     "titre": "Sous-suites et Bolzano-Weierstrass",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Suite extraite",
+       "t": "Une **suite extraite** (ou sous-suite) de $(u_n)$ est une suite $(u_{\\varphi(n)})$, où $\\varphi : \\mathbb N \\to \\mathbb N$ est strictement croissante. Exemples : $(u_{2n})$ (les termes de rang pair), $(u_{2n+1})$, $(u_{n^2})$."
+      },
+      {
+       "k": "thm",
+       "titre": "Extraction et limite",
+       "t": "Si $u_n \\to \\ell$, toute suite extraite tend aussi vers $\\ell$. Par contraposée, c'est un outil pour prouver une **divergence** : si deux sous-suites ont des limites différentes, la suite diverge."
+      },
+      {
+       "k": "thm",
+       "titre": "Rangs pairs et impairs",
+       "t": "Si $u_{2n} \\to \\ell$ et $u_{2n+1} \\to \\ell$, avec la **même** limite, alors $u_n \\to \\ell$."
+      },
+      {
+       "k": "thm",
+       "titre": "Bolzano-Weierstrass",
+       "t": "De toute suite réelle **bornée**, on peut extraire une sous-suite convergente."
+      },
+      {
+       "k": "ex",
+       "t": "$u_n = (-1)^n$ : $u_{2n} = 1$ et $u_{2n+1} = -1$, donc la suite diverge. La suite $(\\cos n)$ est bornée : on peut en extraire une sous-suite convergente, même si on ne sait pas l'écrire explicitement."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Si $(u_{2n})$ et $(u_{2n+1})$ convergent, alors $(u_n)$ converge.",
+       "reponse": false,
+       "explication": "Il faut qu'elles aient la même limite. Avec $(-1)^n$, elles convergent vers $1$ et $-1$, et la suite diverge."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La suite $u_n = \\cos\\left(\\frac{n\\pi}{2}\\right)$ :",
+       "choix": [
+        "diverge : $u_{4n} = 1$ et $u_{2n+1} = 0$",
+        "converge vers $0$",
+        "converge vers $1$",
+        "tend vers $+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "$\\cos(2n\\pi) = 1$ et $\\cos\\left((2n + 1)\\frac\\pi2\\right) = 0$ : deux sous-suites de limites différentes."
+      },
+      {
+       "type": "vf",
+       "enonce": "Une suite non bornée n'a aucune sous-suite convergente.",
+       "reponse": false,
+       "explication": "$0, 1, 0, 2, 0, 3, \\dots$ n'est pas bornée, mais ses termes de rang pair sont tous nuls. Bolzano-Weierstrass donne une condition suffisante, pas nécessaire."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reels-suites-n3",
+   "titre": "Suites récurrentes $u_{n+1} = f(u_n)$",
+   "objectif": "Savoir étudier une suite récurrente : intervalle stable, limites possibles, monotonie, vitesse de convergence.",
+   "etapes": [
+    {
+     "titre": "Le cadre et les limites possibles",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "On se donne une fonction $f$ et un premier terme $u_0$, et on définit $u_{n+1} = f(u_n)$. Première question, souvent oubliée : la suite est-elle bien définie ? Il faut que chaque $u_n$ reste dans le domaine de définition de $f$."
+      },
+      {
+       "k": "def",
+       "titre": "Intervalle stable",
+       "t": "Un intervalle $I$ est **stable** par $f$ si $f(I) \\subset I$. Si $u_0 \\in I$ et si $I$ est stable, une récurrence immédiate montre que tous les $u_n$ sont dans $I$ : la suite est bien définie, et on sait où elle se trouve."
+      },
+      {
+       "k": "thm",
+       "titre": "Une limite est un point fixe",
+       "t": "Si $u_n \\to \\ell$, si $\\ell \\in I$ et si $f$ est **continue** en $\\ell$, alors $f(\\ell) = \\ell$ : la limite est un **point fixe** de $f$. On l'obtient en passant à la limite dans $u_{n+1} = f(u_n)$."
+      },
+      {
+       "k": "att",
+       "t": "Ce résultat ne prouve pas la convergence. Il dit seulement : « si la suite converge, c'est vers un point fixe ». Il sert à identifier la limite, ou à prouver une divergence quand $f$ n'a aucun point fixe."
+      },
+      {
+       "k": "ex",
+       "t": "$u_{n+1} = \\sqrt{2 + u_n}$, avec $u_0 = 0$. La fonction $f(x) = \\sqrt{2 + x}$ est croissante, $f(0) = \\sqrt2$ et $f(2) = 2$, donc $[0, 2]$ est stable. Les points fixes vérifient $\\ell^2 = 2 + \\ell$ avec $\\ell \\ge 0$, soit $\\ell = 2$. Si la suite converge, c'est donc vers $2$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "On pose $u_{n+1} = u_n^2$. Quelles sont les limites finies possibles, selon la valeur de $u_0$ ?",
+       "choix": [
+        "$0$ ou $1$",
+        "$0$ seulement",
+        "$1$ seulement",
+        "n'importe quel réel de $[0, 1]$"
+       ],
+       "bonne": 0,
+       "explication": "Une limite finie est un point fixe de $x \\mapsto x^2$ : $0$ ou $1$. Les deux arrivent : $u_0 = \\frac12$ donne une suite qui tend vers $0$, et $u_0 = 1$ la suite constante égale à $1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "La suite définie par $u_{n+1} = u_n + 1$ a une limite finie.",
+       "reponse": false,
+       "explication": "Si elle convergeait vers $\\ell$, on aurait $\\ell = \\ell + 1$. La fonction $x \\mapsto x + 1$ n'a pas de point fixe."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $f$ est continue et admet un point fixe, alors la suite $u_{n+1} = f(u_n)$ converge.",
+       "reponse": false,
+       "explication": "$f(x) = 2x$ a pour point fixe $0$, mais avec $u_0 = 1$, on obtient $u_n = 2^n \\to +\\infty$."
+      }
+     ]
+    },
+    {
+     "titre": "Monotonie quand $f$ est croissante",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Si $f$ est croissante sur l'intervalle stable $I$",
+       "t": "La suite $(u_n)$ est monotone, et son sens est donné par les deux premiers termes : si $u_1 \\ge u_0$, elle est croissante ; si $u_1 \\le u_0$, elle est décroissante."
+      },
+      {
+       "k": "p",
+       "t": "La preuve tient en une ligne, par récurrence : si $u_{n+1} \\ge u_n$, on applique $f$, qui est croissante, et on obtient $u_{n+2} = f(u_{n+1}) \\ge f(u_n) = u_{n+1}$."
+      },
+      {
+       "k": "met",
+       "titre": "Plan type quand $f$ est croissante",
+       "t": "- Trouver un intervalle stable $I$ qui contient $u_0$.\n- Comparer $u_0$ et $u_1$ (ou étudier le signe de $f(x) - x$) pour obtenir le sens de variation.\n- Si $I$ est borné, la suite est monotone et bornée : elle converge.\n- Sa limite est un point fixe de $f$ dans $I$. S'il n'y en a qu'un, c'est fini."
+      },
+      {
+       "k": "ex",
+       "t": "Pour $u_{n+1} = \\sqrt{2 + u_n}$ et $u_0 = 0$ : $f$ est croissante, $[0, 2]$ est stable, et $u_1 = \\sqrt2 > u_0$. La suite est croissante, majorée par $2$, donc converge, vers le seul point fixe $2$."
+      },
+      {
+       "k": "fig",
+       "figure": {
+        "x": [
+         -0.3,
+         2.6
+        ],
+        "y": [
+         -0.3,
+         2.6
+        ],
+        "legende": "Escalier de $u_{n+1} = \\sqrt{2 + u_n}$ : on part de $u_0 = 0$, on monte jusqu'à la courbe, on revient sur la droite $y = x$, et ainsi de suite vers le point fixe $\\ell = 2$.",
+        "el": [
+         {
+          "t": "f",
+          "e": "x",
+          "c": "d",
+          "tirets": true
+         },
+         {
+          "t": "f",
+          "e": "sqrt(2+x)",
+          "de": -0.3,
+          "a": 2.6
+         },
+         {
+          "t": "seg",
+          "a": [
+           0,
+           0
+          ],
+          "b": [
+           0,
+           1.4142
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           0,
+           1.4142
+          ],
+          "b": [
+           1.4142,
+           1.4142
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.4142,
+           1.4142
+          ],
+          "b": [
+           1.4142,
+           1.8478
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.4142,
+           1.8478
+          ],
+          "b": [
+           1.8478,
+           1.8478
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.8478,
+           1.8478
+          ],
+          "b": [
+           1.8478,
+           1.9616
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.8478,
+           1.9616
+          ],
+          "b": [
+           1.9616,
+           1.9616
+          ],
+          "c": "m"
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.4142,
+           1.4142
+          ],
+          "b": [
+           1.4142,
+           0
+          ],
+          "c": "d",
+          "tirets": true
+         },
+         {
+          "t": "seg",
+          "a": [
+           1.8478,
+           1.8478
+          ],
+          "b": [
+           1.8478,
+           0
+          ],
+          "c": "d",
+          "tirets": true
+         },
+         {
+          "t": "pt",
+          "p": [
+           0,
+           0
+          ],
+          "n": "u₀",
+          "pos": "so",
+          "c": "m"
+         },
+         {
+          "t": "pt",
+          "p": [
+           1.4142,
+           0
+          ],
+          "n": "u₁",
+          "pos": "s",
+          "c": "m"
+         },
+         {
+          "t": "pt",
+          "p": [
+           1.8478,
+           0
+          ],
+          "n": "u₂",
+          "pos": "s",
+          "c": "m"
+         },
+         {
+          "t": "pt",
+          "p": [
+           2,
+           2
+          ],
+          "n": "ℓ",
+          "pos": "no",
+          "c": "b"
+         },
+         {
+          "t": "txt",
+          "p": [
+           2.35,
+           2.05
+          ],
+          "s": "y = x",
+          "pos": "s"
+         }
+        ]
+       }
+      },
+      {
+       "k": "att",
+       "t": "$f$ croissante donne une suite **monotone**, pas forcément croissante. Si $f$ est **décroissante**, la suite n'est en général pas monotone : elle oscille autour du point fixe. On étudie alors les deux sous-suites $(u_{2n})$ et $(u_{2n+1})$, qui sont monotones car $f \\circ f$ est croissante."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "$u_{n+1} = \\frac{u_n}{2} + 1$, avec $u_0 = 0$. La suite :",
+       "choix": [
+        "est croissante et converge vers $2$",
+        "est décroissante et converge vers $2$",
+        "est croissante et tend vers $+\\infty$",
+        "converge vers $1$"
+       ],
+       "bonne": 0,
+       "explication": "$f(x) = \\frac x2 + 1$ est croissante et laisse $[0, 2]$ stable. $u_1 = 1 > u_0$ : la suite croît. Le seul point fixe vérifie $\\ell = \\frac\\ell2 + 1$, soit $\\ell = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $f$ est croissante, la suite $u_{n+1} = f(u_n)$ est croissante.",
+       "reponse": false,
+       "explication": "Elle est monotone, mais peut être décroissante : c'est la comparaison de $u_0$ et $u_1$ qui décide. La question suivante en donne un exemple."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$u_{n+1} = \\frac{u_n}{2} + 1$, avec $u_0 = 10$. La suite :",
+       "choix": [
+        "est décroissante et converge vers $2$",
+        "est croissante et converge vers $2$",
+        "est décroissante et tend vers $-\\infty$",
+        "n'est pas monotone"
+       ],
+       "bonne": 0,
+       "explication": "$u_1 = 6 < u_0$ : la suite décroît. L'intervalle $[2, +\\infty[$ est stable, donc elle est minorée par $2$ ; elle converge vers le point fixe $2$."
+      }
+     ]
+    },
+    {
+     "titre": "Vitesse de convergence",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Point fixe attractif",
+       "t": "Supposons $f$ dérivable sur un intervalle stable $I$, avec $|f'(x)| \\le k < 1$ pour tout $x \\in I$, et $\\ell \\in I$ un point fixe. Alors $$|u_{n+1} - \\ell| = |f(u_n) - f(\\ell)| \\le k\\,|u_n - \\ell|,$$ donc $|u_n - \\ell| \\le k^n\\,|u_0 - \\ell|$. La suite converge vers $\\ell$, au moins aussi vite qu'une suite géométrique de raison $k$."
+      },
+      {
+       "k": "p",
+       "t": "L'outil est l'**inégalité des accroissements finis** : si $|f'| \\le k$ sur un intervalle, alors $|f(x) - f(y)| \\le k|x - y|$ pour $x, y$ dans cet intervalle. On obtient la convergence, mais aussi une **majoration de l'erreur**, ce que les écrits demandent souvent : « à partir de quel rang $u_n$ est-il une valeur approchée de $\\ell$ à $10^{-3}$ près ? »."
+      },
+      {
+       "k": "att",
+       "t": "Si $|f'(\\ell)| > 1$, le point fixe est **répulsif** : la suite ne peut pas converger vers $\\ell$, sauf si elle tombe exactement dessus."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Pour $u_{n+1} = \\frac{u_n}{2} + 1$ et $u_0 = 0$, l'écart $|u_n - 2|$ vaut :",
+       "choix": [
+        "$\\frac{2}{2^n}$",
+        "$\\frac{1}{2^n}$",
+        "$\\frac2n$",
+        "$\\frac{1}{2^{n+1}}$"
+       ],
+       "bonne": 0,
+       "explication": "$u_{n+1} - 2 = \\frac{u_n}{2} - 1 = \\frac{u_n - 2}{2}$ : l'écart est divisé par $2$ à chaque étape, en partant de $|u_0 - 2| = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $|f'| \\le \\frac13$ sur un intervalle stable contenant $u_0$ et un point fixe $\\ell$, alors $|u_{10} - \\ell| \\le 3^{-10}\\,|u_0 - \\ell|$.",
+       "reponse": true,
+       "explication": "C'est l'inégalité $|u_n - \\ell| \\le k^n|u_0 - \\ell|$ avec $k = \\frac13$ et $n = 10$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Pour $f(x) = 3x$ et $u_0 = 0{,}001$, la suite $u_{n+1} = f(u_n)$ converge vers le point fixe $0$.",
+       "reponse": false,
+       "explication": "$u_n = 3^n \\times 0{,}001 \\to +\\infty$. Ici $|f'(0)| = 3 > 1$ : le point fixe $0$ est répulsif."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reels-suites-n4",
+   "titre": "Comparer des suites : $o$, $O$, $\\sim$",
+   "objectif": "Manipuler les équivalents et les petits $o$ sans tomber dans les pièges classiques.",
+   "etapes": [
+    {
+     "titre": "Les définitions",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Négligeable, dominée",
+       "t": "Soit $(v_n)$ une suite qui ne s'annule pas à partir d'un certain rang. On note $u_n = o(v_n)$ (« $u_n$ est négligeable devant $v_n$ ») si $\\frac{u_n}{v_n} \\to 0$, et $u_n = O(v_n)$ (« $u_n$ est dominée par $v_n$ ») si $\\frac{u_n}{v_n}$ est bornée."
+      },
+      {
+       "k": "def",
+       "titre": "Suites équivalentes",
+       "t": "$u_n \\sim v_n$ si $\\frac{u_n}{v_n} \\to 1$, autrement dit si $u_n = v_n + o(v_n)$. Deux suites équivalentes se comportent pareil : même limite (si l'une en a une), et même signe à partir d'un certain rang."
+      },
+      {
+       "k": "ex",
+       "t": "$n^2 + 3n \\sim n^2$ ; $\\ln n = o(n)$ ; $\\sin n = O(1)$ ; $\\frac{1}{n^2} = o\\left(\\frac1n\\right)$."
+      },
+      {
+       "k": "att",
+       "t": "« $u_n \\sim 0$ » n'a pas de sens utile : cela voudrait dire que $u_n$ est nulle à partir d'un certain rang. Et deux suites de même limite ne sont pas forcément équivalentes : $n$ et $2n$ tendent toutes deux vers $+\\infty$, mais leur quotient vaut $2$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "$n + \\sqrt n \\sim n$.",
+       "reponse": true,
+       "explication": "$\\frac{n + \\sqrt n}{n} = 1 + \\frac{1}{\\sqrt n} \\to 1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $u_n \\to +\\infty$ et $v_n \\to +\\infty$, alors $u_n \\sim v_n$.",
+       "reponse": false,
+       "explication": "$u_n = n$ et $v_n = n^2$ tendent vers $+\\infty$, mais $\\frac{u_n}{v_n} \\to 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Laquelle de ces affirmations est vraie ?",
+       "choix": [
+        "$n^{10} = o(2^n)$",
+        "$2^n = o(n^{10})$",
+        "$e^{2n} \\sim e^n$",
+        "$n = O(\\ln n)$"
+       ],
+       "bonne": 0,
+       "explication": "Croissances comparées : une exponentielle de base $> 1$ l'emporte sur toute puissance. Et $\\frac{e^{2n}}{e^n} = e^n \\to +\\infty$."
+      }
+     ]
+    },
+    {
+     "titre": "Équivalents usuels",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Équivalents en $0$",
+       "t": "À appliquer avec $x = u_n$, quand $u_n \\to 0$ : $$\\sin x \\sim x, \\quad \\ln(1 + x) \\sim x, \\quad e^x - 1 \\sim x, \\quad \\tan x \\sim x,$$ $$1 - \\cos x \\sim \\frac{x^2}{2}, \\qquad (1 + x)^\\alpha - 1 \\sim \\alpha x.$$ Ils viennent tous du développement limité à l'ordre $1$ (à l'ordre $2$ pour le cosinus)."
+      },
+      {
+       "k": "thm",
+       "titre": "Polynômes et fractions",
+       "t": "Un polynôme en $n$ est équivalent à son terme de plus haut degré. Une fraction rationnelle en $n$ est équivalente au quotient des termes de plus haut degré."
+      },
+      {
+       "k": "thm",
+       "titre": "Ce qui est permis",
+       "t": "On peut **multiplier**, **diviser**, et élever à une puissance **fixe** des équivalents : si $u_n \\sim a_n$ et $v_n \\sim b_n$, alors $u_nv_n \\sim a_nb_n$ et $\\frac{u_n}{v_n} \\sim \\frac{a_n}{b_n}$."
+      },
+      {
+       "k": "ex",
+       "t": "$\\sin\\frac1n \\sim \\frac1n$, donc $n\\sin\\frac1n \\to 1$. Et $$\\frac{\\ln\\left(1 + \\frac2n\\right)}{1 - \\cos\\frac1n} \\sim \\frac{2/n}{1/(2n^2)} = 4n.$$"
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Un équivalent de $e^{1/n} - 1$ est :",
+       "choix": [
+        "$\\frac1n$",
+        "$e^{1/n}$",
+        "$1$",
+        "$\\frac{1}{n^2}$"
+       ],
+       "bonne": 0,
+       "explication": "$e^x - 1 \\sim x$ avec $x = \\frac1n \\to 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La limite de $n^2\\left(1 - \\cos\\frac1n\\right)$ est :",
+       "choix": [
+        "$\\frac12$",
+        "$0$",
+        "$1$",
+        "$+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "$1 - \\cos\\frac1n \\sim \\frac{1}{2n^2}$, donc le produit tend vers $\\frac12$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Un équivalent de $\\dfrac{3n^3 - n}{n^2 + 1}$ est :",
+       "choix": [
+        "$3n$",
+        "$3n^3$",
+        "$3$",
+        "$-n$"
+       ],
+       "bonne": 0,
+       "explication": "Quotient des termes dominants : $\\frac{3n^3}{n^2} = 3n$."
+      }
+     ]
+    },
+    {
+     "titre": "Les pièges : somme et composition",
+     "blocs": [
+      {
+       "k": "att",
+       "t": "**On n'additionne pas les équivalents.** $n + 1 \\sim n$ et $-n \\sim -n$, mais $(n + 1) + (-n) = 1$, alors que $n - n = 0$. Pour une somme, on revient aux petits $o$ : on écrit chaque terme sous la forme « terme principal $+\\ o(\\dots)$ », puis on regroupe."
+      },
+      {
+       "k": "att",
+       "t": "**On ne compose pas les équivalents par une fonction**, en général. $n + 1 \\sim n$, mais $e^{n+1} = e \\cdot e^n$ n'est pas équivalent à $e^n$. Pour l'exponentielle, ce qu'il faut, c'est $u_n - v_n \\to 0$, pas $\\frac{u_n}{v_n} \\to 1$."
+      },
+      {
+       "k": "met",
+       "titre": "Ce qu'il faut faire à la place",
+       "t": "Passer par les développements limités. Par exemple : $$\\sqrt{n + 1} - \\sqrt n = \\sqrt n\\left(\\sqrt{1 + \\tfrac1n} - 1\\right) \\sim \\sqrt n \\cdot \\frac{1}{2n} = \\frac{1}{2\\sqrt n},$$ en utilisant $(1 + x)^{1/2} - 1 \\sim \\frac x2$."
+      },
+      {
+       "k": "p",
+       "t": "Le logarithme est plus tolérant : si $u_n \\sim v_n$ et si $v_n \\to +\\infty$ (ou vers $0$ par valeurs positives), alors $\\ln u_n \\sim \\ln v_n$. Mais c'est faux si $v_n \\to 1$ : $1 + \\frac1n \\sim 1 + \\frac2n$, alors que $\\ln\\left(1 + \\frac1n\\right) \\sim \\frac1n$ et $\\ln\\left(1 + \\frac2n\\right) \\sim \\frac2n$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Comme $n^2 + n \\sim n^2$ et $-n^2 \\sim -n^2$, on a $(n^2 + n) - n^2 \\sim 0$.",
+       "reponse": false,
+       "explication": "On n'additionne pas les équivalents. Ici, $(n^2 + n) - n^2 = n$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "La limite de $\\sqrt{n^2 + n} - n$ est :",
+       "choix": [
+        "$\\frac12$",
+        "$0$",
+        "$1$",
+        "$+\\infty$"
+       ],
+       "bonne": 0,
+       "explication": "$\\sqrt{n^2 + n} - n = n\\left(\\sqrt{1 + \\frac1n} - 1\\right) \\sim n \\cdot \\frac{1}{2n} = \\frac12$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $u_n \\sim v_n$, alors $e^{u_n} \\sim e^{v_n}$.",
+       "reponse": false,
+       "explication": "$n + 1 \\sim n$, mais $\\frac{e^{n+1}}{e^n} = e$, qui ne tend pas vers $1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$\\ln(n^2 + 1) \\sim 2\\ln n$.",
+       "reponse": true,
+       "explication": "$n^2 + 1 \\sim n^2 \\to +\\infty$, donc $\\ln(n^2 + 1) \\sim \\ln(n^2) = 2\\ln n$. On peut aussi écrire $\\ln(n^2 + 1) = 2\\ln n + \\ln\\left(1 + \\frac{1}{n^2}\\right)$."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

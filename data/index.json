@@ -7,11 +7,11 @@
       "couleur": "#7c9cff",
       "chapitres": [
         { "id": "arithmetique", "nom": "Arithmétique et nombres", "ref": "3.1", "sujets": 6, "poids": 2, "cartes": true },
-        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4", "sujets": 12, "poids": 3, "cartes": true },
+        { "id": "anneaux-polynomes", "nom": "Anneaux, corps, polynômes", "ref": "3.2 – 3.4", "sujets": 12, "poids": 3, "cartes": true, "parcours": 4 },
         { "id": "groupes", "nom": "Groupes", "ref": "4", "sujets": 9, "poids": 2, "cartes": true },
-        { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "sujets": 20, "poids": 3, "cartes": true },
+        { "id": "espaces-vectoriels", "nom": "Espaces vectoriels et matrices", "ref": "5.1 – 5.4", "sujets": 20, "poids": 3, "cartes": true, "parcours": 3 },
         { "id": "determinants-dualite", "nom": "Déterminants et dualité", "ref": "5.5 – 5.6", "sujets": 7, "poids": 2, "cartes": true },
-        { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "sujets": 17, "poids": 3, "cartes": true },
+        { "id": "reduction", "nom": "Réduction des endomorphismes", "ref": "5.7 – 5.8", "sujets": 17, "poids": 3, "cartes": true, "parcours": 4 },
         { "id": "quadratique-euclidien", "nom": "Formes quadratiques, espaces euclidiens", "ref": "5.9, 6", "sujets": 9, "poids": 2, "cartes": true }
       ]
     },
@@ -20,13 +20,13 @@
       "nom": "Analyse",
       "couleur": "#ffb454",
       "chapitres": [
-        { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1", "sujets": 13, "poids": 3, "cartes": true },
+        { "id": "reels-suites", "nom": "Réels et suites", "ref": "9.1", "sujets": 13, "poids": 3, "cartes": true, "parcours": 4 },
         { "id": "series", "nom": "Séries numériques", "ref": "9.2", "sujets": 5, "poids": 2, "cartes": true },
         { "id": "fonctions", "nom": "Continuité, dérivabilité, fonctions usuelles", "ref": "9.3 – 9.5", "sujets": 10, "poids": 2, "cartes": true },
         { "id": "integration", "nom": "Intégration et intégrales à paramètre", "ref": "9.6 – 9.10", "sujets": 6, "poids": 3, "cartes": true },
         { "id": "analyse-numerique", "nom": "Analyse numérique", "ref": "9.11", "sujets": 0, "poids": 1, "cartes": true },
         { "id": "series-entieres", "nom": "Séries entières", "ref": "9.12", "sujets": 4, "poids": 1, "cartes": true },
-        { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "sujets": 13, "poids": 3, "cartes": true },
+        { "id": "topologie", "nom": "Topologie et espaces normés", "ref": "10.1 – 10.6, 10.8", "sujets": 13, "poids": 3, "cartes": true, "parcours": 4 },
         { "id": "suites-series-fonctions", "nom": "Suites et séries de fonctions", "ref": "10.7", "sujets": 5, "poids": 2, "cartes": true },
         { "id": "fourier", "nom": "Séries de Fourier", "ref": "10.9", "sujets": 6, "poids": 2, "cartes": true },
         { "id": "calcul-differentiel", "nom": "Calcul différentiel", "ref": "12.1", "sujets": 1, "poids": 1, "cartes": true },

@@ -1,0 +1,627 @@
+{
+ "ch": "anneaux-polynomes",
+ "intro": "Les polynômes reviennent dans un sujet sur trois : racines, factorisation, interpolation, polynômes de matrices. Ce parcours se concentre sur les polynômes à coefficients dans $K = \\mathbb R$ ou $\\mathbb C$ : division euclidienne, racines et multiplicité, factorisation, puis interpolation de Lagrange, très fréquente aux écrits.",
+ "niveaux": [
+  {
+   "id": "anneaux-polynomes-n1",
+   "titre": "Degré, division euclidienne, divisibilité",
+   "objectif": "Manipuler le degré, faire une division euclidienne (ou trouver un reste sans la faire), et utiliser la divisibilité.",
+   "etapes": [
+    {
+     "titre": "Le degré",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Degré, coefficient dominant",
+       "t": "Si $P = a_0 + a_1X + \\dots + a_nX^n$ avec $a_n \\neq 0$, le **degré** de $P$ est $n$ et son **coefficient dominant** est $a_n$. $P$ est **unitaire** si $a_n = 1$. Par convention, le polynôme nul est de degré $-\\infty$."
+      },
+      {
+       "k": "thm",
+       "titre": "Degré d'un produit, d'une somme",
+       "t": "$\\deg(PQ) = \\deg P + \\deg Q$, et le coefficient dominant de $PQ$ est le produit des coefficients dominants. $\\deg(P + Q) \\le \\max(\\deg P, \\deg Q)$, avec égalité si $\\deg P \\neq \\deg Q$."
+      },
+      {
+       "k": "att",
+       "t": "Le degré d'une somme peut baisser quand les termes dominants se compensent : $(X^2 + X) + (-X^2) = X$."
+      },
+      {
+       "k": "ex",
+       "t": "$\\deg\\big((X^2 + 1)^3\\big) = 6$ ; le coefficient dominant de $(2X + 1)^5$ est $2^5 = 32$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Le coefficient dominant de $(3X^2 - X + 1)(2X^3 + 5)$ est :",
+       "choix": [
+        "$6$",
+        "$5$",
+        "$3$",
+        "$-2$"
+       ],
+       "bonne": 0,
+       "explication": "Produit des coefficients dominants : $3 \\times 2$. Le degré est $2 + 3 = 5$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $\\deg P = \\deg Q = 4$, alors $\\deg(P + Q) = 4$.",
+       "reponse": false,
+       "explication": "$P = X^4$ et $Q = -X^4 + 1$ donnent $P + Q = 1$. On a seulement $\\deg(P + Q) \\le 4$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $PQ = 0$ dans $\\mathbb R[X]$, alors $P = 0$ ou $Q = 0$.",
+       "reponse": true,
+       "explication": "Sinon, $\\deg(PQ) = \\deg P + \\deg Q \\ge 0$, et $PQ$ ne serait pas nul."
+      }
+     ]
+    },
+    {
+     "titre": "La division euclidienne",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Division euclidienne",
+       "t": "Pour $A, B \\in K[X]$ avec $B \\neq 0$, il existe un unique couple $(Q, R)$ tel que $$A = BQ + R \\quad \\text{et} \\quad \\deg R < \\deg B.$$ C'est l'analogue exact de la division des entiers, le degré jouant le rôle de la taille."
+      },
+      {
+       "k": "met",
+       "titre": "Trouver le reste sans poser la division",
+       "t": "- Par $X - a$ : le reste est la constante $A(a)$ (remplacer $X$ par $a$ dans $A = (X - a)Q + R$).\n- Par un $B$ de degré $2$ à racines distinctes $a$ et $b$ : le reste s'écrit $R = \\alpha X + \\beta$, et on trouve $\\alpha, \\beta$ grâce à $A(a) = R(a)$ et $A(b) = R(b)$."
+      },
+      {
+       "k": "ex",
+       "t": "Reste de $X^n$ par $X^2 - 1$. On écrit $R = \\alpha X + \\beta$. En $X = 1$ : $1 = \\alpha + \\beta$. En $X = -1$ : $(-1)^n = -\\alpha + \\beta$. Si $n$ est pair, $R = 1$ ; si $n$ est impair, $R = X$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Le reste de la division de $X^5 + 2X + 1$ par $X - 1$ est :",
+       "choix": [
+        "$4$",
+        "$0$",
+        "$X + 1$",
+        "$3$"
+       ],
+       "bonne": 0,
+       "explication": "C'est la valeur en $1$ : $1 + 2 + 1 = 4$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le reste de la division euclidienne de $X^{10}$ par $X^2 - 1$ est :",
+       "choix": [
+        "$1$",
+        "$X$",
+        "$0$",
+        "$X^2$"
+       ],
+       "bonne": 0,
+       "explication": "$10$ est pair. Le leurre $X^2$ a le même degré que le diviseur : ce ne peut pas être un reste."
+      },
+      {
+       "type": "vf",
+       "enonce": "Le reste de la division d'un polynôme par un polynôme de degré $3$ est de degré au plus $2$.",
+       "reponse": true,
+       "explication": "C'est la condition $\\deg R < \\deg B$."
+      }
+     ]
+    },
+    {
+     "titre": "Divisibilité et racines communes",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Divisibilité",
+       "t": "$B$ **divise** $A$ s'il existe $Q$ tel que $A = BQ$, c'est-à-dire si le reste de la division de $A$ par $B$ est nul."
+      },
+      {
+       "k": "thm",
+       "titre": "Racine et facteur",
+       "t": "$a$ est racine de $P$ si et seulement si $X - a$ divise $P$."
+      },
+      {
+       "k": "thm",
+       "titre": "Bézout et Gauss",
+       "t": "$A$ et $B$ sont **premiers entre eux** si leurs seuls diviseurs communs sont les constantes non nulles. Bézout : c'est le cas si et seulement s'il existe $U, V$ tels que $AU + BV = 1$. Gauss : si $A$ divise $BC$ et si $A$ est premier avec $B$, alors $A$ divise $C$."
+      },
+      {
+       "k": "p",
+       "t": "Deux conséquences très utilisées. Si $a \\neq b$ et si $X - a$ et $X - b$ divisent $P$, alors $(X - a)(X - b)$ divise $P$. Et deux polynômes de $\\mathbb C[X]$ sont premiers entre eux si et seulement s'ils n'ont **aucune racine commune** dans $\\mathbb C$."
+      },
+      {
+       "k": "ex",
+       "t": "$X^2 - 1 = (X - 1)(X + 1)$ et $X^2 + X = X(X + 1)$ ont pour seule racine commune $-1$ : leur PGCD unitaire est $X + 1$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "$X^2 + 1$ et $X - 1$ sont premiers entre eux dans $\\mathbb R[X]$.",
+       "reponse": true,
+       "explication": "Les racines de $X^2 + 1$ sont $\\pm i$, celle de $X - 1$ est $1$ : aucune racine commune."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le PGCD unitaire de $X^2 - 1$ et $X^2 - 3X + 2$ est :",
+       "choix": [
+        "$X - 1$",
+        "$1$",
+        "$X + 1$",
+        "$(X - 1)(X - 2)$"
+       ],
+       "bonne": 0,
+       "explication": "Racines $\\pm 1$ d'un côté, $1$ et $2$ de l'autre : la seule racine commune est $1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $X - 1$ et $X - 2$ divisent $P$, alors $(X - 1)(X - 2)$ divise $P$.",
+       "reponse": true,
+       "explication": "$X - 1$ et $X - 2$ sont premiers entre eux, et le lemme de Gauss s'applique."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "anneaux-polynomes-n2",
+   "titre": "Racines et multiplicité",
+   "objectif": "Utiliser le nombre de racines pour prouver qu'un polynôme est nul, calculer une multiplicité, et connaître les propriétés des polynômes réels.",
+   "etapes": [
+    {
+     "titre": "Pas plus de racines que le degré",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Nombre de racines",
+       "t": "Un polynôme **non nul** de degré $n$ a au plus $n$ racines. Conséquences :\n- un polynôme de degré au plus $n$ qui a $n + 1$ racines est nul ;\n- un polynôme qui a une infinité de racines est nul ;\n- deux polynômes de degré au plus $n$ qui coïncident en $n + 1$ points sont égaux."
+      },
+      {
+       "k": "met",
+       "titre": "Le réflexe des écrits",
+       "t": "Pour montrer que $P = Q$, on montre que $P - Q$ a plus de racines que son degré. C'est l'argument d'unicité de presque tous les sujets sur les polynômes."
+      },
+      {
+       "k": "ex",
+       "t": "Si $\\deg P \\le 3$ et $P(k) = k^2$ pour $k = 0, 1, \\dots, 5$, alors $P - X^2$ est de degré au plus $3$ avec $6$ racines : il est nul, donc $P = X^2$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Un polynôme de degré au plus $3$ qui s'annule en $0$, $1$, $2$ et $3$ est le polynôme nul.",
+       "reponse": true,
+       "explication": "Quatre racines, degré au plus trois."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $P(n) = 0$ pour tout entier $n \\in \\mathbb N$, alors $P = 0$.",
+       "reponse": true,
+       "explication": "$P$ a une infinité de racines."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$P$ est de degré au plus $2$ et $P(1) = P(2) = P(3) = 5$. Alors :",
+       "choix": [
+        "$P = 5$",
+        "$P = 5(X - 1)(X - 2)(X - 3)$",
+        "un tel $P$ n'existe pas",
+        "on ne peut pas conclure"
+       ],
+       "bonne": 0,
+       "explication": "$P - 5$ est de degré au plus $2$ et a trois racines : il est nul. Le leurre de degré $3$ ne respecte pas l'hypothèse."
+      }
+     ]
+    },
+    {
+     "titre": "Multiplicité d'une racine",
+     "blocs": [
+      {
+       "k": "def",
+       "titre": "Multiplicité",
+       "t": "$a$ est racine de **multiplicité** $m$ de $P$ si $(X - a)^m$ divise $P$ mais pas $(X - a)^{m+1}$. On parle de racine simple pour $m = 1$, double pour $m = 2$."
+      },
+      {
+       "k": "thm",
+       "titre": "Caractérisation par les dérivées",
+       "t": "Sur $\\mathbb R$ ou $\\mathbb C$ : $a$ est racine de multiplicité **au moins** $m$ si et seulement si $$P(a) = P'(a) = \\dots = P^{(m-1)}(a) = 0.$$ En particulier, $a$ est racine multiple si et seulement si $P(a) = P'(a) = 0$."
+      },
+      {
+       "k": "ex",
+       "t": "$P = X^3 - 3X + 2$ : $P(1) = 0$, $P' = 3X^2 - 3$ donne $P'(1) = 0$, et $P'' = 6X$ donne $P''(1) = 6 \\neq 0$. Donc $1$ est racine double : $P = (X - 1)^2(X + 2)$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La multiplicité de $0$ comme racine de $X^5 - X^3$ est :",
+       "choix": [
+        "$3$",
+        "$2$",
+        "$5$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "$X^5 - X^3 = X^3(X^2 - 1)$, et $X^2 - 1$ ne s'annule pas en $0$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$1$ est racine double de $X^2 - 2X + 1$.",
+       "reponse": true,
+       "explication": "$X^2 - 2X + 1 = (X - 1)^2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $P(a) = 0$ et $P'(a) = 0$, alors $a$ est racine double de $P$.",
+       "reponse": false,
+       "explication": "Seulement **au moins** double. $0$ est racine triple de $X^3$, qui vérifie $P(0) = P'(0) = 0$."
+      }
+     ]
+    },
+    {
+     "titre": "Polynômes réels",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Racines conjuguées",
+       "t": "Si $P$ est à coefficients **réels** et si $z \\in \\mathbb C$ est racine de $P$, alors $\\overline z$ est aussi racine, avec la même multiplicité. (Conjuguer l'égalité $P(z) = 0$.)"
+      },
+      {
+       "k": "p",
+       "t": "Conséquence : les racines non réelles vont par paires. Un polynôme réel de degré impair a donc au moins une racine réelle (on le voit aussi par le théorème des valeurs intermédiaires)."
+      },
+      {
+       "k": "thm",
+       "titre": "Rolle pour les polynômes",
+       "t": "Si $P \\in \\mathbb R[X]$ a $k$ racines réelles distinctes, alors $P'$ en a au moins $k - 1$, une entre deux racines consécutives de $P$. En particulier, si $P$ est scindé sur $\\mathbb R$ à racines simples, $P'$ l'est aussi."
+      },
+      {
+       "k": "ex",
+       "t": "$X^3 - X$ a pour racines $-1$, $0$, $1$. Sa dérivée $3X^2 - 1$ a pour racines $\\pm\\frac{1}{\\sqrt3}$, une dans $]-1, 0[$ et une dans $]0, 1[$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Un polynôme réel de degré $3$ a au moins une racine réelle.",
+       "reponse": true,
+       "explication": "Ses trois racines complexes ne peuvent pas toutes aller par paires conjuguées."
+      },
+      {
+       "type": "vf",
+       "enonce": "Si $2 + i$ est racine de $P \\in \\mathbb R[X]$, alors $2 - i$ l'est aussi.",
+       "reponse": true,
+       "explication": "Les coefficients sont réels : on conjugue $P(2 + i) = 0$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$P \\in \\mathbb R[X]$ est de degré $5$ et a $5$ racines réelles distinctes. Alors $P'$ a :",
+       "choix": [
+        "$4$ racines réelles distinctes",
+        "au plus $3$ racines réelles",
+        "$5$ racines réelles",
+        "peut-être aucune racine réelle"
+       ],
+       "bonne": 0,
+       "explication": "Rolle en donne au moins $4$, et $P'$ est de degré $4$ : exactement $4$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "anneaux-polynomes-n3",
+   "titre": "Factorisation et relations coefficients-racines",
+   "objectif": "Factoriser dans $\\mathbb C[X]$ et dans $\\mathbb R[X]$, et lire somme et produit des racines sur les coefficients.",
+   "etapes": [
+    {
+     "titre": "Dans $\\mathbb C[X]$ : tout se factorise",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Théorème de d'Alembert-Gauss",
+       "t": "Tout polynôme non constant de $\\mathbb C[X]$ a au moins une racine dans $\\mathbb C$. Par récurrence, tout polynôme de degré $n \\ge 1$ est **scindé** : $$P = a_n(X - z_1)\\cdots(X - z_n),$$ les $z_i$ étant ses racines comptées avec multiplicité. Les irréductibles de $\\mathbb C[X]$ sont les polynômes de degré $1$."
+      },
+      {
+       "k": "ex",
+       "t": "$X^2 + 1 = (X - i)(X + i)$. Et $X^n - 1 = \\prod_{k=0}^{n-1}(X - \\omega^k)$ avec $\\omega = e^{2i\\pi/n}$ : les racines $n$-ièmes de l'unité sont les sommets d'un polygone régulier à $n$ côtés."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Combien $X^6 - 1$ a-t-il de racines complexes distinctes ?",
+       "choix": [
+        "$6$",
+        "$2$",
+        "$3$",
+        "$12$"
+       ],
+       "bonne": 0,
+       "explication": "Les six racines sixièmes de l'unité, toutes distinctes. Seules deux sont réelles : $\\pm 1$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$X^4 + 1$ a une racine réelle.",
+       "reponse": false,
+       "explication": "$x^4 + 1 \\ge 1 > 0$ pour tout réel $x$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Tout polynôme de $\\mathbb C[X]$ de degré $n \\ge 1$ a exactement $n$ racines, comptées avec multiplicité.",
+       "reponse": true,
+       "explication": "C'est le théorème de d'Alembert-Gauss : il est scindé sur $\\mathbb C$."
+      }
+     ]
+    },
+    {
+     "titre": "Dans $\\mathbb R[X]$ : degré $1$ et degré $2$",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Irréductibles de $\\mathbb R[X]$",
+       "t": "Ce sont les polynômes de degré $1$ et ceux de degré $2$ à discriminant strictement négatif. Tout polynôme réel est produit de tels facteurs."
+      },
+      {
+       "k": "met",
+       "titre": "Factoriser sur $\\mathbb R$",
+       "t": "Factoriser sur $\\mathbb C$, puis regrouper chaque racine non réelle $z$ avec sa conjuguée : $$(X - z)(X - \\overline z) = X^2 - 2\\,\\mathrm{Re}(z)\\,X + |z|^2,$$ qui est réel et de discriminant négatif."
+      },
+      {
+       "k": "ex",
+       "t": "$X^3 - 1 = (X - 1)(X^2 + X + 1)$. Et $X^4 + 1 = (X^2 + \\sqrt2 X + 1)(X^2 - \\sqrt2 X + 1)$."
+      },
+      {
+       "k": "att",
+       "t": "« Sans racine réelle » ne veut pas dire « irréductible » dès le degré $4$ : $X^4 + 1$ et $(X^2 + 1)^2$ n'ont aucune racine réelle mais se factorisent. En degré $2$ ou $3$ seulement, irréductible équivaut à sans racine."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Le produit $\\big(X - (1 + i)\\big)\\big(X - (1 - i)\\big)$ vaut :",
+       "choix": [
+        "$X^2 - 2X + 2$",
+        "$X^2 + 2X + 2$",
+        "$X^2 - 2X$",
+        "$X^2 + 2$"
+       ],
+       "bonne": 0,
+       "explication": "$\\mathrm{Re}(z) = 1$ et $|z|^2 = 1 + 1 = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "$X^2 + X + 1$ est irréductible dans $\\mathbb R[X]$.",
+       "reponse": true,
+       "explication": "Son discriminant vaut $1 - 4 = -3 < 0$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Un polynôme réel sans racine réelle est irréductible dans $\\mathbb R[X]$.",
+       "reponse": false,
+       "explication": "$(X^2 + 1)^2$ n'a pas de racine réelle et n'est pas irréductible."
+      }
+     ]
+    },
+    {
+     "titre": "Relations coefficients-racines",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Somme et produit des racines",
+       "t": "Si $P = a_nX^n + a_{n-1}X^{n-1} + \\dots + a_0$ est scindé, de racines $x_1, \\dots, x_n$ comptées avec multiplicité : $$x_1 + \\dots + x_n = -\\frac{a_{n-1}}{a_n}, \\qquad x_1 \\cdots x_n = (-1)^n\\frac{a_0}{a_n}.$$ En degré $2$, c'est le classique $x_1 + x_2 = -\\frac ba$ et $x_1x_2 = \\frac ca$."
+      },
+      {
+       "k": "met",
+       "titre": "Somme des carrés",
+       "t": "Avec $\\sigma_1 = \\sum x_i$ et $\\sigma_2 = \\sum_{i < j} x_ix_j = \\frac{a_{n-2}}{a_n}$, on a $\\sum x_i^2 = \\sigma_1^2 - 2\\sigma_2$, sans connaître les racines."
+      },
+      {
+       "k": "ex",
+       "t": "$X^3 - 6X^2 + 11X - 6 = (X - 1)(X - 2)(X - 3)$ : somme des racines $6$, produit $6$, et $\\sigma_2 = 1 \\cdot 2 + 1 \\cdot 3 + 2 \\cdot 3 = 11$. On retrouve bien les coefficients, aux signes près."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "La somme des racines complexes, comptées avec multiplicité, de $2X^3 - 4X^2 + X - 7$ est :",
+       "choix": [
+        "$2$",
+        "$-2$",
+        "$4$",
+        "$\\frac72$"
+       ],
+       "bonne": 0,
+       "explication": "$-\\frac{a_2}{a_3} = -\\frac{-4}{2} = 2$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le produit des racines complexes de $X^4 + 3X - 5$ est :",
+       "choix": [
+        "$-5$",
+        "$5$",
+        "$-3$",
+        "$3$"
+       ],
+       "bonne": 0,
+       "explication": "$(-1)^4\\frac{a_0}{a_4} = -5$. En degré pair, pas de changement de signe."
+      },
+      {
+       "type": "qcm",
+       "enonce": "$x_1$ et $x_2$ sont les racines de $X^2 - 3X + 1$. Alors $x_1^2 + x_2^2$ vaut :",
+       "choix": [
+        "$7$",
+        "$9$",
+        "$11$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "$\\sigma_1 = 3$, $\\sigma_2 = 1$, donc $9 - 2 = 7$. Le leurre $9$ oublie le double produit."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "anneaux-polynomes-n4",
+   "titre": "Interpolation de Lagrange",
+   "objectif": "Construire le polynôme qui passe par des points donnés, connaître la base de Lagrange et ses identités.",
+   "etapes": [
+    {
+     "titre": "Le problème et sa solution",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Par deux points d'abscisses distinctes passe une unique droite, par trois points une unique parabole (ou droite). En général : on se donne $n + 1$ abscisses **distinctes** $x_0, \\dots, x_n$ et des valeurs $y_0, \\dots, y_n$, et on cherche un polynôme $P$ de degré au plus $n$ tel que $P(x_i) = y_i$ pour tout $i$."
+      },
+      {
+       "k": "thm",
+       "titre": "Existence et unicité",
+       "t": "Un tel polynôme existe et il est **unique**. Unicité : la différence de deux solutions est de degré au plus $n$ et a $n + 1$ racines, donc elle est nulle."
+      },
+      {
+       "k": "def",
+       "titre": "Polynômes de Lagrange",
+       "t": "Pour chaque $i$, on pose $$L_i = \\prod_{j \\neq i} \\frac{X - x_j}{x_i - x_j}.$$ $L_i$ est de degré $n$, vaut $1$ en $x_i$ et $0$ en tous les autres $x_j$."
+      },
+      {
+       "k": "thm",
+       "titre": "La formule",
+       "t": "Le polynôme cherché est $P = y_0L_0 + y_1L_1 + \\dots + y_nL_n$ : en $x_k$, seul le terme $y_kL_k(x_k) = y_k$ survit."
+      },
+      {
+       "k": "ex",
+       "t": "Pour les points $0$, $1$, $2$ : $L_0 = \\frac{(X - 1)(X - 2)}{2}$, $L_1 = -X(X - 2)$, $L_2 = \\frac{X(X - 1)}{2}$."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "qcm",
+       "enonce": "Avec les abscisses $x_0 = 0$, $x_1 = 1$, $x_2 = 2$, que vaut $L_1(2)$ ?",
+       "choix": [
+        "$0$",
+        "$1$",
+        "$-1$",
+        "$2$"
+       ],
+       "bonne": 0,
+       "explication": "$L_1$ s'annule en toutes les abscisses autres que $x_1$, donc en $2$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Avec $4$ abscisses distinctes, chaque polynôme $L_i$ est de degré :",
+       "choix": [
+        "$3$",
+        "$4$",
+        "$2$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "$L_i$ est le produit de $3$ facteurs de degré $1$ (un par abscisse autre que $x_i$)."
+      },
+      {
+       "type": "vf",
+       "enonce": "Il existe un unique polynôme de degré au plus $2$ qui vaut $1$ en $0$, $3$ en $1$ et $5$ en $2$.",
+       "reponse": true,
+       "explication": "Trois abscisses distinctes, degré au plus $2$ : existence et unicité. Ici c'est $2X + 1$, de degré $1$, ce qui est permis."
+      }
+     ]
+    },
+    {
+     "titre": "La base de Lagrange et ses identités",
+     "blocs": [
+      {
+       "k": "thm",
+       "titre": "Une base de $K_n[X]$",
+       "t": "$(L_0, \\dots, L_n)$ est une base de $K_n[X]$, et les coordonnées d'un polynôme $P$ de degré au plus $n$ dans cette base sont ses valeurs : $$P = P(x_0)L_0 + \\dots + P(x_n)L_n.$$"
+      },
+      {
+       "k": "p",
+       "t": "C'est la formule d'interpolation appliquée à $P$ lui-même : $P$ est le seul polynôme de degré au plus $n$ qui prend ses propres valeurs aux $x_i$. Autrement dit, l'application $P \\mapsto \\big(P(x_0), \\dots, P(x_n)\\big)$ est un isomorphisme de $K_n[X]$ sur $K^{n+1}$ : injective par le nombre de racines, et les dimensions sont égales."
+      },
+      {
+       "k": "ex",
+       "t": "Avec $P = 1$ : $\\sum L_i = 1$. Avec $P = X$ (si $n \\ge 1$) : $\\sum x_iL_i = X$. Plus généralement, $\\sum x_i^kL_i = X^k$ pour tout $k \\le n$.",
+       "titre": "Identités classiques"
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Pour trois abscisses distinctes, $L_0 + L_1 + L_2 = 1$.",
+       "reponse": true,
+       "explication": "On interpole le polynôme constant $1$, de degré $0 \\le 2$."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Pour les abscisses $0$, $1$, $2$, les coordonnées de $X^2$ dans la base $(L_0, L_1, L_2)$ sont :",
+       "choix": [
+        "$(0, 1, 4)$",
+        "$(1, 1, 1)$",
+        "$(0, 0, 1)$",
+        "$(0, 1, 2)$"
+       ],
+       "bonne": 0,
+       "explication": "Les coordonnées sont les valeurs de $X^2$ en $0$, $1$, $2$. Le leurre $(0, 0, 1)$ confond avec la base canonique $(1, X, X^2)$."
+      },
+      {
+       "type": "vf",
+       "enonce": "Pour trois abscisses distinctes, $x_0L_0 + x_1L_1 + x_2L_2 = X$.",
+       "reponse": true,
+       "explication": "On interpole $P = X$, de degré $1 \\le 2$, dont les valeurs sont les $x_i$."
+      }
+     ]
+    },
+    {
+     "titre": "Vandermonde et erreur d'interpolation",
+     "blocs": [
+      {
+       "k": "p",
+       "t": "Si l'on cherche $P = c_0 + c_1X + \\dots + c_nX^n$ directement, les conditions $P(x_i) = y_i$ forment un système linéaire dont la matrice a pour lignes $(1, x_i, x_i^2, \\dots, x_i^n)$ : c'est la **matrice de Vandermonde**."
+      },
+      {
+       "k": "thm",
+       "titre": "Déterminant de Vandermonde",
+       "t": "$\\det\\big(x_i^{\\,j}\\big)_{0 \\le i, j \\le n} = \\prod_{i < j} (x_j - x_i)$. Il est non nul si et seulement si les $x_i$ sont distincts : on retrouve l'existence et l'unicité de l'interpolation."
+      },
+      {
+       "k": "thm",
+       "titre": "Erreur d'interpolation",
+       "t": "Si $f$ est de classe $\\mathcal C^{n+1}$ sur $[a, b]$ et si $P$ interpole $f$ en $n + 1$ points $x_i$ de $[a, b]$, alors pour tout $x \\in [a, b]$, il existe $\\xi \\in [a, b]$ tel que $$f(x) - P(x) = \\frac{f^{(n+1)}(\\xi)}{(n + 1)!}\\prod_{i=0}^n (x - x_i).$$"
+      },
+      {
+       "k": "p",
+       "t": "On en tire la majoration $|f(x) - P(x)| \\le \\frac{M_{n+1}}{(n + 1)!}\\prod |x - x_i|$, où $M_{n+1}$ majore $|f^{(n+1)}|$. Si $f$ est un polynôme de degré au plus $n$, sa dérivée $(n+1)$-ième est nulle : l'erreur est nulle, ce qui est cohérent avec l'unicité."
+      }
+     ],
+     "quiz": [
+      {
+       "type": "vf",
+       "enonce": "Si $f$ est un polynôme de degré $2$, son polynôme d'interpolation en $3$ abscisses distinctes est $f$ lui-même.",
+       "reponse": true,
+       "explication": "$f$ est de degré au plus $2$ et prend les bonnes valeurs : par unicité, c'est lui."
+      },
+      {
+       "type": "qcm",
+       "enonce": "Le déterminant de Vandermonde associé à $1$, $2$, $3$, c'est-à-dire $\\det\\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 4 \\\\ 1 & 3 & 9 \\end{pmatrix}$, vaut :",
+       "choix": [
+        "$2$",
+        "$0$",
+        "$6$",
+        "$1$"
+       ],
+       "bonne": 0,
+       "explication": "$(2 - 1)(3 - 1)(3 - 2) = 2$."
+      },
+      {
+       "type": "vf",
+       "enonce": "L'erreur d'interpolation $f(x) - P(x)$ s'annule en chacune des abscisses $x_i$.",
+       "reponse": true,
+       "explication": "Par construction $P(x_i) = f(x_i)$ ; dans la formule, le produit $\\prod (x - x_i)$ s'annule."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
